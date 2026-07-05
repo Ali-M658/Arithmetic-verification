@@ -1,7 +1,7 @@
 C:\Users\ali\PycharmProjects\EyeWatcherCodeBase\.venv\Scripts\python.exe "C:\Users\ali\PycharmProjects\EyeWatcherCodeBase\arithmetic verification.py"
-==================================================
+
 Computational Verification of Heat Trace Invariants
-==================================================
+
 
 --- Verifying Theorem A ---
 Success: Verified Theorem A. No two-coefficient collisions exist for S1 <= 17.
