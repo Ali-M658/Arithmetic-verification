@@ -1,0 +1,29 @@
+C:\Users\ali\PycharmProjects\EyeWatcherCodeBase\.venv\Scripts\python.exe "C:\Users\ali\PycharmProjects\EyeWatcherCodeBase\arithmetic verification.py"
+==================================================
+Computational Verification of Heat Trace Invariants
+==================================================
+
+--- Verifying Theorem A ---
+Success: Verified Theorem A. No two-coefficient collisions exist for S1 <= 17.
+Every hyperbolic pillow in this range is uniquely determined by its first 2 coefficients.
+
+--- Verifying Theorem B ---
+Success: Verified Theorem B. Found exactly one minimal collision at S1 = 18.
+  Signature (S1, R): (18, 3/4)
+  Colliding Pillows: O(2, 8, 8), O(3, 3, 12)
+  Pair accurately matches O(2,8,8) and O(3,3,12).
+
+--- Verifying Lemma 3.1 Constraints on the Collision ---
+  Checking conditions for p=2, p'=3, S=18:
+  - p < p'       : 2 < 3 -> True
+  - p' < 3p      : 3 < 6 -> True
+  - S >= 3p'     : 18 >= 9 -> True
+  Success: Minimal collision lemma constraints strictly hold.
+
+--- Verifying Proposition 2.5 (Resolution via 3rd Invariant) ---
+  P3 for O(2, 8, 8): 2^3 + 8^3 + 8^3 = 1032
+  P3 for O(3, 3, 12): 3^3 + 3^3 + 12^3 = 1782
+  Success: The third heat invariant distinguishes the two colliding pillows.
+  The 3-coefficient map is completely injective in this threshold range.
+
+Process finished with exit code 0
