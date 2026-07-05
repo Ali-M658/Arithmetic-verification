@@ -3,9 +3,7 @@ from collections import defaultdict
 
 
 def verify_pillow_arithmetic():
-    print("==================================================")
     print("Computational Verification of Heat Trace Invariants")
-    print("==================================================\n")
 
     # Dictionary to group triads by their signature (S1, R)
     two_coef_map = defaultdict(list)
@@ -23,7 +21,7 @@ def verify_pillow_arithmetic():
                 if R < 1:
                     two_coef_map[(S1, R)].append((p, q, r))
 
-    # --- Part 1: Verify Theorem A (No collisions for S1 <= 17) ---
+    # Part 1: Verify Theorem A (No collisions for S1 <= 17) ---
     print("--- Verifying Theorem A ---")
     collision_found_le_17 = False
     for (S1, R), triads in sorted(two_coef_map.items()):
@@ -35,7 +33,7 @@ def verify_pillow_arithmetic():
         print("Success: Verified Theorem A. No two-coefficient collisions exist for S1 <= 17.")
         print("Every hyperbolic pillow in this range is uniquely determined by its first 2 coefficients.\n")
 
-    # --- Part 2: Verify Theorem B (Minimal collision at S1 = 18) ---
+    #  Part 2: Verify Theorem B (Minimal collision at S1 = 18) ---
     print("--- Verifying Theorem B ---")
     collisions_at_18 = []
     for (S1, R), triads in sorted(two_coef_map.items()):
@@ -54,7 +52,7 @@ def verify_pillow_arithmetic():
     else:
         print(f"ERROR: Expected exactly 1 collision at S1=18, found {len(collisions_at_18)}.")
 
-    # --- Part 3: Verify Lemma 3.1 (Structural Bounds Constraints) ---
+    # Part 3: Verify Lemma 3.1 (Structural Bounds Constraints) ---
     print("--- Verifying Lemma 3.1 Constraints on the Collision ---")
     if collisions_at_18:
         _, triads = collisions_at_18[0]
@@ -76,7 +74,7 @@ def verify_pillow_arithmetic():
         if cond1 and cond2 and cond3:
             print("  Success: Minimal collision lemma constraints strictly hold.\n")
 
-    # --- Part 4: Verify Proposition 2.5 (3rd Coefficient Breaks Collision) ---
+    #  Part 4: Verify Proposition 2.5 (3rd Coefficient Breaks Collision) ---
     print("--- Verifying Proposition 2.5 (Resolution via 3rd Invariant) ---")
     if collisions_at_18:
         _, triads = collisions_at_18[0]
