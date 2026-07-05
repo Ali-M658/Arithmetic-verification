@@ -1,10 +1,10 @@
-import pandas as pd
-from sympy import Rational
+from collections import defaultdict
+from fractions import Fraction
 
 
-def generate_pillow_table():
-    # 1. Generate all hyperbolic triads with S1 from 10 to 18
-    data = []
+def generate_mathematical_table():
+    # 1. Generate all hyperbolic triads within the exact window 10 <= S1 <= 18
+    all_triads = []
 
     for S1 in range(10, 19):
         # Enforce ordering p <= q <= r to prevent duplicate multisets
@@ -13,64 +13,57 @@ def generate_pillow_table():
                 r = S1 - p - q
 
                 # Hyperbolicity condition: 1/p + 1/q + 1/r < 1
-                R = Rational(1, p) + Rational(1, q) + Rational(1, r)
-                if R < 1:
-                    data.append(
+                R_val = Fraction(1, p) + Fraction(1, q) + Fraction(1, r)
+                if R_val < 1:
+                    all_triads.append(
                         {
                             "S1": S1,
-                            "Triad": (p, q, r),
-                            "R_frac": R,
-                            "R_str": f"{R.p}/{R.q}",
+                            "p": p,
+                            "q": q,
+                            "r": r,
+                            "R_frac": R_val,
                             "Status": "unique",
                         }
                     )
 
-    # 2. Identify collisions within the same S1 sum group
-    # A collision means the same S1 group contains identical reciprocal sums (R)
-    seen_signatures = {}
-    for entry in data:
-        sig = (entry["S1"], entry["R_frac"])
-        if sig in seen_signatures:
-            # Mark both the current and original occurrences as collisions
-            entry["Status"] = "collision"
-            seen_signatures[sig]["Status"] = "collision"
-        else:
-            seen_signatures[sig] = entry
+    # 2. Map within-sum signatures to identify any two-coefficient collisions
+    # Groups are categorized strictly by the tuple key: (S1_sum, Reciprocal_Sum)
+    signature_map = defaultdict(list)
+    for triad in all_triads:
+        key = (triad["S1"], triad["R_frac"])
+        signature_map[key].append(triad)
 
-    # 3. Format the table data beautifully
-    formatted_rows = []
-    for entry in data:
-        s1 = entry["S1"]
-        triad_str = f"({entry['Triad'][0]}, {entry['Triad'][1]}, {entry['Triad'][2]})"
-        r_str = entry["R_str"]
-        status = entry["Status"]
+    for signature, matches in signature_map.items():
+        if len(matches) > 1:
+            for triad in matches:
+                triad["Status"] = "collision"
 
-        # Highlight the minimal collision pair in bold text
-        if status == "collision":
-            triad_str = f"\033[1m{triad_str}\033[0m"
-            r_str = f"\033[1m{r_str}\033[0m"
-            status_str = f"\033[1m{status}\033[0m"
-        else:
-            status_str = status
+    # 3. Print the beautifully formatted structural table output
+    header = f"{'S1':<4} | {'(p, q, r)':<12} | {'R':<8} | {'Status'}"
+    print("\n" + "=" * len(header))
+    print(header)
+    print("=" * len(header))
 
-        formatted_rows.append(
-            {"S1": s1, "Pillow (p, q, r)": triad_str, "R": r_str, "Status": status_str}
-        )
+    last_s1 = None
+    for triad in all_triads:
+        # Visually group identical S1 sums together by blanking out repeats
+        s1_display = str(triad["S1"]) if triad["S1"] != last_s1 else ""
+        last_s1 = triad["S1"]
 
-    # 4. Build and render the Pandas DataFrame
-    df = pd.DataFrame(formatted_rows)
+        triad_str = f"({triad['p']}, {triad['q']}, {triad['r']})"
+        r_str = f"{triad['R_frac'].numerator}/{triad['R_frac'].denominator}"
+        status_str = triad["Status"]
 
-    # Set up styling options for a beautiful terminal presentation
-    pd.set_option("display.max_rows", None)
-    pd.set_option("display.width", 1000)
-    pd.set_option("display.colheader_justify", "center")
+        # ANSI escape codes to highlight the minimal arithmetic collision in Bold Red text
+        if status_str == "collision":
+            triad_str = f"\033[1;31m{triad_str}\033[0m"
+            r_str = f"\033[1;31m{r_str}\033[0m"
+            status_str = f"\033[1;31m{status_str}\033[0m"
 
-    print("\n" + "=" * 62)
-    print("  TABLE 1: EXACT VERIFICATION OF ARITHMETIC INVARIANTS  ")
-    print("=" * 62)
-    print(df.to_string(index=False))
-    print("=" * 62 + "\n")
+        print(f"{s1_display:<4} | {triad_str:<12} | {r_str:<8} | {status_str}")
+
+    print("=" * len(header) + "\n")
 
 
 if __name__ == "__main__":
-    generate_pillow_table()
+    generate_mathematical_table()
