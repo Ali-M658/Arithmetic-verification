@@ -1,0 +1,51 @@
+# LaTeX build artefacts
+*.aux
+*.bbl
+*.blg
+*.brf
+*.fdb_latexmk
+*.fls
+*.idx
+*.ilg
+*.ind
+*.lof
+*.log
+*.lot
+*.nav
+*.out
+*.snm
+*.synctex.gz
+*.synctex(busy)
+*.toc
+*.vrb
+*.xdv
+*.bcf
+*.run.xml
+*.figlist
+*.makefile
+*.figlist-*
+*.auxlock
+
+# latexmk
+.latexmk/
+
+# Editor and OS noise
+.DS_Store
+*~
+*.swp
+*.bak
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+
+# Keep the compiled manuscript, drop everything else under paper/build/
+!paper/build/main.pdf
+
+# code/upstream/ is a clone of github.com/Ali-M658/Arithmetic-verification.
+# Left untracked deliberately: it carries its own .git, and that history holds
+# the four scripts deleted on 2026-08-08 that the claim ledger relies on.
+# Re-create with:
+#   git clone https://github.com/Ali-M658/Arithmetic-verification.git code/upstream
+code/upstream/
