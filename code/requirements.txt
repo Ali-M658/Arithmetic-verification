@@ -1,0 +1,15 @@
+# Verification harness dependencies.
+#
+# Minimum Python: 3.9
+# Tested on:      Python 3.14.2 (CPython) and 3.13.12 (conda-forge), macOS 15 arm64
+#
+# If more than one interpreter is on PATH, pick one explicitly:
+#     PYTHON=/path/to/python3 ./run_all.sh
+#
+# Only code/verify_identities.py needs these. Every other module in this
+# directory -- orbifold_enum.py, enumerate_degeneracies.py, make_table.py --
+# is stdlib-only by design, so the exact arithmetic that the manuscript's
+# claims rest on carries no third-party dependency at all.
+
+sympy==1.14.0
+mpmath==1.3.0
