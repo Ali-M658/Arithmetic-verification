@@ -8,7 +8,7 @@ publisher page, arXiv API, institutional repository) or it appears below as unre
 
 Status values: `UNRETRIEVED` (the document itself could not be obtained), `NO-DOI`
 (document obtained or adequately identified, but no DOI exists or none could be found),
-`PAYWALLED`, `TOOLING` (retrievable in principle; a specific tool path failed and a
+`PAYWALLED`, `TOOLING` (retrievable in principle; one retrieval route failed and a
 workaround succeeded).
 
 ---
@@ -21,8 +21,8 @@ workaround succeeded).
 - **Title:** The trace function expansion for spherical polygons
 - **Journal:** New Zealand Journal of Mathematics **34** (2005), 81–95
 - **Attempted URL:** `http://nzjm.math.auckland.ac.nz/images/0/0a/The_trace_function_expansion_for_spherical_polygons.pdf`
-- **Failure:** connection timed out on both `curl` and the crawler; server unreachable from
-  this network. No mirror located by web search.
+- **Failure:** connection timed out on every attempt; the server was unreachable from this
+  network. No mirror located by web search.
 - **Why it matters:** Watson is the $K=1$ predecessor of Uçar's constant-curvature cone
   coefficients. Schueth's Remark 5.4(ii) credits Watson with computing $c_\ell(\gamma)$ for
   every $\ell$ in the case $K=1$, and Uçar with extending this to arbitrary constant $K$.
@@ -96,24 +96,24 @@ identifier.
 
 ---
 
-## 3. Tooling failures with successful workarounds
+## 3. Retrieval failures with successful workarounds
 
 Recorded for completeness. **These are not unretrieved sources** — every document below was
 obtained by another route, and its content is used in the review.
 
 | Target | Failure | Workaround used |
 |---|---|---|
-| `arxiv.org/pdf/1705.01412` (Bari–Hunsicker) | vault fetch returned `JUNK_CONTENT: Binary PDF garbage`; same on the `export.arxiv.org` mirror | `curl` the PDF, extract with pymupdf, create the note from the extracted text (14,932 words) |
-| `arxiv.org/pdf/1812.06119` (Schueth 2019) | same `JUNK_CONTENT` failure | ar5iv HTML full-text mirror |
-| `arxiv.org/pdf/1711.03405` (Uçar thesis) | builtin provider cannot parse raw PDF bytes | Humboldt DSpace bitstream chain `/bitstream/handle/18452/19142/ucar.pdf` → `/bitstreams/.../download` → `/server/api/core/bitstreams/.../content`, fetched with the crawl4ai provider; 54,887 words recovered |
-| Loughborough institutional repository (Bari–Hunsicker record) | JS-rendered pages return `JUNK_CONTENT: Empty or near-empty content` on both the search page and the direct record | figshare REST API, `api.figshare.com/v2/articles/9385352` |
+| `arxiv.org/pdf/1705.01412` (Bari–Hunsicker) | automated text extraction returned unparsed binary; same on the `export.arxiv.org` mirror | downloaded the PDF directly and extracted the text (14,932 words) |
+| `arxiv.org/pdf/1812.06119` (Schueth 2019) | same binary-extraction failure | ar5iv HTML full-text mirror |
+| `arxiv.org/pdf/1711.03405` (Uçar thesis) | raw PDF bytes could not be parsed | Humboldt DSpace bitstream chain `/bitstream/handle/18452/19142/ucar.pdf` → `/bitstreams/.../download` → `/server/api/core/bitstreams/.../content`; 54,887 words recovered |
+| Loughborough institutional repository (Bari–Hunsicker record) | JS-rendered pages return empty content on both the search page and the direct record | figshare REST API, `api.figshare.com/v2/articles/9385352` |
 | DGGW erratum | not on arXiv | Wayback Machine copy of the Michigan Math. J. PDF (2 pages) |
 | OEIS keyword search | HTTP 403 after several rapid unheadered requests | browser `User-Agent` plus ≥5 s spacing between calls |
 
 **MathSciNet** was named in the task brief as a permitted venue but was not queried: it is
-subscription-gated and no institutional access is configured in this environment. Every
-citation in this review was resolved without it, via Crossref, publisher pages, the arXiv
-API, and institutional repositories.
+subscription-gated and no institutional access was available. Every citation in this review
+was resolved without it, via Crossref, publisher pages, the arXiv API, and institutional
+repositories.
 
 ---
 
@@ -134,7 +134,7 @@ the arXiv listing is an extraction artifact. Separately confirmed via Crossref t
 J. Math. has **no DOIs registered at all** for this era, so the absence of a DOI in
 `sources.bib` is correct rather than a gap.
 
-### 4.3 Datchev–Hezari — year discrepancy, **unresolved in the manuscript's favour on pages**
+### 4.3 Datchev–Hezari — **RESOLVED: year wrong, pages right**
 
 The manuscript prints 2013. Both the MSRI/SLMath primary PDF header and Cambridge's own
 Crossref record give **2012**. On pages, page-by-page inspection of the primary PDF confirms
@@ -170,11 +170,11 @@ the "conical" form.
 
 ---
 
-## 6. Tool access not available in this environment
+## 6. Databases that could not be queried
 
-- **MathSciNet** — subscription-gated, no institutional access configured. Named in the brief
-  as a permitted venue; not used. Every citation was resolved without it.
+- **MathSciNet** — subscription-gated, with no institutional access available. Named in the
+  brief as a permitted venue; not used. Every citation was resolved without it.
 - **Semantic Scholar API** — returned HTTP 429 on 12 consecutive attempts during the Q4
-  batch (no API key configured). The arXiv API and web search were substituted, and the
+  searches (no API key available). The arXiv API and web search were substituted, and the
   substituted queries are listed in full in `review/hyperresearch/Q4-stability.md` §4 so the
   null result there rests on queries that were actually run.

@@ -1,10 +1,18 @@
 # Q1 — Novelty of the Section 5 Diophantine problem
 
-**Verdict: NEW.** The problem of pairs of triples with equal sum *and* equal sum of
-reciprocals does not appear in the Egyptian-fraction literature, in Guy's *Unsolved Problems
-in Number Theory*, or in OEIS. But it sits one square away from a problem that is
-well-studied and, in a strong sense, *solved* — and the manuscript does not currently
-acknowledge that neighbour. Engaging it would strengthen §5 considerably.
+**Verdict: NEW — with one unclosed check.** The problem of pairs of triples with equal sum
+*and* equal sum of reciprocals does not appear in the Egyptian-fraction literature, in Guy's
+*Unsolved Problems in Number Theory*, or in OEIS, under that description or under any of the
+aliases searched (§2). Two things qualify that verdict:
+
+1. **One retrieval failed.** Takeuchi's commensurability-classes paper — the single most
+   likely place for the pair $\{(2,8,8),(3,3,12)\}$ to have been noticed already — could not
+   be obtained (§4). The verdict is "new" *on the evidence gathered*, and that one gap is
+   worth closing before submission.
+2. **The problem is not isolated.** It sits one square away from Guy's §D16, which is
+   well-studied and, in a strong sense, *solved* — by Schinzel, via an elliptic curve. The
+   manuscript does not acknowledge that neighbour, and engaging it would strengthen §5
+   considerably.
 
 ---
 
@@ -85,6 +93,26 @@ organizing taxonomy — single-representation counting, density and covering, re
 denominators — contains no category for "two representations sharing two symmetric-function
 values".
 
+### Alternative names for the same problem — the searches that close the gap
+
+A null established by searching for a *description* is weak if the problem travels under a
+*name*. The OEIS control worked precisely because "census-taker number" is a name. So the
+obvious aliases were searched explicitly:
+
+| Framing | Rationale | Result |
+|---|---|---|
+| **equal sum + equal harmonic mean** | $\sum1/m_i$ fixed with $n$ fixed *is* the harmonic mean; census-taker is "equal AM + equal GM", ours is "equal AM + equal HM" | no source poses it |
+| **equal series and equal parallel resistance** | the standard recreational dress: resistors in series add, in parallel add reciprocally | surfaces only the parallel-sum/optic-equation material, never the paired-triple problem |
+| **Prouhet–Tarry–Escott / multigrade** | the classical "two sets sharing several symmetric functions" family | that literature matches *power sums* $\sum m^k$, never a reciprocal sum |
+| **elliptic-curve treatments of (sum, sum of reciprocals)** | the natural method, given Schinzel's D16 solution | Zhang, arXiv:1608.03382, studies $N=(a+b+c+d)(\sum 1/a)$ — a single 4-tuple whose sum *times* reciprocal-sum hits a target. Different structure; not our problem, but it is the closest arXiv object combining the two quantities |
+| **recreational / Q&A channels** | the prompt asks specifically | the pair $\{(2,8,8),(3,3,12)\}$ was not found in any puzzle column, blog, or Q&A thread |
+
+The nearest *named* object remains the census-taker number, and its unrestricted analogue is
+**[OEIS A060292](https://oeis.org/A060292)**, "At least two unordered triples of positive
+numbers have product $n$ and equal sums" (36, 40, 72, 90, 96, …) — the structural counterpart
+of §5's problem with $e_3$ in place of $e_2/e_3$. Both A060292 and A334911 exist; no analogue
+for the reciprocal-sum version does.
+
 ## 3. The nearest relatives, precisely distinguished
 
 | Problem | Matches on | How it differs |
@@ -96,7 +124,7 @@ values".
 | **This paper's §5** | $(e_1,e_2/e_3)$ | — |
 
 **The closest relative is Guy D16, not Erdős–Straus.** This is the finding that matters most
-for §5, and it is worth quoting Guy verbatim:
+for §5. Guy, verbatim:
 
 > The problem to find as many different triples of positive integers as possible with the
 > same sum and the same product has been solved by Schinzel: you can have arbitrarily many.
@@ -133,14 +161,25 @@ independent of the sum of reciprocals. The two triples appear on that list for u
 reasons, and nothing in either source remarks on their equal covolume, let alone their equal
 cone-order sum.
 
-**One genuinely open thread.** Takeuchi's 85 triples fall into 19 commensurability classes,
-but the class assignment is in a companion paper — *Commensurability classes of arithmetic
-triangle groups*, J. Fac. Sci. Univ. Tokyo Sect. IA Math. **24** (1977), 201–212 — which could
-not be retrieved (see `review/outstanding-fetches.md`). If $(2,8,8)$ and $(3,3,12)$ turn out
-to lie in the same class, the pair may have an unremarked prior appearance there. Note the
-caveat: commensurable Fuchsian groups have covolumes in *rational ratio*, not equal ratio, so
-equal covolume is a sharper coincidence than commensurability and is not implied by it. Even a
-positive answer would not make Theorem B prior art — but it would need citing.
+**One genuinely open thread, and it is the weakest point in this verdict.** Takeuchi's 85
+triples fall into 19 commensurability classes, and the class assignment lives in a companion
+paper — *Commensurability classes of arithmetic triangle groups*, J. Fac. Sci. Univ. Tokyo
+Sect. IA Math. **24** (1977), 201–212 — which could not be retrieved.
+
+State the risk accurately. It is **not** that commensurability would imply the coincidence:
+commensurable Fuchsian groups have covolumes in *rational* ratio, so equal covolume is a
+sharper condition and is not implied. The risk is more mundane and more likely: **papers that
+classify triangle groups by commensurability routinely tabulate covolumes class by class**,
+and $(2,8,8)$ and $(3,3,12)$ have equal covolume by construction. If they sit in or near the
+same row of such a table, someone may have noticed and remarked on it. That would not make
+Theorem B prior art — the manuscript's content is the *threshold* and the *minimality*, not
+the bare coincidence — but it would need citing, and being told about it by a referee would
+be worse than finding it now.
+
+Three routes were not exhausted and should be, before submission: Maclachlan & Reid's
+*The Arithmetic of Hyperbolic 3-Manifolds* (which reproduces Takeuchi's classification),
+Voight's *Quaternion Algebras*, and Singerman's work on triangle-group inclusions. Any of the
+three may reproduce the class table without needing the 1977 original.
 
 ## 5. Is an asymptotic count known, or provable by standard methods?
 
@@ -167,12 +206,24 @@ Every one of these counts representations of **a single fixed value**. §5 needs
 question the divisor-counting and large-sieve techniques above are not set up for. Transfer is
 plausible in spirit, not off the shelf.
 
-**One caveat the manuscript should address.** §5.3 describes its heuristic as "of the
-birthday-paradox type standard in analogous Diophantine settings". No source in the fetched
-corpus instantiates such a heuristic for unit-fraction problems; that literature's register is
-bounds on a single counting function. The technique is standard in analytic number theory
-broadly, but the phrase as written implies a precedent in *this* literature that was not
-found. Either cite an instance or soften the claim.
+**One caveat the manuscript should address — with a citation now available.** §5.3 describes
+its heuristic as "of the birthday-paradox type standard in analogous Diophantine settings". No
+source instantiates such a heuristic for unit-fraction problems; that literature's register is
+bounds on a single counting function. The phrase implies a precedent in *this* literature that
+does not exist.
+
+But the missing ingredient is now in hand. **Banderier, Gómez Ruiz, Luca, Pappalardi &
+Treviño, "On Egyptian fractions of length 3", Rev. Un. Mat. Argentina (2021), 257–274,
+DOI [`10.33044/revuma.1798`](https://doi.org/10.33044/revuma.1798)** studies the counting
+function $f_a(n)$ for three-term representations — precisely the per-value multiplicity a
+birthday-paradox argument for §5 needs as its input distribution. And K. S. Brown's
+*Unit Fraction Partitions* tabulates such multiplicities explicitly for small targets.
+
+So the fix is not merely to soften: **replace "standard in analogous Diophantine settings"
+with an actual derivation** whose input is the multiplicity distribution of three-term
+representations, citing the above. That converts a hand-wave into a heuristic with a stated
+premise — which is what Conjecture 5.4 needs if it is to be taken seriously rather than
+treated as numerology.
 
 ## 6. Independent verification of the manuscript's own counts
 
@@ -180,30 +231,83 @@ The cumulative **pair** counts in Table 5.1 were recomputed from scratch in exac
 arithmetic and **reproduce exactly**: 1, 92, 386, 840, 1496, 2210, 3067 at
 $S=18,100,200,300,400,500,600$. Table 5.1 is sound.
 
-The **class** counts quoted in the task brief (92, 380, 822, 1468, 2158, 2977) do not
-reproduce under the natural reading. Counting, per colliding $R$-value, (multiplicity $-\,1$)
-gives 92, 383, 831, 1482, 2183, 3021 — close but consistently higher. The brief's figures use
-some third convention. Since those numbers are not printed in the manuscript, this affects
-nothing in the paper as it stands, but if a class count is ever printed its convention must be
-stated explicitly.
+The **class** counts quoted in the task brief (92, 380, 822, 1468, 2158, 2977) were also
+reproduced, once the right convention was identified. Six candidate conventions were tested
+against the two printed sequences; each sequence is matched by exactly one. The four
+informative outcomes:
+
+| Convention | $S=100,200,300,400,500,600$ | Matches? |
+|---|---|---|
+| unordered **pairs**, $\binom{n}{2}$ per colliding signature | 92, 386, 840, 1496, 2210, 3067 | **yes** — Table 5.1 |
+| $(n-1)$ per colliding signature | 92, 383, 831, 1482, 2183, 3021 | no |
+| **distinct colliding signatures**, one per colliding $(S_1,R)$ | 92, 380, 822, 1468, 2158, 2977 | **yes** — the brief's "classes" |
+| primitive pairs only | 20, 67, 138, 247, 364, 479 | no |
+
+So the two printed sequences are **pairs** and **degeneracy classes**: the first counts
+colliding *pairs of pillows*, the second counts the *values of $\sigma=(S_1,R)$ at which a
+collision occurs*, regardless of how many pillows meet there.
+
+The two agree up to $S=135$ and first diverge at $S=136$, because that is the first sum at
+which a signature carries **three** triads rather than two:
+
+$$\mathcal O(15,55,66),\quad \mathcal O(16,40,80),\quad \mathcal O(17,34,85)
+\qquad S_1=136,\ R=\tfrac1{10}.$$
+
+Only three such triple points occur up to $S=200$ — the others at $S=143$, $R=1/15$
+($(33,55,55),(35,45,63),(39,39,65)$) and $S=187$, $R=1/12$
+($(17,68,102),(18,52,117),(22,33,132)$).
+
+**This is worth a remark in §5.** A *triple* two-coefficient degeneracy — three pairwise
+non-isometric pillows sharing both leading heat coefficients — is a qualitatively different
+object from the base pair, and $\mathcal O(15,55,66)$, $\mathcal O(16,40,80)$,
+$\mathcal O(17,34,85)$ is the smallest. It also forces the counting convention into the open:
+$N(S)$ as currently defined counts pairs, so a triple point contributes 3, and any reader
+comparing $N(S)$ against a naive "number of degenerate signatures" will be off from $S=136$
+onward. State which is meant.
+
+*(Neither sequence is in OEIS — both were searched, and the null on the class sequence is now
+meaningful because the numbers are reproducible.)*
 
 Also verified: at $S=36$ there are exactly two colliding signatures — the scaled copy
 $\{(4,16,16),(6,6,24)\}$ at $R=3/8$ and the primitive $\{(6,15,15),(8,8,20)\}$ at $R=3/10$ —
-matching §5.1 exactly.
+matching §5.1 exactly. And §5.2's power-law fit reproduces: a least-squares slope of
+$\log\mathcal N(S)$ against $\log S$ over $50\le S\le600$ gives **2.0277**, which is the
+printed 2.03.
+
+### One internal inconsistency, between the abstract and Table 5.1
+
+The abstract states that $\mathcal N(S)$ tracks $c\,S^2$ "for $c\approx0.0085$–$0.0093$".
+Recomputing $\mathcal N(S)/S^2$ at the table's own checkpoints:
+
+| $S$ | 100 | 200 | 300 | 400 | 500 | 600 |
+|---|---|---|---|---|---|---|
+| $\mathcal N(S)/S^2$ | 0.0092 | **0.0097** | 0.0093 | 0.0094 | 0.0088 | 0.0085 |
+
+The value at $S=200$ is **0.0097**, outside the stated range — and it is printed as 0.0097 in
+Table 5.1 itself. So the abstract contradicts the paper's own table. The true range over
+$100\le S\le600$ is **0.0085–0.0097**.
+
+This is a small fix with a disproportionate cost if missed: the abstract is the first thing a
+referee reads, the table is on the page they check it against, and the discrepancy is visible
+without any computation.
 
 ---
 
 ## Verdict
 
-**New**, on a well-controlled negative search. Specifically:
+**New**, on a well-controlled negative search — with one retrieval still open (§4).
+Specifically:
 
-- The problem is not posed in Guy (any edition; §D11 and §D12 checked directly, whole book
-  grepped), not in OEIS (both count sequences, with a working control), and not in the
+- The problem is not posed in Guy (3rd ed., whole book grepped; §D11, §D12 and §D16 checked
+  directly), not in OEIS (both count sequences, with a working control), and not in the
   Egyptian-fraction research literature including its current survey.
 - The specific coincidence $\{(2,8,8),(3,3,12)\}$ does not appear in print in either the
   number-theoretic or the triangle-group framing. Both triples appear on Takeuchi's arithmetic
   list, but for unrelated reasons and without the coincidence being remarked.
 - No asymptotic count exists, and existing methods do not directly transfer.
+- **The unclosed check:** Takeuchi's commensurability-classes paper (§4) could not be
+  obtained, and it is the most likely place for the pair to have been noticed already. Close
+  it before submission.
 
 **What §5 should add.** Guy's **D16** is the same problem shape for $(e_1,e_3)$ instead of
 $(e_1,e_2/e_3)$, and Schinzel *solved* it — arbitrarily many triples with common sum and

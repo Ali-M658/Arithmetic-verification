@@ -5,10 +5,22 @@
 > To our knowledge this is the first exact finite-coefficient determinacy threshold, with an
 > explicit minimal degeneracy, for a family of hyperbolic cone orbifolds.
 
-**Verdict: it survives as written, and the supporting evidence is stronger than the
-manuscript currently uses.** Two narrowings are recommended, neither of which weakens the
-result. A third recommendation is that the sentence be dropped anyway, for reasons of venue
-convention rather than correctness — see §6.
+**Verdict: needs narrowing — and the recommended narrowing is to delete the sentence.**
+
+*No competing result was found*: the literature contains no exact finite-coefficient
+determinacy threshold, with an explicit minimal degeneracy, for hyperbolic cone orbifolds. On
+the evidence gathered, the sentence is **true**. But it survives only on the conjunction of
+four qualifiers — *exact*, *finite-coefficient*, *hyperbolic cone orbifold*, *minimal* — and
+dropping any one of them brings a prior result into range: Grieser–Maronna if you drop
+*hyperbolic* (§1.5), DGGW's own Propositions 5.19/5.22 if you drop *hyperbolic* and *minimal*
+(§1.6), Dryden–Strohmaier and Doyle–Rossetti if you drop *finite-coefficient* (§3).
+
+A claim that is true but load-bearing on four simultaneous qualifiers is a poor bet in a
+paper whose result does not need it. **The recommendation is therefore to replace the
+priority sentence with a statement of what is proved plus the Doyle–Rossetti quotation
+establishing that the question was open** (§3). That is strictly more informative, cannot be
+falsified by a paper the author has not read, and matches the house style of every comparable
+JGA paper surveyed for Q5 — none of which claims priority.
 
 ---
 
@@ -47,6 +59,43 @@ world — Mårdby–Rowlett's survey (arXiv:2406.18369), Lauret–Miatello–Ros
 (arXiv:2409.02213), Lauret ([`10.2140/pjm.2021.314.333`](https://doi.org/10.2140/pjm.2021.314.333)
 and [`10.1080/10586458.2018.1538908`](https://doi.org/10.1080/10586458.2018.1538908)). None
 counts heat coefficients for hyperbolic cone orbifolds.
+
+## 1.5 The competitor the manuscript already cites — Grieser–Maronna
+
+Grieser & Maronna, *Hearing the shape of a triangle*, Notices AMS **60** (2013), 1440–1447,
+DOI [`10.1090/noti1063`](https://doi.org/10.1090/noti1063), determine a Euclidean triangle
+from **three invariants: area, perimeter, and the sum of the reciprocals of the angles.**
+
+That is the same *shape* of result as Theorem C — a small fixed number of invariants,
+including a reciprocal sum, determining a triangle-like object. The manuscript cites it (line
+126) but only as generic background on finite determinacy, and the priority claim never
+engages it.
+
+It is not a counterexample: Grieser–Maronna is Euclidean, concerns a *smooth* triangle rather
+than a cone orbifold, its invariants are geometric quantities rather than heat-trace
+coefficients, and it proves no minimal degeneracy. So it does not falsify the sentence. But
+the resemblance is close enough that a referee will notice, and the manuscript should say why
+the two differ rather than leave it to be spotted.
+
+## 1.6 The nearest-in-kind prior art sits in the manuscript's own central reference
+
+DGGW's **Propositions 5.19 and 5.22** exhibit exactly the phenomenon of Theorem B — distinct
+orbifolds that a low-order heat invariant fails to separate. Verbatim, Prop 5.19:
+
+> $c$ distinguishes all but the following cases: $S^2$ from the orbifolds $O(*3,3,3)$ and
+> $O(3,*3)$ (with $c = 4$), the good football $O(2,2)$ from $O(*2,3,6)$ (with $c = 5$), and
+> the bad teardrop $O(2)$ from the orbifolds $O(*2,4,4)$ and $O(4,*2)$ (with $c = 4.5$).
+
+Here $c=12\times$ the degree-zero coefficient, so these are **collisions in a single heat
+invariant**, resolved only by the degree-$(-1/2)$ mirror-locus term. Proposition 5.22 adds
+nonorientable pairs sharing an orientable double cover.
+
+Three differences preserve the claim, and all three should be stated in the paper: DGGW's
+examples are spherical and $\chi\ge0$, not hyperbolic; they are found rather than proved
+minimal; and they concern one invariant rather than a threshold in a counted sequence. But
+this is the closest thing in print to Theorem B, it is in the manuscript's most-cited source,
+and §1.3 currently does not mention it. Leaving it unaddressed is the single most likely way
+for a referee to conclude the author has not read DGGW carefully.
 
 ## 2. Uçar does not count coefficients
 
@@ -160,12 +209,27 @@ Theorem 1 the spectrum determines the cone-order multiset outright, so an isospe
 would have to be isometric. That is consistent with — and is in fact implied by — the
 manuscript's own Theorem C.
 
-**A cautionary note the manuscript should heed.** Linowitz–Voight narrate a history of
-erroneous claims in exactly this area: Maclachlan–Rosenberger (1994, Arch. Math. **62**)
-claimed a genus-0 signature-$(0;2,2,3,3)$ isospectral pair which Buser–Flach–Semmler later
-disproved on selectivity grounds. Claims about small isospectral hyperbolic 2-orbifolds have
-a track record of being wrong. This is an argument for stating the manuscript's results
-narrowly and for keeping the exact-arithmetic appendix.
+**Two cautionary precedents the manuscript should heed.**
+
+First, Linowitz–Voight narrate a history of erroneous claims in exactly this area:
+Maclachlan–Rosenberger (1994, Arch. Math. **62**) claimed a genus-0 signature-$(0;2,2,3,3)$
+isospectral pair which Buser–Flach–Semmler later disproved on selectivity grounds.
+
+Second, and closer to home: **Gordon & Rossetti**, *Boundary volume and length spectra of
+Riemannian manifolds: what the middle degree Hodge spectrum doesn't reveal*, Ann. Inst.
+Fourier **53** (2003), 2297–2314,
+DOI [`10.5802/aif.2007`](https://doi.org/10.5802/aif.2007), required a **corrigendum
+published nineteen years later** — Ann. Inst. Fourier **71** (2022), no. 6, 2647–2648,
+DOI [`10.5802/aif.3470`](https://doi.org/10.5802/aif.3470). Carolyn Gordon is a DGGW
+co-author and a first-tier referee candidate for this paper; Rossetti co-authored RSW 2008,
+which the manuscript cites.
+
+Taken with the DGGW erratum (`Q2-cone-coefficients.md` §5), that is *three* corrections in
+this small literature, by exactly the authors most likely to referee this submission. Claims
+about small isospectral or near-isospectral 2-orbifolds have a demonstrable track record of
+needing repair. This is the strongest available argument for stating the results narrowly,
+keeping the exact-arithmetic appendix, and preferring a statement of what is proved over a
+priority claim.
 
 ## 5. The 2017–2026 competitor sweep
 
@@ -200,19 +264,45 @@ contains no triangle-orbifold, cone-surface-heat-trace, or heat-coefficient-coun
 | Lauret & Linowitz survey | New York J. Math. **30** (2024), 682–721 | Grepped directly: zero hits for "triangle", "heat coefficient", "heat invariant", "cone orbifold", "near-isospectral". |
 | Mårdby & Rowlett, *112 years of listening to Riemannian manifolds* | arXiv:2406.18369 | General-audience survey; no competing result. |
 
-Notably, the Lauret–Linowitz survey records as **open** the question of the smallest area of
-a pair of arithmetic hyperbolic 2-orbifolds — evidence that this corner of the field is
-actively worked and that fine-grained minimality questions are not considered settled.
+The Lauret–Linowitz survey records as **open** the question of the smallest area of a pair of
+arithmetic hyperbolic 2-orbifolds — evidence that this corner of the field is actively worked
+and that fine-grained minimality questions are not considered settled.
+
+## 5.5 The two negative results the manuscript cites but does not reconcile
+
+The manuscript cites Shams–Stanhope–Webb, *One cannot hear orbifold isotropy type*, Arch.
+Math. **87** (2006), 375–385,
+DOI [`10.1007/s00013-006-1748-0`](https://doi.org/10.1007/s00013-006-1748-0), and
+Rossetti–Schueth–Weilandt, *Isospectral orbifolds with different maximal isotropy orders*,
+Ann. Global Anal. Geom. **34** (2008), 351–366,
+DOI [`10.1007/s10455-008-9110-3`](https://doi.org/10.1007/s10455-008-9110-3), as background —
+but never reconciles them with its own results, and they *look* like they cut against it.
+
+They do not, and one sentence says why. Both construct isospectral orbifolds that differ in
+**isotropy type / maximal isotropy order** — that is, the spectrum fails to determine the
+*group-theoretic* structure of the singular set. The manuscript determines the **cone-order
+multiset** of a hyperbolic orbisurface, which is a coarser and genuinely different invariant:
+Doyle–Rossetti and Dryden–Strohmaier both show the full spectrum *does* fix it in this
+setting. There is no tension — one can hear how many cone points of each order there are
+without hearing the full isotropy data — but the paper should draw that line rather than leave
+two prominent "one cannot hear …" titles sitting unexplained in its own related-work section.
+
+This matters practically: **Dorothee Schueth is an RSW author and the source of the
+manuscript's equation (4)** — she is among the most likely referees, and this is her own
+result going unaddressed.
 
 ## 6. Verdict
 
-**Survives as written.** No competing exact finite-coefficient determinacy threshold for
-hyperbolic cone orbifolds exists, and no explicit minimal degeneracy of the kind Theorem B
-provides appears anywhere in the literature. The nearest competitor is a negative, all-order,
+**True on the evidence gathered — and it still needs narrowing; the recommended narrowing is
+to delete it.** No competing exact finite-coefficient determinacy threshold for hyperbolic
+cone orbifolds was found, and no explicit minimal degeneracy of the kind Theorem B provides
+appears anywhere in the literature searched. The nearest competitor is a negative, all-order,
 spherical result; the nearest hyperbolic results are full-spectrum and qualitative; and a
-specialist source describes the finite-coefficient question as open.
+specialist source describes the finite-coefficient question as open. That is why the sentence
+is true. It is not why it is worth making: it holds only on the conjunction of four
+qualifiers, and the paper's result does not need it.
 
-**Two narrowings recommended**, both of which strengthen rather than concede:
+**Two accompanying edits**, both of which strengthen rather than concede:
 
 1. **Add an explicit contrast with Bari–Hunsicker.** A referee who knows that paper — and
    Hunsicker is a plausible referee — will otherwise wonder why it is cited as the nearest
@@ -225,7 +315,7 @@ specialist source describes the finite-coefficient question as open.
    highest-value edit available: it costs one sentence and converts an unsupported "to our
    knowledge" into a documented open problem.
 
-**A third suggestion, on venue grounds rather than correctness.** None of the twelve
+**The deletion recommendation, reinforced on venue grounds.** None of the twelve
 comparable JGA papers surveyed for Q5 claims priority — including
 Dryden–Gordon–Moreno–Rowlett–Villegas-Blas (2025), which proves a finiteness theorem with
 explicit bounds and states it flatly. The result here is sharp and stands on its own. "To our

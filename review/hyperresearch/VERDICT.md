@@ -1,18 +1,34 @@
 # VERDICT
 
 Literature sweep on *How Few Heat Invariants Determine a Hyperbolic Triangular Pillow*.
-Answers to the six deliverable questions, in the order asked. Supporting detail in the
-per-question files alongside this one; unretrieved sources and flagged discrepancies in
-`review/outstanding-fetches.md`; fetched bibliography in `refs/sources.bib`.
+Answers to the questions asked, in order. Supporting detail in the per-question files
+alongside this one; unretrieved sources and flagged discrepancies in
+`review/outstanding-fetches.md`; assembled bibliography in `refs/sources.bib`.
 
 Every formula quoted below was read from the source document itself. Every DOI was retrieved
 from an authoritative record. Nothing was written from memory.
+
+## At a glance
+
+| # | Question | Answer |
+|---|---|---|
+| 1 | Is §5's Diophantine problem new? | **Yes** — with one retrieval still open (Takeuchi's commensurability classes) |
+| 2 | Is the quoted $b_1$ correct as printed? | **Yes**, exactly — and its attribution is right too |
+| 3 | Are the higher $b_\ell$ established, or must we compute them? | **Established at every $\ell$** — no new cone-coefficient computation. But the injectivity argument is still owed |
+| 4 | Does the §1.3(b) priority claim survive? | **True, but delete it** — it rests on four simultaneous qualifiers |
+| 5 | Is the planned stability theorem novel? | **In setting, not technique.** The invariant map *is* a Prony system — cite the theory, make the integer-exactness the theorem |
+| 6 | What must the paper look like for JGA? | **Close to what it is** — plus a repaired bibliography, the $n$-cone extension, and no priority sentence |
+
+**21 corrections and opportunities** are itemised at the end, six of them bibliographic and
+three substantive. One is a genuine mathematical defect: Remark 5.6's $K\le n$ does not hold
+for $n\ge4$ in the sense Theorem C uses.
 
 ---
 
 ## 1. Is Section 5's Diophantine problem new?
 
-**Yes — new**, on a well-controlled negative search. Detail in `Q1-diophantine-novelty.md`.
+**Yes — new**, on a well-controlled negative search, with one retrieval still open. Detail in
+`Q1-diophantine-novelty.md`.
 
 The problem — two distinct triples with equal sum and equal sum of reciprocals — is not posed
 in Guy's *Unsolved Problems in Number Theory* (3rd ed., 2004,
@@ -88,8 +104,15 @@ of Bari–Hunsicker.)
 
 ## 3. Are the higher $b_\ell$ established well enough to support a $K \le n+1$ theorem, or must we compute them ourselves?
 
-**They are established. No new cone-coefficient computation is required** — and this holds
-well beyond $\ell = 2$. Detail in `Q2-cone-coefficients.md`.
+**The coefficients are established — no new cone-coefficient computation is required, well
+beyond $\ell=2$. The theorem does not follow from them alone: one algebraic step remains.**
+Detail in `Q2-cone-coefficients.md`.
+
+Keep the two apart. Settled: the coefficients exist in closed form at every order. Not
+settled: *injectivity* of $(R,S_1,P_3,P_5,\dots)$ on cone-order multisets — Remark 5.6's own
+"when these are independent" hedge — for which the only direct evidence here is a bounded
+scan. So the answer to the question as posed is: **the cone coefficients need not be computed;
+the injectivity argument must still be supplied.**
 
 - **DGGW stop at $\ell=1$.** Full-text search returns no general-$\ell$ statement and nothing
   for $\ell\ge2$.
@@ -103,33 +126,92 @@ well beyond $\ell = 2$. Detail in `Q2-cone-coefficients.md`.
   computed $c_\ell(\gamma)$ for every $\ell\in\mathbb N_0$**", with
   $c_\ell(\gamma)=f_\ell(\gamma)K^\ell$.
 
-Evaluated: $p_2(m)=\frac{2m^6+7m^4+28m^2-37}{5040}$ (degree 6, leading $1/2520$, delivers
-$P_5$) and $p_3(m)=\frac{3m^8+8m^6+14m^4+32m^2-57}{30240}$ (degree 8, leading $1/10080$,
-delivers $P_7$). **The $\ell=2$ case is cross-validated**: Uçar's form and Schueth's Theorem
-4.1 agree symbolically to zero — two sources, two different methods.
+Uçar's two operative equations were evaluated **directly, in exact symbolic arithmetic**, at
+$\ell=0,1,2,3$:
+
+| $\ell$ | $b_\ell/\kappa^\ell$ factored | $\deg p_\ell$ | leading coeff | delivers |
+|---|---|---|---|---|
+| 0 | $\frac{(m-1)(m+1)}{12m}$ | 2 | $1/12$ | $S_1$ |
+| 1 | $\frac{(m^2-1)(m^2+11)}{360m}$ | 4 | $1/360$ | $P_3$ |
+| 2 | $\frac{(m^2-1)(2m^4+9m^2+37)}{5040m}$ | 6 | $1/2520$ | $P_5$ |
+| 3 | $\frac{(m^2-1)(m^2+3)(3m^4+2m^2+19)}{30240m}$ | 8 | $1/10080$ | $P_7$ |
+
+Two things make this solid rather than merely reported. The $\ell=0$ and $\ell=1$ rows
+**regenerate the manuscript's own $\operatorname{cone}(m)$ and equation (4)** from the same
+closed form, confirming the formula is being read correctly. And the $\ell=2$ row is
+**cross-validated against Schueth's Theorem 4.1** — the symbolic difference is identically
+zero, from two authors using different methods. $\ell=3$ has no second source (Schueth stops
+at $\ell=2$), so it was computed from Uçar's printed equations rather than taken on report.
 
 So both $P_5$ and $P_7$ are recoverable, and the leading term of $p_\ell$ is known in closed
-form. The residual work is **algebraic, not analytic**: discharging the "when these are
-independent" hedge in Remark 5.6 is a symmetric-function question.
+form. The residual work is **algebraic, not analytic**.
 
-**A concrete gain, available now.** An independent exact-arithmetic enumeration run during
-this sweep found that
+**And there is a clean route to discharging it.** As answer 5 sets out, the invariant
+hierarchy is the moment sequence of a Prony system with nodes $m_i^2$ and weights $1/m_i$.
+Under that identification, "do $(R,S_1,P_3,\dots,P_{2n-3})$ determine the multiset?" becomes
+"does an $n$-node Prony system with $n$ moments determine its nodes?" — classical, with the
+non-degeneracy condition being non-vanishing of the Vandermonde in the *squared* orders, i.e.
+simply that the orders are distinct. That is a shorter path than a direct symmetric-function
+argument, and it arrives with the conditioning theory already attached.
+
+**The leading coefficient, in closed form.** The brief asks whether it is known. It is:
+
+$$\text{leading coefficient of }p_\ell=\frac{|B_{2\ell+2}|}{2\,(\ell+1)!\,(2\ell+1)},$$
+
+checked against the direct evaluations $\tfrac1{12},\tfrac1{360},\tfrac1{2520},\tfrac1{10080}$
+at $\ell=0,1,2,3$. Since $B_{2k}\neq0$ for all $k\ge1$ (von Staudt–Clausen), it **never
+vanishes** — so $b_\ell$ delivers $P_{2\ell+1}$ with nonzero weight at every order. That is
+the mechanism a general-$n$ argument needs, rather than a pattern observed at three values.
+
+**A concrete gain, available now.** An independent exact-arithmetic enumeration found that
 
 $$\mathcal O(3,10,15,30)\quad\text{and}\quad\mathcal O(4,5,21,28)$$
 
-are non-isometric hyperbolic 4-cone pillows sharing $S_1=58$, $R=8/15$, $P_3=31402$ — hence
-their **first three heat coefficients** — and separated by $P_5$. With Schueth's Theorem 4.1
-supplying $P_5$ as the fourth coefficient, this gives $K=4$ exactly, **settling for $n=4$ the
-matching lower bound that Remark 5.6 leaves open**, with an explicit witness. It is minimal
-over all 4-cone pillows with orders $\le 60$. (For $n=5$ the analogous three-invariant
-collision is $\mathcal O(3,7,7,7,14)$ vs $\mathcal O(4,4,6,12,12)$, but no four-invariant
-collision was found up to order 26, so $n=5$ stays open.) See
-`research/temp/original-computation-ncone.md`.
+are hyperbolic 4-cone pillows with distinct cone-order multisets sharing $S_1=58$, $R=8/15$,
+$P_3=31402$ — hence their **first three heat coefficients** — and separated by $P_5$. Over all
+4-cone pillows with orders $\le55$ (395,009 multisets) this is the *only* such collision;
+extending to $\le60$ (557,844 multisets) adds only its $\times2$ scaling at $S_1=116$. With
+Schueth's Theorem 4.1 supplying $P_5$ as the fourth coefficient, **four coefficients determine
+the cone-order multiset of a 4-cone hyperbolic pillow and three do not** — Remark 5.6's open
+lower bound, settled for $n=4$.
+
+> **But this exposes a definitional problem the manuscript must fix regardless.** $K(F)$ is
+> defined as the least number of coefficients distinguishing $F$ from *every other pillow* —
+> an isometry-class notion. For $n=3$ that is fine: triangle orbifolds are rigid, so the
+> multiset *is* the isometry class. For $n\ge4$ it is not. A sphere with $n$ cone points of
+> fixed orders has a $(2n-6)$-dimensional Teichmüller space, so for $n=4$ one multiset carries
+> a two-parameter family of non-isometric pillows — and since every heat coefficient depends
+> only on the cone orders, that whole family shares **all** of them. **$K(F)$ as defined is
+> infinite for $n\ge4$**, and Remark 5.6's "$K\le n$ extends the $n=3$ case of Theorem C" does
+> not hold in the isometry sense Theorem C uses. State the $n\ge4$ results as *cone-order
+> multiset* determinacy, and note that $n=3$ is the only case where rigidity upgrades that to
+> isometry — which is precisely what makes triangular pillows the right object.
+
+(For $n=5$ the minimal three-invariant collision is $\mathcal O(3,7,7,7,14)$ vs
+$\mathcal O(4,4,6,12,12)$; no four-invariant collision was found up to order 26, so $n=5$
+stays open.) See `review/hyperresearch/APPENDIX-ncone-computation.md`.
 
 ## 4. Does the priority claim in Section 1.3(b) survive?
 
-**Yes, as written.** Two narrowings recommended, neither conceding anything. Detail in
-`Q3-priority-claim.md`.
+**It is true, but it needs narrowing — and the recommended narrowing is to delete it.**
+Detail in `Q3-priority-claim.md`.
+
+Distinguish two things. *No competing result was found*, so on the evidence the sentence is
+true. But it survives only on the conjunction of four qualifiers — *exact*,
+*finite-coefficient*, *hyperbolic cone orbifold*, *minimal* — and dropping any one brings a
+prior result into range:
+
+| Drop | And you meet |
+|---|---|
+| *hyperbolic* | **Grieser–Maronna**: a Euclidean triangle is determined by three invariants, one of them a **sum of reciprocals** — the same shape as Theorem C. Cited by the manuscript, never engaged. |
+| *hyperbolic* and *minimal* | **DGGW Props 5.19 / 5.22**: distinct orbifolds that a *single* heat invariant fails to separate — the Theorem B phenomenon, in the manuscript's own central reference. |
+| *finite-coefficient* | **Dryden–Strohmaier (2009)** and **Doyle–Rossetti (2011)**: exact cone-order determinacy for hyperbolic orbisurfaces, from the full spectrum. |
+
+A claim true only on four simultaneous qualifiers is a poor bet in a paper that does not need
+it. Replace it with a statement of what is proved plus the Doyle–Rossetti quotation
+establishing the question was open: strictly more informative, unfalsifiable by a paper the
+author has not read, and matching the house style of every JGA comparator in Q5 — none of
+which claims priority.
 
 The designated closest competitor, Bari–Hunsicker, fails to compete on three independent
 grounds: it proves heat coefficients are **in**sufficient (opposite shape); the insufficiency
@@ -180,34 +262,43 @@ about small isospectral hyperbolic 2-orbifolds (Maclachlan–Rosenberger 1994, d
 Buser–Flach–Semmler) — a reason to state results narrowly and keep the exact-arithmetic
 appendix.
 
-**A separate suggestion, on venue grounds.** None of the twelve comparable JGA papers claims
-priority, including one that proves a finiteness theorem with explicit bounds. The result
-here is sharp on its own terms, and "to our knowledge this is the first…" is the sentence
-most exposed to a referee who knows one paper the author does not — and this sweep found
-several the manuscript does not cite. The Doyle–Rossetti quote does the same work with less
-risk.
-
 ## 5. Is the planned stability theorem novel, and what is the right technique?
 
 **Novel in setting, not in technique.** Detail in `Q4-stability.md`.
 
-**Technique: nothing is new.** The manuscript's Jacobian
-$\det DF = -3(p-q)(p-r)(q-r)(p+q)(p+r)(q+r)/(pqr)^2$ is the classical root-conditioning
-quantity rearranged — for a monic cubic, $|p'(p)| = |(p-q)(p-r)|$. More pointedly,
-**Batenkov–Yomdin** (arXiv:1106.1137, SIAM J. Appl. Math.) already prove, for the Prony
-system, that the Jacobian factors through a confluent Vandermonde matrix (Lemma 4.2), that
-its **critical points are exactly the node collisions** (Corollary 4.3 — structurally
-identical to the manuscript's diagonals), and that local accuracy scales as a power of
-$\prod_{i<j}|\xi_j-\xi_i|^{-1}$ (Theorem 4.5), matching the Cramér–Rao bound.
+**Technique: nothing is new — and the reason is sharper than "the methods are similar".**
+
+The manuscript's invariant map **is a Prony system**, verified symbolically. With nodes
+$x_i := m_i^2$ and weights $a_i := 1/m_i$, the $j$-th moment $\sum_i a_ix_i^{\,j}$ is
+$R, S_1, P_3, P_5, P_7$ for $j=0,1,2,3,4$ — the whole hierarchy of Corollary D and its
+extension, in one system, with the $\ell$-th cone coefficient supplying the $(\ell+1)$-th
+moment.
+
+That identification explains the Jacobian exactly, including the factors the root-conditioning
+story leaves unaccounted for:
+
+$$\det DF=-\,\frac{3\,\mathrm{Vandermonde}(p^2,q^2,r^2)}{(pqr)^2},$$
+
+i.e. the manuscript's $(p+q)(p+r)(q+r)$ are just what completes each $(m_i-m_j)$ into
+$(m_i^2-m_j^2)$. Since $p,q,r>0$, the diagonals **are** the node-collision locus.
+
+So **Batenkov–Yomdin** (arXiv:1106.1137, SIAM J. Appl. Math.) applies directly, not by
+analogy: Lemma 4.2 gives exactly this Vandermonde × diagonal factorisation, Corollary 4.3
+identifies the critical points as node collisions, and Theorem 4.5 gives local accuracy
+scaling as a power of $\prod_{i<j}|\xi_j-\xi_i|^{-1}$, matching the Cramér–Rao bound. In the
+squared variables the gaps are $|m_i^2-m_j^2|$ rather than $|m_i-m_j|$, which *improves* the
+constants at large orders.
 
 **Setting: genuinely open**, on a documented null. Eight arXiv queries — listed verbatim in
 `Q4-stability.md` §4 — return nothing. The only quantitative-stability result in an orbifold
 setting is Lassas–Lu–Yamaguchi (arXiv:2404.16448), which reconstructs a *continuous metric*
 from interior eigenfunction data with a **triple-logarithmic** modulus — a different technical
-species. The Proctor–Stanhope finiteness line is qualitative with no effective bound. Across
-all of inverse spectral geometry, no Lipschitz or Hölder stability estimate exists; log-type
-(Daudé–Kamran–Nicoleau, J. Geom. Anal. **31**, 1821–1854,
-[`10.1007/s12220-019-00326-9`](https://doi.org/10.1007/s12220-019-00326-9)) is the good case.
+species. The Proctor–Stanhope finiteness line is qualitative with no effective bound. Within
+inverse spectral geometry on singular spaces — orbifolds, cone surfaces, polygons with
+corners — no stability estimate of any modulus was found for recovery of a discrete invariant;
+log-type (Daudé–Kamran–Nicoleau, J. Geom. Anal. **31**, 1821–1854,
+[`10.1007/s12220-019-00326-9`](https://doi.org/10.1007/s12220-019-00326-9)) is the best modulus
+in the corpus gathered.
 
 **Right technique:** run the Prony/super-resolution route. Treat $(S_1,R,P_3)$ as moments;
 cite Batenkov–Yomdin Cor. 4.3 for the critical locus rather than reproving it; take the
@@ -224,13 +315,14 @@ that spectral data within $\epsilon$ determines the cone orders exactly" — wit
 blow-up appearing as the degradation of $\epsilon$. That statement has no counterpart in the
 numerical-analysis literature and is the natural spectral-geometry reading.
 
-Explain *why* the modulus can be algebraic where the field's best is logarithmic: the
+Explain *why* the modulus can be algebraic where the comparable results are logarithmic: the
 invariant recovered is finite and discrete, not a continuous metric. Otherwise the strength
 will read as an overclaim.
 
 ## 6. What does this paper have to look like to be a JGA paper?
 
-It already largely does. Detail in `Q5-venue.md`, with twelve Crossref-retrieved comparators.
+**It already largely does.** Detail in `Q5-venue.md`, with twelve Crossref-retrieved
+comparators.
 
 **The venue.** JGA in this area publishes substantial papers (26–58 pp among the comparators;
 the closest exemplar runs ~18,000 words) that favour **exact results over asymptotic ones**,
@@ -257,7 +349,7 @@ no priority.
    preprint citations read as a paper prepared without checking.
 2. **Add the $n$-cone material.** It is cheaper than the manuscript assumes and materially
    raises the reach — see answer 3.
-3. **Reconsider the priority sentence** — see answer 4.
+3. **Replace the priority sentence** — see answer 4.
 4. **Situate §5** against Guy D16 and Schinzel — see answer 1.
 5. **Keep the structural proof primary.** This is the strongest architectural match to the
    venue; §3's own framing already has the right instinct.
@@ -290,8 +382,11 @@ Rowlett co-authored the JGA exemplar; Schueth and Uçar are both at Humboldt.
 | 14 | Datchev–Hezari year: the primary MSRI PDF and Cambridge's Crossref record both give **2012**; manuscript prints 2013. (Pages 455–485 are correct — Crossref's 455–486 is wrong.) | bibliography |
 | 15 | Gómez-Serrano–Orriols full record: J. Differential Equations **275** (2021), 920–938 | bibliography |
 | 16 | Nursultanov–Rowlett–Sher: Ann. Math. Québec **49**, 1–61, issue year **2025**; manuscript gives "(2024)" with no volume or pages | bibliography |
-| 17 | Guy D16 / Schinzel unengaged in §5 | opportunity |
-| 18 | Remark 5.6's open lower bound is settled for $n=4$ | opportunity |
+| 17 | **§2.2's trigonometric identities are proved from scratch and called "classical" with no citation.** DGGW cite Berndt–Yeap, Adv. Appl. Math. **29** (2002) 358–385, `10.1016/S0196-8858(02)00020-9` for the same family — including the $\sin^{-4}$ evaluation underlying eq. (4) | **substantive** |
+| 18 | **$K(F)$ is ill-defined for $n\ge4$**: Teichmüller dimension $2n-6>0$ means one multiset carries non-isometric pillows sharing every coefficient. Remark 5.6's "$K\le n$" must be restated as multiset determinacy | **substantive** |
+| 19 | §1.3 does not reconcile SSW 2006 and RSW 2008 — two "one cannot hear…" results it cites, one of them by the author of eq. (4) | substantive |
+| 20 | Guy D16 / Schinzel unengaged in §5 | opportunity |
+| 21 | Remark 5.6's open lower bound is settled for $n=4$ | opportunity |
 
 **Two apparent discrepancies were checked and resolved in the manuscript's favour** — no change
 needed for either: Hezari–Zelditch is indeed Ann. of Math. **196** (2022), no. 3, 1083–1134
@@ -303,6 +398,22 @@ One item could not be primary-verified: McKean–Singer's page range 43–69 is 
 by a secondary index, since Project Euclid, JSTOR and MathSciNet all blocked automated access.
 Venue, volume, year and DOI are confirmed.
 
-**Nothing in the manuscript's mathematics was found to be wrong.** Equations (3), (4), (5),
-(9), the Jacobian, the cotangent and cosecant identities, Table 5.1's counts and the $S=36$
-structure were all independently re-derived or recomputed and all check out.
+## What was verified, and the one place the mathematics does not hold
+
+**Everything in the manuscript's stated results for $n=3$ checks out.** Independently
+re-derived or recomputed in exact arithmetic: equations (3), (4), (5), (9); the Jacobian at
+line 269; the cotangent and cosecant identities (symbolically for $m\le12$, and to 40 digits);
+Table 5.1's cumulative counts; the $S=36$ structure. So did the **entire logical spine of
+Theorems A and B** — $\tau_2=\tau_3=1/6$, $\tau_4=3/20$; $\varphi_2(17)=29/165$ and
+$\varphi_2(18)=1/6$ *exactly*; $\varphi_3(12)=7/36$, $\varphi_3(17)=11/63$;
+$\min\varphi_4=9/55$; the unimodality peak at $S=3p+4$; all four $S=18$ endpoint comparisons
+($101/168>3/5$, $15/28>21/40$, $107/210>1/2$); the first contact at $R=3/4$; and that no
+hyperbolic triad exists below $S_1=10$, with $(3,3,4)$ unique at $S_1=10$.
+
+**The one exception is Remark 5.6**, and it is a genuine defect rather than a typo: the
+assertion that "the upper bound $K\le n$ extends the $n=3$ case of Theorem C" fails for
+$n\ge4$, because $K$ is defined up to isometry and $n$-cone pillows with $n\ge4$ have moduli.
+See item 18 above. The remark's *arithmetic* content — that $n$ coefficients supply $n$
+symmetric functions — is right; what does not survive is the upgrade from those functions to
+an isometry class. The fix is to restate the $n\ge4$ claim as cone-order-multiset
+determinacy.

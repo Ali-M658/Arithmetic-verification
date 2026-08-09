@@ -1,10 +1,19 @@
 # Q2 — The third coefficient and the higher cone coefficients
 
-**Short answer.** Equation (4) is correct exactly as printed, and its attribution is correct
-too. More importantly for the planned extension: explicit closed-form cone coefficients are
-already in the literature for **every** order $\ell$ at constant curvature, not merely for
-$\ell=1$ and not merely as a degree bound. A theorem of the form $K\le n+1$ therefore needs
-**no new cone-coefficient computation**. What it needs is a symmetric-function argument.
+**Short answer.** Equation (4) is **correct exactly as printed**, and its attribution is right
+too. For the planned extension: explicit closed-form cone coefficients are already in the
+literature for **every** order $\ell$ at constant curvature — not merely $\ell=1$, and not
+merely as a degree bound. So a $K\le n+1$ theorem needs **no new cone-coefficient
+computation**; what it still needs is an injectivity argument, which is algebra rather than
+analysis.
+
+Three things below go beyond the question as asked, and each matters:
+
+- the **leading coefficient of $p_\ell$ in closed form**, $|B_{2\ell+2}|/(2(\ell+1)!(2\ell+1))$,
+  which never vanishes — the mechanism a general-$n$ theorem needs (§3);
+- an **uncited source for §2.2's trigonometric identities** (§5c);
+- a **definitional defect**: $K(F)$ is ill-posed for $n\ge4$, so Remark 5.6 needs restating
+  (§4).
 
 Every formula below was read from the source document, not from a secondary description.
 
@@ -137,25 +146,43 @@ Schueth independently attests to this. **Remark 5.4(ii)**, verbatim:
 
 Schueth's Remark 5.2 relates the two normalizations: $c_\ell(\pi/k)=\tfrac12\,a_\ell^{(\{\bar p\})}$.
 
-### The chain, evaluated
+### The chain, evaluated from the source equations
 
-Evaluating Uçar (4.25)+(4.33) at $\ell=1,2,3$, with $b_\ell=K^\ell\frac1m p_\ell(m)$:
+The two operative equations, quoted from the thesis:
 
-| $\ell$ | $p_\ell(m)$ | $\deg p_\ell$ | leading coeff | $b_\ell$ leading term | delivers |
+**(4.25), p. 134** — the wedge-angle coefficient at $\gamma=\pi/k$:
+$$c^S_\ell(\pi/k)=\frac{1}{4k}\cdot\frac{(-1)^\ell}{(\ell+1)!}\cdot\frac{1}{2\ell+1}\sum_{j=0}^{\ell+1}\binom{2\ell+2}{2j}\bigl(k^{2j}-1\bigr)B_{2j}\,B_{2\ell+2-2j}\!\left(\tfrac12\right)$$
+
+**(4.33), p. 137** (Corollary 4.19(ii)), with Theorem 4.20(ii) identifying this series as the
+contribution of a cone point of order $k$:
+$$C=\sum_{\nu}\Bigl[\sum_{\ell=0}^{\nu}\frac{2}{4^\ell\,\ell!}\,c^S_{\nu-\ell}(\pi/k)\Bigr]\kappa^\nu t^\nu.$$
+
+These were evaluated directly, in exact symbolic arithmetic, for $\nu=0,1,2,3$:
+
+| $\ell$ | $b_\ell/\kappa^\ell$, factored | $p_\ell(m)$ | $\deg p_\ell$ | leading coeff | delivers |
 |---|---|---|---|---|---|
-| 1 | $\frac{m^4-1}{360}+\frac{m^2-1}{36}$ | 4 | $1/360$ | $\frac{1}{360}m^3K$ | $P_3$ |
-| 2 | $\frac{2m^6+7m^4+28m^2-37}{5040}$ | 6 | $1/2520$ | $\frac{1}{2520}m^5K^2$ | $P_5$ |
-| 3 | $\frac{3m^8+8m^6+14m^4+32m^2-57}{30240}$ | 8 | $1/10080$ | $\frac{1}{10080}m^7K^3$ | $P_7$ |
+| 0 | $\frac{(m-1)(m+1)}{12m}$ | $m^2-1$ | 2 | $1/12$ | $S_1$ |
+| 1 | $\frac{(m^2-1)(m^2+11)}{360m}$ | $m^4+10m^2-11$ | 4 | $1/360$ | $P_3$ |
+| 2 | $\frac{(m^2-1)(2m^4+9m^2+37)}{5040m}$ | $2m^6+7m^4+28m^2-37$ | 6 | $1/2520$ | $P_5$ |
+| 3 | $\frac{(m^2-1)(m^2+3)(3m^4+2m^2+19)}{30240m}$ | $3m^8+8m^6+14m^4+32m^2-57$ | 8 | $1/10080$ | $P_7$ |
 
-Degrees $4,6,8$ confirm $\deg p_\ell=2\ell+2$. Each $p_\ell(1)=0$, the sanity check that a
-trivial cone contributes nothing.
+Degrees $2,4,6,8$ confirm $\deg p_\ell=2\ell+2$ at every order computed. The common factor
+$(m^2-1)$ is the sanity check that a trivial cone contributes nothing. And the $\ell=0$ and
+$\ell=1$ rows reproduce the manuscript's own $\operatorname{cone}(m)=(m^2-1)/(12m)$ and
+equation (4) — so the same closed form that yields $P_5$ and $P_7$ also regenerates what the
+manuscript already uses, which is the strongest possible check that the formula is being read
+correctly.
 
-**The $\ell=2$ row is independently cross-validated.** Converting Uçar's $p_2$ via
-$b_2=K^2\frac1mp_2(m)$ and comparing symbolically against Schueth's Theorem 4.1 at constant
-curvature, the difference simplifies **identically to zero**. Two sources, two different
-methods — Uçar's Green kernel for a geodesic wedge in the hyperbolic plane, Schueth's
-Donnelly-style distance-function expansion — agreeing exactly. The $\ell=3$ row rests on Uçar
-alone, since Schueth stops at $\ell=2$.
+**Two independent confirmations, at different orders.**
+
+- The $\ell=2$ row was cross-validated against **Schueth's Theorem 4.1**: converting Uçar's
+  $p_2$ via $b_2=K^2\frac1mp_2(m)$ and subtracting Schueth's constant-curvature expression,
+  the difference simplifies **identically to zero**. Two authors, two methods — Uçar's Green
+  kernel for a geodesic wedge in the hyperbolic plane, Schueth's Donnelly-style
+  distance-function expansion — agreeing exactly.
+- The $\ell=3$ row has no second source, since Schueth stops at $\ell=2$. It was therefore
+  computed **directly from (4.25)+(4.33) as printed above**, rather than taken on report. It
+  is a mechanical evaluation of Uçar's published closed form, not new theory.
 
 Summed at $K=-1$ over the cone points of a hyperbolic orbisurface:
 
@@ -174,23 +201,54 @@ with a nonzero rational coefficient.
   $1/2520$ and $-1/10080$ at $K=-1$.
 - *Is $p_\ell(m)$ explicitly computed for $\ell\ge2$, or only its degree?* **Explicitly
   computed, for all $\ell$.** The degree-only reading understates what Uçar proved.
-- *Is the leading term of $p_\ell$ known in closed form?* Yes — via $f_\ell$ in
-  $c_\ell(\gamma)=f_\ell(\gamma)K^\ell$, whose leading behaviour at $\gamma=\pi/k$ is
-  $\sim k^{2\ell+1}$, giving the $1/360$, $1/2520$, $1/10080$ pattern above.
+- *Is the leading term of $p_\ell$ known in closed form?* **Yes, and explicitly.** The top
+  term of (4.25) is the $j=\ell+1$ summand, which carries $k^{2\ell+2}$ with a coefficient
+  built from $B_{2\ell+2}$. Extracting it gives
+
+  $$\text{leading coefficient of }p_\ell \;=\; \frac{\bigl|B_{2\ell+2}\bigr|}{2\,(\ell+1)!\,(2\ell+1)},$$
+
+  verified against the direct evaluations at $\ell=0,1,2,3$ — $\tfrac1{12},\tfrac1{360},
+  \tfrac1{2520},\tfrac1{10080}$ — and continuing $\tfrac1{28512}$, $\tfrac{691}{43243200}$,
+  $\tfrac1{112320}$ at $\ell=4,5,6$.
+
+  **This is the mechanism a general-$n$ theorem needs, not just a pattern.** Because
+  $B_{2k}\neq0$ for every $k\ge1$ (von Staudt–Clausen), the leading coefficient is *never*
+  zero, so $b_\ell$ delivers $P_{2\ell+1}$ with nonvanishing weight at **every** order — no
+  case-by-case checking, and no risk of an accidental cancellation at some large $\ell$
+  derailing the induction.
 
 ---
 
 ## 4. Verdict on the planned $K \le n+1$ theorem
 
-> **It is provable from established inputs. No new cone-coefficient computation is required.**
+> **The analytic inputs are established: no new cone-coefficient computation is required.
+> The theorem does not follow from them alone — one algebraic step remains.**
 
-For one coefficient beyond the manuscript's current three, cite Schueth Theorem 4.1. For
-arbitrarily many, cite Uçar (4.25)+(4.33), corroborated by Schueth's Remark 5.4(ii).
+The distinction matters and should not be collapsed. What is settled is that the *coefficients
+exist in closed form*: for one order beyond the manuscript's current three, cite Schueth
+Theorem 4.1; for arbitrarily many, Uçar (4.25)+(4.33), corroborated by Schueth's Remark
+5.4(ii). What is **not** settled is *injectivity* of
+$(R,S_1,P_3,P_5,\dots,P_{2n-3})$ on cone-order multisets — which is precisely the "when these
+are independent" hedge in Remark 5.6. The only direct evidence for it here is a bounded scan
+(no collision for $n=4,5$ within the ranges tested), which is suggestive, not a proof.
 
-The residual work is **algebraic, not analytic**: showing that
-$(R,S_1,P_3,P_5,\dots,P_{2n-3})$ determines the multiset $\{m_1,\dots,m_n\}$ — which is
-exactly the "when these are independent" hedge in the manuscript's Remark 5.6. That is a
-symmetric-function question, not a heat-kernel question, and it is where the effort should go.
+So the honest answer to the question as posed — *provable from established inputs, or must we
+compute them ourselves?* — is: **the cone coefficients need not be computed; the injectivity
+argument must still be supplied.** The residual work is **algebraic, not analytic**: showing
+that $(R,S_1,P_3,P_5,\dots,P_{2n-3})$ determines the multiset $\{m_1,\dots,m_n\}$ is a
+symmetric-function question, not a heat-kernel one, and a far cheaper obligation than new
+heat-kernel work. It is where the effort should go, and the Prony reformulation below gives a
+concrete route to discharging it.
+
+**There is a shorter route than a direct symmetric-function argument.** As
+`Q4-stability.md` §2.5 establishes (verified symbolically), the whole hierarchy is the moment
+sequence of a single Prony system: with nodes $x_i:=m_i^2$ and weights $a_i:=1/m_i$, the
+$j$-th moment $\sum_i a_ix_i^{\,j}$ equals $R,S_1,P_3,P_5,P_7$ for $j=0,\dots,4$, and the
+$\ell$-th cone coefficient supplies the $(\ell+1)$-th moment. So the Remark 5.6 question
+becomes: *does an $n$-node Prony system with $n$ moments determine its nodes?* That is
+classical, and its non-degeneracy condition is non-vanishing of the Vandermonde in the squared
+orders — i.e. simply that the cone orders are distinct. Framing it this way discharges the
+independence hedge and brings the conditioning theory along for free.
 
 ### A concrete gain that comes free
 
@@ -202,22 +260,55 @@ are non-isometric 4-cone hyperbolic pillows sharing $S_1=58$, $R=8/15$ and $P_3=
 hence sharing their **first three heat coefficients** — and separated by
 $P_5$ ($25{,}159{,}618$ vs $21{,}298{,}618$). Both are hyperbolic ($4-8/15=52/15>2$).
 
-Combined with Schueth's Theorem 4.1, which makes $P_5$ the fourth coefficient, this gives
-$K=4$ exactly for these two orbifolds — **the matching lower bound that Remark 5.6 leaves
-open, settled for $n=4$ with an explicit witness.** Over all 4-cone pillows with orders
-$\le60$ (395,009 multisets) this pair and its $\times2$ scaling are the only $(R,S_1,P_3)$
-collisions, so $S_1=58$ is minimal in that range.
+Combined with Schueth's Theorem 4.1, which makes $P_5$ the fourth coefficient, this settles
+Remark 5.6's open lower bound for $n=4$ — **but as a statement about cone-order multisets,
+not about isometry classes, and the distinction is not cosmetic.**
+
+> **A correction the manuscript needs independently of this witness.** $K(F)$ is defined
+> (line 103) as the least number of leading heat coefficients distinguishing $F$ from *every
+> other hyperbolic triangular pillow* — an isometry-class notion. For $n=3$ that is
+> unproblematic: a hyperbolic triangle orbifold is rigid, so the cone-order multiset *is* the
+> isometry class. **For $n\ge4$ it fails.** The moduli space of constant-curvature cone metrics
+> on the sphere with $n$ prescribed cone angles has complex dimension $n-3$, hence real
+> dimension $2n-6$ — zero exactly when $n=3$ (Thurston, *Shapes of polyhedra and
+> triangulations of the sphere*, Geom. Topol. Monogr. **1** (1998), 511–549,
+> DOI [`10.2140/gtm.1998.1.511`](https://doi.org/10.2140/gtm.1998.1.511); Troyanov,
+> Trans. Amer. Math. Soc. **324** (1991), 793–821,
+> DOI [`10.1090/S0002-9947-1991-1005085-9`](https://doi.org/10.1090/S0002-9947-1991-1005085-9)).
+> So for $n=4$ a fixed multiset carries a two-parameter family of mutually non-isometric
+> pillows. Every heat coefficient is a function
+> of the cone orders alone — the area is fixed by Gauss–Bonnet and each cone contributes
+> through its order — so that entire family shares **all** heat coefficients. Hence $K(F)$ as
+> defined is *infinite* for $n\ge4$, and Remark 5.6's "the upper bound $K\le n$ extends the
+> $n=3$ case of Theorem C" does not hold in the isometry sense in which Theorem C is stated.
+>
+> The fix is small and the result survives it: for $n\ge4$, state the theorem as
+> *determination of the cone-order multiset*, and note explicitly that $n=3$ is the only case
+> where multiset determinacy upgrades to isometry determinacy, by rigidity. That is worth
+> saying anyway — it identifies precisely what is special about triangular pillows, which is
+> the paper's subject.
+
+With that reading, the witness gives: **four coefficients determine the cone-order multiset
+of a 4-cone hyperbolic pillow, three do not** — the matching lower bound of Remark 5.6, for
+$n=4$, with an explicit pair.
+
+Minimality, stated precisely: over all 4-cone hyperbolic pillows with every order $\le55$
+(**395,009** admissible multisets) this pair is the **only** $(R,S_1,P_3)$ collision. Extending
+to orders $\le60$ (**557,844** multisets) adds exactly one more — its $\times2$ scaling
+$\{\mathcal O(6,20,30,60),\mathcal O(8,10,42,56)\}$ at $S_1=116$, which necessarily lies
+outside the $\le55$ scan since it contains an order-60 cone. So $S_1=58$ is minimal, and
+unique at that sum, in both ranges.
 
 For $n=5$ the corresponding minimal three-invariant collision is
 $\mathcal O(3,7,7,7,14)$ vs $\mathcal O(4,4,6,12,12)$ ($S_1=38$, $R=5/6$, $P_3=3800$), but no
 pair sharing four invariants was found up to order 26, so the $n=5$ case of Remark 5.6
 remains open.
 
-Full details, including the caveat structure, in `research/temp/original-computation-ncone.md`.
+Full details, including the caveat structure, in `review/hyperresearch/APPENDIX-ncone-computation.md`.
 
 ---
 
-## 5. Two corrections for the manuscript
+## 5. Three corrections for the manuscript
 
 **(a) The Uçar attribution should cite equations, not paraphrase.** Uçar never writes
 "$b_\ell(C)=\kappa^\ell\frac1mp_\ell(m)$" and never uses the word *degree*. That form is a
@@ -239,6 +330,21 @@ A detail worth knowing: the erratum opens by crediting *"a question from Naveed 
 Bari of Bari–Hunsicker, the manuscript's designated closest competitor. The paper's two most
 important sources are in direct contact with each other.
 
+**(c) The trigonometric sums have a citable source, and the manuscript gives none.** §2.2
+proves Lemma 2.1 ($\sum\cot^2$) and Proposition 2.2 ($\sum\csc^2$) from scratch and calls them
+"classical" without a reference. They are classical, and DGGW cite a specific source for the
+same family — **Berndt & Yeap, "Explicit evaluations and reciprocity theorems for finite
+trigonometric sums", Adv. Appl. Math. 29 (2002), no. 3, 358–385,
+DOI [`10.1016/S0196-8858(02)00020-9`](https://doi.org/10.1016/S0196-8858(02)00020-9)** —
+which is where DGGW get $\sum_{j=1}^{m-1}\sin^{-4}(j\pi/m)=(m^4+10m^2-11)/45$, the identity
+underlying equation (4). Uçar's thesis §3.4 derives the family again independently.
+
+The self-contained proofs are short and worth keeping — but they should carry the citation,
+both because the sourcing convention expects it and because a referee who knows Berndt–Yeap
+will wonder why a known evaluation is being re-proved silently. This also matters for the
+extension: the higher-$\ell$ coefficients need $\sum\sin^{-2\ell}$, and Berndt–Yeap is the
+reference that supplies the whole family rather than one case at a time.
+
 **Minor:** Schueth's own bibliography prints the DGGW reference as "*Michigan J. Math.*",
 transposed from the standard "*Michigan Math. J.*". The manuscript's form is correct.
 
@@ -253,7 +359,7 @@ transposed from the standard "*Michigan Math. J.*". The manuscript's form is cor
 | DGGW **Erratum**, Michigan Math. J. **66** (2017) 221–222 | [`10.1307/mmj/1488510034`](https://doi.org/10.1307/mmj/1488510034) |
 | Uçar, PhD thesis, Humboldt-Universität zu Berlin, 2017 | [`10.18452/18463`](https://doi.org/10.18452/18463) · `urn:nbn:de:kobv:11-110-18452` · arXiv:1711.03405 |
 | Donnelly, Math. Ann. **224** (1976) 161–170 | [`10.1007/BF01436198`](https://doi.org/10.1007/BF01436198) |
-| Schueth, Ann. Global Anal. Geom. **69** (2026), Paper No. 2 | arXiv:2511.22255 |
+| Schueth, Ann. Global Anal. Geom. **69** (2026), Paper No. 2 | [`10.1007/s10455-025-10024-1`](https://doi.org/10.1007/s10455-025-10024-1) · arXiv:2511.22255 |
 
 Watson, *The trace function expansion for spherical polygons*, New Zealand J. Math. **34**
 (2005), 81–95 — the $K=1$ predecessor — could not be retrieved; see

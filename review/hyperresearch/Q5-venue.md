@@ -54,8 +54,8 @@ architecture — interval-separation proof in §3, exhaustive enumeration relega
 appendix as corroboration — matches the venue's expectations well. §3's own framing ("this is
 a structural argument, not an exhaustive search") is the right instinct.
 
-**Tone.** Notably, none of the twelve claims priority. #2 — the closest analogue, proving a
-finiteness theorem with explicit bounds — states its result without any "first" language.
+**Tone.** None of the twelve claims priority. #2 — the closest analogue, proving a finiteness
+theorem with explicit bounds — states its result without any "first" language.
 
 ## 3. Plausible referees
 
@@ -78,6 +78,13 @@ the last five years, each with a specific supporting publication.
 - **Elizabeth Stanhope** — Proctor–Stanhope ([`10.1016/j.difgeo.2009.03.015`](https://doi.org/10.1016/j.difgeo.2009.03.015));
   Richardson–Stanhope (arXiv:1910.03224); Gittins et al. Parts 1–2.
 
+- **Asma Hassannezhad** — supported twice: Hassannezhad–Métras–Perrin, *Geometric bounds for
+  low Steklov eigenvalues of finite volume hyperbolic surfaces*, JGA **35**(5) (2025),
+  DOI [`10.1007/s12220-025-01990-w`](https://doi.org/10.1007/s12220-025-01990-w) — hyperbolic
+  surfaces, this journal, current — and the Arias-Marco–Dryden–Gordon–Hassannezhad–Ray–Stanhope
+  work on the orbifold Steklov problem, which puts her directly in the orbifold-spectral
+  community alongside three other names on this list.
+
 **Second tier:**
 
 - **Juan Pablo Rossetti** — JGA #3 (2025); RSW 2008; Doyle–Rossetti.
@@ -99,17 +106,17 @@ The manuscript is already close. Concretely:
 1. **Keep the structural proof primary and the enumeration in the appendix.** This is the
    single strongest architectural match to the venue, and §3 already does it.
 
-2. **Reconsider the priority sentence in §1.3(b).** None of the twelve comparators claims to
+2. **Replace the priority sentence in §1.3(b).** None of the twelve comparators claims to
    be first at anything, including the one proving a finiteness theorem with explicit bounds.
    The result stands on its own; the "to our knowledge this is the first…" is the sentence
-   most likely to draw a referee's fire, and removing or narrowing it costs nothing. See
+   most likely to draw a referee's fire, and removing it costs nothing. See
    `Q3-priority-claim.md`.
 
 3. **Fix the bibliography.** Several works cited as preprints are published — Bari–Hunsicker
    (Canad. J. Math. 2020), Schueth (Ann. Global Anal. Geom. 2026), Gómez-Serrano–Orriols
    (J. Differential Equations), Proctor–Stanhope (Diff. Geom. Appl. 2010) — and the DGGW
    erratum is uncited. At a Springer journal with a copy-editing pass, stale preprint
-   citations read as a paper prepared without checking. Full list in `sources.bib`.
+   citations read as a paper prepared without checking. Full list in `refs/sources.bib`.
 
 4. **The planned stability section fits the venue**, and #6 (Daudé–Kamran–Nicoleau) is the
    precedent to cite for that. But frame it as *setting*-novel, not technique-novel — see
