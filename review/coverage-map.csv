@@ -1,0 +1,173 @@
+claim_id,assertion,backing_script,status,note
+AB-01,Two leading heat coefficients determine such a pillow among all of them precisely when `p+q+r ≤ 17`,code/enumerate_degeneracies.py,backed,check_base_case: no sigma-collision for any S <= 17
+AB-02,Reciprocal-sum intervals stay disjoint through sum 17 and first touch at sum 18,NONE,prose-restatement,"Prose summary of TH-18/TH-20, both verified."
+AB-03,"`O(2,8,8)` and `O(3,3,12)` are non-isometric and share their two leading heat coefficients",code/enumerate_degeneracies.py,backed,"check_base_case: exactly one degeneracy at S = 18, the expected pair"
+AB-04,This is the minimal two-coefficient spectral degeneracy,code/enumerate_degeneracies.py,backed,"check_base_case: exactly one degeneracy at S = 18, the expected pair"
+AB-05,It is the meeting of the balanced boundary of one stratum and the concentrated boundary of the next,NONE,prose-restatement,"Prose summary of TH-35, verified."
+AB-06,Degeneracies recur at every multiple of the base sum 18 via an exact scaling law,code/enumerate_degeneracies.py,backed,check_primitivity_consistency: every scaled group reduces to its base
+AB-07,Unconditional lower bound `𝒩(S) ≥ ⌊S/18⌋`,code/enumerate_degeneracies.py,backed,check_lower_bound: cumulative count >= floor(S/18) for all S <= 600
+AB-08,Exact-arithmetic enumeration through `S = 600`,code/enumerate_degeneracies.py,backed,cumulative checkpoints asserted against independent values
+AB-09,`𝒩(S)` tracks `c·S²` for `c ≈ 0.0085–0.0093`,code/enumerate_degeneracies.py,backed,cumulative checkpoints asserted against independent values
+AB-10,The first three coefficients always determine the pillow up to isometry,NONE,prose-restatement,"Prose summary of IN-10/HC-28, both verified."
+AB-11,Three invariant functions form local coordinates on cone-order space away from its diagonals,NONE,prose-restatement,"Prose summary of HC-33/HC-34, both verified."
+AB-12,"""All numerical assertions are verified in exact rational arithmetic""",code/cross_check.py,backed,three-way agreement: harness vs. oracle vs. recovered legacy scripts
+IN-01,`Area(O) = 2π(1 − (1/p + 1/q + 1/r))`,code/orbifold_enum.py,backed,"selftest: Area/pi = 2*(1-R), and not the pi*(1-R) form"
+IN-02,Hyperbolicity ⟺ `1/p + 1/q + 1/r < 1`,code/orbifold_enum.py,backed,selftest: hyperbolicity sum(1-1/m_i)>2 reduces to R<1 at n=3
+IN-03,"`O(p,q,r)` requires `2 ≤ p ≤ q ≤ r`",code/orbifold_enum.py,backed,Pillow rejects orders < 2 and unsorted multisets
+IN-04,If `p+q+r ≤ 17` then `K(F) ≤ 2`,code/enumerate_degeneracies.py,backed,check_base_case: no sigma-collision for any S <= 17
+IN-05,The bound 17 is sharp; two coefficients fail at sum 18,NONE,prose-restatement,Prose restatement of IN-04 plus IN-07.
+IN-06,"`O(2,8,8)` and `O(3,3,12)` have identical first two heat coefficients",code/enumerate_degeneracies.py,backed,"check_base_case: exactly one degeneracy at S = 18, the expected pair"
+IN-07,"Among all two-coefficient degeneracies this pair has smallest sum, `p+q+r = 18`",code/enumerate_degeneracies.py,backed,"check_base_case: exactly one degeneracy at S = 18, the expected pair"
+IN-08,It is the **unique** degeneracy at sum 18,code/enumerate_degeneracies.py,backed,"check_base_case: exactly one degeneracy at S = 18, the expected pair"
+IN-09,No degeneracy occurs for `p+q+r ≤ 17`,code/enumerate_degeneracies.py,backed,check_base_case: no sigma-collision for any S <= 17
+IN-10,First three heat coefficients determine the pillow up to isometry; `K(F) ≤ 3`,code/verify_identities.py,backed,"eq (6): full round trip (p,q,r) -> (R,S_1,P_3) -> (p,q,r), S_1 <= 200"
+IN-11,`K(F) = 3` for the collision pair,code/verify_identities.py,backed,"Section 2.3: Jacobian det DF, symbolically"
+IN-12,"First coefficient detects the area, equivalently `R`",NONE,not-machine-checkable,That the FIRST HEAT COEFFICIENT is the area is analytic input; the harness verifies the arithmetic consequence (area determines R).
+IN-13,"First two factor through `(R, S₁)`; two-coefficient determinacy ⟺ injectivity of `(p,q,r) ↦ (R,S₁)`",code/enumerate_degeneracies.py,backed,"sweep + degeneracy_groups keyed on sigma = (S_1, R)"
+IN-14,"First three additionally detect `Σ mᵢ³`, hence the individual cone orders",code/verify_identities.py,backed,"eq (6): full round trip (p,q,r) -> (R,S_1,P_3) -> (p,q,r), S_1 <= 200"
+IN-15,Threshold reduces to three adjacent-pair comparisons for `S₁ ≤ 17` and four endpoint comparisons at `S₁ = 18`,code/verify_identities.py,backed,Thm 3.4: the three adjacent-pair comparisons for S <= 17
+CV-01,`a₀ = χ(O)/6 + Σᵢ (mᵢ² − 1)/(12 mᵢ)`,NONE,not-machine-checkable,"eq:a0conv is the DGGW normalization, quoted. The harness verifies everything derived FROM it, and checks it against the (S_1+R-2)/12 form, but the expansion itself is external."
+CV-02,`χ(O) = 2 − Σᵢ(1 − 1/mᵢ) = R − 1`,code/verify_identities.py,backed,"a_0(2,3,5) = 271/360 = 269/360 + 1/180"
+CV-03,"For `(2,3,5)`: cone sum `1/8 + 2/9 + 2/5 = 269/360`",code/verify_identities.py,backed,"a_0(2,3,5) = 271/360 = 269/360 + 1/180"
+CV-04,"For `(2,3,5)`: smooth term `χ/6 = 1/180`",code/verify_identities.py,backed,"a_0(2,3,5) = 271/360 = 269/360 + 1/180"
+CV-05,"For `(2,3,5)`: total `a₀ = 271/360`",code/verify_identities.py,backed,"a_0(2,3,5) = 271/360 = 269/360 + 1/180"
+HC-01,`Σ_{j=1}^{m−1} cot²(jπ/m) = (m−1)(m−2)/3` for all `m ≥ 2`,code/verify_identities.py,backed,"Lemma 2.1: sum cot^2(j*pi/m) = (m-1)(m-2)/3, 2 <= m <= 200"
+HC-02,"`[z^{m−1}]P = 2m`, `[z^{m−2}]P = 0`, `[z^{m−3}]P = 2·C(m,3)`, `deg P = m−1`",code/verify_identities.py,backed,"Vieta chain for (z+1)^m - (z-1)^m, exact, 2 <= m <= 200"
+HC-03,"Roots `z_j = −i·cot(jπ/m)`, `j = 1…m−1`, all distinct",code/verify_identities.py,backed,"Lemma 2.1: sum cot^2(j*pi/m) = (m-1)(m-2)/3, 2 <= m <= 200"
+HC-04,"`Σ z_j = 0` and `Σ_{i<j} z_i z_j = C(m,3)/m = (m−1)(m−2)/6`",code/verify_identities.py,backed,"Vieta chain for (z+1)^m - (z-1)^m, exact, 2 <= m <= 200"
+HC-05,`Σ z_j² = −(m−1)(m−2)/3`,code/verify_identities.py,backed,"Vieta chain for (z+1)^m - (z-1)^m, exact, 2 <= m <= 200"
+HC-06,`Σ_{j=1}^{m−1} csc²(jπ/m) = (m² − 1)/3`,code/verify_identities.py,backed,"Prop 2.2: sum csc^2(j*pi/m) = (m^2-1)/3, 2 <= m <= 200"
+HC-07,`(m−1) + (m−1)(m−2)/3 = (m−1)(m+1)/3 = (m²−1)/3`,code/verify_identities.py,backed,"Prop 2.2: sum csc^2(j*pi/m) = (m^2-1)/3, 2 <= m <= 200"
+HC-08,A rotation of order `m` through `2πj/m` contributes `b₀(γʲ) = ¼csc²(jπ/m)`,NONE,not-machine-checkable,b_0(gamma^j) = (1/4)csc^2(j*pi/m) is quoted from DGGW.
+HC-09,`cone(m) := (1/4m)·Σ_{j=1}^{m−1} csc²(jπ/m)`,code/verify_identities.py,backed,"Cor 2.4: cone(m) from Def 2.3 equals (m^2-1)/(12m) = (1/12)(m - 1/m), 2 <= m <= 200"
+HC-10,`cone(m) = (m²−1)/(12m) = (1/12)(m − 1/m)`,code/verify_identities.py,backed,"Cor 2.4: cone(m) from Def 2.3 equals (m^2-1)/(12m) = (1/12)(m - 1/m), 2 <= m <= 200"
+HC-11,`cone(2) = 1/8`,code/verify_identities.py,backed,"Cor 2.4: cone(2)=1/8, cone(3)=2/9, cone(5)=2/5"
+HC-12,`cone(3) = 2/9`,code/verify_identities.py,backed,"Cor 2.4: cone(2)=1/8, cone(3)=2/9, cone(5)=2/5"
+HC-13,`cone(5) = 2/5`,code/verify_identities.py,backed,"Cor 2.4: cone(2)=1/8, cone(3)=2/9, cone(5)=2/5"
+HC-14,"Prefactor is `1/(4m)`, not a flat `1/12`",code/verify_identities.py,backed,"Cor 2.4: cone(m) from Def 2.3 equals (m^2-1)/(12m) = (1/12)(m - 1/m), 2 <= m <= 200"
+HC-15,"`e₁ = p+q+r = S₁`, `e₂ = pq+qr+rp`, `e₃ = pqr`, `R = e₂/e₃`",code/verify_identities.py,backed,"eq (6): full round trip (p,q,r) -> (R,S_1,P_3) -> (p,q,r), S_1 <= 200"
+HC-16,`Σᵢ cone(mᵢ) = (1/12)(S₁ − R)`,code/verify_identities.py,backed,"sum_i cone(m_i) = (1/12)(S_1 - R), all triads S_1 <= 200"
+HC-17,`a₀ = (S₁ + R − 2)/12`,code/verify_identities.py,backed,"eq:s1inv: a_0 = (S_1+R-2)/12 and S_1 = 12a_0 + 2 - R, S_1 <= 200"
+HC-18,`S₁ = 12a₀ + 2 − R`,code/verify_identities.py,backed,"eq:s1inv: a_0 = (S_1+R-2)/12 and S_1 = 12a_0 + 2 - R, S_1 <= 200"
+HC-19,"The mis-normalized `S₁ = 12(a₀ − 2) + R` returns a **negative** value for `(2,3,5)`, where `S₁ = 10`",code/verify_identities.py,backed,"Remark 2.5: the mis-normalized inversion is negative at (2,3,5)"
+HC-20,`b₁(C) = [(1/360)(m³ − 1/m) + (1/36)(m − 1/m)]·K`,NONE,not-machine-checkable,"eq:b1 is quoted from Schueth Rem. 4.2 / DGGW 5.6. The harness verifies that eq (5) follows from it symbolically, not the expression itself."
+HC-21,At `K = −1` the smooth `t¹` term is a universal constant × `Area = 2π(1 − R)`,NONE,not-machine-checkable,"That the smooth t^1 term is a universal constant times Area is an analytic statement about the heat expansion, not an arithmetic one."
+HC-22,`Σᵢ b₁(Cᵢ)` at `K = −1` equals `−(1/360)P₃ − (1/36)S₁ + (11/360)R`,code/verify_identities.py,backed,eq (5): sum b_1(C_i) at K=-1 equals -(1/360)P_3 - (1/36)S_1 + (11/360)R
+HC-23,`1/360 + 1/36 = 11/360`,code/verify_identities.py,backed,eq (5): sum b_1(C_i) at K=-1 equals -(1/360)P_3 - (1/36)S_1 + (11/360)R
+HC-24,"The residual `m³`-coefficient is nonzero, equal to `−1/360`",code/verify_identities.py,backed,eq (5): sum b_1(C_i) at K=-1 equals -(1/360)P_3 - (1/36)S_1 + (11/360)R
+HC-25,"A flat cone contributes nothing at this order (`b₁ = 0` at `K = 0`), so `Σ mᵢ⁻³` is not a hyperbolic heat invariant",code/verify_identities.py,backed,eq (5): sum b_1(C_i) at K=-1 equals -(1/360)P_3 - (1/36)S_1 + (11/360)R
+HC-26,`S₁R = (p+q+r)(1/p+1/q+1/r) ≥ 9`,code/verify_identities.py,backed,"Prop 2.6: S_1*R >= 9, equality iff p = q = r, S_1 <= 200"
+HC-27,Equality iff `p = q = r`,code/verify_identities.py,backed,"Prop 2.6: S_1*R >= 9, equality iff p = q = r, S_1 <= 200"
+HC-28,"`(R, S₁, P₃)` determine the multiset `{p,q,r}`",code/verify_identities.py,backed,"eq (6): full round trip (p,q,r) -> (R,S_1,P_3) -> (p,q,r), S_1 <= 200"
+HC-29,Newton: `P₃ = e₁³ − 3e₁e₂ + 3e₃ = e₁³ + 3e₃(1 − e₁R)`,code/verify_identities.py,backed,"eq (6): full round trip (p,q,r) -> (R,S_1,P_3) -> (p,q,r), S_1 <= 200"
+HC-30,"`e₃ = (P₃ − e₁³)/(3 − 3S₁R)`, `e₂ = R·e₃`",code/verify_identities.py,backed,"eq (6): full round trip (p,q,r) -> (R,S_1,P_3) -> (p,q,r), S_1 <= 200"
+HC-31,Denominator nonzero by `prop:cs`,code/verify_identities.py,backed,"eq (6): full round trip (p,q,r) -> (R,S_1,P_3) -> (p,q,r), S_1 <= 200"
+HC-32,Cone orders are roots of `z³ − e₁z² + e₂z − e₃`,code/verify_identities.py,backed,"eq (6): full round trip (p,q,r) -> (R,S_1,P_3) -> (p,q,r), S_1 <= 200"
+HC-33,`det DF = −3(p−q)(p−r)(q−r)(p+q)(p+r)(q+r)/(p²q²r²)`,code/verify_identities.py,backed,"Section 2.3: Jacobian det DF, symbolically"
+HC-34,"`det DF ≠ 0` off the diagonals `p=q`, `p=r`, `q=r`",code/verify_identities.py,backed,"Section 2.3: Jacobian det DF, symbolically"
+TH-01,"`R_{S,p}(q) = 1/p + 1/q + 1/(S−p−q)` on `p ≤ q ≤ (S−p)/2`",code/verify_identities.py,backed,"Lemma 3.1: R strictly decreasing in q on each (S,p)-stratum; extrema at its ends"
+TH-02,"`R'_{S,p}(q) = −1/q² + 1/(S−p−q)² ≤ 0`",code/verify_identities.py,backed,"Lemma 3.1: R strictly decreasing in q on each (S,p)-stratum; extrema at its ends"
+TH-03,"Equality only at `q = r`; `R_{S,p}` strictly decreasing, hence injective on each stratum",code/verify_identities.py,backed,"Lemma 3.1: R strictly decreasing in q on each (S,p)-stratum; extrema at its ends"
+TH-04,"Maximum at the spread triad `q = p`, i.e. `O(p,p,S−2p)`",code/verify_identities.py,backed,"Lemma 3.1: R strictly decreasing in q on each (S,p)-stratum; extrema at its ends"
+TH-05,Minimum at the balanced triad `q = ⌊(S−p)/2⌋`,code/verify_identities.py,backed,"Lemma 3.1: R strictly decreasing in q on each (S,p)-stratum; extrema at its ends"
+TH-06,"`R⁺_{S,p} = 2/p + 1/(S−2p)`",code/verify_identities.py,backed,"R^+_(S,p) = 2/p + 1/(S-2p), and is non-increasing in p for p <= S/3"
+TH-07,"`R⁺_{S,p}` is non-increasing in `p` for `p ≤ S/3`",code/verify_identities.py,backed,"R^+_(S,p) = 2/p + 1/(S-2p), and is non-increasing in p for p <= S/3"
+TH-08,"`R⁻_{S,p} ≥ 1/p + 4/(S−p)`, equality iff `S−p` is even",code/verify_identities.py,backed,"Lemma 3.2: R^-_(S,p) >= 1/p + 4/(S-p), with equality exactly when S-p is even"
+TH-09,If `S−p` odd: `1/q + 1/r = 4(S−p)/((S−p)² − 1) > 4/(S−p)`,code/verify_identities.py,backed,"Lemma 3.2: R^-_(S,p) >= 1/p + 4/(S-p), with equality exactly when S-p is even"
+TH-10,"At fixed `S₁`, `R` is minimized by the most balanced admissible triple (Schur-convexity)",code/verify_identities.py,backed,Prop 3.3: at fixed S_1 the most balanced triad minimizes both R and a_0
+TH-11,Hence `a₀` at fixed `S₁` is smallest for the balanced pillow,code/verify_identities.py,backed,Prop 3.3: at fixed S_1 the most balanced triad minimizes both R and a_0
+TH-12,No hyperbolic triad has `S₁ ≤ 9`,code/verify_identities.py,backed,Section 3.2: S_1 >= 10 with the stated per-p bounds; p <= floor(S/3) <= 5 for S <= 17
+TH-13,If `p = 2` then `q+r ≥ 9` and `S₁ ≥ 11`,code/verify_identities.py,backed,Section 3.2: S_1 >= 10 with the stated per-p bounds; p <= floor(S/3) <= 5 for S <= 17
+TH-14,If `p = 3` then `q+r ≥ 7` and `S₁ ≥ 10`,code/verify_identities.py,backed,Section 3.2: S_1 >= 10 with the stated per-p bounds; p <= floor(S/3) <= 5 for S <= 17
+TH-15,If `p ≥ 4` then `S₁ ≥ 12`,code/verify_identities.py,backed,Section 3.2: S_1 >= 10 with the stated per-p bounds; p <= floor(S/3) <= 5 for S <= 17
+TH-16,"`S₁ ≥ 10`, with equality only for `O(3,3,4)`",code/verify_identities.py,backed,Section 3.2: S_1 >= 10 with the stated per-p bounds; p <= floor(S/3) <= 5 for S <= 17
+TH-17,"For `S ≤ 17`, `p ≤ ⌊S/3⌋ ≤ 5`, so only strata `p ∈ {2,3,4,5}` arise",code/verify_identities.py,backed,Section 3.2: S_1 >= 10 with the stated per-p bounds; p <= floor(S/3) <= 5 for S <= 17
+TH-18,"For every `S ≤ 17` the intervals `[R⁻_{S,p}, R⁺_{S,p}]` of distinct least-order strata are pairwise disjoint",code/verify_identities.py,backed,Thm 3.4: stratum intervals pairwise disjoint for S <= 17; first contact at S = 18
+TH-19,Consequently `σ` is injective on hyperbolic triads of sum `S ≤ 17`,code/verify_identities.py,backed,Thm 3.4: stratum intervals pairwise disjoint for S <= 17; first contact at S = 18
+TH-20,"Strata of least orders 2 and 3 first meet at `S = 18`, at `R = 3/4`",code/verify_identities.py,backed,Thm 3.4: stratum intervals pairwise disjoint for S <= 17; first contact at S = 18
+TH-21,"Realized by balanced `O(2,8,8)` and spread `O(3,3,12)`",code/verify_identities.py,backed,Thm 3.4: stratum intervals pairwise disjoint for S <= 17; first contact at S = 18
+TH-22,At `S = 18` every other adjacent stratum pair is still separated,code/verify_identities.py,backed,Thm 3.4: stratum intervals pairwise disjoint for S <= 17; first contact at S = 18
+TH-23,`φ_p(S) = 4/(S−p) − 1/(S−2p−2)`,code/verify_identities.py,backed,"phi_p and tau_p closed forms; tau_2=1/6, tau_3=1/6, tau_4=3/20"
+TH-24,`τ_p = 2/(p+1) − 1/p = (p−1)/(p(p+1))`,code/verify_identities.py,backed,"phi_p and tau_p closed forms; tau_2=1/6, tau_3=1/6, tau_4=3/20"
+TH-25,"`φ'_p(S) > 0` for `S < 3p+4`, `< 0` for `S > 3p+4` (unimodal, peak at `3p+4`)",code/verify_identities.py,backed,phi_p is unimodal with peak at S = 3p+4 (symbolic sign of phi_p')
+TH-26,`τ₂ = 1/6`,code/verify_identities.py,backed,Thm 3.4: the three adjacent-pair comparisons for S <= 17
+TH-27,For `p = 2` both strata occur for `11 ≤ S ≤ 18`; peak at `S = 10`,code/verify_identities.py,backed,Thm 3.4: the three adjacent-pair comparisons for S <= 17
+TH-28,`φ₂(17) = 4/15 − 1/11 = 29/165 > 1/6`,code/verify_identities.py,backed,Thm 3.4: the three adjacent-pair comparisons for S <= 17
+TH-29,`φ₂(18) = 1/4 − 1/12 = 1/6` **exactly**,code/verify_identities.py,backed,Thm 3.4: the four endpoint comparisons at S = 18
+TH-30,`τ₃ = 1/6`; both strata occur for `12 ≤ S ≤ 17`; peak at `S = 13`,code/verify_identities.py,backed,Thm 3.4: the three adjacent-pair comparisons for S <= 17
+TH-31,`φ₃(12) = 7/36 > 1/6`,code/verify_identities.py,backed,Thm 3.4: the three adjacent-pair comparisons for S <= 17
+TH-32,`φ₃(17) = 11/63 > 1/6`,code/verify_identities.py,backed,Thm 3.4: the three adjacent-pair comparisons for S <= 17
+TH-33,`τ₄ = 3/20`; both strata occur for `15 ≤ S ≤ 17`,code/verify_identities.py,backed,Thm 3.4: the three adjacent-pair comparisons for S <= 17
+TH-34,"`min{φ₄(15), φ₄(16), φ₄(17)} = φ₄(15) = 9/55 > 3/20`",code/verify_identities.py,backed,Thm 3.4: the three adjacent-pair comparisons for S <= 17
+TH-35,"At `S = 18`, `S−2 = 16` is even so `lem:bound` is tight and `R⁻_{18,2} = R⁺_{18,3}`",code/verify_identities.py,backed,Thm 3.4: the four endpoint comparisons at S = 18
+TH-36,"`R(2,8,8) = 1/2 + 1/8 + 1/8 = 3/4`",code/verify_identities.py,backed,"Thm B: the S=18 pair shares (S_1,R)=(18,3/4); P_3 = 1032 != 1782 separates it"
+TH-37,"`R(3,3,12) = 2/3 + 1/12 = 3/4`",code/verify_identities.py,backed,"Thm B: the S=18 pair shares (S_1,R)=(18,3/4); P_3 = 1032 != 1782 separates it"
+TH-38,Both triads are hyperbolic,code/verify_identities.py,backed,"Thm B: the S=18 pair shares (S_1,R)=(18,3/4); P_3 = 1032 != 1782 separates it"
+TH-39,"`R⁻_{18,3} = 101/168 > 3/5 = R⁺_{18,4}`",code/verify_identities.py,backed,Thm 3.4: the four endpoint comparisons at S = 18
+TH-40,"`R⁻_{18,4} = 15/28 > 21/40 = R⁺_{18,5}`",code/verify_identities.py,backed,Thm 3.4: the four endpoint comparisons at S = 18
+TH-41,"`R⁻_{18,5} = 107/210 > 1/2 = R⁺_{18,6}`",code/verify_identities.py,backed,Thm 3.4: the four endpoint comparisons at S = 18
+TH-42,`S = 18` produces exactly one coincidence,code/enumerate_degeneracies.py,backed,"check_base_case: exactly one degeneracy at S = 18, the expected pair"
+TH-43,"`σ(2,8,8) = σ(3,3,12) = (18, 3/4)`",code/verify_identities.py,backed,"Thm B: the S=18 pair shares (S_1,R)=(18,3/4); P_3 = 1032 != 1782 separates it"
+TH-44,`1/2 + 1/8 + 1/8 = 1/3 + 1/3 + 1/12 = 3/4 < 1`,code/verify_identities.py,backed,"Thm B: the S=18 pair shares (S_1,R)=(18,3/4); P_3 = 1032 != 1782 separates it"
+TH-45,"`P₃(2,8,8) = 1032`",code/verify_identities.py,backed,"Thm B: the S=18 pair shares (S_1,R)=(18,3/4); P_3 = 1032 != 1782 separates it"
+TH-46,"`P₃(3,3,12) = 1782`",code/verify_identities.py,backed,"Thm B: the S=18 pair shares (S_1,R)=(18,3/4); P_3 = 1032 != 1782 separates it"
+TH-47,"`1032 ≠ 1782`, so the third coefficient separates the pair",code/verify_identities.py,backed,"Thm B: the S=18 pair shares (S_1,R)=(18,3/4); P_3 = 1032 != 1782 separates it"
+TH-48,Egyptian-fraction restatement: `1/2+1/8+1/8 = 1/3+1/3+1/12` with `2+8+8 = 3+3+12 = 18`,code/verify_identities.py,backed,"Thm B: the S=18 pair shares (S_1,R)=(18,3/4); P_3 = 1032 != 1782 separates it"
+GE-01,Leading coefficient `= (1/4π)·Area(O) = ½(1 − R)`,code/orbifold_enum.py,backed,"selftest: Area/pi = 2*(1-R), and not the pi*(1-R) form"
+GE-02,"The first three coefficients are, mod smooth terms, `R = Σ1/mᵢ`, `S₁ = Σmᵢ`, `P₃ = Σmᵢ³`",code/orbifold_enum.py,backed,"selftest: P_k for k = 0,1,3,5,7 including P_3 = 1032 / 1782"
+GE-03,The balanced end is the `R`-minimizer of `prop:min`; the spread end abuts the diagonal locus where `det DF` degenerates,NONE,prose-restatement,"Prose synthesis of TH-10 and HC-34, both verified."
+GE-04,"`O(2,8,8)` and `O(3,3,12)` have the same area and same total cone order but different singular strata",NONE,prose-restatement,"Prose restatement of TH-43, verified."
+GE-05,"`O(2,8,8)` carries an order-2 cone of cone angle `π`",code/verify_identities.py,backed,"Section 4: cone angle 2*pi/m; balanced pillow existence; a_0 minimized globally at O(3,3,4)"
+GE-06,"The two pillows differ at the third heat coefficient, hence are **not** isospectral",NONE,prose-restatement,"Prose consequence of TH-47, verified."
+GE-07,Balanced pillow `p=q=r` exists when `3` divides `S₁` and `S₁/3 ≥ 4`,code/verify_identities.py,backed,"Section 4: cone angle 2*pi/m; balanced pillow existence; a_0 minimized globally at O(3,3,4)"
+GE-08,"Across **all** pillows `a₀` is smallest for `O(3,3,4)`, with `a₀ = 107/144`",code/verify_identities.py,backed,"Section 4: cone angle 2*pi/m; balanced pillow existence; a_0 minimized globally at O(3,3,4)"
+DE-01,A degeneracy ⟺ two distinct triples with `p+q+r = p'+q'+r' = S` and `1/p+1/q+1/r = 1/p'+1/q'+1/r'`,code/enumerate_degeneracies.py,backed,"sweep + degeneracy_groups keyed on sigma = (S_1, R)"
+DE-02,`N(S)` := number at sum exactly `S`; `𝒩(S) := Σ_{s≤S} N(s)`,code/enumerate_degeneracies.py,backed,"sweep + degeneracy_groups keyed on sigma = (S_1, R)"
+DE-03,"If `{O(p,q,r), O(p',q',r')}` is a degeneracy at sum `S₀`, then `{O(kp,kq,kr), O(kp',kq',kr')}` is one at sum `kS₀`, for every `k ≥ 1`",code/verify_identities.py,backed,Prop 5.1: scaling law for k <= {SCALE_MAX} on ten distinct base degeneracies
+DE-04,Scaling by `k` scales `S₁` by `k` and `R` by `1/k`; hyperbolicity preserved since `R/k < R < 1`,code/verify_identities.py,backed,Prop 5.1: scaling law for k <= {SCALE_MAX} on ten distinct base degeneracies
+DE-05,Scaled triples remain distinct multisets,code/verify_identities.py,backed,Prop 5.1: scaling law for k <= {SCALE_MAX} on ten distinct base degeneracies
+DE-06,`𝒩(S) ≥ ⌊S/18⌋` for every `S ≥ 18`,code/enumerate_degeneracies.py,backed,check_lower_bound: cumulative count >= floor(S/18) for all S <= 600
+DE-07,There are infinitely many two-coefficient degeneracies,code/enumerate_degeneracies.py,backed,check_lower_bound: cumulative count >= floor(S/18) for all S <= 600
+DE-08,"`{O(2k,8k,8k), O(3k,3k,12k)}` is a degeneracy at sum `18k` for every `k ≥ 1`",code/enumerate_degeneracies.py,backed,check_lower_bound: cumulative count >= floor(S/18) for all S <= 600
+DE-09,At `S = 36` there are exactly **two** degeneracy classes,code/enumerate_degeneracies.py,backed,check_s36: primitive and scaled classes at S = 36
+DE-10,"One is the scaled copy `{O(4,16,16), O(6,6,24)}`",code/enumerate_degeneracies.py,backed,check_primitivity_consistency: every scaled group reduces to its base
+DE-11,"The other is primitive: `{O(6,15,15), O(8,8,20)}` at `R = 3/10`",code/enumerate_degeneracies.py,backed,check_primitivity_consistency: every scaled group reduces to its base
+DE-12,`N(S)` enumerated exactly for every `10 ≤ S ≤ 600`,code/enumerate_degeneracies.py,backed,"sweep + degeneracy_groups keyed on sigma = (S_1, R)"
+DE-13,"""the full data and generating script are in the public repository""",NONE,public-availability,PUBLIC-AVAILABILITY: the generating script now exists locally but is not yet in the upstream repository. Closes on push.
+DE-14,`𝒩(18) = 1`; `𝒩/S = 0.056`; `𝒩/S² = 0.0031`,code/enumerate_degeneracies.py,backed,cumulative checkpoints asserted against independent values
+DE-15,`𝒩(100) = 92`; `0.92`; `0.0092`,code/enumerate_degeneracies.py,backed,cumulative checkpoints asserted against independent values
+DE-16,`𝒩(200) = 386`; `1.93`; `0.0097`,code/enumerate_degeneracies.py,backed,cumulative checkpoints asserted against independent values
+DE-17,`𝒩(300) = 840`; `2.80`; `0.0093`,code/enumerate_degeneracies.py,backed,cumulative checkpoints asserted against independent values
+DE-18,`𝒩(400) = 1496`; `3.74`; `0.0094`,code/enumerate_degeneracies.py,backed,cumulative checkpoints asserted against independent values
+DE-19,`𝒩(500) = 2210`; `4.42`; `0.0088`,code/enumerate_degeneracies.py,backed,cumulative checkpoints asserted against independent values
+DE-20,`𝒩(600) = 3067`; `5.11`; `0.0085`,code/enumerate_degeneracies.py,backed,cumulative checkpoints asserted against independent values
+DE-21,`𝒩(S)/S²` stabilizes to within about 10% of `0.009`,code/enumerate_degeneracies.py,backed,cumulative checkpoints asserted against independent values
+DE-22,Power-law fit of `log 𝒩(S)` against `log S` over `50 ≤ S ≤ 600` returns exponent **2.03**,code/enumerate_degeneracies.py,backed,cumulative checkpoints asserted against independent values
+DE-23,"At `S = 600` the scaling law accounts for `⌊600/18⌋ = 33` of the 3067 recorded, about one percent",code/enumerate_degeneracies.py,backed,cumulative checkpoints asserted against independent values
+DE-24,The number of hyperbolic triads of sum `S` is `≍ S²`,code/verify_identities.py,backed,"Section 5.3: the triad count of sum S is of order S^2, and e_3 = pqr <= (S/3)^3"
+DE-25,"`e₃ = pqr ≤ (S/3)³`, so `R` lies among `O(S³)` rationals of bounded height",code/verify_identities.py,backed,"Section 5.3: the triad count of sum S is of order S^2, and e_3 = pqr <= (S/3)^3"
+DE-26,Birthday heuristic gives `N(S) ~ (S²)²/S³ = S`,NONE,not-machine-checkable,Birthday heuristic; the manuscript states it as non-rigorous.
+DE-27,`𝒩(S) ~ c·S²` as `S → ∞` for some `c > 0`,NONE,not-machine-checkable,"Conjecture 5.3, open."
+DE-28,Equivalently `N(S) = Θ(S)`,NONE,not-machine-checkable,"Conjecture 5.3 restated, open."
+DE-29,`c` near `0.0085` at the top of the computed range,code/enumerate_degeneracies.py,backed,cumulative checkpoints asserted against independent values
+DE-30,An `n`-cone pillow is hyperbolic when `Σᵢ(1 − 1/mᵢ) > 2`,NONE,not-machine-checkable,"n-cone hyperbolicity at general n is definitional. orbifold_enum implements and exercises it at n = 3, 4, 5, but the manuscript makes no numerical claim here."
+DE-31,`K ≤ n` extends the `n = 3` case when the `n` symmetric functions are independent,NONE,not-machine-checkable,K <= n at general n is stated but not proved in the manuscript; there is nothing to reproduce.
+AP-01,"""Every arithmetic assertion in this paper was verified symbolically in exact rational arithmetic, with no floating-point approximation and no discretization""",code/cross_check.py,backed,three-way agreement: harness vs. oracle vs. recovered legacy scripts
+AP-02,Verification covers the cone values of `cor:conevals`,code/cross_check.py,backed,three-way agreement: harness vs. oracle vs. recovered legacy scripts
+AP-03,"…the normalization `a₀(2,3,5) = 271/360 = 269/360 + 1/180`",code/verify_identities.py,backed,"a_0(2,3,5) = 271/360 = 269/360 + 1/180"
+AP-04,…the inversion `eq:s1inv`,code/verify_identities.py,backed,"eq:s1inv: a_0 = (S_1+R-2)/12 and S_1 = 12a_0 + 2 - R, S_1 <= 200"
+AP-05,"…the reduction `eq:a2red` and recovery `eq:e3`, including the full round trip `(p,q,r) ↦ (R,S₁,P₃) ↦ (p,q,r)`",code/verify_identities.py,backed,"eq (6): full round trip (p,q,r) -> (R,S_1,P_3) -> (p,q,r), S_1 <= 200"
+AP-06,…the interval endpoints and adjacent-pair inequalities of `thm:separation`,code/verify_identities.py,backed,Thm 3.4: the four endpoint comparisons at S = 18
+AP-07,…the bound `S₁R ≥ 9`,code/verify_identities.py,backed,"Prop 2.6: S_1*R >= 9, equality iff p = q = r, S_1 <= 200"
+AP-08,…the scaling law `prop:scaling`,code/verify_identities.py,backed,Prop 5.1: scaling law for k <= {SCALE_MAX} on ten distinct base degeneracies
+AP-09,…the exact enumeration of `N(S)` and `𝒩(S)` for `10 ≤ S ≤ 600`,code/enumerate_degeneracies.py,backed,cumulative checkpoints asserted against independent values
+AP-10,"""The verification scripts verify every displayed rational identity""",code/cross_check.py,backed,three-way agreement: harness vs. oracle vs. recovered legacy scripts
+AP-11,Companion script `make_table.py` regenerates Table 1,code/make_table.py,backed,"table2.tex regenerated from enumeration; collisions detected, not hardcoded"
+AP-12,Companion script `enumerate_degeneracies.py` regenerates Table 2,code/make_table.py,backed,table1.tex regenerated from the sweep at the manuscript's checkpoints
+AP-13,"""A single command (`run_all`) reproduces all checks""",NONE,public-availability,PUBLIC-AVAILABILITY: run_all.sh exists locally; the manuscript names it 'run_all'. Closes on push plus a one-word text fix.
+AP-14,Table 1 lists **every** hyperbolic triad with `10 ≤ S₁ ≤ 18`,code/make_table.py,backed,"table2.tex regenerated from enumeration; collisions detected, not hardcoded"
+AP-15,`R` is distinct across all triads of a common sum for `S₁ ≤ 17`,code/make_table.py,backed,"table2.tex regenerated from enumeration; collisions detected, not hardcoded"
+AP-16,The only within-sum coincidence at `S₁ ≤ 18` is the boldface pair at `S₁ = 18`,code/enumerate_degeneracies.py,backed,"check_base_case: exactly one degeneracy at S = 18, the expected pair"
+AP-17,"All 83 individual `(p,q,r) ↦ R` entries",code/make_table.py,backed,"table2.tex regenerated from enumeration; collisions detected, not hardcoded"
+AP-18,"""Verification scripts and generated table data are available in the public repository""",NONE,public-availability,PUBLIC-AVAILABILITY: closes on push.
+AP-19,"""The exact-arithmetic verification code used to check the displayed rational identities and regenerate Tables 1 and 2 is available in the public repository""",NONE,public-availability,PUBLIC-AVAILABILITY: closes on push.
