@@ -6,7 +6,7 @@ and unaltered — the sections needed to reach a decision without the supporting
 an extract, not a summary: every byte below also appears in `P2.md`.
 
 Not included here, and present only in `P2.md`: §1 repository state, §3 Q2, §4 Q4, §7 corrections,
-§8 supporting files, §10 my commentary.
+§8 supporting files, §10 my commentary, §11 Takeuchi verdict.
 
 ---
 
@@ -33,6 +33,7 @@ Sizes in bytes, digests SHA-256, timestamps local (this machine, `Darwin 25.3.0`
 | `review/coverage-map.csv` | 29,150 | `c6079459ef25671e715ab993e822dd682f845fd883cd1d350f28ebf1b29978db` | 2026-08-09 13:52:15 | §8 (counts + non-backed rows) |
 | `research/readability-decisions.json` | 3,512 | `3a03f650d4f65b7641ba1f8d7320f3550bfae2e46f69f32fc84cddfae8616321` | 2026-08-09 16:53:58 | §8 |
 | `review/hyperresearch/APPENDIX-ncone-computation.md` | 5,983 | `cea2a787d80028c4efd320e9029157100b5c283df5e6290e300cd16917a00350` | 2026-08-09 16:14:47 | §9 |
+| `review/takeuchi-verdict.md` | 15,420 | `b8eb390896620ad9d13ce0ef2b07bdac5c240a86c888ef4d6c6046ec42f31a93` | 2026-08-11 11:08:33 | §11 |
 
 Two of these are byte-identical to each other and both are tracked: `review/hyperresearch/APPENDIX-ncone-computation.md` and `research/temp/original-computation-ncone.md` share SHA-256 `cea2a787d80028c4efd320e9029157100b5c283df5e6290e300cd16917a00350`. Only the first is reproduced here.
 
