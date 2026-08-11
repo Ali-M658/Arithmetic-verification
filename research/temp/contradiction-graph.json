@@ -1,0 +1,96 @@
+{
+  "vault_tag": "hyperbolic-pillow-heat-novelty-813161",
+  "note": "Genuine tensions surfaced by the corpus. In a mathematics literature sweep most 'contradictions' are not disagreements between authors but mismatches between what the manuscript asserts and what its cited sources actually say. Those are recorded as fight clusters because they are what the deliverable must adjudicate.",
+  "clusters": [
+    {
+      "id": "C1",
+      "title": "Is Bari-Hunsicker a competing finite-coefficient threshold?",
+      "severity": "high",
+      "position_A": {
+        "claim": "It is 'the closest competitor - it analyses how few heat coefficients suffice'.",
+        "source": "the task brief, echoing the manuscript's framing in Sec 1.2 (barihunsicker2017)"
+      },
+      "position_B": {
+        "claim": "It proves heat coefficients are NOT sufficient, and proves it 'for any k' - i.e. to all orders. It is a negative, all-order result in the spherical setting, with no minimality claim.",
+        "source": "arXiv:1705.01412 full text, Lemma 6.5/Example 6.6 and Lemma 6.7/Example 6.8; Canad. J. Math. 72 (2020) 281-325, DOI 10.4153/S0008414X19000178"
+      },
+      "resolution": "B. Verified from the full text. The two results have opposite logical shape, different curvature sign, and only one of them claims minimality. The priority claim survives this competitor.",
+      "confidence": "high"
+    },
+    {
+      "id": "C2",
+      "title": "Are higher constant-curvature cone coefficients available off the shelf?",
+      "severity": "high",
+      "position_A": {
+        "claim": "Only the DEGREE of p_l is known for l >= 2; explicit formulas would need new computation.",
+        "source": "the task brief's framing of Ucar as giving 'deg p_l = 2l+2'; also the manuscript's Remark 5.6 hedge 'when these are independent'"
+      },
+      "position_B": {
+        "claim": "Explicit closed forms exist for EVERY l at arbitrary constant curvature. Ucar eq. (4.25) p.134 + (4.33) p.137 is a finite Bernoulli-number sum uniform in l; Schueth Remark 5.4(ii) independently attests that Watson (K=1) and Ucar (all constant K) 'actually computed c_l(gamma) for every l in N_0'.",
+        "source": "arXiv:1711.03405 read in full; arXiv:1812.06119 Remark 5.4(ii)"
+      },
+      "resolution": "B, decisively. Cross-validated: Ucar-derived p_2 = (2m^6+7m^4+28m^2-37)/5040 matches Schueth Theorem 4.1 exactly (symbolic difference zero).",
+      "confidence": "high"
+    },
+    {
+      "id": "C3",
+      "title": "Does the manuscript's paraphrase of Ucar match what Ucar wrote?",
+      "severity": "medium",
+      "position_A": {
+        "claim": "Ucar 'gives b_l(C) = kappa^l (1/m) p_l(m) with deg p_l = 2l+2'.",
+        "source": "manuscript footnote to eq. (4); task brief"
+      },
+      "position_B": {
+        "claim": "Ucar never writes that expression and never uses the word 'degree'. He gives a Bernoulli-number closed form. The quoted shape is a faithful CONSEQUENCE, not a quotation.",
+        "source": "arXiv:1711.03405 full text search"
+      },
+      "resolution": "B. Substance is right; attribution style should cite eq. (4.25)/(4.33) rather than imply a quotation.",
+      "confidence": "high"
+    },
+    {
+      "id": "C4",
+      "title": "Which Guy section is relevant?",
+      "severity": "medium",
+      "position_A": {
+        "claim": "Sections D11 and D12 are where this problem would live.",
+        "source": "task brief"
+      },
+      "position_B": {
+        "claim": "D11 is Egyptian fractions (single-fraction representation only); D12 is Markoff numbers, unrelated. The structurally relevant section is D16, 'Triples with the same sum and same product', which Schinzel SOLVED via an elliptic curve.",
+        "source": "Guy UPINT 3rd ed., DOI 10.1007/978-0-387-26677-0; DNB deposited front matter (D11 p.252, D12 p.263, D16 p.271, D28 p.309)"
+      },
+      "resolution": "B. The brief's section pointers were off; the genuinely informative neighbour is D16.",
+      "confidence": "high"
+    },
+    {
+      "id": "C5",
+      "title": "Is the manuscript's birthday-paradox heuristic standard in this literature?",
+      "severity": "medium",
+      "position_A": {
+        "claim": "It is 'of the birthday-paradox type standard in analogous Diophantine settings'.",
+        "source": "manuscript Sec 5.3, line 465"
+      },
+      "position_B": {
+        "claim": "No fetched source in the Egyptian-fraction / Erdos-Straus literature instantiates such a heuristic. That literature's register is bounds on a single counting function f(n).",
+        "source": "Bloom-Elsholtz survey arXiv:2210.04496; Elsholtz-Tao 10.1017/S1446788712000468; Elsholtz-Planitzer 10.1017/prm.2018.137; Luca-Pappalardi 10.1007/s40993-019-0172-z"
+      },
+      "resolution": "B, partially. The technique is standard in analytic number theory broadly but has no documented precedent for unit-fraction coincidences. The manuscript should soften 'standard in analogous Diophantine settings' or cite an actual instance.",
+      "confidence": "medium"
+    },
+    {
+      "id": "C6",
+      "title": "Who first proved the qualitative cone-order determinacy for hyperbolic orbisurfaces?",
+      "severity": "medium",
+      "position_A": {
+        "claim": "Ucar 2017 proves the full spectrum determines the cone-order multiset of an orientable constant-curvature orbisurface.",
+        "source": "manuscript Sec 1.2 and 1.3(a)"
+      },
+      "position_B": {
+        "claim": "True, but Ucar's Cor. 4.23 is explicitly a generalization of Dryden-Strohmaier from kappa=-1 to all kappa != 0 - so for the HYPERBOLIC case specifically the prior result is older. Doyle-Rossetti arXiv:1103.4372 is a further uncited candidate.",
+        "source": "arXiv:1711.03405 Cor. 4.21 p.139, Cor. 4.23 p.140"
+      },
+      "resolution": "Pending the Doyle-Rossetti batch. Regardless, Sec 1.3(a)'s attribution needs widening.",
+      "confidence": "medium"
+    }
+  ]
+}

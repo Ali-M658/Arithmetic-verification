@@ -1,0 +1,25 @@
+[
+  {
+    "claim": "Gomez-Serrano & Orriols's 'Any three eigenvalues do not determine a triangle' was published in Journal of Differential Equations 275 (2021), 920-938 (online Nov 2020), so the manuscript's citation of it as a 2020 preprint is stale on both venue and year.",
+    "stance": "refutes",
+    "stance_target": "manuscript bibliography entry gomezserrano2020 citing this work as 'preprint, arXiv:1911.06758 (2020)'",
+    "evidence_type": "empirical",
+    "scope_conditions": "Crossref record for DOI 10.1016/j.jde.2020.11.002",
+    "quoted_support": "container-title: Journal of Differential Equations; volume: 275; page: 920-938; published date-parts [2021,2]",
+    "numbers": [
+      "volume 275",
+      "pages 920-938",
+      "2021",
+      "2020"
+    ],
+    "entities": [
+      "Javier Gomez-Serrano",
+      "Gerard Orriols",
+      "Journal of Differential Equations"
+    ],
+    "time_period": "2019-2021",
+    "region": null,
+    "confidence": "high",
+    "source_note_id": "jjde202011002"
+  }
+]

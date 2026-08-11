@@ -1,0 +1,16 @@
+[
+  {
+    "claim": "The class of n-dimensional Riemannian orbifolds with a lower sectional-curvature bound, a lower volume bound, and an upper diameter bound has only finitely many members up to orbifold homeomorphism, and any isospectral class of such orbifolds with a lower curvature bound is finite up to orbifold homeomorphism -- proved via equivariant Alexandrov-geometry convergence, published in the Journal of Geometric Analysis (the same target venue as the planned theorem).",
+    "stance": "supports",
+    "stance_target": "orbifold spectral finiteness results, including in the target venue JGA, remain purely qualitative -- no quantitative/effective bound exists for this genre",
+    "evidence_type": "theoretical",
+    "scope_conditions": "n-dimensional Riemannian orbifolds, compact Lie group action, equivariant Gromov-Hausdorff convergence",
+    "quoted_support": "As a consequence, the class of Riemannian orbifolds of dimension $n$ defined by a lower bound on the sectional curvature and the volume and an upper bound on the diameter has only finitely many members up to orbifold homeomorphism. Furthermore, any class of isospectral Riemannian orbifolds with a lower bound on the sectional curvature is finite up to orbifold homeomorphism.",
+    "numbers": ["26", "1929-1945", "2016"],
+    "entities": ["Journal of Geometric Analysis", "Alexandrov spaces", "equivariant Gromov-Hausdorff topology"],
+    "time_period": "2014-2016",
+    "region": null,
+    "confidence": "high",
+    "source_note_id": "14010531-equivariant-alexandrov-geometry-and-orbifold-finiteness"
+  }
+]

@@ -1,0 +1,30 @@
+[
+  {
+    "claim": "Suleymanova's arXiv:1710.05355 studies how vanishing of the logarithmic heat-trace coefficient (present generically for conic singularities) relates to smoothness of the singular cross-section, in general dimension, and reports this remains an open/unresolved characterization beyond dimension 4 and cyclic space forms.",
+    "stance": "neutral",
+    "stance_target": "State of the general-dimension conic-singularity heat-trace literature as of 2017",
+    "evidence_type": "theoretical",
+    "scope_conditions": "General-dimension Riemannian manifolds with isolated conic singularities and constant-curvature cross sections",
+    "quoted_support": "In higher dimensions the situation is naturally more difficult. We illustrate this in the case of cross sections with constant curvature. Then the logarithmic term becomes a polynomial in the curvature with roots that are different from 1, which necessitates more vanishing of other terms, not isolated so far.",
+    "numbers": ["2", "4"],
+    "entities": ["Asilya Suleymanova"],
+    "time_period": "2017",
+    "region": null,
+    "confidence": "medium",
+    "source_note_id": "171005355-on-the-spectral-geometry-of-manifolds-with-conic-singularities"
+  },
+  {
+    "claim": "arXiv:1710.05355 is unpublished (no journal-ref, only the arXiv DataCite DOI 10.48550/arXiv.1710.05355), and is distinct from both arXiv:1701.01874 (the prequel general-expansion paper) and arXiv:1711.00577 (the 2-dimensional surfaces paper).",
+    "stance": "neutral",
+    "stance_target": "Publication record and relationship among Suleymanova's 2017 conic-singularity preprints",
+    "evidence_type": "empirical",
+    "scope_conditions": "As of fetch date 2026-08-09",
+    "quoted_support": "In the previous article we derived a detailed asymptotic expansion of the heat trace for the Laplace-Beltrami operator on functions on manifolds with conic singularities. In this article we investigate how the terms in the expansion reflect the geometry of the manifold.",
+    "numbers": [],
+    "entities": ["Asilya Suleymanova"],
+    "time_period": "2017-2026",
+    "region": null,
+    "confidence": "medium",
+    "source_note_id": "171005355-on-the-spectral-geometry-of-manifolds-with-conic-singularities"
+  }
+]

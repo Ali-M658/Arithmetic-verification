@@ -1,0 +1,30 @@
+[
+  {
+    "claim": "Shams-Stanhope-Webb prove orbifold isotropy types are not determined by the Laplace spectrum, constructing arbitrarily large (but always finite) families of mutually isospectral orbifolds with different isotropy types, and show corresponding singular strata of isospectral orbifolds may be non-homeomorphic.",
+    "stance": "neutral",
+    "stance_target": "limits of what the Laplace spectrum can determine about orbifold singular structure",
+    "evidence_type": "theoretical",
+    "scope_conditions": "compact Riemannian orbifolds",
+    "quoted_support": "We show that the isotropy types of the singularities of Riemannian orbifolds are not determined by the Laplace spectrum. Indeed, we construct arbitrarily large families of mutually isospectral orbifolds with different isotropy types. Finally, we show that the corresponding singular strata of two isospectral orbifolds may not be homeomorphic.",
+    "numbers": [],
+    "entities": ["Naveed Shams", "Elizabeth Stanhope", "David L. Webb"],
+    "time_period": "2005-2006",
+    "region": null,
+    "confidence": "high",
+    "source_note_id": "one-cannot-hear-orbifold-isotropy-type-archiv-der-mathematik-springer-nature-lin"
+  },
+  {
+    "claim": "The correct DOI is 10.1007/s00013-006-1748-0, and the Springer-confirmed page range is 375-385 (Arch. Math. 87 (2006) no.4), which conflicts with the query's stated '375-384' and with Dryden-Strohmaier's own bibliography entry ('375-384') -- 375-385 is the publisher/DOI-record value and should be preferred.",
+    "stance": "neutral",
+    "stance_target": "page-range accuracy for the SSW06 citation across the secondary literature",
+    "evidence_type": "empirical",
+    "scope_conditions": "Springer Nature publisher record, cross-checked via CrossRef",
+    "quoted_support": "Shams, N., Stanhope, E. & Webb, D.L. One cannot hear orbifold isotropy type. Arch. Math. 87, 375–385 (2006). https://doi.org/10.1007/s00013-006-1748-0",
+    "numbers": ["pages 375-385", "volume 87", "issue 4"],
+    "entities": ["Shams", "Stanhope", "Webb"],
+    "time_period": "2006",
+    "region": null,
+    "confidence": "high",
+    "source_note_id": "one-cannot-hear-orbifold-isotropy-type-archiv-der-mathematik-springer-nature-lin"
+  }
+]

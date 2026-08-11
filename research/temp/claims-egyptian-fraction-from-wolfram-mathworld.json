@@ -1,0 +1,44 @@
+[
+  {
+    "claim": "Wolfram MathWorld's Egyptian Fraction article confirms Guy's Unsolved Problems in Number Theory (2nd ed., 1994) Section D11 'Egyptian Fractions' occupies pp. 158-166 and is the standard reference point for the Erdos-Straus and Sierpinski unit-fraction conjectures.",
+    "stance": "neutral",
+    "stance_target": "bibliographic provenance of Guy's UPINT section on Egyptian fractions",
+    "evidence_type": "historical",
+    "scope_conditions": null,
+    "quoted_support": "Guy, R. K. \"Egyptian Fractions.\" §D11 in Unsolved Problems in Number Theory, 2nd ed. New York: Springer-Verlag, pp. 158-166, 1994.",
+    "numbers": ["pp. 158-166", "2nd ed. 1994"],
+    "entities": ["Richard K. Guy", "Unsolved Problems in Number Theory"],
+    "time_period": "1994",
+    "region": null,
+    "confidence": "high",
+    "source_note_id": "egyptian-fraction-from-wolfram-mathworld"
+  },
+  {
+    "claim": "Paul Erdos proved in 1932 that the sum of reciprocals of any number of equally-spaced integers is never itself a reciprocal, a rigidity result about single sums, not about pairs of triples matched on two symmetric functions.",
+    "stance": "refutes",
+    "stance_target": "prior art for Section 5's two-triple equal-sum-and-equal-reciprocal-sum problem",
+    "evidence_type": "historical",
+    "scope_conditions": "equally-spaced integer sequences",
+    "quoted_support": "In 1932, Erdős proved that the sum of the reciprocals of any number of equally spaced integers is never a reciprocal.",
+    "numbers": ["1932"],
+    "entities": ["Paul Erdos"],
+    "time_period": "1932",
+    "region": null,
+    "confidence": "medium",
+    "source_note_id": "egyptian-fraction-from-wolfram-mathworld"
+  },
+  {
+    "claim": "The Erdos-Straus conjecture (4/n=1/a+1/b+1/c always solvable) and Sierpinski's analogous 5/n conjecture are the article's two named open unit-fraction-equation conjectures; neither imposes any equal-integer-sum condition across two distinct triples.",
+    "stance": "refutes",
+    "stance_target": "existence of a named prior conjecture matching Section 5's exact two-symmetric-function pairing condition",
+    "evidence_type": "theoretical",
+    "scope_conditions": null,
+    "quoted_support": "Paul Erdős and E. G. Straus have conjectured that the Diophantine equation ... always can be solved, an assertion sometimes known as the Erdős-Straus conjecture, and Sierpiński (1956) conjectured that ... can be solved (Guy 1994).",
+    "numbers": [],
+    "entities": ["Erdos-Straus conjecture", "Sierpinski"],
+    "time_period": "1956",
+    "region": null,
+    "confidence": "high",
+    "source_note_id": "egyptian-fraction-from-wolfram-mathworld"
+  }
+]

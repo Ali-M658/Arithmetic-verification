@@ -1,0 +1,30 @@
+[
+  {
+    "claim": "The correct DOI for Rossetti-Schueth-Weilandt, Ann. Global Anal. Geom. 34 (2008) 351-366 is 10.1007/s10455-008-9110-3, matching the manuscript's stated page range exactly.",
+    "stance": "neutral",
+    "stance_target": "bibliographic accuracy of manuscript's RSW08 citation",
+    "evidence_type": "empirical",
+    "scope_conditions": "Springer Nature publisher record",
+    "quoted_support": "Cite this article: Rossetti, J.P., Schueth, D. & Weilandt, M. Isospectral orbifolds with different maximal isotropy orders. Ann Glob Anal Geom 34, 351–366 (2008). https://doi.org/10.1007/s10455-008-9110-3",
+    "numbers": ["volume 34", "pages 351-366", "year 2008"],
+    "entities": ["Rossetti", "Schueth", "Weilandt"],
+    "time_period": "2008",
+    "region": null,
+    "confidence": "high",
+    "source_note_id": "isospectral-orbifolds-with-different-maximal-isotropy-orders-annals-of-global-an"
+  },
+  {
+    "claim": "At the time RSW08 was written, both the Dryden-Gordon-Greenwald-Webb heat-kernel-expansion paper and the Dryden-Strohmaier Huber's-theorem paper were listed as 'to appear', consistent with the manuscript's own citation dating for these two sources.",
+    "stance": "neutral",
+    "stance_target": "cross-validation of manuscript's citation dates for DGGW and Dryden-Strohmaier",
+    "evidence_type": "historical",
+    "scope_conditions": "RSW08 reference list",
+    "quoted_support": "Dryden, E., Gordon, C.S., Greenwald, S.: Asymptotic expansion of the heat kernel for orbifolds. Michigan Math. J. (to appear); Dryden, E., Strohmaier, A.: Huber's theorem for hyperbolic orbisurfaces. Canad. Math. Bull. (to appear).",
+    "numbers": [],
+    "entities": ["Dryden", "Gordon", "Greenwald", "Webb", "Strohmaier"],
+    "time_period": "2008",
+    "region": null,
+    "confidence": "high",
+    "source_note_id": "isospectral-orbifolds-with-different-maximal-isotropy-orders-annals-of-global-an"
+  }
+]

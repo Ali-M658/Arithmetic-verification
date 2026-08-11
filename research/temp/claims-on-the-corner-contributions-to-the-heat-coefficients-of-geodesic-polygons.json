@@ -1,0 +1,44 @@
+[
+  {
+    "claim": "The published version of Schueth's paper carries DOI 10.5802/aif.3338, published online 2020-06-26 in Annales de l'Institut Fourier, Tome 69 (2019), no. 7, pp. 2827-2855, part of the proceedings volume for the conference honoring Marcel Berger (IHES, Dec 6-9 2017).",
+    "stance": "neutral",
+    "stance_target": "Exact published bibliographic metadata for the manuscript's cited source",
+    "evidence_type": "historical",
+    "scope_conditions": "Publisher record as printed on Centre Mersenne",
+    "quoted_support": "Schueth, Dorothee. On the corner contributions to the heat coefficients of geodesic polygons. Annales de l'Institut Fourier... Tome 69 (2019) no. 7, pp. 2827-2855. doi: 10.5802/aif.3338",
+    "numbers": ["69", "2019", "7", "2827", "2855"],
+    "entities": ["Dorothee Schueth", "Annales de l'Institut Fourier"],
+    "time_period": "2019-2020",
+    "region": null,
+    "confidence": "high",
+    "source_note_id": "on-the-corner-contributions-to-the-heat-coefficients-of-geodesic-polygons"
+  },
+  {
+    "claim": "The Centre Mersenne bibliography lists Dryden-Gordon-Greenwald-Webb as reference [9] (renumbered from [8] in the arXiv preprint) with journal name printed as 'Mich. Math. J.', volume 56 (2008) no. 1, pp. 205-238.",
+    "stance": "neutral",
+    "stance_target": "Exact bibliographic form of the DGGW citation in the published version",
+    "evidence_type": "historical",
+    "scope_conditions": "Published bibliography as printed on Centre Mersenne",
+    "quoted_support": "Dryden, Emily B.; Gordon, Carolyn S.; Greenwald, Sarah J.; Webb, David L. Asymptotic expansion of the heat kernel for orbifolds, Mich. Math. J., Volume 56 (2008) no. 1, pp. 205-238",
+    "numbers": ["9", "56", "2008", "205", "238"],
+    "entities": ["Dryden", "Gordon", "Greenwald", "Webb"],
+    "time_period": "2008",
+    "region": null,
+    "confidence": "high",
+    "source_note_id": "on-the-corner-contributions-to-the-heat-coefficients-of-geodesic-polygons"
+  },
+  {
+    "claim": "The Centre Mersenne page lists Ucar's PhD thesis as reference [18] with DOI dx.doi.org/10.18452/18463, distinct from the arXiv preprint 1711.03405 of the same work.",
+    "stance": "neutral",
+    "stance_target": "Identification of the Ucar thesis DOI as distinct from its arXiv posting",
+    "evidence_type": "historical",
+    "scope_conditions": "Bibliography entry as printed",
+    "quoted_support": "Ucar, Eren. Spectral invariants for polygons and orbisurfaces, Ph. D. Thesis, Humboldt-Universitat zu Berlin (2017) (dx.doi.org/10.18452/18463)",
+    "numbers": ["18", "2017"],
+    "entities": ["Eren Ucar"],
+    "time_period": "2017",
+    "region": null,
+    "confidence": "high",
+    "source_note_id": "on-the-corner-contributions-to-the-heat-coefficients-of-geodesic-polygons"
+  }
+]

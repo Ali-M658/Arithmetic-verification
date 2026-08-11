@@ -1,0 +1,72 @@
+[
+  {
+    "claim": "For compact orientable hyperbolic orbisurfaces, the Laplace spectrum EXACTLY determines the length spectrum and the exact number of cone points of each order (not merely up to finitely many possibilities), and conversely.",
+    "stance": "refutes",
+    "stance_target": "the manuscript's claim to be first to give exact finite determinacy for cone orders in a hyperbolic cone-orbifold family",
+    "evidence_type": "theoretical",
+    "scope_conditions": "compact orientable hyperbolic orbisurface",
+    "quoted_support": "Theorem 1.1. Let O be a compact orientable hyperbolic orbisurface. The Laplace spectrum of O determines its length spectrum and the number of cone points of each possible order. Knowledge of the length spectrum and the number of cone points of each order determines the Laplace spectrum.",
+    "numbers": ["Theorem 1.1"],
+    "entities": ["Emily Dryden", "Alexander Strohmaier", "Huber's theorem"],
+    "time_period": "2005-2009",
+    "region": null,
+    "confidence": "high",
+    "source_note_id": "math0504571-hubers-theorem-for-hyperbolic-orbisurfaces"
+  },
+  {
+    "claim": "Peter Doyle and Juan Pablo Rossetti independently proved the same exact-determinacy result at essentially the same time (arXiv:math/0605765), so exact cone-order determinacy from the FULL spectrum was already established by at least two independent groups by 2007.",
+    "stance": "refutes",
+    "stance_target": "novelty/priority of exact cone-order spectral determinacy for hyperbolic orbisurfaces",
+    "evidence_type": "historical",
+    "scope_conditions": "compact orientable hyperbolic orbisurfaces",
+    "quoted_support": "Shortly after preparing this manuscript, we learned that P. Doyle and J. P. Rossetti had proven this result independently (cf. [1]).",
+    "numbers": [],
+    "entities": ["Peter Doyle", "Juan Pablo Rossetti"],
+    "time_period": "2005-2009",
+    "region": null,
+    "confidence": "high",
+    "source_note_id": "math0504571-hubers-theorem-for-hyperbolic-orbisurfaces"
+  },
+  {
+    "claim": "The exact-determinacy proof requires the FULL infinite Laplace spectrum (via the singular support of the distributional wave trace derived from the Selberg trace formula), not a finite truncation to finitely many heat-trace coefficients -- a structurally different tool from finite-coefficient heat-invariant arguments.",
+    "stance": "supports",
+    "stance_target": "the manuscript's distinct methodological claim of finite-COEFFICIENT (as opposed to full-spectrum) determinacy",
+    "evidence_type": "theoretical",
+    "scope_conditions": "proof of Theorem 1.1, Section 2",
+    "quoted_support": "Knowing the wave trace we can read off the lengths of all primitive closed geodesics from its singular support... We now know that the spectrum determines the finite sum [of cone-point contribution functions]... This in turn implies that the terms contributing to the sum (3) by cone points of different orders are linearly independent. Thus we can read off the orders of the cone points in O.",
+    "numbers": [],
+    "entities": ["Selberg trace formula", "wave trace"],
+    "time_period": "2005-2009",
+    "region": null,
+    "confidence": "high",
+    "source_note_id": "math0504571-hubers-theorem-for-hyperbolic-orbisurfaces"
+  },
+  {
+    "claim": "Isospectral compact orientable hyperbolic orbisurfaces necessarily share the same underlying topological space (Proposition 3.3), a direct consequence of Theorem 1.1 via the Gauss-Bonnet relation between genus, cone orders, and orbifold Euler characteristic.",
+    "stance": "neutral",
+    "stance_target": "topological consequences of exact cone-order determinacy",
+    "evidence_type": "theoretical",
+    "scope_conditions": "compact orientable hyperbolic orbisurfaces",
+    "quoted_support": "Proposition 3.3. Isospectral compact orientable hyperbolic orbisurfaces have the same underlying topological space.",
+    "numbers": [],
+    "entities": [],
+    "time_period": "2005-2009",
+    "region": null,
+    "confidence": "high",
+    "source_note_id": "math0504571-hubers-theorem-for-hyperbolic-orbisurfaces"
+  },
+  {
+    "claim": "Because a hyperbolic (p,q,r) triangle orbifold has a unique hyperbolic structure up to isometry (no continuous moduli) once the cone orders p,q,r are fixed, Theorem 1.1 (spectrum determines the exact cone-order multiset) implies as an unstated logical corollary that no two non-isometric compact orientable hyperbolic triangle orbifolds can be Laplace isospectral.",
+    "stance": "refutes",
+    "stance_target": "existence of isospectral non-isometric hyperbolic triangle orbifold pairs",
+    "evidence_type": "theoretical",
+    "scope_conditions": "compact orientable hyperbolic (p,q,r) triangle orbifolds",
+    "quoted_support": "The Laplace spectrum of O determines its length spectrum and the number of cone points of each possible order.",
+    "numbers": [],
+    "entities": ["triangle orbifold", "rigidity"],
+    "time_period": "2005-2009 (theorem); corollary is this fetcher's own logical deduction, not stated verbatim in the source",
+    "region": null,
+    "confidence": "medium",
+    "source_note_id": "math0504571-hubers-theorem-for-hyperbolic-orbisurfaces"
+  }
+]

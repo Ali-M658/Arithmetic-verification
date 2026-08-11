@@ -1,0 +1,30 @@
+[
+  {
+    "claim": "Donnelly's 'Spectrum and the fixed point sets of isometries. I' has the confirmed real DOI 10.1007/BF01436198, published in Math. Ann. 224, pages 161-170 (issue date April 1976, received 15 March 1976).",
+    "stance": "supports",
+    "stance_target": "manuscript's Donnelly 1976 citation and DOI",
+    "evidence_type": "historical",
+    "scope_conditions": null,
+    "quoted_support": "Donnelly, H. Spectrum and the fixed point sets of isometries. I. Math. Ann. 224, 161–170 (1976). https://doi.org/10.1007/BF01436198 Download citation Received: 15 March 1976 Issue date: April 1976",
+    "numbers": ["224", "161-170", "1976", "10.1007/BF01436198"],
+    "entities": ["Harold Donnelly", "Massachusetts Institute of Technology"],
+    "time_period": "1976",
+    "region": null,
+    "confidence": "high",
+    "source_note_id": "spectrum-and-the-fixed-point-sets-of-isometries-i-mathematische-annalen-springer"
+  },
+  {
+    "claim": "The full text of Donnelly's 1976 paper is paywalled on SpringerLink (39.95 EUR per-article purchase or institutional subscription); no abstract is exposed on the public preview page, so its Theorem 5.1 and Theorem 4.1 (which DGGW cite for the b_0/b_1 formulas and heat-kernel existence, respectively) could not be verified against the original text directly.",
+    "stance": "neutral",
+    "stance_target": "fetchability of Donnelly 1976 primary text",
+    "evidence_type": "historical",
+    "scope_conditions": null,
+    "quoted_support": "This is a preview of subscription content, log in via an institution to check access. ... Buy article PDF 39,95 € Price includes VAT (India) Instant access to the full article PDF.",
+    "numbers": ["39.95"],
+    "entities": ["SpringerLink"],
+    "time_period": "1976",
+    "region": null,
+    "confidence": "medium",
+    "source_note_id": "spectrum-and-the-fixed-point-sets-of-isometries-i-mathematische-annalen-springer"
+  }
+]

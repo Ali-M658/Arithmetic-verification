@@ -1,0 +1,16 @@
+[
+  {
+    "claim": "Proctor generalizes Proctor-Stanhope's 2-orbifold finiteness theorem to n-dimensional orbifolds with isolated singular points, via a compactness/convergence argument using Perelman's stability theorem, and derives a corresponding isospectral finiteness result.",
+    "stance": "supports",
+    "stance_target": "no effective/quantitative version of the Proctor-Stanhope orbifold finiteness theorem exists in the literature",
+    "evidence_type": "theoretical",
+    "scope_conditions": "n-dimensional orbifolds with isolated singular points, sectional curvature and volume bounded below, diameter bounded above",
+    "quoted_support": "It follows that any Laplace isospectral collection of orbifolds with sectional curvature uniformly bounded below and having only isolated singular points also contains only finitely many orbifold homeomorphism types. The main steps of the argument are to show that any sequence from the collection has subsequence that converges to an orbifold, and then to show that the homeomorphism ... guaranteed by Perelman's stability theorem must preserve orbifold structure.",
+    "numbers": [],
+    "entities": ["Emily Proctor", "Perelman's stability theorem", "Grove", "Petersen", "Wu"],
+    "time_period": "2011",
+    "region": null,
+    "confidence": "high",
+    "source_note_id": "11062724-orbifold-homeomorphism-finiteness-based-on-geometric-constraints"
+  }
+]

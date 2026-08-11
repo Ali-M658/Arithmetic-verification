@@ -1,0 +1,44 @@
+[
+  {
+    "claim": "Lu and Rowlett prove one can hear the shape of parallelograms, acute trapezoids, and the regular n-gon among convex domains.",
+    "stance": "neutral",
+    "stance_target": "scope of exact-determinacy inverse spectral shape results",
+    "evidence_type": "theoretical",
+    "scope_conditions": "Euclidean planar domains, Dirichlet spectrum",
+    "quoted_support": "These are then used to prove that one can hear the shape of: parallelograms, acute trapezoids, and the regular n-gon.",
+    "numbers": [],
+    "entities": ["Zhiqin Lu", "Julie Rowlett"],
+    "time_period": "2015-2020",
+    "region": null,
+    "confidence": "high",
+    "source_note_id": "201205851-the-sound-of-symmetry"
+  },
+  {
+    "claim": "The regular n-gon is uniquely determined among all convex n-gons by a finite number of Laplace eigenvalues, a finite-coefficient determinacy result rather than a stability/conditioning estimate.",
+    "stance": "supports",
+    "stance_target": "finite-coefficient determinacy results in this literature state a sufficient count for exact recovery but do not quantify robustness to eigenvalue error",
+    "evidence_type": "theoretical",
+    "scope_conditions": "regular n-gon vs. all convex n-gons; Dirichlet Laplacian",
+    "quoted_support": "we show that one can realistically hear the shape of the regular n-gon amongst all convex n-gons because it is uniquely determined by a finite number of eigenvalues; the sound of symmetry can really be heard!",
+    "numbers": [],
+    "entities": ["regular n-gon"],
+    "time_period": "2015-2020",
+    "region": null,
+    "confidence": "high",
+    "source_note_id": "201205851-the-sound-of-symmetry"
+  },
+  {
+    "claim": "The published version of Lu-Rowlett's paper is The American Mathematical Monthly 122(9):815-835 (2015), DOI 10.4169/amer.math.monthly.122.9.815, linked directly from the arXiv record as the Related DOI.",
+    "stance": "neutral",
+    "stance_target": "bibliographic record for a competing/adjacent finite-invariant determinacy result",
+    "evidence_type": "empirical",
+    "scope_conditions": "publication record",
+    "quoted_support": "Journal reference: The American Mathematical Monthly, 122:9, (2015), 815-835 ... Related DOI: https://doi.org/10.4169/amer.math.monthly.122.9.815",
+    "numbers": ["122(9)", "815-835", "2015"],
+    "entities": ["American Mathematical Monthly"],
+    "time_period": "2015",
+    "region": null,
+    "confidence": "high",
+    "source_note_id": "201205851-the-sound-of-symmetry"
+  }
+]

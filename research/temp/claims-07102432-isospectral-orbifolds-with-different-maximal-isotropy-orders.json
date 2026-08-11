@@ -1,0 +1,30 @@
+[
+  {
+    "claim": "Rossetti-Schueth-Weilandt construct compact Riemannian orbifold pairs, isospectral for the Laplacian on functions, where the maximal isotropy order of singular points differs between the two orbifolds -- one family via Sunada's theorem on quotients of compact normal homogeneous spaces (also isospectral on p-forms), another via quotients of Euclidean R^3 (isospectral on functions only, not on 1-forms).",
+    "stance": "neutral",
+    "stance_target": "existence of isospectral orbifold pairs with different singular structure, though not in the hyperbolic constant-curvature 2-orbifold setting",
+    "evidence_type": "theoretical",
+    "scope_conditions": "compact Riemannian orbifolds; Euclidean R^3 quotients and homogeneous-space quotients",
+    "quoted_support": "We construct pairs of compact Riemannian orbifolds which are isospectral for the Laplace operator on functions such that the maximal isotropy order of singular points in one of the orbifolds is higher than in the other.",
+    "numbers": [],
+    "entities": ["Juan Pablo Rossetti", "Dorothee Schueth", "Martin Weilandt"],
+    "time_period": "2007-2008",
+    "region": null,
+    "confidence": "high",
+    "source_note_id": "07102432-isospectral-orbifolds-with-different-maximal-isotropy-orders"
+  },
+  {
+    "claim": "These examples are flat (Euclidean R^3 quotient) or homogeneous-space constructions, not hyperbolic 2-orbifolds, so they do not directly bear on hyperbolic triangle-orbifold or cone-orbisurface determinacy.",
+    "stance": "neutral",
+    "stance_target": "applicability of RSW08 examples to the hyperbolic cone-orbifold determinacy question",
+    "evidence_type": "theoretical",
+    "scope_conditions": "arXiv:0710.2432, Ann. Glob. Anal. Geom. 34 (2008)",
+    "quoted_support": "In another type of examples, the orbifolds are quotients of Euclidean R^3 and are shown to be isospectral on functions using dimension formulas for the eigenspaces.",
+    "numbers": [],
+    "entities": ["Euclidean R^3"],
+    "time_period": "2007-2008",
+    "region": null,
+    "confidence": "medium",
+    "source_note_id": "07102432-isospectral-orbifolds-with-different-maximal-isotropy-orders"
+  }
+]

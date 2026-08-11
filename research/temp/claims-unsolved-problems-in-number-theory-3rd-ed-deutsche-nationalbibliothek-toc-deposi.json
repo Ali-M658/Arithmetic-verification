@@ -1,0 +1,72 @@
+[
+  {
+    "claim": "Guy's Unsolved Problems in Number Theory, 3rd ed. (2004), Section D (Diophantine Equations, pp.209-310) is subdivided into exactly 29 titled subsections D1-D29, none of which is titled anything resembling 'pairs of triples with equal sum and equal sum of reciprocals'.",
+    "stance": "refutes",
+    "stance_target": "existence of Section 5's problem as a titled subsection in Guy's UPINT",
+    "evidence_type": "historical",
+    "scope_conditions": "3rd edition, 2004, Springer, DOI 10.1007/978-0-387-26677-0",
+    "quoted_support": "D. Diophantine Equations 209 ... D11. Egyptian fractions. 252 D12. Markoff numbers. 263 D13. The equation x^x y^y = z^z. 265 ... D16. Triples with the same sum and same product. 271 ... D28. A reciprocal diophantine equation. 309 D29. Diophantine m-tuples. 310",
+    "numbers": ["D1-D29", "pp.209-310", "3rd ed. 2004"],
+    "entities": ["Richard K. Guy", "Unsolved Problems in Number Theory"],
+    "time_period": "2004",
+    "region": null,
+    "confidence": "high",
+    "source_note_id": "unsolved-problems-in-number-theory-3rd-ed-deutsche-nationalbibliothek-toc-deposi"
+  },
+  {
+    "claim": "Section D11 'Egyptian fractions' occupies pp.252-262 (ending where D12 begins at p.263) in the 3rd edition, consistent with the 2nd-edition page range pp.158-166 cited independently by MathWorld.",
+    "stance": "neutral",
+    "stance_target": "exact location of the Egyptian-fractions section across editions",
+    "evidence_type": "historical",
+    "scope_conditions": "3rd ed. 2004 vs 2nd ed. 1994",
+    "quoted_support": "D11. Egyptian fractions. 252 D12. Markoff numbers. 263",
+    "numbers": ["p.252", "p.263", "pp.158-166 (2nd ed.)"],
+    "entities": ["Richard K. Guy"],
+    "time_period": "2004",
+    "region": null,
+    "confidence": "high",
+    "source_note_id": "unsolved-problems-in-number-theory-3rd-ed-deutsche-nationalbibliothek-toc-deposi"
+  },
+  {
+    "claim": "Section D16 'Triples with the same sum and same product' (p.271) is the structurally closest subsection in Guy's UPINT to a pairs-of-triples numeric coincidence, but its second matched invariant is PRODUCT, not sum of reciprocals, making it a different problem from Section 5's target.",
+    "stance": "refutes",
+    "stance_target": "identity of D16 with Section 5's equal-sum-equal-reciprocal-sum problem",
+    "evidence_type": "historical",
+    "scope_conditions": "Section D, 3rd ed.",
+    "quoted_support": "D16. Triples with the same sum and same product. 271",
+    "numbers": ["p.271"],
+    "entities": ["Richard K. Guy"],
+    "time_period": "2004",
+    "region": null,
+    "confidence": "high",
+    "source_note_id": "unsolved-problems-in-number-theory-3rd-ed-deutsche-nationalbibliothek-toc-deposi"
+  },
+  {
+    "claim": "Section D28 'A reciprocal diophantine equation' (p.309) is the only subsection title in Guy's UPINT containing the word 'reciprocal', but it concerns a single 4-variable Mordell-type equation, not a pairs-of-triples coincidence.",
+    "stance": "refutes",
+    "stance_target": "identity of D28 with Section 5's problem",
+    "evidence_type": "historical",
+    "scope_conditions": "Section D, 3rd ed.",
+    "quoted_support": "D28. A reciprocal diophantine equation. 309",
+    "numbers": ["p.309"],
+    "entities": ["Richard K. Guy", "Mordell"],
+    "time_period": "2004",
+    "region": null,
+    "confidence": "high",
+    "source_note_id": "unsolved-problems-in-number-theory-3rd-ed-deutsche-nationalbibliothek-toc-deposi"
+  },
+  {
+    "claim": "The 3rd edition (2004) added new problems on symmetric and asymmetric primes, sums of higher powers, Diophantine m-tuples, and Conway's RATS and palindromes relative to the 2nd edition, plus OEIS cross-references at the end of many sections.",
+    "stance": "neutral",
+    "stance_target": "scope of revisions in the 3rd edition",
+    "evidence_type": "historical",
+    "scope_conditions": "3rd ed. vs earlier editions",
+    "quoted_support": "For this new edition, the author has included new problems on symmetric and asymmetric primes, sums of higher powers, Diophantine m-tuples, and Conway's RATS and palindromes.",
+    "numbers": ["3rd ed."],
+    "entities": ["Richard K. Guy"],
+    "time_period": "2004",
+    "region": null,
+    "confidence": "medium",
+    "source_note_id": "unsolved-problems-in-number-theory-3rd-ed-deutsche-nationalbibliothek-toc-deposi"
+  }
+]

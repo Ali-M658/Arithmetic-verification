@@ -1,0 +1,25 @@
+{
+  "vault_tag": "hyperbolic-pillow-heat-novelty-813161",
+  "loci": [
+    {"id":"L1","title":"Prior art for the equal-sum + equal-reciprocal-sum problem","type":"evidential","score":9.6,
+     "why":"Highest-priority question in the brief. A false 'new' is a referee-facing embarrassment; a false 'known' needlessly weakens the paper.",
+     "status":"RESOLVED - no prior art; nearest relatives identified (Guy D16 / Schinzel; census-taker)","source_budget":14},
+    {"id":"L2","title":"Exact form and attribution of b_1, and availability of b_l for l>=2","type":"evidential","score":9.8,
+     "why":"Load-bearing: Theorem C and Corollary D depend on eq. (4). Also decides whether the planned K<=n+1 extension is cheap or expensive.",
+     "status":"RESOLVED - eq.(4) exact; b_l explicit for all l via Ucar, cross-validated at l=2 against Schueth","source_budget":12},
+    {"id":"L3","title":"Does the Sec 1.3(b) priority claim survive?","type":"dialectical","score":9.4,
+     "why":"THE dialectical locus. Requires actively seeking the strongest case against the claim, not merely failing to find one for it.",
+     "status":"LARGELY RESOLVED - survives; narrowing recommended","source_budget":13},
+    {"id":"L4","title":"Novelty of the planned stability theorem","type":"dialectical","score":8.2,
+     "why":"Technique novelty and setting novelty pull in opposite directions and must be separated.",
+     "status":"NA half resolved (all standard, Batenkov-Yomdin is the template); orbifold-setting null pending","source_budget":11},
+    {"id":"L5","title":"What a JGA paper in this area looks like","type":"evidential","score":6.8,
+     "why":"Advisory, but the deliverable's question 6 is prescriptive and needs a concrete gap list against the manuscript.",
+     "status":"RESOLVED - 12 records with DOIs; Dryden-Gordon-Rowlett 2025 is the exemplar","source_budget":12},
+    {"id":"L6","title":"Is the manuscript's bibliography accurate?","type":"evidential","score":7.5,
+     "why":"Emergent, not in the brief. Two of the first two 'preprint' entries checked turned out to be published, so the whole bibliography became suspect.",
+     "status":"IN PROGRESS - dedicated batch running","source_budget":24}
+  ],
+  "dialectical_loci_present": true,
+  "notes": "L3 and L4 are the dialectical loci required by the pipeline invariant. L6 was not in the brief; it emerged when Bari-Hunsicker and Schueth 2025 were both found to be published despite being cited as preprints."
+}

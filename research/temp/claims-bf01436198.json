@@ -1,0 +1,24 @@
+[
+  {
+    "claim": "Donnelly's 'Spectrum and the fixed point sets of isometries. I' (Math. Ann. 224 (1976), no. 2, 161-170) is exactly matched by the manuscript's printed bibliography entry.",
+    "stance": "supports",
+    "stance_target": "manuscript bibliography entry donnelly1976 as printed",
+    "evidence_type": "empirical",
+    "scope_conditions": "Crossref record for DOI 10.1007/BF01436198",
+    "quoted_support": "container-title: Mathematische Annalen; volume: 224; issue: 2; page: 161-170; published [1976,4]",
+    "numbers": [
+      "volume 224",
+      "issue 2",
+      "pages 161-170",
+      "1976"
+    ],
+    "entities": [
+      "Harold Donnelly",
+      "Mathematische Annalen"
+    ],
+    "time_period": "1976",
+    "region": null,
+    "confidence": "high",
+    "source_note_id": "bf01436198"
+  }
+]

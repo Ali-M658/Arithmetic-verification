@@ -1,0 +1,44 @@
+[
+  {
+    "claim": "Nursultanov, Rowlett & Sher (arXiv:1905.00259, published Ann. Math. Quebec 49 (2025) 1-61) prove that the heat trace of a curvilinear polygonal domain (Dirichlet/Neumann/Robin/mixed) in an arbitrary surface has a complete polyhomogeneous conormal short-time asymptotic expansion to all orders, and give the first three terms explicitly through the constant term a_0.",
+    "stance": "neutral",
+    "stance_target": "What corner invariants for curvilinear polygons are established in the literature, and to what order",
+    "evidence_type": "theoretical",
+    "scope_conditions": "Curvilinear polygonal domains in arbitrary smooth surfaces, finitely many vertices, Friedrichs extension at each vertex",
+    "quoted_support": "Tr H^Omega(t) has a complete polyhomogeneous conormal expansion in t as t->0. Moreover, the first few terms of this expansion have the form Tr H^Omega(t) = a_{-1} t^{-1} + a_{-1/2} t^{-1/2} + a_0 + O(t^{1/2} log t)",
+    "numbers": ["-1", "-1/2", "0", "1/2"],
+    "entities": ["Medet Nursultanov", "Julie Rowlett", "David Sher"],
+    "time_period": "2019-2025",
+    "region": null,
+    "confidence": "high",
+    "source_note_id": "190500259-the-heat-kernel-on-curvilinear-polygonal-domains-in-surfaces-2"
+  },
+  {
+    "claim": "The explicit corner-angle contribution to the constant term a_0 in NRS's expansion is (pi^2-alpha_j^2)/(24 pi alpha_j) at vertices with matching boundary-condition type on both adjacent edges, and (-pi^2-2alpha_j^2)/(48 pi alpha_j) at vertices where the boundary condition type changes -- these are angle-only, with no curvature-corner interaction term; that interaction first appears one order later, at t^{1/2}, per Looi-Sher (arXiv:2512.04422).",
+    "stance": "neutral",
+    "stance_target": "The order at which boundary curvature and corner geometry first interact in the heat trace",
+    "evidence_type": "theoretical",
+    "scope_conditions": "Curvilinear polygonal domains, constant term a_0 of the heat trace expansion",
+    "quoted_support": "a_0 = 1/(12 pi) int_Omega K(z) dz + 1/(12 pi) int_{d Omega} k_g(x) dx - 1/(2 pi) sum_{j in E_R} int_{E_j} kappa_j(x) dx + sum_{j in V_=} (pi^2-alpha_j^2)/(24 pi alpha_j) + sum_{j in V_!=} (-pi^2-2 alpha_j^2)/(48 pi alpha_j).",
+    "numbers": ["24", "48"],
+    "entities": ["Medet Nursultanov", "Julie Rowlett", "David Sher"],
+    "time_period": "2019-2025",
+    "region": null,
+    "confidence": "high",
+    "source_note_id": "190500259-the-heat-kernel-on-curvilinear-polygonal-domains-in-surfaces-2"
+  },
+  {
+    "claim": "NRS's published version carries DOI 10.1007/s40316-024-00237-4 in Annales mathematiques du Quebec, volume 49, pages 1-61, received 2 March 2024, accepted 22 March 2024, published 27 December 2024, issue dated April 2025 -- matching the DOI already listed in the arXiv metadata.",
+    "stance": "neutral",
+    "stance_target": "Correct published bibliographic record for Nursultanov-Rowlett-Sher",
+    "evidence_type": "empirical",
+    "scope_conditions": "Publisher record, confirmed cross-source (arXiv 'Related DOI' field vs. SpringerLink page)",
+    "quoted_support": "Nursultanov, M., Rowlett, J. & Sher, D. The heat kernel on curvilinear polygonal domains in surfaces. Ann. Math. Quebec 49, 1-61 (2025). https://doi.org/10.1007/s40316-024-00237-4",
+    "numbers": ["49", "1", "61", "2024", "2025"],
+    "entities": ["Medet Nursultanov", "Julie Rowlett", "David Sher"],
+    "time_period": "2024-2025",
+    "region": null,
+    "confidence": "high",
+    "source_note_id": "190500259-the-heat-kernel-on-curvilinear-polygonal-domains-in-surfaces-2"
+  }
+]

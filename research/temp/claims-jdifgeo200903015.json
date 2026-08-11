@@ -1,0 +1,41 @@
+[
+  {
+    "claim": "Proctor & Stanhope's 'Spectral and geometric bounds on 2-orbifold diffeomorphism type' (arXiv:0811.0797) was published in Differential Geometry and its Applications 28(1), 12-18 (Feb 2010), contradicting the manuscript's citation of it as a 2009 preprint.",
+    "stance": "refutes",
+    "stance_target": "manuscript bibliography entry proctorstanhope2009 citing this work as 'preprint, arXiv:0811.0797 (2009)'",
+    "evidence_type": "empirical",
+    "scope_conditions": "Crossref record for DOI 10.1016/j.difgeo.2009.03.015",
+    "quoted_support": "container-title: Differential Geometry and its Applications; volume: 28; issue: 1; page: 12-18; published date-parts [2010,2]",
+    "numbers": [
+      "volume 28",
+      "issue 1",
+      "pages 12-18",
+      "2010"
+    ],
+    "entities": [
+      "Emily Proctor",
+      "Elizabeth Stanhope",
+      "Differential Geometry and its Applications"
+    ],
+    "time_period": "2008-2010",
+    "region": null,
+    "confidence": "high",
+    "source_note_id": "jdifgeo200903015"
+  },
+  {
+    "claim": "The arXiv abstract page and arXiv API metadata for 0811.0797 carry no journal-ref field, so the published venue is invisible from arXiv alone and must be found via Crossref.",
+    "stance": "neutral",
+    "stance_target": "reliability of relying on arXiv journal-ref fields alone to detect stale preprint citations",
+    "evidence_type": "empirical",
+    "scope_conditions": "arXiv:0811.0797 abstract page and export.arxiv.org API query",
+    "quoted_support": "arXiv API query for id_list=0811.0797 returns no journal_ref and no arxiv:doi field.",
+    "numbers": [],
+    "entities": [
+      "arXiv"
+    ],
+    "time_period": "2008-2026",
+    "region": null,
+    "confidence": "high",
+    "source_note_id": "jdifgeo200903015"
+  }
+]

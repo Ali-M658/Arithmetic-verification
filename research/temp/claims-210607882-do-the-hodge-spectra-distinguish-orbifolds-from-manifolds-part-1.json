@@ -1,0 +1,30 @@
+[
+  {
+    "claim": "GGKMSS Part 1 is published: Michigan Mathematical Journal 74 (2024) no.3, 571-598, DOI 10.1307/mmj/20216126, per direct CrossRef query.",
+    "stance": "neutral",
+    "stance_target": "bibliographic record for GGKMSS Part 1",
+    "evidence_type": "empirical",
+    "scope_conditions": "CrossRef metadata",
+    "quoted_support": "[CrossRef API response for DOI 10.1307/mmj/20216126]: container-title 'Michigan Mathematical Journal', volume 74, issue 3, published date-parts [2024, 7, 1].",
+    "numbers": ["volume 74", "issue 3", "pages 571-598"],
+    "entities": ["Katie Gittins", "Carolyn Gordon", "Magda Khalile", "Ingrid Membrillo Solis", "Mary Sandoval", "Elizabeth Stanhope"],
+    "time_period": "2021-2024",
+    "region": null,
+    "confidence": "high",
+    "source_note_id": "210607882-do-the-hodge-spectra-distinguish-orbifolds-from-manifolds-part-1"
+  },
+  {
+    "claim": "The heat invariants of the 0-spectrum together with the 1-spectrum of the Hodge Laplacians suffice to distinguish orbifolds with singular sets of codimension <=3 from manifolds, which is sufficient to distinguish orbifolds from manifolds in dimension <=3.",
+    "stance": "neutral",
+    "stance_target": "scope of general orbifold-vs-manifold heat-invariant distinguishability, distinct from hyperbolic cone-orbifold determinacy",
+    "evidence_type": "theoretical",
+    "scope_conditions": "compact Riemannian orbifolds, singular set codimension <= 3",
+    "quoted_support": "We show that the heat invariants of the 0-spectrum together with those of the 1-spectrum for the corresponding Hodge Laplacians are sufficient to distinguish orbifolds with singularities from manifolds as long as the singular sets have codimension ≤ 3. This is enough to distinguish orbifolds from manifolds for dimension ≤ 3.",
+    "numbers": ["codimension <= 3", "dimension <= 3"],
+    "entities": ["Hodge Laplacian"],
+    "time_period": "2021-2024",
+    "region": null,
+    "confidence": "high",
+    "source_note_id": "210607882-do-the-hodge-spectra-distinguish-orbifolds-from-manifolds-part-1"
+  }
+]

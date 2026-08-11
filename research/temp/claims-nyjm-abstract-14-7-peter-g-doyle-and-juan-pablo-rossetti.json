@@ -1,0 +1,24 @@
+[
+  {
+    "claim": "Doyle & Rossetti's 'Isospectral hyperbolic surfaces have matching geodesics' (New York J. Math. 14 (2008), 193-204) has no DOI registered anywhere: New York J. Math. does not appear at all in Crossref's container-title index for this author, confirming the journal did not register DOIs for articles of this era.",
+    "stance": "neutral",
+    "stance_target": "whether a DOI can be found for this manuscript citation, per the task's explicit instruction never to invent one",
+    "evidence_type": "empirical",
+    "scope_conditions": "primary source: nyjm.albany.edu/j/2008/14-7.html; Crossref query.container-title search for 'New York Journal of Mathematics' + author Doyle",
+    "quoted_support": "New York Journal of Mathematics Volume 14 (2008) 193-204 ... Published: June 5, 2008. [No DOI field present on the page.] Crossref search returns zero New York J. Math. records.",
+    "numbers": [
+      "volume 14",
+      "pages 193-204",
+      "2008"
+    ],
+    "entities": [
+      "Peter G. Doyle",
+      "Juan Pablo Rossetti",
+      "New York Journal of Mathematics"
+    ],
+    "time_period": "2006-2009",
+    "region": null,
+    "confidence": "high",
+    "source_note_id": "nyjm-abstract-14-7-peter-g-doyle-and-juan-pablo-rossetti"
+  }
+]

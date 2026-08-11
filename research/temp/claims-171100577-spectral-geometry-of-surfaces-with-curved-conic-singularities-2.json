@@ -1,0 +1,72 @@
+[
+  {
+    "claim": "Suleymanova's Theorem 1.1 (2017) gives an explicit closed-form claimed value for the first half-integer heat coefficient of a curved conic singularity on a surface: b_{1/2} = (5/(96 sqrt(pi))) * sum_i kappa_i * cot(alpha_i), where alpha_i is the opening angle and kappa_i = f_i''(0) is the curvature of the generating curve at the i-th singularity.",
+    "stance": "neutral",
+    "stance_target": "Whether explicit higher/half-integer cone coefficients for curved conic surface singularities were computed before Schueth's 2025 paper",
+    "evidence_type": "theoretical",
+    "scope_conditions": "Surface (2-dimensional) with k curved conic singularities, metric g = dr^2 + f(r)^2 dtheta^2 with f smooth, not necessarily flat",
+    "quoted_support": "b_{1/2} = 5/(96 sqrt(pi)) sum_{i=1}^k kappa_i cot(alpha_i).",
+    "numbers": ["5/96", "1/2"],
+    "entities": ["Asilya Suleymanova", "Theorem 1.1"],
+    "time_period": "2017",
+    "region": null,
+    "confidence": "high",
+    "source_note_id": "171100577-spectral-geometry-of-surfaces-with-curved-conic-singularities-2"
+  },
+  {
+    "claim": "Suleymanova's paper explicitly claims this is the first detection of a non-zero half-power-order heat coefficient for conic singularities, contrasting with smooth closed surfaces (no half powers) and flat cones (only a constant term is affected).",
+    "stance": "neutral",
+    "stance_target": "Priority for detecting half-integer heat coefficients in conic singularity expansions",
+    "evidence_type": "theoretical",
+    "scope_conditions": "Surfaces with curved (non-flat) conic singularities",
+    "quoted_support": "A very interesting phenomenon is that in the case of the surface with conic singularities in general there is a non-zero half power order coefficient b_{1/2}.",
+    "numbers": [],
+    "entities": ["Asilya Suleymanova"],
+    "time_period": "2017",
+    "region": null,
+    "confidence": "high",
+    "source_note_id": "171100577-spectral-geometry-of-surfaces-with-curved-conic-singularities-2"
+  },
+  {
+    "claim": "Schueth's 2025/2026 paper (arXiv:2511.22255 / Ann. Global Anal. Geom. 69 (2026) Paper No. 2) identifies a computational error in Suleymanova's b_{1/2} formula: the pole of Gamma(-s/2) at s=0 appears to have been overlooked in Suleymanova's derivation, and Schueth's corrected b_{1/2}(C) is proved to depend IRRATIONALLY on the rescaling parameter f'(0), directly contradicting Suleymanova's claim of a rational (linear-in-f''(0)/f'(0)) closed form.",
+    "stance": "refutes",
+    "stance_target": "Correctness of Suleymanova (arXiv:1711.00577) Theorem 1.1's b_{1/2} formula",
+    "evidence_type": "theoretical",
+    "scope_conditions": "Same setting: rotationally-symmetric, possibly curved (f''(0) != 0) conic singularity on a surface",
+    "quoted_support": "As it is, the pole of Gamma at s=0 seems to have been ignored in the computation starting in the lower part of p. 9 in [Suleymanova 2017]... This would mean that b_{1/2}(C) were equal to f''(0)/f'(0) * 5/(96 sqrt(pi)). Note that this expression is constant under constant rescalings of f and contradicts our formula for b_{1,m}(C) in Corollary 3.15 below, as well as its irrational dependence on f'(0).",
+    "numbers": ["5/96"],
+    "entities": ["Dorothee Schueth", "Asilya Suleymanova", "Remark 3.3"],
+    "time_period": "2017 vs 2025/2026",
+    "region": null,
+    "confidence": "high",
+    "source_note_id": "171100577-spectral-geometry-of-surfaces-with-curved-conic-singularities-2"
+  },
+  {
+    "claim": "Suleymanova's paper is a self-contained sequel to her general-dimension analytic paper arXiv:1701.01874 ('In the prequel paper [S2, Lemma 2.1, Theorem 2.2]...'), specializing to surfaces (dimension 2) and using an identical singular metric form g_conic = dr^2 + f(r)^2 dtheta^2 to the one later used independently by Schueth in arXiv:2511.22255.",
+    "stance": "neutral",
+    "stance_target": "Continuity of the curved-conic-singularity analytic literature from 2017 to 2025",
+    "evidence_type": "theoretical",
+    "scope_conditions": "Surfaces with curved conic singularities",
+    "quoted_support": "In the prequel paper [S2, Lemma 2.1, Theorem 2.2], we studied the spectral geometry of surfaces with conic singularities, where g_conic = dr^2+r^2 dtheta^2... In this article we study the spectral geometry in the more general case, when the cone near the singularity may be non-flat.",
+    "numbers": [],
+    "entities": ["Asilya Suleymanova"],
+    "time_period": "2017",
+    "region": null,
+    "confidence": "high",
+    "source_note_id": "171100577-spectral-geometry-of-surfaces-with-curved-conic-singularities-2"
+  },
+  {
+    "claim": "arXiv:1711.00577 has never been published in a peer-reviewed journal (no journal-ref on arXiv, only the DataCite DOI 10.48550/arXiv.1711.00577); the author's own homepage CV lists it only as 'Preprint (2017)'.",
+    "stance": "neutral",
+    "stance_target": "Publication record for Suleymanova arXiv:1711.00577",
+    "evidence_type": "empirical",
+    "scope_conditions": "As of fetch date 2026-08-09",
+    "quoted_support": "Spectral geometry of surfaces with curved conic singularities, pdf, Preprint. (2017).",
+    "numbers": [],
+    "entities": ["Asilya Suleymanova"],
+    "time_period": "2017-2026",
+    "region": null,
+    "confidence": "high",
+    "source_note_id": "171100577-spectral-geometry-of-surfaces-with-curved-conic-singularities-2"
+  }
+]

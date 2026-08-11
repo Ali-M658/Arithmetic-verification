@@ -1,0 +1,72 @@
+[
+  {
+    "claim": "Takeuchi's Theorem 3 (1977) gives the complete, exhaustive list of all 85 arithmetic triangle-group triples (e1,e2,e3), and this verbatim list explicitly contains both (2,8,8) and (3,3,12).",
+    "stance": "supports",
+    "stance_target": "existence of the {(2,8,8),(3,3,12)} coincidence in the triangle-group/covolume literature",
+    "evidence_type": "empirical",
+    "scope_conditions": "compact-type arithmetic triangle groups, primary source read in full",
+    "quoted_support": "(2,6,6), (2,6,8), (2,6,12), (2,7,7), (2,7,14), (2,8,8), (2,8,16), (2,9,18) ... (3,3,4), (3,3,5), (3,3,6), (3,3,7), (3,3,8), (3,3,9), (3,3,12), (3,3,15)",
+    "numbers": ["85 total triples", "76 compact", "9 non-compact"],
+    "entities": ["Kisao Takeuchi", "(2,8,8)", "(3,3,12)"],
+    "time_period": "1977",
+    "region": null,
+    "confidence": "high",
+    "source_note_id": "takeuchi-1977-arithmetic-triangle-groups-theorem-3-full-list-verbatim-85-triples"
+  },
+  {
+    "claim": "A triangle group (e1,e2,e3) is arithmetic iff it is commensurable with the unit group of an order in a quaternion algebra over a totally real number field; the criterion (Theorem 1) is expressed via the trace field k0=Q((cos(pi/e1))^2,(cos(pi/e2))^2,(cos(pi/e3))^2, cos(pi/e1)cos(pi/e2)cos(pi/e3)) and an embedding-positivity inequality, entirely independent of the numeric sum e1+e2+e3 or the reciprocal sum 1/e1+1/e2+1/e3.",
+    "stance": "neutral",
+    "stance_target": "mechanism determining Takeuchi's list, to clarify it is not driven by the reciprocal-sum coincidence",
+    "evidence_type": "theoretical",
+    "scope_conditions": "compact-type triangle groups",
+    "quoted_support": "sigma((cos(pi/e1))^2+(cos(pi/e2))^2+(cos(pi/e3))^2+2cos(pi/e1)cos(pi/e2)cos(pi/e3)-1) < 0",
+    "numbers": ["inequality (15)"],
+    "entities": ["Kisao Takeuchi"],
+    "time_period": "1977",
+    "region": null,
+    "confidence": "high",
+    "source_note_id": "takeuchi-1977-arithmetic-triangle-groups-theorem-3-full-list-verbatim-85-triples"
+  },
+  {
+    "claim": "Takeuchi's 1977 paper (the primary source establishing the 85-triple list) explicitly states in its closing remark that it does NOT classify those 85 triples by commensurability class, deferring that task; the commensurability classification appears only in a companion 1977 paper that could not be located online in this fetch pass.",
+    "stance": "neutral",
+    "stance_target": "whether (2,8,8) and (3,3,12) are mutually commensurable (same quaternion algebra)",
+    "evidence_type": "historical",
+    "scope_conditions": null,
+    "quoted_support": "It remains to classify all triples listed in Theorem 3 with respect to the commensurability. In the non-compact case this is trivial because these groups are all commensurable with some conjugate group of the modular group.",
+    "numbers": ["19 commensurability classes (per secondary web-search synthesis, unverified against primary source)"],
+    "entities": ["Kisao Takeuchi", "J. Fac. Sci. Univ. Tokyo Sect. IA Math. 24 (1977) 201-212"],
+    "time_period": "1977",
+    "region": null,
+    "confidence": "medium",
+    "source_note_id": "takeuchi-1977-arithmetic-triangle-groups-theorem-3-full-list-verbatim-85-triples"
+  },
+  {
+    "claim": "By the Gauss-Bonnet theorem, the hyperbolic area (covolume) of a triangle group (e1,e2,e3) is proportional to 1-(1/e1+1/e2+1/e3); since 1/2+1/8+1/8 = 1/3+1/3+1/12 = 3/4 exactly, the triangle orbifolds (2,8,8) and (3,3,12) have identical covolume as a direct algebraic consequence of the paper's equal-reciprocal-sum condition, making 'equal reciprocal sum' and 'equal covolume' the same fact for this pair, not merely analogous framings.",
+    "stance": "supports",
+    "stance_target": "the dual number-theoretic / triangle-group-covolume framing of Section 5's coincidence",
+    "evidence_type": "theoretical",
+    "scope_conditions": "hyperbolic triangle orbifolds, Gauss-Bonnet normalization",
+    "quoted_support": "the hyperbolic area of the (e1,e2,e3) triangle is proportional to 1 - (1/e1+1/e2+1/e3) (i.e. proportional to minus the orbifold Euler characteristic)",
+    "numbers": ["1-1/2-1/8-1/8 = 1/4", "1-1/3-1/3-1/12 = 1/4", "e1+e2+e3=18 for both triples"],
+    "entities": ["Gauss-Bonnet theorem", "(2,8,8)", "(3,3,12)"],
+    "time_period": null,
+    "region": null,
+    "confidence": "high",
+    "source_note_id": "takeuchi-1977-arithmetic-triangle-groups-theorem-3-full-list-verbatim-85-triples"
+  },
+  {
+    "claim": "Takeuchi's list (Theorem 3) reproduces, for the sub-families of type (2,3,e3), (2,4,e3) and (2,6,e3), the earlier list already given by Fricke and Klein (Vorlesungen uber die Theorie der automorphen Funktionen I, 1897) pp.610-611, showing the arithmeticity of some triangle groups was known observationally as early as 1897, decades before Takeuchi's systematic classification.",
+    "stance": "neutral",
+    "stance_target": "historical depth of the arithmetic-triangle-group literature",
+    "evidence_type": "historical",
+    "scope_conditions": "triples of type (2,3,e3), (2,4,e3), (2,6,e3)",
+    "quoted_support": "As to the triples of types (2,3,e3), (2,4,e3) and (2,6,e3), our result coincides with the list of [Fricke-Klein] pp.610-611.",
+    "numbers": ["1897", "pp.610-611"],
+    "entities": ["R. Fricke", "F. Klein", "Kisao Takeuchi"],
+    "time_period": "1897, 1977",
+    "region": null,
+    "confidence": "high",
+    "source_note_id": "takeuchi-1977-arithmetic-triangle-groups-theorem-3-full-list-verbatim-85-triples"
+  }
+]

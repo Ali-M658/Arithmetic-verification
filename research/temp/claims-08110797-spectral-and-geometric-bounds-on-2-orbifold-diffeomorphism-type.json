@@ -1,0 +1,44 @@
+[
+  {
+    "claim": "A Laplace-isospectral family of 2-dimensional Riemannian orbifolds sharing a lower bound on sectional curvature contains orbifolds of only finitely many orbifold-category diffeomorphism types.",
+    "stance": "neutral",
+    "stance_target": "existence of finiteness/rigidity results (as distinct from quantitative stability results) for spectral inverse problems on orbifolds",
+    "evidence_type": "theoretical",
+    "scope_conditions": "2-dimensional Riemannian orbifolds, Laplace isospectral family, lower sectional curvature bound",
+    "quoted_support": "We show that a Laplace isospectral family of two dimensional Riemannian orbifolds, sharing a lower bound on sectional curvature, contains orbifolds of only a finite number of orbifold category diffeomorphism types.",
+    "numbers": [],
+    "entities": ["Emily Proctor", "Elizabeth Stanhope"],
+    "time_period": "2008-2009",
+    "region": null,
+    "confidence": "high",
+    "source_note_id": "08110797-spectral-and-geometric-bounds-on-2-orbifold-diffeomorphism-type"
+  },
+  {
+    "claim": "Any collection of 2-orbifolds satisfying lower bounds on sectional curvature and volume plus an upper bound on diameter realizes only finitely many orbifold diffeomorphism types, and the isospectral finiteness result is derived from this purely geometric finiteness statement by converting spectral data to geometric bounds.",
+    "stance": "supports",
+    "stance_target": "the Proctor-Stanhope orbifold result is a qualitative finiteness/compactness theorem, not an effective or quantitative bound, so it does not constitute a stability theorem for cone-order recovery",
+    "evidence_type": "theoretical",
+    "scope_conditions": "2-orbifolds with lower curvature bound, lower volume bound, upper diameter bound",
+    "quoted_support": "We also show that orbifolds of only finitely many orbifold diffeomorphism types may arise in any collection of 2-orbifolds satisfying lower bounds on sectional curvature and volume, and an upper bound on diameter. An argument converting spectral data to geometric bounds shows that the first result is a consequence of the second.",
+    "numbers": [],
+    "entities": ["orbifold diffeomorphism type", "sectional curvature", "diameter"],
+    "time_period": "2008-2009",
+    "region": null,
+    "confidence": "high",
+    "source_note_id": "08110797-spectral-and-geometric-bounds-on-2-orbifold-diffeomorphism-type"
+  },
+  {
+    "claim": "No explicit numerical bound on the count of diffeomorphism types, and no modulus of continuity or approximate-spectrum recovery estimate, is stated in the Proctor-Stanhope abstract -- the result is a finiteness/compactness statement, not an effective or quantitative one.",
+    "stance": "refutes",
+    "stance_target": "an effective/quantitative version of Proctor-Stanhope already exists in the literature",
+    "evidence_type": "theoretical",
+    "scope_conditions": "as stated in the arXiv abstract, arXiv:0811.0797v2",
+    "quoted_support": "contains orbifolds of only a finite number of orbifold category diffeomorphism types",
+    "numbers": [],
+    "entities": [],
+    "time_period": "2008-2009",
+    "region": null,
+    "confidence": "medium",
+    "source_note_id": "08110797-spectral-and-geometric-bounds-on-2-orbifold-diffeomorphism-type"
+  }
+]

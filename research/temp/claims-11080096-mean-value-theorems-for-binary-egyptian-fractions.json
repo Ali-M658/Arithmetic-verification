@@ -1,0 +1,30 @@
+[
+  {
+    "claim": "Huang and Vaughan establish two mean-value theorems for the number of solutions of a/n=1/x+1/y, one with a fixed and n varying, one with both a and n varying.",
+    "stance": "neutral",
+    "stance_target": "state of the art for two-term (binary) unit-fraction equation counting, named explicitly in the research task as a canonical reference",
+    "evidence_type": "theoretical",
+    "scope_conditions": "two-term (binary) Egyptian fraction equation a/n=1/x+1/y",
+    "quoted_support": "In this paper, we establish two mean value theorems for the number of solutions of the Diophantine equation a/n=1/x+1/y, in the case when a is fixed and n varies and in the case when both a and n vary.",
+    "numbers": [],
+    "entities": ["Jing-Jing Huang", "Robert C. Vaughan"],
+    "time_period": "2011",
+    "region": null,
+    "confidence": "high",
+    "source_note_id": "11080096-mean-value-theorems-for-binary-egyptian-fractions"
+  },
+  {
+    "claim": "The Huang-Vaughan results are one order lower (two-term, not three-term) than Section 5's problem and, like the other asymptotic-counting literature, count multiplicities of a single representation rather than coincidences between two independently varying triples matched on two symmetric functions.",
+    "stance": "refutes",
+    "stance_target": "direct applicability of Huang-Vaughan's technique to Section 5's problem",
+    "evidence_type": "theoretical",
+    "scope_conditions": "binary (two-term) unit fraction equation",
+    "quoted_support": "we establish two mean value theorems for the number of solutions of the Diophantine equation a/n=1/x+1/y",
+    "numbers": [],
+    "entities": ["Jing-Jing Huang", "Robert C. Vaughan"],
+    "time_period": null,
+    "region": null,
+    "confidence": "medium",
+    "source_note_id": "11080096-mean-value-theorems-for-binary-egyptian-fractions"
+  }
+]

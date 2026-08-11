@@ -1,0 +1,30 @@
+[
+  {
+    "claim": "For A_k(n) = number of positive integers a such that a/n=1/m1+...+1/mk is solvable, the asymptotic bound x(log x)^3 << sum_{p<=x} A_3(p) << x(log x)^5 holds as x -> infinity, summing over primes p.",
+    "stance": "neutral",
+    "stance_target": "asymptotic counting for three-term unit-fraction representability as a function of the denominator",
+    "evidence_type": "theoretical",
+    "scope_conditions": "k=3, n=p prime, summed over primes p<=x",
+    "quoted_support": "We show that x(log x)^3 << sum_{p<=x} A_3(p) << x(log x)^5 as x -> infinity.",
+    "numbers": ["x(log x)^3", "x(log x)^5"],
+    "entities": ["Florian Luca", "Francesco Pappalardi"],
+    "time_period": "2019",
+    "region": null,
+    "confidence": "high",
+    "source_note_id": "190506151-on-ternary-egyptian-fractions-with-prime-denominator"
+  },
+  {
+    "claim": "This paper counts, for each prime p, how many numerators a admit SOME three-term Egyptian fraction representation of a/p -- it does not address pairs of triples matched on both sum and reciprocal sum, so it is adjacent methodology rather than direct prior art for Section 5.",
+    "stance": "refutes",
+    "stance_target": "prior art for Section 5's two-triple equal-sum-and-equal-reciprocal-sum problem",
+    "evidence_type": "theoretical",
+    "scope_conditions": null,
+    "quoted_support": "Given a positive integer n we let A_k(n) be the number of positive integers a such that a/n=1/m_1+1/m_2+...+1/m_k for some m_1,m_2,...,m_k in N.",
+    "numbers": [],
+    "entities": ["Florian Luca", "Francesco Pappalardi"],
+    "time_period": null,
+    "region": null,
+    "confidence": "high",
+    "source_note_id": "190506151-on-ternary-egyptian-fractions-with-prime-denominator"
+  }
+]

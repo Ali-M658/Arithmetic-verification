@@ -1,0 +1,58 @@
+[
+  {
+    "claim": "Looi and Sher (arXiv:2512.04422) compute the first corner-curvature heat invariant, the t^{1/2} coefficient in the Dirichlet heat trace for curvilinear polygons, and prove a sharp sign law: the sign of the Dirichlet angular factor is determined solely by whether the corner is convex or reflex.",
+    "stance": "neutral",
+    "stance_target": "What the first corner-curvature invariant is, and at what order",
+    "evidence_type": "theoretical",
+    "scope_conditions": "Planar curvilinear polygons, Dirichlet and Neumann boundary conditions",
+    "quoted_support": "We show that, for curvilinear polygons, these two phenomena first interact at order t^{1/2}. We compute this first corner-curvature heat invariant and prove a sharp sign law for its Dirichlet angular factor: its sign is determined solely by whether the corner is convex or reflex.",
+    "numbers": ["1/2"],
+    "entities": ["Sam Looi", "David Sher"],
+    "time_period": "2025-2026",
+    "region": null,
+    "confidence": "high",
+    "source_note_id": "the-heat-trace-for-domains-with-curved-corners"
+  },
+  {
+    "claim": "The explicit Dirichlet curved-corner contribution has closed form C_{1/2}(alpha,kappa_+,kappa_-) = c_{1/2}(alpha) * (kappa_+ + kappa_-)/(4 sin(alpha/2)), where c_{1/2}(alpha) is given by an explicit sector heat-kernel integral, and this term vanishes identically in the exact-sector (straight-corner) case kappa_+=kappa_-=0.",
+    "stance": "neutral",
+    "stance_target": "Closed-form expression for the first corner-curvature invariant",
+    "evidence_type": "theoretical",
+    "scope_conditions": "Curvilinear polygon corner of interior angle alpha in (0,2pi) with one-sided limiting boundary curvatures kappa_+, kappa_-",
+    "quoted_support": "C_{1/2}(alpha,kappa_+,kappa_-) = c_{1/2}(alpha) (kappa_++kappa_-)/(4 sin(alpha/2))",
+    "numbers": ["4"],
+    "entities": ["Sam Looi", "David Sher"],
+    "time_period": "2025-2026",
+    "region": null,
+    "confidence": "high",
+    "source_note_id": "the-heat-trace-for-domains-with-curved-corners"
+  },
+  {
+    "claim": "The sign law gives a new spectral obstruction: every convex curvilinear polygon that is Dirichlet-isospectral to a straight-sided polygon must itself be straight-sided, extending Enciso and Gomez-Serrano's theorem ('Spectral determination of semi-regular polygons,' J. Diff. Geom. 122(3) (2022) 399-419) by removing its assumption of straight corners.",
+    "stance": "neutral",
+    "stance_target": "Downstream inverse-spectral consequence of the t^{1/2} corner-curvature invariant",
+    "evidence_type": "theoretical",
+    "scope_conditions": "Convex curvilinear polygons, Dirichlet boundary condition",
+    "quoted_support": "The sign law has a spectral consequence: it gives a new obstruction to a curvilinear polygon being Dirichlet-isospectral to a straight-sided polygon. In particular, every convex curvilinear polygon Dirichlet-isospectral to a straight-sided polygon must itself be straight-sided, removing the assumption of straight corners from the theorem of Enciso and Gomez-Serrano.",
+    "numbers": ["122", "399", "419", "2022"],
+    "entities": ["Sam Looi", "David Sher", "Alberto Enciso", "Javier Gomez-Serrano"],
+    "time_period": "2022; 2025-2026",
+    "region": null,
+    "confidence": "high",
+    "source_note_id": "the-heat-trace-for-domains-with-curved-corners"
+  },
+  {
+    "claim": "As of the latest fetched arXiv revision (v6, 1 Jul 2026), 'The heat trace for domains with curved corners' remains an unpublished preprint with no journal reference; the only citable identifier is the arXiv DataCite DOI 10.48550/arXiv.2512.04422. The paper does not engage the orbifold or constant-curvature cone-point literature at all (zero mentions of orbifold, hyperbolic, constant curvature, Ucar, or DGGW).",
+    "stance": "neutral",
+    "stance_target": "Publication status of Looi-Sher and its (non-)overlap with the orbifold cone-coefficient literature",
+    "evidence_type": "empirical",
+    "scope_conditions": "As of fetch date 2026-08-09, arXiv v6",
+    "quoted_support": "arXiv:2512.04422 [math.SP] ... https://doi.org/10.48550/arXiv.2512.04422 -- arXiv-issued DOI via DataCite (no journal-ref field present)",
+    "numbers": [],
+    "entities": ["Sam Looi", "David Sher"],
+    "time_period": "2025-2026",
+    "region": null,
+    "confidence": "high",
+    "source_note_id": "the-heat-trace-for-domains-with-curved-corners"
+  }
+]

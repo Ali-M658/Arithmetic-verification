@@ -1,0 +1,25 @@
+[
+  {
+    "claim": "Hezari & Zelditch's 'One can hear the shape of ellipses of small eccentricity' (Ann. of Math. (2) 196 (2022), no. 3, 1083-1134) is exactly matched by the manuscript's printed bibliography entry, verified against the official Annals of Mathematics journal archive page.",
+    "stance": "supports",
+    "stance_target": "manuscript bibliography entry hezarizelditch2022 as printed",
+    "evidence_type": "empirical",
+    "scope_conditions": "primary source: annals.math.princeton.edu/2022/196-3/p04",
+    "quoted_support": "Pages 1083-1134 from Volume 196 (2022), Issue 3.",
+    "numbers": [
+      "volume 196",
+      "issue 3",
+      "pages 1083-1134",
+      "2022"
+    ],
+    "entities": [
+      "Hamid Hezari",
+      "Steve Zelditch",
+      "Annals of Mathematics"
+    ],
+    "time_period": "2022",
+    "region": null,
+    "confidence": "high",
+    "source_note_id": "one-can-hear-the-shape-of-ellipses-of-small-eccentricity-annals-of-mathematics"
+  }
+]

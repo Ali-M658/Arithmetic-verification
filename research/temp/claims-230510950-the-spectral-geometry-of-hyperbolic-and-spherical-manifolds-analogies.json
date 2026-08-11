@@ -1,0 +1,44 @@
+[
+  {
+    "claim": "As of the 2023/2024 survey, the smallest area of a pair of isospectral non-isometric arithmetic hyperbolic 2-orbifolds is NOT KNOWN; the true minimum is only conjectured to be a smaller pair of isospectral hyperbolic polygons due to Doyle and Rossetti, not the Linowitz-Voight 23*pi/6 pairs (which are minimal only within the restricted class of maximal arithmetic groups).",
+    "stance": "refutes",
+    "stance_target": "the claim that a global exact minimum-area hyperbolic 2-orbifold isospectral pair is an established/settled result in the literature",
+    "evidence_type": "theoretical",
+    "scope_conditions": "arithmetic hyperbolic 2-orbifolds",
+    "quoted_support": "It is not known what the smallest area of a pair of arithmetic hyperbolic 2-orbifolds is, but one may suspect that it is the area of a particularly simple pair of isospectral hyperbolic polygons found by Doyle and Rossetti [DR, Section 2].",
+    "numbers": [],
+    "entities": ["Emilio Lauret", "Benjamin Linowitz", "Peter Doyle", "Juan Pablo Rossetti"],
+    "time_period": "2023-2024",
+    "region": null,
+    "confidence": "high",
+    "source_note_id": "230510950-the-spectral-geometry-of-hyperbolic-and-spherical-manifolds-analogies"
+  },
+  {
+    "claim": "A direct full-text search of this 31-page survey found zero occurrences of 'triangle orbifold', 'near-isospectral', 'near collision', 'almost isospectral', 'cone surface', 'cone orbifold', 'heat coefficient', or 'heat invariant' -- the survey does not address triangle-orbifold isospectrality or heat-coefficient-counting determinacy at all.",
+    "stance": "neutral",
+    "stance_target": "whether this survey constitutes a competing source on triangle-orbifold isospectrality or heat-coefficient determinacy",
+    "evidence_type": "empirical",
+    "scope_conditions": "full-text grep of extracted PDF, arXiv:2305.10950v2",
+    "quoted_support": "[Direct text-search finding, not a quotation from the paper: zero matches for the listed terms across the full 1717-line extracted text.]",
+    "numbers": ["0 matches"],
+    "entities": [],
+    "time_period": "2023-2024",
+    "region": null,
+    "confidence": "high",
+    "source_note_id": "230510950-the-spectral-geometry-of-hyperbolic-and-spherical-manifolds-analogies"
+  },
+  {
+    "claim": "The largest volume of an isospectral non-isometric pair of spherical orbifolds of dimension d>=5 is at most (1/8) vol(S^d), an exact bound derived from a Rossetti-Schueth-Weilandt almost-conjugate pair in SO(6), not a near-collision/approximate construction.",
+    "stance": "neutral",
+    "stance_target": "known exact bounds (as opposed to near-collisions) for spherical orbifold isospectral pairs",
+    "evidence_type": "theoretical",
+    "scope_conditions": "d-dimensional spherical orbifolds, d >= 5",
+    "quoted_support": "Theorem 1.5. The largest volume of an isospectral and non-isometric pair of spherical orbifolds of dimension d ≥ 5 is at most 1/8 vol(S^d).",
+    "numbers": ["1/8 vol(S^d)", "d >= 5"],
+    "entities": ["Rossetti", "Schueth", "Weilandt", "SO(6)"],
+    "time_period": "2023-2024",
+    "region": null,
+    "confidence": "high",
+    "source_note_id": "230510950-the-spectral-geometry-of-hyperbolic-and-spherical-manifolds-analogies"
+  }
+]

@@ -1,0 +1,22 @@
+[
+  {
+    "claim": "The only DOI Crossref has on record for Buser's 'Geometry and Spectra of Compact Riemann Surfaces' (10.1007/978-0-8176-4992-0) belongs to the 2010 'Modern Birkhauser Classics' reprint edition, not the original 1992 Progress in Mathematics vol. 106 hardback that the manuscript cites.",
+    "stance": "neutral",
+    "stance_target": "whether the manuscript's citation of the 1992 first edition can carry a DOI",
+    "evidence_type": "empirical",
+    "scope_conditions": "Crossref bibliographic search for the book title, retrieved 2026-08-09",
+    "quoted_support": "publisher: Birkhauser Boston; ISBN 9780817649913 (print) / 9780817649920 (electronic); published date-parts [2010]",
+    "numbers": [
+      "2010",
+      "1992"
+    ],
+    "entities": [
+      "Peter Buser",
+      "Birkhauser"
+    ],
+    "time_period": "1992-2010",
+    "region": null,
+    "confidence": "high",
+    "source_note_id": "978-0-8176-4992-0"
+  }
+]

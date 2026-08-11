@@ -1,0 +1,44 @@
+[
+  {
+    "claim": "Daude, Kamran and Nicoleau prove that the Steklov spectrum of a compact warped-product Riemannian manifold with connected boundary determines the warping function uniquely, and that approximate knowledge of the Steklov spectrum (in a precisely defined sense) already determines it uniquely near the boundary.",
+    "stance": "neutral",
+    "stance_target": "does a quantitative stability theorem for an inverse spectral problem exist anywhere, on any manifold class, published in the target venue (JGA)",
+    "evidence_type": "theoretical",
+    "scope_conditions": "compact manifolds with connected boundary equipped with a warped-product metric, generalized deformed balls in R^d",
+    "quoted_support": "We first prove that the Steklov spectrum determines uniquely the warping function of the metric. We show in fact that the approximate knowledge (in a given precise sense) of the Steklov spectrum is enough to determine uniquely the warping function in a neighbourhood of the boundary.",
+    "numbers": [],
+    "entities": ["Thierry Daude", "Niky Kamran", "Francois Nicoleau"],
+    "time_period": "2019-2021",
+    "region": null,
+    "confidence": "high",
+    "source_note_id": "stability-in-the-inverse-steklov-problem-on-warped-product-riemannian-manifolds"
+  },
+  {
+    "claim": "Daude-Kamran-Nicoleau provide stability estimates of log-type on the warping function recovered from the Steklov spectrum, using a formula connecting the inverse spectral data to the Laplace transform of the difference of the two warping factors.",
+    "stance": "supports",
+    "stance_target": "the standard modulus of continuity achieved in quantitative inverse spectral stability results, when achieved at all, is logarithmic (severe ill-posedness), matching the Alessandrini-type log-stability pattern from related inverse problems",
+    "evidence_type": "theoretical",
+    "scope_conditions": "warped-product manifolds; Steklov (Dirichlet-to-Neumann) spectrum",
+    "quoted_support": "Second, we provide stability estimates of log-type on the warping function from the Steklov spectrum. The key element of these stability results relies on a formula that, roughly speaking, connects the inverse data (the Steklov spectrum) to the Laplace transform of the difference of the two warping factors.",
+    "numbers": [],
+    "entities": ["Laplace transform", "warping function"],
+    "time_period": "2019-2021",
+    "region": null,
+    "confidence": "high",
+    "source_note_id": "stability-in-the-inverse-steklov-problem-on-warped-product-riemannian-manifolds"
+  },
+  {
+    "claim": "The Journal of Geometric Analysis has published a quantitative-stability inverse spectral theorem (Daude-Kamran-Nicoleau, vol. 31, 1821-1854, DOI 10.1007/s12220-019-00326-9), establishing that the target venue for the planned theorem already accepts this genre of result, though the setting studied (smooth warped-product manifolds) is not an orbifold, cone, or corner setting.",
+    "stance": "neutral",
+    "stance_target": "venue precedent for a stability theorem in inverse spectral geometry",
+    "evidence_type": "empirical",
+    "scope_conditions": "publication venue and volume record",
+    "quoted_support": "Daude, T., Kamran, N. & Nicoleau, F. Stability in the Inverse Steklov Problem on Warped Product Riemannian Manifolds. J Geom Anal 31, 1821-1854 (2021).",
+    "numbers": ["31", "1821-1854"],
+    "entities": ["Journal of Geometric Analysis"],
+    "time_period": "2019-2021",
+    "region": null,
+    "confidence": "high",
+    "source_note_id": "stability-in-the-inverse-steklov-problem-on-warped-product-riemannian-manifolds"
+  }
+]

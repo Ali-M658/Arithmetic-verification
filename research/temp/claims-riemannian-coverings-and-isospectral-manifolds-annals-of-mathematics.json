@@ -1,0 +1,24 @@
+[
+  {
+    "claim": "Sunada's 'Riemannian coverings and isospectral manifolds' (Ann. of Math. (2) 121 (1985), 169-186) is exactly matched by the manuscript's printed bibliography entry, verified against the official Annals of Mathematics journal archive page.",
+    "stance": "supports",
+    "stance_target": "manuscript bibliography entry sunada1985 as printed",
+    "evidence_type": "empirical",
+    "scope_conditions": "primary source: annals.math.princeton.edu/1985/121-1/p04",
+    "quoted_support": "Pages 169-186 from Volume 121 (1985), Issue 1, by Toshikazu Sunada. DOI https://doi.org/10.2307/1971195. MR 0782558. zbMATH 0585.58047.",
+    "numbers": [
+      "volume 121",
+      "issue 1",
+      "pages 169-186",
+      "1985"
+    ],
+    "entities": [
+      "Toshikazu Sunada",
+      "Annals of Mathematics"
+    ],
+    "time_period": "1985",
+    "region": null,
+    "confidence": "high",
+    "source_note_id": "riemannian-coverings-and-isospectral-manifolds-annals-of-mathematics"
+  }
+]

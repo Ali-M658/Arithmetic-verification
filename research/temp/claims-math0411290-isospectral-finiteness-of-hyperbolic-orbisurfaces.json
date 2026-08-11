@@ -1,0 +1,58 @@
+[
+  {
+    "claim": "Dryden's 2004 paper proves only a partial (finite-ambiguity) generalization of Huber's theorem to hyperbolic orbisurfaces: the Laplace spectrum determines cone-point orders only up to finitely many possibilities, not exactly.",
+    "stance": "supports",
+    "stance_target": "the manuscript's priority claim of being first to give exact finite-coefficient determinacy",
+    "evidence_type": "theoretical",
+    "scope_conditions": "compact orientable Riemann orbisurfaces",
+    "quoted_support": "Theorem 4.5. If two compact orientable Riemann orbisurfaces are Laplace isospectral, then we can determine their length spectra and the orders of their cone points, up to finitely many possibilities.",
+    "numbers": ["Theorem 4.5", "Theorem 5.1"],
+    "entities": ["Emily Dryden", "hyperbolic orbisurface", "Huber's theorem"],
+    "time_period": "2004",
+    "region": null,
+    "confidence": "high",
+    "source_note_id": "math0411290-isospectral-finiteness-of-hyperbolic-orbisurfaces"
+  },
+  {
+    "claim": "Dryden 2004 proves isospectral sets of compact orientable hyperbolic orbisurfaces of genus >= 1 have finite cardinality, generalizing McKean's finiteness theorem for Riemann surfaces.",
+    "stance": "neutral",
+    "stance_target": "existing finiteness results for hyperbolic-orbisurface isospectral sets",
+    "evidence_type": "theoretical",
+    "scope_conditions": "compact orientable hyperbolic orbisurface of genus g >= 1",
+    "quoted_support": "Theorem 5.1. Let O be a compact orientable Riemann orbisurface of genus g ≥ 1. In the class of compact orientable hyperbolic orbifolds, there are only finitely many members which are isospectral to O.",
+    "numbers": ["genus g >= 1"],
+    "entities": ["Emily Dryden", "McKean"],
+    "time_period": "2004",
+    "region": null,
+    "confidence": "high",
+    "source_note_id": "math0411290-isospectral-finiteness-of-hyperbolic-orbisurfaces"
+  },
+  {
+    "claim": "The finiteness proof uses the Selberg trace formula and diameter/trace bounds on Dirichlet-polygon generators, not heat-trace coefficient counting, so it is not a finite-coefficient determinacy result in the manuscript's sense.",
+    "stance": "supports",
+    "stance_target": "the manuscript's priority claim is not anticipated by Dryden 2004, which uses a fundamentally different (non-heat-coefficient) mechanism",
+    "evidence_type": "theoretical",
+    "scope_conditions": "proof of Theorem 5.1",
+    "quoted_support": "Theorem 4.5 tells us that the Laplace spectrum determines (up to finitely many possibilities) the length ℓ(Q) of a shortest closed path... By choosing our generating set to be the set of side-pairing elements of a Dirichlet polygon P for Γ, we can easily bound the traces of hyperbolic conjugacy classes.",
+    "numbers": [],
+    "entities": ["Selberg trace formula", "Dirichlet polygon"],
+    "time_period": "2004",
+    "region": null,
+    "confidence": "high",
+    "source_note_id": "math0411290-isospectral-finiteness-of-hyperbolic-orbisurfaces"
+  },
+  {
+    "claim": "Dryden's math/0411290 was never independently journal-published; its results were folded into her 2004 Dartmouth PhD dissertation and effectively superseded on the exact-determinacy side by the later Dryden-Strohmaier paper.",
+    "stance": "neutral",
+    "stance_target": "publication record of math/0411290",
+    "evidence_type": "empirical",
+    "scope_conditions": "as of 2026 (Semantic Scholar / arXiv metadata check)",
+    "quoted_support": "Semantic Scholar record: venue field empty, journal name 'arXiv: Spectral Theory', no formal publicationVenue.",
+    "numbers": [],
+    "entities": ["Emily Dryden", "Dartmouth College"],
+    "time_period": "2004-2026",
+    "region": null,
+    "confidence": "high",
+    "source_note_id": "math0411290-isospectral-finiteness-of-hyperbolic-orbisurfaces"
+  }
+]

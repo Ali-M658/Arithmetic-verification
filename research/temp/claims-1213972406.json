@@ -1,0 +1,16 @@
+[
+  {
+    "claim": "CrossRef confirms DGGW's journal DOI as 10.1307/mmj/1213972406, publisher 'Michigan Mathematical Journal,' volume 56, issue 1, published-print 2008-06-01, matching the '10.1307/mmj/...' format the manuscript expected rather than a guessed DOI.",
+    "stance": "supports",
+    "stance_target": "manuscript's request for the real Michigan Math. J. DOI",
+    "evidence_type": "historical",
+    "scope_conditions": null,
+    "quoted_support": "\"publisher\":\"Michigan Mathematical Journal\",\"issue\":\"1\", ... \"published-print\":{\"date-parts\":[[2008,6,1]]},\"DOI\":\"10.1307/mmj/1213972406\",\"type\":\"journal-article\", ... \"volume\":\"56\"",
+    "numbers": ["10.1307/mmj/1213972406", "56", "2008-06-01"],
+    "entities": ["CrossRef", "Michigan Mathematical Journal"],
+    "time_period": "2008",
+    "region": null,
+    "confidence": "high",
+    "source_note_id": "1213972406"
+  }
+]

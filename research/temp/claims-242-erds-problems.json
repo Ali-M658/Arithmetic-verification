@@ -1,0 +1,58 @@
+[
+  {
+    "claim": "The Erdos-Straus conjecture states that for every n>2 there exist distinct positive integers x<y<z with 4/n=1/x+1/y+1/z, and traces to Oblath's 1948-submitted paper describing it as a conjecture of Erdos.",
+    "stance": "neutral",
+    "stance_target": "identity and provenance of the Erdos-Straus conjecture, as the nearest-neighbor problem to Section 5",
+    "evidence_type": "historical",
+    "scope_conditions": "all integers n>2",
+    "quoted_support": "For every n>2 there exist distinct integers 1<=x<y<z such that 4/n = 1/x+1/y+1/z. ... Perhaps the first place it appears in the literature is in a paper of Oblath [Ob50] (submitted in 1948), which describes it as a conjecture of Erdos.",
+    "numbers": ["n>2"],
+    "entities": ["Erdos-Straus conjecture", "Oblath"],
+    "time_period": "1948-1950",
+    "region": null,
+    "confidence": "high",
+    "source_note_id": "242-erds-problems"
+  },
+  {
+    "claim": "The Erdos-Straus conjecture has been numerically verified for all n <= 10^18 (as of the cited 2025 result), and Vaughan (1970) proved the number of exceptions in [1,x] is at most x exp(-c(log x)^{2/3}) for some constant c>0.",
+    "stance": "neutral",
+    "stance_target": "state of verification and near-universal solvability of Erdos-Straus",
+    "evidence_type": "empirical",
+    "scope_conditions": "n up to 10^18; asymptotic exception bound",
+    "quoted_support": "This has been verified for all n<=10^18 [MiDu25]. ... Vaughan [Va70] proved that the number of exceptions in [1,x] is <= x exp(-c(log x)^{2/3}) for some constant c>0.",
+    "numbers": ["10^18", "exp(-c(log x)^{2/3})"],
+    "entities": ["Vaughan", "Erdos-Straus conjecture"],
+    "time_period": "1970-2025",
+    "region": null,
+    "confidence": "high",
+    "source_note_id": "242-erds-problems"
+  },
+  {
+    "claim": "Elsholtz and Tao proved sum_{p<=N} f(p) = N(log N)^{2+o(1)} and f(p) <= p^{3/5+o(1)} for all primes, and Elsholtz and Planitzer proved f(n) >= (log n)^{log 6+o(1)} for almost all n, where f(n) counts Erdos-Straus solutions.",
+    "stance": "neutral",
+    "stance_target": "precise asymptotic-counting state of the art for the Erdos-Straus equation",
+    "evidence_type": "theoretical",
+    "scope_conditions": "n prime for the upper results, almost all n for the lower bound",
+    "quoted_support": "If f(n) counts the number of solutions then Elsholtz and Tao [ElTa13] have proved sum_{p<=N}f(p)=N(log N)^{2+o(1)} and f(p)<=p^{3/5+o(1)} for all primes p. Elsholtz and Planitzer [ElPl20] have proved that for almost all n, f(n) >= (log n)^{log 6+o(1)}.",
+    "numbers": ["N(log N)^{2+o(1)}", "p^{3/5+o(1)}", "(log n)^{log 6+o(1)}"],
+    "entities": ["Christian Elsholtz", "Terence Tao", "Stefan Planitzer"],
+    "time_period": "2013-2020",
+    "region": null,
+    "confidence": "high",
+    "source_note_id": "242-erds-problems"
+  },
+  {
+    "claim": "The Erdos-Straus conjecture concerns a single triple representing the fixed rational 4/n, with no equal-sum-of-denominators constraint and no requirement to match a second, independent triple -- it is a structurally different problem from Section 5's pair-of-triples matching problem.",
+    "stance": "refutes",
+    "stance_target": "prior art for Section 5's two-triple equal-sum-and-equal-reciprocal-sum Diophantine problem",
+    "evidence_type": "theoretical",
+    "scope_conditions": null,
+    "quoted_support": "For every n>2 there exist distinct integers 1<=x<y<z such that 4/n = 1/x+1/y+1/z.",
+    "numbers": [],
+    "entities": ["Erdos-Straus conjecture"],
+    "time_period": null,
+    "region": null,
+    "confidence": "high",
+    "source_note_id": "242-erds-problems"
+  }
+]

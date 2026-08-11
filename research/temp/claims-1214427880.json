@@ -1,0 +1,45 @@
+[
+  {
+    "claim": "McKean & Singer's 'Curvature and the eigenvalues of the Laplacian' is confirmed published in Journal of Differential Geometry, volume 1, issue 1-2 (1967), DOI 10.4310/jdg/1214427880, matching the manuscript's venue/volume/year, but Crossref's own record for this DOI carries no page-number field at all.",
+    "stance": "supports",
+    "stance_target": "manuscript bibliography entry mckeansinger1967 as printed (J. Differential Geom. 1 (1967), 43-69)",
+    "evidence_type": "empirical",
+    "scope_conditions": "Crossref record for DOI 10.4310/jdg/1214427880, retrieved 2026-08-09",
+    "quoted_support": "container-title: Journal of Differential Geometry; volume: 1; issue: 1-2; published date-parts [1967,1,1] -- no 'page' key present in the raw JSON response.",
+    "numbers": [
+      "volume 1",
+      "issue 1-2",
+      "1967"
+    ],
+    "entities": [
+      "H. P. McKean",
+      "I. M. Singer",
+      "Journal of Differential Geometry"
+    ],
+    "time_period": "1967",
+    "region": null,
+    "confidence": "medium",
+    "source_note_id": "1214427880"
+  },
+  {
+    "claim": "The page range 43-69 for McKean-Singer 1967 could not be independently primary-source verified: Project Euclid (bot-blocked, Incapsula challenge), JSTOR/MathSciNet (403 Forbidden) all refused automated access; only a secondary citation index (mathnet.ru) and a Springer 'Selecta' reprint (with its own, different 2015-book pagination pp.53-76) were reachable.",
+    "stance": "neutral",
+    "stance_target": "epistemic status of the page range 43-69 commonly cited for this paper",
+    "evidence_type": "empirical",
+    "scope_conditions": "fetch attempts made 2026-08-09",
+    "quoted_support": "mathnet.ru citation (surfaced via web search snippet): 'J. Differential Geometry, 1 (1967), 43-69'",
+    "numbers": [
+      "43-69"
+    ],
+    "entities": [
+      "Project Euclid",
+      "JSTOR",
+      "MathSciNet",
+      "mathnet.ru"
+    ],
+    "time_period": "1967-2026",
+    "region": null,
+    "confidence": "low",
+    "source_note_id": "1214427880"
+  }
+]

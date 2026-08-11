@@ -1,0 +1,72 @@
+[
+  {
+    "claim": "Lassas-Lu-Yamaguchi (2024) prove the only known quantitative-stability theorem for a spectral inverse problem on a Riemannian orbifold, with an explicit Gromov-Hausdorff modulus of continuity of triple-logarithmic type.",
+    "stance": "supports",
+    "stance_target": "quantitative stability results exist for spectral inverse problems on orbifolds",
+    "evidence_type": "theoretical",
+    "scope_conditions": "Riemannian orbifolds arising as 1-dimensional Gromov-Hausdorff collapses of n-manifolds with bounded diameter, sectional curvature, and third covariant derivative of curvature (class MM(n,Lambda,Lambda3,D))",
+    "quoted_support": "the finite interior spectral data {λj, ϕj|U}δ−1 j=0 for δ < bδ determine a finite metric space b X such that dGH(X \\ Sσ,δ, b X) < C1(X, σ) / (log log | log δ|)^{-C2}",
+    "numbers": ["modulus d_GH < C1(X,sigma) / (log log |log delta|)^{-C2}"],
+    "entities": ["Matti Lassas", "Jinpeng Lu", "Takao Yamaguchi", "Yaroslav Kurylev", "Riemannian orbifold", "Gromov-Hausdorff distance"],
+    "time_period": "2024",
+    "region": null,
+    "confidence": "high",
+    "source_note_id": "inverse-spectral-problems-for-collapsing-manifolds-ii-quantitative-stability-of"
+  },
+  {
+    "claim": "The Lassas-Lu-Yamaguchi stability bound is triple-logarithmic (inverse of an iterated logarithm to a power), a far weaker modulus of continuity than the single-logarithmic stability standard in Calderon-type inverse boundary value problems.",
+    "stance": "neutral",
+    "stance_target": "the strength/modulus of stability achievable in geometric spectral inverse problems",
+    "evidence_type": "theoretical",
+    "scope_conditions": "reconstruction of a collapsed orbifold limit from finite interior spectral data",
+    "quoted_support": "dGH(X \\ Sσ,δ, b X) < C1(X, σ) / (log log | log δ|)^{-C2}, ... The constant C1(X, σ) depends on σ, r0, n, Λ, Λ3, D, v0 as well as the space X, and C1(X, σ) →∞ as σ →0.",
+    "numbers": ["C1(X,sigma) -> infinity as sigma -> 0"],
+    "entities": ["Matti Lassas", "Jinpeng Lu", "Takao Yamaguchi"],
+    "time_period": "2024",
+    "region": null,
+    "confidence": "high",
+    "source_note_id": "inverse-spectral-problems-for-collapsing-manifolds-ii-quantitative-stability-of"
+  },
+  {
+    "claim": "The quantitative stability in Theorem 1.2 rests on a quantitative unique-continuation estimate for the wave operator (Theorem 1.3) with an exponential-type bound exp(h^{-C5}), an improvement over prior results by removing assumptions on covariant derivatives of the curvature tensor.",
+    "stance": "neutral",
+    "stance_target": "technique used to prove quantitative stability of spectral reconstruction on orbifolds",
+    "evidence_type": "theoretical",
+    "scope_conditions": "closed smooth n-manifold (Y,g) with C^2 metric, bounded curvature, diameter, volume from below; weighted Laplacian and non-homogeneous wave equation",
+    "quoted_support": "∥u∥L2(Ω(h)) ≤C4 exp(h−C5) ( E / log(1 + h−1E / (∥f∥L2(Y ×[−T,T]) + h−2ε0)) )^{1/2}",
+    "numbers": ["exp(h^{-C5})"],
+    "entities": ["quantitative unique continuation", "wave operator", "Riemannian metric smoothening"],
+    "time_period": "2024",
+    "region": null,
+    "confidence": "high",
+    "source_note_id": "inverse-spectral-problems-for-collapsing-manifolds-ii-quantitative-stability-of"
+  },
+  {
+    "claim": "Part I of this paper (Kurylev-Lassas-Lu-Yamaguchi, arXiv:1209.5875) proves uniqueness of the inverse problem and only a qualitative continuity/stability statement for the collapsing-manifold-to-orbifold limit, with no explicit modulus of continuity; the explicit quantitative bound is new to Part II (2024).",
+    "stance": "supports",
+    "stance_target": "the finding that quantitative (not merely qualitative) stability for orbifold spectral inverse problems is a recent (2024) and rare result",
+    "evidence_type": "theoretical",
+    "scope_conditions": "n-dimensional Riemannian manifolds with bounded diameter and sectional curvature, collapsing to a lower-dimensional stratified limit space in measured Gromov-Hausdorff topology",
+    "quoted_support": "In the part I of the paper, we proved the uniqueness of the inverse problem and a continuity result for the stability in the closure of Riemannian manifolds with bounded diameter and sectional curvature in the measured Gromov-Hausdorff topology. In this paper we show that when the collapse of dimension is 1-dimensional, it is possible to obtain quantitative stability of the inverse problem for Riemannian orbifolds.",
+    "numbers": [],
+    "entities": ["Yaroslav Kurylev", "Matti Lassas", "Jinpeng Lu", "Takao Yamaguchi"],
+    "time_period": "2012-2024",
+    "region": null,
+    "confidence": "high",
+    "source_note_id": "inverse-spectral-problems-for-collapsing-manifolds-ii-quantitative-stability-of"
+  },
+  {
+    "claim": "The orbifold reconstruction setting in Lassas-Lu-Yamaguchi is abstract (interior spectral data of the weighted Laplacian on an open subset of a general n-1 dimensional orbifold limit space), structurally disjoint from recovering a finite set of discrete cone-order/cone-angle invariants from finitely many symmetric functions of the Laplace spectrum (heat invariants).",
+    "stance": "neutral",
+    "stance_target": "whether existing orbifold stability results directly cover finite-discrete-invariant recovery (e.g. cone orders from S1, R, P3)",
+    "evidence_type": "theoretical",
+    "scope_conditions": "Riemannian orbifolds as measured Gromov-Hausdorff limits, dim(X)=n-1",
+    "quoted_support": "Note that the incomplete data case of the theorem above is of an asymptotic nature as the reconstruction is done to a fixed orbifold.",
+    "numbers": [],
+    "entities": ["Riemannian orbifold", "interior spectral data", "cone order"],
+    "time_period": "2024",
+    "region": null,
+    "confidence": "medium",
+    "source_note_id": "inverse-spectral-problems-for-collapsing-manifolds-ii-quantitative-stability-of"
+  }
+]

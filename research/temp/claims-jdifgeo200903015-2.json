@@ -1,0 +1,44 @@
+[
+  {
+    "claim": "Proctor-Stanhope, 'Spectral and geometric bounds on 2-orbifold diffeomorphism type', is published in Differential Geometry and its Applications, vol. 28, issue 1, pages 12-18 (Feb 2010), DOI 10.1016/j.difgeo.2009.03.015.",
+    "stance": "neutral",
+    "stance_target": "correct DOI/citation for Proctor-Stanhope",
+    "evidence_type": "empirical",
+    "scope_conditions": "CrossRef metadata record",
+    "quoted_support": "[CrossRef]: container-title 'Differential Geometry and its Applications', volume 28, issue 1, page 12-18, published 2010-02.",
+    "numbers": ["volume 28", "issue 1", "pages 12-18"],
+    "entities": ["Emily Proctor", "Elizabeth Stanhope"],
+    "time_period": "2010",
+    "region": null,
+    "confidence": "high",
+    "source_note_id": "jdifgeo200903015-2"
+  },
+  {
+    "claim": "This is the published (journal) version of arXiv:0811.0797, which itself carries no journal-ref field on the arXiv abstract page.",
+    "stance": "neutral",
+    "stance_target": "linking the arXiv preprint to its published DOI",
+    "evidence_type": "empirical",
+    "scope_conditions": "arXiv metadata comparison",
+    "quoted_support": "[CrossRef DOI 10.1016/j.difgeo.2009.03.015 corresponds to the same title/authors as arXiv:0811.0797.]",
+    "numbers": [],
+    "entities": [],
+    "time_period": "2008-2010",
+    "region": null,
+    "confidence": "high",
+    "source_note_id": "jdifgeo200903015-2"
+  },
+  {
+    "claim": "No mention of heat-coefficient counting or finite-coefficient determinacy thresholds appears in the CrossRef metadata; title and journal placement is consistent with a geometric/topological finiteness result, not a spectral-coefficient-counting result.",
+    "stance": "neutral",
+    "stance_target": "genre classification of Proctor-Stanhope relative to the manuscript's finite-coefficient claim",
+    "evidence_type": "theoretical",
+    "scope_conditions": "title and metadata only",
+    "quoted_support": "[Title]: Spectral and geometric bounds on 2-orbifold diffeomorphism type.",
+    "numbers": [],
+    "entities": [],
+    "time_period": "2010",
+    "region": null,
+    "confidence": "low",
+    "source_note_id": "jdifgeo200903015-2"
+  }
+]

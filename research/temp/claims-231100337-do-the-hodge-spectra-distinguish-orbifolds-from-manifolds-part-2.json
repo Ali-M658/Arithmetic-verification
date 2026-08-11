@@ -1,0 +1,30 @@
+[
+  {
+    "claim": "The manuscript's citation of this paper as 'preprint, arXiv:2311.00337 (2023)' is outdated: the paper is now published in Michigan Mathematical Journal (advance publication), DOI 10.1307/mmj/20236493, per direct CrossRef query.",
+    "stance": "neutral",
+    "stance_target": "bibliographic accuracy of the manuscript's citation for GGKMSS Part 2",
+    "evidence_type": "empirical",
+    "scope_conditions": "CrossRef metadata as of 2026",
+    "quoted_support": "[CrossRef API response for DOI 10.1307/mmj/20236493]: container-title 'Michigan Mathematical Journal', published date-parts [2026, 1, 1].",
+    "numbers": ["DOI 10.1307/mmj/20236493"],
+    "entities": ["Katie Gittins", "Carolyn Gordon", "Ingrid Membrillo Solis", "Juan Pablo Rossetti", "Mary Sandoval", "Elizabeth Stanhope"],
+    "time_period": "2023-2026",
+    "region": null,
+    "confidence": "high",
+    "source_note_id": "231100337-do-the-hodge-spectra-distinguish-orbifolds-from-manifolds-part-2"
+  },
+  {
+    "claim": "The paper gives conditions on the codimension of the singular set guaranteeing the volume of the singular set is spectrally determined, with sharp counterexamples showing the conditions cannot be relaxed, addressing individual p-spectra of the Hodge Laplacian (not the hyperbolic 2-orbifold cone-order determinacy question).",
+    "stance": "neutral",
+    "stance_target": "scope of GGKMSS Part 2 relative to the manuscript's hyperbolic cone-orbifold determinacy claim",
+    "evidence_type": "theoretical",
+    "scope_conditions": "general compact Riemannian orbifolds, individual p-spectra",
+    "quoted_support": "we give conditions on the codimension of the singular set which guarantee that the volume of the singular set is determined, and in many cases we show by providing counterexamples that the conditions are sharp.",
+    "numbers": [],
+    "entities": ["Hodge Laplacian", "p-spectrum"],
+    "time_period": "2023-2026",
+    "region": null,
+    "confidence": "high",
+    "source_note_id": "231100337-do-the-hodge-spectra-distinguish-orbifolds-from-manifolds-part-2"
+  }
+]

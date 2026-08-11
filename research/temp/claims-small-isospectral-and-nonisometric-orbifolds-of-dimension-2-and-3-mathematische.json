@@ -1,0 +1,72 @@
+[
+  {
+    "claim": "The minimal area of an isospectral-nonisometric pair of 2-orbifolds associated to maximal arithmetic Fuchsian groups is 23*pi/6, achieved by exactly three pairs up to isomorphism, all with orbifold signature (0; 2,2,2,2,2,3,4).",
+    "stance": "neutral",
+    "stance_target": "existence of genuine published isospectral non-isometric hyperbolic 2-orbifold pairs",
+    "evidence_type": "theoretical",
+    "scope_conditions": "hyperbolic 2-orbifolds X(Gamma) for Gamma a maximal arithmetic Fuchsian group",
+    "quoted_support": "Theorem A. The minimal area of an isospectral-nonisometric pair of 2-orbifolds associated to maximal arithmetic Fuchsian groups is 23π/6, and this bound is achieved by exactly three pairs, up to isomorphism.",
+    "numbers": ["23*pi/6", "three pairs", "signature (0;2,2,2,2,2,3,4)"],
+    "entities": ["Benjamin Linowitz", "John Voight", "arithmetic Fuchsian group"],
+    "time_period": "2015",
+    "region": null,
+    "confidence": "high",
+    "source_note_id": "small-isospectral-and-nonisometric-orbifolds-of-dimension-2-and-3-mathematische"
+  },
+  {
+    "claim": "The three minimal-area isospectral pairs are hyperbolic 2-orbifolds with 7 cone points (five order-2, one order-3, one order-4), not triangle orbifolds (which have exactly 3 cone points), so this construction does not bear on the existence of isospectral hyperbolic TRIANGLE orbifolds.",
+    "stance": "neutral",
+    "stance_target": "whether isospectral hyperbolic triangle orbifolds exist in the literature",
+    "evidence_type": "theoretical",
+    "scope_conditions": "Section 3 explicit examples, arXiv:1408.2001",
+    "quoted_support": "In this section, we exhibit isospectral but not isometric hyperbolic 2-orbifolds with volume 23π/6 and signature (0; 2^5, 3, 4).",
+    "numbers": ["7 cone points", "signature (0;2^5,3,4)"],
+    "entities": ["Linowitz", "Voight"],
+    "time_period": "2015",
+    "region": null,
+    "confidence": "high",
+    "source_note_id": "small-isospectral-and-nonisometric-orbifolds-of-dimension-2-and-3-mathematische"
+  },
+  {
+    "claim": "The isospectral pairs are proved via Vigneras' arithmetic (quaternion-algebra) method and are representation-equivalent (isospectral on all p-forms, not just functions), distinguished from isometry by the Chinburg-Friedman selectivity criterion, not by Sunada's method.",
+    "stance": "neutral",
+    "stance_target": "construction mechanism for hyperbolic 2-orbifold isospectral pairs",
+    "evidence_type": "theoretical",
+    "scope_conditions": "Theorem 2.17/2.20/2.21 machinery, arXiv:1408.2001",
+    "quoted_support": "By Theorem 2.20, the groups Γi are not selective, since B is ramified at p. We conclude using Theorem 2.17 that the hyperbolic 2-orbifolds X(Γ∗1) and X(Γ∗2) are isospectral but not isometric.",
+    "numbers": [],
+    "entities": ["Vigneras", "Chinburg", "Friedman", "quaternion algebra"],
+    "time_period": "2015",
+    "region": null,
+    "confidence": "high",
+    "source_note_id": "small-isospectral-and-nonisometric-orbifolds-of-dimension-2-and-3-mathematische"
+  },
+  {
+    "claim": "A previously claimed isospectral pair of hyperbolic 2-orbifolds of genus 0 with signature (0;2,2,3,3) by Maclachlan-Rosenberger (1994) was later disproved by Buser-Flach-Semmler, who showed selectivity obstructs isospectrality -- a documented instance of a false isospectrality claim in this exact literature.",
+    "stance": "neutral",
+    "stance_target": "reliability/history of claimed isospectral hyperbolic 2-orbifold examples",
+    "evidence_type": "historical",
+    "scope_conditions": "arithmetic hyperbolic 2-orbifolds, signature (0;2,2,3,3)",
+    "quoted_support": "Finally, in 1994, Maclachlan and Rosenberger [61] claimed to have produced a pair of hyperbolic 2-orbifolds of genus 0 with orbifold fundamental groups of signature (0; 2, 2, 3, 3). However, Buser, Flach, and Semmler [14] later showed that these examples were too good to be true and that such orbifolds could not be Laplace isospectral.",
+    "numbers": ["signature (0;2,2,3,3)"],
+    "entities": ["Maclachlan", "Rosenberger", "Buser", "Flach", "Semmler"],
+    "time_period": "1994-2015",
+    "region": null,
+    "confidence": "high",
+    "source_note_id": "small-isospectral-and-nonisometric-orbifolds-of-dimension-2-and-3-mathematische"
+  },
+  {
+    "claim": "The example at signature (0;2,2,2,3,3), area 5*pi/3 (Example 4.20) is used as an illustration of a NEGATIVE case -- the paper proves this pair is NOT isospectral, using it to demonstrate the selectivity-verification technique.",
+    "stance": "refutes",
+    "stance_target": "misreading signature (0;2,2,2,3,3) area 5pi/3 as a positive isospectral example",
+    "evidence_type": "theoretical",
+    "scope_conditions": "Example 4.20, arXiv:1408.2001",
+    "quoted_support": "For the record, we note that area(Xi) = 5π/3 and the groups Γi have signature (0; 2, 2, 2, 3, 3) for i = 1, 2... Therefore the length of the closed geodesic associated to γ lies in the length spectrum of one of X1, X2 but not [both, implying non-isospectrality].",
+    "numbers": ["5*pi/3", "signature (0;2,2,2,3,3)"],
+    "entities": ["Linowitz", "Voight"],
+    "time_period": "2015",
+    "region": null,
+    "confidence": "medium",
+    "source_note_id": "small-isospectral-and-nonisometric-orbifolds-of-dimension-2-and-3-mathematische"
+  }
+]

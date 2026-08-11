@@ -1,0 +1,44 @@
+[
+  {
+    "claim": "In the general (non-orbifold) collapsing-manifold class, the stability theorem (Theorem 1.5) gives only an abstract continuous increasing modulus of continuity omega(s) with omega(0)=0, and no explicit rate or exponent is derived for it.",
+    "stance": "supports",
+    "stance_target": "the finding that general spectral-geometric stability results are qualitative, not quantitative",
+    "evidence_type": "theoretical",
+    "scope_conditions": "class MMp(n,Lambda,D) of pointed complete Riemannian manifolds with bounded diameter and sectional curvature, and their measured Gromov-Hausdorff closure",
+    "quoted_support": "there exists an increasing, continuous function ω(s) = ω(r,n,Λ,D)(s) that depends on r, n, Λ, D, which maps ω : [0, 1) →[0, ∞) with ω(0) = 0, such that ... dpmGH((X, p, µ), (X′, p′, µ′)) < ω(δ).",
+    "numbers": [],
+    "entities": ["Yaroslav Kurylev", "Matti Lassas", "Jinpeng Lu", "Takao Yamaguchi", "pointed measured Gromov-Hausdorff distance"],
+    "time_period": "2012-2024",
+    "region": null,
+    "confidence": "high",
+    "source_note_id": "inverse-spectral-problems-for-collapsing-manifolds-i-uniqueness-and-stability-fu"
+  },
+  {
+    "claim": "An explicit modulus of continuity becomes available only in the special case where the limit space is a priori a Riemannian orbifold (dim X = n-1), stated as Theorem 1.6 in Part I but proved in Part II.",
+    "stance": "supports",
+    "stance_target": "quantitative stability is exclusively achievable in the orbifold specialization of this inverse problem",
+    "evidence_type": "theoretical",
+    "scope_conditions": "X a Riemannian orbifold in class MMp(n,Lambda,D,Lambda3), interior spectral data on a ball in the regular part",
+    "quoted_support": "If (X, p, µ) ∈MMp(n, Λ, D) is a priori an orbifold, i.e., dim(X) = n−1, it is possible to obtain an explicit form of the modulus of continuity ω, given the interior spectral data {λj, ϕj|BX(p,r)} for the weighted Laplacian ∆X on a ball BX(p, r) ⊂Xreg, provided that the metric tensor on the regular part Xreg is of class C4.",
+    "numbers": [],
+    "entities": ["Riemannian orbifold", "weighted Laplacian", "interior spectral data"],
+    "time_period": "2012-2024",
+    "region": null,
+    "confidence": "high",
+    "source_note_id": "inverse-spectral-problems-for-collapsing-manifolds-i-uniqueness-and-stability-fu"
+  },
+  {
+    "claim": "Theorem 1.5's stability estimate removes the injectivity-radius assumption present in an earlier stability result for this class of manifolds, applicable when X, X' are themselves n-dimensional manifolds (non-collapsed case).",
+    "stance": "neutral",
+    "stance_target": "prior stability results this paper improves on",
+    "evidence_type": "theoretical",
+    "scope_conditions": "n-dimensional Riemannian manifolds with bounded diameter and sectional curvature",
+    "quoted_support": "In particular, in the case of the spaces X, X′ being n-dimensional manifolds, Theorem 1.5 removes the injectivity radius assumption for the stability result in [3].",
+    "numbers": [],
+    "entities": ["injectivity radius"],
+    "time_period": "2012-2024",
+    "region": null,
+    "confidence": "medium",
+    "source_note_id": "inverse-spectral-problems-for-collapsing-manifolds-i-uniqueness-and-stability-fu"
+  }
+]

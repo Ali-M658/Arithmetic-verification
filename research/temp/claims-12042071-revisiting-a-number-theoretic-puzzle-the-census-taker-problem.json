@@ -1,0 +1,58 @@
+[
+  {
+    "claim": "A census-taker number (CTN) N is a positive integer for which there exists exactly one pair of distinct unordered triples of positive integers with equal PRODUCT abc=def=N and equal SUM a+b+c=d+e+f, with the smallest CTN being 36 (triples {9,2,2} and {6,6,1}, common sum 13).",
+    "stance": "neutral",
+    "stance_target": "definition and smallest instance of the census-taker problem",
+    "evidence_type": "theoretical",
+    "scope_conditions": "positive integer triples with product = N",
+    "quoted_support": "the current work revisits the results of L.F. Meyers and R. See in [3], and presents the census-taker problem as a motivation to introduce the beautiful theory of numbers.",
+    "numbers": ["36", "13", "{9,2,2}", "{6,6,1}"],
+    "entities": ["I.J.L. Garces", "M.L. Loyola", "L.F. Meyers", "R. See", "census-taker problem"],
+    "time_period": "2010-2012",
+    "region": null,
+    "confidence": "high",
+    "source_note_id": "12042071-revisiting-a-number-theoretic-puzzle-the-census-taker-problem"
+  },
+  {
+    "claim": "The census-taker problem is structurally the equal-PRODUCT-and-equal-SUM dual of Section 5's equal-SUM-and-equal-RECIPROCAL-SUM problem: it matches two symmetric functions e_3 (product) and e_1 (sum) rather than e_1 (sum) and e_2/e_3 (ratio, equivalent to reciprocal sum), and additionally requires uniqueness of the matching pair for N to qualify as a CTN.",
+    "stance": "refutes",
+    "stance_target": "identity of the census-taker problem with Section 5's problem",
+    "evidence_type": "theoretical",
+    "scope_conditions": "unordered triples of positive integers",
+    "quoted_support": "Theorem 1 [mysterious triples of a CTN share no common entry]... Theorem 3 [every CTN is a product of at least 4 primes]",
+    "numbers": ["Theorem 1", "Theorem 2", "Theorem 3", "0 one-digit, 4 two-digit, 29 three-digit, 277 four-digit CTNs"],
+    "entities": ["census-taker problem", "Garces", "Loyola"],
+    "time_period": null,
+    "region": null,
+    "confidence": "high",
+    "source_note_id": "12042071-revisiting-a-number-theoretic-puzzle-the-census-taker-problem"
+  },
+  {
+    "claim": "J.B. Kelly's 'Partitions with equal products' (Proc. AMS 15 (1964), 987-990) is the cited origin of the equal-product dual pairing without the uniqueness condition, establishing that equal-symmetric-function-pairing problems for integer triples have a research lineage independent of, and predating, the Egyptian-fraction literature.",
+    "stance": "neutral",
+    "stance_target": "prior art lineage for symmetric-function-pairing problems on integer triples",
+    "evidence_type": "historical",
+    "scope_conditions": null,
+    "quoted_support": "J.B. Kelly, 'Partitions with equal products,' Proc. AMS 15 (1964), pp.987-990 for a sum-M/equal-product dual without the uniqueness condition.",
+    "numbers": ["1964", "pp. 987-990"],
+    "entities": ["J.B. Kelly"],
+    "time_period": "1964",
+    "region": null,
+    "confidence": "medium",
+    "source_note_id": "12042071-revisiting-a-number-theoretic-puzzle-the-census-taker-problem"
+  },
+  {
+    "claim": "No reciprocal-sum condition appears anywhere in the census-taker paper or its five cited references, confirming it does not overlap with the target coincidence 2+8+8=3+3+12=18 with matched reciprocal sums 3/4.",
+    "stance": "refutes",
+    "stance_target": "overlap between census-taker literature and Section 5's problem",
+    "evidence_type": "theoretical",
+    "scope_conditions": null,
+    "quoted_support": "CRITICAL DISTINCTION: this is equal PRODUCT + equal SUM (with a uniqueness/counting condition), structurally different from the target paper's equal SUM + equal SUM-OF-RECIPROCALS problem.",
+    "numbers": ["2+8+8=18", "3+3+12=18", "3/4"],
+    "entities": ["census-taker problem"],
+    "time_period": null,
+    "region": null,
+    "confidence": "high",
+    "source_note_id": "12042071-revisiting-a-number-theoretic-puzzle-the-census-taker-problem"
+  }
+]

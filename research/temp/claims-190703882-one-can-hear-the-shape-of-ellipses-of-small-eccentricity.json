@@ -1,0 +1,44 @@
+[
+  {
+    "claim": "Hezari and Zelditch prove that an ellipse of sufficiently small eccentricity is spectrally unique up to isometry among all smooth planar domains, with no symmetry, convexity, or closeness-to-ellipse assumption on the comparison class.",
+    "stance": "neutral",
+    "stance_target": "existence of near-degeneracy / near-diagonal recovery results as a methodological cousin to a planned stability theorem",
+    "evidence_type": "theoretical",
+    "scope_conditions": "planar smooth domains, Dirichlet Laplacian, small-eccentricity regime",
+    "quoted_support": "We show that if the eccentricity of an ellipse is sufficiently small then up to isometries it is spectrally unique among all smooth domains. We do not assume any symmetry, convexity, or closeness to the ellipse, on the class of domains.",
+    "numbers": [],
+    "entities": ["Hamid Hezari", "Steve Zelditch"],
+    "time_period": "2019-2023",
+    "region": null,
+    "confidence": "high",
+    "source_note_id": "190703882-one-can-hear-the-shape-of-ellipses-of-small-eccentricity"
+  },
+  {
+    "claim": "Hezari-Zelditch's result, though set in a near-degenerate regime (small eccentricity, i.e. near-circular), is an exact rigidity/determinacy statement valid below an implicit eccentricity threshold, not a quantitative bound on how spectral distance controls shape distance as the threshold is approached.",
+    "stance": "supports",
+    "stance_target": "near-degeneracy inverse spectral results in the literature are typically rigidity/determinacy statements, not stability estimates that quantify blow-up as a degenerate configuration is approached",
+    "evidence_type": "theoretical",
+    "scope_conditions": "as stated in the arXiv abstract, arXiv:1907.03882v2",
+    "quoted_support": "We show that if the eccentricity of an ellipse is sufficiently small then up to isometries it is spectrally unique among all smooth domains.",
+    "numbers": [],
+    "entities": ["eccentricity"],
+    "time_period": "2019-2023",
+    "region": null,
+    "confidence": "medium",
+    "source_note_id": "190703882-one-can-hear-the-shape-of-ellipses-of-small-eccentricity"
+  },
+  {
+    "claim": "Bibliographic record for Hezari-Zelditch is disputed between two sources: the arXiv comment states publication in Annals of Mathematics Volume 197, no. 1 (January 2023), while a citing paper's reference list gives Ann. Math. (2) 196(3), 1083-1134 (2022), DOI 10.4007/annals.2022.196.3.4 -- both refer to the same paper but disagree on volume/issue/year; neither was independently verified against the publisher record in this pass.",
+    "stance": "neutral",
+    "stance_target": "bibliographic accuracy check",
+    "evidence_type": "empirical",
+    "scope_conditions": "publication record, unresolved discrepancy",
+    "quoted_support": "Accepted for publication in Annals of Mathematics, to be published in the January 2023 issue (Volume 197, no. 1)",
+    "numbers": ["196(3)", "1083-1134", "2022", "197(1)", "2023"],
+    "entities": ["Annals of Mathematics"],
+    "time_period": "2022-2023",
+    "region": null,
+    "confidence": "low",
+    "source_note_id": "190703882-one-can-hear-the-shape-of-ellipses-of-small-eccentricity"
+  }
+]

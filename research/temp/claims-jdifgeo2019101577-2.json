@@ -1,0 +1,44 @@
+[
+  {
+    "claim": "Richardson-Stanhope, 'You can hear the local orientability of an orbifold', is published in Differential Geometry and its Applications, vol. 68, article 101577 (Feb 2020), DOI 10.1016/j.difgeo.2019.101577.",
+    "stance": "neutral",
+    "stance_target": "correct DOI/citation for Richardson-Stanhope",
+    "evidence_type": "empirical",
+    "scope_conditions": "CrossRef metadata record",
+    "quoted_support": "[CrossRef]: container-title 'Differential Geometry and its Applications', volume 68, article 101577, published 2020-02.",
+    "numbers": ["volume 68", "article 101577"],
+    "entities": ["Sean Richardson", "Elizabeth Stanhope"],
+    "time_period": "2020",
+    "region": null,
+    "confidence": "high",
+    "source_note_id": "jdifgeo2019101577-2"
+  },
+  {
+    "claim": "This is the published (journal) version of arXiv:1910.03224, submitted October 2019, whose abstract page shows no journal-ref field.",
+    "stance": "neutral",
+    "stance_target": "linking the arXiv preprint to its published DOI",
+    "evidence_type": "empirical",
+    "scope_conditions": "arXiv metadata comparison",
+    "quoted_support": "[CrossRef DOI 10.1016/j.difgeo.2019.101577 corresponds to the same title/authors as arXiv:1910.03224.]",
+    "numbers": [],
+    "entities": [],
+    "time_period": "2019-2020",
+    "region": null,
+    "confidence": "high",
+    "source_note_id": "jdifgeo2019101577-2"
+  },
+  {
+    "claim": "This 2019/2020 paper falls within the 2017-2026 competitor-sweep window and uses heat invariants, but only to distinguish a binary property (local orientability), not to establish a finite-coefficient cone-order determinacy threshold.",
+    "stance": "refutes",
+    "stance_target": "this paper being a genuine competitor to the manuscript's finite-coefficient determinacy claim",
+    "evidence_type": "theoretical",
+    "scope_conditions": "2017-2026 literature sweep",
+    "quoted_support": "[Title]: You can hear the local orientability of an orbifold.",
+    "numbers": [],
+    "entities": [],
+    "time_period": "2019-2020",
+    "region": null,
+    "confidence": "medium",
+    "source_note_id": "jdifgeo2019101577-2"
+  }
+]

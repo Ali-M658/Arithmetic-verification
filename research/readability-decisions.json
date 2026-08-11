@@ -1,0 +1,32 @@
+{
+  "vault_tag": "hyperbolic-pillow-heat-novelty-813161",
+  "step": 16,
+  "note": "The readability recommender did not return a recommendations file within its run window. The orchestrator performed the audit directly, which is within step 16's remit -- the orchestrator decides and applies. Changes below were derived from a structural read of all eight deliverables.",
+  "audit_performed": [
+    "checked that each of VERDICT's six answers opens with an extractable verdict before the evidence",
+    "checked heading nesting (no H2 -> H4 skips) across all eight files",
+    "checked all 18 markdown tables for pipe-count consistency and internal blank lines",
+    "checked inline and display math balance per file",
+    "checked for process vocabulary and for AI/model/vendor references"
+  ],
+  "changes_applied": [
+    {"file":"review/hyperresearch/VERDICT.md","category":"make-table","severity":"high",
+     "change":"Added an 'At a glance' six-row table immediately under the header, giving the one-line answer to each numbered question, plus a two-sentence orientation naming the corrections count and the one genuine mathematical defect.",
+     "rationale":"VERDICT is the entry point and runs ~400 lines. The reader can now extract all six verdicts without scrolling, then descend only where they disagree or want evidence."},
+    {"file":"review/hyperresearch/VERDICT.md","category":"bold-keyterms","severity":"medium",
+     "change":"Bolded answer 6's opening verdict ('It already largely does'), the only one of the six not previously set off.",
+     "rationale":"Consistency: five of six verdicts were bold, so the unbolded one read as less settled than it is."},
+    {"file":"review/hyperresearch/VERDICT.md","category":"split-sentence","severity":"medium",
+     "change":"Answer 1's opener now states the caveat inline ('with one retrieval still open') rather than leaving it to be discovered further down.",
+     "rationale":"Aligns the summary with Q1's own headline, which the critics had already corrected. A bare 'Yes - new' in the summary overstated what the detail file concludes."},
+    {"file":"review/hyperresearch/Q2-cone-coefficients.md","category":"make-list","severity":"high",
+     "change":"Rewrote the 'Short answer' to state the split verdict cleanly, then added a three-item list flagging the findings that go beyond the question as asked: the closed-form leading coefficient, the uncited Berndt-Yeap source, and the K(F) definitional defect.",
+     "rationale":"Q2 is the longest and most technical file, and its three most consequential findings were buried in sections 3, 4 and 5. A reader who stops after the short answer now still knows they exist."}
+  ],
+  "considered_and_rejected": [
+    {"idea":"Add at-a-glance tables to Q1, Q3, Q4, Q5 as well","reason":"Each already opens with a bolded verdict paragraph and runs under 3,100 words. A second summary layer would duplicate rather than orient."},
+    {"idea":"Split VERDICT's longer answers into subsections","reason":"Answers 3 and 4 carry boxed callouts and tables that already break them visually. Adding H3s would deepen the heading tree without aiding navigation."},
+    {"idea":"Shorten the verbatim source quotations","reason":"The sourcing rule makes the verbatim text the evidence. Compressing it would weaken the deliverable."},
+    {"idea":"Convert the Q4 technique chain to a table","reason":"The links are sequential and each carries a caveat; a table would lose the ordering that makes it a chain."}
+  ]
+}

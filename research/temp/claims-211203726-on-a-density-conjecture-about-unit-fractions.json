@@ -1,0 +1,30 @@
+[
+  {
+    "claim": "Any set A of positive integers with positive upper density contains a finite subset S such that the sum of 1/n over n in S equals exactly 1, resolving a question of Erdos and Graham.",
+    "stance": "neutral",
+    "stance_target": "the density/covering branch of 'equal sums of unit fractions' problems, distinct from Section 5's problem",
+    "evidence_type": "theoretical",
+    "scope_conditions": "sets of positive integers with positive upper density",
+    "quoted_support": "We prove that any set A subset N of positive upper density contains a finite S subset A such that sum_{n in S} 1/n=1, answering a question of Erdos and Graham.",
+    "numbers": ["1"],
+    "entities": ["Thomas F. Bloom", "Bhavik Mehta", "Erdos", "Graham"],
+    "time_period": "2021-2023",
+    "region": null,
+    "confidence": "high",
+    "source_note_id": "211203726-on-a-density-conjecture-about-unit-fractions"
+  },
+  {
+    "claim": "This paper's 'equal sums of unit fractions' variant concerns representing a single fixed value (1) from a set with a density condition, not matching two independently-chosen triples on two symmetric functions simultaneously, so it does not constitute prior art for Section 5's problem.",
+    "stance": "refutes",
+    "stance_target": "prior art for Section 5's two-triple equal-sum-and-equal-reciprocal-sum problem",
+    "evidence_type": "theoretical",
+    "scope_conditions": null,
+    "quoted_support": "We prove that any set A subset N of positive upper density contains a finite S subset A such that sum_{n in S} 1/n=1, answering a question of Erdos and Graham.",
+    "numbers": [],
+    "entities": ["Thomas F. Bloom"],
+    "time_period": null,
+    "region": null,
+    "confidence": "medium",
+    "source_note_id": "211203726-on-a-density-conjecture-about-unit-fractions"
+  }
+]

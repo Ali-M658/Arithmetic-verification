@@ -1,0 +1,44 @@
+[
+  {
+    "claim": "The equivalence of Laplace-isospectrality and representation-equivalence for hyperbolic orbifolds is KNOWN to hold in dimension 2 (Doyle-Rossetti) but was an open question in dimension 3, which this 2024 paper partially addresses by constructing hyperbolic 3-orbifolds that are i-isospectral for all i yet not representation-equivalent.",
+    "stance": "neutral",
+    "stance_target": "state of knowledge on isospectrality-vs-representation-equivalence for hyperbolic orbifolds by dimension",
+    "evidence_type": "theoretical",
+    "scope_conditions": "hyperbolic 2- and 3-orbifolds",
+    "quoted_support": "The converse, whether Ω∙-isospectrality of two hyperbolic 3-orbifolds implies representation equivalence of the corresponding groups, has until now been an open question... The converse does hold for hyperbolic 2-orbifolds [22] and it has been conjectured to hold in dimension 3, too.",
+    "numbers": [],
+    "entities": ["Alex Bartel", "Aurel Page", "Doyle", "Rossetti"],
+    "time_period": "2024",
+    "region": null,
+    "confidence": "high",
+    "source_note_id": "240707240-vignras-orbifolds-isospectrality-regulators-and-torsion-homology"
+  },
+  {
+    "claim": "This 2024 paper produces a pair of closed connected orientable arithmetic hyperbolic 3-orbifolds of volume 0.251... that are i-isospectral for all i but not representation-equivalent, possibly the smallest known such pair.",
+    "stance": "neutral",
+    "stance_target": "smallest known isospectral hyperbolic 3-orbifold examples as of 2024",
+    "evidence_type": "theoretical",
+    "scope_conditions": "arithmetic hyperbolic 3-orbifolds",
+    "quoted_support": "Theorem A. There exists a pair of closed connected orientable arithmetic hyperbolic 3-orbifolds with volume 0.251... that are i-isospectral for all i, but not representation equivalent, only one of which has a cyclic isotropy group of order 10.",
+    "numbers": ["volume 0.251"],
+    "entities": ["Bartel", "Page"],
+    "time_period": "2024",
+    "region": null,
+    "confidence": "high",
+    "source_note_id": "240707240-vignras-orbifolds-isospectrality-regulators-and-torsion-homology"
+  },
+  {
+    "claim": "The paper's methods are number-theoretic (regulators, torsion homology, Galois representations) applied to dimension-3 hyperbolic orbifolds, and it contains no discussion of triangle orbifolds, cone-surface heat trace, or heat-coefficient counting for 2-dimensional cone orbifolds -- confirmed by direct full-text search of the 65-page PDF.",
+    "stance": "refutes",
+    "stance_target": "this paper being a competing finite-coefficient determinacy result for hyperbolic cone orbisurfaces",
+    "evidence_type": "empirical",
+    "scope_conditions": "full-text grep of extracted PDF, arXiv:2407.07240v1",
+    "quoted_support": "[Direct text-search finding: only 3 total mentions of '2-orbifold' or 'triangle' in the 3841-line extracted text, all passing citations to Doyle-Rossetti and Linowitz-Voight; zero mentions of heat trace, heat coefficient, or cone surface.]",
+    "numbers": ["0 heat-coefficient mentions"],
+    "entities": [],
+    "time_period": "2024",
+    "region": null,
+    "confidence": "high",
+    "source_note_id": "240707240-vignras-orbifolds-isospectrality-regulators-and-torsion-homology"
+  }
+]

@@ -1,0 +1,44 @@
+[
+  {
+    "claim": "Elizabeth Stanhope's own publication list corroborates Proctor-Stanhope, Differential Geom. Appl. 28 (2010) no.1, 12-18, and Stanhope, 'Spectral bounds on orbifold isotropy', Ann. Global Anal. Geom. 27 (2005) no.4, 355-375 -- cross-validating the DOI/page records obtained independently via CrossRef and Springer.",
+    "stance": "neutral",
+    "stance_target": "cross-validation of DOI records for Stanhope-coauthored papers",
+    "evidence_type": "empirical",
+    "scope_conditions": "author-maintained page, undated snapshot",
+    "quoted_support": "with E. Proctor. Spectral and geometric bounds on 2-orbifold diffeomorphism type. Differential Geom. Appl. 28 (2010), no.1, 12-18. Available on the arXiv. Spectral bounds on orbifold isotropy. Ann. Global Anal. Geom. 27 (2005), no. 4, 355-375. Available on the arXiv.",
+    "numbers": ["volume 28", "volume 27"],
+    "entities": ["Elizabeth Stanhope", "Emily Proctor"],
+    "time_period": "2005-2010",
+    "region": null,
+    "confidence": "medium",
+    "source_note_id": "liz-stanhope-research"
+  },
+  {
+    "claim": "The page does not list Richardson-Stanhope (2019/2020) or the Steklov-orbifold paper's final acceptance, indicating this snapshot predates or was not updated after 2019.",
+    "stance": "neutral",
+    "stance_target": "currency of this source relative to more recent Stanhope publications",
+    "evidence_type": "empirical",
+    "scope_conditions": "page content as fetched",
+    "quoted_support": "with T. Arias-Marco, E. Dryden, C. Gordon, A. Hassannezhad, and A. Ray. Spectral geometry of the Steklov problem on orbifolds. accepted by Int. Math. Res. Not. Available on the arXiv.",
+    "numbers": [],
+    "entities": [],
+    "time_period": "undated (pre-2019 apparent snapshot)",
+    "region": null,
+    "confidence": "low",
+    "source_note_id": "liz-stanhope-research"
+  },
+  {
+    "claim": "The page's citation of Shams-Stanhope-Webb gives page range '289-385' for Arch. Math. 87 (2006) no.4, which is internally inconsistent (a jump from 289 to 385 spans far more than a typical article) and conflicts with the Springer-confirmed 375-385 -- a minor author-page transcription error, not authoritative.",
+    "stance": "refutes",
+    "stance_target": "using this author page as the authoritative page-range source for Shams-Stanhope-Webb over the publisher record",
+    "evidence_type": "empirical",
+    "scope_conditions": "author-maintained page vs. publisher record",
+    "quoted_support": "with N. Shams, D. Webb. One cannot hear orbifold isotropy type. Arch. Math. 87 (2006), no.4, 289-385.",
+    "numbers": ["289-385 (likely typo for 375-385)"],
+    "entities": ["Shams", "Stanhope", "Webb"],
+    "time_period": "2006",
+    "region": null,
+    "confidence": "medium",
+    "source_note_id": "liz-stanhope-research"
+  }
+]

@@ -1,0 +1,44 @@
+[
+  {
+    "claim": "The Loughborough University repository (figshare-hosted) deposit record for this paper has handle 2134/37672 and lists a deposit date of 2019-04-29, months before the Cambridge/CJM online publication date of 27 August 2019.",
+    "stance": "neutral",
+    "stance_target": "institutional repository provenance of the paper",
+    "evidence_type": "empirical",
+    "scope_conditions": "Loughborough University institutional repository record",
+    "quoted_support": "Bari, Naveed S.; Hunsicker, Eugenie (2019). Isospectrality for orbifold lens spaces. Loughborough University. Journal contribution. https://hdl.handle.net/2134/37672. ... published_date : 2019-04-29T12:10:04Z",
+    "numbers": ["2134/37672", "2019-04-29"],
+    "entities": ["Loughborough University repository", "hdl.handle.net/2134/37672"],
+    "time_period": "2019",
+    "region": "United Kingdom",
+    "confidence": "high",
+    "source_note_id": "isospectrality-for-orbifold-lens-spaces-loughborough-university-institutional-re"
+  },
+  {
+    "claim": "The Loughborough repository hosts the paper under a CC BY-NC-ND 4.0 license, tagged with Spectral geometry, Global Riemannian geometry, Orbifolds, Lens spaces.",
+    "stance": "neutral",
+    "stance_target": "licensing/access terms of the institutional deposit",
+    "evidence_type": "empirical",
+    "scope_conditions": "figshare API record for article ID 9385352",
+    "quoted_support": "license : {'value': 12, 'name': 'CC BY-NC-ND 4.0', 'url': 'https://creativecommons.org/licenses/by-nc-nd/4.0/'} tags : ['Spectral geometry', 'Global Riemannian geometry', 'Orbifolds', 'Lens spaces', 'Mathematical Sciences not elsewhere classified']",
+    "numbers": ["CC BY-NC-ND 4.0"],
+    "entities": ["CC BY-NC-ND 4.0"],
+    "time_period": null,
+    "region": null,
+    "confidence": "high",
+    "source_note_id": "isospectrality-for-orbifold-lens-spaces-loughborough-university-institutional-re"
+  },
+  {
+    "claim": "The figshare/Loughborough API record does not itself encode journal name, volume, issue, or page numbers (the journal field is null); the authoritative venue/volume/page/DOI data comes only from the Crossref/Canadian Journal of Mathematics record.",
+    "stance": "neutral",
+    "stance_target": "which source is authoritative for the exact citation form",
+    "evidence_type": "empirical",
+    "scope_conditions": "figshare API metadata vs Crossref metadata",
+    "quoted_support": "journal : None",
+    "numbers": [],
+    "entities": ["figshare API", "Crossref"],
+    "time_period": null,
+    "region": null,
+    "confidence": "high",
+    "source_note_id": "isospectrality-for-orbifold-lens-spaces-loughborough-university-institutional-re"
+  }
+]

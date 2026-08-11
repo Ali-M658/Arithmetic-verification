@@ -1,0 +1,44 @@
+[
+  {
+    "claim": "For f(n) the number of solutions (x,y,z) to 4/n = 1/x+1/y+1/z, the summatory function over primes satisfies N log^2 N << sum_{p<=N} f(p) << N log^2 N log log N as N -> infinity.",
+    "stance": "neutral",
+    "stance_target": "asymptotic counting of three-term unit-fraction equation solutions",
+    "evidence_type": "theoretical",
+    "scope_conditions": "numerator fixed at 4 (Erdos-Straus equation), n=p ranges over primes p<=N",
+    "quoted_support": "Our main result establishes the asymptotic upper and lower bounds N log^2 N << sum_{p leq N} f(p) << N log^2 N log log N.",
+    "numbers": ["N log^2 N", "N log^2 N log log N"],
+    "entities": ["Christian Elsholtz", "Terence Tao", "Erdos-Straus conjecture"],
+    "time_period": "2011-2013",
+    "region": null,
+    "confidence": "high",
+    "source_note_id": "11071010-counting-the-number-of-solutions-to-the-erdos-straus-equation-on-unit-f"
+  },
+  {
+    "claim": "The pointwise bound f(p) << p^{3/5} + O(1/log log p) holds for all primes p, and f(p) = O(log^3 p log log p) for a density-1 subset of primes.",
+    "stance": "neutral",
+    "stance_target": "typical multiplicity of a single three-term unit-fraction representation",
+    "evidence_type": "theoretical",
+    "scope_conditions": "Erdos-Straus equation 4/n=1/x+1/y+1/z, n=p prime",
+    "quoted_support": "we have f(p) = O(log^3 p log log p) for a subset of primes of density arbitrarily close to 1; thus a typical prime has a relatively small number of solutions to the Erdos-Straus Diophantine equation. We also... establish the bound f(p) << p^{3/5} + O(1/log log p) for all primes p.",
+    "numbers": ["p^{3/5}", "log^3 p log log p"],
+    "entities": ["Christian Elsholtz", "Terence Tao"],
+    "time_period": null,
+    "region": null,
+    "confidence": "high",
+    "source_note_id": "11071010-counting-the-number-of-solutions-to-the-erdos-straus-equation-on-unit-f"
+  },
+  {
+    "claim": "This paper's counting apparatus addresses the multiplicity of a single fixed-numerator three-term unit-fraction equation (4/n), not pairs of triples matched on two independent symmetric functions (equal sum AND equal reciprocal sum), so it is a technique-adjacent but not directly-applicable precedent for Section 5's problem.",
+    "stance": "refutes",
+    "stance_target": "prior art for Section 5's two-triple equal-sum-and-equal-reciprocal-sum Diophantine problem",
+    "evidence_type": "theoretical",
+    "scope_conditions": "three-term unit fraction equation, single triple per equation",
+    "quoted_support": "For any positive integer n, let f(n) denote the number of solutions to the Diophantine equation 4/n = 1/x + 1/y + 1/z with x,y,z positive integers.",
+    "numbers": [],
+    "entities": ["Christian Elsholtz", "Terence Tao"],
+    "time_period": null,
+    "region": null,
+    "confidence": "high",
+    "source_note_id": "11071010-counting-the-number-of-solutions-to-the-erdos-straus-equation-on-unit-f"
+  }
+]

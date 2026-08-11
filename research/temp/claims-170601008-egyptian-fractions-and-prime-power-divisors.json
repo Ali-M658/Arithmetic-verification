@@ -1,0 +1,16 @@
+[
+  {
+    "claim": "The paper defines 'prime power pseudoperfect numbers' and 'prime power Giuga numbers' as generalizations arising from varying Egyptian-fraction equations, and shows a sequence of Amarnath Murthy in OEIS is a subsequence of the prime power pseudoperfect numbers.",
+    "stance": "neutral",
+    "stance_target": "breadth of active Egyptian-fraction-equation variants in the contemporary literature",
+    "evidence_type": "theoretical",
+    "scope_conditions": null,
+    "quoted_support": "From varying Egyptian fraction equations we obtain generalizations of primary pseudoperfect numbers and Giuga numbers which we call prime power psuedoperfect numbers and prime power Giuga numbers respectively.",
+    "numbers": [],
+    "entities": ["John Machacek", "Amarnath Murthy"],
+    "time_period": "2017-2018",
+    "region": null,
+    "confidence": "medium",
+    "source_note_id": "170601008-egyptian-fractions-and-prime-power-divisors"
+  }
+]

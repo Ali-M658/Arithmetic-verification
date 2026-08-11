@@ -1,0 +1,30 @@
+[
+  {
+    "claim": "Eppstein's curated Egyptian-fractions bibliography hub, spanning research papers, algorithms, and recreational problems in the field, contains no page or linked reference addressing two triples with both equal integer sum and equal reciprocal sum.",
+    "stance": "refutes",
+    "stance_target": "prior art for Section 5's two-triple equal-sum-and-equal-reciprocal-sum Diophantine problem",
+    "evidence_type": "empirical",
+    "scope_conditions": "outbound link graph of a single, long-maintained academic hub page as of the fetch date",
+    "quoted_support": "This idea let them represent numbers like 1/7 easily enough; other numbers such as 2/7 were represented as sums of unit fractions",
+    "numbers": [],
+    "entities": ["David Eppstein"],
+    "time_period": null,
+    "region": null,
+    "confidence": "low",
+    "source_note_id": "egyptian-fractions"
+  },
+  {
+    "claim": "Allan Swett's page confirms the Erdos-Straus equation 4/n=1/x+1/y+1/z is solvable for all n up to 10^12 (an earlier verification bound than the 10^18 bound reported by erdosproblems.com in 2025).",
+    "stance": "neutral",
+    "stance_target": "historical verification progress on the Erdos-Straus conjecture",
+    "evidence_type": "empirical",
+    "scope_conditions": "n up to 10^12, as of the linked page's writing",
+    "quoted_support": "The Erdos-Strauss conjecture. Allan Swett confirms that 4/n=1/x+1/y+1/z is solvable for n up to 10^12.",
+    "numbers": ["10^12"],
+    "entities": ["Allan Swett", "Erdos-Straus conjecture"],
+    "time_period": null,
+    "region": null,
+    "confidence": "medium",
+    "source_note_id": "egyptian-fractions"
+  }
+]

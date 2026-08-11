@@ -1,0 +1,44 @@
+[
+  {
+    "claim": "The 2017 erratum to DGGW 2008 corrects only Theorem 5.1, adding the hypothesis that Isomax(N) be nontrivial for the singular stratum N invoked in the isospectrality-obstruction argument; it does not touch Section 5.6, the cone-point coefficient formulas, or any orbifold-classification results.",
+    "stance": "refutes",
+    "stance_target": "any concern that the DGGW erratum invalidates the manuscript's cited cone(m) formula or degree-1 term",
+    "evidence_type": "legal",
+    "scope_conditions": "Michigan Math. J. 66 (2017), 221-222",
+    "quoted_support": "In Theorem 5.1 (one of the applications of the heat invariants), there is an implicit assumption that Isomax(N) is nontrivial. Thanks to a question from Naveed Bari, we now realize that Isomax(N) may be trivial. The strata for which Isomax(N) is trivial do not appear in the heat invariants, necessitating the addition of a hypothesis to Theorem 5.1.",
+    "numbers": ["Theorem 5.1"],
+    "entities": ["Naveed Bari", "Isomax(N)", "Klein 4-group"],
+    "time_period": "2017",
+    "region": null,
+    "confidence": "high",
+    "source_note_id": "erratum-to-asymptotic-expansion-of-the-heat-kernel-for-orbifolds-michigan-math-j"
+  },
+  {
+    "claim": "The erratum's counterexample motivating the correction is R^3 modulo the Klein 4-group G={r_x,r_y,r_z,Id} of pi-rotations about the coordinate axes; the quotient orbifold has a 0-dimensional stratum at the origin for which Isomax(N) is trivial, and the corrected Theorem 5.1 restricts to strata N with Isomax(N) nontrivial.",
+    "stance": "neutral",
+    "stance_target": "scope of the Theorem 5.1 correction",
+    "evidence_type": "theoretical",
+    "scope_conditions": "R^3 with Klein 4-group action",
+    "quoted_support": "The quotient of R3 by G is an orbifold. The axes project to 1-dimensional strata, and the origin projects to a 0-dimensional stratum for which Isomax(N) is trivial. 5.1. Theorem. ... if there exists an odd-dimensional (respectively, even-dimensional) O-stratum N of the singular set with Isomax(N) nontrivial, then O cannot be isospectral to a Riemannian manifold.",
+    "numbers": ["Klein 4-group", "R^3"],
+    "entities": ["r_x", "r_y", "r_z"],
+    "time_period": "2017",
+    "region": null,
+    "confidence": "high",
+    "source_note_id": "erratum-to-asymptotic-expansion-of-the-heat-kernel-for-orbifolds-michigan-math-j"
+  },
+  {
+    "claim": "The erratum's only reference is back to the original paper, cited exactly as 'E. B. Dryden, C. S. Gordon, S. J. Greenwald, and D. L. Webb, Asymptotic expansion of the heat kernel for orbifolds, Michigan Math. J. 56 (2008), 205-238,' independently confirming the page range 205-238.",
+    "stance": "supports",
+    "stance_target": "manuscript's cited page range for DGGW 2008",
+    "evidence_type": "historical",
+    "scope_conditions": null,
+    "quoted_support": "[1] E. B. Dryden, C. S. Gordon, S. J. Greenwald, and D. L. Webb, Asymptotic expansion of the heat kernel for orbifolds, Michigan Math. J. 56 (2008), 205–238.",
+    "numbers": ["56", "2008", "205-238"],
+    "entities": ["Dryden", "Gordon", "Greenwald", "Webb"],
+    "time_period": "2008",
+    "region": null,
+    "confidence": "high",
+    "source_note_id": "erratum-to-asymptotic-expansion-of-the-heat-kernel-for-orbifolds-michigan-math-j"
+  }
+]

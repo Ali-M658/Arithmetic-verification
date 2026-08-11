@@ -1,0 +1,23 @@
+[
+  {
+    "claim": "Harmer's 'The spectra of the spherical and Euclidean triangle groups' (J. Aust. Math. Soc. 84 (2008), no. 2, 217-227) has volume/issue/pages exactly matching the manuscript's printed entry, though Crossref's 'published-print' metadata field for this record shows April 2007 (an online-first artifact) rather than the bound-volume year 2008.",
+    "stance": "supports",
+    "stance_target": "manuscript bibliography entry harmer2008 as printed",
+    "evidence_type": "empirical",
+    "scope_conditions": "Crossref record for DOI 10.1017/s1446788708000281",
+    "quoted_support": "container-title: J. Aust. Math. Soc.; volume: 84; issue: 2; page: 217-227; published-print date-parts [2007,4]",
+    "numbers": [
+      "volume 84",
+      "issue 2",
+      "pages 217-227"
+    ],
+    "entities": [
+      "Mark Harmer",
+      "Journal of the Australian Mathematical Society"
+    ],
+    "time_period": "2007-2008",
+    "region": null,
+    "confidence": "high",
+    "source_note_id": "s1446788708000281"
+  }
+]

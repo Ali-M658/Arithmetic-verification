@@ -1,0 +1,30 @@
+[
+  {
+    "claim": "DGGW's paper was submitted to arXiv on 20 May 2008 as v1 (no later revisions exist) and, per the arXiv Comments field, was 'to appear in Michigan Math. J.' at the time of submission.",
+    "stance": "neutral",
+    "stance_target": "provenance of the arXiv preprint relative to the published version",
+    "evidence_type": "historical",
+    "scope_conditions": "arXiv:0805.3148",
+    "quoted_support": "[Submitted on 20 May 2008] ... Comments: to appear in Michigan Math. J ... [v1] Tue, 20 May 2008 19:31:28 UTC (37 KB)",
+    "numbers": ["0805.3148", "20 May 2008"],
+    "entities": ["Dryden", "Gordon", "Greenwald", "Webb"],
+    "time_period": "2008",
+    "region": null,
+    "confidence": "high",
+    "source_note_id": "08053148-asymptotic-expansion-of-the-heat-kernel-for-orbifolds"
+  },
+  {
+    "claim": "The arXiv-issued DOI for the preprint (10.48550/arXiv.0805.3148) is distinct from and should not be confused with the published journal DOI (10.1307/mmj/1213972406).",
+    "stance": "neutral",
+    "stance_target": "correct DOI to cite for the published version",
+    "evidence_type": "historical",
+    "scope_conditions": null,
+    "quoted_support": "https://doi.org/10.48550/arXiv.0805.3148 Focus to learn more arXiv-issued DOI via DataCite",
+    "numbers": ["10.48550/arXiv.0805.3148"],
+    "entities": ["arXiv", "DataCite"],
+    "time_period": "2008",
+    "region": null,
+    "confidence": "high",
+    "source_note_id": "08053148-asymptotic-expansion-of-the-heat-kernel-for-orbifolds"
+  }
+]

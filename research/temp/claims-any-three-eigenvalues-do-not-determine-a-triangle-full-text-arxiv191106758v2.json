@@ -1,0 +1,58 @@
+[
+  {
+    "claim": "Gomez-Serrano and Orriols prove the existence of two non-isometric triangles T_A, T_B whose first, second, and fourth Dirichlet Laplacian eigenvalues coincide exactly, refuting the conjecture that three eigenvalues determine a triangle.",
+    "stance": "refutes",
+    "stance_target": "three eigenvalues determine a triangle up to isometry",
+    "evidence_type": "empirical",
+    "scope_conditions": "planar Euclidean triangles, Dirichlet Laplacian",
+    "quoted_support": "There exist two triangles TA and TB, not isometric to each other, such that λi(TA) = λi(TB), for i = 1, 2, 4.",
+    "numbers": ["i = 1, 2, 4"],
+    "entities": ["Javier Gomez-Serrano", "Gerard Orriols", "Antunes-Freitas", "Grieser-Maronna", "Lu-Rowlett"],
+    "time_period": "2019-2020",
+    "region": null,
+    "confidence": "high",
+    "source_note_id": "any-three-eigenvalues-do-not-determine-a-triangle-full-text-arxiv191106758v2"
+  },
+  {
+    "claim": "The result is proved by rigorous computer-assisted verification (two-pass FEM eigenvalue enclosure plus interval arithmetic) combined with the Poincare-Miranda theorem to certify existence of an exact eigenvalue coincidence inside a small validated box of triangle-vertex parameter space, not by a stability/perturbation estimate.",
+    "stance": "neutral",
+    "stance_target": "the proof technique used to establish near-degeneracy results in inverse spectral geometry of triangles",
+    "evidence_type": "theoretical",
+    "scope_conditions": "finite element eigenvalue bounds via Crouzeix-Raviart discretization; existence via topological degree",
+    "quoted_support": "The proof follows from the continuity of eigenvalues and the Poincaré–Miranda theorem [40]... Note that the slightly more general result of Remark 1.2 follows from the fact that with the computer we will check only a finite number of strict inequalities, so they will remain true if the values of ¯ξ21 and ¯ξ41 are perturbed by a small amount.",
+    "numbers": [],
+    "entities": ["Poincare-Miranda theorem", "Crouzeix-Raviart discretization", "interval arithmetic"],
+    "time_period": "2019-2020",
+    "region": null,
+    "confidence": "high",
+    "source_note_id": "any-three-eigenvalues-do-not-determine-a-triangle-full-text-arxiv191106758v2"
+  },
+  {
+    "claim": "The rigorous finite-element eigenvalue lower bound used has an explicit discretization-error constant C_h <= 0.1893h for triangulation mesh diameter h, following Crouzeix-Raviart nonconforming discretization theory.",
+    "stance": "neutral",
+    "stance_target": "explicit constants available for FEM-based rigorous eigenvalue enclosure",
+    "evidence_type": "theoretical",
+    "scope_conditions": "polygonal domain with triangulation of diameter at most h, Crouzeix-Raviart discretized eigenvalue problem",
+    "quoted_support": "Then λh,k / (1 + C_h^2 λh,k) ≤ λk, ... where Ch ≤0.1893h is a constant.",
+    "numbers": ["C_h <= 0.1893h"],
+    "entities": ["Crouzeix-Raviart discretization"],
+    "time_period": "2019-2020",
+    "region": null,
+    "confidence": "high",
+    "source_note_id": "any-three-eigenvalues-do-not-determine-a-triangle-full-text-arxiv191106758v2"
+  },
+  {
+    "claim": "The two near-degenerate triangle configurations are localized to parallelogram regions of vertex-coordinate space centered near (0.635,0.275) and (0.84906,0.31995) with side-vector magnitudes on the order of 10^-3, quantifying how 'close' the two constructed triangles are to the numerically observed near-coincidence.",
+    "stance": "neutral",
+    "stance_target": "how closeness/near-degeneracy is quantified in this rigorous-numerics construction",
+    "evidence_type": "empirical",
+    "scope_conditions": "third vertex of triangle with first two vertices fixed at (0,0),(1,0)",
+    "quoted_support": "Let A = (0.63500, 0.27500) and B = (0.84906, 0.31995)... v21,A = (0.004610608896618232, 0.0012403688839389946)",
+    "numbers": ["A=(0.63500,0.27500)", "B=(0.84906,0.31995)", "v21,A=(0.004610608896618232,0.0012403688839389946)", "v41,A=(-0.0041659682109460045,-0.000511581170421992)"],
+    "entities": ["triangle vertex coordinates"],
+    "time_period": "2019-2020",
+    "region": null,
+    "confidence": "high",
+    "source_note_id": "any-three-eigenvalues-do-not-determine-a-triangle-full-text-arxiv191106758v2"
+  }
+]

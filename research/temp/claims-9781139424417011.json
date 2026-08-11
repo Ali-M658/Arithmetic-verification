@@ -1,0 +1,44 @@
+[
+  {
+    "claim": "The primary MSRI/SLMath free PDF of Datchev & Hezari's 'Inverse problems in spectral geometry' shows the article's own printed page footers running from page 455 to page 485, matching the manuscript's citation exactly -- contradicting the Cambridge University Press Crossref record, which lists the end page as 486.",
+    "stance": "supports",
+    "stance_target": "manuscript bibliography entry datchevhezari2013 page range 'pp.455--485' as printed",
+    "evidence_type": "empirical",
+    "scope_conditions": "primary PDF: library.slmath.org/books/Book60/files/70datchev.pdf, inspected page-by-page via pymupdf",
+    "quoted_support": "page 1 footer: '455'; page 31 header: 'INVERSE PROBLEMS IN SPECTRAL GEOMETRY 485' (last page with author-affiliation text). Crossref CUP record: page='455-486'.",
+    "numbers": [
+      "455",
+      "485",
+      "486"
+    ],
+    "entities": [
+      "Kiril Datchev",
+      "Hamid Hezari",
+      "MSRI Publications",
+      "Cambridge University Press"
+    ],
+    "time_period": "2012-2013",
+    "region": null,
+    "confidence": "high",
+    "source_note_id": "9781139424417011"
+  },
+  {
+    "claim": "Both the MSRI free-PDF header and the Cambridge University Press Crossref record date this volume to 2012, not 2013 as the manuscript's bibliography states.",
+    "stance": "refutes",
+    "stance_target": "manuscript bibliography entry datchevhezari2013's printed year '2013'",
+    "evidence_type": "empirical",
+    "scope_conditions": "MSRI PDF header text and Crossref published-print field",
+    "quoted_support": "MSRI PDF page 1: 'Inside Out II, MSRI Publications, Volume 60, 2012'; Crossref published-print date-parts [2012,12,17]",
+    "numbers": [
+      "2012",
+      "2013"
+    ],
+    "entities": [
+      "MSRI Publications"
+    ],
+    "time_period": "2012",
+    "region": null,
+    "confidence": "medium",
+    "source_note_id": "9781139424417011"
+  }
+]

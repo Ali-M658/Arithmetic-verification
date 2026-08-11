@@ -1,0 +1,44 @@
+[
+  {
+    "claim": "Guy's Unsolved Problems in Number Theory, 3rd ed., is published by Springer New York as vol. 1 of the Problem Books in Mathematics series, DOI 10.1007/978-0-387-26677-0, copyright 2004, xviii+438 pages, with hardcover ISBN 978-0-387-20860-2, softcover ISBN 978-1-4419-1928-1, and eBook ISBN 978-0-387-26677-0.",
+    "stance": "neutral",
+    "stance_target": "canonical bibliographic identification of the book for citation purposes",
+    "evidence_type": "empirical",
+    "scope_conditions": "3rd edition, Springer official book page",
+    "quoted_support": "Book Title: Unsolved Problems in Number Theory Authors: Richard K. Guy Series Title: Problem Books in Mathematics DOI: https://doi.org/10.1007/978-0-387-26677-0 Publisher: Springer New York, NY ... Copyright Information: Springer Science+Business Media New York 2004 ... Number of Pages: XVIII, 438",
+    "numbers": ["DOI 10.1007/978-0-387-26677-0", "978-0-387-20860-2", "978-1-4419-1928-1", "xviii+438"],
+    "entities": ["Richard K. Guy", "Springer"],
+    "time_period": "2004",
+    "region": null,
+    "confidence": "high",
+    "source_note_id": "unsolved-problems-in-number-theory-springer-nature-link"
+  },
+  {
+    "claim": "The chapter-level page ranges of the 3rd edition (2004) are: Introduction 1-2; Prime Numbers (A) 3-69; Divisibility (B) 71-158; Additive Number Theory (C) 159-208; Diophantine Equations (D) 209-310; Sequences of Integers (E) 311-364; None of the Above (F) 365-404; Back Matter 405-438.",
+    "stance": "neutral",
+    "stance_target": "chapter structure of the book for citation of specific sections",
+    "evidence_type": "empirical",
+    "scope_conditions": "3rd edition",
+    "quoted_support": "Diophantine Equations Richard K. Guy Pages 209-310",
+    "numbers": ["209-310", "3-69", "71-158", "159-208", "311-364", "365-404"],
+    "entities": ["Richard K. Guy"],
+    "time_period": "2004",
+    "region": null,
+    "confidence": "high",
+    "source_note_id": "unsolved-problems-in-number-theory-springer-nature-link"
+  },
+  {
+    "claim": "A distinguishing feature added in the 3rd edition is the inclusion of frequent references to OEIS (the Online Encyclopedia of Integer Sequences) at the end of many sections, per both the publisher's blurb and Greg Martin's review in Mathematical Reviews.",
+    "stance": "neutral",
+    "stance_target": "whether Guy's UPINT would plausibly cross-reference an OEIS entry if the equal-reciprocal-sum problem were treated in the book",
+    "evidence_type": "historical",
+    "scope_conditions": "3rd edition reviews",
+    "quoted_support": "A new and promising addition to this third edition is the inclusion of frequent references to entries in the Online encyclopedia of integer sequences at the end of each topic. (Greg Martin, Mathematical Reviews, Issue 2005h)",
+    "numbers": ["2005"],
+    "entities": ["Greg Martin", "Andras Sarkozi"],
+    "time_period": "2004-2005",
+    "region": null,
+    "confidence": "medium",
+    "source_note_id": "unsolved-problems-in-number-theory-springer-nature-link"
+  }
+]

@@ -1,0 +1,44 @@
+[
+  {
+    "claim": "Uçar's arXiv preprint 1711.03405 is explicitly self-identified as his PhD dissertation, with the arXiv comments field linking directly to the Humboldt-Universität zu Berlin repository record https://edoc.hu-berlin.de/handle/18452/19142.",
+    "stance": "neutral",
+    "stance_target": "Provenance of arXiv:1711.03405 as the same document as the Humboldt dissertation",
+    "evidence_type": "empirical",
+    "scope_conditions": "arXiv metadata as of submission 9 Nov 2017",
+    "quoted_support": "This is my dissertation, which is published here: https://edoc.hu-berlin.de/handle/18452/19142",
+    "numbers": [],
+    "entities": ["Eren Uçar"],
+    "time_period": "2017",
+    "region": null,
+    "confidence": "high",
+    "source_note_id": "171103405-spectral-invariants-for-polygons-and-orbisurfaces"
+  },
+  {
+    "claim": "The abstract states that when curvature is nonzero, the multiset of real angles (angles not equal to pi) and the Euler characteristic of a polygon are spectral invariants, foreshadowing the orbifold cone-order multiset determinacy result of Chapter 4.",
+    "stance": "supports",
+    "stance_target": "Uçar's determinacy results for polygons and orbisurfaces from heat invariants at nonzero curvature",
+    "evidence_type": "theoretical",
+    "scope_conditions": "Relatively compact domains with piecewise geodesic boundary, constant nonzero Gaussian curvature",
+    "quoted_support": "It turns out that the heat invariants provide much information about a polygon, if the curvature does not vanish. For example, then the multiset of all real angles (i.e. those which are not equal to pi) and the Euler characteristic of a polygon are spectral invariants.",
+    "numbers": [],
+    "entities": ["Eren Uçar"],
+    "time_period": null,
+    "region": null,
+    "confidence": "high",
+    "source_note_id": "171103405-spectral-invariants-for-polygons-and-orbisurfaces"
+  },
+  {
+    "claim": "arXiv:1711.03405 carries the arXiv-issued DataCite DOI 10.48550/arXiv.1711.03405, distinct from the Humboldt repository's own DOI 10.18452/18463 for the same underlying document.",
+    "stance": "neutral",
+    "stance_target": "Citation metadata for Uçar's thesis",
+    "evidence_type": "empirical",
+    "scope_conditions": "arXiv preprint record",
+    "quoted_support": "https://doi.org/10.48550/arXiv.1711.03405 arXiv-issued DOI via DataCite",
+    "numbers": ["10.48550/arXiv.1711.03405"],
+    "entities": ["Eren Uçar"],
+    "time_period": null,
+    "region": null,
+    "confidence": "high",
+    "source_note_id": "171103405-spectral-invariants-for-polygons-and-orbisurfaces"
+  }
+]

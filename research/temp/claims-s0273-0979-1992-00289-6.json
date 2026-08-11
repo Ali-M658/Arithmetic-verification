@@ -1,0 +1,25 @@
+[
+  {
+    "claim": "Gordon, Webb & Wolpert's 'One cannot hear the shape of a drum' (Bull. Amer. Math. Soc. (N.S.) 27 (1992), no. 1, 134-138) is exactly matched by the manuscript's printed bibliography entry.",
+    "stance": "supports",
+    "stance_target": "manuscript bibliography entry gww1992 as printed",
+    "evidence_type": "empirical",
+    "scope_conditions": "Crossref record for DOI 10.1090/s0273-0979-1992-00289-6",
+    "quoted_support": "container-title: Bull. Amer. Math. Soc.; volume: 27; issue: 1; page: 134-138; published [1992]",
+    "numbers": [
+      "volume 27",
+      "issue 1",
+      "pages 134-138",
+      "1992"
+    ],
+    "entities": [
+      "Carolyn Gordon",
+      "David L. Webb",
+      "Scott Wolpert"
+    ],
+    "time_period": "1992",
+    "region": null,
+    "confidence": "high",
+    "source_note_id": "s0273-0979-1992-00289-6"
+  }
+]

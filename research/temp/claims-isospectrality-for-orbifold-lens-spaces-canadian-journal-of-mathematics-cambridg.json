@@ -1,0 +1,58 @@
+[
+  {
+    "claim": "Bari and Hunsicker's paper was peer-reviewed and published as a journal article in the Canadian Journal of Mathematics, Volume 72, Issue 2 (April 2020), pp. 281-325, published online by Cambridge University Press on 27 August 2019.",
+    "stance": "supports",
+    "stance_target": "the manuscript's bibliography should cite the published version, not just the 2017 preprint",
+    "evidence_type": "empirical",
+    "scope_conditions": "journal publication record",
+    "quoted_support": "Canadian Journal of Mathematics, Volume 72, Issue 2, April 2020, pp. 281 - 325. DOI: https://doi.org/10.4153/S0008414X19000178. Published online by Cambridge University Press: 27 August 2019.",
+    "numbers": ["Volume 72", "Issue 2", "pp. 281-325", "April 2020", "27 August 2019"],
+    "entities": ["Canadian Journal of Mathematics", "Cambridge University Press", "Canadian Mathematical Society"],
+    "time_period": "2019-2020",
+    "region": "Canada",
+    "confidence": "high",
+    "source_note_id": "isospectrality-for-orbifold-lens-spaces-canadian-journal-of-mathematics-cambridg"
+  },
+  {
+    "claim": "The published version's DOI is 10.4153/S0008414X19000178, copyright held by the Canadian Mathematical Society (2019); this DOI resolved cleanly via Crossref bibliographic search and is a distinct identifier from the arXiv DataCite DOI.",
+    "stance": "neutral",
+    "stance_target": "correct DOI for the published version of record",
+    "evidence_type": "empirical",
+    "scope_conditions": "DOI record",
+    "quoted_support": "DOI: https://doi.org/10.4153/S0008414X19000178 [Opens in a new window] Copyright © Canadian Mathematical Society 2019",
+    "numbers": ["10.4153/S0008414X19000178"],
+    "entities": ["DOI 10.4153/S0008414X19000178", "Canadian Mathematical Society"],
+    "time_period": "2019",
+    "region": null,
+    "confidence": "high",
+    "source_note_id": "isospectrality-for-orbifold-lens-spaces-canadian-journal-of-mathematics-cambridg"
+  },
+  {
+    "claim": "The published abstract is verbatim identical to the arXiv abstract, including the sentence about heat-kernel coefficients not sufficing.",
+    "stance": "neutral",
+    "stance_target": "consistency between preprint and published version",
+    "evidence_type": "empirical",
+    "scope_conditions": "abstract text comparison",
+    "quoted_support": "We answer Mark Kac's famous question, \"Can one hear the shape of a drum?\" in the positive for orbifolds that are 3-dimensional and 4-dimensional lens spaces; we thus complete the answer to this question for orbifold lens spaces in all dimensions. We also show that the coefficients of the asymptotic expansion of the trace of the heat kernel are not sufficient to determine the above results.",
+    "numbers": [],
+    "entities": ["abstract"],
+    "time_period": null,
+    "region": null,
+    "confidence": "high",
+    "source_note_id": "isospectrality-for-orbifold-lens-spaces-canadian-journal-of-mathematics-cambridg"
+  },
+  {
+    "claim": "The published journal article's MSC classification is Primary 58J53 (Isospectrality), Secondary 53C20 (Global Riemannian geometry, including pinching), and its keywords are spectral geometry, global Riemannian geometry, orbifold, lens space.",
+    "stance": "neutral",
+    "stance_target": "MSC/keyword classification of the published article",
+    "evidence_type": "empirical",
+    "scope_conditions": "journal metadata",
+    "quoted_support": "MSC classification Primary: 58J53: Isospectrality Secondary: 53C20: Global Riemannian geometry, including pinching. Keywords spectral geometry global Riemannian geometry orbifold lens space",
+    "numbers": ["58J53", "53C20"],
+    "entities": ["MSC 58J53", "MSC 53C20"],
+    "time_period": null,
+    "region": null,
+    "confidence": "high",
+    "source_note_id": "isospectrality-for-orbifold-lens-spaces-canadian-journal-of-mathematics-cambridg"
+  }
+]

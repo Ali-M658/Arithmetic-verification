@@ -1,0 +1,30 @@
+[
+  {
+    "claim": "The paper gives an explicit closed-form formula for A_2(p), the number of numerators a for which a/p has a length-2 Egyptian fraction representation, and a parametrization of length-3 Egyptian fractions yielding bounds for A_3(n), f_a(n), and F(n).",
+    "stance": "neutral",
+    "stance_target": "state of the art on counting three-term (length-3) Egyptian fraction representations",
+    "evidence_type": "theoretical",
+    "scope_conditions": "a,n coprime positive integers",
+    "quoted_support": "we give a formula for A_2(p) and a parametrization for Egyptian fractions of length 3, which allows us to give bounds to A_3(n), to f_a(n) = #{(m_1,m_2,m_3): a/n=1/m_1+1/m_2+1/m_3}, and finally to F(n) = #{(a,m_1,m_2,m_3): a/n=1/m_1+1/m_2+1/m_3}.",
+    "numbers": ["A_2(p)", "A_3(n)", "f_a(n)", "F(n)"],
+    "entities": ["Cyril Banderier", "Carlos Alexis Gomez Ruiz", "Florian Luca", "Francesco Pappalardi", "Enrique Trevino"],
+    "time_period": "2021",
+    "region": null,
+    "confidence": "high",
+    "source_note_id": "article-doivol62v62n1a17-revista-de-la-uma"
+  },
+  {
+    "claim": "The f_a(n) counting function defined in this paper -- the multiplicity of representations of a SINGLE fixed rational a/n as a sum of three unit fractions -- is structurally the building block a birthday-paradox heuristic for Section 5's coincidence-counting problem would need, but this paper counts single triples per value, not coincidences between the triple-sets of two different values.",
+    "stance": "neutral",
+    "stance_target": "whether existing counting machinery transfers to the equal-sum-and-equal-reciprocal-sum pair problem",
+    "evidence_type": "theoretical",
+    "scope_conditions": "length-3 Egyptian fraction representations of a single rational a/n",
+    "quoted_support": "Let a,n be positive integers that are relatively prime. We say that a/n can be represented as an Egyptian fraction of length k if there exist positive integers m_1, ..., m_k such that a/n = 1/m_1+ ... +1/m_k.",
+    "numbers": [],
+    "entities": ["Cyril Banderier", "Florian Luca", "Francesco Pappalardi"],
+    "time_period": "2021",
+    "region": null,
+    "confidence": "medium",
+    "source_note_id": "article-doivol62v62n1a17-revista-de-la-uma"
+  }
+]

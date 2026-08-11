@@ -1,0 +1,23 @@
+[
+  {
+    "claim": "Scott's 'The Geometries of 3-Manifolds' (Bull. London Math. Soc. 15 (1983), no. 5, 401-487) is exactly matched by the manuscript's printed bibliography entry.",
+    "stance": "supports",
+    "stance_target": "manuscript bibliography entry scott1983 as printed",
+    "evidence_type": "empirical",
+    "scope_conditions": "Crossref record for DOI 10.1112/blms/15.5.401",
+    "quoted_support": "container-title: Bulletin of the London Mathematical Society; volume: 15; issue: 5; page: 401-487; published-print [1983,9]",
+    "numbers": [
+      "volume 15",
+      "issue 5",
+      "pages 401-487",
+      "1983"
+    ],
+    "entities": [
+      "Peter Scott"
+    ],
+    "time_period": "1983",
+    "region": null,
+    "confidence": "high",
+    "source_note_id": "155401"
+  }
+]

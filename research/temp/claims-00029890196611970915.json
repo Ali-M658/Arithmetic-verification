@@ -1,0 +1,44 @@
+[
+  {
+    "claim": "Kac's 'Can One Hear the Shape of a Drum?' (Amer. Math. Monthly 73 (1966), no. 4 part 2, 1-23) is exactly and completely matched by the manuscript's printed bibliography entry, verified against both the Taylor & Francis Crossref record and the original scanned journal pages.",
+    "stance": "supports",
+    "stance_target": "manuscript bibliography entry kac1966 as printed",
+    "evidence_type": "empirical",
+    "scope_conditions": "Crossref DOI 10.1080/00029890.1966.11970915 and primary scanned PDF (JSTOR-sourced mirror, math.ucdavis.edu/~hunter/m207b/kac.pdf)",
+    "quoted_support": "Source: The American Mathematical Monthly, Vol. 73, No. 4, Part 2: Papers in Analysis (Apr., 1966), pp. 1-23.",
+    "numbers": [
+      "volume 73",
+      "issue 4 part 2",
+      "pages 1-23",
+      "1966"
+    ],
+    "entities": [
+      "Mark Kac",
+      "American Mathematical Monthly"
+    ],
+    "time_period": "1966",
+    "region": null,
+    "confidence": "high",
+    "source_note_id": "00029890196611970915"
+  },
+  {
+    "claim": "Two distinct DOIs resolve to the same Kac 1966 article: an older, metadata-incomplete JSTOR-registered DOI (10.2307/2313748, Crossref page field truncated to '1') and a complete, modern Taylor & Francis DOI (10.1080/00029890.1966.11970915, full page range 1-23 and issue '4P2').",
+    "stance": "neutral",
+    "stance_target": "which DOI to prefer when a classic article has been re-registered by a new publisher",
+    "evidence_type": "empirical",
+    "scope_conditions": "Crossref records for both DOIs",
+    "quoted_support": "10.2307/2313748 -> page: '1'; 10.1080/00029890.1966.11970915 -> page: '1-23', issue: '4P2'",
+    "numbers": [
+      "10.2307/2313748",
+      "10.1080/00029890.1966.11970915"
+    ],
+    "entities": [
+      "JSTOR",
+      "Taylor & Francis"
+    ],
+    "time_period": "1966-2026",
+    "region": null,
+    "confidence": "high",
+    "source_note_id": "00029890196611970915"
+  }
+]

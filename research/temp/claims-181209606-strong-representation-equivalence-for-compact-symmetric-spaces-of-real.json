@@ -1,0 +1,44 @@
+[
+  {
+    "claim": "Lauret's paper studies tau-representation equivalence versus tau-isospectrality for discrete subgroups of compact irreducible symmetric spaces of REAL RANK ONE (spheres and compact projective spaces), not hyperbolic space, and is unrelated to heat-trace coefficient counting.",
+    "stance": "refutes",
+    "stance_target": "whether this is a competitor to the manuscript's hyperbolic cone-orbifold priority claim",
+    "evidence_type": "theoretical",
+    "scope_conditions": "compact irreducible symmetric spaces G/K of real rank one",
+    "quoted_support": "Let $G/K$ be a simply connected compact irreducible symmetric space of real rank one. For each $K$-type $\\tau$ we compare the notions of $\\tau$-representation equivalence with $\\tau$-isospectrality.",
+    "numbers": [],
+    "entities": ["Emilio Lauret", "compact symmetric spaces", "real rank one"],
+    "time_period": "2018-2021",
+    "region": null,
+    "confidence": "high",
+    "source_note_id": "181209606-strong-representation-equivalence-for-compact-symmetric-spaces-of-real"
+  },
+  {
+    "claim": "The paper constructs an explicit counterexample for G/K = SO(4n)/SO(4n-1) = S^{4n-1} showing that, for p-form representations, tau-isospectrality does not always imply tau-representation equivalence.",
+    "stance": "neutral",
+    "stance_target": "scope of the counterexample",
+    "evidence_type": "theoretical",
+    "scope_conditions": "G/K = SO(4n)/SO(4n-1) = S^{4n-1}",
+    "quoted_support": "We construct an explicit counter-example for $G/K= \\operatorname{SO}(4n)/ \\operatorname{SO}(4n-1)\\simeq S^{4n-1}$.",
+    "numbers": ["SO(4n)/SO(4n-1)", "S^{4n-1}"],
+    "entities": ["SO(4n)", "S^{4n-1}"],
+    "time_period": null,
+    "region": null,
+    "confidence": "high",
+    "source_note_id": "181209606-strong-representation-equivalence-for-compact-symmetric-spaces-of-real"
+  },
+  {
+    "claim": "Published as Lauret, Pacific Journal of Mathematics 314 (2021), 333-373, DOI 10.2140/pjm.2021.314.333.",
+    "stance": "neutral",
+    "stance_target": "publication record",
+    "evidence_type": "empirical",
+    "scope_conditions": "journal reference",
+    "quoted_support": "Related DOI: https://doi.org/10.2140/pjm.2021.314.333",
+    "numbers": ["314", "333-373", "2021"],
+    "entities": ["Pacific Journal of Mathematics"],
+    "time_period": "2021",
+    "region": null,
+    "confidence": "high",
+    "source_note_id": "181209606-strong-representation-equivalence-for-compact-symmetric-spaces-of-real"
+  }
+]

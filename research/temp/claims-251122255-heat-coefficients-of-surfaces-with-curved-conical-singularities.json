@@ -1,0 +1,58 @@
+[
+  {
+    "claim": "Schueth's 2025 paper (arXiv:2511.22255), in its own literature review, states that Ucar's thesis obtained explicit formulas for ALL b_l(C), l>=0, for orbifold cone points at constant curvature, expressed as b_l(C) = kappa^l * (1/n) * p_l(n) where p_l is a polynomial of degree 2l+2 -- independently confirming (outside the manuscript under review) that these formulas are explicit, not merely degree-bounded.",
+    "stance": "refutes",
+    "stance_target": "The manuscript's planned K<=n+1 extension requires new cone-coefficient computation for l=2,3",
+    "evidence_type": "theoretical",
+    "scope_conditions": "Two-dimensional orbifold cone point, constant curvature kappa in R",
+    "quoted_support": "Ucar [13] obtained explicit formulas for all b_l(C) for cone points C of two-dimensional orbifolds under the special assumption that the orbifold has constant curvature kappa in R... b_l(C) can then be written as kappa^l times 1/n p_l(n), where p_l is a certain polynomial of order 2l+2.",
+    "numbers": ["2l+2"],
+    "entities": ["Eren Ucar", "Dorothee Schueth"],
+    "time_period": "2017; 2025",
+    "region": null,
+    "confidence": "high",
+    "source_note_id": "251122255-heat-coefficients-of-surfaces-with-curved-conical-singularities"
+  },
+  {
+    "claim": "Schueth's 2025 paper self-cites her own 2019 Ann. Inst. Fourier paper as the source of the b_2(C) formula for orbifold cone points, describing it as 'a linear combination of K(p)^2 and (Delta K)(p), where the coefficients are, again, rational functions of the order of the cone point.'",
+    "stance": "supports",
+    "stance_target": "b_2 for orbifold cone points at constant curvature is already established (Schueth 2019, Theorem 4.1)",
+    "evidence_type": "theoretical",
+    "scope_conditions": "Orbifold cone point, general (possibly non-constant) curvature",
+    "quoted_support": "In [10], the author obtained a similar formula for b_2(C) in the same context; b_2(C) turns out to be a linear combination of K(p)^2 and (Delta K)(p), where the coefficients are, again, rational functions of the order of the cone point.",
+    "numbers": [],
+    "entities": ["Dorothee Schueth"],
+    "time_period": "2019; 2025",
+    "region": null,
+    "confidence": "high",
+    "source_note_id": "251122255-heat-coefficients-of-surfaces-with-curved-conical-singularities"
+  },
+  {
+    "claim": "Schueth's 2025 paper studies a strictly more general singularity class than orbifold cone points -- rotationally symmetric but not-necessarily-flat conic singularities where half-integer powers t^{j/2} and log t terms appear in the heat trace, absent in the orbifold case -- and its main new coefficient b_{1/2}(C) is not directly usable for the manuscript's constant-curvature orbifold setting.",
+    "stance": "neutral",
+    "stance_target": "Relevance scope of Schueth 2025 to the manuscript's constant-curvature orbifold cone coefficients",
+    "evidence_type": "theoretical",
+    "scope_conditions": "General 2D conic singularity, rotationally invariant metric, K(p) may be unbounded approaching the cone point",
+    "quoted_support": "This is a sharp contrast to the behavior of b_0(C) and of those coefficients b_j(C) which appear in certain known formulas in the case of orbifold cone points or corners of geodesic polygons.",
+    "numbers": [],
+    "entities": ["Dorothee Schueth"],
+    "time_period": "2025",
+    "region": null,
+    "confidence": "high",
+    "source_note_id": "251122255-heat-coefficients-of-surfaces-with-curved-conical-singularities"
+  },
+  {
+    "claim": "The DGGW reference is cited by Schueth 2025 as journal name 'Michigan J. Math.' (a third distinct abbreviation variant, matching her own 2019 paper's bibliography but differing from Centre Mersenne's 'Mich. Math. J.' and the manuscript's 'Michigan Math. J.'), with identical volume/year/pages 56 (2008) 205-238 across all variants.",
+    "stance": "neutral",
+    "stance_target": "Bibliographic consistency of the DGGW citation across sources",
+    "evidence_type": "historical",
+    "scope_conditions": "Bibliography entry as printed",
+    "quoted_support": "E.B. Dryden, C.S. Gordon, S.J. Greenwald, and D.L. Webb, Asymptotic expansion of the heat kernel for orbifolds, Michigan J. Math. 56 (2008), no. 1, 205-238.",
+    "numbers": ["56", "2008", "205", "238"],
+    "entities": ["Dryden", "Gordon", "Greenwald", "Webb"],
+    "time_period": "2008",
+    "region": null,
+    "confidence": "high",
+    "source_note_id": "251122255-heat-coefficients-of-surfaces-with-curved-conical-singularities"
+  }
+]

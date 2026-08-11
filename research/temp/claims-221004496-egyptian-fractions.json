@@ -1,0 +1,30 @@
+[
+  {
+    "claim": "The current comprehensive survey of the Egyptian-fraction research field (Bloom-Elsholtz 2022) organizes the literature into categories that do not include any problem matching two triples on both integer sum and reciprocal sum simultaneously.",
+    "stance": "refutes",
+    "stance_target": "prior art for Section 5's two-triple equal-sum-and-equal-reciprocal-sum Diophantine problem",
+    "evidence_type": "theoretical",
+    "scope_conditions": "survey of Egyptian fraction decomposition research as of October 2022",
+    "quoted_support": "Any rational number can be written as the sum of distinct unit fractions. In this survey paper we review some of the many interesting questions concerning such 'Egyptian fraction' decompositions, and recent progress concerning them.",
+    "numbers": [],
+    "entities": ["Thomas F. Bloom", "Christian Elsholtz"],
+    "time_period": "2022",
+    "region": null,
+    "confidence": "medium",
+    "source_note_id": "221004496-egyptian-fractions"
+  },
+  {
+    "claim": "The Egyptian-fraction literature's live research questions as of 2022 center on the Erdos-Straus conjecture, counting representations of a fixed rational as k unit fractions, and density/covering questions (Erdos-Graham), per the survey's stated scope.",
+    "stance": "neutral",
+    "stance_target": "taxonomy of Egyptian fraction research problems",
+    "evidence_type": "theoretical",
+    "scope_conditions": "survey written for Nieuw Archief voor Wiskunde, 2022",
+    "quoted_support": "In this survey paper we review some of the many interesting questions concerning such 'Egyptian fraction' decompositions, and recent progress concerning them.",
+    "numbers": [],
+    "entities": ["Thomas F. Bloom", "Christian Elsholtz", "Erdos-Straus conjecture"],
+    "time_period": "2022",
+    "region": null,
+    "confidence": "medium",
+    "source_note_id": "221004496-egyptian-fractions"
+  }
+]

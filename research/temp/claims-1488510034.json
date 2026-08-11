@@ -1,0 +1,16 @@
+[
+  {
+    "claim": "CrossRef confirms a published erratum to DGGW 2008 exists: DOI 10.1307/mmj/1488510034, Michigan Math. J. volume 66, issue 1, published-print 2017-03-01, with its sole reference pointing back to the original 2008 paper.",
+    "stance": "neutral",
+    "stance_target": "existence of a post-publication correction to the manuscript's cited source",
+    "evidence_type": "historical",
+    "scope_conditions": null,
+    "quoted_support": "\"title\":[\"Erratum to ''Asymptotic expansion of the heat kernel for orbifolds''\"],\"prefix\":\"10.1307\",\"volume\":\"66\", ... \"published-print\":{\"date-parts\":[[2017,3,1]]}",
+    "numbers": ["10.1307/mmj/1488510034", "66", "2017"],
+    "entities": ["CrossRef"],
+    "time_period": "2017",
+    "region": null,
+    "confidence": "high",
+    "source_note_id": "1488510034"
+  }
+]

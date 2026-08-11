@@ -1,0 +1,44 @@
+[
+  {
+    "claim": "Bari-Hunsicker's arXiv abstract itself flags the heat-coefficient non-sufficiency result as a distinct second contribution alongside the isometry-determinacy theorems.",
+    "stance": "neutral",
+    "stance_target": "structure of the paper's contributions",
+    "evidence_type": "theoretical",
+    "scope_conditions": "orbifold lens spaces, all dimensions",
+    "quoted_support": "We also show that the coefficients of the asymptotic expansion of the trace of the heat kernel are not sufficient to determine the above results.",
+    "numbers": [],
+    "entities": ["Naveed Bari", "Eugenie Hunsicker"],
+    "time_period": "2017",
+    "region": null,
+    "confidence": "high",
+    "source_note_id": "170501412-isospectrality-for-orbifold-lens-spaces"
+  },
+  {
+    "claim": "The paper was submitted 25 Apr 2017 and last revised (v2) 12 Sep 2017, is 38 pages, and is cross-listed in Differential Geometry (math.DG) and Spectral Theory (math.SP).",
+    "stance": "neutral",
+    "stance_target": "bibliographic facts about arXiv:1705.01412",
+    "evidence_type": "empirical",
+    "scope_conditions": "arXiv submission record",
+    "quoted_support": "[Submitted on 25 Apr 2017 (v1), last revised 12 Sep 2017 (this version, v2)] ... Comments: 38 pages Subjects: Differential Geometry (math.DG); Spectral Theory (math.SP)",
+    "numbers": ["38 pages", "25 Apr 2017", "12 Sep 2017"],
+    "entities": ["arXiv:1705.01412"],
+    "time_period": "2017",
+    "region": null,
+    "confidence": "high",
+    "source_note_id": "170501412-isospectrality-for-orbifold-lens-spaces"
+  },
+  {
+    "claim": "arXiv:1705.01412 carries an arXiv-issued DataCite DOI (https://doi.org/10.48550/arXiv.1705.01412), which is distinct from the journal-of-record DOI for the published Canadian Journal of Mathematics version.",
+    "stance": "neutral",
+    "stance_target": "bibliographic identifier for the preprint",
+    "evidence_type": "empirical",
+    "scope_conditions": "arXiv metadata",
+    "quoted_support": "https://doi.org/10.48550/arXiv.1705.01412 Focus to learn more arXiv-issued DOI via DataCite",
+    "numbers": [],
+    "entities": ["arXiv DOI"],
+    "time_period": null,
+    "region": null,
+    "confidence": "high",
+    "source_note_id": "170501412-isospectrality-for-orbifold-lens-spaces"
+  }
+]

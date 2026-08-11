@@ -1,0 +1,30 @@
+[
+  {
+    "claim": "Mårdby and Rowlett's 2024 survey covers 112 years of inverse spectral geometry from Weyl's law to Kac's question and beyond, but its own abstract does not claim any new heat-coefficient counting result for hyperbolic cone orbifolds or orbisurfaces.",
+    "stance": "neutral",
+    "stance_target": "whether this survey is itself a competitor to the manuscript's priority claim",
+    "evidence_type": "theoretical",
+    "scope_conditions": "general survey of spectral geometry 1910-2024",
+    "quoted_support": "From Weyl's law to Milnor's example of isospectral non-isometric flat tori, and Kac's inspiring question about hearing the shape of a drum, the field has witnessed remarkable progress, uncovering spectral invariants and advancing our understanding of geometric properties discernible through eigenvalues. We present an overview of this field amenable to both physicists and mathematicians.",
+    "numbers": ["112 years", "42 pages"],
+    "entities": ["Gustav Mårdby", "Julie Rowlett", "Hendrik Antoon Lorentz", "Hermann Weyl", "Mark Kac", "John Milnor"],
+    "time_period": "1910-2024",
+    "region": null,
+    "confidence": "medium",
+    "source_note_id": "240618369-112-years-of-listening-to-riemannian-manifolds"
+  },
+  {
+    "claim": "This survey cites Bari-Hunsicker's arXiv:1705.01412 as forward-citation context per Semantic Scholar, indicating the paper is recognized within the current spectral-geometry-survey literature.",
+    "stance": "neutral",
+    "stance_target": "reception/citation of Bari-Hunsicker in later literature",
+    "evidence_type": "empirical",
+    "scope_conditions": "Semantic Scholar citation graph",
+    "quoted_support": "MSC classes: 35j05, 58c40, 35p20, 58j53, 35j20",
+    "numbers": ["58j53"],
+    "entities": ["Semantic Scholar citation graph"],
+    "time_period": "2024",
+    "region": null,
+    "confidence": "medium",
+    "source_note_id": "240618369-112-years-of-listening-to-riemannian-manifolds"
+  }
+]

@@ -1,0 +1,44 @@
+[
+  {
+    "claim": "For fixed m, the number of solutions of m/n = 1/a1+1/a2+1/a3 is at most O_eps(n^{3/5+eps}), improving a 2011 result of Browning and Elsholtz and extending Elsholtz-Tao (2013), who proved this only for m=4 with n prime.",
+    "stance": "neutral",
+    "stance_target": "upper bound on multiplicity of a single three-term unit-fraction representation",
+    "evidence_type": "theoretical",
+    "scope_conditions": "general fixed numerator m, general n (not restricted to primes)",
+    "quoted_support": "In particular, for fixed m there are at most O_eps(n^{3/5+eps}) solutions of m/n=1/a1+1/a2+1/a3. This improves upon a result of Browning and Elsholtz (2011) and extends a result of Elsholtz and Tao (2013) who proved this when m=4 and n is a prime.",
+    "numbers": ["n^{3/5+eps}"],
+    "entities": ["Christian Elsholtz", "Stefan Planitzer", "Browning", "Elsholtz-Tao"],
+    "time_period": "2018",
+    "region": null,
+    "confidence": "high",
+    "source_note_id": "180502945-the-number-of-solutions-of-the-erds-straus-equation-and-sums-of-k-unit"
+  },
+  {
+    "claim": "For given m, in every reduced residue class e mod f, infinitely many primes p have >> exp((5 log 2/(12 lcm(m,f)) + o(1)) log p / log log p) solutions to m/p = 1/a1+1/a2+1/a3, improving the prior lower bound of order (log p)^0.549.",
+    "stance": "neutral",
+    "stance_target": "lower bound on multiplicity of a single three-term unit-fraction representation",
+    "evidence_type": "theoretical",
+    "scope_conditions": "fixed numerator m, primes p in a residue class mod f",
+    "quoted_support": "we prove that for given m in N in every reduced residue class e mod f there exist infinitely many primes p such that the number of solutions of the equation m/p=1/a1+1/a2+1/a3 is >>_{f,m} exp((5 log 2/(12 lcm(m,f))+o_{f,m}(1)) log p/log log p). Previously the best known lower bound of this type was of order (log p)^0.549.",
+    "numbers": ["(log p)^0.549", "5 log 2 / 12"],
+    "entities": ["Christian Elsholtz", "Stefan Planitzer"],
+    "time_period": null,
+    "region": null,
+    "confidence": "high",
+    "source_note_id": "180502945-the-number-of-solutions-of-the-erds-straus-equation-and-sums-of-k-unit"
+  },
+  {
+    "claim": "An algorithm exists finding all solutions of m/n=1/a1+1/a2+1/a3 in expected running time O_eps(n^eps (n^3/m^2)^{1/5}).",
+    "stance": "neutral",
+    "stance_target": "computational tractability of enumerating three-term unit fraction representations",
+    "evidence_type": "theoretical",
+    "scope_conditions": "general fixed m, n",
+    "quoted_support": "there exists an algorithm finding all solutions in expected running time O_eps(n^eps(n^3/m^2)^{1/5}), for any eps>0.",
+    "numbers": ["(n^3/m^2)^{1/5}"],
+    "entities": ["Christian Elsholtz", "Stefan Planitzer"],
+    "time_period": null,
+    "region": null,
+    "confidence": "high",
+    "source_note_id": "180502945-the-number-of-solutions-of-the-erds-straus-equation-and-sums-of-k-unit"
+  }
+]

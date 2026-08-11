@@ -1,0 +1,44 @@
+[
+  {
+    "claim": "Grieser and Maronna prove that area, perimeter, and the sum of the reciprocals of the three angles determine a Euclidean triangle uniquely, giving a new proof that one can hear the shape of a triangle.",
+    "stance": "neutral",
+    "stance_target": "whether finite-invariant recovery results in inverse spectral triangle geometry are determinacy statements or stability statements",
+    "evidence_type": "theoretical",
+    "scope_conditions": "Euclidean triangles; Dirichlet Laplacian spectrum",
+    "quoted_support": "The central point of the argument is to show that area, perimeter and the sum of the reciprocals of the angles determine a triangle uniquely. This is proved using convexity arguments and the partial fraction expansion of $\\sin^{-2}x$.",
+    "numbers": [],
+    "entities": ["Daniel Grieser", "Svenja Maronna", "Mark Kac", "C. Durso"],
+    "time_period": "2012-2013",
+    "region": null,
+    "confidence": "high",
+    "source_note_id": "12083163-hearing-the-shape-of-a-triangle"
+  },
+  {
+    "claim": "The Grieser-Maronna result is a pure exact-recovery/determinacy theorem with no perturbation, error bound, or modulus-of-continuity analysis anywhere in the stated abstract.",
+    "stance": "supports",
+    "stance_target": "quantitative stability is largely absent as a genre in finite-invariant inverse spectral triangle/polygon geometry",
+    "evidence_type": "theoretical",
+    "scope_conditions": "as stated in the arXiv abstract page, math.SP 35P99, 35R30, 51N20",
+    "quoted_support": "In 1966 Mark Kac asked the famous question 'Can one hear the shape of a drum?'. While this was later shown to be false in general, it was proved by C. Durso that one can hear the shape of a triangle.",
+    "numbers": [],
+    "entities": ["Mark Kac"],
+    "time_period": "1966-2013",
+    "region": null,
+    "confidence": "medium",
+    "source_note_id": "12083163-hearing-the-shape-of-a-triangle"
+  },
+  {
+    "claim": "The published version of Grieser-Maronna's paper is Notices of the AMS 60(11):1440-1447 (2013), DOI 10.1090/noti1063, which resolves (verified via HTTP redirect) to the AMS journal item page pii=noti1063.",
+    "stance": "neutral",
+    "stance_target": "bibliographic record for a competing/adjacent finite-invariant determinacy result",
+    "evidence_type": "empirical",
+    "scope_conditions": "publication record",
+    "quoted_support": "to appear in Notices of the AMS",
+    "numbers": ["60(11)", "1440-1447", "2013"],
+    "entities": ["Notices of the AMS"],
+    "time_period": "2013",
+    "region": null,
+    "confidence": "high",
+    "source_note_id": "12083163-hearing-the-shape-of-a-triangle"
+  }
+]

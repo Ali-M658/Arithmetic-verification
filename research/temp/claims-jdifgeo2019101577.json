@@ -1,0 +1,24 @@
+[
+  {
+    "claim": "Richardson & Stanhope's 'You can hear the local orientability of an orbifold' (arXiv:1910.03224) was published in Differential Geometry and its Applications, vol. 68, article 101577 (Feb 2020), contradicting the manuscript's citation of it as a 2019 preprint.",
+    "stance": "refutes",
+    "stance_target": "manuscript bibliography entry richardsonstanhope2019 citing this work as 'preprint, arXiv:1910.03224 (2019)'",
+    "evidence_type": "empirical",
+    "scope_conditions": "Crossref record for DOI 10.1016/j.difgeo.2019.101577",
+    "quoted_support": "container-title: Differential Geometry and its Applications; volume: 68; page: 101577; published date-parts [2020,2]",
+    "numbers": [
+      "volume 68",
+      "article 101577",
+      "2020"
+    ],
+    "entities": [
+      "Sean Richardson",
+      "Elizabeth Stanhope",
+      "Differential Geometry and its Applications"
+    ],
+    "time_period": "2019-2020",
+    "region": null,
+    "confidence": "high",
+    "source_note_id": "jdifgeo2019101577"
+  }
+]

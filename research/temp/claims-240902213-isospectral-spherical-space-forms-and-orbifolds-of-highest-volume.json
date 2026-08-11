@@ -1,0 +1,44 @@
+[
+  {
+    "claim": "Álzaga and Lauret (2024/2025) prove vol(S^d)/8 is the highest volume of a pair of d-dimensional isospectral non-isometric SPHERICAL orbifolds for d>=5, an extremal-volume result in the same spherical isospectrality family as Bari-Hunsicker but not a heat-coefficient counting result.",
+    "stance": "refutes",
+    "stance_target": "whether this is a competitor to the manuscript's hyperbolic cone-orbifold priority claim",
+    "evidence_type": "theoretical",
+    "scope_conditions": "d-dimensional spherical orbifolds, d>=5",
+    "quoted_support": "We prove that vol(S^{d})/8 is the highest volume of a pair of d-dimensional isospectral and non-isometric spherical orbifolds for any d\\geq5.",
+    "numbers": ["vol(S^d)/8", "d>=5"],
+    "entities": ["Alfredo Álzaga", "Emilio Lauret"],
+    "time_period": "2024-2025",
+    "region": null,
+    "confidence": "high",
+    "source_note_id": "240902213-isospectral-spherical-space-forms-and-orbifolds-of-highest-volume"
+  },
+  {
+    "claim": "The paper additionally proves vol(S^{2n-1})/11 is the highest volume of a pair of (2n-1)-dimensional isospectral non-isometric spherical SPACE FORMS under specific congruence conditions on n modulo 5.",
+    "stance": "neutral",
+    "stance_target": "precise scope of the extremal-volume result",
+    "evidence_type": "theoretical",
+    "scope_conditions": "(2n-1)-dimensional spherical space forms; n>=11 and n=1 mod 5, or n>=7 and n=2 mod 5, or n>=3 and n=3 mod 5",
+    "quoted_support": "Furthermore, we show that vol(S^{2n-1})/11 is the highest volume of a pair of (2n-1)-dimensional isospectral and non-isometric spherical space forms if either n\\geq11 and n\\equiv 1\\pmod 5, or n\\geq7 and n\\equiv 2\\pmod 5, or n\\geq3 and n\\equiv 3\\pmod 5.",
+    "numbers": ["vol(S^{2n-1})/11", "n>=11, n=1(mod5)", "n>=7, n=2(mod5)", "n>=3, n=3(mod5)"],
+    "entities": ["spherical space forms"],
+    "time_period": null,
+    "region": null,
+    "confidence": "high",
+    "source_note_id": "240902213-isospectral-spherical-space-forms-and-orbifolds-of-highest-volume"
+  },
+  {
+    "claim": "This paper was accepted in Revista de la Union Matematica Argentina (February 2025), post-dating and extending the spherical-orbifold isospectrality literature that includes Bari-Hunsicker, but remains entirely in constant positive curvature with no heat-trace coefficient analysis.",
+    "stance": "neutral",
+    "stance_target": "publication venue and continuity of the spherical isospectrality research program",
+    "evidence_type": "empirical",
+    "scope_conditions": "publication record",
+    "quoted_support": "Accepted in Revista de la Unión Matemática Argentina (February 2025)",
+    "numbers": ["February 2025"],
+    "entities": ["Revista de la Unión Matemática Argentina"],
+    "time_period": "2025",
+    "region": "Argentina",
+    "confidence": "high",
+    "source_note_id": "240902213-isospectral-spherical-space-forms-and-orbifolds-of-highest-volume"
+  }
+]

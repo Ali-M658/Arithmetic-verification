@@ -1,0 +1,27 @@
+[
+  {
+    "claim": "Gittins, Gordon, Khalile, Membrillo Solis, Sandoval & Stanhope's 'Do the Hodge Spectra Distinguish Orbifolds from Manifolds? Part 1' (arXiv:2106.07882) was published in Michigan Mathematical Journal 74 (2024), no. 3, but is entirely absent from the manuscript's bibliography, which cites only Part 2.",
+    "stance": "refutes",
+    "stance_target": "completeness of the manuscript's bibliography for the Gittins-Gordon-et-al orbifold-Hodge-spectra line of work",
+    "evidence_type": "empirical",
+    "scope_conditions": "Crossref record for DOI 10.1307/mmj/20216126",
+    "quoted_support": "container-title: Michigan Mathematical Journal; volume: 74; issue: 3; published date-parts [2024,7,1]",
+    "numbers": [
+      "volume 74",
+      "issue 3",
+      "2024"
+    ],
+    "entities": [
+      "Katie Gittins",
+      "Carolyn Gordon",
+      "Magda Khalile",
+      "Ingrid Membrillo Solis",
+      "Mary Sandoval",
+      "Elizabeth Stanhope"
+    ],
+    "time_period": "2021-2024",
+    "region": null,
+    "confidence": "high",
+    "source_note_id": "20216126"
+  }
+]

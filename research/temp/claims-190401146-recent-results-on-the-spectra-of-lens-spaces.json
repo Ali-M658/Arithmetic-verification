@@ -1,0 +1,44 @@
+[
+  {
+    "claim": "Lauret, Miatello, and Rossetti's 2019/2021 survey reports on recent spectral results for lens spaces and orbifolds and 'similar locally symmetric spaces of rank one,' extending the authors' IMRN (2016) congruence-lattice description; it does not address hyperbolic cone orbifolds or heat-coefficient counting.",
+    "stance": "refutes",
+    "stance_target": "whether this is a competitor to the manuscript's hyperbolic cone-orbifold priority claim",
+    "evidence_type": "theoretical",
+    "scope_conditions": "lens spaces, orbifolds, rank-one locally symmetric spaces (spherical setting)",
+    "quoted_support": "In this paper we report on recent results by several authors, on the spectral theory of lens spaces and orbifolds and similar locally symmetric spaces of rank one. Most of these results are related to those obtained by the authors in [IMRN (2016), 1054--1089], where the spectra of lens spaces were described in terms of the one-norm spectrum of a naturally associated congruence lattice.",
+    "numbers": ["IMRN (2016), 1054-1089"],
+    "entities": ["Emilio A. Lauret", "Roberto J. Miatello", "Juan Pablo Rossetti"],
+    "time_period": "2016-2019",
+    "region": null,
+    "confidence": "high",
+    "source_note_id": "190401146-recent-results-on-the-spectra-of-lens-spaces"
+  },
+  {
+    "claim": "The published version appeared in Sao Paulo Journal of Mathematical Sciences 15:1 (2021), 240-267, DOI 10.1007/s40863-019-00154-3.",
+    "stance": "neutral",
+    "stance_target": "publication record",
+    "evidence_type": "empirical",
+    "scope_conditions": "journal reference",
+    "quoted_support": "Journal reference: Sao Paulo J. Math. Sci. 15:1 (2021), 240-267. Related DOI: https://doi.org/10.1007/s40863-019-00154-3",
+    "numbers": ["15:1", "240-267", "2021"],
+    "entities": ["Sao Paulo Journal of Mathematical Sciences"],
+    "time_period": "2021",
+    "region": "Brazil",
+    "confidence": "high",
+    "source_note_id": "190401146-recent-results-on-the-spectra-of-lens-spaces"
+  },
+  {
+    "claim": "The paper gives an elementary alternate proof for the spectrum-on-functions case that avoids representation theory of compact Lie groups, using Molien's formula and manipulation of a one-norm generating function -- a different technical machinery from Bari-Hunsicker's approach.",
+    "stance": "neutral",
+    "stance_target": "technical relationship to Bari-Hunsicker's methods",
+    "evidence_type": "theoretical",
+    "scope_conditions": "spectrum-on-functions case for lens spaces",
+    "quoted_support": "We also give a new elementary proof in the case of the spectrum on functions. In this proof, representation theory of compact Lie groups is avoided and replaced by the use of Molien's formula and a manipulation of the one-norm generating function associated to a congruence lattice.",
+    "numbers": [],
+    "entities": ["Molien's formula", "one-norm generating function"],
+    "time_period": null,
+    "region": null,
+    "confidence": "high",
+    "source_note_id": "190401146-recent-results-on-the-spectra-of-lens-spaces"
+  }
+]

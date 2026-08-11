@@ -1,0 +1,44 @@
+[
+  {
+    "claim": "A locally orientable Riemannian orbifold cannot be Laplace isospectral to an orbifold that is not locally orientable.",
+    "stance": "neutral",
+    "stance_target": "heat-invariant-based distinguishability results for orbifolds in the 2017-2026 window",
+    "evidence_type": "theoretical",
+    "scope_conditions": "compact Riemannian orbifolds",
+    "quoted_support": "Theorem 4.7. A locally orientable orbifold cannot be isospectral to an orbifold that is not locally orientable.",
+    "numbers": ["Theorem 4.7", "Corollary 4.8"],
+    "entities": ["Sean Richardson", "Elizabeth Stanhope"],
+    "time_period": "2019-2020",
+    "region": null,
+    "confidence": "high",
+    "source_note_id": "191003224-you-can-hear-the-local-orientability-of-an-orbifold"
+  },
+  {
+    "claim": "The proof is a qualitative parity argument on the heat-trace expansion (integer vs half-integer power terms vanish or not depending on local orientability), not a count of how many heat coefficients suffice to determine cone orders -- it establishes existence of ONE distinguishing coefficient, not a threshold.",
+    "stance": "refutes",
+    "stance_target": "this paper being a competing finite-coefficient determinacy threshold result",
+    "evidence_type": "theoretical",
+    "scope_conditions": "proof of Theorem 4.7",
+    "quoted_support": "We argue that in this situation all integer power terms in the heat expansion of Oori vanish... We now show that at least one integer power coefficient in the expansion of Onon is nonzero... Since Oorb and Onon differ in at least one term in the heat expansion they cannot be isospectral.",
+    "numbers": [],
+    "entities": [],
+    "time_period": "2019-2020",
+    "region": null,
+    "confidence": "high",
+    "source_note_id": "191003224-you-can-hear-the-local-orientability-of-an-orbifold"
+  },
+  {
+    "claim": "The result is stated as equivalent to Dryden-Gordon-Greenwald-Webb's Theorem 5.1 (an orientation-reversing local chart element obstructs isospectrality to a manifold), i.e. this 2019 paper reproves/restates a previously known fact rather than establishing new determinacy machinery.",
+    "stance": "neutral",
+    "stance_target": "originality of the 2019 result relative to prior orbifold heat-invariant literature",
+    "evidence_type": "theoretical",
+    "scope_conditions": "Corollary 4.8",
+    "quoted_support": "We end with a corollary that is equivalent to [5, Theorem 5.1]... If any local chart (Ũ, GU, πU) on O possesses an orientation reversing local group element γ ∈ GU, then O cannot be isospectral to a manifold.",
+    "numbers": [],
+    "entities": ["Dryden", "Gordon", "Greenwald", "Webb"],
+    "time_period": "2019-2020",
+    "region": null,
+    "confidence": "high",
+    "source_note_id": "191003224-you-can-hear-the-local-orientability-of-an-orbifold"
+  }
+]

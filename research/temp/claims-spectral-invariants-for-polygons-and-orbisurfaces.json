@@ -1,0 +1,44 @@
+[
+  {
+    "claim": "The official Humboldt-Universität zu Berlin edoc repository record for Uçar's dissertation gives the citable DOI as 10.18452/18463 (URI https://doi.org/10.18452/18463), dated 2017-10-17.",
+    "stance": "neutral",
+    "stance_target": "Resolvable citation identifier for Uçar's dissertation",
+    "evidence_type": "empirical",
+    "scope_conditions": "Humboldt edoc DSpace repository metadata",
+    "quoted_support": "Please use this identifier to cite this publication DOI link DOI ... URI https://doi.org/10.18452/18463",
+    "numbers": ["10.18452/18463", "2017-10-17"],
+    "entities": ["Eren Uçar", "Humboldt-Universität zu Berlin"],
+    "time_period": "2017",
+    "region": "Germany",
+    "confidence": "high",
+    "source_note_id": "spectral-invariants-for-polygons-and-orbisurfaces"
+  },
+  {
+    "claim": "The full URN for the dissertation, as printed on the Humboldt repository page, is urn:nbn:de:kobv:11-110-18452.",
+    "stance": "neutral",
+    "stance_target": "Resolvable persistent identifier for Uçar's dissertation",
+    "evidence_type": "empirical",
+    "scope_conditions": "Humboldt edoc repository page HTML",
+    "quoted_support": "urn:nbn:de:kobv:11-110-18452",
+    "numbers": ["urn:nbn:de:kobv:11-110-18452"],
+    "entities": ["Eren Uçar"],
+    "time_period": null,
+    "region": null,
+    "confidence": "high",
+    "source_note_id": "spectral-invariants-for-polygons-and-orbisurfaces"
+  },
+  {
+    "claim": "The dissertation's reviewers/committee were Dorothee Schüth (supervisor), Carolyn Gordon, and Daniel Grieser, with department listed as 'Humboldt-Universität (insgesamt)' under the Dissertationen collection, keyworded with both German and English spectral-geometry terms including 'generalized Mehler transform' / 'Verallgemeinerte Mehler Transformation'.",
+    "stance": "neutral",
+    "stance_target": "Institutional and subject metadata for Uçar's dissertation",
+    "evidence_type": "empirical",
+    "scope_conditions": "Humboldt edoc repository metadata fields",
+    "quoted_support": "Keywords Spektralgeometrie, Inverses Spektralproblem, Wärmeleitungskern, Spektralinvarianten, Wärmekoeffizienten, Polygone, Orbifolds, Orbiflächen, Verallgemeinerte Mehler Transformation, Laplace-Operator",
+    "numbers": [],
+    "entities": ["Eren Uçar", "Dorothee Schüth", "Carolyn Gordon", "Daniel Grieser"],
+    "time_period": null,
+    "region": null,
+    "confidence": "high",
+    "source_note_id": "spectral-invariants-for-polygons-and-orbisurfaces"
+  }
+]
