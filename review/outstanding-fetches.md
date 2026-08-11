@@ -61,8 +61,43 @@ workaround succeeded).
   commensurability and is not implied by it. So even a positive answer would not by itself
   make the manuscript's Theorem B prior art — but it would need to be cited and distinguished.
 - **Action:** obtain via interlibrary loan or the University of Tokyo repository, and check
-  the class assignment of $(2,8,8)$ and $(3,3,12)$. This is the single highest-value
-  outstanding item in the review.
+  the class assignment of $(2,8,8)$ and $(3,3,12)$.
+
+> **UPDATE — the question this item was wanted for is now answered; the paper itself is still
+> unretrieved.** See [takeuchi-verdict.md](takeuchi-verdict.md). The full class partition was
+> recovered from a source that reproduces Takeuchi's table — **Tu & Yang, Trans. Amer. Math.
+> Soc. 365 (2013), no. 12, 6697–6729, DOI `10.1090/S0002-9947-2013-05960-0`
+> (arXiv:1112.1001), Appendix A** — whose eighteen cocompact subgroup diagrams were verified to
+> partition Takeuchi's 76 compact triples exactly. **$(2,8,8)$ is in Class III, $(3,3,12)$ is in
+> Class XV; they are not commensurable**, confirmed independently by an exact computation of the
+> invariant trace fields ($\mathbb Q(\sqrt2)$, degree 2, versus $\mathbb Q(\sqrt2,\sqrt3)$,
+> degree 4) from Takeuchi's own Theorem 1 criterion. This item stays open only to upgrade the
+> class *numbering* from one source to two; its stake in the review's conclusions is now nil.
+
+### 1.2a Maclachlan & Reid, *The Arithmetic of Hyperbolic 3-Manifolds*, §13.3 — `PAYWALLED`
+
+- **Authors:** Colin Maclachlan and Alan W. Reid
+- **Work:** *The Arithmetic of Hyperbolic 3-Manifolds*, Graduate Texts in Mathematics **219**,
+  Springer, New York, 2003. ISBN 978-0-387-98386-8.
+- **Section wanted:** §13.3, "Arithmetic Fuchsian Triangle Groups" (p. 418 per the published
+  table of contents), as a second independent reproduction of Takeuchi's commensurability
+  classes.
+- **Failure:** Springer full text is subscription-gated and no institutional access was
+  available; Google Books exposes the table of contents but not §13.3's body. No accessible
+  scan located.
+- **Impact on conclusions: none.** Tu–Yang (above) supplied a complete, independently verified
+  reproduction. Maclachlan–Reid would be a redundant third confirmation of the class numbering.
+
+### 1.2b Voight, *Quaternion Algebras* §32.5 — `RETRIEVED, DOES NOT CONTAIN THE MATERIAL`
+
+Recorded because the pointer was wrong and the next reader should not repeat the retrieval.
+John Voight, *Quaternion Algebras*, Graduate Texts in Mathematics **288**, Springer, 2021, is
+freely available from the author at `https://jvoight.github.io/quat-book.pdf` and was
+downloaded in full (883 pp.) and searched. **§32.5 is "Cyclic subgroups"** — cyclic subgroups
+of quaternion unit groups $\mathrm P B^\times$, following Chinburg–Friedman — and has nothing
+to do with triangle groups. The string "Takeuchi" appears on **zero** pages of the book;
+"triangle group" appears on six, none carrying a commensurability-class table. The book is not
+a source for this question.
 
 ### 1.3 Guy, *Unsolved Problems in Number Theory* — **RESOLVED, not outstanding**
 

@@ -19,8 +19,8 @@ from an authoritative record. Nothing was written from memory.
 | 5 | Is the planned stability theorem novel? | **In setting, not technique.** The invariant map *is* a Prony system — cite the theory, make the integer-exactness the theorem |
 | 6 | What must the paper look like for JGA? | **Close to what it is** — plus a repaired bibliography, the $n$-cone extension, and no priority sentence |
 
-**21 corrections and opportunities** are itemised at the end, six of them bibliographic and
-three substantive. One is a genuine mathematical defect: Remark 5.6's $K\le n$ does not hold
+**22 corrections and opportunities** are itemised at the end, six of them bibliographic and
+four substantive. One is a genuine mathematical defect: Remark 5.6's $K\le n$ does not hold
 for $n\ge4$ in the sense Theorem C uses.
 
 ---
@@ -387,6 +387,7 @@ Rowlett co-authored the JGA exemplar; Schueth and Uçar are both at Humboldt.
 | 19 | §1.3 does not reconcile SSW 2006 and RSW 2008 — two "one cannot hear…" results it cites, one of them by the author of eq. (4) | substantive |
 | 20 | Guy D16 / Schinzel unengaged in §5 | opportunity |
 | 21 | Remark 5.6's open lower bound is settled for $n=4$ | opportunity |
+| 22 | **The abstract's constant range contradicts Table 1.** The abstract states $c\approx0.0085$–$0.0093$; Table~1 (`tab:density`) prints $\mathcal N(S)/S^2=0.0097$ at $S=200$ and $0.0094$ at $S=400$, both outside that band. The true range over the manuscript's own printed checkpoints $100\le S\le600$ is **0.0085–0.0097**. Independent exact enumeration confirms it, and confirms the sequence is **decreasing** across the sampled interval: $0.0092,\,0.0097,\,0.0093,\,0.0094,\,0.0088,\,0.0085$ at $S=100,200,300,400,500,600$ (full-sweep extremes over $S\ge100$: $0.00979$ at $S=196$, $0.00851$ at $S=599$). Widen the abstract to 0.0085–0.0097, **and state the downward drift rather than smoothing it over** — a ratio still falling at the top of the computed range is weaker evidence for $\mathcal N(S)\sim cS^2$ (Conjecture 5.3) than a stabilizing one, and §5.3's own hedge ("whether $\mathcal N(S)/S^2$ has in fact stabilized, or is still drifting … cannot be resolved from data at this scale") already concedes the point that the abstract's narrowed band obscures | **substantive** |
 
 **Two apparent discrepancies were checked and resolved in the manuscript's favour** — no change
 needed for either: Hezari–Zelditch is indeed Ann. of Math. **196** (2022), no. 3, 1083–1134
