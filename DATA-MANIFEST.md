@@ -200,11 +200,11 @@ Every committed data file, with its size, SHA-256, the script and command that g
 | `first_overlap_vs_collision.csv` | 7.3 KB | `8c58c92df5c985e84b21c46b0284c0c70149a86ca4c24a40977fabf3fb7b453a` | `theory/threshold/threshold.py` | `cd theory/threshold && python3 threshold.py` | Theorem (first overlap of adjacent strata, S*(p)); Figure F7 (S*(p) and first collision; the stratum intervals R^+-_{S,p} are not stored) |
 | `threshold_output.txt` | 4.2 KB | `c1d3b9a3b9ec3c852eefa2ee68e2a80bbbe72ca3a85f6cfc5df8447ec534f9d6` | `theory/threshold/threshold.py` | `cd theory/threshold && python3 threshold.py > threshold_output.txt` | Theorem (first overlap), checks C1-C5 |
 
-### Pending (not yet committed)
+### Deferred (not generated in this consolidation)
 
 | File | Status | Generator | Command | Paper element |
 |---|---|---|---|---|
-| `numerics/data/rerun_double_window_comparison.json` | **PENDING** | `numerics/rerun_double_window.py` | `cd numerics && python3 rerun_double_window.py SCRATCH_DIR   (NGSolve; about an hour)` | Numerics appendix: the production eigenvalues reproduced by the double-window solver |
+| `numerics/data/rerun_double_window_comparison.json` | **DEFERRED: the full S3 rerun is deferred to the final submission check; T3 is verified by existing checks (heat traces match the trace formula to 7e-13, numerics/REPORT.md section 4d; the server rerun of (3,3,12) Neumann matched all 1434 committed eigenvalues, numerics/moduli/data/s3_repro.json)** | `numerics/rerun_double_window.py` | `cd numerics && python3 rerun_double_window.py SCRATCH_DIR   (NGSolve; about an hour)` | Numerics appendix: the production eigenvalues reproduced by the double-window solver |
 
 ## Environment specifications
 

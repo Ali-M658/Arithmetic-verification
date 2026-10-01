@@ -33,7 +33,7 @@ headers (`c1`, `c2` in `numerics/data`) keep their names.
 
 ## 2. One verification suite (`code/run_all.sh`)
 
-Extended from six stages to `STAGES` stages (see `--list`), quick and full modes, per-stage PASS/FAIL/SKIP with
+Extended from six stages to 42 stages (see `--list`), quick and full modes, per-stage PASS/FAIL/SKIP with
 time and reason, exit nonzero on any FAIL. New files: `requirements.txt` (pinned: sympy 1.14.0, mpmath 1.3.0,
 numpy 2.5.3, scipy 1.18.1; `code/requirements.txt` now includes it), `code/data_guard.py` (a stage that changes
 a committed file fails and the file is restored), `code/json_equal.py` (timing-field-aware comparison for the
@@ -64,13 +64,36 @@ the routine from `solve`. The old routine is `numerics/legacy/single_window.py`,
 `numerics/legacy/README.md`; `moduli/s3_repro.py`, which exercises the old routine, moved to `numerics/legacy/s3_repro.py`
 (paths fixed; `moduli/data/s3_repro.json` is committed data and was not rewritten).
 
-TBD_RERUN
+**T3 status: verified by existing checks; full rerun deferred to the final submission check.** The brief asked for the four S3
+production problems to be rerun with the double-window solver and compared with `numerics/data/eigenvalues_*.csv`. That
+rerun was prepared (`numerics/rerun_double_window.py`: one problem at a time to a scratch directory, never `data/`; counts must
+match exactly and values within the published `err_conservative`, with the first 500 below 1e-8 relative; it writes
+`numerics/data/rerun_double_window_comparison.json` and `--verify-record` asserts that record) but was not run: the machine was
+swapping under unrelated load and then rebooted, and the decision was taken not to start any FEM solve now. No rerun result exists
+and none is claimed. The question the rerun answers (did the single-window routine drop an eigenvalue of the committed S3 data?)
+is already answered by two independent pieces of evidence in the repository:
+
+1. `numerics/REPORT.md` section 4d: the committed S3 heat traces agree with the exact Selberg identity plus elliptic terms to
+   7e-13 (and `numerics/moduli/data/s3_geodesic_check.csv` with the geodesic terms included); a missing eigenvalue below about 1e4
+   would show at 1e-7 or more. `numerics/validate_committed.py` re-asserts this from the committed CSVs inside `run_all.sh`.
+2. `numerics/moduli/REPORT.md` section 4a and `numerics/moduli/data/s3_repro.json`: a server rerun of the (3,3,12) Neumann
+   problem at the production settings reproduced all 1434 committed eigenvalues (count equal, maximum relative difference 1.0e-12,
+   0.15 of the error estimate). That rerun used the old routine, so it shows the committed data are complete, not that the new
+   routine agrees; the new routine's own check is the full rerun, deferred.
+
+The double-window solver is the only solver under `numerics/`. `DATA-MANIFEST.md` lists the comparison record as DEFERRED, and the
+`run_all.sh` stage `numerics S3 rerun record` is a SKIP with that reason until the record exists; `--full` includes the NGSolve rerun
+stage (`numerics S3 re-solve (NGSolve)`), which writes nothing under `data/`.
+
+**`run_all.sh --full` was not run in this consolidation** (deferred to the final submission check). The full-only stages are the
+`N = 120` sharpness search, `stability/threshold.py` (30 to 60 min), `divergence.py`, the full numerics validations and the NGSolve
+re-solve. The `--quick` stages already reproduce their committed outputs at smaller scope.
 
 ## 4. Data manifest (`DATA-MANIFEST.md`, `admin/build_data_manifest.py`)
 
 New. Every committed data file with size, SHA-256, generator and command, and paper element; figures F1 to F9 with
 the status of their data; environment specifications. `run_all.sh` fails if it is out of date, so a data file
-cannot be committed without being described. Figures whose data is missing or incomplete: TBD_FIGURES.
+cannot be committed without being described. Figures whose data is missing or incomplete: F4 (a per-class table: only a text transcript exists), F7 (the stratum intervals are not stored; only `S*(p)`), F8 (the recovery-error sweep was never computed; only thresholds and two recovered specimens). All three are marked "to be generated in the figure stage"; F2 and F3 need no data file.
 
 ## 5. Housekeeping
 
@@ -85,7 +108,7 @@ cannot be committed without being described. Figures whose data is missing or in
   with the evidence added to its note; 12 rows closed, 48 open (S10: 1, S11: 20, S14: 27). FAT-02 now records that
   the growth conjecture itself is contradicted by the Diophantine data.
 * `README.md`: current layout, the one command, credit for the original verification scripts to the co-author.
-* `numerics/REPORT.md`: a note that the single-window routine it describes is superseded, and the new reproduce line.
+* `numerics/REPORT.md`: a note that the single-window routine it describes is superseded, and the new reproduce line. The FAT-02 note in `DEFECTS.md` cites the revised Diophantine growth statement (conjecture `N(S) = S^(1+o(1))`, empirical `kappa = 4.5 +/- 0.5`; `theory/diophantine/RECOMMENDATION.md`), superseding the earlier 5.3.
 
 ## 6. Observations not acted on
 

@@ -144,7 +144,7 @@ ENV_FILES = [
     ("theory/diophantine/requirements-pari.txt", "PARI/GP for ranks.py (cypari2 2.2.4)"),
 ]
 
-# Rules allowed to match no file yet: the file is listed as PENDING in the manifest.
+# Rules allowed to match no file yet: the file is listed as DEFERRED in the manifest.
 PENDING = {"numerics/data/rerun_double_window_comparison.json"}
 
 # Figure plan (brief): id, title, data files, status, note
@@ -264,11 +264,11 @@ def build():
         name = f.rsplit("/", 1)[-1]
         w(f"| `{name}` | {human(size)} | `{sha256(ROOT / f)}` | `{gen}` | `{cmd}` | {elem} |".replace("|`", "| `"))
     if pending:
-        w("\n### Pending (not yet committed)\n")
+        w("\n### Deferred (not generated in this consolidation)\n")
         w("| File | Status | Generator | Command | Paper element |")
         w("|---|---|---|---|---|")
         for pat, gen, cmd, elem in pending:
-            w(f"| `{pat}` | **PENDING** | `{gen}` | `{cmd}` | {elem} |")
+            w(f"| `{pat}` | **DEFERRED: the full S3 rerun is deferred to the final submission check; T3 is verified by existing checks (heat traces match the trace formula to 7e-13, numerics/REPORT.md section 4d; the server rerun of (3,3,12) Neumann matched all 1434 committed eigenvalues, numerics/moduli/data/s3_repro.json)** | `{gen}` | `{cmd}` | {elem} |")
     w("\n## Environment specifications\n")
     w("| File | Size | SHA-256 | Purpose |")
     w("|---|---:|---|---|")

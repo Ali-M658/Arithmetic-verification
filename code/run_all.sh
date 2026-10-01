@@ -172,8 +172,8 @@ stage() {
         return
     fi
     if [ "$needs" = "record" ] && [ ! -f "$ROOT/numerics/data/rerun_double_window_comparison.json" ]; then
-        record "$name" SKIP "-" "rerun comparison record not committed (PENDING)"
-        echo "${yellow}--- ${name}: SKIP (rerun comparison record not committed: PENDING)${reset}"; echo
+        record "$name" SKIP "-" "rerun comparison record deferred to the final submission check"
+        echo "${yellow}--- ${name}: SKIP (rerun comparison record deferred to the final submission check)${reset}"; echo
         return
     fi
     if [ "$needs" = "pari" ] && [ "$HAVE_PARI" -ne 1 ]; then
