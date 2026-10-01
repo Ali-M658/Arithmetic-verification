@@ -27,7 +27,27 @@ def load_level(pqr, bc, h, order):
     return d["lam"], d
 
 
+def table_committed(pqr, bc, nmax=None):
+    """The same dict from the committed data/eigenvalues_<p-q-r>_<bc>.csv (production
+    eigenvalue and both error measures; no raw runs needed).  'all' holds the three levels
+    the CSV keeps: production, (0.07, 12), (0.07, 10)."""
+    import csv
+    path = os.path.join(os.path.dirname(os.path.abspath(__file__)), "data",
+                        f"eigenvalues_{pqr[0]}-{pqr[1]}-{pqr[2]}_{bc}.csv")
+    rows = list(csv.DictReader(open(path)))
+    if nmax is not None:
+        rows = rows[:nmax]
+    col = lambda k: np.array([float(r[k]) for r in rows])
+    return dict(lam=col("lambda"), err=col("err_estimate"), err_cons=col("err_conservative"),
+                levels=[(0.05, 10), (0.07, 12), (0.07, 10)],
+                all=[col("lambda"), col("lambda_h0.07_p12"), col("lambda_h0.07_p10")])
+
+
 def table(pqr, bc, levels=LEVELS, nmax=None):
+    """Production eigenvalues with error estimates: from the raw runs when they are present,
+    otherwise from the committed CSV (so that checks on committed data need no solver run)."""
+    if not available(pqr, bc, levels):
+        return table_committed(pqr, bc, nmax)
     lams = []
     for h, order in levels:
         lam, _ = load_level(pqr, bc, h, order)
