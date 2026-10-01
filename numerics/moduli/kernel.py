@@ -18,8 +18,9 @@ normalisation.
 Sanity asserts (physics, not fits):
   - far from the boundary and the cone point, K_O ~ (4 pi t)^{-1} (1 - t/3)
     (heat kernel of H^2 on the diagonal; K = -1) to 1e-3 relative at t = 0.005,
-    at points whose distance to the cone point and to the sides of Q exceeds 6 sqrt(t)
-    -- the mirror axes of Q are not boundaries of O and impose nothing;
+    at points whose distance to the cone point exceeds 6 sqrt(t) -- neither the sides of Q
+    nor its mirror axes are boundaries of the double O, they are interior geodesics, and
+    the shortest geodesic loop through any point is >= the systole (e^{-sys^2/4t} < 1e-10);
   - at the cone point V (order 3) K_O -> 3/(4 pi t): ratio within 5% at t = 0.005.
 
 Writes data/heat_kernel_diagonal_moduli.npz.
@@ -94,14 +95,10 @@ def main(workers=16):
         z = pts[:, 0] + 1j * pts[:, 1]
         V = complex(L.V)
         # hyperbolic distance to the cone point and to the sides of Q (the two arcs)
+        # nearest cone point: V itself (the other three are mirror images of V, farther from L)
         dV = 2 * np.arctanh(np.abs((z - V) / (1 - np.conj(V) * z)))
-        def d_circle(c, r):
-            # distance to the geodesic |w - c| = r:  sinh d = | |w-c|^2 - r^2 | / (r (1 - |w|^2))
-            c = complex(c)
-            return np.arcsinh(np.abs(np.abs(z - c) ** 2 - r * r) / (r * (1 - np.abs(z) ** 2)))
-        dside = np.minimum(d_circle(L.cE, float(L.rE)), d_circle(L.cN, float(L.rN)))
         t = TIMES[0]
-        far = (dV > 6 * np.sqrt(t)) & (dside > 6 * np.sqrt(t))
+        far = dV > 6 * np.sqrt(t)
         flat = (1 - t / 3) / (4 * np.pi * t)
         relfar = np.abs(KO[0][far] / flat - 1)
         assert far.sum() > 50 and np.max(relfar) < 1e-3, (tau, far.sum(), np.max(relfar))
