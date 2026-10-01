@@ -1,0 +1,29 @@
+k in n(s) = c (log s)^k; same model, same window, both series; +- block-bootstrap sd
+series                window        per-S k   cumulative k
+all                600-4800     4.48 +- 0.44    4.56 +- 0.71
+all               1200-4800     4.43 +- 0.48    4.51 +- 0.84
+all                600-2400     4.63 +- 0.71    4.59 +- 1.25
+all               2400-4800     4.37 +- 0.64    4.15 +- 1.13
+
+primitive          600-4800     3.54 +- 0.37    3.63 +- 0.57
+primitive         1200-4800     3.43 +- 0.40    3.66 +- 0.66
+primitive          600-2400     3.84 +- 0.59    3.60 +- 0.97
+primitive         2400-4800     3.33 +- 0.53    3.08 +- 1.11
+
+dual               600-4800     3.33 +- 0.35    3.33 +- 0.60
+dual              1200-4800     3.32 +- 0.48    3.52 +- 0.76
+dual               600-2400     3.29 +- 0.60    3.27 +- 0.99
+dual              2400-4800     3.05 +- 0.74    2.43 +- 1.46
+
+primitive dual     600-4800     2.56 +- 0.34    2.52 +- 0.53
+primitive dual    1200-4800     2.52 +- 0.43    2.98 +- 0.72
+primitive dual     600-2400     2.57 +- 0.56    2.16 +- 0.89
+primitive dual    2400-4800     1.81 +- 0.84    0.45 +- 1.60
+
+non-dual           600-4800     4.79 +- 0.47    4.91 +- 0.77
+non-dual          1200-4800     4.71 +- 0.54    4.77 +- 0.91
+non-dual           600-2400     5.02 +- 0.79    5.01 +- 1.35
+non-dual          2400-4800     4.69 +- 0.71    4.59 +- 1.30
+
+closed form c S (log S)^K fitted on 100..4800 (the earlier cumulative fit): K = 5.16
+secondary-term prediction from per-S k = 4.48: K ~ k (1 + 1/log S) = 5.04 at S ~ 3000
