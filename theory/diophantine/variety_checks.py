@@ -12,14 +12,17 @@ Exact checks behind variety.md.
          tau^2 = sigma (sigma^2 + (n^2 - 6n - 3) sigma + 16 n).
   4. The six base points have orders 1, 2, 3, 3, 6, 6 under the chord-tangent
      law with O = (1:-1:0), at many values of lambda.
-  5. Reciprocation is translation by the 2-torsion point (0:0:1) up to a
-     coordinate permutation, on many random positive points.
+  5. Reciprocation is translation by the 2-torsion point (0:0:1), proved
+     symbolically for every point of every C_lambda.
   6. The dual surface: the six cubics e2 x, e2 y, e2 z, e1 yz, e1 zx, e1 xy
      span a 5-dimensional space (one linear relation, equal sums) and their
      base locus is the three coordinate points and the two points
      e1 = e2 = 0; no three of the five are collinear. Hence the image is an
      anticanonical quartic del Pezzo surface in P^4.
-  7. Optional (needs cypari2): rank and torsion of selected curves by 2-descent.
+  3c. The explicit Q-birational map from C_lambda to the BGN model and its
+     inverse, and the integral model handed to PARI (ranks are in ranks.py).
+  7. The explicit birational map between the degeneracy cone and the fibre
+     square of the pencil over the lambda-line.
 
 Usage: variety_checks.py      (writes data/variety_checks.txt)
 """
@@ -36,7 +39,7 @@ import sympy as sp
 
 HERE = Path(__file__).resolve().parent
 sys.path.insert(0, str(HERE))
-from cubic_group import O, TRIVIAL, Cubic, dual, lam, normalize  # noqa: E402
+from cubic_group import O, TRIVIAL, Cubic  # noqa: E402
 
 OUT: list[str] = []
 
@@ -96,6 +99,43 @@ def main() -> int:
     say("PASS 3b j-invariant equals that of the Bremner-Guy-Nowakowski model; "
         "their discriminant (n-1)^3 (n-9) reproduced")
 
+    # 3c. explicit Q-birational map C_lambda -> BGN model, its inverse, and the PARI model
+    F = e1 * e2 - L * e3
+    aB_, bB_ = L**2 - 6*L - 3, 16*L
+    sig = -4 * e2 / z**2
+    tau = 4 * L * (L - 1) * (x - y) / (x + y - (L - 1) * z)
+    W = sp.together(tau**2 - sig * (sig**2 + aB_ * sig + bB_))
+    num = sp.numer(W).subs(z, 1)
+    F1 = F.subs(z, 1)
+    rem = sp.Poly(num, x, domain=sp.QQ.frac_field(y, L)).rem(sp.Poly(F1, x, domain=sp.QQ.frac_field(y, L)))
+    assert rem.is_zero
+    # inverse: s = (x+y)/z, d = (x-y)/z from (sigma, tau)
+    sg, tu = sp.symbols("sigma tau")
+    s_inv = sg * (L - 1) / (sg - 4 * L)
+    d_inv = tu * (s_inv - L + 1) / (4 * L * (L - 1))
+    # inverse o forward = identity on C_lambda
+    for target, expr in [((x + y), s_inv), ((x - y), d_inv)]:
+        diff = sp.together(expr.subs({sg: sig, tu: tau}).subs(z, 1) - target)
+        r = sp.Poly(sp.numer(diff), x, domain=sp.QQ.frac_field(y, L)).rem(sp.Poly(F1, x, domain=sp.QQ.frac_field(y, L)))
+        assert r.is_zero, target
+    # forward o inverse lands on C_lambda: F(x(s,d), y(s,d), 1) vanishes on the Weierstrass curve
+    xi, yi = (s_inv + d_inv) / 2, (s_inv - d_inv) / 2
+    Fi = sp.together(F.subs({x: xi, y: yi, z: 1}))
+    Fn = sp.Poly(sp.expand(sp.numer(Fi)), tu)
+    Fn = Fn.rem(sp.Poly(tu**2 - sg * (sg**2 + aB_ * sg + bB_), tu))
+    assert sp.simplify(Fn.as_expr()) == 0
+    # integral model: lambda = A/B, X = B^2 sigma, Y = B^3 tau
+    A_, B_ = sp.symbols("A B", positive=True)
+    Xs, Ys = sp.symbols("Xs Ys")
+    lhs = (B_**3 * tu)**2 - (B_**2 * sg) * ((B_**2 * sg)**2 + (A_**2 - 6*A_*B_ - 3*B_**2) * (B_**2 * sg)
+                                         + 16 * A_ * B_**3)
+    rhs = B_**6 * (tu**2 - sg * (sg**2 + aB_ * sg + bB_)).subs(L, A_ / B_)
+    assert sp.expand(lhs - rhs) == 0
+    say("PASS 3c C_lambda -> tau^2 = sigma(sigma^2 + (l^2-6l-3) sigma + 16 l) via sigma = -4 e2/z^2, "
+        "tau = 4 l (l-1)(x-y)/(x+y-(l-1)z); inverse s = sigma(l-1)/(sigma-4l), "
+        "x-y = tau (s-l+1)/(4l(l-1)); both compositions are the identity on the curves; "
+        "X = B^2 sigma, Y = B^3 tau gives the integral model [0, A^2-6AB-3B^2, 0, 16AB^3, 0] used by ranks.py")
+
     # 4. torsion of the base points
     rng = random.Random(1)
     lams = [Fraction(rng.randint(10, 400), rng.randint(1, 30)) for _ in range(40)]
@@ -106,19 +146,24 @@ def main() -> int:
         assert sorted(orders) == [1, 2, 3, 3, 6, 6], (l, orders)
     say(f"PASS 4  base points have orders {{1,2,3,3,6,6}} (a Z/6 subgroup) on {len(lams)} curves")
 
-    # 5. reciprocation = translation by 2-torsion, up to permutation
-    T2 = next(T for T in TRIVIAL if Cubic(Fraction(27, 2)).order(T) == 2)
-    n = 0
-    for _ in range(300):
-        p = tuple(rng.randint(1, 60) for _ in range(3))
-        l = lam(p)
-        if l in (0, 1, 9):
-            continue
-        C = Cubic(l)
-        Q = C.add(p, T2)
-        assert tuple(sorted(normalize(Q))) == dual(p), (p, Q)
-        n += 1
-    say(f"PASS 5  (1/p,1/q,1/r) = P + T2 up to permutation, T2 = {T2}, on {n} random points")
+    # 5. reciprocation IS translation by the 2-torsion point T2 = (0:0:1) (symbolic, no permutation)
+    T2 = (0, 0, 1)
+    Fp = lambda P: sp.expand((P[0] + P[1] + P[2]) * (P[0]*P[1] + P[1]*P[2] + P[2]*P[0]) - L * P[0]*P[1]*P[2])
+    P = (x, y, z)
+    Q1 = (x * z, y * z, x * y)                 # claimed third point of the line P T2
+    Q2 = (y * z, x * z, x * y)                 # claimed third point of the line O Q1 = P + T2
+    det = lambda U, V, Wv: sp.expand(sp.Matrix([U, V, Wv]).det())
+    assert det(P, T2, Q1) == 0 and det(O, Q1, Q2) == 0
+    for Q in (Q1, Q2):
+        q, r_ = sp.div(Fp(Q), Fp(P), x, y, z)
+        assert r_ == 0                         # Q lies on C_lambda whenever P does
+    # Q1 differs generically from P and T2, Q2 from O and Q1, so they are the third intersections
+    assert sp.expand(Q1[0] * P[1] - Q1[1] * P[0]) == 0 and sp.expand(Q1[0] * P[2] - Q1[2] * P[0]) != 0
+    assert sp.expand(Q2[0] * Q1[1] - Q2[1] * Q1[0]) != 0
+    # P + T2 = O * (P * T2) = Q2 = (yz : xz : xy) = (1/x : 1/y : 1/z); applying twice returns P,
+    # so 2 T2 = O.
+    say("PASS 5  P * T2 = (xz:yz:xy) and O * (P * T2) = (yz:xz:xy): with base point O = (1:-1:0), "
+        "P + T2 = (1/x : 1/y : 1/z) exactly, for every P on every C_lambda; hence 2 T2 = O")
 
     # 6. dual surface
     cubics = [e2*x, e2*y, e2*z, e1*y*z, e1*z*x, e1*x*y]
@@ -137,26 +182,25 @@ def main() -> int:
         "= 3 coordinate points + {e1=e2=0}, no three collinear -> anticanonical dP4 in P^4, "
         "Pic over Q of rank 1 + 3 + 1 = 5")
 
-    # 7. ranks
-    try:
-        import cypari2
-        pari = cypari2.Pari()
-        pari.allocatemem(10**9)
-
-        def info(l):
-            A, B = l.numerator, l.denominator
-            E = pari.ellinit([0, A*A - 6*A*B - 3*B*B, 0, 16*A*B**3, 0])
-            r = pari.ellrank(E)
-            return int(r[0]), int(r[1]), str(pari.elltors(E)[1])
-        for l, why in [(Fraction(27, 2), "base pair (2,8,8),(3,3,12)"),
-                       (Fraction(155, 12), "(4,9,18),(5,6,20), S = 31"),
-                       (Fraction(68, 5), "first triple fibre S = 136, first quadruple S = 408"),
-                       (Fraction(1849, 120), "first quintuple fibre S = 1849"),
-                       (Fraction(230, 21), "quintuple S = 2300, sextuple S = 4600")]:
-            lo, hi, tors = info(l)
-            say(f"RANK 7  lambda = {l}: rank in [{lo},{hi}], torsion {tors}   ({why})")
-    except ImportError:
-        say("SKIP 7  cypari2 not installed; rank computations not run")
+    # 7. the degeneracy cone and the fibre square of the pencil, explicitly
+    xp, yp, zp = sp.symbols("xp yp zp")
+    f1, f2, f3 = e1, e2, e3
+    g1, g2, g3 = xp + yp + zp, xp*yp + yp*zp + zp*xp, xp*yp*zp
+    # Psi: (P, P') with lambda(P) = lambda(P') -> (g1 P, f1 P'): equal sums and equal R
+    T1 = [g1 * x, g1 * y, g1 * z]
+    T2p = [f1 * xp, f1 * yp, f1 * zp]
+    E1 = lambda t: t[0] + t[1] + t[2]
+    E2 = lambda t: t[0]*t[1] + t[1]*t[2] + t[2]*t[0]
+    E3 = lambda t: t[0]*t[1]*t[2]
+    assert sp.expand(E1(T1) - E1(T2p)) == 0
+    # e2 e3' - e2' e3 of the rescaled pair equals f1^2 g1^2 (f1 f2 g3 - g1 g2 f3),
+    # which vanishes exactly when lambda(P) = lambda(P')
+    lhs = sp.expand(E2(T1) * E3(T2p) - E2(T2p) * E3(T1))
+    assert sp.expand(lhs - f1**2 * g1**2 * (f1 * f2 * g3 - g1 * g2 * f3)) == 0
+    # Phi: (t, t') on the cone -> ([t], [t']) is inverse to Psi up to the overall scale
+    say("PASS 7  (P, P') on a common C_lambda  <->  (e1(P') P, e1(P) P') on the degeneracy cone: "
+        "e2 e3' - e2' e3 = e1^2 e1'^2 (e1 e2 e3' - e1' e2' e3); so the cone is birational to "
+        "P^2 x_{P^1} P^2 over lambda, i.e. to the fibre square of the pencil's elliptic surface")
 
     (HERE / "data" / "variety_checks.txt").write_text("\n".join(OUT) + "\n")
     return 0
