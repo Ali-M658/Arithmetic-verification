@@ -14,7 +14,7 @@ eigenvalues, $Z_{\mathcal O}(t)=\sum_j e^{-\lambda_j t}$ its heat trace, and $c_
 the coefficients of `\label{def:heatcoef}`. The orbifold Euler characteristic is
 $\chi(\mathcal O)=2-2g-\sum_i(1-1/m_i)$. By the orbifold Gauss–Bonnet theorem,
 $\operatorname{Area}(\mathcal O)=-2\pi\chi(\mathcal O)$ [Thurston, 13.3.5 and the sentence
-after it, "If O is elliptic or hyperbolic, then area(O) = 2π|χ(O)|", p. 313; DS, Thm 3.2].
+after it, "If O is elliptic or hyperbolic, then area(O) = 2π|χ(O)|", electronic p. 312; DS, Thm 3.2, p. 5].
 
 **The physical picture.** For a short time $t$, heat injected at a point explores a ball
 of radius about $\sqrt t$. In that time it can learn only what lies inside the ball: the
@@ -33,12 +33,12 @@ is really there.
 |---|---|---|---|
 | [DGGW] | Dryden, Gordon, Greenwald, Webb, *Asymptotic expansion of the heat kernel for orbifolds*, Michigan Math. J. 56 (2008) 205–238, arXiv:0805.3148 | Thm 4.8 (heat trace of an orbifold); Donnelly's locality and universality of $b_k$; Def. 4.7; the orientable 2-orbifold strata | §4.1, §4.2, Def. 4.7, Thm 4.8 (pp. 15–17); §5.6 (p. 24) |
 | [Don] | Donnelly, *Spectrum and the fixed point sets of isometries I*, Math. Ann. 224 (1976) 161–170 | the functions $b_k(\gamma,\cdot)$ | **not fetched** (paywalled; Unpaywall: not OA). Quoted only as restated in [DGGW] §4.1–4.2 |
-| [Uçar] | Uçar, PhD thesis, HU Berlin 2017, arXiv:1711.03405 | Thm 4.11 (the [DGGW] expansion for 2-orbifolds); Thm 4.20 (all coefficients at constant curvature), eqs. (4.33), (4.35) | pp. 125, 137–138 |
-| [Th] | Thurston, *The Geometry and Topology of Three-Manifolds*, ch. 13, electronic ed. 1.1 (2002), SLMath mirror | Gauss–Bonnet 13.3.5; Thm 13.3.6; Cor. 13.3.7 (dimension of $T(\mathcal O)$) and its proof | pp. 313, 315–318 (original pagination 13.20–13.28) |
-| [DS] | Dryden, Strohmaier, *Huber's theorem for hyperbolic orbisurfaces*, Canad. Math. Bull. 52 (2009), arXiv:math/0504571v2 | trace formula eq. (1) and its normalisation; Thm 1.1; Thm 3.2 | pp. 2–4 |
+| [Uçar] | Uçar, PhD thesis, HU Berlin 2017, arXiv:1711.03405 | Thm 4.11 (the [DGGW] expansion for 2-orbifolds); Thm 4.20 (all coefficients at constant curvature), eqs. (4.33), (4.35) | pp. 127, 137–138 |
+| [Th] | Thurston, *The Geometry and Topology of Three-Manifolds*, ch. 13, electronic ed. 1.1 (2002), SLMath mirror | Gauss–Bonnet 13.3.5; Thm 13.3.6; Cor. 13.3.7 (dimension of $T(\mathcal O)$) and its proof | pp. 312, 315–318 (original pagination 13.20–13.28) |
+| [DS] | Dryden, Strohmaier, *Huber's theorem for hyperbolic orbisurfaces*, Canad. Math. Bull. 52 (2009), arXiv:math/0504571v2 | trace formula eq. (1) and its normalisation; Thm 1.1; Thm 3.2 | pp. 2–5 |
 | [Mar] | Marklof, *Selberg's trace formula: an introduction*, arXiv:math/0407288v2 | Thm 4 and Prop. 10: the heat function is admissible (torsion-free case) | pp. 25–27 |
 | [DR] | Doyle, Rossetti, *Laplace-isospectral hyperbolic 2-orbifolds are representation-equivalent*, arXiv:1103.4372v2 | Thm 1 | pp. 1–2 |
-| [LV] | Linowitz, Voight, *Small isospectral and nonisometric orbifolds of dimension 2 and 3*, Math. Z. 281 (2015) 523–569, arXiv:1408.2001v2 | Thm A and the sentence after it | p. 2 |
+| [LV] | Linowitz, Voight, *Small isospectral and nonisometric orbifolds of dimension 2 and 3*, Math. Z. 281 (2015) 523–569, arXiv:1408.2001v2 | Thm A and the sentence after it; the Maclachlan–Rosenberger remark | pp. 2–3 |
 
 ---
 
@@ -57,7 +57,10 @@ $c_j(\mathcal O)=\alpha_{j-1}\operatorname{Area}(\mathcal O)/4\pi+\sum_i\beta_{j
 function of $\sigma(\mathcal O)$ alone. This proves `\label{thm:locality}` (the forward
 reference in `theory/definitions.tex`), with
 $\Phi_j(g;m_1,\dots,m_n)=\alpha_{j-1}\tfrac{1}{2}\big(2g-2+\sum_i(1-\tfrac1{m_i})\big)+\sum_i\beta_{j-2}(m_i)$.
+(For $j=1$ the cone sum is absent: $\Phi_1=\tfrac12\big(2g-2+\sum_i(1-\tfrac1{m_i})\big)$.)
 In particular two orbifolds of the same signature have the same expansion to all orders.
+No half-integer powers occur: [DGGW] (4.9) allows $t^{j/2}$, but the only strata are the
+2-dimensional regular part and points, whose series are in integer powers.
 
 The constants are explicit [Uçar, Thm 4.20 (i), (ii) at $\kappa=-1$]:
 $\alpha_k=\frac{(-1)^k}{k!\,4^k}\sum_{l=0}^k\binom kl(-4)^lB_{2l}(\tfrac12)$, and $\beta_k(m)$ is
@@ -72,7 +75,8 @@ and Schueth's Theorem 4.1 for $k\le2$.
    points"]. So the strata are the regular part and the $n$ points $N_i=\{p_i\}$, with
    isotropy $\mathbb Z_{m_i}$ and $|\mathrm{Iso}(N_i)|=m_i$.
 2. *The expansion.* [DGGW, Thm 4.8]: the heat trace is asymptotic to
-   $I_0+\sum_N I_N/|\mathrm{Iso}(N)|$, where (Def. 4.7) $I_0=(4\pi t)^{-1}\sum_k a_kt^k$ with
+   $I_0+\sum_N I_N/|\mathrm{Iso}(N)|$, the sum running over the singular strata (as [Uçar,
+   Thm 4.11] states it explicitly; the regular stratum is $I_0$), where (Def. 4.7) $I_0=(4\pi t)^{-1}\sum_k a_kt^k$ with
    $a_k=\int_{\mathcal O}u_k\,d\mathrm{vol}$, and $I_N=(4\pi t)^{-\dim N/2}\sum_kt^k\int_N b_k(N,x)\,d\mathrm{vol}_N$.
    [Uçar, Thm 4.11] restates this for 2-orbifolds. For a point stratum,
    $\dim N=0$ and $I_N=\sum_kt^kb_k(N,p)$, with
@@ -92,7 +96,9 @@ and Schueth's Theorem 4.1 for $k\le2$.
    *locality* ("$b_k((M,\gamma),a)$ depends only on the germs at $a$ of the Riemannian
    metric of M and of the isometry γ") and *universality* (if $\sigma$ is an isometry with
    $\sigma\circ\gamma=\gamma'\circ\sigma$ then $b_k((M,\gamma),x)=b_k((M',\gamma'),\sigma(x))$).
-   For two cone points of the same order $m$, on the same or on different orbifolds, the
+   For two cone points of the same order $m$, on the same or on different orbifolds, first
+   shrink both charts to concentric disks of the same radius about $\tilde p$, $\tilde q$
+   (allowed by locality); then the
    orientation-preserving isometry $\sigma$ of $\mathbb H^2$ with $\sigma(\tilde p)=\tilde q$
    conjugates $\rho_{\tilde p}^{\,j}$ to $\rho_{\tilde q}^{\,j}$, rotation through the same angle
    in the same sense. By locality and universality,
@@ -115,7 +121,12 @@ $a_\nu(\mathcal O)=\frac{\operatorname{vol}(\mathcal O)}{\nu!\,4^\nu}\sum_{\ell=
 (4.35); (ii) a cone point of order $k$ contributes $I_N/|\mathrm{Iso}(N)|=C$ with $C$ given by
 (4.33). At $\kappa=-1$ this is Theorem 1 with explicit $\alpha_k$, $\beta_k(m)$.
 
-*Proof C (trace formula; independent of [DGGW] and [Uçar]).* By Theorem 3.1 below,
+*Proof C (trace formula; independent of the coefficient computations of [DGGW] and [Uçar]).*
+It uses from outside the trace formula only the a priori Weyl bound
+$\#\{\lambda_j\le\Lambda\}=O(\Lambda)$ in Lemma 3.2, which is taken from the leading term of
+Theorem 1 (i.e. from [DGGW] Thm 4.8 at order $t^{-1}$). A route avoiding [DGGW] altogether
+would pass to a finite torsion-free cover (Selberg's lemma; not fetched) and use [Mar,
+Prop. 10] there. By Theorem 3.1 below,
 $Z=I+E+H$. $I$ depends only on the area and $E$ only on the cone orders. By step 4 of the
 proof of Theorem 3.4(b), $0\le H(t)=O(t^{-1/2}e^{-\ell_{\rm sys}^2/4t})=O(t^N)$ for every $N$. So the asymptotic
 series of $Z$ is that of $I+E$, a function of $\sigma$. `check_locality.py` verifies
@@ -128,6 +139,11 @@ $\beta_k(m)$:
 - for the elliptic term, through $\int_{\mathbb R}e^{-ar}(1+e^{-2\pi r})^{-1}dr=1/(2\sin(a/2))$
   differentiated in $a$, for $\nu\le5$ and $m\in\{2,3,4,5,6,8,12\}$, in exact algebraic
   arithmetic.
+
+Term-by-term expansion is legitimate: for $x\ge0$,
+$|e^{-x}-\sum_{j<N}(-x)^j/j!|\le x^N/N!$, and both kernels ($r\,(e^{2\pi r}+1)^{-1}$ and the
+elliptic kernels) are positive with all moments finite, so truncating at order $N$ leaves
+$O(t^N)$.
 
 So Proofs A–C agree on every constant that was checked. ∎
 
@@ -142,10 +158,10 @@ l is the number of corner reflectors."* The proof (p. 318) cuts $\mathcal O$ alo
 closed geodesics and arcs perpendicular to $\partial X_{\mathcal O}$ into primitive pieces. It
 then states: *"The lengths of the arcs, and lengths and twist parameters for simple closed
 curves form a set of parameters showing that T(O) is homeomorphic to Euclidean space of
-some dimension."* The primitive pieces are listed on pp. 315–317. The only closed orientable
-piece is $S^2(n_1,n_2,n_3)$, which has a unique hyperbolic structure. The others have
-boundary, and their structures are "parametrized by the lengths of their boundary
-components". McOwen and Troyanov were not needed for this statement. Troyanov's Theorem A
+some dimension."* The primitive pieces are listed on pp. 315–317. Verbatim (p. 315): *"The orbifolds mP, A(n ; ) and D(n1,n2 ; ) (except the degenerate case
+A(2,2; )) and S2 (n1,n2,n3) have hyperbolic structures paremetrized by the lengths of their
+boundary components."* [sic]. The only closed one, $S^2(n_1,n_2,n_3)$, has no boundary and
+hence a unique hyperbolic structure. McOwen and Troyanov were not needed for this statement. Troyanov's Theorem A
 remains the input to `\label{prop:rigidity}`.
 
 **Proposition 2.1.** For a closed orientable hyperbolic 2-orbifold of signature
@@ -168,20 +184,30 @@ $\dim=2n-6$, now in one sentence of one source rather than by a two-step deducti
 **Proposition 2.2.** If $6g-6+2n>0$, the closed orientable hyperbolic orbifolds of
 signature $\sigma=(g;m_1,\dots,m_n)$ fall into uncountably many isometry classes.
 
-*Proof.* Since $\dim T(\mathcal O)>0$, $\mathcal O$ is not one of Thurston's closed primitive
-pieces, so the decomposition in the proof of 13.3.7 cuts along at least one closed geodesic
-$c$. Its length $\ell_c$ is one of the coordinates of the homeomorphism
-$T(\mathcal O)\cong\mathbb R^d$, and the boundary-length parameters of the pieces range over all
-of $(0,\infty)$ [Th, pp. 315–316: the pieces "have hyperbolic structures parametrized by the
-lengths of their boundary components"; for $D^2(;m_1,\dots,m_l)$, "parametrized by the lengths
-of the cuts; that is, $(\mathbb R^+)^{l-3}$"]. So $\ell_c:T(\mathcal O)\to(0,\infty)$ is onto.
+*Proof.* Since $\dim T(\mathcal O)>0$, $\mathcal O$ is not Thurston's closed primitive piece
+$S^2(n_1,n_2,n_3)$, so the decomposition in the proof of 13.3.7 cuts along at least one
+closed geodesic $c$, and its length $\ell_c$ is one of the parameters. Thurston states that
+these parameters "form a set of parameters showing that T(O) is homeomorphic to Euclidean
+space" (p. 318); we use only that the parameter map $\Psi:T(\mathcal O)\to\mathbb R^d$ is a
+continuous injection from a space homeomorphic to $\mathbb R^d$. (We do **not** use that each
+length ranges over all of $(0,\infty)$: the fetched text says the pieces are "paremetrized by
+the lengths of their boundary components" [sic] without stating ranges, and it excepts "the
+degenerate case A(2,2; )".) By invariance of domain $\Psi(T(\mathcal O))$ is open in
+$\mathbb R^d$, so the projection of it to the $\ell_c$ coordinate contains an open interval,
+which is uncountable.
 
-Points of $T(\mathcal O)$ are hyperbolic structures with a marking. If $Y,Y'\in T(\mathcal O)$
-are isometric as unmarked orbifolds, then $\ell_c(Y')$ is the length of a closed geodesic
-of $Y'$, hence of $Y$. So $\ell_c$ maps each isometry class into the length set of one
-orbifold. That set is countable, since closed geodesics correspond to conjugacy classes of
-the countable group $\Gamma$ [DS p. 3]. An uncountable image $(0,\infty)$ cannot be covered
-by countably many countable sets. ∎
+The degenerate case does not escape this. If every admissible cut leaves two order-2 cone
+points on one side (e.g. $\sigma=(0;2,2,2,3)$ or $(0;2,2,2,2,2)$), Thurston replaces the piece
+by an edge-length parameter $d$, the length of the segment joining the two order-2 points;
+the product of the two half-turns is then hyperbolic with translation length $2d$, a
+closed-geodesic length, and the argument below applies to $2d$ in place of $\ell_c$.
+
+Every $Y\in T(\mathcal O)$ is a hyperbolic orbifold of signature $\sigma$, and $\ell_c(Y)$ is
+the length of a closed geodesic of $Y$. If $Y,Y'$ are isometric then $\ell_c(Y')$ is a
+closed-geodesic length of $Y'$, hence of $Y$. So $\ell_c$ maps each isometry class into the
+length set of one orbifold. That set is countable, since closed geodesics correspond to
+conjugacy classes of the countable group $\Gamma$ [DS p. 3]. An uncountable set cannot be
+covered by countably many countable sets. ∎
 
 **Corollary 2.3 ($K_{\rm iso}=\infty$).** Let $\sigma$ be a hyperbolic signature with
 $6g-6+2n>0$, i.e. any closed orientable hyperbolic 2-orbifold that is not a triangle
@@ -205,13 +231,18 @@ the same condition, and the two minima in `\label{def:K}` coincide. ∎
 
 *Consequences for the manuscript.*
 
-- Corollary 2.3 settles `\label{prop:Kinf}` unconditionally, since its hypothesis
-  `\label{thm:locality}` is now Theorem 1.
+- `\label{prop:Kinf}` becomes unconditional, since its hypothesis `\label{thm:locality}`
+  is now Theorem 1. (Note that eq:moduli concerns the moduli space $\mathcal M$ and
+  Proposition 2.1 the Teichmüller space $T$; they have the same real dimension because the
+  mapping class group acts properly discontinuously, a fact not used in any proof here.)
 - Corollary 2.3 extends `\label{prop:Kinf}` from $g=0$, $n\ge4$ to every non-triangle
   signature.
 - The statement in `\label{rem:ncone}` of `paper/main.tex` that "the upper bound $K\le n$
   extends the $n=3$ case of Theorem~\ref{thmC}" is true for $K_{\rm mult}$ (proved for all
-  $n$ in `theory/audibility/`). It is false for any isometry-level reading of $K$.
+  $n$ in `theory/audibility/`, granted the nonvanishing of the top power-sum weight in
+  every coefficient, which `definitions.tex` lines 179–181 flag; it follows from [Uçar]
+  (4.33): the top-degree part of the $t^\nu$ coefficient comes from $c^S_\nu$ in (4.25) and is
+  proportional to $B_{2\nu+2}\ne0$). It is false for any isometry-level reading of $K$.
 - What makes `\label{thmC}` an isometry statement is the rigidity of triangle orbifolds.
 
 ---
@@ -245,16 +276,18 @@ m(R)"]. This gives $E=\sum_iE_{m_i}$.
 $g(u)=\tfrac12[\delta(u-t)+\delta(u+t)]$ (DS p. 4). That means
 $g(u)=\frac1{2\pi}\int h(r)e^{-iru}dr$. For $h_t(r)=e^{-t(1/4+r^2)}$ this gives
 $g_t(u)=e^{-t/4}e^{-u^2/4t}/\sqrt{4\pi t}$, verified symbolically in `check_locality.py`.
-(Marklof's (192) prints the exponent as $-t^2/(2\beta)$. Its own prefactor $1/\sqrt{4\pi\beta}$
-and the Gaussian integral require $-t^2/(4\beta)$, so the printed exponent is a misprint;
-the script checks this too.)
+(Marklof's (192) prints the exponent as $-t^2/(2\beta)$, and (193) repeats it as
+$e^{-(n\ell)^2/(2\beta)}$. With Marklof's own convention (69), $g=\frac1{2\pi}\int h e^{-i\rho t}$,
+and the printed prefactor $1/\sqrt{4\pi\beta}$, the Gaussian integral gives $-t^2/(4\beta)$; both
+printed exponents are misprints. The script checks this.)
 
-The heat function is not of exponential type, so (1) must be extended to it. [Mar, Thm 4
-and Prop. 10] does this for torsion-free $\Gamma$. The same approximation argument works
-here:
+The heat function is not of exponential type, so (1) must be extended to it. [Mar, Thm 4]
+proves the formula directly for test functions satisfying (H1)–(H3*) when $\Gamma$ is
+torsion-free, and calls the Gaussian admissible (Prop. 10). For the orbifold formula of
+[DS] we argue by approximation instead:
 
 **Lemma 3.2 (admissibility of the heat function).** Fix $\chi\in C_c^\infty(\mathbb R)$, even,
-$0\le\chi\le1$, $\chi=1$ on $[-1,1]$, and put $g_R(u)=g_t(u)\chi(u/R)$ and
+$0\le\chi\le1$, $\chi=1$ on $[-1,1]$, $\operatorname{supp}\chi\subset[-2,2]$, and put $g_R(u)=g_t(u)\chi(u/R)$ and
 $h_R(r)=\int g_R(u)e^{iru}du$. Then $h_R$ is even, entire and of exponential type $\le2R$
 (Paley–Wiener), so [DS] (1) holds for $h_R$, with Fourier transform $g_R$. As
 $R\to\infty$ each term converges to the corresponding term for $h_t$:
@@ -273,7 +306,8 @@ $R\to\infty$ each term converges to the corresponding term for $h_t$:
   $r_j$, $|h_R(r_j)-h_t(r_j)|\le\varepsilon_R\min(1,|r_j|^{-3})$ with
   $\varepsilon_R=\max(\|f_R\|_1,\|f'''_R\|_1)\to0$. Finally
   $\sum_j\min(1,|r_j|^{-3})<\infty$, because $\#\{\lambda_j\le\Lambda\}\le e\,Z(1/\Lambda)=O(\Lambda)$
-  by Theorem 1 ($Z(s)\sim\operatorname{Area}/4\pi s$).
+  by Theorem 1 ($Z(s)\sim\operatorname{Area}/4\pi s$). Lemma 3.3, used on the hyperbolic
+  side, is purely geometric, so there is no circularity.
 
 Hence (1) holds for $h_t$. That is Theorem 3.1. ∎
 
@@ -368,8 +402,14 @@ $\sqrt t\,e^{\ell^2/4t}|Z_1-Z_2|\to w/(2\sinh(\ell/2)\sqrt{4\pi})\ne0$.
 What is true:
 
 - the bound with $t^{-1/2}$ (Theorem 3.4);
-- equivalently, for every $\varepsilon\in(0,\ell)$, $|Z_1-Z_2|\le C_\varepsilon e^{-(\ell-\varepsilon)^2/4t}$
+- as a consequence, for every $\varepsilon\in(0,\ell)$, $|Z_1-Z_2|\le C_\varepsilon e^{-(\ell-\varepsilon)^2/4t}$
   for $t\le t_0$.
+
+The falsity of the constant-$C$ form is proved for every pair with $L_*=\ell$, in particular
+whenever $\ell_1\ne\ell_2$ (if $L_*>\ell$ the constant-$C$ bound does hold). Pairs with
+$\ell_1\ne\ell_2$ exist in every signature with $\dim T>0$ in which the systole varies on
+$T$; in the T4 family they are exhibited explicitly (systole $4b(\tau)$, by certified
+enumeration of the reflection group, `numerics/moduli/geodesics.py`).
 
 The $t^{-1/2}$ is the one-dimensional heat kernel along the closed geodesic: heat must
 travel the length $\ell$ in one dimension, and the transverse direction is already
@@ -399,13 +439,16 @@ spectrum (uniqueness of the Laplace transform). ∎
 
 **Generic deformations move the length spectrum.** By [DS, Thm 1.1] the Laplace spectrum
 determines the length spectrum. In the converse direction, "Knowledge of the length
-spectrum and the number of cone points of each order determines the Laplace spectrum." So,
-within a signature, $Z_1\equiv Z_2$ $\iff$ isospectral $\iff$ $w_1\equiv w_2$.
+spectrum and the number of cone points of each order determines the Laplace spectrum." Within
+a signature, $Z_1\equiv Z_2$ $\iff$ isospectral $\iff$ $w_1\equiv w_2$ follows already from
+Theorem 3.5 and uniqueness of the Laplace transform, without [DS]. (Passing from DS's length
+spectrum, the multiset $n(L)=\#\{[\gamma]:\ell(\gamma)=L\}$, to $w$ uses that every hyperbolic
+element has a unique primitive root, centralisers being cyclic, and induction on length.)
 
 Take a length coordinate $\ell_c$ of Thurston's parametrisation (Proposition 2.2), and move
-along it with the other coordinates fixed. A point $Y$ of this line is isospectral to a
+along it, through an open interval, with the other coordinates fixed. A point $Y$ of this segment is isospectral to a
 given $\mathcal O$ only if $\ell_c(Y)$ lies in the countable length set of $\mathcal O$. So
-along any such line, all but countably many points have $Z_Y-Z_{\mathcal O}\ne0$, with the
+along any such segment, all but countably many points have $Z_Y-Z_{\mathcal O}\ne0$, with the
 sharp asymptotics of Theorem 3.5.
 
 In the T4 family this is visible directly. The systole is $4b(\tau)$, strictly decreasing
@@ -414,18 +457,20 @@ $L_*=\ell$ (numerics/moduli/REPORT.md).
 
 ### 3.5 Blind expansion, not blind spectrum
 
-Isospectral non-isometric orbifolds of the same signature exist. Two fetched sources show
-this:
+Isospectral non-isometric orbifolds of the same signature exist. [LV] shows this; [DR]
+supplies the characterisation of isospectrality:
 
 - **[LV, Theorem A]**, verbatim: *"The minimal area of an isospectral-nonisometric pair of
   2-orbifolds associated to maximal arithmetic Fuchsian groups is 23π/6, and this bound is
   achieved by exactly three pairs, up to isomorphism."* The next sentence: *"they all have
-  signature (0; 2, 2, 2, 2, 2, 3, 4)"*. LV also record (p. 1) that Vignéras' construction
+  signature (0; 2, 2, 2, 2, 2, 3, 4)"* (p. 3). LV also record (pp. 1–2) that Vignéras' construction
   gives isospectral non-isometric hyperbolic surfaces, and that the 1994 claimed (0;2,2,3,3)
   pair of Maclachlan–Rosenberger was shown not to be isospectral.
 - **[DR, Theorem 1]**: the Laplace spectrum of a compact hyperbolic 2-orbifold determines,
-  and is determined by, the volume, the mirror length, the cone points of each order, and
-  the primitive closed geodesics of each length and orientability class.
+  and is determined by, the volume, the mirror length, the number of cone points of each
+  order (a mirror corner counted as half a cone point) and the number of primitive closed
+  geodesics of each length and orientability class (with DR's convention for iterates).
+  DR's own examples (§2) have mirrors and are not used here as same-signature examples.
 
 So the full spectrum does not always determine the isometry class, even within a signature.
 That is a different phenomenon from Theorem 1, and the two must be kept apart.
@@ -434,11 +479,11 @@ That is a different phenomenon from Theorem 1, and the two must be kept apart.
   the whole Teichmüller space of the signature. That space has dimension $6g-6+2n$ (T2).
 - **The function is not blind.** $Z(t)$ as a function of $t>0$ determines the whole
   spectrum, and with it the length spectrum [DS, DR]. Through $H$ it separates all but
-  countably many points along every length-coordinate line (§3.4).
+  countably many points along every length-coordinate segment (§3.4).
 - **What the function still misses** is exactly the set of isospectral non-isometric
   pairs: the [LV] pairs, and any others of the Vignéras or Sunada type.
 
 So "heat cannot hear the moduli" is a statement about the asymptotic series, which carries
-no information about them. It is not a statement about the spectrum, which carries almost
-all of it. The information is present in $Z(t)$ but sits beyond all orders, in
+no information about them. It is not a statement about the spectrum, which (by §3.4)
+separates all but countably many points along every length-coordinate segment. The information is present in $Z(t)$ but sits beyond all orders, in
 $e^{-\ell^2/4t}$.
