@@ -147,6 +147,21 @@ It treats (x+y+z)³/xyz and x/y+y/z+z/x. The relevant paper is Bremner–Guy–N
 Math. Comp. **61** (1993) 117–130, DOI `10.1090/s0025-5718-1993-1189516-5`, which was fetched
 and read.
 
+### 1.7 Shioda, "On the Mordell-Weil lattices" — `UNRETRIEVED` (record only)
+
+- **Record (zbMATH API, fetched):** Comment. Math. Univ. St. Pauli **39** (1990), no. 2, 211–240,
+  Zbl 0725.14017; no DOI; the zbMATH record carries no full-text link.
+- **Used for:** the remark in `theory/diophantine/variety.md` §2 that the pencil has no section of
+  infinite order (rank = ρ − 2 − Σ(m_v − 1) = 0). The zbMATH review attributes Theorem 1.3,
+  E(K) ≅ NS(S)/T, to the paper. The paper's own wording was not read.
+- **Impact:** none on any proposed theorem. The remark is not load-bearing.
+
+### 1.8 Mazur, "Modular curves and the Eisenstein ideal" — RETRIEVED (note on tooling)
+
+Numdam `PMIHES_1977__47__33_0.pdf` (16,309,727 bytes) needed resumed downloads (`curl -C -`);
+the first two attempts were truncated. Theorem (8) is on p. 35, and Theorem (5.1) with
+Corollary (5.2) on p. 156. Crossref DOI `10.1007/bf02684339`.
+
 ---
 
 ## 2. Identifiers that do not exist or could not be resolved

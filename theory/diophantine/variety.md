@@ -31,14 +31,20 @@ $$C_\lambda:\ (x+y+z)(xy+yz+zx)=\lambda\,xyz ,$$
 and the counting problem is how often a cubic in this pencil carries two or
 more positive rational points of small height.
 
-## 2. Structure: an elliptic pencil (Beauville's Γ₁(6) family)
+## 2. Structure: an elliptic pencil (a row of Beauville's table)
 
 * **The pencil.** We have $(x+y)(y+z)(z+x)=e_1e_2-e_3$. So $C_\lambda$ is the
   member $t=1-\lambda$ of the pencil $(X+Y)(Y+Z)(Z+X)+tXYZ=0$. Beauville's
-  classification (C. R. Acad. Sci. Paris 294 (1982) 657–660) lists this pencil
-  as the semistable family for $\Gamma_1(6)$, with singular-fibre components
-  6, 3, 2, 1.
-* **Weierstrass model.** Derived here and checked by sympy:
+  theorem (C. R. Acad. Sci. Paris 294 (1982), Théorème and Tableau, p. 658)
+  lists exactly this pencil, in the row he labels $\Gamma^0_0(6)$, with
+  singular-fibre components 6, 3, 2, 1. The change of variables is the
+  identity with $t=1-\lambda$ (asserted, `variety_checks.py` §2).
+* **Weierstrass model.** Derived here and checked by sympy. The
+  explicit maps to Bremner–Guy–Nowakowski's model are asserted in §3c: the
+  forward map $\sigma=-4e_2/z^2$, $\tau=4\lambda(\lambda-1)(x-y)/(x+y-(\lambda-1)z)$,
+  and the inverse $(x+y)/z=\sigma(\lambda-1)/(\sigma-4\lambda)$,
+  $(x-y)/z=\tau\big((x+y)/z-\lambda+1\big)/(4\lambda(\lambda-1))$. So BGN's
+  curve is $C_\lambda$ over $\mathbf Q$ itself, not a twist. Our own model:
   $$y^2=x^3+(\lambda-3)^2x^2+8(\lambda-3)(\lambda-1)x+16(\lambda-1)^2,\qquad
   \Delta=2^{12}\lambda^2(\lambda-9)(\lambda-1)^3 .$$
   Its $j$-invariant agrees with the model of Bremner–Guy–Nowakowski
@@ -52,7 +58,9 @@ more positive rational points of small height.
   For every $\lambda\notin\{0,1,9,\infty\}$, $C_\lambda$ is a smooth genus-one
   curve. The positive values relevant here satisfy $\lambda>9$ by AM–HM; at
   $\lambda=9$ only the point $(1:1:1)$ is positive.
-* **Mordell–Weil over $\overline{\mathbf Q}(\lambda)$.** By Shioda–Tate the
+* **Mordell–Weil over $\overline{\mathbf Q}(\lambda)$** (a remark; it rests on Shioda,
+  Comment. Math. Univ. St. Pauli 39 (1990) 211–240, Thm 1.3 as reported by zbMATH,
+  whose text is unretrieved). By the Shioda–Tate count the
   rank is $8-\sum_v(m_v-1)=8-(5+2+1)=0$. The six base points
   $(1{:}0{:}0),(0{:}1{:}0),(0{:}0{:}1),(1{:}{-1}{:}0),(0{:}1{:}{-1}),(1{:}0{:}{-1})$
   are sections of orders $1,2,3,3,6,6$ (base point $O=(1{:}{-1}{:}0)$). So the
@@ -69,11 +77,18 @@ more positive rational points of small height.
 
 ## 3. Reciprocation is a torsion translation
 
-The Vieta move $(p,q,r)\mapsto(qr/p,q,r)$ preserves $\lambda$. Up to
-permutation it is reciprocation $t\mapsto(1/p,1/q,1/r)$, and it equals
-translation by the 2-torsion section $T_2=(0{:}0{:}1)$, again up to
-permutation. This is checked on 300 random points, and BGN's table records
-the same fact. Two consequences follow.
+The Vieta move $(p,q,r)\mapsto(qr/p,q,r)$ preserves $\lambda$, and up to
+permutation it is reciprocation. With base point $O=(1{:}{-1}{:}0)$:
+
+- the line through $P=(x{:}y{:}z)$ and $T_2=(0{:}0{:}1)$ meets $C_\lambda$
+  again at $(xz{:}yz{:}xy)$;
+- the line through $O$ and that point meets it again at
+  $(yz{:}xz{:}xy)=(1/x{:}1/y{:}1/z)$.
+
+Hence $P+T_2=\iota(P)$ **exactly**, for every point of every $C_\lambda$,
+and $2T_2=O$ because $\iota$ is an involution. This is proved symbolically
+in `variety_checks.py` §5. BGN's table (p. 120) records the same relation
+in their model. Two consequences follow.
 
 * **Every triple has a degeneracy partner.** For $t=(a,b,c)$,
   $$\{\,e_2(t)\,(a,b,c),\ e_1(t)\,(bc,ca,ab)\,\}\quad\text{has}\quad S=e_1e_2,\ R=1/e_3 ,$$
@@ -92,17 +107,25 @@ the same fact. Two consequences follow.
 Pairs $(t,t')$ with $e_1=e_1'$ and $e_2e_3'=e_2'e_3$ form a cone over a
 threefold $Y\subset\mathbf P^5$: a quintic hypersurface in the hyperplane
 $e_1=e_1'$. Projection to $t$ fibres $Y$ over $\mathbf P^2$, with fibre
-$C_{\lambda(t)}$. So $Y$ is birational to the fibre square
-$\mathcal E\times_{\mathbf P^1}\mathcal E$.
+$C_{\lambda(t)}$. Explicitly, $(P,P')\mapsto(e_1(P')P,\ e_1(P)P')$ sends a
+pair of points on a common $C_\lambda$ to the cone, because
+$e_2e_3'-e_2'e_3=e_1^2e_1'^2(e_1e_2e_3'-e_1'e_2'e_3)$. Its inverse is
+$(t,t')\mapsto([t],[t'])$ (asserted, §7). So $Y$ is birational to
+$\mathbf P^2\times_{\mathbf P^1}\mathbf P^2$, and hence to the fibre square
+$\mathcal E\times_{\mathbf P^1}\mathcal E$ of the blown-up pencil.
 
 Schoen (Math. Z. 197 (1988) 177–199, DOI 10.1007/bf01215188, Prop. 7.1 and
-Table 1) shows that the self-fibre product of a Beauville surface, here the
-$\Gamma_1(6)$ one with fibres 6,3,2,1, is a **rigid Calabi–Yau threefold**.
-Livné–Yui (arXiv math/0304497, Table 1) attribute its $L$-series to
-Saito–Yui and to Verrill in Yui's 2001 survey. It is the $L$-series of the
-weight-4 cusp form $\eta(q)^2\eta(q^2)^2\eta(q^3)^2\eta(q^6)^2$. That this
-form has level 6 is our inference; the source does not state it, and
-Verrill's JNT paper could not be retrieved.
+Table 1) proves that small resolutions of such fibre squares are
+**rigid Calabi–Yau threefolds**. His hypotheses are:
+
+- all fibres semistable, and here they are all $I_n$ (verified, §3a);
+- a self-product of a surface in his Table 1, which lists the configuration
+  6, 3, 2, 1.
+
+*Unverified, not proposed:* the identification of its $L$-series with the
+weight-4 eta product $\eta(q)^2\eta(q^2)^2\eta(q^3)^2\eta(q^6)^2$ (Livné–Yui,
+arXiv math/0304497, Table 1), and the level of that form. Verrill's paper is
+unretrieved.
 
 **Consequence for counting.** On a Calabi–Yau threefold, Manin-type heuristics
 predict few points of bounded height off special subvarieties. The
@@ -121,12 +144,18 @@ $\operatorname{rk}\operatorname{Pic}(\Sigma_{\mathbf Q})=1+3+1=5$. The sum $S$
 of a pair is comparable to the anticanonical height. Its 16 lines are the
 exceptional curves, the lines joining two base points, and the conic
 $e_2=0$, and all of them lie outside the positive region. Manin's conjecture
-for $\Sigma$ therefore predicts
+for $\Sigma$ would predict
+$\#\{\text{primitive dual pairs with }S\le X\}\asymp X(\log X)^{4}$, and
+$X(\log X)^5$ with scalings.
 
-$$\#\{\text{primitive dual pairs with }S\le X\}\sim c_\Sigma\,X(\log X)^{4},$$
+*Unverified, not proposed.* `exponent_fits.py` measures the per-sum
+log-powers for $600\le S\le4800$:
 
-and summing over scalings gives $X(\log X)^5$. We use this only as a
-heuristic and do not claim that Manin's conjecture is known for $\Sigma$.
+- $2.56\pm0.34$ for primitive dual pairs, against a predicted 4;
+- $3.33\pm0.35$ for dual pairs with scalings, against a predicted 5.
+
+The data do not support the prediction in this range. Manin's conjecture
+is not known for $\Sigma$ either.
 
 ## 5. No linear families
 
@@ -193,8 +222,9 @@ infinitely many primitive degeneracy classes of size at least $k$, i.e. $k$
 pairwise distinct hyperbolic triples with a common $S$ and a common $R$.
 
 *Proof.* On $C_{155/12}$ the positive point $P=(4,9,18)$ has infinite order:
-$nP\ne O$ for $n\le12$, which suffices by Mazur. PARI's 2-descent gives
-rank exactly 2. By BGN, or by density of $\langle2P\rangle$ in the identity
+$nP\ne O$ for $n\le12$, which suffices by Mazur (`cubic_group.py`). The
+rank is exactly 2: PARI's bounds $r_1=r_2=2$ coincide (`ranks.py`), though
+only infinite order of $P$ is needed. By BGN, or by density of $\langle2P\rangle$ in the identity
 component, the odd multiples $(2n+1)P$ are positive. They are pairwise
 distinct, and each multiset accounts for at most six points. Any $k$ of them,
 rescaled to the lcm of their sums and multiplied by any $m$, give classes of
@@ -203,16 +233,22 @@ size $\ge k$. Distinct choices give distinct classes. ∎
 $3P=(162833463,287876366,723926268)$ is already large. Fibres from a single
 generator are astronomically far out, and the enumeration finds far smaller
 ones: the first sizes 3, 4, 5, 6 occur at $S=136,408,1849,4600$. The curves
-carrying them have ranks 2, 2, 3, 3 (torsion $\mathbf Z/6$). Every primitive
-size-5 class up to 4800 sits on a curve of rank 3 or 4.
+carrying them have ranks 2, 2, 3, 3, proven with $r_1=r_2$, torsion
+$\mathbf Z/6$ ([data/ranks.txt](data/ranks.txt)).
 
 **What does *not* adapt: the base pair is isolated.** $C_{27/2}$ has rank 0
-by 2-descent, and torsion $\mathbf Z/2\times\mathbf Z/6$. Its only positive
-points are the permutations of $(1,4,4)$ and $(1,1,4)$. Hence, for every
+**unconditionally**. PARI/GP 2.17.2 `ellrank` on the integral model
+$[0,393,0,3456,0]$ returns $[0,0,0,[\,]]$, and the manual states that the
+upper bound $r_2=C-T-s$ is computed unconditionally from the 2-Selmer group.
+`elltors` gives torsion of order 12, $\mathbf Z/2\times\mathbf Z/6$.
+`ranks.py` lists the 12 points on the plane cubic exactly (the six base
+points and their translates by the order-6 point $(1,4,4)$) and asserts that
+the only positive ones are the permutations of $(1,4,4)$ and $(1,1,4)$. Hence, for every
 $k$, the class of $\{(2k,8k,8k),(3k,3k,12k)\}$ has exactly two members: no
-third pillow ever joins the minimal degeneracy. Isosceles triples are
-2-division points of torsion sections, hence torsion. So the whole isosceles
-family, including the base pair, is a torsion phenomenon, and the unbounded
+third pillow ever joins the minimal degeneracy. Every isosceles
+triple tested is torsion: all 1,482 triples $(u,v,v)$ with $u\ne v\le39$,
+by exact order computation. So the isosceles
+family, including the base pair, is (as far as tested) a torsion phenomenon, and the unbounded
 fibres come only from curves of positive rank.
 
 **Difference from D16.** In D16 a degeneracy needs two independent points on
