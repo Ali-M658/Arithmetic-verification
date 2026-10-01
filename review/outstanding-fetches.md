@@ -6,16 +6,32 @@ later. **Nothing here has been approximated, and no DOI anywhere in this review 
 constructed** — an identifier is either retrieved from an authoritative record (Crossref,
 publisher page, arXiv API, institutional repository) or it appears below as unresolved.
 
-Status values: `UNRETRIEVED` (the document itself could not be obtained), `NO-DOI`
+Status values: `ACCEPTED GAP` (not retrieved, assessed, and deliberately not chased; the list is the "Accepted gaps" table below), `UNRETRIEVED` (the document itself could not be obtained), `NO-DOI`
 (document obtained or adequately identified, but no DOI exists or none could be found),
 `PAYWALLED`, `TOOLING` (retrievable in principle; one retrieval route failed and a
 workaround succeeded).
 
 ---
 
+## Accepted gaps
+
+These five sources were not retrieved, and the project has decided not to chase them. Each has been
+assessed: none is load-bearing for a theorem or a number in the paper, and each is recorded so that a
+referee's question about it has an answer. They are not open defects.
+
+| # | Source | Status | Why it is accepted | Where |
+|---|---|---|---|---|
+| 1 | Steinig, Rend. Mat. (6) 4 (1971) 629–644 | `UNRETRIEVED` — **ACCEPTED GAP** | The paper proves its own injectivity theorem; Steinig can only be prior art for the positive-real case. | §1.9, §7 |
+| 2 | Drury–Marshall, Math. Proc. Camb. Phil. Soc. 101 (1987) | `PAYWALLED` | Same: a more general setting of the Steinig argument; bears on novelty wording only. | §1.10, §7 |
+| 3 | Donnelly, Math. Ann. 224 (1976) 161–170 | `PAYWALLED` | The locality and universality it supplies are quoted from DGGW §4.1–4.2 (read in full); Theorem 1 has two further proofs not using Donnelly. | §1.7 |
+| 4 | Watson, New Zealand J. Math. 34 (2005) 81–95 | `UNRETRIEVED` | The K = 1 predecessor of Uçar; Uçar's thesis (read in full) reproduces and corrects it. The divergence novelty verdict is conditional on it. | §1.1 |
+| 5 | Shioda, "On the Mordell-Weil lattices" (the Shioda–Tate rank formula source) | `UNRETRIEVED` | The remark that the pencil has no section of infinite order is not load-bearing; the ranks are certified by PARI (theory/diophantine/ranks.py). | §1.6 |
+
+---
+
 ## 1. Sources not retrieved
 
-### 1.1 Watson, "The trace function expansion for spherical polygons" — `UNRETRIEVED`
+### 1.1 Watson, "The trace function expansion for spherical polygons" — `UNRETRIEVED` — **ACCEPTED GAP**
 
 - **Author:** S. Watson
 - **Title:** The trace function expansion for spherical polygons
@@ -33,6 +49,21 @@ workaround succeeded).
   redundant confirmation restricted to $K=1$, which is not the manuscript's setting.
 - **Action:** obtain via interlibrary loan or a NZJM mirror if the manuscript ends up citing
   Watson directly. It is not currently cited and does not need to be.
+
+**Second attempt** (the same item, logged again by the curvature/divergence session and merged here):
+
+- Crossref `query.bibliographic=Watson trace function expansion spherical polygons` returned no
+  matching record.
+- `https://www.thebookshelf.auckland.ac.nz/docs/NZJMaths/nzjmaths034/nzjmaths034-02-004.pdf`
+  returned no file (HTTP 000).
+- The journal's site search
+  (`https://nzjmath.org/index.php/NZJMATH/search/search?query=Watson+spherical+polygons`)
+  returned HTTP 200 with no matching item.
+
+**Instrument gap.** Watson's $K=1$ series is the one item that might already state a growth rate
+for spherical corner coefficients. The novelty verdict in `theory/divergence/literature.md` §4
+is therefore conditional on it. It rests on Uçar's thesis, which reproduces and corrects Watson
+and makes no growth statement.
 
 ### 1.2 Takeuchi, "Commensurability classes of arithmetic triangle groups" — `UNRETRIEVED`
 
@@ -74,7 +105,7 @@ workaround succeeded).
 > degree 4) from Takeuchi's own Theorem 1 criterion. This item stays open only to upgrade the
 > class *numbering* from one source to two; its stake in the review's conclusions is now nil.
 
-### 1.2a Maclachlan & Reid, *The Arithmetic of Hyperbolic 3-Manifolds*, §13.3 — `PAYWALLED`
+### 1.3 Maclachlan & Reid, *The Arithmetic of Hyperbolic 3-Manifolds*, §13.3 — `PAYWALLED`
 
 - **Authors:** Colin Maclachlan and Alan W. Reid
 - **Work:** *The Arithmetic of Hyperbolic 3-Manifolds*, Graduate Texts in Mathematics **219**,
@@ -88,35 +119,10 @@ workaround succeeded).
 - **Impact on conclusions: none.** Tu–Yang (above) supplied a complete, independently verified
   reproduction. Maclachlan–Reid would be a redundant third confirmation of the class numbering.
 
-### 1.2b Voight, *Quaternion Algebras* §32.5 — `RETRIEVED, DOES NOT CONTAIN THE MATERIAL`
-
-Recorded because the pointer was wrong and the next reader should not repeat the retrieval.
-John Voight, *Quaternion Algebras*, Graduate Texts in Mathematics **288**, Springer, 2021, is
-freely available from the author at `https://jvoight.github.io/quat-book.pdf` and was
-downloaded in full (883 pp.) and searched. **§32.5 is "Cyclic subgroups"** — cyclic subgroups
-of quaternion unit groups $\mathrm P B^\times$, following Chinburg–Friedman — and has nothing
-to do with triangle groups. The string "Takeuchi" appears on **zero** pages of the book;
-"triangle group" appears on six, none carrying a commensurability-class table. The book is not
-a source for this question.
-
-### 1.3 Guy, *Unsolved Problems in Number Theory* — **RESOLVED, not outstanding**
-
-Retained here only to record how it was obtained. The subsection-level table of contents
-(D1–D29 with page numbers) was recovered from the Deutsche Nationalbibliothek's deposited
-front-matter PDF, and the body text of §D11 and §D16 cross-checked against a full-text
-mirror. Publisher record: R. K. Guy, *Unsolved Problems in Number Theory*, 3rd ed., Problem
-Books in Mathematics vol. 1, Springer, New York, 2004, xviii+438 pp.,
-DOI `10.1007/978-0-387-26677-0`, hardcover ISBN 978-0-387-20860-2.
-
-*Note on sourcing hygiene:* one of the full-text sources consulted appears to be an
-unauthorized scan. It was used only to cross-check facts already established from the
-publisher's own record and the national-library deposit, and nothing is cited to it. The
-citable references are the Springer DOI and the DNB front matter.
-
 ### 1.4 Guy, *Unsolved Problems in Number Theory*, §D16 text — `UNRETRIEVED` in the Diophantine session (theory/diophantine)
 
 - **Need:** the verbatim text of §D16, "Triples with the same sum and same product", p. 271, which
-  `theory/diophantine/RECOMMENDATION.md` asks the paper to cite. The earlier cross-check (§1.3)
+  `theory/diophantine/RECOMMENDATION.md` asks the paper to cite. The earlier cross-check (§R.2)
   relied on a mirror that cannot be cited.
 - **Confirmed:** Crossref chapter record "Diophantine Equations", DOI `10.1007/978-0-387-26677-0_5`,
   pp. 209–310.
@@ -140,14 +146,7 @@ citable references are the Springer DOI and the DNB front matter.
   the eta product η(q)²η(q²)²η(q³)²η(q⁶)² is an inference, not read from a source.
 - **Impact:** none on any theorem; it affects only one descriptive sentence.
 
-### 1.6 Bremner–Guy, "Two more representation problems" — retrieved, **not** the relevant paper
-
-Proc. Edinb. Math. Soc. 40 (1997) 1–17, DOI `10.1017/s0013091500023397`, fetched (open access).
-It treats (x+y+z)³/xyz and x/y+y/z+z/x. The relevant paper is Bremner–Guy–Nowakowski,
-Math. Comp. **61** (1993) 117–130, DOI `10.1090/s0025-5718-1993-1189516-5`, which was fetched
-and read.
-
-### 1.7 Shioda, "On the Mordell-Weil lattices" — `UNRETRIEVED` (record only)
+### 1.6 Shioda, "On the Mordell-Weil lattices" (the Shioda–Tate rank source) — `UNRETRIEVED` — **ACCEPTED GAP**
 
 - **Record (zbMATH API, fetched):** Comment. Math. Univ. St. Pauli **39** (1990), no. 2, 211–240,
   Zbl 0725.14017; no DOI; the zbMATH record carries no full-text link.
@@ -156,13 +155,7 @@ and read.
   E(K) ≅ NS(S)/T, to the paper. The paper's own wording was not read.
 - **Impact:** none on any proposed theorem. The remark is not load-bearing.
 
-### 1.8 Mazur, "Modular curves and the Eisenstein ideal" — RETRIEVED (note on tooling)
-
-Numdam `PMIHES_1977__47__33_0.pdf` (16,309,727 bytes) needed resumed downloads (`curl -C -`);
-the first two attempts were truncated. Theorem (8) is on p. 35, and Theorem (5.1) with
-Corollary (5.2) on p. 156. Crossref DOI `10.1007/bf02684339`.
-
-### 1.9 Donnelly, "Spectrum and the fixed point sets of isometries I" — `PAYWALLED` (locality session, theory/locality)
+### 1.7 Donnelly, "Spectrum and the fixed point sets of isometries I" — `PAYWALLED` — **ACCEPTED GAP** (locality session, theory/locality)
 
 - **Record:** Math. Ann. **224** (1976), 161–170, DOI `10.1007/BF01436198` (Crossref record
   retrieved; title, volume, pages and date 1976-04 agree with refs/sources.bib `donnelly1976`).
@@ -176,7 +169,7 @@ Corollary (5.2) on p. 156. Crossref DOI `10.1007/bf02684339`.
   Donnelly: Uçar's Theorem 4.20 (explicit constant-curvature coefficients), and the trace-formula
   route (proof.md, Proof C). check_locality.py verifies their agreement exactly.
 
-### 1.10 Hejhal, *The Selberg Trace Formula for PSL(2,R)*, LNM 548 / 1001, and Iwaniec, *Spectral Methods of Automorphic Forms* — `UNRETRIEVED` (locality session)
+### 1.8 Hejhal, *The Selberg Trace Formula for PSL(2,R)*, LNM 548 / 1001, and Iwaniec, *Spectral Methods of Automorphic Forms* — `UNRETRIEVED` (locality session)
 
 - **Why wanted:** Dryden–Strohmaier cite them ([7], [8]) for the orbisurface trace formula with
   elliptic terms, stated by DS only for test functions of uniform exponential type.
@@ -185,22 +178,58 @@ Corollary (5.2) on p. 156. Crossref DOI `10.1007/bf02684339`.
   approximation argument. It follows Marklof, arXiv:math/0407288, Thm 4 and Prop. 10, which
   treat the torsion-free case and were fetched. The S3 data and the moduli experiment confirm the
   resulting formula numerically (numerics/moduli/REPORT.md).
-### 1.9 Watson 2005 (see 1.1) — second attempt, curvature/divergence session (theory/divergence) — `UNRETRIEVED`
 
-Re-attempted 2026-10-01 while surveying prior work on the divergence of cone heat expansions:
+### 1.9 Steinig, Rend. Mat. (6) 4 (1971) 629–644 — `UNRETRIEVED` — **ACCEPTED GAP**
 
-- Crossref `query.bibliographic=Watson trace function expansion spherical polygons` returned no
-  matching record.
-- `https://www.thebookshelf.auckland.ac.nz/docs/NZJMaths/nzjmaths034/nzjmaths034-02-004.pdf`
-  returned no file (HTTP 000).
-- The journal's site search
-  (`https://nzjmath.org/index.php/NZJMATH/search/search?query=Watson+spherical+polygons`)
-  returned HTTP 200 with no matching item.
+Detail and the retrieval attempts are in the table of section 7. No DOI; zbMATH Zbl 0238.10007 gives metadata only.
+Most likely classical source of the injectivity of power sums on positive reals; the paper proves Theorem A on its own
+(theory/audibility/proof.md) and cites Steinig only as possible prior art.
 
-**Instrument gap.** Watson's $K=1$ series is the one item that might already state a growth rate
-for spherical corner coefficients. The novelty verdict in `theory/divergence/literature.md` §4
-is therefore conditional on it. It rests on Uçar's thesis, which reproduces and corrects Watson
-and makes no growth statement.
+### 1.10 Drury–Marshall, Math. Proc. Camb. Phil. Soc. **101** (1987), DOI `10.1017/s0305004100066901` — `PAYWALLED` — **ACCEPTED GAP**
+
+Detail in the table of section 7 (abstract only; Unpaywall `is_oa` false). It is the Steinig-type argument "in a slightly
+more general setting" (MathOverflow 410757); it bears on novelty, not on any proof in the paper.
+
+### Retrieved after all (kept so the retrieval is not repeated; not outstanding)
+
+#### R.1 Voight, *Quaternion Algebras* §32.5 — `RETRIEVED, DOES NOT CONTAIN THE MATERIAL`
+
+Recorded because the pointer was wrong and the next reader should not repeat the retrieval.
+John Voight, *Quaternion Algebras*, Graduate Texts in Mathematics **288**, Springer, 2021, is
+freely available from the author at `https://jvoight.github.io/quat-book.pdf` and was
+downloaded in full (883 pp.) and searched. **§32.5 is "Cyclic subgroups"** — cyclic subgroups
+of quaternion unit groups $\mathrm P B^\times$, following Chinburg–Friedman — and has nothing
+to do with triangle groups. The string "Takeuchi" appears on **zero** pages of the book;
+"triangle group" appears on six, none carrying a commensurability-class table. The book is not
+a source for this question.
+
+#### R.2 Guy, *Unsolved Problems in Number Theory* — **RESOLVED, not outstanding**
+
+Retained here only to record how it was obtained. The subsection-level table of contents
+(D1–D29 with page numbers) was recovered from the Deutsche Nationalbibliothek's deposited
+front-matter PDF, and the body text of §D11 and §D16 cross-checked against a full-text
+mirror. Publisher record: R. K. Guy, *Unsolved Problems in Number Theory*, 3rd ed., Problem
+Books in Mathematics vol. 1, Springer, New York, 2004, xviii+438 pp.,
+DOI `10.1007/978-0-387-26677-0`, hardcover ISBN 978-0-387-20860-2.
+
+*Note on sourcing hygiene:* one of the full-text sources consulted appears to be an
+unauthorized scan. It was used only to cross-check facts already established from the
+publisher's own record and the national-library deposit, and nothing is cited to it. The
+citable references are the Springer DOI and the DNB front matter.
+
+#### R.3 Bremner–Guy, "Two more representation problems" — retrieved, **not** the relevant paper
+
+Proc. Edinb. Math. Soc. 40 (1997) 1–17, DOI `10.1017/s0013091500023397`, fetched (open access).
+It treats (x+y+z)³/xyz and x/y+y/z+z/x. The relevant paper is Bremner–Guy–Nowakowski,
+Math. Comp. **61** (1993) 117–130, DOI `10.1090/s0025-5718-1993-1189516-5`, which was fetched
+and read.
+
+#### R.4 Mazur, "Modular curves and the Eisenstein ideal" — RETRIEVED (note on tooling)
+
+Numdam `PMIHES_1977__47__33_0.pdf` (16,309,727 bytes) needed resumed downloads (`curl -C -`);
+the first two attempts were truncated. Theorem (8) is on p. 35, and Theorem (5.1) with
+Corollary (5.2) on p. 156. Crossref DOI `10.1007/bf02684339`.
+
 
 ---
 
@@ -316,8 +345,8 @@ failure.
 |---|---|---|---|
 | Semantic Scholar search API (anonymous) | `TOOLING` | HTTP 429 on every query in three independent sweeps, after the full 4 → 8 → 16 → 32 → 40 s backoff. The configured connector timed out. | No citation-graph traversal. Forward citations of Steinig 1971, Korobov–Bugaevskaya 2016 and Melánová–Sturmfels–Winter 2022 are where a statement of Theorem A could still be hiding. |
 | arXiv full-text search | `TOOLING` | POST to `arxiv.org/search_classic` (`searchtype=ft`) returns 302 to `search.arxiv.org`. GET there works. Only the first 30 hits per query were parsed. | Full-text nulls cover arXiv only. |
-| Steinig, Rend. Mat. (6) 4 (1971) 629–644 | `UNRETRIEVED` | No DOI. zbMATH Zbl 0238.10007 gives metadata only. MathSciNet is not accessible. | Most likely classical source of injectivity of power sums on positive reals, possibly with real exponents. This would cover the positive-real case of Theorem A. |
-| Drury–Marshall, Math. Proc. Camb. Phil. Soc. 101 (1987), DOI 10.1017/s0305004100066901 | `PAYWALLED` | Abstract only; Unpaywall is_oa false. | The Steinig-type argument "in a slightly more general setting" (per MathOverflow 410757). |
+| Steinig, Rend. Mat. (6) 4 (1971) 629–644 | `UNRETRIEVED` — **ACCEPTED GAP** | No DOI. zbMATH Zbl 0238.10007 gives metadata only. MathSciNet is not accessible. | Most likely classical source of injectivity of power sums on positive reals, possibly with real exponents. This would cover the positive-real case of Theorem A. |
+| Drury–Marshall, Math. Proc. Camb. Phil. Soc. 101 (1987), DOI 10.1017/s0305004100066901 | `PAYWALLED` — **ACCEPTED GAP** | Abstract only; Unpaywall is_oa false. | The Steinig-type argument "in a slightly more general setting" (per MathOverflow 410757). |
 | Müller et al., Found. Comput. Math. 16 (2016), arXiv:1311.5493 | `UNRETRIEVED` (identified, not fetched) | n/a | Real-exponent injectivity; cited by Melánová–Sturmfels–Winter Prop. 24. |
 | Bhatia–Elsner–Krause, LAA 142 (1990) 195–209, DOI 10.1016/0024-3795(90)90267-g | `PAYWALLED` | ScienceDirect 403. Bielefeld repository behind a JavaScript challenge. Elsevier API 406. | The constant 4·2^{−1/n} is known only from secondary quotations, and one of them (Laffey) conflicts. Ostrowski 1940 was read from the primary and is the citation used. |
 | Ostrowski, *Solution of Equations…* (1966/1973), Appendix A | `UNRETRIEVED` | Internet Archive lending-only (401). | The coefficient-γ form is secondary (Ćurgus–Mascioni). |
