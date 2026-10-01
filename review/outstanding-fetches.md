@@ -113,6 +113,40 @@ unauthorized scan. It was used only to cross-check facts already established fro
 publisher's own record and the national-library deposit, and nothing is cited to it. The
 citable references are the Springer DOI and the DNB front matter.
 
+### 1.4 Guy, *Unsolved Problems in Number Theory*, §D16 text — `UNRETRIEVED` in the Diophantine session (theory/diophantine)
+
+- **Need:** the verbatim text of §D16, "Triples with the same sum and same product", p. 271, which
+  `theory/diophantine/RECOMMENDATION.md` asks the paper to cite. The earlier cross-check (§1.3)
+  relied on a mirror that cannot be cited.
+- **Confirmed:** Crossref chapter record "Diophantine Equations", DOI `10.1007/978-0-387-26677-0_5`,
+  pp. 209–310.
+- **Tried:** `https://link.springer.com/chapter/10.1007/978-0-387-26677-0_5` (200, no D16 text);
+  `https://link.springer.com/content/pdf/10.1007/978-0-387-26677-0_5.pdf` (paywall HTML);
+  archive.org items `unsolvedproblems0003guyr` and `unsolvedproblems0000guyr` (access-restricted,
+  `_djvu.txt` returned 401).
+- **Impact:** low. The mathematical content attributed to D16 (Schinzel's theorem) was verified
+  against Schinzel's paper itself, fetched from `http://www.math.bas.bg/serdica/1996/1996-587-588.pdf`.
+  Schinzel cites D16 in Guy's **2nd** edition (1994). A quotation of Guy's wording still needs the book.
+
+### 1.5 Verrill, "The L-series of certain rigid Calabi–Yau threefolds" — `UNRETRIEVED`
+
+- **Bibliographic data (Crossref):** J. Number Theory **81** (2000), 310–334, DOI `10.1006/jnth.1999.2449`.
+- **Tried:** ScienceDirect `/pdf`, `/pdfft` and md5 links (403); api.elsevier.com (400);
+  pure.mpg.de (record, no file); CiteSeerX (404); no arXiv version found.
+- **Why it matters:** `theory/diophantine/variety.md` §4 identifies the degeneracy threefold with
+  Schoen's self-fibre product of Beauville's Γ₁(6) surface. The modularity statement is taken from
+  Livné–Yui, arXiv math/0304497 (fetched), Theorem 2 and Table 1. That table attributes the result
+  to Saito–Yui and to Verrill's appendix in Yui, Fields Inst. Commun. 38 (2001). The level (6) of
+  the eta product η(q)²η(q²)²η(q³)²η(q⁶)² is an inference, not read from a source.
+- **Impact:** none on any theorem; it affects only one descriptive sentence.
+
+### 1.6 Bremner–Guy, "Two more representation problems" — retrieved, **not** the relevant paper
+
+Proc. Edinb. Math. Soc. 40 (1997) 1–17, DOI `10.1017/s0013091500023397`, fetched (open access).
+It treats (x+y+z)³/xyz and x/y+y/z+z/x. The relevant paper is Bremner–Guy–Nowakowski,
+Math. Comp. **61** (1993) 117–130, DOI `10.1090/s0025-5718-1993-1189516-5`, which was fetched
+and read.
+
 ---
 
 ## 2. Identifiers that do not exist or could not be resolved
