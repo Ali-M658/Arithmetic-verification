@@ -3,3 +3,5 @@ sources/
 __pycache__/
 *.pyc
 */sources/
+diophantine/enum_classes
+threshold/enum

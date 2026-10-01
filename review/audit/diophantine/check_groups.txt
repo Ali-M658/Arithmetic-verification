@@ -104,4 +104,7 @@ PASS (1:4:4) has order 6
      positive: (1, 1, 4), (1, 4, 1), (1, 4, 4), (4, 1, 1), (4, 1, 4), (4, 4, 1)
 PASS positive points = permutations of (1,4,4) and (1,1,4) (6 points)
 PASS 12 points = six base points and their translates by (1:4:4)
+     40305 primitive positive triples with sum <= 120 (excluding (1,1,1)); torsion ones by order: 2:1460, 6:731, 12:21
+PASS every positive torsion point with sum <= 120 is isosceles or a geometric progression
+PASS order-12 positive points are exactly the GP triples
 ALL GROUP CHECKS PASSED

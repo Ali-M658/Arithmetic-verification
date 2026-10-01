@@ -129,6 +129,25 @@ try:
     check(set(pos) == expected and len(pos) == 6, "positive points = permutations of (1,4,4) and (1,1,4) (6 points)", log)
     trans = {add(lam, normalize(B), normalize((1, 4, 4))) for B in BASE}
     check(grp == {normalize(B) for B in BASE} | trans, "12 points = six base points and their translates by (1:4:4)", log)
+
+    # ---------------- positive torsion points are isosceles or geometric progressions --------
+    from math import gcd as _g
+    res, n = {}, 0
+    for S in range(4, 121):
+        for a in range(1, S // 3 + 1):
+            for b in range(a, (S - a) // 2 + 1):
+                c = S - a - b
+                if _g(_g(a, b), c) != 1 or a == c:
+                    continue
+                n += 1
+                o = order(lam_of((a, b, c)), (a, b, c), 12)
+                if o:
+                    res.setdefault(o, []).append((a, b, c))
+    other = [t for v in res.values() for t in v if not (t[0] == t[1] or t[1] == t[2] or t[1] ** 2 == t[0] * t[2])]
+    log.append(f"     {n} primitive positive triples with sum <= 120 (excluding (1,1,1)); torsion ones by order: "
+               + ", ".join(f"{k}:{len(v)}" for k, v in sorted(res.items())))
+    check(not other, "every positive torsion point with sum <= 120 is isosceles or a geometric progression", log)
+    check(all(t[1] ** 2 == t[0] * t[2] for t in res.get(12, [])), "order-12 positive points are exactly the GP triples", log)
     log.append("ALL GROUP CHECKS PASSED")
     finish(log, OUT)
 except Fail:
