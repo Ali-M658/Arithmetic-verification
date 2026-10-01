@@ -375,7 +375,24 @@ Equivalently, a 3-vs-4 pair sharing three coefficients is an integer witness of 
 (`theory/audibility/proof.md`) at $n=4$ in which one side contains the gcd of all eight orders.
 Dividing by that gcd turns the entry into a padding 1.
 
-AREA_CLASSES_PLACEHOLDER
+**Complete area classes** (`area_classes.py`, transcript `output/area_classes.txt`).
+
+The search takes every value $s=-\chi\in(0,\tfrac75]$ attained by a signature with $g\le2$,
+$n\le4$ and orders $\le12$: 525 values. For each value it enumerates the *entire* class of
+signatures with that area, over all genera and all cone counts, 33,946 signatures in total, and
+computes the exact $K_{\rm mult}$ of every member. The cap $s\le\tfrac75$ is practical: class
+sizes grow sharply as $s\uparrow\tfrac32$, with 8,626 members at $s=923/616$.
+
+- **Largest $K_{\rm mult}$ in each class:** 1 in 17 classes, 2 in 311, 3 in 197. It never
+  exceeds 3.
+- **Bound $\lfloor2s\rfloor+4$ minus that maximum:** 1 in 4 classes, 2 in 142, 3 in 249, 4 in
+  129, 5 in 1. On these classes S2 overshoots by 1 to 5.
+- **Largest $K_g$** (coefficients needed to fix the genus): 3, attained at $s=14/15$, $19/20$ and
+  $23/24$. These are the classes of $(1;15)\sim(0;3,3,5,5)$, $(1;20)\sim(0;2,4,5,10)$ and
+  $(1;24)\sim(0;2,3,8,12)$.
+- **Largest $K_n$** (cone count in genus 0): 3, e.g. at $s=2/5$ from $(0;5,5,5)\sim(0;2,2,2,10)$.
+- Every pair sharing $\ge2$ coefficients (2,310 pairs) was checked against Theorem S in both
+  forms. Pairs sharing exactly one coefficient satisfy it trivially, since $T^*\ge4$.
 
 ## 6. Relation to $K_{\rm mult}$ (`def:K`)
 
