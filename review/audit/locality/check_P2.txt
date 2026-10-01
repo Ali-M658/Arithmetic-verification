@@ -1,0 +1,22 @@
+[exact] g_t(u) = e^{-t/4} e^{-u^2/4t}/sqrt(4 pi t) is the DS-normalised transform of h_t, and int g_t e^{iru} du = h_t
+[exact] DS wave example: transform of cos(Tr)e^{-eps r^2} is (1/2)[G_eps(u-T)+G_eps(u+T)], mass-1 kernels -> DS's g = (1/2)[delta+delta]
+        (the convention without 1/2pi would give pi[delta(u-T)+delta(u+T)], contradicting DS p.4)
+[exact] DS eq.(2) identity-term derivative and 1/sinh(ln N/2) = 2/(N^{1/2}-N^{-1/2}) verified
+[exact] DS hyperbolic weight ln N(Pc)/(N(P)^{1/2}-N(P)^{-1/2}) = l(gamma0)/(2 sinh(l(gamma)/2))
+[exact] Marklof (69) normalisation agrees with DS; the exponent in Marklof (192)/(193) should read t^2/(4 beta)
+        (prefactor 1/sqrt(4 pi beta) as printed is consistent only with exponent t^2/(4 beta); source misprint, harmless here)
+[exact] h_t(r_n) = e^{-t lambda_n} for lambda in {0,1/10,1/4,1,7}; r_0 = i/2 gives h_t = 1
+[exact] int g_t(u) e^{|u|/2} du = erf(sqrt(t)/2) + 1  (finite: dominates h_R(iy), |y|<=1/2, uniformly in R)
+[exact] g_t^{(k)} = (polynomial in u) * g_t for k<=5, so ||g_t^{(k)}||_1 < oo and |h_R(r)| <= C_k(1+|r|)^{-k} uniformly in R>=1
+[exact] with lambda_n = n: sum (1+r_n^2)^{-1} = oo but sum (1+r_n^2)^{-2} = polygamma(1,7/4) = 0.764101869893829 < oo
+        => a bound |h_R(r)| <= C/(1+r^2) is NOT summable; at least (1+|r|)^{-3} is required (4 integrations by parts used)
+[exact] N(Lam) <= C(1+Lam) implies sum_n (1+lambda_n)^{-2} <= 2C (+C from the boundary term)
+[exact] even part of e^{-2 theta r}/(1+e^{-2 pi r}) is cosh((pi-2theta)r)/(2cosh(pi r)); k_theta(-r) = k_{pi-theta}(r)
+[exact] 0 < k_theta(r) <= 1; k ~ e^{-2theta r} (r->+oo), k ~ e^{-(2pi-2theta)|r|} (r->-oo); rate >= 2pi/m for theta = pi l/m
+        DS's psi_m ~ (2m sin(pi/m))^{-1} e^{-2pi r/m} is consistent (l=1 and l=m-1 each give (4m sin(pi/m))^{-1})
+[exact] transform of h0(r-T)+h0(r+T) is 2cos(Tu) g0(u): same support as g0, |g_T| <= 2|g0| uniformly in T
+[exact] for phi>=0, supp phi in [-1,1]: phi^(s) >= cos(1) int phi > 0 on |s|<=1, so h0 = phi^2 >= c > 0 there
+        identity term of h_T is O(1+T); elliptic terms O(1) since |k|<=1; hyperbolic side is a fixed finite sum
+[exact] -f'(L) C e^L = C e^{L/2-L^2/4t}(L/2+L^2/2t-1); its integral over [l,oo) is finite (t=1, l=1: sqrt(pi)*C*exp(1/4) + 3*C*exp(1/4))
+[sanity, mpmath] h_R(r) -> h_t(r) at t=1 (|h_8 - h_t| < 1e-6 at r=0,1,3)
+ALL CHECKS PASSED
