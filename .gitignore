@@ -49,3 +49,8 @@ __pycache__/
 # Re-create with:
 #   git clone https://github.com/Ali-M658/Arithmetic-verification.git code/upstream
 code/upstream/
+
+# numerics: private environment, fetched reference PDFs, raw solver runs
+numerics/.venv/
+numerics/refs_cache/
+numerics/runs/
