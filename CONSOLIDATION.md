@@ -51,7 +51,57 @@ what lets the existing heat-trace code run without a solver. PARI-dependent `ran
 when `cypari2` is missing; the NGSolve re-solve is skipped when NGSolve is missing. Dependencies are checked
 before any stage runs, with install commands.
 
-TBD_TABLES
+### Stage table of `run_all.sh --quick` (from a clean working tree; timings taken under load)
+
+The 1-minute load average exceeded 8 during the run (peak 38), so the times are wall-clock under load, not idle-machine times. Result: 34 passed, 0 failed, 8 skipped, total 11:31, exit 0.
+
+| status | time | stage | note |
+|---|---|---|---|
+| PASS | 0:01 | code 1 enumerator self-test |  |
+| PASS | 1:09 | code 2 displayed identities |  |
+| PASS | 0:09 | code 3 degeneracy enumeration |  |
+| PASS | 0:09 | code 4 LaTeX table generation |  |
+| PASS | 1:04 | code 5 three-way cross-check |  |
+| PASS | 0:00 | code 6 claim-ledger coverage |  |
+| PASS | 0:01 | review DEFECTS.md is current |  |
+| PASS | 0:23 | review defects-check |  |
+| PASS | 0:00 | theory definitions-check |  |
+| PASS | 0:03 | theory conventions-check |  |
+| PASS | 0:00 | admin DATA-MANIFEST is current |  |
+| PASS | 0:03 | audibility orlando_check |  |
+| PASS | 0:06 | audibility linear_system |  |
+| PASS | 0:42 | audibility verify_elimination |  |
+| PASS | 0:08 | audibility sharpness N=60 |  |
+| SKIP |  | audibility sharpness N=120 | full mode only: about 22 min |
+| PASS | 0:01 | cone-coefficients verify |  |
+| PASS | 0:01 | signatures heat_structure |  |
+| PASS | 0:10 | signatures cone_count |  |
+| PASS | 0:18 | signatures area_classes |  |
+| PASS | 1:05 | signatures genus |  |
+| PASS | 0:06 | locality check_locality |  |
+| PASS | 0:00 | stability front_end |  |
+| PASS | 0:01 | stability lipschitz_e |  |
+| PASS | 0:02 | stability roots_holder |  |
+| PASS | 0:01 | stability blind pipeline |  |
+| SKIP |  | stability threshold | full mode only: 30-60 min counterexample search |
+| PASS | 0:12 | threshold first overlap |  |
+| PASS | 0:02 | curvature curvature_checks |  |
+| SKIP |  | divergence divergence | full mode only: about 10 min |
+| PASS | 0:03 | diophantine committed-data check |  |
+| PASS | 0:01 | diophantine variety_checks |  |
+| PASS | 0:21 | diophantine growth_fits |  |
+| PASS | 1:27 | diophantine exponent_fits |  |
+| PASS | 3:30 | diophantine families |  |
+| SKIP |  | diophantine ranks (PARI) | PARI (cypari2) not installed (see the pre-flight note) |
+| PASS | 0:05 | numerics validate (committed) |  |
+| PASS | 0:01 | numerics moduli validate |  |
+| SKIP |  | numerics S3 rerun record | rerun comparison record deferred to the final submission check |
+| SKIP |  | numerics validate (full) | full mode only: heat traces and fits, a few minutes |
+| SKIP |  | numerics moduli validate (full) | full mode only: trace formula for 8 members, about 5 min |
+| SKIP |  | numerics S3 re-solve (NGSolve) | full mode only: about an hour; needs NGSolve |
+
+The skips: seven stages are full-mode only (the `N = 120` sharpness search, `stability threshold`, `divergence`, the full numerics and moduli validations, the NGSolve re-solve) and are deferred with `--full`; `ranks.py` is skipped because PARI/cypari2 is not installed on this machine (its install message is printed); the rerun comparison record is deferred (section 3). Failure test: with one assertion in `code/orbifold_enum.py` changed (`2 * (1 - R)` to `3 * (1 - R)`) the stage `code 1 enumerator self-test` failed and `run_all.sh` exited 1; after restoring the file its SHA-256 (`358ded8f9a367160e9fc404a0642c933769e82fe00ff750ed8d220c8db18122d`) was identical to the original and `git status` was clean.
+
 
 ## 3. One eigensolver (`numerics/solve.py`)
 
