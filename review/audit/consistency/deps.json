@@ -1,0 +1,1218 @@
+{
+ "edge_kinds": {
+  "uses": "logical input stated in the statement",
+  "proved_by": "forward reference proved by target",
+  "definition": "object/definition only",
+  "crosscheck": "comparison/restatement only",
+  "sharpness": "cited only for sharpness",
+  "inferred": "uncited but necessary (referee reading)",
+  "reported": "named in the P8 brief, not visible in the register"
+ },
+ "nodes": [
+  "AU.Lemma1",
+  "AU.Rem2",
+  "AU.Rem3",
+  "AU.ThmA",
+  "AU.ThmB",
+  "AU.ThmC",
+  "AU.heat",
+  "AU.witness",
+  "CU.L2",
+  "CU.flat",
+  "CU.prop",
+  "DF.def:K",
+  "DF.def:heatcoef",
+  "DF.def:signature",
+  "DF.eq:Kcompare",
+  "DF.eq:moduli",
+  "DF.prop:Kinf",
+  "DF.prop:rigidity",
+  "DF.rem:nconerestated",
+  "DF.thm:Crestated",
+  "DF.thm:locality",
+  "DI.P1",
+  "DI.T3",
+  "DI.T4",
+  "DI.T5",
+  "DI.countconv",
+  "DI.counts",
+  "DI.isolation",
+  "DI.pencil",
+  "DI.recip",
+  "DV.Borel",
+  "DV.C4",
+  "DV.L1",
+  "DV.T2",
+  "DV.T3",
+  "EXT.BGN",
+  "EXT.Beauville",
+  "EXT.DGGW",
+  "EXT.DS",
+  "EXT.Donnelly",
+  "EXT.HoltzTyaglov",
+  "EXT.Kokotov",
+  "EXT.Ostrowski",
+  "EXT.PARI",
+  "EXT.Schueth",
+  "EXT.Shioda",
+  "EXT.Thurston",
+  "EXT.Troyanov",
+  "EXT.Ucar",
+  "LO.C2.3",
+  "LO.L3.2",
+  "LO.L3.3",
+  "LO.P2.1",
+  "LO.P2.2",
+  "LO.T1",
+  "LO.T3.1",
+  "LO.T3.4",
+  "LO.T3.5",
+  "LO.claim",
+  "PC.S36",
+  "PC.conj:density",
+  "PC.cor:conevals",
+  "PC.corD",
+  "PC.degdef",
+  "PC.eq:a0conv",
+  "PC.eq:a2red",
+  "PC.eq:area",
+  "PC.eq:b1",
+  "PC.eq:s1inv",
+  "PC.jacobian",
+  "PC.lem:bound",
+  "PC.lem:chamber",
+  "PC.lem:cot",
+  "PC.prop:cs",
+  "PC.prop:csc",
+  "PC.prop:min",
+  "PC.prop:recovery",
+  "PC.prop:scaling",
+  "PC.rem:ncone",
+  "PC.remA0",
+  "PC.tab:enum",
+  "PC.thm:density-lower",
+  "PC.thm:separation",
+  "PC.thmA",
+  "PC.thmB",
+  "PC.thmC",
+  "SG.H",
+  "SG.L1",
+  "SG.L2",
+  "SG.L3",
+  "SG.L4",
+  "SG.N1",
+  "SG.PropP",
+  "SG.S1",
+  "SG.S2",
+  "SG.T1",
+  "SG.ThmN",
+  "SG.ThmS",
+  "SG.ex:siggenus",
+  "SG.rem:sigK",
+  "ST.LemS3",
+  "ST.S1",
+  "ST.S2.1",
+  "ST.S2.2",
+  "ST.S3.2",
+  "ST.S4",
+  "ST.S5",
+  "ST.ThmS2",
+  "ST.ThmS3",
+  "ST.results",
+  "ST.setup",
+  "ST.table",
+  "TH.0",
+  "TH.C2",
+  "TH.L1",
+  "TH.L2",
+  "TH.P3",
+  "TH.T1",
+  "TH.table"
+ ],
+ "edges": [
+  {
+   "from": "PC.thmA",
+   "to": "PC.thm:separation",
+   "kind": "uses",
+   "evidence": "PC.15 'hence Theorem thmA'"
+  },
+  {
+   "from": "PC.thmA",
+   "to": "PC.eq:s1inv",
+   "kind": "uses",
+   "evidence": "first two coefficients -> (R,S_1)"
+  },
+  {
+   "from": "PC.thmA",
+   "to": "PC.thmB",
+   "kind": "sharpness",
+   "evidence": "PC.1 'The bound 17 is sharp ... (Theorem thmB)'"
+  },
+  {
+   "from": "PC.thmB",
+   "to": "PC.thm:separation",
+   "kind": "uses",
+   "evidence": "PC.14 second sentence; PC.15 S=18 computation"
+  },
+  {
+   "from": "PC.thmB",
+   "to": "PC.eq:s1inv",
+   "kind": "uses",
+   "evidence": "identical first two coefficients <=> equal (R,S_1)"
+  },
+  {
+   "from": "PC.thmC",
+   "to": "PC.prop:recovery",
+   "kind": "uses",
+   "evidence": "PC.9b 'equivalently ... first three heat coefficients is injective'"
+  },
+  {
+   "from": "PC.thmC",
+   "to": "PC.eq:a2red",
+   "kind": "uses",
+   "evidence": "third coefficient delivers P_3"
+  },
+  {
+   "from": "PC.thmC",
+   "to": "PC.thmB",
+   "kind": "uses",
+   "evidence": "K(F)=3 for the collision pair"
+  },
+  {
+   "from": "PC.thmC",
+   "to": "DF.prop:rigidity",
+   "kind": "inferred",
+   "evidence": "'up to isometry, equivalently ... cone orders' needs rigidity; not cited in PC"
+  },
+  {
+   "from": "PC.corD",
+   "to": "PC.eq:s1inv",
+   "kind": "uses",
+   "evidence": "first two factor through (R,S_1)"
+  },
+  {
+   "from": "PC.corD",
+   "to": "PC.eq:a2red",
+   "kind": "uses",
+   "evidence": "first three detect sum m_i^3"
+  },
+  {
+   "from": "PC.corD",
+   "to": "PC.thmB",
+   "kind": "uses",
+   "evidence": "first failure at 18"
+  },
+  {
+   "from": "PC.corD",
+   "to": "PC.thmA",
+   "kind": "uses",
+   "evidence": "range S<=17 sharp"
+  },
+  {
+   "from": "PC.eq:a0conv",
+   "to": "EXT.DGGW",
+   "kind": "uses",
+   "evidence": "PC.2 'We use the orbifold heat-trace expansion of DGGW'"
+  },
+  {
+   "from": "PC.eq:a0conv",
+   "to": "PC.cor:conevals",
+   "kind": "uses",
+   "evidence": "cone sum"
+  },
+  {
+   "from": "PC.cor:conevals",
+   "to": "PC.prop:csc",
+   "kind": "uses",
+   "evidence": "def:cone in csc^2"
+  },
+  {
+   "from": "PC.prop:csc",
+   "to": "PC.lem:cot",
+   "kind": "inferred",
+   "evidence": "csc^2 = 1 + cot^2"
+  },
+  {
+   "from": "PC.eq:s1inv",
+   "to": "PC.eq:area",
+   "kind": "uses",
+   "evidence": "PC.7 (i)"
+  },
+  {
+   "from": "PC.eq:s1inv",
+   "to": "PC.eq:a0conv",
+   "kind": "uses",
+   "evidence": "PC.7 (ii)"
+  },
+  {
+   "from": "PC.eq:b1",
+   "to": "EXT.Schueth",
+   "kind": "uses",
+   "evidence": "PC.8 footnote"
+  },
+  {
+   "from": "PC.eq:b1",
+   "to": "EXT.DGGW",
+   "kind": "uses",
+   "evidence": "PC.8 footnote (DGGW 5.6)"
+  },
+  {
+   "from": "PC.eq:b1",
+   "to": "EXT.Ucar",
+   "kind": "crosscheck",
+   "evidence": "PC.8 footnote 'consistent with Ucar'"
+  },
+  {
+   "from": "PC.eq:a2red",
+   "to": "PC.eq:b1",
+   "kind": "uses",
+   "evidence": "summing eq:b1 at K=-1"
+  },
+  {
+   "from": "PC.prop:recovery",
+   "to": "PC.eq:s1inv",
+   "kind": "uses",
+   "evidence": "R, S_1 from c_1, c_2"
+  },
+  {
+   "from": "PC.prop:recovery",
+   "to": "PC.eq:a2red",
+   "kind": "uses",
+   "evidence": "P_3 from c_3"
+  },
+  {
+   "from": "PC.jacobian",
+   "to": "PC.prop:recovery",
+   "kind": "crosscheck",
+   "evidence": "PC.10 infinitesimal counterpart"
+  },
+  {
+   "from": "PC.lem:bound",
+   "to": "PC.lem:chamber",
+   "kind": "uses",
+   "evidence": "PC.12"
+  },
+  {
+   "from": "PC.prop:min",
+   "to": "PC.eq:a0conv",
+   "kind": "uses",
+   "evidence": "PC.13"
+  },
+  {
+   "from": "PC.prop:min",
+   "to": "PC.lem:chamber",
+   "kind": "inferred",
+   "evidence": "monotonicity of R in a stratum"
+  },
+  {
+   "from": "PC.thm:separation",
+   "to": "PC.lem:chamber",
+   "kind": "uses",
+   "evidence": "PC.14"
+  },
+  {
+   "from": "PC.thm:separation",
+   "to": "PC.lem:bound",
+   "kind": "uses",
+   "evidence": "PC.15"
+  },
+  {
+   "from": "PC.remA0",
+   "to": "PC.prop:min",
+   "kind": "uses",
+   "evidence": "PC.16"
+  },
+  {
+   "from": "PC.remA0",
+   "to": "PC.prop:cs",
+   "kind": "uses",
+   "evidence": "PC.16"
+  },
+  {
+   "from": "PC.prop:scaling",
+   "to": "PC.degdef",
+   "kind": "definition",
+   "evidence": "PC.17"
+  },
+  {
+   "from": "PC.degdef",
+   "to": "PC.lem:chamber",
+   "kind": "uses",
+   "evidence": "PC.17 'by lem:chamber the two triples share the sum'"
+  },
+  {
+   "from": "PC.thm:density-lower",
+   "to": "PC.prop:scaling",
+   "kind": "uses",
+   "evidence": "PC.17b"
+  },
+  {
+   "from": "PC.thm:density-lower",
+   "to": "PC.thmB",
+   "kind": "uses",
+   "evidence": "base pair"
+  },
+  {
+   "from": "PC.S36",
+   "to": "PC.prop:scaling",
+   "kind": "crosscheck",
+   "evidence": "PC.18"
+  },
+  {
+   "from": "PC.conj:density",
+   "to": "PC.thm:density-lower",
+   "kind": "crosscheck",
+   "evidence": "PC.19"
+  },
+  {
+   "from": "PC.conj:density",
+   "to": "PC.thmC",
+   "kind": "uses",
+   "evidence": "PC.19 last paragraph: 'Theorem thmC gives K(F)<=3'"
+  },
+  {
+   "from": "PC.rem:ncone",
+   "to": "PC.thmC",
+   "kind": "crosscheck",
+   "evidence": "PC.20"
+  },
+  {
+   "from": "PC.tab:enum",
+   "to": "PC.thm:separation",
+   "kind": "crosscheck",
+   "evidence": "PC.21 'independent cross-check'"
+  },
+  {
+   "from": "DF.def:heatcoef",
+   "to": "EXT.DGGW",
+   "kind": "uses",
+   "evidence": "DF.1 cites donnelly1976, dggw2008"
+  },
+  {
+   "from": "DF.def:heatcoef",
+   "to": "EXT.Donnelly",
+   "kind": "uses",
+   "evidence": "DF.1"
+  },
+  {
+   "from": "DF.def:K",
+   "to": "DF.def:heatcoef",
+   "kind": "definition",
+   "evidence": "H_k"
+  },
+  {
+   "from": "DF.def:K",
+   "to": "DF.def:signature",
+   "kind": "definition",
+   "evidence": "sigma"
+  },
+  {
+   "from": "DF.eq:Kcompare",
+   "to": "DF.def:K",
+   "kind": "uses",
+   "evidence": "DF.2"
+  },
+  {
+   "from": "DF.prop:rigidity",
+   "to": "DF.eq:moduli",
+   "kind": "inferred",
+   "evidence": "rigidity = zero-dimensional moduli for n=3 (proof not in register)"
+  },
+  {
+   "from": "DF.eq:moduli",
+   "to": "EXT.Troyanov",
+   "kind": "uses",
+   "evidence": "DF.4"
+  },
+  {
+   "from": "DF.eq:moduli",
+   "to": "EXT.Thurston",
+   "kind": "uses",
+   "evidence": "DF.4"
+  },
+  {
+   "from": "DF.thm:locality",
+   "to": "LO.T1",
+   "kind": "proved_by",
+   "evidence": "LO.1 'This proves thm:locality'"
+  },
+  {
+   "from": "DF.prop:Kinf",
+   "to": "DF.thm:locality",
+   "kind": "uses",
+   "evidence": "DF.5 'Conditional on thm:locality'"
+  },
+  {
+   "from": "DF.prop:Kinf",
+   "to": "DF.eq:moduli",
+   "kind": "uses",
+   "evidence": "n>=4 case"
+  },
+  {
+   "from": "DF.thm:Crestated",
+   "to": "PC.thmC",
+   "kind": "uses",
+   "evidence": "DF.6 title"
+  },
+  {
+   "from": "DF.thm:Crestated",
+   "to": "DF.prop:rigidity",
+   "kind": "uses",
+   "evidence": "K_iso = K_mult"
+  },
+  {
+   "from": "DF.thm:Crestated",
+   "to": "PC.prop:recovery",
+   "kind": "reported",
+   "evidence": "P8 brief; implied through thmC"
+  },
+  {
+   "from": "DF.thm:Crestated",
+   "to": "PC.thmB",
+   "kind": "uses",
+   "evidence": "example of value 3"
+  },
+  {
+   "from": "DF.rem:nconerestated",
+   "to": "PC.prop:recovery",
+   "kind": "uses",
+   "evidence": "DF.7(a)"
+  },
+  {
+   "from": "DF.rem:nconerestated",
+   "to": "DF.prop:Kinf",
+   "kind": "uses",
+   "evidence": "DF.7(b)"
+  },
+  {
+   "from": "DF.rem:nconerestated",
+   "to": "DF.eq:moduli",
+   "kind": "uses",
+   "evidence": "DF.7(b)"
+  },
+  {
+   "from": "DF.rem:nconerestated",
+   "to": "DF.prop:rigidity",
+   "kind": "uses",
+   "evidence": "DF.7(b)"
+  },
+  {
+   "from": "DF.rem:nconerestated",
+   "to": "PC.rem:ncone",
+   "kind": "crosscheck",
+   "evidence": "restates/corrects PC.20"
+  },
+  {
+   "from": "AU.heat",
+   "to": "EXT.Ucar",
+   "kind": "uses",
+   "evidence": "AU.0"
+  },
+  {
+   "from": "AU.heat",
+   "to": "EXT.Schueth",
+   "kind": "uses",
+   "evidence": "AU.0 (l<=2)"
+  },
+  {
+   "from": "AU.ThmA",
+   "to": "AU.heat",
+   "kind": "uses",
+   "evidence": "I_n triangular"
+  },
+  {
+   "from": "AU.ThmA",
+   "to": "EXT.HoltzTyaglov",
+   "kind": "uses",
+   "evidence": "Orlando"
+  },
+  {
+   "from": "AU.ThmA",
+   "to": "AU.Lemma1",
+   "kind": "inferred",
+   "evidence": "parity lemma (proof not in register)"
+  },
+  {
+   "from": "AU.ThmA",
+   "to": "AU.ThmB",
+   "kind": "inferred",
+   "evidence": "hypothesis e_n Delta_{n-1} != 0 is det M != 0 of Theorem B"
+  },
+  {
+   "from": "AU.ThmB",
+   "to": "AU.heat",
+   "kind": "uses",
+   "evidence": "coefficients are polynomials in I_n"
+  },
+  {
+   "from": "AU.ThmB",
+   "to": "EXT.HoltzTyaglov",
+   "kind": "uses",
+   "evidence": "Delta_{n-1}"
+  },
+  {
+   "from": "AU.ThmC",
+   "to": "AU.heat",
+   "kind": "uses",
+   "evidence": "I_{n-1}"
+  },
+  {
+   "from": "AU.witness",
+   "to": "AU.ThmC",
+   "kind": "crosscheck",
+   "evidence": "AU.4"
+  },
+  {
+   "from": "AU.Rem2",
+   "to": "AU.ThmA",
+   "kind": "crosscheck",
+   "evidence": "AU.3"
+  },
+  {
+   "from": "AU.Rem3",
+   "to": "AU.ThmA",
+   "kind": "uses",
+   "evidence": "AU.3 padding"
+  },
+  {
+   "from": "SG.H",
+   "to": "EXT.Ucar",
+   "kind": "uses",
+   "evidence": "SG.0 (H1),(H2)"
+  },
+  {
+   "from": "SG.H",
+   "to": "EXT.DGGW",
+   "kind": "uses",
+   "evidence": "SG.0 (H1)"
+  },
+  {
+   "from": "SG.H",
+   "to": "DF.def:heatcoef",
+   "kind": "definition",
+   "evidence": "SG.0 (H3)"
+  },
+  {
+   "from": "SG.L1",
+   "to": "SG.H",
+   "kind": "uses",
+   "evidence": "SG.1"
+  },
+  {
+   "from": "SG.L2",
+   "to": "SG.L1",
+   "kind": "uses",
+   "evidence": "SG.2"
+  },
+  {
+   "from": "SG.L3",
+   "to": "SG.H",
+   "kind": "uses",
+   "evidence": "SG.3"
+  },
+  {
+   "from": "SG.L4",
+   "to": "SG.L2",
+   "kind": "uses",
+   "evidence": "SG.4 'It follows for all L from Lemma 2'"
+  },
+  {
+   "from": "SG.L4",
+   "to": "SG.L3",
+   "kind": "uses",
+   "evidence": "padding"
+  },
+  {
+   "from": "SG.ThmS",
+   "to": "SG.L4",
+   "kind": "uses",
+   "evidence": "SG.5"
+  },
+  {
+   "from": "SG.S1",
+   "to": "SG.ThmS",
+   "kind": "uses",
+   "evidence": "SG.6"
+  },
+  {
+   "from": "SG.S2",
+   "to": "SG.S1",
+   "kind": "uses",
+   "evidence": "SG.7"
+  },
+  {
+   "from": "SG.S2",
+   "to": "DF.def:K",
+   "kind": "definition",
+   "evidence": "SG.7"
+  },
+  {
+   "from": "SG.T1",
+   "to": "SG.S1",
+   "kind": "uses",
+   "evidence": "T1(3) is S1 at g=g'=0"
+  },
+  {
+   "from": "SG.T1",
+   "to": "SG.S2",
+   "kind": "uses",
+   "evidence": "T1(2)"
+  },
+  {
+   "from": "SG.T1",
+   "to": "AU.ThmA",
+   "kind": "reported",
+   "evidence": "P8 brief: 'Theorem T1 using Theorem A'"
+  },
+  {
+   "from": "SG.ThmN",
+   "to": "SG.PropP",
+   "kind": "uses",
+   "evidence": "Prouhet construction"
+  },
+  {
+   "from": "SG.ThmN",
+   "to": "SG.L4",
+   "kind": "uses",
+   "evidence": "converse direction of Lemma 4"
+  },
+  {
+   "from": "SG.N1",
+   "to": "SG.ThmN",
+   "kind": "uses",
+   "evidence": "lower bound"
+  },
+  {
+   "from": "SG.N1",
+   "to": "SG.S2",
+   "kind": "uses",
+   "evidence": "upper bound"
+  },
+  {
+   "from": "SG.rem:sigK",
+   "to": "AU.ThmA",
+   "kind": "crosscheck",
+   "evidence": "SG.13 'now proved independently (Theorem A)'"
+  },
+  {
+   "from": "SG.rem:sigK",
+   "to": "DF.rem:nconerestated",
+   "kind": "crosscheck",
+   "evidence": "SG.13"
+  },
+  {
+   "from": "SG.rem:sigK",
+   "to": "DF.prop:Kinf",
+   "kind": "uses",
+   "evidence": "SG.13"
+  },
+  {
+   "from": "SG.rem:sigK",
+   "to": "DF.eq:Kcompare",
+   "kind": "uses",
+   "evidence": "SG.13"
+  },
+  {
+   "from": "SG.ex:siggenus",
+   "to": "SG.L4",
+   "kind": "crosscheck",
+   "evidence": "exact computation"
+  },
+  {
+   "from": "LO.T1",
+   "to": "EXT.Ucar",
+   "kind": "uses",
+   "evidence": "LO.1 constants (Ucar Thm 4.20 at kappa=-1)"
+  },
+  {
+   "from": "LO.T1",
+   "to": "EXT.DGGW",
+   "kind": "uses",
+   "evidence": "LO.1 (4.9) and strata"
+  },
+  {
+   "from": "LO.T1",
+   "to": "LO.T3.1",
+   "kind": "reported",
+   "evidence": "P8 brief: 'Proof C' of Theorem 1 via Theorem 3.1 (alternative proof)"
+  },
+  {
+   "from": "LO.P2.1",
+   "to": "EXT.Thurston",
+   "kind": "uses",
+   "evidence": "LO.2 Cor 13.3.7"
+  },
+  {
+   "from": "LO.P2.2",
+   "to": "LO.P2.1",
+   "kind": "uses",
+   "evidence": "LO.4"
+  },
+  {
+   "from": "LO.C2.3",
+   "to": "LO.P2.2",
+   "kind": "uses",
+   "evidence": "LO.5"
+  },
+  {
+   "from": "LO.C2.3",
+   "to": "LO.T1",
+   "kind": "uses",
+   "evidence": "same signature -> same coefficients"
+  },
+  {
+   "from": "LO.C2.3",
+   "to": "DF.def:K",
+   "kind": "definition",
+   "evidence": "LO.5"
+  },
+  {
+   "from": "LO.C2.3",
+   "to": "DF.rem:nconerestated",
+   "kind": "definition",
+   "evidence": "LO.5 class P_n"
+  },
+  {
+   "from": "LO.C2.3",
+   "to": "DF.prop:rigidity",
+   "kind": "inferred",
+   "evidence": "triangle case K_iso = K_mult"
+  },
+  {
+   "from": "LO.C2.3",
+   "to": "DF.prop:Kinf",
+   "kind": "crosscheck",
+   "evidence": "same content as prop:Kinf (unconditional form)"
+  },
+  {
+   "from": "LO.T3.1",
+   "to": "EXT.DS",
+   "kind": "uses",
+   "evidence": "LO.6 Selberg trace formula"
+  },
+  {
+   "from": "LO.T3.1",
+   "to": "LO.L3.2",
+   "kind": "uses",
+   "evidence": "admissibility"
+  },
+  {
+   "from": "LO.T3.1",
+   "to": "LO.L3.3",
+   "kind": "uses",
+   "evidence": "absolute convergence of H"
+  },
+  {
+   "from": "LO.L3.2",
+   "to": "EXT.DS",
+   "kind": "uses",
+   "evidence": "LO.7 '[DS] (1) holds for h_R'"
+  },
+  {
+   "from": "LO.L3.2",
+   "to": "LO.T1",
+   "kind": "reported",
+   "evidence": "P8 brief: Lemma 3.2 uses a Weyl bound taken from Theorem 1"
+  },
+  {
+   "from": "LO.T3.4",
+   "to": "LO.T3.1",
+   "kind": "uses",
+   "evidence": "exact cancellation"
+  },
+  {
+   "from": "LO.T3.4",
+   "to": "LO.L3.3",
+   "kind": "uses",
+   "evidence": "counting"
+  },
+  {
+   "from": "LO.T3.5",
+   "to": "LO.T3.1",
+   "kind": "uses",
+   "evidence": ""
+  },
+  {
+   "from": "LO.claim",
+   "to": "LO.T3.5",
+   "kind": "uses",
+   "evidence": "LO.10"
+  },
+  {
+   "from": "LO.claim",
+   "to": "LO.T3.4",
+   "kind": "uses",
+   "evidence": "LO.10"
+  },
+  {
+   "from": "ST.setup",
+   "to": "EXT.Ucar",
+   "kind": "uses",
+   "evidence": "ST.0"
+  },
+  {
+   "from": "ST.setup",
+   "to": "AU.ThmB",
+   "kind": "uses",
+   "evidence": "linear solve"
+  },
+  {
+   "from": "ST.S1",
+   "to": "ST.setup",
+   "kind": "uses",
+   "evidence": ""
+  },
+  {
+   "from": "ST.table",
+   "to": "ST.S1",
+   "kind": "uses",
+   "evidence": "L^{-1}"
+  },
+  {
+   "from": "ST.S2.2",
+   "to": "AU.ThmB",
+   "kind": "definition",
+   "evidence": "matrix M only"
+  },
+  {
+   "from": "ST.S2.1",
+   "to": "ST.S2.2",
+   "kind": "uses",
+   "evidence": "det M = det B / det S"
+  },
+  {
+   "from": "ST.S2.1",
+   "to": "AU.ThmB",
+   "kind": "definition",
+   "evidence": "ST.3 'replaces c_n ... in Theorem B'"
+  },
+  {
+   "from": "ST.ThmS2",
+   "to": "ST.S2.2",
+   "kind": "uses",
+   "evidence": "kappa bound via B, S"
+  },
+  {
+   "from": "ST.ThmS2",
+   "to": "ST.S2.1",
+   "kind": "uses",
+   "evidence": ""
+  },
+  {
+   "from": "ST.LemS3",
+   "to": "EXT.Ostrowski",
+   "kind": "crosscheck",
+   "evidence": "ST.6 global vs local"
+  },
+  {
+   "from": "ST.ThmS3",
+   "to": "ST.table",
+   "kind": "uses",
+   "evidence": "l = (2,14,498,4062,...)"
+  },
+  {
+   "from": "ST.ThmS3",
+   "to": "ST.ThmS2",
+   "kind": "uses",
+   "evidence": ""
+  },
+  {
+   "from": "ST.ThmS3",
+   "to": "ST.LemS3",
+   "kind": "uses",
+   "evidence": ""
+  },
+  {
+   "from": "ST.S3.2",
+   "to": "AU.ThmB",
+   "kind": "uses",
+   "evidence": "ST.9(ii)"
+  },
+  {
+   "from": "ST.S4",
+   "to": "ST.ThmS3",
+   "kind": "uses",
+   "evidence": ""
+  },
+  {
+   "from": "ST.S5",
+   "to": "ST.S2.1",
+   "kind": "uses",
+   "evidence": "ST.12 'G exact (Lemma S2.1)'"
+  },
+  {
+   "from": "ST.S5",
+   "to": "ST.table",
+   "kind": "uses",
+   "evidence": "|L^{-1}|"
+  },
+  {
+   "from": "ST.results",
+   "to": "ST.S4",
+   "kind": "uses",
+   "evidence": "delta_thm"
+  },
+  {
+   "from": "ST.results",
+   "to": "ST.S5",
+   "kind": "uses",
+   "evidence": "delta_cert"
+  },
+  {
+   "from": "TH.0",
+   "to": "PC.lem:chamber",
+   "kind": "uses",
+   "evidence": "TH.0"
+  },
+  {
+   "from": "TH.0",
+   "to": "PC.lem:bound",
+   "kind": "uses",
+   "evidence": "TH.0"
+  },
+  {
+   "from": "TH.L1",
+   "to": "TH.0",
+   "kind": "uses",
+   "evidence": ""
+  },
+  {
+   "from": "TH.L2",
+   "to": "TH.L1",
+   "kind": "uses",
+   "evidence": ""
+  },
+  {
+   "from": "TH.L2",
+   "to": "PC.thm:separation",
+   "kind": "crosscheck",
+   "evidence": "'the chain in the proof of thm:separation'"
+  },
+  {
+   "from": "TH.T1",
+   "to": "TH.L1",
+   "kind": "uses",
+   "evidence": ""
+  },
+  {
+   "from": "TH.C2",
+   "to": "TH.T1",
+   "kind": "uses",
+   "evidence": ""
+  },
+  {
+   "from": "TH.C2",
+   "to": "TH.L2",
+   "kind": "uses",
+   "evidence": ""
+  },
+  {
+   "from": "TH.C2",
+   "to": "PC.thmB",
+   "kind": "crosscheck",
+   "evidence": "same content as thmA/thmB"
+  },
+  {
+   "from": "TH.table",
+   "to": "DI.counts",
+   "kind": "crosscheck",
+   "evidence": "'reproduces all 2,977 collision fibres of groups.csv'"
+  },
+  {
+   "from": "TH.P3",
+   "to": "TH.T1",
+   "kind": "uses",
+   "evidence": ""
+  },
+  {
+   "from": "CU.flat",
+   "to": "EXT.Kokotov",
+   "kind": "uses",
+   "evidence": "CU.1"
+  },
+  {
+   "from": "CU.flat",
+   "to": "EXT.DGGW",
+   "kind": "uses",
+   "evidence": "CU.1"
+  },
+  {
+   "from": "CU.flat",
+   "to": "DV.L1",
+   "kind": "uses",
+   "evidence": "CU.1 positivity for all l"
+  },
+  {
+   "from": "CU.prop",
+   "to": "CU.flat",
+   "kind": "uses",
+   "evidence": "Part 1, 4"
+  },
+  {
+   "from": "CU.prop",
+   "to": "CU.L2",
+   "kind": "uses",
+   "evidence": "Part 2"
+  },
+  {
+   "from": "CU.prop",
+   "to": "EXT.DGGW",
+   "kind": "crosscheck",
+   "evidence": "Strength: DGGW 5.15, 5.22"
+  },
+  {
+   "from": "CU.prop",
+   "to": "EXT.Ucar",
+   "kind": "crosscheck",
+   "evidence": "Cor 4.21(iv)"
+  },
+  {
+   "from": "CU.prop",
+   "to": "AU.ThmA",
+   "kind": "uses",
+   "evidence": "Part 3 'is Theorem A'"
+  },
+  {
+   "from": "CU.prop",
+   "to": "AU.ThmC",
+   "kind": "uses",
+   "evidence": "Part 3 sharpness"
+  },
+  {
+   "from": "DV.L1",
+   "to": "EXT.Ucar",
+   "kind": "uses",
+   "evidence": "DV.0"
+  },
+  {
+   "from": "DV.T2",
+   "to": "DV.L1",
+   "kind": "uses",
+   "evidence": ""
+  },
+  {
+   "from": "DV.T3",
+   "to": "DV.T2",
+   "kind": "uses",
+   "evidence": ""
+  },
+  {
+   "from": "DV.C4",
+   "to": "DV.T3",
+   "kind": "uses",
+   "evidence": ""
+  },
+  {
+   "from": "DV.C4",
+   "to": "EXT.Ucar",
+   "kind": "crosscheck",
+   "evidence": "Cor 4.21(iv)"
+  },
+  {
+   "from": "DV.Borel",
+   "to": "DV.T3",
+   "kind": "uses",
+   "evidence": ""
+  },
+  {
+   "from": "DI.P1",
+   "to": "PC.degdef",
+   "kind": "definition",
+   "evidence": "degeneracy"
+  },
+  {
+   "from": "DI.pencil",
+   "to": "EXT.Beauville",
+   "kind": "uses",
+   "evidence": ""
+  },
+  {
+   "from": "DI.pencil",
+   "to": "EXT.BGN",
+   "kind": "crosscheck",
+   "evidence": ""
+  },
+  {
+   "from": "DI.pencil",
+   "to": "EXT.Shioda",
+   "kind": "uses",
+   "evidence": "MW rank 0 (zbMATH report only)"
+  },
+  {
+   "from": "DI.recip",
+   "to": "DI.pencil",
+   "kind": "uses",
+   "evidence": ""
+  },
+  {
+   "from": "DI.T3",
+   "to": "DI.pencil",
+   "kind": "uses",
+   "evidence": "positive-rank fibres"
+  },
+  {
+   "from": "DI.T3",
+   "to": "DI.P1",
+   "kind": "uses",
+   "evidence": ""
+  },
+  {
+   "from": "DI.isolation",
+   "to": "EXT.PARI",
+   "kind": "uses",
+   "evidence": "ellrank, elltors"
+  },
+  {
+   "from": "DI.isolation",
+   "to": "PC.thmB",
+   "kind": "reported",
+   "evidence": "P8 brief: 'the isolation theorem using Theorem B' (only the base pair itself is borrowed)"
+  },
+  {
+   "from": "DI.T4",
+   "to": "DI.countconv",
+   "kind": "uses",
+   "evidence": "(*)"
+  },
+  {
+   "from": "DI.T4",
+   "to": "DI.recip",
+   "kind": "uses",
+   "evidence": "dual family"
+  },
+  {
+   "from": "DI.T5",
+   "to": "DI.countconv",
+   "kind": "uses",
+   "evidence": ""
+  },
+  {
+   "from": "DI.countconv",
+   "to": "PC.conj:density",
+   "kind": "definition",
+   "evidence": "'the paper's convention'"
+  },
+  {
+   "from": "DI.counts",
+   "to": "DI.P1",
+   "kind": "uses",
+   "evidence": ""
+  }
+ ],
+ "cycles_all_edges": [
+  [
+   "LO.L3.2",
+   "LO.T1",
+   "LO.T3.1"
+  ]
+ ],
+ "cycles_logical": [
+  [
+   "LO.L3.2",
+   "LO.T1",
+   "LO.T3.1"
+  ]
+ ],
+ "cycles_statement_visible_logical": [],
+ "cycles_logical_with_proofC_as_crosscheck": []
+}
