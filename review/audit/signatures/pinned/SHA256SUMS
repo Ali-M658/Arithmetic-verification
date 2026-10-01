@@ -1,0 +1,3 @@
+077308c16b18766184d5478be2ef983a39feae3b069d5e43f25045528ba7c01a  theory/signatures/sig_common.py
+6800ffe1bc9e936d7ed5668c25e8e9784e743cc4b73a0795d629c447a3e068b2  theory/signatures/genus.py
+bb6e349485d0c012b7d2d627129acdf29bdea6bb02a8b9fe8d3a43ef5ad4a9be  theory/signatures/cone_count.py

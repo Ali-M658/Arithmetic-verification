@@ -20,7 +20,7 @@ get kokotov_0906.0717.pdf     https://arxiv.org/pdf/0906.0717
 get schueth_1812.06119.pdf    https://arxiv.org/pdf/1812.06119
 get lv_1408.2001.pdf          https://arxiv.org/pdf/1408.2001
 get dr_1103.4372.pdf          https://arxiv.org/pdf/1103.4372
-get holtz_tyaglov_1005.2843.pdf https://arxiv.org/pdf/1005.2843
+get holtz_tyaglov_0912.4703.pdf https://arxiv.org/pdf/0912.4703
 get ostrowski_1940.pdf        "https://projecteuclid.org/journals/acta-mathematica/volume-72/issue-none/Recherches-sur-la-m%c3%a9thode-de-graeffe-et-les-z%c3%a9ros-des/10.1007/BF02546330.pdf"
 get bgn_mcom1993.pdf          https://www.ams.org/journals/mcom/1993-61-203/S0025-5718-1993-1189516-5/S0025-5718-1993-1189516-5.pdf
 get schinzel_serdica1996.pdf  http://www.math.bas.bg/serdica/1996/1996-587-588.pdf

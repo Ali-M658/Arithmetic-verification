@@ -18,7 +18,7 @@ An unreachable source is an instrument gap, not evidence of absence.
 | `schueth_1812.06119.pdf` | Schueth, arXiv:1812.06119 | 200 | 21 |
 | `lv_1408.2001.pdf` | Linowitz–Voight, arXiv:1408.2001 | 200 | 48 |
 | `dr_1103.4372.pdf` | Doyle–Rossetti, arXiv:1103.4372 | 200 | 25 |
-| `holtz_tyaglov_1005.2843.pdf` | Holtz–Tyaglov, arXiv:1005.2843 | 200 | 8 |
+| `holtz_tyaglov_1005.2843.pdf` | WRONG ID: arXiv:1005.2843 is an unrelated hep-ph paper; corrected in `fetch_sources.sh` to Holtz–Tyaglov arXiv:0912.4703 (SIAM Rev. 54 (2012)), fetched by the stability reviewer | 200 | 8 |
 | `ostrowski_1940.pdf` | Ostrowski, Acta Math. 72 (1940), Project Euclid | 200 | 101 |
 | `bgn_mcom1993.pdf` | Bremner–Guy–Nowakowski, Math. Comp. 61 (1993), AMS | 200 | 14 |
 | `schinzel_serdica1996.pdf` | Schinzel, Serdica Math. J. 22 (1996) | 200 | 3 |

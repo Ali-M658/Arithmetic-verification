@@ -1,0 +1,13 @@
+positive integers 1..300, n=1: no two distinct multisets share I_1
+positive integers 1..300, n=2: no two distinct multisets share I_2
+positive integers 1..90, n=3: no two distinct multisets share I_3
+positive integers 1..40, n=4: no two distinct multisets share I_4
+signed integers in [-25,25]\0, n=2: 1 collision classes; every member has some m_i+m_j=0 (e.g. [(-25, 25), (-24, 24)])
+signed integers in [-12,12]\0, n=3: 24 collision classes; every member has some m_i+m_j=0 (e.g. [(-12, -12, 12), (-12, -11, 11)])
+signed integers in [-7,7]\0, n=4: 99 collision classes; every member has some m_i+m_j=0 (e.g. [(-7, -7, -7, 7), (-7, -7, -6, 6)])
+Gaussian integers |Re|,|Im|<=3, n=2: 1 collision classes, all members violate the hypothesis
+Gaussian integers |Re|,|Im|<=2, n=3: 24 collision classes, all members violate the hypothesis
+constructive recovery from I_n via Theorem B system: 105 multisets, n=1..7, all recovered exactly
+actual c_1,c_2,c_3 (Ucar (4.33),(4.35), K=-1) unchanged by appending order-1 points
+Remark 3: 3-cone vs 4-cone hyperbolic, orders <= 60: no pair shares c_1,c_2,c_3 (control: 9 4-cone multisets share c_1,c_2 with some 3-cone one)
+ALL CHECKS PASSED

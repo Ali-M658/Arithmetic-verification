@@ -1,0 +1,10 @@
+     c5 = 3/(128 pi^4) = 2.406e-04
+     X      N(X)     sum_D#{k>=4}   c5 X log^2 X   A_prim(X)  A_dual(X)  A_dual/(X log X)
+     600    3067     547            5.9            1753       423        0.1102
+     1200   10515    2285           14.5           5561       1136       0.1335
+     2400   33824    8830           35.0           16565      2974       0.1592
+     3600   65049    18616          58.1           30295      5190       0.1761
+     4800   102719   31177          83.0           46254      7626       0.1874
+PASS N(X) >= RHS of (*) (all primitive pairs) >= 3/(128pi^4) X log^2 X on the computed range
+     note: A_dual counts only hyperbolic primitive dual pairs (non-hyperbolic primitive D are absent from the enumeration); the ratio A_dual/(X log X) is the quantity that must stay bounded below.
+ALL THEOREM-5 CONTEXT CHECKS PASSED

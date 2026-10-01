@@ -1,0 +1,6 @@
+N=1: e_j in (s_1,...,s_j) and s_j in (e_1,...,e_j) certified for odd j<=7
+N=2: e_j in (s_1,...,s_j) and s_j in (e_1,...,e_j) certified for odd j<=7
+N=3: e_j in (s_1,...,s_j) and s_j in (e_1,...,e_j) certified for odd j<=7
+N=4: e_j in (s_1,...,s_j) and s_j in (e_1,...,e_j) certified for odd j<=7
+N=5: e_j in (s_1,...,s_j) and s_j in (e_1,...,e_j) certified for odd j<=7
+ALL CHECKS PASSED

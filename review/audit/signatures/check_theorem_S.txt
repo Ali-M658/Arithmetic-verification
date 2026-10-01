@@ -1,0 +1,16 @@
+Part 1: abstract Theorem S
+  L=1: no disjoint balanced pair with |U*|+|V*| <= 2 (entries <= 60)
+  L=2: no disjoint balanced pair with |U*|+|V*| <= 4 (entries <= 40)
+  L=3: no disjoint balanced pair with |U*|+|V*| <= 6 (entries <= 16)
+  L=4: no disjoint balanced pair with |U*|+|V*| <= 8 (entries <= 9)
+  L=1: sharp, |U*|+|V*| = 4 attained, e.g. (1,) vs (2, 3, 6)  (18 found)
+  L=2: sharp, |U*|+|V*| = 6 attained, e.g. (2, 8, 8) vs (3, 3, 12)  (2 found)
+Part 2: signatures
+  78806 hyperbolic signatures (g<=2, n<=5, orders<=18)
+  T1(1): n <= A/pi + 4, equality iff all orders 2: OK
+  173354 pairs of distinct signatures with equal area; histogram of shared L: {1: 169809, 2: 3539, 3: 6}
+  every pair: Lemma 4 (4.2),(4.3), mirror form, Thm S, Cor S1, Cor S2, T1(3) hold;
+  shared counts for L >= 2 re-computed with actual cone coefficients: agree
+  pairs attaining |U*|+|V*| = 2L+2 with L >= 2: 2088; e.g. [((0, (2, 8, 8)), (0, (3, 3, 12)), 2), ((0, (4, 8, 8)), (0, (5, 5, 10)), 2), ((0, (4, 10, 12)), (0, (5, 6, 15)), 2)]
+ALL CHECKS PASSED
+exit=0

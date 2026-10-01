@@ -1,0 +1,12 @@
+validation N=22: python total=53130 I3classes=2 I4pairs=0; C: {'N': 22, 'total': 53130, 'I3_collision_classes': 2, 'I4_collision_pairs': 0}
+I3-collision S=38: {4,4,6,12,12} {3,7,7,7,14}
+I3-collision S=57: {6,6,15,15,15} {5,8,12,16,16}
+I3-collision S=60: {2,4,5,21,28} {2,3,10,15,30}
+N=60 total=7028847 I3_collision_classes=134 I4_collision_pairs=0
+N=60: 7028847 multisets = C(63,5) = claimed 7028847; 134 classes share I_3; none share I_4
+I3-collision S=38: {4,4,6,12,12} {3,7,7,7,14}
+I3-collision S=57: {6,6,15,15,15} {5,8,12,16,16}
+I3-collision S=60: {2,4,5,21,28} {2,3,10,15,30}
+N=120 total=216071394 I3_collision_classes=2309 I4_collision_pairs=0
+N=120: 216071394 multisets = C(123,5) = claimed 216071394; 2309 classes share I_3; none share I_4
+ALL CHECKS PASSED

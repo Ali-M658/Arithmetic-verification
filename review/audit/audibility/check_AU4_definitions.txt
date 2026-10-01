@@ -1,0 +1,10 @@
+Phi(z) = (-1)^(n+1) (Q(z)-Q(-z)) holds identically for n=1..6
+n=3: (2, 8, 8) vs (3, 3, 12): R=3/4, S_1=P_1=18, P_3 = 1032 vs 1782, Phi = 500*z**3  [all as claimed]
+n=4: (3, 10, 15, 30) vs (4, 5, 21, 28): R=8/15, P_1=58, P_3=31402, P_5 = 25159618 vs 21298618, Phi = 1544400*z**3  [all as claimed]
+   n=3: kappa = (P_(2n-3)(m') - P_(2n-3)(m))/(2n-3) = 250
+   n=4: kappa = (P_(2n-3)(m') - P_(2n-3)(m))/(2n-3) = -772200
+n=5 multiset counts: C(63,5)=7,028,847 (orders 2..60), C(123,5)=216,071,394 (orders 2..120); exhaustive search itself in check_n5_search.py
+DF.1: chi(O(p,q,r)) = R-1 and c_1 = Area/4pi = -chi/2 = (1-R)/2 (Gauss-Bonnet with K=-1)
+DF.6: exact K_mult over all hyperbolic pillows with orders <= 60 (competitors unrestricted): distribution {1: 6137, 2: 29573, 3: 215}, examples {1: (2, 3, 7), 2: (2, 3, 12), 3: (2, 8, 8)}; no (R,S_1,P_3) collision; (2,8,8),(3,3,12) have K=3
+DF.7(c): both 4-multisets hyperbolic; S_1, R, P_3 equal, P_5 differ (see n=4 row)
+ALL CHECKS PASSED

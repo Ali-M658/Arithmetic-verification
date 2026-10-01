@@ -1,0 +1,11 @@
+N(a), as written:
+  L=2: q=7, min(p,q)=1 occurred: False; |U|=3, |V|=5, entries >= 2, Area/2pi < 4^(L-1)-1, shares exactly 2 (g'=0,1)  (0.2s)
+  L=3: q=~10^8, min(p,q)=1 occurred: False; |U|=15, |V|=17, entries >= 2, Area/2pi < 4^(L-1)-1, shares exactly 3 (g'=0,1)  (0.0s)
+  L=4: q=~10^45, min(p,q)=1 occurred: False; |U|=63, |V|=65, entries >= 2, Area/2pi < 4^(L-1)-1, shares exactly 4 (g'=0,1)  (0.1s)
+  L=5: q=~10^207, min(p,q)=1 occurred: False; |U|=255, |V|=257, entries >= 2, Area/2pi < 4^(L-1)-1, shares exactly 5 (g'=0,1)  (2.1s)
+  L=6: q=~10^864, min(p,q)=1 occurred: False; |U|=1023, |V|=1025, entries >= 2, Area/2pi < 4^(L-1)-1, shares exactly 6 (g'=0,1)  (89.0s)
+N(b), as written:
+  k=2: r0/rho = 175/256 (>= 1: False); 4 unit fractions, largest denominator 12 bits; n = 9 vs n+1 = 10; shares exactly 2
+  k=3: r0/rho = 28807278591075/43195817787392 (>= 1: False); 12 unit fractions, largest denominator 7471 bits; n = 103 vs n+1 = 104; shares exactly 3
+  k=4: r0/rho = 0.666667 (>= 1: False), numerator has 55 digits; greedy not run (doubly exponential denominators)
+ALL CHECKS PASSED
