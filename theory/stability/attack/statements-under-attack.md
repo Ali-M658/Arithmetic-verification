@@ -1,46 +1,4 @@
-# How precisely must one listen? Stability of the cone orders under errors in the heat coefficients
-
-Scope: closed hyperbolic orbifolds (K = −1) of genus 0 with n cone points of orders
-m_1, …, m_n. Manuscript results are referred to by their labels in `theory/audibility/proof.md`:
-
-- Theorem A: injectivity of I_n;
-- Theorem B: the linear system M e = b;
-- Theorem C: sharpness.
-
-All scripts are in this directory and exit nonzero on any failed assert.
-
-## 0. The answer in physical terms
-
-A heat-trace measurement returns the first few coefficients H₋₁, H₀, H₁, … of
-Z(t) = Σ e^{−λ_j t} ~ Σ_ν H_ν t^ν, each with some error. The cone orders sit inside these
-numbers in three layers. The question is how large an error each layer tolerates.
-
-1. **Front end (exact, linear, benign).** The coefficients are a fixed triangular linear
-   image of I_n = (R, P₁, P₃, …, P_{2n−3}). Undoing it multiplies absolute errors by at most
-   2, 14, 498, 4062, … (§2). The review's factors 12, 360, 2520 are only the diagonal of this
-   map. *Relative* errors are amplified by factors between 0.02 and 3.7 on every test
-   multiset.
-2. **The linear system (Theorem B; well conditioned).** The elementary symmetric functions
-   come out of a linear solve.
-   - Its determinant is (−1)^{n(n+1)/2} ∏_{i<j}(m_i+m_j)/e_n, now proved for every n (§3,
-     Lemma S2.1).
-   - Its inverse factors through a Hurwitz matrix whose determinant is ∏(m_i+m_j) (Lemma S2.2).
-   - Positive orders never make it singular. In scale-free units the inverse has norm 1 to
-     3.5 on every test multiset.
-3. **Roots (the only place stability degrades).**
-   - A simple order moves linearly with the error.
-   - A k-fold order splits like (error)^{1/k}, and this exponent cannot be improved for
-     general data (§4).
-   - A double order is the generic coincidence, and both test pillows have one. It already
-     costs a square root.
-4. **Integers (stability becomes exactness).** Below an explicit threshold δ*(m), rounding the
-   recovered roots returns the orders exactly (§5).
-   - For the pillows (2,8,8) and (3,3,12), H₁ must be known to about 2·10⁻³ in absolute
-     terms, i.e. about 7·10⁻⁴ relative. The certified threshold is within 6% (resp. 12%) of
-     an explicit failure.
-   - The computed spectra deliver H₁ to 2·10⁻⁵ (resp. 1.4·10⁻⁴). The blind experiment (§6)
-     recovers both multisets exactly and certifies the recovery. Neither of the first two
-     coefficients separates them, at any precision.
+# Statements and proofs under attack (T2-T4). Sections 1-2 are background definitions.
 
 ## 1. Setting and the recovery map
 
@@ -204,8 +162,7 @@ scale-free error
 
 - σ_k(n) := [w^k] artanh(w) · sec²((n+1) artanh w). For instance σ₁ = 1 and
   σ₃ = 1/3 + (n+1)²; n = 3: (1, 49/3); n = 4: (1, 76/3, 6628/15).
-- ζ_n := max(1, max_{0≤j≤n−2} Σ_{0≤i<j, 2≤2j−2i≤n} σ_{2i+1}(n)). For example ζ₃ = 1,
-  ζ₄ = 79/3, ζ₅ = 14048/15.
+- ζ_n := max(1, max_j Σ_{0≤i<j, 2≤2j−2i≤n} σ_{2i+1}(n)).
 - ρ_n(m̂) := max( ê_n, max_{0≤j≤n−2} Σ_{i=0}^{j} σ_{2i+1}(n) ê_{2j−2i} ).
 
 *Conclusions.*
@@ -214,7 +171,7 @@ scale-free error
 
   κ ≤ n Λ(m̂) ‖Ŝ‖_∞ / ∏_{i<j}(m̂_i + m̂_j) ≤ n · binom(2n,n)^{n/2} · 2^{n−1} / ∏_{i<j}(m̂_i + m̂_j),
 
-  where Λ(m̂) = ∏_c ‖c-th column of B(ê)‖₂ and ‖Ŝ‖_∞ ≤ max(Σ_{k even} ê_k, ê_n).
+  where Λ(m̂) = ∏_c ‖c-th column of B(ê)‖₂ and ‖Ŝ‖_∞ = max(Σ_{k even} ê_k, ê_n).
 
 (b) If β := κ ζ_n η ≤ 1/2, then M(Ĩ) is invertible, and ẽ = M(Ĩ)⁻¹ b(Ĩ) satisfies
 
@@ -311,8 +268,7 @@ multiplicity k_a, with
 
   r_a := μ · (2^{2−k_a} 3ⁿ κ ρ_n λ_μ δ / Q̂_a)^{1/k_a} ≤ μ · min(ĝ_a, 1)/2,
 
-the recovered polynomial q̃ has exactly k_a roots within r_a of a. Consequently, if the
-radius hypothesis holds for **every** distinct order a,
+the recovered polynomial q̃ has exactly k_a roots within r_a of a. Consequently
 
   d(roots of q̃, m) ≤ max_a C_a δ^{1/k_a},  C_a = μ (2^{2−k_a} 3ⁿ κ ρ_n λ_μ / Q̂_a)^{1/k_a}.
 
@@ -333,7 +289,7 @@ exactly s. No bound d ≤ C′δ^γ with γ > 1/2 can hold.
 
 - Exactly, for a = 8, c = 2 (the pillow (2,8,8)): ΔR = 2s²/(8(64−s²)), ΔP₁ = 0, ΔP₃ = 48s².
 - The ratio s/‖ΔH‖^{1/2} converges to 2.7385 for (2,8,8), 4.4630 for (3,3,12) and 2.0446 for
-  (3,3,4,4), splitting the pair of 3s (splitting the pair of 4s gives 1.3593) (`roots_holder_output.md`).
+  (3,3,4,4) (`roots_holder_output.md`).
 
 (ii) *k-fold order, general data.* Take q_s(z) = ((z − a)^k − s^k) g(z), with g real monic
 of degree n − k and g(a) ≠ 0.
@@ -418,109 +374,29 @@ Theorem S4, with the sharper bound on |q̃ − q| on the circle. ∎
 
 The optimiser is numerical. The reported minimiser is rebuilt exactly in rationals, and its
 data are evaluated exactly. Its recovery is q̃ itself (Theorem B, checked by an exact solve),
-and that q̃ has a root with real part exactly a ± 1/2. At that point rounding is a tie, so
-δ_up is an infimum: arbitrarily small further perturbations push the root across, and
-recovery fails at every level above δ_up. Hence the true threshold is at most δ_up.
-
-*Rounding of printed values.* δ_thm and δ_cert are printed rounded **down**, and δ_up
-rounded **up**, so that each printed number keeps its meaning. An adversarial search found
-that the exact test fails at the up-rounded values 2.342e−3 and 1.462e−3, which an earlier
-version printed.
+and that q̃ has a root with real part exactly a ± 1/2. Hence the true threshold is at most
+δ_up.
 
 **Results** (`threshold_output.md`, `threshold_results.json`). The absolute model is
 |δH_ν| ≤ δ for all ν. The relative precision listed is δ_cert/|H_ν| for ν = −1, …, n−2, and
 ε_cert is the largest uniform relative error |δH_ν| ≤ ε|H_ν| that is certified.
 
-| m | n | δ_thm | δ_cert | δ_up | δ_up/δ_cert | failure built at | δ_cert/|H_ν|, ν = −1..n−2 | ε_cert (uniform relative) |
-|---|---|---|---|---|---|---|---|---|
-| (2, 8, 8) | 3 | 3.80e-07 | 2.341e-03 | 2.485e-03 | 1.06 | 8−1/2 | 1.8e-02, 1.6e-03, 7.0e-04 | 1.9e-03 |
-| (3, 3, 12) | 3 | 1.18e-07 | 4.040e-03 | 4.589e-03 | 1.14 | 3+1/2 | 3.2e-02, 2.8e-03, 7.4e-04 | 4.4e-03 |
-| (3, 10, 15, 30) | 4 | 4.02e-11 | 3.660e-03 | 7.488e-03 | 2.05 | 10+1/2 | 4.9e-03, 8.0e-04, 4.1e-05, 3.6e-07 | 8.7e-04 |
-| (4, 5, 21, 28) | 4 | 3.14e-11 | 1.461e-03 | 2.018e-03 | 1.38 | 5−1/2 | 1.9e-03, 3.2e-04, 1.6e-05, 1.7e-07 | 4.6e-04 |
-| (2, 3, 7) | 3 | 4.49e-07 | 3.658e-03 | 6.587e-03 | 1.80 | 3−1/2 | 3.0e-01, 4.0e-03, 2.7e-03 | 5.0e-03 |
-| (4, 4, 4) | 3 | 9.35e-07 | 4.539e-04 | 5.036e-04 | 1.11 | 4+1/2 | 3.6e-03, 5.0e-04, 5.4e-04 | 8.2e-04 |
-| (7, 7, 7) | 3 | 9.97e-08 | 8.068e-05 | 8.273e-05 | 1.03 | 7−1/2 | 2.8e-04, 4.9e-05, 2.3e-05 | 1.2e-04 |
-| (3, 3, 4, 4) | 4 | 1.48e-09 | 9.597e-05 | 1.195e-04 | 1.24 | 4−1/2 | 2.3e-04, 1.0e-04, 1.1e-04, 7.2e-05 | 1.1e-04 |
-| (5, 5, 5, 5) | 4 | 4.74e-10 | 3.617e-05 | 3.826e-05 | 1.06 | 5−1/2 | 6.0e-05, 2.5e-05, 1.9e-05, 6.2e-06 | 3.1e-05 |
-| (2, 2, 2, 3) | 4 | 2.03e-09 | 1.858e-04 | 2.520e-04 | 1.36 | 3−1/2 | 2.2e-03, 3.2e-04, 5.6e-04, 7.7e-04 | 4.3e-04 |
-| (2, 2, 2, 2, 3) | 5 | 2.72e-12 | 7.908e-06 | 5.743e-05 | 7.26 | 2+1/2 | 2.3e-05, 1.2e-05, 2.1e-05, 2.9e-05, 1.9e-05 | 1.4e-05 |
+| m | delta_thm | delta_cert | delta_up | delta_cert/|H_nu| (nu=-1..n-2) |
+|---|---|---|---|---|
+| (2,8,8) | 3.803e-07 | 2.342e-03 | 2.485e-03 | 1.87e-02, 1.68e-03, 7.02e-04 |
+| (3,3,12) | 1.189e-07 | 4.040e-03 | 4.588e-03 | 3.23e-02, 2.89e-03, 7.46e-04 |
+| (3,10,15,30) | 4.021e-11 | 3.660e-03 | 7.487e-03 | 4.99e-03, 8.05e-04, 4.12e-05, 3.65e-07 |
+| (4,5,21,28) | 3.147e-11 | 1.462e-03 | 2.018e-03 | 1.99e-03, 3.22e-04, 1.65e-05, 1.72e-07 |
 
 *Reading the table.*
 
 - The exponent shows up as the jump between the closed form δ_thm and the true threshold.
   The closed form uses the worst-case Lemma S3 constant, which carries (1/(2μ))^{k} and the
   factor 3ⁿ.
-- The certified δ_cert is within a factor 1.03–2.05 of the constructed failure δ_up for every
-  n ≤ 4 case, and 7.3 for the n = 5 case (2,2,2,2,3). So the reported thresholds are close to
-  the truth, not just safe.
+- The certified δ_cert is within a factor ≤ 2 of the constructed failure δ_up wherever the
+  coherent test applies. So the reported thresholds are close to the truth, not just safe.
 - For the two pillows the binding coefficient is H₁, the first that carries P₃. Its required
   *relative* precision is about 7·10⁻⁴ for (2,8,8) and 7·10⁻⁴ for (3,3,12).
 - H₋₁ (the area) and H₀ need only percent-level and 10⁻³-level relative accuracy. They fix
   R and P₁, which the two pillows share anyway.
 
-## 6. Blind end-to-end experiment (T5)
-
-`blind/PROTOCOL.md` was committed (3c1139a) before the pipeline code (a4a87d7) and before the
-result (1fa4ff4). Only the eigenvalue CSVs and universal constants were used. Full output is in
-`blind/RESULT.md`.
-
-| specimen | H₋₁ | H₀ | H₁ | recovered | certified | (est − true)/U |
-|---|---|---|---|---|---|---|
-| A (true (2,8,8)) | 0.1250000000 ± 1.1·10⁻¹¹ | 1.3958333303 ± 2.4·10⁻⁸ | −3.3354134980 ± 2.1·10⁻⁵ | (2,8,8) | yes | +0.11, −0.13, +0.15 |
-| B (true (3,3,12)) | 0.1250000000 ± 4.9·10⁻¹¹ | 1.3958332915 ± 1.3·10⁻⁷ | −5.4186953214 ± 1.4·10⁻⁴ | (3,3,12) | yes | +0.29, −0.33, +0.39 |
-
-**Three coefficients recover both multisets exactly.**
-
-- The recovered polynomial's double root shows the √δ law directly:
-  - A gives 8 ± 0.0050i;
-  - B gives 2.9915 and 3.0085, for an H₁ error of order 10⁻⁴.
-- The a-posteriori certificate (Proposition S5 at the candidate, with radius
-  |H̃ − H(m̂)| + U) succeeds for both specimens.
-- The margin to the certified threshold is about 100× for A and 20× for B.
-- The same holds with the conservative eigenvalue errors.
-
-**Two coefficients cannot separate them.**
-
-- Structurally, H₋₁ = (1 − R)/2 and H₀ = (P₁ + R − 2)/12 for n = 3. Both are functions of
-  (R, P₁) = (3/4, 18), which the two pillows share.
-- Empirically, the estimates of H₋₁ and H₀ for A and B agree to 0.2σ and 0.3σ. The estimates
-  of H₁ differ by 2.0833 ± 1.6·10⁻⁴, against the exact 25/12.
-- The exhaustive enumeration of hyperbolic integer triples consistent with the first two
-  estimates, at 1U and 3U, returns exactly {(2,8,8), (3,3,12)} for both specimens. Adding H₁
-  leaves exactly one triple.
-
-**Error bars.** Every estimate is within 0.62 U of the truth under both error models.
-
-## 7. What is proved, what is checked, what is open
-
-**Proved for all n:**
-
-- Proposition S1;
-- Lemma S2.1, which gives c_n = (−1)^{n(n+1)/2} in Theorem B for every n;
-- Lemma S2.2;
-- Theorem S2;
-- Lemma S3;
-- Theorem S3;
-- Proposition S3.2;
-- Theorem S4;
-- Proposition S5.
-
-**Computed exactly:**
-
-- the front-end tables for n ≤ 8;
-- the T4 thresholds at 11 multisets (δ_thm, δ_cert rigorous; δ_up an exact counterexample).
-
-**Assumptions:**
-
-- The analytic input of Theorem A (the cone polynomials) is used as in
-  `theory/audibility/proof.md` §1.
-- The error model is on heat coefficients, not eigenvalues. Converting eigenvalue errors into
-  coefficient errors is done empirically in §6. It is not proved: the fit's model-error term
-  is empirical, and the eigenvalue error estimates are a-posteriori agreements, not
-  enclosures (`numerics/REPORT.md` §7).
-
-**Not claimed:**
-
-- a general realisable-data exponent at mixed clusters (Remark S3.3);
-- sharpness of the constants in Theorem S2 or S4. Only the exponents are sharp. δ_cert is
-  within a factor 2.05 of the truth for the n ≤ 4 cases, and 7.3 for n = 5.

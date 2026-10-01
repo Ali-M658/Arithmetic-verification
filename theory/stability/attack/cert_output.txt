@@ -1,0 +1,4 @@
+(2, 8, 8) componentwise (i): 2.6836e-04   coherent (ii): 2.3417e-03
+(3, 3, 12) componentwise (i): 9.4849e-04   coherent (ii): 4.0402e-03
+(3, 10, 15, 30) componentwise (i): 7.4336e-05   coherent (ii): 3.6601e-03
+(4, 5, 21, 28) componentwise (i): 4.5821e-05   coherent (ii): 1.4618e-03

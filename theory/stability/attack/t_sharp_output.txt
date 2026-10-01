@@ -1,0 +1,14 @@
+(i) double order: s/||dH||^{1/2}
+   (2, 8, 8) split 8 ['2.73850', '2.73850', '2.73850']
+   (3, 3, 12) split 3 ['4.46296', '4.46296', '4.46296']
+   (3, 3, 4, 4) split 3 ['2.04459', '2.04460', '2.04460']
+   (3, 3, 4, 4) split 4 ['1.35927', '1.35927', '1.35927']
+  (2,8,8): dR= (32.0 - 0.75*s**2)/(1.0*s**2 - 64.0)  dP1= 0  dP3= 48*s**2
+  claimed dR = 2s^2/(8(64-s^2)) equal? False
+(ii) k-fold: q_s=((z-a)^k - s^k) g ; ratio s/||dH||^{1/k}, and recovered roots distance
+   (4, 4, 4) k=3 ['4.93886', '4.93886', '4.93886'] recovery returns q_s exactly: yes
+   (7, 7, 7) k=3 ['4.93311', '4.93311', '4.93311'] recovery returns q_s exactly: yes
+   (2, 2, 2, 3) k=3 ['2.20128', '2.20128', '2.20128'] recovery returns q_s exactly: yes
+   (5, 5, 5, 5) k=4 ['2.24054', '2.24054', '2.24054'] recovery returns q_s exactly: yes
+Remark S3.3: random + adversarial real perturbations near (a,a,a)
+  max over trials of max|d_i| / sqrt(|dP3-3a^2 dP1|/(2a)) = 0.9997500937101578 (must be <=1)

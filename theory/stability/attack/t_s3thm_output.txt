@@ -1,0 +1,13 @@
+[2, 8, 8] lambda=16 kappa=1 zeta=49/3 rho=17.833  terms= ['0.0625', '0.001913', '3.803e-07']  delta_thm=3.803e-07
+[3, 3, 12] lambda=24 kappa=1 zeta=49/3 rho=16.896  terms= ['0.04167', '0.001276', '1.189e-07']  delta_thm=1.189e-07
+[3, 10, 15, 30] lambda=60 kappa=2.343 zeta=2336/5 rho=471.86  terms= ['0.01667', '7.613e-06', '4.021e-11']  delta_thm=4.021e-11
+[4, 5, 21, 28] lambda=56 kappa=2.2036 zeta=2336/5 rho=475.78  terms= ['0.01786', '8.673e-06', '3.147e-11']  delta_thm=3.147e-11
+[2, 8, 8] delta_max(S3 hyp)=1.369e-05  worst kth-root-distance/r_a = 0.0117  (count always = k_a)
+[3, 3, 12] delta_max(S3 hyp)=9.633e-06  worst kth-root-distance/r_a = 0.0048  (count always = k_a)
+[2, 2, 2] delta_max(S3 hyp)=7.694e-06  worst kth-root-distance/r_a = 0.0810  (count always = k_a)
+[3, 10, 15, 30] delta_max(S3 hyp)=2.011e-10  worst kth-root-distance/r_a = 0.0000  (count always = k_a)
+[4, 5, 21, 28] delta_max(S3 hyp)=3.147e-11  worst kth-root-distance/r_a = 0.0000  (count always = k_a)
+[2, 2, 50, 50] delta_max(S3 hyp)=2.783e-08  worst kth-root-distance/r_a = 0.0000  (count always = k_a)
+[3, 3, 3, 9, 9, 10] delta_max(S3 hyp)=1.551e-16  worst kth-root-distance/r_a = 0.0001  (count always = k_a)
+[2, 3, 1000] delta_max(S3 hyp)=2.825e-13  worst kth-root-distance/r_a = 0.0000  (count always = k_a)
+[5, 5, 5, 5] delta_max(S3 hyp)=2.965e-07  worst kth-root-distance/r_a = 0.0589  (count always = k_a)

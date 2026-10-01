@@ -12,6 +12,18 @@
 - From the computed spectra alone, both (2,8,8) and (3,3,12) are recovered exactly from three
   coefficients, with certificates. Two coefficients cannot separate them.
 
+## Adversarial review (attack-log.md)
+
+- **Setup.** The review was independent: it saw only the statements and proofs, and
+  reimplemented everything, rederiving the cone polynomials from the Selberg trace formula.
+- **Severe findings:** none fatal, none serious.
+- **Soundness.** No perturbation inside any certified box breaks the recovery. The worst
+  rounded deviation is 0.485 against a failure at 0.5.
+- **Tightness.** The empirical failure thresholds match δ_up.
+- **Minor issues:** seven, all fixed. The most consequential was rounding: printed certified
+  thresholds must be rounded down, and two printed values were rounded up past the exact
+  certified maximum.
+
 ## The planned structure, checked layer by layer
 
 | layer | plan | outcome |
@@ -28,17 +40,17 @@ never 0". Since ∏ m_i = e_n this is right, and c_n is now known: c_n = (−1)^
 
 | m | δ_cert | δ_up | binding relative precision (last coefficient) |
 |---|---|---|---|
-| (2, 8, 8) | 2.34e-03 | 2.48e-03 | 7.0e-04 |
-| (3, 3, 12) | 4.04e-03 | 4.59e-03 | 7.5e-04 |
-| (3, 10, 15, 30) | 3.66e-03 | 7.49e-03 | 3.6e-07 |
-| (4, 5, 21, 28) | 1.46e-03 | 2.02e-03 | 1.7e-07 |
-| (2, 3, 7) | 3.66e-03 | 6.59e-03 | 2.7e-03 |
-| (4, 4, 4) | 4.54e-04 | 5.04e-04 | 5.4e-04 |
-| (7, 7, 7) | 8.07e-05 | 8.27e-05 | 2.4e-05 |
-| (3, 3, 4, 4) | 9.60e-05 | 1.19e-04 | 7.3e-05 |
-| (5, 5, 5, 5) | 3.62e-05 | 3.83e-05 | 6.3e-06 |
-| (2, 2, 2, 3) | 1.86e-04 | 2.52e-04 | 7.7e-04 |
-| (2, 2, 2, 2, 3) | 7.91e-06 | 5.74e-05 | 2.0e-05 |
+| (2, 8, 8) | 2.341e-03 | 2.485e-03 | 7.0e-04 |
+| (3, 3, 12) | 4.040e-03 | 4.589e-03 | 7.4e-04 |
+| (3, 10, 15, 30) | 3.660e-03 | 7.488e-03 | 3.6e-07 |
+| (4, 5, 21, 28) | 1.461e-03 | 2.018e-03 | 1.7e-07 |
+| (2, 3, 7) | 3.658e-03 | 6.587e-03 | 2.7e-03 |
+| (4, 4, 4) | 4.539e-04 | 5.036e-04 | 5.4e-04 |
+| (7, 7, 7) | 8.068e-05 | 8.273e-05 | 2.3e-05 |
+| (3, 3, 4, 4) | 9.597e-05 | 1.195e-04 | 7.2e-05 |
+| (5, 5, 5, 5) | 3.617e-05 | 3.826e-05 | 6.2e-06 |
+| (2, 2, 2, 3) | 1.858e-04 | 2.520e-04 | 7.7e-04 |
+| (2, 2, 2, 2, 3) | 7.908e-06 | 5.743e-05 | 1.9e-05 |
 
 The closed form δ_thm is 10³–10⁶ times smaller (worst-case constants). Full table in proof.md §5.
 
