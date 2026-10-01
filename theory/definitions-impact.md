@@ -4,7 +4,7 @@ Checked against `paper/main.tex` (MD5 `adfa0001c73e3721f3ccdcc6dcda7e12`, 723 li
 
 **Result: 8 sentences must change; 14 more read correctly but rest on the new definitions and should be re-read when those 8 are edited. 22 sentences in all.** Two bibliography entries must be added (`troyanov1991`, `thurston1998`, both already in `refs/sources.bib`).
 
-The restated Remark 5.6 and Theorem C do read correctly in context: Theorem C's own title (line 113) already says "determinacy of the cone-order multiset", and the body of the remark (line 494) is a three-sentence unit whose only wrong step is "so the upper bound $K\le n$ extends the $n=3$ case of Theorem C". Nothing else in Section 5 depends on the remark. The remark's label compiles as **Remark 5.1** (not 5.6): `\newtheorem{remark}[definition]` shares the `definition` counter, and Section 5 contains no definition before it. The labels `rem:ncone` and `tab:density` / `tab:enum` (Tables 1 and 2 in the compiled order) are the stable names.
+The restated Remark (named 5.6 in the review documents; it compiles as 5.1) and Theorem C do read correctly in context: Theorem C's own title (line 113) already says "determinacy of the cone-order multiset", and the body of the remark (line 494) is a three-sentence unit whose only wrong step is "so the upper bound $K\le n$ extends the $n=3$ case of Theorem C". Nothing else in Section 5 depends on the remark. The remark's label compiles as **Remark 5.1** (not 5.6): `\newtheorem{remark}[definition]` shares the `definition` counter, and Section 5 contains no definition before it. The labels `rem:ncone` and `tab:density` / `tab:enum` (Tables 1 and 2 in the compiled order) are the stable names.
 
 Recommended minimal-edit route: keep the symbol $K(F)$ everywhere and define it once, at line 103, as $K(F):=K_{\mathrm{iso}}(F;\mathcal P_3)=K_{\mathrm{mult}}(F;\mathcal P_3)$ with a pointer to the rigidity proposition. Then every sentence marked CHECK below stays as written.
 
@@ -34,7 +34,7 @@ Recommended minimal-edit route: keep the symbol $K(F)$ everywhere and define it 
 | 15 | 121 | "…the third completes the singular stratum" | Same. |
 | 16 | 153 | "…and the full singular stratum recovered by three" | Same. |
 | 17 | 160 | "(iv) The two-coefficient theory has $K(F)\le3$ unconditionally (Theorem C)…" | Correct on $\mathcal P_3$. |
-| 18 | 357 | "…so $K(F)=3$ for both (Proposition 2.7)." | Correct. |
+| 18 | 357 | "…so $K(F)=3$ for both (Proposition 2.5, label `prop:recovery`; the review documents call it 2.7)." | Correct. |
 | 19 | 373 | "For the pair … we have $K(F)=3$: they are not separated by two coefficients, yet are separated by three." | Correct. |
 | 20 | 373 | "We do not assert that these are the *only* pillows with $K(F)=3$…" | Correct; "$K(F)=3$ iff in a collision" is in the restated theorem. |
 | 21 | 481 | "…exhibits a further pillow with $K(F)=3$: since Theorem C gives $K(F)\le3$ unconditionally, the set enumerated here is exactly the set of hyperbolic triangular pillows for which two heat coefficients do not suffice" | Correct; it uses $K=3\iff$ collision, which holds on $\mathcal P_3$ only. |
