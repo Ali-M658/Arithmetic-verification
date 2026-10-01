@@ -169,3 +169,7 @@ cannot be committed without being described. Figures whose data is missing or in
   the suite compares reproduction by assertion, not by transcript.
 * The paper's `rem:ncone`, definition of `K` and Theorem C still say what `DEFECTS.md` FAT-01 says they say; that is the
   rewrite session's work.
+
+### Clean-clone check
+
+A fresh clone of `origin/s9b-consolidate` at `5458773` (the commit before this record) was run with `code/run_all.sh --quick` (interpreter: the pinned-requirements venv; no NGSolve, no PARI). Exit code **0**: 34 passed, 0 failed, 8 skipped, total 11:58 (1-minute load average 9 to 12 at the end; earlier in the run higher, so times are under load). The stage table is identical in status to the table above; times: longest stages: 1:18 code 2 displayed identities; 1:15 code 5 three-way cross-check; 1:16 signatures genus; 1:23 diophantine exponent_fits; 2:52 diophantine families. The clone was deleted after the run.
