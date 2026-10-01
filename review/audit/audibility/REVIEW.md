@@ -90,7 +90,7 @@ f | f'. Both have degree n (m'_j ≠ 0) and constant term 1, so f' = f, i.e. m' 
 Hypotheses used: m_i ≠ 0 (degree, R), m_i + m_j ≠ 0 (coprimality), m'_j ≠ 0 (R' defined, deg f' = n).
 Nothing about m' beyond that. n = 1 (I_1 = (R)) and n = 2 are covered by the same argument.
 "Equivalently e_nΔ_{n−1} ≠ 0": Holtz–Tyaglov Thm 1.17 with zeros z_i = −m_i and a_0 = 1 gives
-Δ_{n−1}(p) = (−1)^{n(n−1)/2}∏(−m_i−m_j) = ∏_{i<j}(m_i+m_j) (also verified symbolically n ≤ 5/6, exactly at
+Δ_{n−1}(p) = (−1)^{n(n−1)/2}∏(−m_i−m_j) = ∏_{i<j}(m_i+m_j) (also verified symbolically n ≤ 5, exactly at
 points n ≤ 10). The heat-invariant corollary uses AU.0's triangularity, valid for a fixed n.
 
 **Counterexample search (`check_theoremA.txt`).** No two distinct multisets share I_n among positive integers

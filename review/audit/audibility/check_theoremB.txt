@@ -9,3 +9,35 @@ n=2: Delta_1(p) = prod_(i<j)(m_i+m_j) exactly (sign +1)
 n=3: Delta_2(p) = prod_(i<j)(m_i+m_j) exactly (sign +1)
 n=4: Delta_3(p) = prod_(i<j)(m_i+m_j) exactly (sign +1)
 n=5: Delta_4(p) = prod_(i<j)(m_i+m_j) exactly (sign +1)
+== exact points: T from tanh of odd power sums; det M vs c_n prod(m_i+m_j)/prod m_i ==
+n= 2: c_n = [Fraction(-1, 1)]   (-1)^(n(n+1)/2) = -1
+n= 3: c_n = [Fraction(1, 1)]   (-1)^(n(n+1)/2) = 1
+n= 4: c_n = [Fraction(1, 1)]   (-1)^(n(n+1)/2) = 1
+n= 5: c_n = [Fraction(-1, 1)]   (-1)^(n(n+1)/2) = -1
+n= 6: c_n = [Fraction(-1, 1)]   (-1)^(n(n+1)/2) = -1
+n= 7: c_n = [Fraction(1, 1)]   (-1)^(n(n+1)/2) = 1
+n= 8: c_n = [Fraction(1, 1)]   (-1)^(n(n+1)/2) = 1
+n= 9: c_n = [Fraction(-1, 1)]   (-1)^(n(n+1)/2) = -1
+n=10: c_n = [Fraction(-1, 1)]   (-1)^(n(n+1)/2) = -1
+claimed list c_3..c_8 = +1,+1,-1,-1,+1,+1 confirmed; c_2 = -1, c_9 = -1, c_10 = -1
+n=1 (not claimed): M = [-R], det = -1/m = (-1)^1 * Delta_0/e_1, so the formula persists
+== complex and degenerate points ==
+n=2: Gaussian-rational point [5 - 2*I, 1 - 7*I]: formula holds
+n=3: Gaussian-rational point [5 + 9*I, 9 + 4*I, 8 - 8*I]: formula holds
+n=4: Gaussian-rational point [1 - 6*I, 8 - 3*I, 8 - 7*I, 6]: formula holds
+n=5: Gaussian-rational point [9 - 5*I, 8 + 5*I, 7 - 4*I, 5 + 2*I, 7 + 5*I]: formula holds
+n=2: m=['3', '-3']: det M = 0, explicit kernel vector z^2 g(z) verified
+n=3: m=['3', '-3', '4']: det M = 0, explicit kernel vector z^2 g(z) verified
+n=4: m=['3', '-3', '2', '6']: det M = 0, explicit kernel vector z^2 g(z) verified
+n=5: m=['3', '-3', '5', '6', '2']: det M = 0, explicit kernel vector z^2 g(z) verified
+== Remark 2: Jacobian of (R, P_1, P_3, ..., P_{2n-3}) ==
+n=1: Jacobian = -1 * V(m) prod(m_i+m_j)/prod m_i^2 (symbolic)
+n=2: Jacobian = -1 * V(m) prod(m_i+m_j)/prod m_i^2 (symbolic)
+n=3: Jacobian = -3 * V(m) prod(m_i+m_j)/prod m_i^2 (symbolic)
+n=4: Jacobian = -15 * V(m) prod(m_i+m_j)/prod m_i^2 (symbolic)
+n=5: Jacobian = -105 * V(m) prod(m_i+m_j)/prod m_i^2 (symbolic)
+n=6: Jacobian = -945 * V(m) prod(m_i+m_j)/prod m_i^2 (symbolic)
+n=8: Jacobian formula holds at 5 exact rational points
+n=9: Jacobian formula holds at 5 exact rational points
+n=10: Jacobian formula holds at 5 exact rational points
+ALL CHECKS PASSED

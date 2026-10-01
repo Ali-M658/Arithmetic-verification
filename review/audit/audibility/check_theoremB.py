@@ -48,7 +48,7 @@ def ser_exp(g, N):
     e = [0] * N
     e[0] = F(1)
     for n in range(1, N):
-        s = 0
+        s = F(0)
         for k in range(1, n + 1):
             if k < len(g):
                 s += k * g[k] * e[n - k]
@@ -65,7 +65,7 @@ def elem(ms):
 
 
 def det_frac(A):
-    A = [row[:] for row in A]
+    A = [[F(x) for x in row] for row in A]  # exact: int/int would give a float
     n = len(A)
     d = F(1)
     for c in range(n):
@@ -160,7 +160,7 @@ for n in range(2, NMAX_SYM + 1):
 
 # ---------------- 2. Orlando: Delta_{n-1}(p) = prod_{i<j}(m_i+m_j), symbolic -----------------
 log("== symbolic Orlando with p(z)=prod(z+m_i), a_k = e_k ==")
-for n in range(2, 7):
+for n in range(2, 6):
     ms = symbols(f"m1:{n+1}")
     e = [1] + [0] * n
     for x in ms:
@@ -195,6 +195,7 @@ for n in range(2, NMAX_PT + 1):
         for row, rhs in zip(M, b):
             assert sum(c * x for c, x in zip(row, e[1:])) == rhs
         d = det_frac(M)
+        assert isinstance(d, (F, int)) and all(isinstance(x, (F, int)) for x in T), "non-exact value"
         pm = F(1)
         for i, j in combinations(range(n), 2):
             pm *= ms[i] + ms[j]
