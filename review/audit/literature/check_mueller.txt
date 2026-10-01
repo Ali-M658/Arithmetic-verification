@@ -1,0 +1,31 @@
+== 1. direct encoding
+  n=2: r=4, rank B=2, w=Bv in ker A (w!=0): Cor 2.8(ii) fails
+  n=2: Thm 1.5 (bnd) minor products take both signs -> hypothesis fails
+  n=3: r=9, rank B=3, w=Bv in ker A (w!=0): Cor 2.8(ii) fails
+  n=3: Thm 1.5 (bnd) minor products take both signs -> hypothesis fails
+  n=4: r=16, rank B=4, w=Bv in ker A (w!=0): Cor 2.8(ii) fails
+  n=4: Thm 1.5 (bnd) minor products take both signs -> hypothesis fails
+  n=5: r=25, rank B=5, w=Bv in ker A (w!=0): Cor 2.8(ii) fails
+  n=6: r=36, rank B=6, w=Bv in ker A (w!=0): Cor 2.8(ii) fails
+== 2. elementary-symmetric encoding
+  n=3: r=5 monomials, A mixed-sign; Phi(e(1))=Phi(e(2))=Phi(e(1/3)) with e(1)=(2, 1, 2), e(2)=(2, 4, 8); (jac) fails at kappa=1
+  n=4: r=11 monomials, A mixed-sign; Phi(e(1))=Phi(e(2))=Phi(e(1/3)) with e(1)=(5, 7, 5, 6), e(2)=(5, 10, 20, 24); (jac) fails at kappa=1
+  n=5: r=25 monomials, A mixed-sign; Phi(e(1))=Phi(e(2))=Phi(e(1/3)) with e(1)=(9, 27, 33, 26, 24), e(2)=(9, 30, 60, 104, 96); (jac) fails at kappa=1
+  n=6: r=52 monomials, A mixed-sign; Phi(e(1))=Phi(e(2))=Phi(e(1/3)) with e(1)=(14, 72, 168, 191, 154, 120), e(2)=(14, 75, 210, 404, 616, 480); (jac) fails at kappa=1
+== 3. S cannot encode 'modulo permutation'
+  every sampled nonzero difference d is realised by a non-permutation pair: S must be R^n
+== 4. Steinig/Laurens route for exponents -1,1,3,...,2n-3
+  n=2: all square minors of the kernel a_k s^(a_k-1) nonzero, constant sign (sampled)
+  n=3: all square minors of the kernel a_k s^(a_k-1) nonzero, constant sign (sampled)
+  n=4: all square minors of the kernel a_k s^(a_k-1) nonzero, constant sign (sampled)
+  n=5: all square minors of the kernel a_k s^(a_k-1) nonzero, constant sign (sampled)
+  n=6: all square minors of the kernel a_k s^(a_k-1) nonzero, constant sign (sampled)
+  n=1: max sign runs over all pairs of 1-multisets from 1..6 = 1 <= n
+  n=2: max sign runs over all pairs of 2-multisets from 1..6 = 2 <= n
+  n=3: max sign runs over all pairs of 3-multisets from 1..6 = 3 <= n
+  n=4: max sign runs over all pairs of 4-multisets from 1..6 = 4 <= n
+  n=5: max sign runs over all pairs of 5-multisets from 1..6 = 5 <= n
+== 5. exhaustive injectivity on small integer multisets
+  n=3, entries 1..40: 11480 multisets, I_n injective
+  n=4, entries 1..22: 12650 multisets, I_n injective
+ALL CHECKS PASSED
