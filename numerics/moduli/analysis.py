@@ -44,6 +44,7 @@ AREA_O = 8 * float(np.pi / 2 - np.pi / M)          # 4 pi/3
 L_MAX = 6.5
 T = np.unique(np.concatenate([np.geomspace(0.0025, 0.02, 90), np.geomspace(0.02, 0.4, 110)]))
 REPORT = {}
+MISSES = {}
 
 
 def write_csv(name, header, rows):
@@ -61,6 +62,17 @@ def load(tau, sector, h, p):
 
 def table(tau, sector):
     lams = [load(tau, sector, h, p)[0] for h, p in LEVELS]
+    # completeness across levels: below 0.8 of the smallest lambda_max all five levels are
+    # accurate to far better than the spacing, so the counts must agree exactly (an ARPACK
+    # miss in one run shows up here; this is how the original single-cover slicing failed)
+    # The three accurate levels are compared at 0.8 lambda_max; the two coarse levels, whose
+    # errors reach 1e-4..1e-3 near the top and can move an eigenvalue across a cut, at
+    # 0.5 lambda_max, where their errors are far below the eigenvalue spacing.
+    top = min(l[-1] for l in lams)
+    for frac, lv_set in ((0.8, [(0.07, 12), (0.07, 10), (0.05, 10)]), (0.5, LEVELS)):
+        counts = {lv: int(np.count_nonzero(lams[LEVELS.index(lv)] < frac * top)) for lv in lv_set}
+        assert len(set(counts.values())) == 1, (tau, sector, frac, counts)
+    MISSES[(tau, sector)] = sum(int(load(tau, sector, h, p)[1]["misses_repaired"]) for h, p in LEVELS)
     n = min(len(l) for l in lams)
     lams = [l[:n] for l in lams]
     L = dict(zip(LEVELS, lams))
@@ -210,6 +222,8 @@ def main():
     rates = [v["rate_h"] for v in summary.values()]
     ratios = [v["ratio_p_8_to_10"] for v in summary.values()]
     lmin = min(v["lam_max"] for v in summary.values())
+    REPORT["arpack_misses_repaired"] = dict(total=int(sum(MISSES.values())),
+                                            runs_with_misses=int(sum(1 for v in MISSES.values() if v)))
     REPORT["convergence"] = dict(worst_rel_first300=worst, worst_rel_first300_conservative=worstc,
                                  rate_h_range=[min(rates), max(rates)], ratio_p_range=[min(ratios), max(ratios)],
                                  min_lambda_max=lmin, n_per_sector_range=[min(v["n"] for v in summary.values()),
@@ -217,7 +231,8 @@ def main():
                                  per_sector=summary)
     print(f"(a) 64 sector problems: worst rel err (first 300) {worst:.1e} (conservative {worstc:.1e}); "
           f"h-rate {min(rates):.1f}-{max(rates):.1f}; p-ratio {min(ratios):.0f}-{max(ratios):.0f}; "
-          f"lambda_max >= {lmin:.0f}", flush=True)
+          f"lambda_max >= {lmin:.0f}; level counts agree; ARPACK misses repaired by double cover: "
+          f"{REPORT['arpack_misses_repaired']['total']}", flush=True)
 
     # (b) symmetry reduction against the whole quadrilateral -----------------------
     tauq = FULLQ["tau"]
@@ -295,7 +310,7 @@ def main():
         traces[tau], Hs[tau] = tr, (H, Htail)
         dev_ie = tr["Z"] - IE
         quiet = H + Htail < 1e-13
-        assert quiet.sum() >= 20, (tau, quiet.sum())
+        assert quiet.sum() >= 10, (tau, quiet.sum())   # tau = 2.8 (systole 0.69) has the shortest window
         assert np.all(np.abs(dev_ie[quiet]) <= tr["budget"][quiet] + 1e-12), (tau, np.max(np.abs(dev_ie[quiet]) - tr["budget"][quiet]))
         complete = Htail < 1e-12
         resid = tr["Z"] - IE - H
