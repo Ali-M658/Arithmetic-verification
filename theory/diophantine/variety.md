@@ -156,6 +156,23 @@ the cone, so it reduces to the planar case. ∎
 So the scaling law is the only linear phenomenon, and anything new is at
 least quadratic.
 
+**Degree-2 families, searched.** A family that is linear in the parameter
+before the sums are equalised is a pair of lines $(G_1,G_2)$ in
+$\mathbf P^2$ with a Möbius $\varphi$ satisfying
+$\lambda\circ G_1=\lambda\circ G_2\circ\varphi$. `families.py` §5 searches
+all 189 lines (up to permutation) with coefficients of absolute value
+$\le7$ that meet the positive triangle, and tests every candidate exactly.
+
+It finds exactly the 18 conics of the dual conic bundle: lines
+$qy=rz$ through a vertex, paired with themselves by the Vieta involution.
+The 189 lines have 189 pairwise distinct branch-value discriminants.
+Since equivalent maps share their branch values, no two different lines
+pair up. The only non-trivial self-equivalences are the Vieta involutions
+on the 18 lines through a vertex. Separately, none of the 669 non-dual primitive
+pairs with $S\le400$ is related by $Q=\pm mP+T$ or $P=\pm mQ+T$ with
+$m\in\{2,3\}$ and $T$ torsion (`families.py` §6), so the non-dual pairs
+are not low-degree multiplication images either.
+
 ## 6. Does Schinzel's method adapt? **Yes, verbatim, and further.**
 
 Schinzel (Serdica Math. J. 22 (1996) 587–588, fetched) solves Guy D16
