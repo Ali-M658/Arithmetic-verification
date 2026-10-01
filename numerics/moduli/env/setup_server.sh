@@ -10,8 +10,8 @@ MF=Miniforge3-26.7.2-0-Linux-x86_64.sh
 URL=https://github.com/conda-forge/miniforge/releases/download/26.7.2-0
 if [ ! -x "$PREFIX/bin/conda" ]; then
   cd /tmp
-  curl -sSL -o "$MF" "$URL/$MF"
-  curl -sSL -o "$MF.sha256" "$URL/$MF.sha256"
+  curl -sSL --retry 5 --max-time 600 -o "$MF" "$URL/$MF"
+  curl -sSL --retry 5 --max-time 60 -o "$MF.sha256" "$URL/$MF.sha256"
   sha256sum -c "$MF.sha256"
   bash "$MF" -b -p "$PREFIX"
 fi
