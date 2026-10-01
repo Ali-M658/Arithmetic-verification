@@ -1,10 +1,18 @@
 """Load eigenvalue runs and attach per-eigenvalue error estimates.
 
-Production level = last entry of solve.LEVELS.  The error estimate of each
-production eigenvalue is the difference to the level before it (a pure
-p-refinement, same mesh), floored at 1e-14 * lambda for round-off.  Because the
-convergence is exponential in p, this difference over-estimates the error of
-the finer level; it is used as a conservative bound throughout.
+Production level = last entry of solve.LEVELS, (h, p) = (0.05, 10).
+
+Two error measures per production eigenvalue, both floored at 1e-14 * lambda:
+
+  err       |lambda(0.05,10) - lambda(0.07,12)|: disagreement of two independent
+            discretisations, each far more accurate than either coarser level
+            (they agree to ~1e-11 relative where the coarser levels differ by
+            ~1e-8).  This is the headline estimate.
+  err_cons  |lambda(0.05,10) - lambda(0.07,10)|: the difference to the same
+            order on the coarser mesh.  Convergence is monotone and exponential,
+            so this bounds the production error with a large margin (it is
+            essentially the error of the coarser level).  Propagated separately
+            as a worst case.
 """
 
 import os
@@ -28,15 +36,20 @@ def table(pqr, bc, levels=LEVELS, nmax=None):
     if nmax is not None:
         n = min(n, nmax)
     lams = [l[:n] for l in lams]
-    prod, prev = lams[-1], lams[-2]
-    err = np.maximum(np.abs(prod - prev), 1e-14 * np.maximum(np.abs(prod), 1.0))
+    lv = [tuple(x) for x in levels]
+    prod = lams[-1]
+    floor = 1e-14 * np.maximum(np.abs(prod), 1.0)
+    err = np.maximum(np.abs(prod - lams[lv.index((0.07, 12))]), floor)
+    err_cons = np.maximum(np.abs(prod - lams[-2]), floor)
     if bc == "N":
         # the constant eigenfunction: lambda_0 = 0 exactly
         assert abs(prod[0]) < 1e-8, prod[0]
         prod = prod.copy()
         prod[0] = 0.0
         err[0] = 0.0
-    return dict(lam=prod, err=err, levels=list(levels), all=lams)
+        err_cons = err_cons.copy()
+        err_cons[0] = 0.0
+    return dict(lam=prod, err=err, err_cons=err_cons, levels=list(levels), all=lams)
 
 
 def available(pqr, bc, levels=LEVELS):
