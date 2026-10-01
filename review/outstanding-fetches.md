@@ -162,6 +162,23 @@ Numdam `PMIHES_1977__47__33_0.pdf` (16,309,727 bytes) needed resumed downloads (
 the first two attempts were truncated. Theorem (8) is on p. 35, and Theorem (5.1) with
 Corollary (5.2) on p. 156. Crossref DOI `10.1007/bf02684339`.
 
+### 1.9 Watson 2005 (see 1.1) — second attempt, curvature/divergence session (theory/divergence) — `UNRETRIEVED`
+
+Re-attempted 2026-10-01 while surveying prior work on the divergence of cone heat expansions:
+
+- Crossref `query.bibliographic=Watson trace function expansion spherical polygons` returned no
+  matching record.
+- `https://www.thebookshelf.auckland.ac.nz/docs/NZJMaths/nzjmaths034/nzjmaths034-02-004.pdf`
+  returned no file (HTTP 000).
+- The journal's site search
+  (`https://nzjmath.org/index.php/NZJMATH/search/search?query=Watson+spherical+polygons`)
+  returned HTTP 200 with no matching item.
+
+**Instrument gap.** Watson's $K=1$ series is the one item that might already state a growth rate
+for spherical corner coefficients. The novelty verdict in `theory/divergence/literature.md` §4
+is therefore conditional on it. It rests on Uçar's thesis, which reproduces and corrects Watson
+and makes no growth statement.
+
 ---
 
 ## 2. Identifiers that do not exist or could not be resolved
