@@ -1,0 +1,31 @@
+tab:enum rows parsed: 83; referee triads: 83
+PASS same number of entries (83)
+PASS same triads, same order
+PASS every R value agrees exactly []
+PASS row sums = S
+PASS status column: 'collision' exactly for (2,8,8),(3,3,12)
+PASS R distinct within each sum S<=17 (table values)
+   equal R across different sums (not collisions): 14 values
+PASS (a) discriminant 4(2p+1)^2
+PASS (a) phi-tau = -(p-1)(S-3p-2)(S-x*)/(p(p+1)(S-p)(S-2p-2))
+PASS (c) gap at 3p+7
+PASS (c) p=9+u: u^2+13u+6
+PASS (b) numerator of phi' = -(S-3p-4)(3S-5p-4)
+   gap(S*+1), p=2..8: [Fraction(-7, 936), Fraction(-1, 72), Fraction(-19, 3960), Fraction(-1, 180), Fraction(-76, 15015), Fraction(-1, 231), Fraction(-17, 4680)]
+PASS (d) the seven gap(S*+1) fractions
+PASS (d) odd-sum gaps 1/840, 1/2310, 1/10296
+PASS (d) displayed differences
+PASS R^-_{28,7} = 257/770
+PASS Cor 2: x*-18 = 3(p-2)(p-3)/(p-1)
+PASS Lemma 1 (p=2): 1/3+60/224 < 7/10
+PASS Lemma 1 (p=2): bound decreasing in S
+PASS (2,5,S-7) hyperbolic for S>=18
+PASS correction 4/(D(D^2-1)) has derivative -4(3D^2-1)/(D^2(D^2-1)^2) < 0
+PASS odd-parity gap strictly decreasing over consecutive odd-D sums S>=3p+4, 2<=p<400 (exact sweep)
+PASS gap(3p+3) = gap(3p+5) for every p: the odd gap is NOT strictly decreasing on all of S>=3p+3
+PASS symbolic: gap(3p+3) - gap(3p+5) = 0
+PASS x*(p) > 3p+5, so the claim restricted to S>=x* is unaffected
+PASS S=3p+2: formal gap 0 for every p, the two 'triads' coincide ((p+1,p+1,p)); stratum p+1 empty there
+   paper/proof.md statement of Prop 3(1) omits S>=3p+3; the proof uses it implicitly (root 3p+2 excluded in (a)).
+
+ALL COMPARISON CHECKS PASSED

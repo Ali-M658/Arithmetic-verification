@@ -1,0 +1,48 @@
+== A. Ucar (4.25), (4.33), (4.35)
+  C_0(k) = (k - 1)*(k + 1)/(12*k)
+  C_1(k)/kappa = (k - 1)*(k + 1)*(k**2 + 11)/(360*k)
+  C_2(k)/kappa^2 = (k - 1)*(k + 1)*(2*k**4 + 9*k**2 + 37)/(5040*k)
+PASS Ucar C_0(k) = (k^2-1)/(12k)  [paper cor:conevals]
+PASS Ucar C_1(k) = kappa[(k^3-1/k)/360+(k-1/k)/36]  [paper eq:b1]
+  a_nu/(vol kappa^nu), nu=0,1,2: [1, 1/3, 1/15]
+PASS Ucar (4.35): a_0=vol, a_1=vol*K/3, a_2=vol*K^2/15
+  smooth contributions at K=-1 to t^-1, t^0, t^1: [1/2 - R/2, R/6 - 1/6, 1/30 - R/30]
+PASS smooth t^-1 term = Area/(4pi) = (1-R)/2
+PASS smooth t^0 term = chi/6 = (R-1)/6 (K=-1)
+PASS smooth t^1 term = (1-R)/30 (K=-1)
+== B. DGGW 5.3-5.6, trig sums (exact, Vieta)
+PASS lem:cot  sum cot^2(j pi/m) = (m-1)(m-2)/3, 2<=m<=150 (exact)
+PASS prop:csc sum csc^2(j pi/m) = (m^2-1)/3, 2<=m<=150 (exact)
+PASS DGGW sum csc^4(j pi/m) = (m^4+10m^2-11)/45, 2<=m<=150 (exact)
+PASS lem:cot symbolic in m (Vieta)
+PASS prop:csc symbolic in m
+PASS csc^4 sum symbolic in m
+PASS cor:conevals cone(m)=(m^2-1)/(12m)
+PASS cone(2,3,5) = 1/8, 2/9, 2/5
+PASS DGGW (5.10) cone term = paper eq:b1 (with R1212 = K)
+PASS Schueth Rem 3.2 b1 = 2K(2-2cos phi)^-2 = K/(8 sin^4(phi/2)) = DGGW b1(gamma^j)  [algebraic identity 2-2cos phi = 4 sin^2(phi/2)]
+== D. Independent exact heat expansion of S^2/G (K=+1)
+  S^2: {-1: 1, 0: 1/3, 1: 1/15}
+PASS round S^2: 1/t + 1/3 + t/15 (matches Ucar (4.35) with vol=4pi)
+  S^2/I: {-1: 1/60, 0: 271/360, 1: 7471/10800}
+PASS a0(2,3,5) = 271/360 from the exact spectrum of S^2/I
+PASS S^2/G for C_2..C_30, D_2..D_15, T, O, I: t^-1 = chi/2, t^0 = chi/6 + sum b0, t^1 = chi/30 + sum b1|_{K=+1}
+PASS direct summation S^2/I at t=1e-4 agrees with exact expansion through t^2 (|diff|=8.97e-12)
+== E. paper-core formulas
+PASS PC.2 reference: chi/6=1/180, cone sum 269/360, a0(2,3,5)=271/360
+PASS eq:s1inv a0=(S1+R-2)/12 for all triads (any curvature sign)
+PASS eq:s1inv returns S1=10 at (2,3,5)
+PASS rem:bugfix: wrong inversion gives -209/15 < 0 at (2,3,5)
+PASS eq:a2red: sum b1(K=-1) = -P3/360 - S1/36 + 11R/360
+PASS 1/360 + 1/36 = 11/360
+PASS full t^1 coefficient at K=-1 = 1/30 - P3/360 - S1/36 - R/360
+PASS P3(2,8,8)=1032, P3(3,3,12)=1782
+PASS (2,8,8),(3,3,12): equal t^-1, t^0; distinct t^1 coefficient
+PASS prop:cs S1 R >= 9, equality iff p=q=r
+PASS prop:recovery: e3 = (P3 - S1^3)/(3(1 - S1 R)); denominator nonzero since S1 R >= 9
+PASS prop:recovery: (S1,R,P3) injective on all 2<=p<=q<=r<=120 (exhaustive)
+  det DF = -3*(p - q)*(p + q)*(p - r)*(p + r)*(q - r)*(q + r)/(p**2*q**2*r**2)
+PASS PC.10 Jacobian det DF = -3(p-q)(p-r)(q-r)(p+q)(p+r)(q+r)/(p^2q^2r^2)
+PASS PC.16: min a0 over hyperbolic pillows (S<=60) is (3,3,4) with 107/144; S>=11 gives a0 > 3/4
+
+ALL HEAT CHECKS PASSED

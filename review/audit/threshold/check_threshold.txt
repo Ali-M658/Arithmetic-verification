@@ -1,0 +1,94 @@
+== Part 1: Theorem 1, symbolic
+PASS even D: gap = -(D-2p-2)(D(p-1)-2p(p+2)) / (D p (p+1)(D-p-2))
+PASS even zero D = 2p(p+2)/(p-1)  <=>  S = x*(p) = 3p(p+1)/(p-1) = 3p+6+6/(p-1)
+PASS even gap = phi_p(S) - tau_p
+PASS odd D: gap * p(p+1)(D^2-1)(D-p-2) = g(D), cubic with leading coeff -(p-1)
+PASS odd gap = even-formula + 4/(D(D^2-1)) > 0 (lem:bound strict)
+PASS integer evaluator of g agrees with symbolic g
+PASS g(1) = -4*p*(p + 1)**2
+PASS g(-1) = 4*p*(p + 1)*(p + 3)
+PASS g(p+2) = -p*(p + 1)**2*(p + 3)
+PASS g(2p+3) = 8*(p + 1)**2
+PASS g(2p+6) = 2*p**2 + 52*p + 140
+PASS g(2p+7) = -8*p**2 + 40*p + 240
+   => for p>=2: g(-1)>0>g(1), g(p+2)<0<g(2p+3): one root in each of (-1,1), (p+2,2p+3);
+      the third (largest) root D_o(p) lies in (2p+3, oo); on D >= 2p+3, g>0 before D_o and g<0 after.
+      p^2-5p-30 has roots (5+-sqrt145)/2, 8.52 > ...: g(2p+7)>0 for 2<=p<=8, <0 for p>=9.
+PASS sign of p^2-5p-30: negative iff p<=8 (p>=2)
+PASS discriminant 145 of p^2-5p-30 is not a square -> g(2p+7) != 0 for every integer p
+PASS p>=9 (all 9..99999, and symbolically above): D_o in (2p+6, 2p+7), so 3p+7 is the first odd-D overlap and no odd integer zero
+PASS p>=8: 3p+6 < x* < 3p+7
+PASS S*(p) equals the parity description for 2<=p<1999 (with the 3p+7 exception for p>=9)
+== Part 2: p <= 8 case analysis (exact)
+   p=2: x*=18, S*=18, D_o~[16.111178], first odd-D overlap S=19; odd sums in [x*,S*): 
+PASS p=2: no odd D with gap 0
+PASS p=2: every odd-D sum in [x*,S*) has gap>0
+PASS p=2: first odd-D overlap at S=19 in {S*, S*+1} -> overlap set is exactly S>=S*
+   p=3: x*=18, S*=19, D_o~[15.149111], first odd-D overlap S=20; odd sums in [x*,S*): S=18 gap=1/840
+PASS p=3: no odd D with gap 0
+PASS p=3: every odd-D sum in [x*,S*) has gap>0
+PASS p=3: first odd-D overlap at S=20 in {S*, S*+1} -> overlap set is exactly S>=S*
+   p=4: x*=20, S*=20, D_o~[16.168790], first odd-D overlap S=21; odd sums in [x*,S*): 
+PASS p=4: no odd D with gap 0
+PASS p=4: every odd-D sum in [x*,S*) has gap>0
+PASS p=4: first odd-D overlap at S=21 in {S*, S*+1} -> overlap set is exactly S>=S*
+   p=5: x*=45/2, S*=23, D_o~[17.681003], first odd-D overlap S=24; odd sums in [x*,S*): 
+PASS p=5: no odd D with gap 0
+PASS p=5: every odd-D sum in [x*,S*) has gap>0
+PASS p=5: first odd-D overlap at S=24 in {S*, S*+1} -> overlap set is exactly S>=S*
+   p=6: x*=126/5, S*=26, D_o~[19.389378], first odd-D overlap S=27; odd sums in [x*,S*): 
+PASS p=6: no odd D with gap 0
+PASS p=6: every odd-D sum in [x*,S*) has gap>0
+PASS p=6: first odd-D overlap at S=27 in {S*, S*+1} -> overlap set is exactly S>=S*
+   p=7: x*=28, S*=29, D_o~[21.195501], first odd-D overlap S=30; odd sums in [x*,S*): S=28 gap=1/2310
+PASS p=7: no odd D with gap 0
+PASS p=7: every odd-D sum in [x*,S*) has gap>0
+PASS p=7: first odd-D overlap at S=30 in {S*, S*+1} -> overlap set is exactly S>=S*
+   p=8: x*=216/7, S*=32, D_o~[23.057326], first odd-D overlap S=33; odd sums in [x*,S*): S=31 gap=1/10296
+PASS p=8: no odd D with gap 0
+PASS p=8: every odd-D sum in [x*,S*) has gap>0
+PASS p=8: first odd-D overlap at S=33 in {S*, S*+1} -> overlap set is exactly S>=S*
+== Part 3: brute force for all S <= 700
+PASS lem:chamber: R strictly decreasing in q on every stratum (S<=700)
+PASS R^- = 1/p + 1/floor(D/2) + 1/ceil(D/2) attained on every nonempty stratum
+PASS R^+ = 2/p + 1/(S-2p) attained for p>=3 (spread triad hyperbolic)
+PASS TH.0 nonemptiness: p=2 iff S>=11; p>=3 iff S>=3p except (9,3)
+PASS p=2: spread triad (2,2,S-4) never hyperbolic; stratum-2 maximum < 1
+PASS Lemma 1 (overlap iff gap<=0) for all 2<=p<=232, 3p+3<=S<=700
+PASS Theorem 1 (overlap iff S>=S*(p)) brute force for all 2<=p<=232, 3p+3<=S<=700 []
+PASS Lemma 2 (adjacent separation => injective at S) for S<=700
+== Part 4: Proposition 3
+PASS (p-1) | 2p(p+2) iff (p-1)|6 iff p in {2,3,4,7}; even quotient only for p in [2, 4]
+PASS integrality set {2,3,4,7}
+PASS brute force tangencies (gap=0, S>=3p+3, S<=700): [(2, 18), (4, 20)]
+   note: the other even root D=2p+2 (S=3p+2) is spurious: there (p+1,p+1,p) is the balanced triad of stratum p itself.
+PASS S=3p+7: R(p,p+2,p+5) - R^+_(p+1) = 2/(p*(p + 1)*(p + 2)) > 0
+PASS S=3p+7: R^-_p - R(p+1,p+2,p+4) = 1/(p(p+1)) - 1/((p+2)(p+3)) > 0
+   p=2 S*=18: window 1+1: A=[(2, 8, 8)] B=[(3, 3, 12)] collisions=1
+   p=3 S*=19: window 2+1: A=[(3, 7, 9), (3, 8, 8)] B=[(4, 4, 11)] collisions=0
+   p=4 S*=20: window 1+1: A=[(4, 8, 8)] B=[(5, 5, 10)] collisions=1
+   p=5 S*=23: window 1+1: A=[(5, 9, 9)] B=[(6, 6, 11)] collisions=0
+   p=6 S*=26: window 2+1: A=[(6, 9, 11), (6, 10, 10)] B=[(7, 7, 12)] collisions=0
+   p=7 S*=29: window 2+1: A=[(7, 10, 12), (7, 11, 11)] B=[(8, 8, 13)] collisions=0
+   p=8 S*=32: window 2+1: A=[(8, 11, 13), (8, 12, 12)] B=[(9, 9, 14)] collisions=0
+PASS Prop 3(2): no adjacent collision at S*(p) for p not in {2,4}, 2<=p<=232; window 1+1 for p>=9
+== Part 5: paper-core numerical claims
+PASS tau_2=tau_3=1/6, tau_4=3/20
+PASS phi_2(17)=29/165, phi_2(18)=1/6
+PASS phi_3(12)=7/36, phi_3(17)=11/63
+PASS min phi_4(15..17)=phi_4(15)=9/55>3/20
+PASS phi_2 peaks at S=10, decreasing after
+PASS phi_3 unimodal, peak at S=13
+PASS phi_p(S) > tau_p on the stated ranges
+PASS R^-_{18,3}=101/168 > 3/5=R^+_{18,4}
+PASS R^-_{18,4}=15/28 > 21/40=R^+_{18,5}
+PASS R^-_{18,5}=107/210 > 1/2=R^+_{18,6}
+PASS R^-_{18,2}=R^+_{18,3}=3/4
+PASS lem:bound R^- >= 1/p + 4/(S-p), equality iff S-p even (S<300)
+PASS R^+_{S,p} non-increasing in p for p+1 <= S/3
+PASS S1>=10, equality only (3,3,4)
+PASS p=2: q+r>=9,S>=11; p=3: q+r>=7; p>=4: S>=12
+PASS prop:min: the balanced triple minimises R at each S in [10,120) and is hyperbolic
+
+ALL THRESHOLD CHECKS PASSED
+exit 0

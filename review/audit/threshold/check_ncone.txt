@@ -1,0 +1,12 @@
+4-cone hyperbolic pillows with orders <= 80
+  pairs agreeing in (p_-1, p_1, p_3)  [first 3 coefficients]: 8
+    ((3, 10, 15, 30), (4, 5, 21, 28))
+    ((6, 20, 30, 60), (8, 10, 42, 56))
+    ((7, 15, 50, 75), (9, 10, 56, 72))
+    ((7, 21, 44, 77), (9, 12, 56, 72))
+    ((7, 26, 39, 78), (9, 13, 56, 72))
+    ((10, 21, 44, 77), (12, 15, 50, 75))
+    ((10, 26, 39, 78), (13, 15, 50, 75))
+    ((12, 26, 39, 78), (13, 21, 44, 77))
+  pairs agreeing in (p_-1, p_1, p_3, p_5) [first 4 coefficients]: 0
+no 4-coefficient collision found in range (consistent with K<=n for n=4 in this range)
