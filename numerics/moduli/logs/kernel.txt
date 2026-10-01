@@ -1,0 +1,20 @@
+kernel tau=2.8 DNN: 847 eigenfunctions, lambda_max 20484, 32s
+kernel tau=2.8 DDN: 816 eigenfunctions, lambda_max 20713, 36s
+kernel tau=2.8 NDD: 847 eigenfunctions, lambda_max 20143, 36s
+kernel tau=2.8 NNN: 837 eigenfunctions, lambda_max 18887, 36s
+kernel tau=2.8 DDD: 818 eigenfunctions, lambda_max 20849, 39s
+kernel tau=2.8 NDN: 847 eigenfunctions, lambda_max 20066, 44s
+kernel tau=2.8 NND: 839 eigenfunctions, lambda_max 19041, 47s
+kernel tau=2.8 DND: 820 eigenfunctions, lambda_max 19890, 49s
+kernel tau=0.0 NNN: 842 eigenfunctions, lambda_max 19392, 50s
+kernel tau=0.0 NDN: 843 eigenfunctions, lambda_max 19782, 51s
+kernel tau=0.0 NDD: 849 eigenfunctions, lambda_max 20261, 52s
+kernel tau=0.0 NND: 843 eigenfunctions, lambda_max 19782, 55s
+kernel tau=0.0 DND: 818 eigenfunctions, lambda_max 20119, 55s
+kernel tau=0.0 DNN: 817 eigenfunctions, lambda_max 19709, 56s
+kernel tau=0.0 DDN: 818 eigenfunctions, lambda_max 20119, 56s
+kernel tau=0.0 DDD: 817 eigenfunctions, lambda_max 20418, 63s
+tau=0.0: 567 interior points within 1.7e-06 of (1 - t/3)/(4 pi t); K/(3/(4 pi t)) at the cone point = 0.9983
+tau=2.8: 537 interior points within 1.7e-06 of (1 - t/3)/(4 pi t); K/(3/(4 pi t)) at the cone point = 0.9983
+KERNEL EXPORT DONE
+EXIT 0

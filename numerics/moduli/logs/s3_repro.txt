@@ -1,0 +1,28 @@
+(3, 3, 12) N h=0.05 p=10: ne=691 ndof=35076 area_err=-4.66e-15 assembly 0.5s
+  slice sigma=     -1.00 window=( -2795.87,  2793.87)    27.8s
+  slice sigma=   4191.31 window=(  2672.51,  5710.11)    24.8s
+  slice sigma=   6469.51 window=(  4936.39,  8002.63)    24.2s
+  slice sigma=   8769.19 window=(  7212.50, 10325.88)    29.6s
+  slice sigma=  11104.23 window=(  9567.01, 12641.45)    24.7s
+  slice sigma=  13410.06 window=( 11868.51, 14951.61)    27.3s
+  slice sigma=  15722.39 window=( 14177.18, 17267.59)    24.4s
+  slice sigma=  18040.20 window=( 16497.62, 19582.77)    24.7s
+  slice sigma=  20354.06 window=( 18783.58, 21924.54)    24.3s
+  1434 eigenvalues, max 21893.133, total 232.4s
+{
+ "problem": "(3,3,12) Neumann, h=0.05, p=10, NEV=1300, k=200",
+ "n": 1434,
+ "ndof": 35076,
+ "max_abs_diff": 2.2049789549782872e-08,
+ "max_rel_diff": 1.0121501816048132e-12,
+ "max_rel_diff_first500": 2.093654971662682e-14,
+ "max_diff_over_err_estimate": 0.1527462311038987,
+ "median_diff_over_err_estimate": 0.00018817131760819205,
+ "max_diff_over_err_conservative": 1.5278298504015917,
+ "seconds": 232.40771532058716,
+ "threads": 16,
+ "machine": "Linux-6.8.0-139-generic-x86_64-with-glibc2.39",
+ "python": "3.13.7"
+}
+S3 REPRODUCIBILITY CHECK PASSED
+EXIT 0

@@ -1,0 +1,3 @@
+fullQ D: n=1269 lam_max=7929.4 ndof=44991 area_err=-1.1e-14 537s
+fullQ N: n=1286 lam_max=7404.1 ndof=46011 area_err=-1.1e-14 588s
+EXIT 0
