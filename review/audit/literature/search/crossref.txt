@@ -1,0 +1,112 @@
+## QUERY (Crossref): Asymptotic+expansion+of+the+heat+kernel+for+orbifolds+Dryden+Gordon+Greenwald+Webb
+- 10.1307/mmj/1213972406 | Michigan Mathematical Journal | 2008 | Dryden, Gordon, Greenwald, Webb | Asymptotic expansion of the heat kernel for orbifolds
+- 10.1307/mmj/1488510034 | Michigan Mathematical Journal | 2017 | Dryden, Gordon, Greenwald, Webb | Erratum to ''Asymptotic expansion of the heat kernel for orbifolds''
+- 10.1007/978-3-642-58088-8_3 | Heat Kernels and Dirac Operators | 2004 | Berline, Getzler, Vergne | Asymptotic Expansion of the Heat Kernel
+- 10.1063/1.1570560 | AIP Conference Proceedings | 2003 | Osipov | Generalized Heat Kernel Coefficients for a New Asymptotic Expansion
+- 10.1016/0370-2693(90)92105-r | Physics Letters B | 1990 | Avramidi | The covariant technique for the calculation of the heat kernel asymptotic expansion
+- 10.1142/9789812777386_0258 | The Ninth Marcel Grossmann Meeting | 2002 | YAJIMA, HIGASIDA, KAWANO, KUBOTA | ASYMPTOTIC EXPANSION COEFFICIENTS OF THE HEAT KERNEL IN RIEMANN-CARTAN SPACE
+
+## QUERY (Crossref): Erratum+Asymptotic+expansion+heat+kernel+orbifolds
+- 10.1307/mmj/1488510034 | Michigan Mathematical Journal | 2017 | Dryden, Gordon, Greenwald, Webb | Erratum to ''Asymptotic expansion of the heat kernel for orbifolds''
+- 10.1307/mmj/1213972406 | Michigan Mathematical Journal | 2008 | Dryden, Gordon, Greenwald, Webb | Asymptotic expansion of the heat kernel for orbifolds
+- 10.1007/978-3-642-58088-8_3 | Heat Kernels and Dirac Operators | 2004 | Berline, Getzler, Vergne | Asymptotic Expansion of the Heat Kernel
+- 10.1063/1.1570560 | AIP Conference Proceedings | 2003 | Osipov | Generalized Heat Kernel Coefficients for a New Asymptotic Expansion
+- 10.1016/0370-2693(90)92105-r | Physics Letters B | 1990 | Avramidi | The covariant technique for the calculation of the heat kernel asymptotic expansion
+- 10.1142/9789812777386_0258 | The Ninth Marcel Grossmann Meeting | 2002 | YAJIMA, HIGASIDA, KAWANO, KUBOTA | ASYMPTOTIC EXPANSION COEFFICIENTS OF THE HEAT KERNEL IN RIEMANN-CARTAN SPACE
+
+## QUERY (Crossref): Hearing+the+weights+of+weighted+projective+planes
+- 10.1007/s10455-007-9092-6 | Annals of Global Analysis and Geometry | 2007 | Abreu, Dryden, Freitas, Godinho | Hearing the weights of weighted projective planes
+- 10.1007/978-0-8176-4743-8_2 | Riemannian Topology and Geometric Struct | 2009 | Gauduchon | Hirzebruch Surfaces and Weighted Projective Planes
+- 10.4153/cjm-2004-051-9 | Canadian Journal of Mathematics | 2004 | Daigle, Russell | On Log ℚ-Homology Planes and Weighted Projective Planes
+- 10.4064/ap76-1-5 | Annales Polonici Mathematici | 2001 | Daigle | Affine rulings of weighted projective planes
+- 10.1142/9789811200489_0022 | Algebraic and Geometric Combinatorics on | 2019 | Portakal | A note on deformations and mutations of fake weighted projective planes
+- 10.1016/s0021-8693(02)00036-4 | Journal of Algebra | 2002 | Ingalls, Patrick | Blowing up quantum weighted projective planes
+
+## QUERY (Crossref): Isospectral+finiteness+of+hyperbolic+orbisurfaces
+- 10.1142/s0219199721500589 | Communications in Contemporary Mathemati | 2021 | Courtois, Kim | Isospectral finiteness on convex cocompact hyperbolic 3-manifolds
+- 10.1002/cpa.20095 | Communications on Pure and Applied Mathe | 2005 | Kim | Isospectral finiteness on hyperbolic 3‐manifolds
+- 10.1515/crll.1992.426.67 | Journal für die reine und angewandte Mat | 1992 |  | Compactness and finiteness theorems for isospectral manifolds.
+- 10.4153/cmb-2009-008-0 | Canadian Mathematical Bulletin | 2009 | Dryden, Strohmaier | Huber's Theorem for Hyperbolic Orbisurfaces
+- 10.1093/imrn/rnac060 | International Mathematics Research Notic | 2022 | Fanoni | Isospectral Hyperbolic Surfaces of Infinite Genus
+- 10.1016/s0040-9383(97)00043-8 | Topology | 1998 | Hamilton | Geometrical finiteness for hyperbolic orbifolds
+
+## QUERY (Crossref): Huber+theorem+hyperbolic+orbisurfaces
+- 10.4153/cmb-2009-008-0 | Canadian Mathematical Bulletin | 2009 | Dryden, Strohmaier | Huber's Theorem for Hyperbolic Orbisurfaces
+- 10.1007/s00209-015-1414-y | Mathematische Zeitschrift | 2015 | Aryasomayajula | Bounds for Green’s functions on noncompact hyperbolic Riemann orbisurfaces of finite volume
+- 10.5802/jep.247 | Journal de l’École polytechnique — Mathé | 2023 | Bénard, Frahm, Spilioti | The twisted Ruelle zeta function on compact hyperbolic orbisurfaces and Reidemeister–Turaev torsion
+- 10.4148/npp.48214.cmp.ht24wn922 |  | None |  | Chapter Nineteen: Kashiwara Theorem for Hyperbolic Algebras
+- 10.1017/cbo9780511569333.008 | Hyperbolic Geometry | 1992 |  | POINCARÉ'S THEOREM
+- 10.3386/w11935 |  | 2006 | Viscusi, Huber | Hyperbolic Discounting of Public Goods
+
+## QUERY (Crossref): heat+invariants+determine+orbifold+cone+points
+- 10.1360/n012016-00003 | SCIENTIA SINICA Mathematica | 2016 | ChengYong | Weighted blow-up of Gromov-Witten invariants of orbifold\\ Riemannian surfaces along smooth points
+- 10.14711/thesis-b922542 |  | None | Yin | Gerbes over orbifolds and twisted orbifold Gromov-Witten invariants
+- 10.1007/s10114-015-3479-2 | Acta Mathematica Sinica, English Series | 2015 | He, Hu | Orbifold Gromov-Witten invariants of weighted blow-up at smooth points
+- 10.14231/ag-2017-025 | Algebraic Geometry | 2017 | Wise | Relative and orbifold Gromov�Witten invariants
+- 10.14231/2017-4-025 | Algebraic Geometry | 2017 | Wise | Relative and orbifold Gromov�Witten invariants
+- 10.14231/2017-025 | Algebraic Geometry | 2017 | Wise | Relative and orbifold Gromov�Witten invariants
+
+## QUERY (Crossref): finitely+many+heat+invariants+orbifold
+- 10.14711/thesis-b922542 |  | None | Yin | Gerbes over orbifolds and twisted orbifold Gromov-Witten invariants
+- 10.14231/ag-2017-025 | Algebraic Geometry | 2017 | Wise | Relative and orbifold Gromov�Witten invariants
+- 10.14231/2017-4-025 | Algebraic Geometry | 2017 | Wise | Relative and orbifold Gromov�Witten invariants
+- 10.14231/2017-025 | Algebraic Geometry | 2017 | Wise | Relative and orbifold Gromov�Witten invariants
+- 10.1090/fic/054/10 | Modular Forms and String Duality | 2008 | Bouchard | Orbifold Gromov–Witten invariants and topological strings
+- 10.7249/rm5676 |  | 1968 |  | Transversals of Infinite Families with Finitely Many Infinite Members
+
+## QUERY (Crossref): heat+coefficients+orbisurface+cone+angles
+- 10.21236/ad0627317 |  | 1966 | Knox, Lewis | A COMPARISON OF EXPERIMENTAL AND THEORETICALLY PREDICTED PRESSURE DISTRIBUTIONS AND FORCE AND STABILITY COEFFICIENTS FOR
+- 10.1115/1.3245558 | Journal of Heat Transfer | 1983 | Sparrow, Prieto | Heat Transfer Coefficients and Patterns of Fluid Flow for Contacting Spheres at Various Angles of Attack
+- 10.1063/1.1285969 | Journal of Mathematical Physics | 2001 | Dowker, Kirsten | Smeared heat-kernel coefficients on the ball and generalized cone
+- 10.1016/s0032-5910(99)00076-5 | Powder Technology | 1999 | Janse, de Jong, Prins, van Swaaij | Heat transfer coefficients in the rotating cone reactor
+- 10.1016/j.ijheatmasstransfer.2005.05.020 | International Journal of Heat and Mass T | 2005 | Yuen, Martinez-Botas | Film cooling characteristics of rows of round holes at various streamwise angles in a crossflow: Part II. Heat transfer 
+- 10.2140/gt.2003.7.789 | Geometry &amp; Topology | 2003 | Souto | Hyperbolic cone-manifolds with large cone-angles
+
+## QUERY (Crossref): spectral+determination+orbifold+singular+strata+heat+trace
+- 10.1201/9781003675969-9 | Geometric Orbifold Cohomology | 2026 | Sati, Schreiber | Singular Geometry
+- 10.1201/9780203490464.ch3 | Asymptotic Formulae in Spectral Geometry | 2003 |  | Heat Trace Asymptotics
+- 10.1063/1.530456 | Journal of Mathematical Physics | 1994 | Cognola, Vanzo | The trace of the heat kernel on a compact hyperbolic 3-orbifold
+- 10.4310/jdg/1214453431 | Journal of Differential Geometry | 1993 | Pati | The heat trace on singular algebraic threefolds
+- 10.2139/ssrn.6172546 |  | 2026 | Watson, Valentinuzzi | Tensor-Sum Composability of Two-Term Heat Trace Asymptotics and Spectral Curvature
+- 10.1070/sm2010v201n08abeh004106 | Sbornik: Mathematics | 2010 | Dostanic | Spectral asymptotics and the regularized trace of a singular integral operator
+
+## QUERY (Crossref): Spectral+and+geometric+bounds+on+2-orbifold+diffeomorphism+type
+- 10.1016/j.difgeo.2009.03.015 | Differential Geometry and its Applicatio | 2010 | Proctor, Stanhope | Spectral and geometric bounds on 2-orbifold diffeomorphism type
+- 10.1007/978-3-319-06248-8_13 | Trends in Mathematics | 2014 | Schmeding | Orbifold Diffeomorphism Groups
+- 10.1201/9781003675969-11 | Geometric Orbifold Cohomology | 2026 | Sati, Schreiber | Orbifold Cohomology
+- 10.1201/9781003675969-10 | Geometric Orbifold Cohomology | 2026 | Sati, Schreiber | Orbifold Geometry
+- 10.1201/9781003675969-5 | Geometric Orbifold Cohomology | 2026 | Sati, Schreiber | Orbifold K-Theory
+- 10.1007/s10455-005-1584-7 | Annals of Global Analysis and Geometry | 2005 | Stanhope | Spectral Bounds on Orbifold Isotropy
+
+## QUERY (Crossref): spectral+bounds+orbifold+isotropy+Stanhope
+- 10.1007/s10455-005-1584-7 | Annals of Global Analysis and Geometry | 2005 | Stanhope | Spectral Bounds on Orbifold Isotropy
+- 10.1016/j.difgeo.2009.03.015 | Differential Geometry and its Applicatio | 2010 | Proctor, Stanhope | Spectral and geometric bounds on 2-orbifold diffeomorphism type
+- 10.1007/s00013-006-1748-0 | Archiv der Mathematik | 2006 | Shams, Stanhope, Webb | One cannot hear orbifold isotropy type
+- 10.1007/s10455-010-9244-y | Annals of Global Analysis and Geometry | 2010 | Stanhope, Uribe | The spectral function of a Riemannian orbifold
+- 10.4153/cmb-2010-074-8 | Canadian Mathematical Bulletin | 2010 | Proctor, Stanhope | An Isospectral Deformation on an Infranil-Orbifold
+- 10.1016/j.difgeo.2019.101577 | Differential Geometry and its Applicatio | 2020 | Richardson, Stanhope | You can hear the local orientability of an orbifold
+
+## QUERY (Crossref): spectral+invariants+polygons+orbisurfaces+Ucar
+- 10.1349/ddlp.58 |  | None | Dryden | Geometric and spectral properties of compact Riemann orbisurfaces.
+- 10.1007/s00041-025-10202-6 | Journal of Fourier Analysis and Applicat | 2025 | Mårdby, Rowlett | Spectral Invariants of Integrable Polygons
+- 10.20944/preprints202607.1243.v1 |  | 2026 | Murad | An Affine Approach to Metric Invariants of Poncelet Polygons
+- 10.4064/aa145-1-5 | Acta Arithmetica | 2010 | Guàrdia, Montes, Nart | Okutsu invariants and Newton polygons
+- 10.1016/b978-0-12-802068-5.00004-x | Spectral Radius of Graphs | 2015 | Stevanović | Spectral Radius and Other Graph Invariants
+- 10.1109/tip.2002.802524 | IEEE Transactions on Image Processing | 2002 | Flusser | Affine invariants of convex polygons
+
+## QUERY (Crossref): hyperbolic+triangle+orbifold+spectrum+heat+trace+cone
+- 10.1063/1.530456 | Journal of Mathematical Physics | 1994 | Cognola, Vanzo | The trace of the heat kernel on a compact hyperbolic 3-orbifold
+- 10.4171/ggd/884 | Groups, Geometry, and Dynamics | 2025 | Howarth, Nagnibeda | Cone types and spectral radius of hyperbolic triangle groups and hyperbolic tessellations
+- 10.4171/cmh/115 | Commentarii Mathematici Helvetici | 2008 | Haas | The distribution of geodesic excursions into the neighborhood of a cone singularity on a hyperbolic 2-orbifold
+- 10.1007/978-0-8176-4913-5_19 | Hyperbolic Manifolds and Discrete Groups | 2009 | Kapovich | The Orbifold Trick
+- 10.1007/978-3-319-27666-3_5 | Universitext | 2016 | Bergeron | The Trace Formula
+- 10.1007/978-0-8176-4913-5_6 | Hyperbolic Manifolds and Discrete Groups | 2009 | Kapovich | Introduction to Orbifold Theory
+
+## QUERY (Crossref): isospectral+hyperbolic+triangle+groups
+- 10.4171/ggd/884 | Groups, Geometry, and Dynamics | 2025 | Howarth, Nagnibeda | Cone types and spectral radius of hyperbolic triangle groups and hyperbolic tessellations
+- 10.1007/bf02392717 | Acta Mathematica | 2001 | Schwartz | Degenerating the complex hyperbolic ideal triangle groups
+- 10.1007/s10711-004-1493-0 | Geometriae Dedicata | 2005 | Pratoussevitch | Traces in Complex Hyperbolic Triangle Groups
+- 10.1007/s10711-024-00910-6 | Geometriae Dedicata | 2024 | Deraux | Mirror stabilizers for lattice complex hyperbolic triangle groups
+- 10.1515/crll.1992.425.71 | Journal für die reine und angewandte Mat | 1992 |  | Complex hyperbolic ideal triangle groups.
+- 10.1016/s0040-9383(99)00023-3 | Topology | 2000 | Falbel, Koseleff | Flexibility of ideal triangle groups in complex hyperbolic geometry
+

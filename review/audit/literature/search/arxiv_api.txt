@@ -1,0 +1,45 @@
+## QUERY (arXiv API): au:Proctor+AND+all:orbifold
+- 1207.5728v2 | 2012 | Carla Farsi, Emily Proctor, Christopher Seaton | Γ-extensions of the spectrum of an orbifold
+- 1106.2724v1 | 2011 | Emily Proctor | Orbifold homeomorphism finiteness based on geometric constraints
+- 1611.07676v3 | 2016 | Carla Farsi, Emily Proctor, Christopher Seaton | Approximating orbifold spectra using collapsing connected sums
+- 0811.0794v1 | 2008 | Emily Proctor, Elizabeth Stanhope | An isospectral deformation on an orbifold quotient of a nilmanifold
+- 0811.0797v2 | 2008 | Emily Proctor, Elizabeth Stanhope | Spectral and geometric bounds on 2-orbifold diffeomorphism type
+- 2310.12073v2 | 2023 | Carla Farsi, Emily Proctor, Christopher Seaton | The universal Euler characteristic and Burnside group for definable groupoids
+
+## QUERY (arXiv API): au:Stanhope
+- 0811.0797v2 | 2008 | Emily Proctor, Elizabeth Stanhope | Spectral and geometric bounds on 2-orbifold diffeomorphism type
+- math/0301357v1 | 2003 | Elizabeth Stanhope | Spectral bounds on orbifold isotropy
+- 1901.03743v1 | 2019 | Kathleen Daly, Colin Gavin, Gabriel Montes de Oca, Diana Ochoa, Elizabeth Stanho | Orbigraphs: a graph theoretic analog to Riemannian orbifolds
+- 1910.03224v1 | 2019 | Sean Richardson, Elizabeth Stanhope | You can hear the local orientability of an orbifold
+- 0811.0794v1 | 2008 | Emily Proctor, Elizabeth Stanhope | An isospectral deformation on an orbifold quotient of a nilmanifold
+- 2106.07882v2 | 2021 | Katie Gittins, Carolyn Gordon, Magda Khalile, Ingrid Membrillo Solis, Mary Sando | Do the Hodge spectra distinguish orbifolds from manifolds? Part 1
+- 2311.00337v2 | 2023 | Katie Gittins, Carolyn Gordon, Ingrid Membrillo Solis, Juan Pablo Rossetti, Mary | Do the Hodge spectra distinguish orbifolds from manifolds? Part 2
+- 1703.08755v1 | 2017 | Kasimira T. Stanhope, Vikrant Yadav, Christian D. Santangelo, Jennifer L. Ross | Contractility in an Extensile System
+- 2301.09010v2 | 2023 | Teresa Arias-Marco, Emily B. Dryden, Carolyn S. Gordon, Asma Hassannezhad, Allie | Applications of possibly hidden symmetry to Steklov and mixed Steklov problems on surfaces
+- 1609.05142v2 | 2016 | Teresa Arias-Marco, Emily B. Dryden, Carolyn S. Gordon, Asma Hassannezhad, Allie | Spectral geometry of the Steklov problem on orbifolds
+
+## QUERY (arXiv API): au:Sutton_C+AND+all:orbifold
+
+## QUERY (arXiv API): abs:orbifold+AND+abs:%22heat+invariants%22
+- 2106.07882v2 | 2021 | Katie Gittins, Carolyn Gordon, Magda Khalile, Ingrid Membrillo Solis, Mary Sando | Do the Hodge spectra distinguish orbifolds from manifolds? Part 1
+- 2311.00337v2 | 2023 | Katie Gittins, Carolyn Gordon, Ingrid Membrillo Solis, Juan Pablo Rossetti, Mary | Do the Hodge spectra distinguish orbifolds from manifolds? Part 2
+- 1910.03224v1 | 2019 | Sean Richardson, Elizabeth Stanhope | You can hear the local orientability of an orbifold
+- 0805.3148v1 | 2008 | Emily B. Dryden, Carolyn S. Gordon, Sarah J. Greenwald, David L. Webb | Asymptotic expansion of the heat kernel for orbifolds
+- math/0608462v1 | 2006 | Miguel Abreu, Emily Dryden, Pedro Freitas, Leonor Godinho | Hearing the weights of weighted projective planes
+
+## QUERY (arXiv API): abs:orbisurface+AND+abs:spectrum
+- math/0411290v1 | 2004 | Emily B. Dryden | Isospectral Finiteness of Hyperbolic Orbisurfaces
+- math/0504571v2 | 2005 | Emily B. Dryden, Alexander Strohmaier | Huber's theorem for hyperbolic orbisurfaces
+- 1609.05142v2 | 2016 | Teresa Arias-Marco, Emily B. Dryden, Carolyn S. Gordon, Asma Hassannezhad, Allie | Spectral geometry of the Steklov problem on orbifolds
+
+## QUERY (arXiv API): abs:%22cone+points%22+AND+abs:%22heat%22+AND+abs:spectrum
+
+## QUERY (arXiv API): ti:%22hearing%22+AND+abs:orbifold
+- 1910.03224v1 | 2019 | Sean Richardson, Elizabeth Stanhope | You can hear the local orientability of an orbifold
+- math/0608462v1 | 2006 | Miguel Abreu, Emily Dryden, Pedro Freitas, Leonor Godinho | Hearing the weights of weighted projective planes
+- math/9207215v1 | 1992 | Carolyn Gordon, David L. Webb, Scott Wolpert | One cannot hear the shape of a drum
+- 2008.12498v2 | 2020 | Pierre Bérard, David L. Webb | One can't hear orientability of surfaces
+
+## QUERY (arXiv API): abs:%22orbifold%22+AND+abs:%22isotropy%22+AND+abs:spectrum
+- 2205.05603v1 | 2022 | M. R. Sandoval | Mean Curvature and the Wave Invariants of the Basic Spectrum for a Riemannian Foliation
+

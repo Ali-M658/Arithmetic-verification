@@ -1,0 +1,84 @@
+## QUERY (zbMATH Open): heat%20invariants%20orbifold
+total: 9
+- 1140.58011 | 2008 | Abreu, Miguel; Dryden, Emily B.; Freitas, Pedro; Godinho, Leonor | Hearing the weights of weighted projective planes | 
+- 1547.58015 | 2024 | Gittins, Katie; Gordon, Carolyn; Khalile, Magda; Membrillo Solis, Ingr | Do the Hodge spectra distinguish orbifolds from manifolds? I | 
+- 1327.19012 | 2013 | Bunke, Ulrich; Schick, Thomas | Differential orbifold \(K\)-theory | 
+- 1498.58023 | 2022 | Dai, Xianzhe; Yoshikawa, Ken-Ichi | Analytic torsion for log-Enriques surfaces and Borcherds product | 
+- 1328.58031 | 2015 | Sher, David A. | Conic degeneration and the determinant of the Laplacian | 
+- 1440.58014 | 2020 | Richardson, Sean; Stanhope, Elizabeth | You can hear the local orientability of an orbifold | 
+- 1318.58011 | 2013 | Albin, Pierre; Rochon, Frédéric | Some index formulae on the moduli space of stable parabolic vector bundles | 
+- 1479.58022 | 2021 | Liu, Bo | Equivariant eta forms and equivariant differential \(K\)-theory | 
+- 0857.58010 | 1996 | Guo, Guang-Yuan | Yang-Mills fields on cylindrical manifolds and holomorphic bundles. I | 
+
+## QUERY (zbMATH Open): orbifold%20spectrum%20cone%20points
+total: 1
+- 1179.58014 | 2009 | Dryden, Emily B.; Strohmaier, Alexander | Huber's theorem for hyperbolic orbisurfaces | 
+
+## QUERY (zbMATH Open): orbisurface%20spectrum
+total: 2
+- 1425.58017 | 2019 | Arias-Marco, Teresa; Dryden, Emily B.; Gordon, Carolyn S.; Hassannezha | Spectral geometry of the Steklov problem on orbifolds | 
+- arXiv:math/0411290 | 2004 | Emily B. Dryden | Isospectral Finiteness of Hyperbolic Orbisurfaces | 
+
+## QUERY (zbMATH Open): heat%20trace%20orbisurface
+total: 3
+- arXiv:1711.03405 | 2017 | Eren Ucar | Spectral invariants for polygons and orbisurfaces | 
+- 1453.58009 | 2019 | Schueth, Dorothee | On the corner contributions to the heat coefficients of geodesic polygons | 
+- 1328.14044 | 2015 | Aryasomayajula, Anilatmaja | Bounds for Green's functions on noncompact hyperbolic Riemann orbisurfaces of finite volume | 
+
+## QUERY (zbMATH Open): heat%20coefficients%20cone%20points%20orbifold
+total: 1
+- 1585.58019 | 2026 | Schueth, Dorothee | Heat coefficients of surfaces with curved conical singularities | 
+
+## QUERY (zbMATH Open): spectral%20determination%20orbifold
+total: 1
+- 8157084 | 2025 | le Plat, Dennis; Skrzypek, Torben | Three-point functions from integrability in \(\mathcal{N} = 2\) orbifold theories | 
+
+## QUERY (zbMATH Open): hearing%20orbifold
+total: 1
+- 1140.58011 | 2008 | Abreu, Miguel; Dryden, Emily B.; Freitas, Pedro; Godinho, Leonor | Hearing the weights of weighted projective planes | 
+
+## QUERY (zbMATH Open): hyperbolic%20orbifold%20isospectral%20cone%20points
+total: 1
+- 1179.58014 | 2009 | Dryden, Emily B.; Strohmaier, Alexander | Huber's theorem for hyperbolic orbisurfaces | 
+
+## QUERY (zbMATH Open): ut%3Aorbifold%20ut%3Aheat%20kernel
+total: 4
+- 1175.58010 | 2008 | Dryden, Emily B.; Gordon, Carolyn S.; Greenwald, Sarah J.; Webb, David | Asymptotic expansion of the heat kernel for orbifolds | 
+- 1057.58018 | 2004 | Dai, Xianzhe; Liu, Kefeng; Ma, Xiaonan | On the asymptotic expansion of Bergman kernel | 
+- 1135.32001 | 2007 | Ma, Xiaonan; Marinescu, George | Holomorphic Morse inequalities and Bergman kernels | 
+- 1558.53091 | 2024 | Hallgren, Max | Ricci flow with Ricci curvature and volume bounded below | 
+
+## QUERY (zbMATH Open): power%20sums%20recovery
+total: 22
+- 1543.13023 | 2024 | zbMATH Open Web Interface contents unavailable due to conflicting lice | zbMATH Open Web Interface contents unavailable due to conflicting licenses. | 
+- 1420.60057 | 2008 | Andersen, Lars Nørvang; Asmussen, Søren | Parallel computing, failure recovery, and extreme values | 
+- 1213.90096 | 2008 | Asmussen, Søren; Fiorini, Pierre; Lipsky, Lester; Rolski, Tomasz; Shea | Asymptotic behavior of total times for jobs that must start over if a failure occurs | 
+- 1236.94027 | 2011 | Bourgain, Jean; Dilworth, Stephen; Ford, Kevin; Konyagin, Sergei; Kutz | Explicit constructions of RIP matrices and related problems | 
+- 1542.91359 | 2024 | Hibiki, Yuta; Kiriu, Takuya; Hibiki, Norio | Optimal currency portfolio with implied return distribution in the mean-variance approach | 
+- arXiv:2402.19456 | 2024 | Leo Zhou; Joao Basso; Song Mei | Statistical Estimation in the Spiked Tensor Model via the Quantum Approximate Optimization Algorithm | 
+- 1561.14090 | 2025 | Taveira Blomenhofer, Alexander | On uniqueness of power sum decomposition | 
+- 1293.00031 | 2011 |  | Proceedings of the 2011 IEEE 52nd annual symposium on foundations of computer science -- FOCS 2011, Palm Sprin | 
+- arXiv:2606.31951 | 2026 | Lixin Shen; Jiangyu Yu | Exact Series and Error-Controlled Evaluation of the Nonconvex $\ell_p$ Proximity Operator | 
+- 0911.62063 | 1998 | John, Peter | Statistical design and analysis of experiments | 
+- 1368.68007 | 2017 |  | Proceedings of the 42nd international symposium on symbolic and algebraic computation, ISSAC 2017, Kaiserslaut | 
+- 1334.68010 | 2015 |  | Proceedings of the 56th annual IEEE symposium on foundations of computer science -- FOCS 2015, Berkeley, CA, U | 
+- 1268.68018 | 2013 |  | Automata, languages, and programming. 40th international colloquium, ICALP 2013, Riga, Latvia, July 8--12, 201 | 
+- 1258.68006 | 2010 |  | Proceedings of the 21st annual ACM-SIAM symposium on discrete algorithms, SODA 2010, Austin, TX, USA, January  | 
+- 1436.68013 | 2020 |  | 47th international colloquium on automata, languages, and programming, ICALP 2020, Saarbrücken, Germany (virtu | 
+
+## QUERY (zbMATH Open): injectivity%20power%20sums%20positive
+total: 2
+- 8156758 | 2026 | Li, Stella Jiahui | A note on multiset reconstruction from pairwise products and total sum | 
+- 0651.16001 | 1988 | Rowen, Louis H. | Ring theory. Volume I | 
+
+## QUERY (zbMATH Open): Steinig%20odd%20power%20sums
+total: None
+
+## QUERY (zbMATH Open): ci:1175.58010 (documents citing DGGW 2008)
+total: 2
+- 1404.58043 | 2017 | Dryden, Emily B.; Gordon, Carolyn S.; Greenwald, Sarah J.; Webb, David | Erratum to: ``Asymptotic expansion of the heat kernel for orbifolds''
+- 1547.58015 | 2024 | Gittins, Katie; Gordon, Carolyn; Khalile, Magda; Membrillo Solis, Ingr | Do the Hodge spectra distinguish orbifolds from manifolds? I
+total: None
+
+## QUERY (zbMATH Open): ci:1179.58014 (citing Dryden-Strohmaier)
+total: None
