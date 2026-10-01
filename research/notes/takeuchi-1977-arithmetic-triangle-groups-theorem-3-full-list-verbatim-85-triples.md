@@ -51,7 +51,7 @@ Theorem 2: there exist only finitely many arithmetic triangle groups up to SL2(R
 
 (i) Compact types.
 
-(2,3,7), (2,3,8), (2,3,9), (2,3,10), (2,3,11), (2,3,12), (2,3,14), (2,3,18), (2,3,24), (2,3,30), (2,4,5), (2,4,6), (2,4,7), (2,4,8), (2,4,10), (2,4,12), (2,4,18), (2,5,5), (2,5,6), (2,5,8), (2,5,10), (2,5,20), (2,5,30), (2,6,6), (2,6,8), (2,6,12), (2,7,7), (2,7,14), **(2,8,8)**, (2,8,16), (2,9,18), (2,10,10), (2,12,12), (2,12,24), (2,15,30), (2,18,18),
+(2,3,7), (2,3,8), (2,3,9), (2,3,10), (2,3,11), (2,3,12), (2,3,14), (2,3,16), (2,3,18), (2,3,24), (2,3,30), (2,4,5), (2,4,6), (2,4,7), (2,4,8), (2,4,10), (2,4,12), (2,4,18), (2,5,5), (2,5,6), (2,5,8), (2,5,10), (2,5,20), (2,5,30), (2,6,6), (2,6,8), (2,6,12), (2,7,7), (2,7,14), **(2,8,8)**, (2,8,16), (2,9,18), (2,10,10), (2,12,12), (2,12,24), (2,15,30), (2,18,18),
 
 (3,3,4), (3,3,5), (3,3,6), (3,3,7), (3,3,8), (3,3,9), **(3,3,12)**, (3,3,15), (3,4,4), (3,4,6), (3,4,12), (3,5,5), (3,6,6), (3,6,18), (3,8,8), (3,8,24), (3,10,30), (3,12,12),
 
@@ -67,7 +67,7 @@ Theorem 2: there exist only finitely many arithmetic triangle groups up to SL2(R
 
 REMARK. As to the triples of types (2,3,e3), (2,4,e3) and (2,6,e3), our result coincides with the list of [Fricke-Klein] pp.610-611. It remains to classify all triples listed in Theorem 3 with respect to the commensurability. In the non-compact case this is trivial because these groups are all commensurable with some conjugate group of the modular group."
 
-(Count check: the compact list as transcribed above has 76 triples + 9 non-compact = 85 total, matching the commonly cited count of "85 arithmetic triangle groups" attributed to this paper across the secondary literature, e.g. Voight's survey "Triangular modular curves" and Nugent-Voight arXiv:1510.04637.)
+(Count check, corrected 2026-10-01 audit: the original transcription omitted (2,3,16), which appears in the primary text on p. 105 of the J-STAGE PDF, and listed 75 compact triples while this check asserted 76 from a remembered figure. The check was count-vs-remembered-number, not count-vs-list. The list above now contains 76 distinct compact triples, verified set-wise against the pymupdf text of pp. 105-106 and a visual read of the page images; 76 compact + 9 non-compact = 85, matching the commonly cited count of "85 arithmetic triangle groups" (see also Voight's survey "Triangular modular curves" and Nugent-Voight arXiv:1510.04637). Reproduce: parse every "(a,b,c)" in the section between "(i) Compact types" and "(ii) Non-compact types", assert len(set(triples)) == len(triples) and compare with the set parsed from the PDF; see review/vault-audit.md.)
 
 ## Key finding for the novelty question
 

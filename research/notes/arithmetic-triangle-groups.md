@@ -25,7 +25,7 @@ summary: 'J-STAGE landing page (free access) for Kisao Takeuchi, ''Arithmetic tr
   retrieved via the J-STAGE direct-PDF endpoint (https://www.jstage.jst.go.jp/article/jmath1948/29/1/29_1_91/_pdf,
   which succeeds where the projecteuclid.org DOI/PDF links are blocked by Imperva
   bot protection) and read in full. VERIFIED DIRECTLY FROM THE PRIMARY SOURCE: Theorem
-  3(i)''s list of 85 compact-type arithmetic triples explicitly includes both (2,6,6),(2,6,8),(2,6,12),(2,7,7),(2,7,14),(2,8,8),(2,8,16),(2,9,18),...
+  3(i)''s list of the 76 compact-type arithmetic triples (Theorem 3 overall: 85 = 76 compact + 9 non-compact) explicitly includes both (2,6,6),(2,6,8),(2,6,12),(2,7,7),(2,7,14),(2,8,8),(2,8,16),(2,9,18),...
   and (3,3,4),(3,3,5),(3,3,6),(3,3,7),(3,3,8),(3,3,9),(3,3,12),(3,3,15),... -- so
   BOTH (2,8,8) and (3,3,12) are confirmed, from the primary source, to be arithmetic
   triangle groups on Takeuchi''s list. This paper (Theorem 3) does NOT itself classify
