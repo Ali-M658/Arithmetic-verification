@@ -185,6 +185,22 @@ Corollary (5.2) on p. 156. Crossref DOI `10.1007/bf02684339`.
   approximation argument. It follows Marklof, arXiv:math/0407288, Thm 4 and Prop. 10, which
   treat the torsion-free case and were fetched. The S3 data and the moduli experiment confirm the
   resulting formula numerically (numerics/moduli/REPORT.md).
+### 1.9 Watson 2005 (see 1.1) — second attempt, curvature/divergence session (theory/divergence) — `UNRETRIEVED`
+
+Re-attempted 2026-10-01 while surveying prior work on the divergence of cone heat expansions:
+
+- Crossref `query.bibliographic=Watson trace function expansion spherical polygons` returned no
+  matching record.
+- `https://www.thebookshelf.auckland.ac.nz/docs/NZJMaths/nzjmaths034/nzjmaths034-02-004.pdf`
+  returned no file (HTTP 000).
+- The journal's site search
+  (`https://nzjmath.org/index.php/NZJMATH/search/search?query=Watson+spherical+polygons`)
+  returned HTTP 200 with no matching item.
+
+**Instrument gap.** Watson's $K=1$ series is the one item that might already state a growth rate
+for spherical corner coefficients. The novelty verdict in `theory/divergence/literature.md` §4
+is therefore conditional on it. It rests on Uçar's thesis, which reproduces and corrects Watson
+and makes no growth statement.
 
 ---
 
