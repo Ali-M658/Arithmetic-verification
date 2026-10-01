@@ -1,0 +1,6 @@
+alpha_j (Selberg identity term) == alpha_j (Ucar (4.35), K=-1) exactly for j = 0..15
+alpha_0..11 = ['1', '-1/3', '1/15', '-4/315', '1/315', '-4/3465', '382/675675', '-232/675675', '2833/11486475', '-560204/2749862115', '13051226/68746552875', '-311192456/1581170716125']
+moment identity int r^{2k+1}/(e^{2 pi r}+1) = (1-2^{-2k-1})|B_{2k+2}|/(4(k+1)) checked numerically, k <= 4
+  t=0.05: (4pi/Area) Z_id = 19.6699686437501, series through t^6 = 19.66996864375, diff/t^7 = 0.0002369
+  t=0.02: (4pi/Area) Z_id = 49.6679949458488, series through t^6 = 49.6679949458488, diff/t^7 = 0.00024264
+ALL CHECKS PASSED
