@@ -1,0 +1,3 @@
+# PARI/GP for ranks.py. cypari2 2.2.4 bundles PARI/GP 2.17.2, the version
+# data/ranks.txt was produced with.
+cypari2==2.2.4
