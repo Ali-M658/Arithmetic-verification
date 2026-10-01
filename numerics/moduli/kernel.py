@@ -58,12 +58,12 @@ def sample_points(tau):
 def _job(args):
     tau, sector = args
     import ngsolve as ngs
-    from solve import eigenvalues
+    from solve_moduli import eigenvalues_robust
     ngs.SetNumThreads(1)
     t0 = time.time()
     pts, tris, pe = sample_points(tau)
     S = assemble(tau, sector, *LEVEL)
-    lam, vec = eigenvalues(S["A"], S["M"], NEV, k=K_SLICE, want_vectors=True, verbose=False)
+    lam, vec, info = eigenvalues_robust(S["A"], S["M"], NEV, k=K_SLICE, want_vectors=True)
     gf = ngs.GridFunction(S["fes"])
     fd = S["freedofs"]
     mpts = S["mesh"](pe[:, 0], pe[:, 1])

@@ -19,8 +19,8 @@ as for the S3 triangles.
 Discretisation: identical to S3 (numerics/solve.py): -Delta_E u = lambda w u,
 w = 4/(1-|z|^2)^2, NGSolve H1 elements of order p, mesh of uniform hyperbolic
 size h, both arcs exact rational quadratic splines curved to order p; the
-spectrum by the S3 slicing routine solve.eigenvalues (shift-invert Lanczos,
-certified overlapping windows), imported unmodified.
+spectrum by doubly covered shift-invert slicing (eigenvalues_robust below), built on the
+S3 single-slice routine solve.slice_eigs (imported unmodified).
 
 usage:
   python solve_moduli.py suite [workers]          all members x sectors x levels
@@ -45,7 +45,7 @@ SECTORS = ["NNN", "NND", "NDN", "NDD", "DNN", "DND", "DDN", "DDD"]
 LEVELS = [(0.1, 10), (0.07, 8), (0.07, 12), (0.07, 10), (0.05, 10)]   # last = production
 NEV = 700            # per sector: lambda_max ~ 1.6e4
 K_SLICE = 200
-RUNDIR = os.path.join(HERE, "runs")
+RUNDIR = os.path.join(HERE, "runs", "robust")
 
 
 def dirichlet_sides(sector):
@@ -129,11 +129,94 @@ def run_path(tau, sector, h, order):
     return os.path.join(RUNDIR, f"tau{tau:.1f}_{sector}_h{h}_p{order}.npz")
 
 
+def eigenvalues_robust(A, M, nev, k=K_SLICE, want_vectors=False, inner=0.8, rtol=1e-9):
+    """Doubly covered spectral slicing.
+
+    The S3 routine (numerics/solve.py) certifies the window (sigma - rho, sigma + rho) of one
+    shift-invert Lanczos run from the k values it returns.  In the moduli suite ARPACK was
+    found to drop an eigenvalue inside such a window (detected by comparing mesh levels;
+    REPORT.md section 4a).  Here every eigenvalue below the final cut lies in the inner part
+    (radius inner * rho) of at least TWO independent windows, the next shift being placed at
+    the centre-plus-half-radius of the previous one.  Values are clustered (relative
+    tolerance rtol); a cluster's multiplicity is the largest count any single covering
+    window reports.  Clusters seen by fewer than all of their covering windows are ARPACK
+    misses repaired by the union; their number is returned.
+
+    Returns (lam, vecs or None, info)."""
+    from solve import slice_eigs      # one shift-invert Lanczos run (S3, unmodified)
+    slices = []
+    sigma = -1.0
+    while True:
+        vals, vecs = slice_eigs(A, M, sigma, k, want_vectors)
+        rho = float(np.max(np.abs(vals - sigma)))
+        lo, hi = sigma - inner * rho, sigma + inner * rho
+        tries = 0
+        while slices and lo > slices[-1][0]:
+            # the new inner window must start below the centre of the previous one, so that
+            # every point is covered twice: pull the shift back and redo
+            tries += 1
+            if tries > 10:
+                raise RuntimeError(f"cannot keep double coverage at sigma={sigma}")
+            sigma = slices[-1][0] + 0.5 * (sigma - slices[-1][0])
+            vals, vecs = slice_eigs(A, M, sigma, k, want_vectors)
+            rho = float(np.max(np.abs(vals - sigma)))
+            lo, hi = sigma - inner * rho, sigma + inner * rho
+        slices.append((sigma, rho, lo, hi, vals, vecs))
+        cut = hi if len(slices) >= 2 else -np.inf
+        # every value below `cut` and above the first window's lower edge is covered twice
+        if len(slices) >= 2:
+            # distinct values below the doubly covered top, counted from the windows that own them
+            top_ = slices[-2][3]
+            nd = sum(np.count_nonzero((x[4] >= max(x[2], -np.inf)) & (x[4] < min(x[3], top_)) &
+                                      (x[4] >= (slices[i - 1][3] if i > 0 else -np.inf)))
+                     for i, x in enumerate(slices))
+            if nd >= nev:
+                break
+        sigma = sigma + 0.5 * inner * rho          # next centre inside this inner window
+        if len(slices) > 400:
+            raise RuntimeError("too many slices")
+    top = slices[-2][3]                            # below this every point has two windows
+    # cluster all inner values below top
+    allv = []
+    for i, (sg, rh, lo, hi, vals, vecs) in enumerate(slices):
+        for j, v in enumerate(vals):
+            if lo <= v < hi and v < top:
+                allv.append((v, i, j))
+    allv.sort()
+    clusters = []
+    for v, i, j in allv:
+        if clusters and abs(v - clusters[-1][-1][0]) <= rtol * max(abs(v), 1.0):
+            clusters[-1].append((v, i, j))
+        else:
+            clusters.append([(v, i, j)])
+    lam, vec_idx, misses = [], [], 0
+    for cl in clusters:
+        v0 = cl[0][0]
+        cover = [i for i, s in enumerate(slices) if s[2] <= v0 < s[3]]
+        counts = {i: sum(1 for (_, ii, _) in cl if ii == i) for i in cover}
+        mult = max(counts.values())
+        if min(counts.values()) < mult:
+            misses += 1
+        best = max(cover, key=lambda i: (counts[i], -abs(v0 - slices[i][0])))   # most central full copy
+        mine = sorted([(v, j) for (v, ii, j) in cl if ii == best])
+        for v, j in mine[:mult]:
+            lam.append(v)
+            vec_idx.append((best, j))
+    lam = np.array(lam)
+    order = np.argsort(lam)
+    lam = lam[order]
+    info = dict(n_slices=len(slices), top=top, misses_repaired=misses)
+    if want_vectors:
+        V = np.column_stack([slices[i][5][:, j] for (i, j) in vec_idx])[:, order]
+        return lam, V, info
+    return lam, None, info
+
+
 def run(tau, sector, h, order, nev=NEV, k=K_SLICE, verbose=False):
-    from solve import eigenvalues     # S3 slicing routine, unmodified
     t0 = time.time()
     S = assemble(tau, sector, h, order)
-    lam, _ = eigenvalues(S["A"], S["M"], nev, k=k, verbose=verbose)
+    lam, _, info = eigenvalues_robust(S["A"], S["M"], nev, k=k)
+    S["slice_info"] = info
     if sector == "NNN":
         assert abs(lam[0]) < 1e-8, lam[0]
     return lam, S, time.time() - t0
@@ -149,10 +232,12 @@ def _job(args):
     lam, S, secs = run(tau, sector, h, order)
     tmp = out + ".tmp.npz"
     np.savez(tmp, lam=lam, tau=tau, sector=sector, h=h, order=order, ndof=S["A"].shape[0],
-             ne=S["ne"], area_err=S["area_fem"] - S["area_exact"], seconds=secs)
+             ne=S["ne"], area_err=S["area_fem"] - S["area_exact"], seconds=secs,
+             misses_repaired=S["slice_info"]["misses_repaired"], n_slices=S["slice_info"]["n_slices"])
     os.replace(tmp, out)
     print(f"done tau={tau:.1f} {sector} h={h} p={order}: n={len(lam)} lam_max={lam[-1]:.1f} "
-          f"ndof={S['A'].shape[0]} area_err={S['area_fem'] - S['area_exact']:.1e} {secs:.0f}s", flush=True)
+          f"ndof={S['A'].shape[0]} area_err={S['area_fem'] - S['area_exact']:.1e} "
+          f"misses_repaired={S['slice_info']['misses_repaired']} {secs:.0f}s", flush=True)
     return out, secs
 
 
@@ -211,15 +296,14 @@ def fullquad_path(bc):
 
 def _fullq_job(bc):
     import ngsolve as ngs
-    from solve import eigenvalues
     ngs.SetNumThreads(1)
     t0 = time.time()
     L = Lambert(FULLQ["tau"])
     mesh = make_quad_mesh(L, FULLQ["h"], FULLQ["order"])
     S = assemble_mesh(mesh, "s" if bc == "D" else "", FULLQ["order"])
-    lam, _ = eigenvalues(S["A"], S["M"], FULLQ["nev"], k=K_SLICE, verbose=False)
+    lam, _, info = eigenvalues_robust(S["A"], S["M"], FULLQ["nev"], k=K_SLICE)
     np.savez(fullquad_path(bc), lam=lam, ndof=S["A"].shape[0], area_err=S["area_fem"] - 4 * float(L.area_exact),
-             seconds=time.time() - t0)
+             seconds=time.time() - t0, misses_repaired=info["misses_repaired"], n_slices=info["n_slices"])
     print(f"fullQ {bc}: n={len(lam)} lam_max={lam[-1]:.1f} ndof={S['A'].shape[0]} "
           f"area_err={S['area_fem'] - 4 * float(L.area_exact):.1e} {time.time() - t0:.0f}s", flush=True)
 
