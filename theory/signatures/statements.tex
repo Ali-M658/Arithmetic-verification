@@ -1,0 +1,117 @@
+% theory/signatures/statements.tex -- a standalone LaTeX fragment. NOT wired into paper/main.tex.
+%
+% Assumes the preamble of paper/main.tex and the macros and labels of theory/definitions.tex
+% (\Orb, \Pill, \Kmult, \Kiso; def:signature, def:heatcoef, def:K, eq:Kcompare, prop:Kinf,
+% thm:locality). Uses citation keys ucar2017 and dggw2008 (already used in definitions.tex).
+% Full proofs: theory/signatures/proof.md. Exact checks: heat_structure.py, genus.py,
+% cone_count.py, area_classes.py in the same directory.
+
+\newcommand{\Sig}{\mathrm{Sig}}
+
+\subsection{The signature from finitely many heat coefficients}\label{subsec:signature}
+
+Throughout, $\Sig$ is the class of all closed orientable hyperbolic $2$-orbifolds, and $\Pill_0\subset\Sig$
+the subclass of genus $0$. For a signature $(g;m_1,\dots,m_n)$ write $R=\sum_i1/m_i$,
+$P_j=\sum_im_i^{\,j}$ and $s=2g-2+n-R=\operatorname{Area}/2\pi$.
+
+\begin{lemma}[Heat data of a signature]\label{lem:sigdata}
+For $\Orb,\Orb'\in\Sig$ with signatures $(g;m)$, $(g';m')$ and $L\ge1$, the following are equivalent:
+\begin{enumerate}[label=(\roman*)]
+\item $H_L(\Orb)=H_L(\Orb')$;
+\item there are paddings $U=m\uplus\{1\}^a$, $V=m'\uplus\{1\}^b$ with
+\[
+  R(U)=R(V),\qquad P_j(U)=P_j(V)\ \ (j\ \text{odd},\ j\le 2L-3),\qquad |V|-|U|=2(g-g').
+\]
+\end{enumerate}
+Moreover, if the multisets are padded to a common length and $X=m\uplus(-m')$, then (i) holds if and only if
+$\sum_{x\in X}x^{-1}=\sum_{x\in X}x^{j}=2(g-g')$ for every odd $j\le2L-3$.
+\end{lemma}
+
+\noindent
+The input is the structure of the heat expansion at constant curvature
+\cite[Theorem~4.8]{dggw2008}, \cite[Theorem~4.20]{ucar2017}: the smooth part of every coefficient is a fixed
+multiple of the area, and a cone point of order $k$ contributes $(-1)^l k^{-1}p_l(k)$ at order $t^l$ (curvature $-1$), with
+$p_l$ even, $p_l(1)=0$ and leading coefficient $|B_{2l+2}|/(2(l+1)!(2l+1))\neq0$. The genus enters only
+through the area.
+
+\begin{theorem}[Separation]\label{thm:sigsep}
+Let $\Orb,\Orb'\in\Sig$ have signatures $(g;m_1,\dots,m_n)\neq(g';m'_1,\dots,m'_{n'})$ and equal first $L$
+heat coefficients. Let $U,V$ be any paddings as in Lemma~\ref{lem:sigdata}(ii), and let $U^*,V^*$ be
+obtained by removing their common elements (these do not depend on the choice of paddings). Then
+$|U^*|+|V^*|\ge 2L+2$. In particular, if
+\[
+  L\ \ge\ \max\bigl(n+g-g',\ n'+g'-g\bigr),
+\]
+then $H_L(\Orb)=H_L(\Orb')$ implies $\sigma(\Orb)=\sigma(\Orb')$.
+\end{theorem}
+
+\begin{corollary}[Genus and cone orders from $\lfloor\operatorname{Area}/\pi\rfloor+4$ coefficients]\label{cor:sigarea}
+For every $\Orb\in\Sig$,
+\[
+  \Kmult(\Orb;\Sig)\ \le\ \Bigl\lfloor\frac{\operatorname{Area}(\Orb)}{\pi}\Bigr\rfloor+4 .
+\]
+That is, the first $\lfloor\operatorname{Area}(\Orb)/\pi\rfloor+4$ heat coefficients determine the genus and
+the cone-order multiset of $\Orb$ among all closed orientable hyperbolic $2$-orbifolds. The number is
+read off from the first coefficient $c_1=\operatorname{Area}/4\pi$.
+\end{corollary}
+
+\begin{theorem}[Cone count in genus $0$]\label{thm:sigcount}
+Let $\Orb\in\Pill_0$ have $n$ cone points. Then $n\le\operatorname{Area}(\Orb)/\pi+4$, with equality exactly
+when every cone order is $2$, and
+\[
+  \Kmult(\Orb;\Pill_0)\ \le\ \Bigl\lfloor\frac{\operatorname{Area}(\Orb)}{\pi}\Bigr\rfloor+4 .
+\]
+More precisely, $H_{\max(n,n')}$ separates $\Orb$ from every $\Orb'\in\Pill_0$ with $n'$ cone points and a
+different cone-order multiset. In particular the cone count $n$ is determined without being known in
+advance.
+\end{theorem}
+
+\begin{theorem}[No uniform number of coefficients]\label{thm:signonuniform}
+\leavevmode
+\begin{enumerate}[label=(\alph*)]
+\item For every $L\ge2$ and every $g'\ge0$ there are orbifolds in $\Sig$ of genus $g'+1$ and $g'$ with equal
+  first $L$ heat coefficients; for $g'=0$ they may be taken of area less than $2\pi(4^{L-1}-1)$.
+\item For every $k\ge2$ there are orbifolds in $\Pill_0$ with $n$ and $n+1$ cone points, for some $n$, with
+  equal first $k$ heat coefficients.
+\end{enumerate}
+Hence $\sup_{\Orb}\Kmult(\Orb;\Sig)=\sup_{\Orb}\Kmult(\Orb;\Pill_0)=\infty$, and no fixed number of heat
+coefficients determines the genus in $\Sig$ or the cone count in $\Pill_0$.
+\end{theorem}
+
+\begin{corollary}[Growth]\label{cor:siggrowth}
+Let $f(A)=\max\{\Kmult(\Orb;\Sig):\operatorname{Area}(\Orb)\le A\}$. For $A\ge6\pi$,
+\[
+  \Bigl\lfloor\log_4\Bigl(\frac{A}{2\pi}+1\Bigr)\Bigr\rfloor+2\ \le\ f(A)\ \le\ \Bigl\lfloor\frac{A}{\pi}\Bigr\rfloor+4 .
+\]
+\end{corollary}
+
+\begin{example}\label{ex:siggenus}
+The orbifolds of signatures $(1;15)$ and $(0;3,3,5,5)$ have the same first two heat coefficients, and
+$(1;15,15,15)$ and $(0;3,3,5,7,7,21)$ have the same first three (exact computation). In each pair the genera
+differ.
+\end{example}
+
+\begin{remark}[Relation to $\Kmult$ and $\Kiso$]\label{rem:sigK}
+Theorem~\ref{thm:sigsep} with $g=g'=0$ and $n=n'$ is the statement $\Kmult(\Orb;\Pill_n)\le n$ for the class
+$\Pill_n$ of hyperbolic spheres with $n$ cone points, i.e.\ the injectivity that Remark~\ref{rem:nconerestated}(a) leaves conditional, now proved
+independently (\texttt{theory/audibility/proof.md}, Theorem~A). Corollary~\ref{cor:sigarea} extends it to all genera and all cone
+counts at once, at the price of a bound that depends on the area, and Theorem~\ref{thm:signonuniform}
+shows that some such dependence is unavoidable. All of this concerns $\Kmult$; by \eqref{eq:Kcompare}
+and Proposition~\ref{prop:Kinf} (conditional on Theorem~\ref{thm:locality}), $\Kiso$ remains infinite
+whenever two non-isometric orbifolds share a signature.
+\end{remark}
+
+\begin{remark}[What short-time heat flow detects]\label{rem:sigphysics}
+This remark is interpretation, not part of any proof. Heat at short times is local: it sees curvature,
+hence the area, and each cone point through a fixed function of its order. A handle has no local
+signature and is heard only through the area it uses up. Comparing two orbifolds through the mirror
+multiset $U^*\uplus(-V^*)$, a genus difference appears as an imbalance between its positive and negative
+parts, and Theorem~\ref{thm:sigsep} says that the heat coefficients force the mirror multiset to be
+symmetric, hence balanced, once there are enough of them relative to its size. A handle therefore costs
+no more coefficients to hear than a cone point.
+\end{remark}
+
+% Exact extent. Lemma sigdata, Theorems sigsep, sigcount, signonuniform and Corollaries sigarea,
+% siggrowth are proved for all L given the cited heat input (proof.md sections 2-4). The constructions of
+% Theorem signonuniform are built and checked with the actual cone coefficients for L <= 6 (a) and
+% k <= 3 (b). Open: whether f(A) grows linearly (proof.md section 7).
