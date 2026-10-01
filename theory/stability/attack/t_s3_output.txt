@@ -1,0 +1,40 @@
+[2, 8, 8] lambda=16 kappa=1 zeta=49/3 rho=17.833  terms= ['0.0625', '0.001913', '3.803e-07']  delta_thm=3.803e-07
+[3, 3, 12] lambda=24 kappa=1 zeta=49/3 rho=16.896  terms= ['0.04167', '0.001276', '1.189e-07']  delta_thm=1.189e-07
+[3, 10, 15, 30] lambda=60 kappa=2.343 zeta=2336/5 rho=471.86  terms= ['0.01667', '7.613e-06', '4.021e-11']  delta_thm=4.021e-11
+[4, 5, 21, 28] lambda=56 kappa=2.2036 zeta=2336/5 rho=475.78  terms= ['0.01786', '8.673e-06', '3.147e-11']  delta_thm=3.147e-11
+Lemma S3, adversarial e-perturbations: worst (k-th nearest root distance)/r_a  [must be <1]  and (k+1)-th/r_a [must be >=1]
+  m=(2, 8, 8) a=0.25 k=1 eps=0.00781: max kth/r_a=0.0524  min (k+1)th/r_a=1.5062
+  m=(2, 8, 8) a=0.25 k=1 eps=7.81e-06: max kth/r_a=0.0486  min (k+1)th/r_a=1985.0788
+  m=(2, 8, 8) a=1 k=2 eps=0.00781: max kth/r_a=0.4938  min (k+1)th/r_a=1.9476
+  m=(2, 8, 8) a=1 k=2 eps=7.81e-06: max kth/r_a=0.4718  min (k+1)th/r_a=63.2440
+  m=(3, 3, 12) a=0.25 k=2 eps=0.00781: max kth/r_a=0.3751  min (k+1)th/r_a=1.8798
+  m=(3, 3, 12) a=0.25 k=2 eps=7.81e-06: max kth/r_a=0.3132  min (k+1)th/r_a=63.2420
+  m=(3, 3, 12) a=1 k=1 eps=0.00781: max kth/r_a=0.1202  min (k+1)th/r_a=1.6249
+  m=(3, 3, 12) a=1 k=1 eps=7.81e-06: max kth/r_a=0.1111  min (k+1)th/r_a=1990.0943
+  m=(2, 2, 2) a=1 k=3 eps=0.0185: max kth/r_a=0.8737  min (k+1)th/r_a=2000000.0000
+  m=(2, 2, 2) a=1 k=3 eps=1.85e-05: max kth/r_a=0.7730  min (k+1)th/r_a=20000000.0000
+  m=(1, 1, 100) a=0.01 k=2 eps=0.018: max kth/r_a=0.3260  min (k+1)th/r_a=1.8817
+  m=(1, 1, 100) a=0.01 k=2 eps=1.8e-05: max kth/r_a=0.2747  min (k+1)th/r_a=63.2420
+  m=(1, 1, 100) a=1 k=1 eps=0.018: max kth/r_a=0.1183  min (k+1)th/r_a=1.6740
+  m=(1, 1, 100) a=1 k=1 eps=1.8e-05: max kth/r_a=0.1111  min (k+1)th/r_a=1991.3123
+  m=(2, 2, 50, 50) a=0.04 k=2 eps=0.00524: max kth/r_a=0.1856  min (k+1)th/r_a=1.6659
+  m=(2, 2, 50, 50) a=0.04 k=2 eps=5.24e-06: max kth/r_a=0.1610  min (k+1)th/r_a=62.9308
+  m=(2, 2, 50, 50) a=1 k=2 eps=0.00524: max kth/r_a=0.3341  min (k+1)th/r_a=1.8144
+  m=(2, 2, 50, 50) a=1 k=2 eps=5.24e-06: max kth/r_a=0.3147  min (k+1)th/r_a=63.0846
+  m=(5, 5, 5, 5) a=1 k=4 eps=0.00617: max kth/r_a=0.9365  min (k+1)th/r_a=2000000.0000
+  m=(5, 5, 5, 5) a=1 k=4 eps=6.17e-06: max kth/r_a=0.8145  min (k+1)th/r_a=11246826.5038
+  m=(1, 2, 2, 2, 3) a=0.3333 k=1 eps=1.69e-05: max kth/r_a=0.0062  min (k+1)th/r_a=1.5711
+  m=(1, 2, 2, 2, 3) a=0.3333 k=1 eps=1.69e-08: max kth/r_a=0.0061  min (k+1)th/r_a=1956.0937
+  m=(1, 2, 2, 2, 3) a=0.6667 k=3 eps=8.47e-06: max kth/r_a=0.3680  min (k+1)th/r_a=1.9896
+  m=(1, 2, 2, 2, 3) a=0.6667 k=3 eps=8.47e-09: max kth/r_a=0.3513  min (k+1)th/r_a=19.9999
+  m=(1, 2, 2, 2, 3) a=1 k=1 eps=1.69e-05: max kth/r_a=0.0212  min (k+1)th/r_a=1.5276
+  m=(1, 2, 2, 2, 3) a=1 k=1 eps=1.69e-08: max kth/r_a=0.0206  min (k+1)th/r_a=1955.6909
+  m=(3, 3, 3, 9, 9, 10) a=0.3 k=3 eps=3.73e-05: max kth/r_a=0.2309  min (k+1)th/r_a=1.7471
+  m=(3, 3, 3, 9, 9, 10) a=0.3 k=3 eps=3.73e-08: max kth/r_a=0.2011  min (k+1)th/r_a=19.9061
+  m=(3, 3, 3, 9, 9, 10) a=0.9 k=2 eps=1.48e-07: max kth/r_a=0.1160  min (k+1)th/r_a=1.9948
+  m=(3, 3, 3, 9, 9, 10) a=0.9 k=2 eps=1.48e-10: max kth/r_a=0.1135  min (k+1)th/r_a=63.2454
+  m=(3, 3, 3, 9, 9, 10) a=1 k=1 eps=2.35e-07: max kth/r_a=0.0083  min (k+1)th/r_a=1.8529
+  m=(3, 3, 3, 9, 9, 10) a=1 k=1 eps=2.35e-10: max kth/r_a=0.0082  min (k+1)th/r_a=1995.4781
+  m=(1, 1, 1, 1, 1, 1) a=1 k=6 eps=0.000686: max kth/r_a=0.9811  min (k+1)th/r_a=2000000.0000
+  m=(1, 1, 1, 1, 1, 1) a=1 k=6 eps=6.86e-07: max kth/r_a=0.8469  min (k+1)th/r_a=6324555.3203
+overall worst 0.9811068166059624 2000000.0

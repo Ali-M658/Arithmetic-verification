@@ -1,0 +1,4 @@
+2 det M == (-1)^{n(n+1)/2} prod(m_i+m_j)/e_n symbolically: True
+3 det M == (-1)^{n(n+1)/2} prod(m_i+m_j)/e_n symbolically: True
+4 det M == (-1)^{n(n+1)/2} prod(m_i+m_j)/e_n symbolically: True
+5 det M == (-1)^{n(n+1)/2} prod(m_i+m_j)/e_n symbolically: True

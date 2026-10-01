@@ -1,0 +1,11 @@
+kappa_r 0 0.3333333333333333
+kappa_r 1 0.9444444444444444
+kappa_r 2 1.3280038759689923
+n=3 zeta (rows j<=n-2, the rows of M) = 1 ; zeta (j<=n-1, as used in delta_thm) = 49/3
+n=4 zeta (rows j<=n-2, the rows of M) = 79/3 ; zeta (j<=n-1, as used in delta_thm) = 2336/5
+n=5 zeta (rows j<=n-2, the rows of M) = 14048/15 ; zeta (j<=n-1, as used in delta_thm) = 699984/35
+n=6 zeta (rows j<=n-2, the rows of M) = 3078056/63 ; zeta (j<=n-1, as used in delta_thm) = 243922468/189
+(2, 8, 8) grid max deviation 0.484561 at [ 1. -1. -1.]; mp recheck: rounding ok=True dev=0.484561
+(3, 3, 12) grid max deviation 0.467190 at [-1.  1.  1.]; mp recheck: rounding ok=True dev=0.467190
+(3, 10, 15, 30) grid max deviation 0.241219 at [-1.  1.  1.  1.]; mp recheck: rounding ok=True dev=0.241219
+(4, 5, 21, 28) grid max deviation 0.248296 at [ 1. -1. -1. -1.]; mp recheck: rounding ok=True dev=0.248296

@@ -1,0 +1,4 @@
+(2, 8, 8) tabulated delta_cert=0.002342  coherent test passes at tabulated value: False ; certified sup ~ 2.3417118e-03
+(3, 3, 12) tabulated delta_cert=0.00404  coherent test passes at tabulated value: True ; certified sup ~ 4.0401798e-03
+(3, 10, 15, 30) tabulated delta_cert=0.00366  coherent test passes at tabulated value: True ; certified sup ~ 3.6601031e-03
+(4, 5, 21, 28) tabulated delta_cert=0.001462  coherent test passes at tabulated value: False ; certified sup ~ 1.4617738e-03

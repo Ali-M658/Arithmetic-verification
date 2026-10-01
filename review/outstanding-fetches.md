@@ -287,3 +287,25 @@ the "conical" form.
   searches (no API key available). The arXiv API and web search were substituted, and the
   substituted queries are listed in full in `review/hyperresearch/Q4-stability.md` §4 so the
   null result there rests on queries that were actually run.
+
+---
+
+## 7. Stability and prior-art sweep (2026-10-01): instrument gaps
+
+Full tables, with URLs and errors, are in the "Instrument gaps" section of each note in
+`review/literature/`. Nothing listed here is reported as "not found". Each item is a retrieval
+failure.
+
+| Item | Status | Attempted route and error | Why it matters |
+|---|---|---|---|
+| Semantic Scholar search API (anonymous) | `TOOLING` | HTTP 429 on every query in three independent sweeps, after the full 4 → 8 → 16 → 32 → 40 s backoff. The configured connector timed out. | No citation-graph traversal. Forward citations of Steinig 1971, Korobov–Bugaevskaya 2016 and Melánová–Sturmfels–Winter 2022 are where a statement of Theorem A could still be hiding. |
+| arXiv full-text search | `TOOLING` | POST to `arxiv.org/search_classic` (`searchtype=ft`) returns 302 to `search.arxiv.org`. GET there works. Only the first 30 hits per query were parsed. | Full-text nulls cover arXiv only. |
+| Steinig, Rend. Mat. (6) 4 (1971) 629–644 | `UNRETRIEVED` | No DOI. zbMATH Zbl 0238.10007 gives metadata only. MathSciNet is not accessible. | Most likely classical source of injectivity of power sums on positive reals, possibly with real exponents. This would cover the positive-real case of Theorem A. |
+| Drury–Marshall, Math. Proc. Camb. Phil. Soc. 101 (1987), DOI 10.1017/s0305004100066901 | `PAYWALLED` | Abstract only; Unpaywall is_oa false. | The Steinig-type argument "in a slightly more general setting" (per MathOverflow 410757). |
+| Müller et al., Found. Comput. Math. 16 (2016), arXiv:1311.5493 | `UNRETRIEVED` (identified, not fetched) | n/a | Real-exponent injectivity; cited by Melánová–Sturmfels–Winter Prop. 24. |
+| Bhatia–Elsner–Krause, LAA 142 (1990) 195–209, DOI 10.1016/0024-3795(90)90267-g | `PAYWALLED` | ScienceDirect 403. Bielefeld repository behind a JavaScript challenge. Elsevier API 406. | The constant 4·2^{−1/n} is known only from secondary quotations, and one of them (Laffey) conflicts. Ostrowski 1940 was read from the primary and is the citation used. |
+| Ostrowski, *Solution of Equations…* (1966/1973), Appendix A | `UNRETRIEVED` | Internet Archive lending-only (401). | The coefficient-γ form is secondary (Ćurgus–Mascioni). |
+| Bhatia, *Matrix Analysis* Ch. VIII; *Perturbation Bounds* (SIAM) | `PAYWALLED` | Springer HTML paywall; not open access. | Textbook form of root/eigenvalue variation bounds. |
+| Marletta–Weikard 2005; Mandache 2001 (IOP) | `TOOLING` | Bot-check redirect (Radware). | Marletta–Weikard: modulus of finite-data Sturm–Liouville stability not quoted (abstract only). |
+| Hochstadt 1977; Alessandrini–Vessella 2005; Osgood–Phillips–Sarnak 1988 | `PAYWALLED` | ScienceDirect 403 / landing page only. | OPS compactness quoted via the Datchev–Hezari survey. Alessandrini–Vessella characterised through citing papers. |
+| Savchuk–Shkalikov 2010; Hitrik 2000; McLaughlin 1988; Horváth–Kiss 2010; Ryabushko 1973 | `PAYWALLED` / `NO-DOI` | Not open access; Ryabushko has no Crossref record. | Sturm–Liouville finite-data stability lineage, known only through Bondarenko 2025's survey. |
