@@ -162,6 +162,30 @@ Numdam `PMIHES_1977__47__33_0.pdf` (16,309,727 bytes) needed resumed downloads (
 the first two attempts were truncated. Theorem (8) is on p. 35, and Theorem (5.1) with
 Corollary (5.2) on p. 156. Crossref DOI `10.1007/bf02684339`.
 
+### 1.9 Donnelly, "Spectrum and the fixed point sets of isometries I" — `PAYWALLED` (locality session, theory/locality)
+
+- **Record:** Math. Ann. **224** (1976), 161–170, DOI `10.1007/BF01436198` (Crossref record
+  retrieved; title, volume, pages and date 1976-04 agree with refs/sources.bib `donnelly1976`).
+- **Attempted:** Unpaywall (`is_oa: false`, no OA location); `link.springer.com/content/pdf/...`
+  (HTTP 200 but an HTML paywall page, not a PDF); EuDML and GDZ title searches (no hit).
+- **Use made of it:** theory/locality/proof.md, Proof A of Theorem 1, needs the *locality* and
+  *universality* of Donnelly's functions $b_k(\gamma,\cdot)$ and the factor $|\det B_\gamma|$. These
+  are quoted from the restatement in DGGW §4.1–4.2 (arXiv:0805.3148, pp. 15–16), read in full.
+  Donnelly's own wording was not checked.
+- **Impact:** none on the conclusions. Theorem 1 has two further proofs that do not go through
+  Donnelly: Uçar's Theorem 4.20 (explicit constant-curvature coefficients), and the trace-formula
+  route (proof.md, Proof C). check_locality.py verifies their agreement exactly.
+
+### 1.10 Hejhal, *The Selberg Trace Formula for PSL(2,R)*, LNM 548 / 1001, and Iwaniec, *Spectral Methods of Automorphic Forms* — `UNRETRIEVED` (locality session)
+
+- **Why wanted:** Dryden–Strohmaier cite them ([7], [8]) for the orbisurface trace formula with
+  elliptic terms, stated by DS only for test functions of uniform exponential type.
+- **Not attempted beyond catalogue search:** both are books, not open access.
+- **Workaround:** proof.md Lemma 3.2 extends DS eq. (1) to the heat test function by an explicit
+  approximation argument. It follows Marklof, arXiv:math/0407288, Thm 4 and Prop. 10, which
+  treat the torsion-free case and were fetched. The S3 data and the moduli experiment confirm the
+  resulting formula numerically (numerics/moduli/REPORT.md).
+
 ---
 
 ## 2. Identifiers that do not exist or could not be resolved
@@ -192,6 +216,7 @@ obtained by another route, and its content is used in the review.
 | `arxiv.org/pdf/1711.03405` (Uçar thesis) | raw PDF bytes could not be parsed | Humboldt DSpace bitstream chain `/bitstream/handle/18452/19142/ucar.pdf` → `/bitstreams/.../download` → `/server/api/core/bitstreams/.../content`; 54,887 words recovered |
 | Loughborough institutional repository (Bari–Hunsicker record) | JS-rendered pages return empty content on both the search page and the direct record | figshare REST API, `api.figshare.com/v2/articles/9385352` |
 | DGGW erratum | not on arXiv | Wayback Machine copy of the Michigan Math. J. PDF (2 pages) |
+| `library.msri.org/books/gt3m/PDF/13.pdf` (Thurston ch. 13) | host no longer resolves (curl status 000), also over https | SLMath mirror `library.slmath.org/books/gt3m/PDF/13.pdf` (8.4 MB, electronic ed. 1.1); route recorded in theory/locality/fetch_sources.sh |
 | OEIS keyword search | HTTP 403 after several rapid unheadered requests | browser `User-Agent` plus ≥5 s spacing between calls |
 
 **MathSciNet** was named in the task brief as a permitted venue but was not queried: it is
