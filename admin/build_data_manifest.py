@@ -148,7 +148,7 @@ RULES = [
 ]
 
 ENV_FILES = [
-    ("requirements.txt", "exact-arithmetic suite (code/run_all.sh): sympy, mpmath, numpy, scipy"),
+    ("requirements.txt", "exact-arithmetic suite (code/run_all.sh): sympy, mpmath, numpy, scipy; matplotlib, pillow for figures/"),
     ("code/requirements.txt", "the harness stages of run_all.sh (includes ../requirements.txt)"),
     ("numerics/requirements.txt", "S3 solver environment (Python 3.13, NGSolve 6.2.2607)"),
     ("numerics/moduli/env/requirements.txt", "moduli solver environment as built on the server"),
@@ -168,7 +168,7 @@ FIGURES = [
      "Points, triangles and K(t,x,x) at t = 0.005, 0.01, 0.02 for (2,8,8) and (3,3,12) (S3); two moduli members (S5)."),
     ("F2", "Hyperboloid tilings",
      [], "NO DATA FILE NEEDED",
-     "Drawn from the exact triangle vertices of numerics/geometry.py (mpmath) and the reflection group; no stored data. The figure script does not exist yet (S10)."),
+     "Drawn from the exact triangle vertices of numerics/geometry.py (mpmath) and the reflection group; no stored data. Script: figures/src/F2.py (asserts the group relations, tile angles and coverage)."),
     ("F3", "Mirror-argument schematic (proof of Theorem S)",
      [], "NO DATA FILE NEEDED",
      "A schematic of the proof's mirror argument, the signed multiset m (+) (-m') on one real axis, drawn from exact examples of theory/signatures (e.g. (1;15) vs (0;3,3,5,5)). It is unrelated to the Neumann-minus-Dirichlet mirror term of numerics/data/heat_trace_checks.csv."),

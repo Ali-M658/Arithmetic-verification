@@ -12,6 +12,7 @@ paper/main.tex), through matplotlib's bundled cm fonts, so no TeX installation i
 Sizes and line weights are the values of figures/SPEC.md.
 """
 import json
+import logging
 import os
 from pathlib import Path
 
@@ -24,6 +25,7 @@ from matplotlib.colors import ListedColormap  # noqa: E402
 
 import colourtools as ct  # noqa: E402
 
+logging.getLogger("fontTools").setLevel(logging.ERROR)    # silence font-table timestamp notes
 HERE = Path(__file__).resolve().parent
 PALETTE = json.loads((HERE / "palette.json").read_text())
 
@@ -136,6 +138,12 @@ def letter(ax, s, dx_pt=-26, dy_pt=4):
     ax.annotate(f"({s})", xy=(0, 1), xycoords="axes fraction", xytext=(dx_pt, dy_pt),
                 textcoords="offset points", ha="left", va="bottom", fontsize=FONT_PT["letter"],
                 color=GREY["ink"])
+
+
+def letter_at(fig, x, y, s):
+    """Panel letter '(s)' at figure coordinates (x, y) (top-left of the letter); used where an
+    axes box is shrunk by an equal aspect ratio, so that letters stay on one line."""
+    fig.text(x, y, f"({s})", ha="left", va="top", fontsize=FONT_PT["letter"], color=GREY["ink"])
 
 
 METADATA_PDF = {"Creator": None, "Producer": None, "CreationDate": None}
