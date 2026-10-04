@@ -53,12 +53,12 @@ fetch can have a different hash with the same bibliographic fields.
 |---|---|---|
 | `dggw2008` | https://doi.org/10.1307/mmj/1213972406 | `5fe93eb00faa26cade2e29b5d387d261ec3e81372bbddbadbffb156c384831ef` |
 | `donnelly1976` | https://doi.org/10.1007/BF01436198 | `bbc85f07a3f57613793ed07372c0c6b99f69008b8fd6beb5d5199b1b83b2f97f` |
-| `ucar2017` | https://export.arxiv.org/api/query?id_list=1711.03405 | `098a55b8f021f20d2065f8f1d98760dfa0bb834487eba047dd046a40a484ae0f` |
+| `ucar2017` | https://export.arxiv.org/api/query?id_list=1711.03405 | `761f647ffd2ff26f20aeb1b1679a621425728e510a03ea14ad28fbe3fafba64f` |
 | `schueth2019` | https://doi.org/10.5802/aif.3338 | `d9989d93b82332fdf5bcf6393b8c7e1dbd9564718147343ecb022e4442189ddf` |
 | `berndtyeap2002` | https://doi.org/10.1016/S0196-8858(02)00020-9 | `fb67b5489e757aa2a7faabd94480d7f8c17cea00f020da2944f9d08bf5afc82c` |
 | `adfg2008` | https://doi.org/10.1007/s10455-007-9092-6 | `4bf74b14edfc3ee8f3c5c7927e42868399e1f3f51b8cee5c69a355bd1be71fa4` |
 | `drydenstrohmaier2009` | https://doi.org/10.4153/CMB-2009-008-0 | `e804657f5925b0394a6943d55138d745e13ffa208e2b754bc8c22a90dc2a955c` |
-| `doylerossetti2011` | https://export.arxiv.org/api/query?id_list=1103.4372 | `098a55b8f021f20d2065f8f1d98760dfa0bb834487eba047dd046a40a484ae0f` |
+| `doylerossetti2011` | https://export.arxiv.org/api/query?id_list=1103.4372 | `761f647ffd2ff26f20aeb1b1679a621425728e510a03ea14ad28fbe3fafba64f` |
 | `linowitzvoight2015` | https://doi.org/10.1007/s00209-015-1500-1 | `298cabb4c0e862c5c506468c0dd896fa440c3cb27a14c9587fa93529ac2fb93c` |
 | `marklof2011` | https://doi.org/10.1017/cbo9781139108782.003 | `f571f7bf8b44cd0859167e21422440483ef9909efc363db6654ceafc727a8a4d` |
 | `troyanov1991` | https://doi.org/10.1090/S0002-9947-1991-1005085-9 | `12558d801ddc410d7d239c2b4c4c463ab57667e08e68486f9da7078bc03d790c` |
@@ -74,15 +74,15 @@ fetch can have a different hash with the same bibliographic fields.
 | `gomezserrano2021` | https://doi.org/10.1016/j.jde.2020.11.002 | `fe20c10bb5f313a694b74560a93dc109d57bbed54c572dc31af7c7316fac1ec2` |
 | `holtztyaglov2012` | https://doi.org/10.1137/090781127 | `8fe0182587161ce76a61504a19f031d58058b0e7996c00047d5ad2256021af54` |
 | `ostrowski1940` | https://doi.org/10.1007/bf02546330 | `352a841a8e0fc4826dc6d7f6a228f0af8203c6bd7604786ad6dc9f0a7e3a7194` |
-| `steinig1971` | https://api.zbmath.org/v1/document/_search?search_string=an:0238.10007 | `6302dfd33cb82b56218c9cdab299744babbbfcb0fae03c4d0363ea1c36203631` |
+| `steinig1971` | https://api.zbmath.org/v1/document/_search?search_string=an:0238.10007 | `87d9c3f8b1747691f693576222a58ccd8cb0c95a0062d05ec4adc5d483a6d7ca` |
 | `laurens2023` | https://doi.org/10.1007/s00526-023-02534-2 | `3d2cf130c87c1628d35789265a9dfd1d0cd326d8f67ac981a35a61f2cff441c2` |
 | `msw2022` | https://doi.org/10.1080/10586458.2022.2061650 | `6ebbe47191a6a308d7f30f14ca67b745aba396ea8094a74485b0291bb4c2887f` |
 | `korobovbugaevskaya2016` | https://doi.org/10.1090/mcom/2994 | `96eba9f2aa833a9cf265e5b4554c1f70e9167ed44ce64707adc87479d642b202` |
 | `mueller2016` | https://doi.org/10.1007/s10208-014-9239-3 | `f5fd421e31fd9e077596bddc7c0b885d4c2a0874b0ea793e4bb3127864cae237` |
 | `alloucheshallit1999` | https://doi.org/10.1007/978-1-4471-0551-0_1 | `33b8ac990e0f14d8ac3eaedbde2848c022b5e6712553fdda36a94accf7997882` |
 | `bgn1993` | https://doi.org/10.1090/s0025-5718-1993-1189516-5 | `6a399b5df24d73540141be5d7d484650a1aa2a960881a4ea157f889aedbce93a` |
-| `schinzel1996` | https://api.zbmath.org/v1/document/_search?search_string=an:0932.11019 | `9d031a7123368ad39951f4439376e2180bc29ec152ac69b88246ce9f33777da8` |
-| `beauville1982` | https://api.zbmath.org/v1/document/_search?search_string=an:0504.14016 | `61229f4947556438829a780dd5c84fc3a11441c6682d927f07838d90018a7ea2` |
+| `schinzel1996` | https://api.zbmath.org/v1/document/_search?search_string=an:0932.11019 | `4d1aab93dd3025b2dd27f177394988b7daf1aba2e6c14e631958c3f7531c8144` |
+| `beauville1982` | https://api.zbmath.org/v1/document/_search?search_string=an:0504.14016 | `e9517d8deff0a708a5b0c9181a5e3ee6f2c995636fcae5389dc9efa8a2b5767b` |
 | `mazur1977` | https://doi.org/10.1007/bf02684339 | `b408db1ac82f9f114d2dc16cdf538fbc6e3fa91138ac3ee7fbc9346a91116731` |
 | `pari2172` | https://pari.math.u-bordeaux.fr/pub/pari/OLD/2.17/pari-2.17.2.changelog | `cc7ed9f76db9b4906fdc5afb4c28a16081bf1aa194c77d0807ac17d8b617fc5b` |
 | `strohmaieruski2013` | https://doi.org/10.1007/s00220-012-1557-1 | `b90480edde2f4b0008694f1236f0fff3d49c230d864ecc5242b6dabce550dd51` |
@@ -95,6 +95,12 @@ Fields not in the fetched record of a DOI are filled from the matching entry of
 `refs/sources.bib`, itself built from fetched records in the literature sweep: the page ranges
 of `dggw2008` (205-238) and `mckeansinger1967` (43-69), and the end pages of `sunada1985`
 (169-186) and `griesermaronna2013` (1440-1447), where Crossref gives only the first page.
+
+Publisher locations, which the reference style requires for books and chapters, come from
+the CSL record where present (`alloucheshallit1999`: London) and otherwise from zbMATH Open records
+fetched as evidence and checked for the string: `arpack1998` "Philadelphia, PA" (Zbl 0901.65021,
+SHA-256 `bded4d9e65b05d27af7203009ee69d8987d612809363c5bfeddcaf6d06cf3efe`) and `marklof2011` "Cambridge"
+(Zbl 1282.11053, SHA-256 `e459131d4cf3854bf44f248b3f61c1ac7430200d1df8cb830048d1d3e135037c`).
 
 Corrections applied to fetched records, each justified by a second fetched document:
 
@@ -111,7 +117,7 @@ Corrections applied to fetched records, each justified by a second fetched docum
 Two entries describe documents with no registry record; their fields are read off the fetched
 document: `thurston1980` (the chapter's title page: "Electronic version 1.1 - March 2002",
 "electronic edition of the 1980 notes distributed by Princeton University") and `pari2172` (the
-changelog: "Done for version 2.17.2 (released 01/03/2025)").
+changelog, https://pari.math.u-bordeaux.fr/pub/pari/OLD/2.17/pari-2.17.2.changelog: "Done for version 2.17.2 (released 01/03/2025)").
 
 ## Re-creating the fetched files
 

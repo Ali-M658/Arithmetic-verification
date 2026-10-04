@@ -124,12 +124,19 @@ def get(url, headers=None, tries=3):
 
 
 EVIDENCE = {"ostrowski1940_reprint": "10.1007/978-3-0348-9355-8_50"}
+# Publisher locations missing from the Crossref record, read from zbMATH Open (the record is
+# fetched as evidence and must contain the location string).
+ADDRESS_ZB = {"arpack1998": ("0901.65021", "Philadelphia, PA"), "marklof2011": ("1282.11053", "Cambridge")}
 
 
 def fetch_all():
     RAW.mkdir(parents=True, exist_ok=True)
     for key, doi in EVIDENCE.items():
         (RAW / f"{key}.json").write_bytes(get("https://doi.org/" + doi, {"Accept": "application/vnd.citationstyles.csl+json"}))
+    for key, (zbl, _) in ADDRESS_ZB.items():
+        q = urllib.parse.quote("an:" + zbl)
+        (RAW / f"{key}_address_zbmath.json").write_bytes(
+            get(f"https://api.zbmath.org/v1/document/_search?search_string={q}&page=0&results_per_page=1"))
     arxiv_ids = [v for k, (kind, v) in SOURCES.items() if kind == "arxiv"]
     if arxiv_ids:
         data = get("https://export.arxiv.org/api/query?max_results=50&id_list=" + ",".join(arxiv_ids))
@@ -224,9 +231,20 @@ def from_csl(key, doi):
     for fld in LEGACY_FILL.get(key, []):
         if fld not in f or (fld == "pages" and "--" not in f[fld]):
             f[fld] = legacy_field(key, fld)
-    if typ == "journal-article" or typ == "article-journal":
+    is_article = typ in ("journal-article", "article-journal")
+    if not is_article:
+        if d.get("publisher-location"):
+            f["address"] = d["publisher-location"]
+        elif key in ADDRESS_ZB:
+            zbl, loc = ADDRESS_ZB[key]
+            rec = json.loads((RAW / f"{key}_address_zbmath.json").read_text())["result"][0]
+            assert rec["identifier"] == zbl and loc in rec["source"]["source"], key
+            f["address"] = loc
+        elif typ in ("book-chapter", "chapter", "monograph", "book"):
+            raise SystemExit(f"{key}: no publisher location in any fetched record")
+    if is_article:
         kind = "article"
-        f["journal"] = cont.replace("’", "'")
+        f["journal"] = cont.replace("\u2019", "'")
     elif typ in ("book-chapter", "chapter"):
         kind = "incollection"
         f["booktitle"] = cont
@@ -294,6 +312,7 @@ def from_zbmath(key):
 def tidy(b):
     b = b.replace("‐", "-").replace("–", "--").replace("—", "---")
     b = re.sub(r"\s+\}", "}", b)
+    b = re.sub(r"(?<!\\)&", r"\\&", b)
     return b
 
 
