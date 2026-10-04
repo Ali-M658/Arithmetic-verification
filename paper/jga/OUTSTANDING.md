@@ -193,3 +193,24 @@ New in this session:
   six iDs are printed as a title-page note. The submission system will also ask for them.
 - **Title-page acknowledgements.** The guidelines ask for acknowledgements "in a separate section
   on the title page"; the template puts them in the back matter, where they are now.
+
+## 8. `code/run_all.sh --quick` after this session
+
+Run with `PYTHON=` the miniforge interpreter (the default `python3` lacks the pinned packages):
+33 passed, 1 failed, 8 skipped, total 49:30 (machine under load). The 8 skips are those of the
+consolidation record (full-mode stages, PARI not installed, the deferred S3 rerun record).
+
+The one failure is `theory conventions-check`, in `check_free_symbols` of
+`theory/conventions_check.py`. That check asserts that the replacement symbols CONVENTIONS.md
+introduces for the paper (`d_j`, `varsigma`, `varpi`, `varkappa`, `vartheta`, `mathfrak D`,
+`Hyp`, ...) occur in no text file of the working tree outside CONVENTIONS.md, so that the paper
+could adopt them. The manuscript now does adopt them, and the check finds them in
+`paper/jga/manuscript.tex`, `TRACE.md` and `OUTSTANDING.md`. The same stage passes on an
+untouched export of the starting commit 09638ff (14 symbols free across 388 files, 45 checks
+passed). Everything else in the stage (the 45 translation checks) passes. The fix is outside
+this session's write scope: add `"jga"` to `skip_dirs` in `check_free_symbols` (the manuscript is
+where the symbols are meant to be used). The symbols were not disguised to pass the check.
+
+An earlier run in this session also reported `audibility verify_elimination` as failed (exit 97):
+the committed-file guard saw paper/jga files that were being committed during that stage and
+restored them. The stage's own assertions passed, and in the clean rerun above it passes.
