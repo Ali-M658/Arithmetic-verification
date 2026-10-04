@@ -141,6 +141,8 @@ RULES = [
      "Figure F8 (recovery error against coefficient error)"),
     ("figures/style/third_party/*", "figures/style/fetch_third_party.py", "python3 figures/style/fetch_third_party.py   (--check re-fetches and compares)",
      "All figures: colour tables (Crameri 8.0.1, viridis) and CVD matrices (Machado et al. 2009); see figures/SPEC.md"),
+    ("figures/style/palette.json", "written by hand (positions in fetched tables; no colour value typed)", "none",
+     "All figures: the one palette definition shared by figstyle.py and blender_palette.py"),
     ("numerics/moduli/logs/*.txt", "numerics/moduli/run_server.sh", "bash numerics/moduli/run_server.sh suite|fullquad|kernel   (on the server)",
      "Provenance of the moduli data (server logs); not cited"),
 ]
