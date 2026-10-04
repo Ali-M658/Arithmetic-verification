@@ -57,7 +57,7 @@ def data():
 def draw(s, k, cs, ck):
     fs.use()
     fig = fs.figure(68)
-    ax = fig.add_axes([0.10, 0.15, 0.86, 0.80])
+    ax = fig.add_axes([0.09, 0.16, 0.88, 0.80])
     x = np.logspace(np.log10(0.02), np.log10(2000), 4000)
     ax.step(x, [upper(v) for v in x], where="post", color=fs.GREY["ink"], lw=fs.LW["regular"])
     xl = x[x >= S_LOWER]
@@ -67,10 +67,11 @@ def draw(s, k, cs, ck):
             mfcalt=fs.PILLOW["3,3,12"], mec=fs.GREY["ink"], mew=fs.LW["hair"], zorder=5)
     ax.plot(cs, ck, ls="none", marker="s", ms=fs.MARKER_PT["regular"], mfc="white", mec=fs.GREY["ink"], mew=fs.LW["regular"])
     ax.set_xscale("log")
-    ax.set_yscale("log")
     ax.set_xlim(0.02, 2000)
-    ax.set_ylim(0.8, 3000)
-    ax.set_xlabel(r"$\mathrm{Area}/2\pi$")
+    ax.set_ylim(0, 10.5)
+    ax.set_yticks(range(0, 11, 2))
+    ax.set_yticks(range(0, 11), minor=True)
+    ax.set_xlabel(r"$s=\mathrm{Area}/2\pi$")
     ax.set_ylabel(r"$K_{\mathrm{mult}}$")
     return fig
 

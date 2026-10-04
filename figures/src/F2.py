@@ -16,7 +16,7 @@ together form a fundamental domain of the orientation-preserving subgroup, i.e. 
 pillow; the other tiles alternate white and faint grey by orientation.
 
 Asserted: Triangle.verify() (angles, area, side lengths, mpmath); every vertex lies on the
-hyperboloid; the drawn cap is covered by the tiles (4000 random points); the product of the reflections in the two sides through a vertex of angle pi/k has
+hyperboloid; the whole pillow (T and its mirror image) lies inside the cap; the drawn cap is covered by the tiles (4000 random points); the product of the reflections in the two sides through a vertex of angle pi/k has
 order exactly k; every reflection preserves the form; the tiles are distinct and each has area
 pi(1 - 1/p - 1/q - 1/r) by Gauss-Bonnet (angles of every tile recomputed).
 """
@@ -25,7 +25,7 @@ import numpy as np
 from common_import import import_from
 from figlib import check_only, finish, fs
 
-D_RIM = 2.8                  # the drawn cap: x0 <= cosh(D_RIM)
+D_RIM = 2.4                  # the drawn cap: x0 <= cosh(D_RIM)
 D_MAX = D_RIM + 2.4          # tiles generated: all vertices within D_MAX (they cover the cap)
 J = np.diag([-1.0, 1.0, 1.0])
 VIEW = {"elev_deg": 58.0, "azim_deg": -62.0}
@@ -179,6 +179,8 @@ def data():
     for pqr in ((2, 8, 8), (3, 3, 12)):
         tiles, fund, mirror = tiling(pqr)
         assert key(mirror) in {key(t) for t, _ in tiles}
+        far = max(np.arccosh(v[0]) for v in fund + mirror)
+        assert far + 0.2 < D_RIM, (pqr, far)            # the whole pillow lies inside the drawn cap
         out[pqr] = (tiles, fund, mirror)
     return out
 

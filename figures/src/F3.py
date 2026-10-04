@@ -72,7 +72,7 @@ def row(ax, pos, neg, cpos, cneg, lim):
         seen[-z] += 1
         ax.plot([-z], [h], ls="none", marker="o", ms=fs.MARKER_PT["large"] + 2.6, mfc="none", mec=fs.GREY["mid"],
                 mew=fs.LW["regular"], zorder=5)
-    for x in sorted({abs(z) for z, _ in Z}):
+    for x in sorted({abs(z) for z, _ in Z} | {0}):
         for s in (x, -x):
             ax.plot([s, s], [-0.18, 0.18], color=fs.GREY["ink"], lw=fs.LW["axis"], zorder=1)
     ax.set_xlim(-lim, lim)
@@ -82,7 +82,8 @@ def row(ax, pos, neg, cpos, cneg, lim):
         ax.spines[sp].set_visible(False)
     marks = sorted({s for z, _ in Z for s in (z, -z)} | {0})
     ax.set_xticks(marks)
-    ax.set_xticklabels([f"${m}$" if m >= 0 else f"$-{-m}$" for m in marks])
+    crowded = any(abs(z) == 1 for z, _ in Z)          # keep the tick at 0 but not its label next to +-1
+    ax.set_xticklabels(["" if (m == 0 and crowded) else (f"${m}$" if m >= 0 else f"$-{-m}$") for m in marks])
     ax.tick_params(axis="x", length=0, pad=1)
 
 
@@ -90,16 +91,16 @@ def draw(cases):
     fs.use()
     fig = fs.figure(78)
     A, B = fs.PILLOW["2,8,8"], fs.PILLOW["3,3,12"]
-    ax1 = fig.add_axes([0.04, 0.70, 0.94, 0.25])
+    ax1 = fig.add_axes([0.04, 0.73, 0.94, 0.23])
     row(ax1, *cases["pillows"], A, B, 13)
-    ax2 = fig.add_axes([0.04, 0.39, 0.94, 0.25])
+    ax2 = fig.add_axes([0.04, 0.44, 0.94, 0.23])
     row(ax2, [2, 8, 8], [2, 8, 8], A, A, 13)
-    ax3 = fig.add_axes([0.04, 0.06, 0.94, 0.25])
+    ax3 = fig.add_axes([0.04, 0.07, 0.94, 0.23])
     row(ax3, *cases["genus"], fs.GREY["ink"], fs.GREY["mid"], 16)
     for ax in (ax1, ax2):
         ax.tick_params(labelbottom=True)
     fs.letter_at(fig, 0.005, 0.99, "a")
-    fs.letter_at(fig, 0.005, 0.345, "b")
+    fs.letter_at(fig, 0.005, 0.355, "b")
     return fig
 
 

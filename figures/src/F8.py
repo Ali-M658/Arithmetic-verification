@@ -62,7 +62,7 @@ def draw(curves, thr):
     ax.set_xlim(1e-14, 1e-1)
     ax.set_ylim(1e-14, 10)
     ax.set_xticks([1e-14, 1e-11, 1e-8, 1e-5, 1e-2])
-    ax.set_yticks([1e-14, 1e-10, 1e-6, 1e-2])
+    ax.set_yticks([1e-14, 1e-12, 1e-10, 1e-8, 1e-6, 1e-4, 1e-2, 1])
     ax.set_xlabel(r"$\delta$")
     ax.set_ylabel(r"$\Vert \tilde m - m\Vert_\infty$")
     return fig

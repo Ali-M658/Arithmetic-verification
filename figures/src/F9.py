@@ -10,15 +10,17 @@
     N(S) = N(599) + c sum_{s=600}^{S} (log s)^q fitted on 600 <= S <= 4800 with q = 4.5 (dashed),
     drawn heavier, on top, over its window (the fits with q = 4.0 and 5.0 are asserted to stay
     within 15% of the data there too, so a band would have no visible width); the exact count of the
-    isosceles family {(2u+v)(u,v,v), (u+2v)(v,u,u)}/g with its multiples k >= 4, a rigorous lower
-    bound at every S, whose growth is (c_iso + o(1)) S log S (dark grey step curve; SPEC rule 3).
+    isosceles family {(2u+v)(u,v,v), (u+2v)(v,u,u)}/g and all its hyperbolic multiples (the base
+    pair D_{1,4} is (2,8,8) ~ (3,3,12)), a rigorous lower bound at every S, whose growth is
+    (c_iso + o(1)) S log S (thin grey step curve; SPEC rule 3).
     The split disc at S = 18 is the first pair, (2,8,8) ~ (3,3,12).
 
 Asserted: the six points lie exactly on the curve; every row of groups.csv with S R = 27/2 is a
 multiple of {(1,4,4), (1,1,4)}; per_S.csv cum_pairs is the cumulative sum of its pairs column;
 the free cumulative fit (exponent_fits.fit_cumulative, window 600..4800) reproduces k = 4.56 of
-data/exponent_fits.txt; the isosceles count equals families.txt at X = 600, ..., 4800, and every
-isosceles pair with S <= 4800 is a pair of some group in groups.csv.
+data/exponent_fits.txt; the k >= 4 isosceles count equals families.txt at X = 600, ..., 4800; all
+hyperbolic isosceles pairs with S <= 4800 number 2917 (families.py) and each is a pair of some group
+in groups.csv; the first is (2,8,8) ~ (3,3,12).
 """
 import re
 from fractions import Fraction as F
@@ -43,8 +45,15 @@ def curve_points():
     return pts
 
 
-def isosceles_pairs(X):
-    """(S, triad1, triad2) of the isosceles family and its multiples k >= 4, S <= X."""
+def hyperbolic(t):
+    p, q, r = t
+    return q * r + p * r + p * q < p * q * r
+
+
+def isosceles_pairs(X, kmin=1):
+    """(S, triad1, triad2): the primitive pairs D_{u,v} = {(2u+v)(u,v,v), (u+2v)(v,u,u)}/g of the
+    isosceles family (coprime u < v, g = gcd(2u+v, u+2v)) and their multiples kD, k >= kmin,
+    with S <= X and both triads hyperbolic. D_{1,4} = {(2,8,8), (3,3,12)}."""
     out = []
     v = 2
     while (2 + v) * (1 + 2 * v) // 3 <= X:
@@ -54,13 +63,13 @@ def isosceles_pairs(X):
             a, b = 2 * u + v, u + 2 * v
             g = gcd(a, b)
             SD = a * b // g
-            if SD * 4 > X:
-                continue
             t1 = tuple(sorted(x * a // g for x in (u, v, v)))
             t2 = tuple(sorted(x * b // g for x in (v, u, u)))
-            k = 4
+            k = kmin
             while k * SD <= X:
-                out.append((k * SD, tuple(k * x for x in t1), tuple(k * x for x in t2)))
+                k1, k2 = tuple(k * x for x in t1), tuple(k * x for x in t2)
+                if hyperbolic(k1) and hyperbolic(k2):
+                    out.append((k * SD, k1, k2))
                 k += 1
         v += 1
     return out
@@ -99,7 +108,10 @@ def data():
         fits[q] = (S[sel], base + c * w)
         assert np.max(np.abs(np.log(base + c * w) - np.log(cum[sel]))) < 0.15, q
 
-    iso = isosceles_pairs(4800)
+    iso4 = isosceles_pairs(4800, kmin=4)                 # the k >= 4 count of families.txt
+    iso = isosceles_pairs(4800)                          # every hyperbolic multiple: the curve drawn
+    assert len(iso) == 2917 and min(iso)[:3] == (18, (2, 8, 8), (3, 3, 12))
+    assert set(iso4) <= set(iso)
     known = {(int(g["S"]), t) for g in groups for t in combinations(sorted(tri(g["triples"])), 2)}
     for Sx, t1, t2 in iso:
         assert (Sx, tuple(sorted((t1, t2)))) in known, (Sx, t1, t2)
@@ -107,7 +119,7 @@ def data():
     table = re.findall(r"^\s+(\d+)\s+\d+\s+[\d.]+\s+(\d+)\s+[\d.]+\s+\d+\s+\d+$", fam, re.M)
     assert len(table) == 6, table
     for X, n in table:
-        assert sum(1 for s, *_ in iso if s <= int(X)) == int(n), (X, n)
+        assert sum(1 for s, *_ in iso4 if s <= int(X)) == int(n), (X, n)
     iso_S = np.sort([s for s, *_ in iso])
     iso_cum = np.searchsorted(iso_S, S, side="right")
     assert np.all(iso_cum <= cum)
@@ -148,11 +160,11 @@ def draw(pts, Ncum, fits, iso_cum, _k):
     bx = fig.add_axes([0.58, 0.18, 0.40, 0.73])
     S, cum = Ncum
     m = S >= 18
-    bx.step(S[m], cum[m] / S[m], where="post", color=fs.GREY["ink"], lw=fs.LW["thin"])
+    bx.step(S[m], cum[m] / S[m], where="post", color=fs.GREY["ink"], lw=fs.LW["regular"])
     bx.plot(fits[4.5][0], fits[4.5][1] / fits[4.5][0], color=fs.GREY["mid"], lw=fs.LW["heavy"],
             ls=(0, (3, 2)), zorder=4)
     mi = iso_cum > 0
-    bx.step(S[mi], iso_cum[mi] / S[mi], where="post", color=fs.GREY["dark"], lw=fs.LW["regular"])
+    bx.step(S[mi], iso_cum[mi] / S[mi], where="post", color=fs.GREY["mid"], lw=fs.LW["thin"])
     bx.plot([18], [1 / 18], ls="none", marker="o", ms=fs.MARKER_PT["large"], fillstyle="left", mfc=fs.PILLOW["2,8,8"],
             mfcalt=fs.PILLOW["3,3,12"], mec=fs.GREY["ink"], mew=fs.LW["hair"], zorder=5)
     bx.set_xscale("log")

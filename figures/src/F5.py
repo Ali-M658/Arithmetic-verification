@@ -1,8 +1,8 @@
 """F5 (Sections 4 and 7): two timescales on one t axis.
 
-(a) D(t) = Z_{(2,8,8)}(t) - Z_{(3,3,12)}(t) computed from the two spectra (ink, heavy), the exact
-    sum of the cone (elliptic) terms of the trace formula, i.e. the resummed series
-    sum_j d_j t^{j-2} (dark grey, dashed), and its partial sums d_3 t, d_3 t + d_4 t^2,
+(a) D(t) = Z_{(2,8,8)}(t) - Z_{(3,3,12)}(t) computed from the two spectra (ink, heavy), the
+    cone-point (elliptic) contribution of the trace formula (light grey, dashed, drawn on top),
+    and the partial sums of its small-t expansion d_3 t, d_3 t + d_4 t^2,
     d_3 t + d_4 t^2 + d_5 t^3 (grey ramp, light to dark, thin), from
     numerics/data/heat_trace_difference.csv. The computed D follows the cone terms until the
     closed geodesics take over and changes sign near t = 0.34; the cone-term sum stays positive.
@@ -71,10 +71,10 @@ def draw(a, pairs):
     xl = (1.5e-3, 0.5)
     ax = fig.add_axes([0.13, 0.56, 0.84, 0.41])
     ax.axhline(0, color=fs.GREY["light"], lw=fs.LW["thin"], zorder=0)
-    for y, g in zip(partial, grey_ramp(3, lo="light", hi="mid")):
+    for y, g in zip(partial, grey_ramp(3, lo="light", hi="dark")):
         ax.plot(t, y, color=g, lw=fs.LW["regular"])
-    ax.plot(t, ell, color=fs.GREY["dark"], lw=fs.LW["regular"], ls=(0, (4, 2)))
     ax.plot(t, D, color=fs.GREY["ink"], lw=fs.LW["heavy"])
+    ax.plot(t, ell, color=fs.GREY["light"], lw=fs.LW["regular"], ls=(0, (3, 2)), zorder=4)   # on top of D
     ax.set_xscale("log")
     ax.set_xlim(*xl)
     ax.set_ylim(-0.03, 0.09)
@@ -93,7 +93,7 @@ def draw(a, pairs):
         bx.plot([tt[k]], [abs(Dm[k])], ls="none", marker="o", ms=fs.MARKER_PT["small"], mfc="white",
                 mec=fs.GREY["ink"], mew=fs.LW["thin"], zorder=5)
         Bmax = B if Bmax is None else np.maximum(Bmax, B)
-    bx.plot(pairs[THETAS[0]][0], Bmax, color=fs.GREY["ink"], lw=fs.LW["regular"], ls=(0, (1, 1.5)), zorder=4)
+    bx.fill_between(pairs[THETAS[0]][0], 1e-16, Bmax, color=fs.GREY["faint"], lw=0, zorder=0)
     bx.set_xscale("log")
     bx.set_yscale("log")
     bx.set_xlim(*xl)

@@ -34,7 +34,7 @@ MM = 1 / 25.4                      # inches per mm
 WIDTH_MM = 119.0                   # text width of a small-sized Springer journal (JGA)
 MAX_HEIGHT_MM = 195.0
 DPI_COMBINATION = 600              # raster panels combined with vector lettering
-FONT_PT = {"tick": 8, "label": 9, "letter": 9}
+FONT_PT = {"tick": 9, "label": 10, "letter": 10}   # ticks 9 pt so that log exponents are >= 6.3 pt
 LW = {"hair": 0.35, "thin": 0.5, "axis": 0.6, "regular": 0.9, "heavy": 1.4}   # pt; minimum 0.3 pt
 MARKER_PT = {"small": 3.0, "regular": 4.2, "large": 5.5}
 
