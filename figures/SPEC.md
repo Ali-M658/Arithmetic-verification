@@ -68,6 +68,26 @@ If the chosen palette is a Crameri map, the paper should cite Crameri (2023) and
 
 ## 4. Palette rules (figures/style/palette.json)
 
+**Chosen palette: E (batlow-lajolla), set at gate G6 on 2026-10-05.**
+- Sequential map: Crameri lajolla, reversed.
+- (2,8,8): batlow at 0.20, `#185562`, L* 33.
+- (3,3,12): batlow at 0.70, `#e09651`, L* 68.
+- Pair separation ΔE: 78 normal, 75 deuteranopia, 63 protanopia, 77 tritanopia.
+
+**Rules for the final figures (author, G6):**
+1. The sequential map is only for continuous scalar fields: heat-kernel colourings,
+   densities and colour bars. Ordered categories, such as the F7 strata, use a neutral grey
+   ramp built from the L* neutrals. The pillow hues are then the only chromatic elements of a
+   plot.
+2. A pillow hue is never drawn on top of a heat-coloured surface. A curve on a rendered surface
+   (for example the shortest geodesics in F6) uses the dark pillow hue or neutral ink, whichever
+   contrasts more with the surface. It never uses the light hue.
+3. The F9 lower bound is the exact count of the isosceles family, which is a rigorous lower
+   bound at every S. The caption states its (c_iso + o(1)) S log S growth. No asymptotic curve
+   is drawn.
+
+**General rules:**
+
 - One sequential, perceptually uniform map for every heat-kernel or density colouring, Blender
   included. It is reversed so that a larger value carries more ink ("darker = larger").
 - One pair of hues for the two central pillows: (2,8,8) is the dark hue and (3,3,12) the light

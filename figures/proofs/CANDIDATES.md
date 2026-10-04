@@ -21,6 +21,7 @@ Rebuild with `python3 figures/src/contact_sheet.py` (Blender, about 10 s per ren
 | B | lajolla-oslo | Crameri lajolla, reversed | oslo 0.38 `#27588e` | lajolla 0.70 `#e99d53` | 37 / 71 | 93 / 96 / 85 / 78 |
 | C | lipari | Crameri lipari, reversed | lipari 0.20 `#3c5478` | lipari 0.66 `#e37861` | 35 / 62 | 72 / 68 / 51 / 84 |
 | D | viridis | viridis, reversed | viridis 0.18 `#433e85` | viridis 0.72 `#4ec36b` | 30 / 71 | 112 / 81 / 92 / 52 |
+| **E** | **batlow-lajolla (chosen)** | Crameri lajolla, reversed (B's map) | batlow 0.20 `#185562` | batlow 0.70 `#e09651` | 33 / 68 | 78 / 75 / 63 / 77 |
 
 All four sequential maps have monotone L* from end to end.
 
@@ -49,3 +50,9 @@ diffusion. C is a close second if a cooler, quieter look is preferred.
 
 To choose, set `"chosen"` in `figures/style/palette.json`, or ask for changes: different
 sample positions, a different map, or a different pair.
+
+## Decision (2026-10-05): **E**
+
+The author chose a hybrid, E. It takes A's pillow pair (batlow 0.20 and 0.70) and B's sequential
+map (lajolla, reversed). E has no block on the contact sheet. Its two parts are each shown there:
+the pair in block A, the map in block B.

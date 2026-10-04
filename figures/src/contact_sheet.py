@@ -153,7 +153,7 @@ def strip(key, render_png, d2, d3):
 
 def main():
     os.environ.pop("FIG_PALETTE", None)
-    keys = list(fs.PALETTE["candidates"])
+    keys = ["A", "B", "C", "D"]                 # the four candidates shown at G6 (E combines A and B)
     if "--no-render" not in sys.argv:
         subprocess.run([sys.executable, str(ROOT / "figures/src/pillow_mesh.py"), str(T_INDEX)], check=True,
                        stdout=subprocess.DEVNULL)

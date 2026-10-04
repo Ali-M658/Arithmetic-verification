@@ -52,7 +52,7 @@ Every committed data file, with its size, SHA-256, the script and command that g
 
 | File | Size | SHA-256 | Generator | Command | Paper element |
 |---|---:|---|---|---|---|
-| `palette.json` | 1.6 KB | `3700e0ee5ae0e0df52d0299efd04180e5a5bde8a86814af3e30edd261c48b068` | `written by hand (positions in fetched tables; no colour value typed)` | `none` | All figures: the one palette definition shared by figstyle.py and blender_palette.py |
+| `palette.json` | 2.1 KB | `aa1df425f3863a0af9b12d66ba173ec0dfcf02aaa9b66b1bb606f8db4ca2e83b` | `written by hand (positions in fetched tables; no colour value typed)` | `none` | All figures: the one palette definition shared by figstyle.py and blender_palette.py |
 
 ### `figures/style/third_party/`
 
