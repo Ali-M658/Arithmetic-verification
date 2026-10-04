@@ -1,0 +1,19 @@
+# Exact-arithmetic verification suite (code/run_all.sh): everything except the NGSolve solver.
+#
+#   python3 -m venv .venv && .venv/bin/pip install -r requirements.txt
+#   PYTHON=.venv/bin/python code/run_all.sh --quick
+#
+# Minimum Python 3.9. Tested on CPython 3.14.7 (macOS arm64) and 3.13.12.
+#
+# The checks of the committed numerics data (numerics/validate_committed.py,
+# numerics/moduli/validate_committed.py) need only the packages below: they read the committed CSV/JSON
+# files and never import NGSolve. Re-solving the S3 eigenvalue problems needs numerics/requirements.txt
+# (NGSolve, Python 3.13); see README.md.
+#
+# Optional, for theory/diophantine/ranks.py only (that stage is skipped with a message if absent):
+#   see theory/diophantine/requirements-pari.txt  (cypari2==2.2.4, PARI/GP 2.17.2)
+
+sympy==1.14.0
+mpmath==1.3.0
+numpy==2.5.3
+scipy==1.18.1

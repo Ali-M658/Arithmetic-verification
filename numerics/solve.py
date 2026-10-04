@@ -6,13 +6,13 @@ discretised with NGSolve H1 elements of order `order` on a mesh of uniform
 hyperbolic size `h` (Euclidean size h (1-|z|^2)/2), with the geodesic side
 represented exactly (rational quadratic spline) and curved to the element order.
 
-Many eigenvalues are obtained by spectral slicing: shift-invert Lanczos
-(ARPACK) at a sequence of shifts sigma_i; each slice returns the k eigenvalues
-nearest sigma_i, so every eigenvalue in the open interval
-(sigma_i - rho_i, sigma_i + rho_i), rho_i = max |lambda - sigma_i| over the
-returned values, is captured.  Consecutive slices are required to overlap and
-each slice contributes only the part of its certified interval up to the
-midpoint of the overlap, which gives a complete list with multiplicity.
+Many eigenvalues are obtained by doubly covered spectral slicing: shift-invert
+Lanczos (ARPACK) at a sequence of shifts sigma_i; each slice returns the k
+eigenvalues nearest sigma_i.  Every eigenvalue below the final cut lies in the
+inner part of at least two independent windows, and values seen by fewer than all
+of their covering windows are ARPACK misses, repaired by the union and counted
+(eigenvalues_robust).  This is the only eigenvalue routine used by numerics/; the
+earlier single-window routine is kept, unused, in legacy/single_window.py.
 
 usage:  python solve.py P Q R {N|D} --h H --order P --nev N [--out file.npz]
 """
@@ -69,57 +69,102 @@ def slice_eigs(A, M, sigma, k, want_vectors=False):
     return np.sort(out), None
 
 
-def eigenvalues(A, M, nev, k=160, want_vectors=False, verbose=True):
-    """Complete sorted list of the eigenvalues below the end of the slice that
-    first certifies at least nev of them.
+K_SLICE = 200
 
-    Slice i (shift sigma_i, radius rho_i) certifies every eigenvalue in
-    (sigma_i - rho_i, sigma_i + rho_i).  Consecutive windows must overlap; the
-    cut between slices i and i+1 is the midpoint of their overlap and slice i
-    contributes exactly the eigenvalues in [cut_{i-1}, cut_i)."""
+
+def eigenvalues_robust(A, M, nev, k=K_SLICE, want_vectors=False, inner=0.8, rtol=1e-9):
+    """Doubly covered spectral slicing.
+
+    This is the only eigenvalue routine used by numerics/.  The single-window routine it
+    replaces (numerics/legacy/single_window.py) certifies the window (sigma - rho, sigma + rho)
+    of one shift-invert Lanczos run from the k values it returns; ARPACK was found to drop an
+    eigenvalue inside such a window (detected by comparing mesh levels; moduli/REPORT.md
+    section 4a).  Here every eigenvalue below the final cut lies in the inner part
+    (radius inner * rho) of at least TWO independent windows, the next shift being placed at
+    the centre-plus-half-radius of the previous one.  Values are clustered (relative
+    tolerance rtol); a cluster's multiplicity is the largest count any single covering
+    window reports.  Clusters seen by fewer than all of their covering windows are ARPACK
+    misses repaired by the union; their number is returned.
+
+    Returns (lam, vecs or None, info)."""
     slices = []
     sigma = -1.0
     while True:
-        t0 = time.time()
         vals, vecs = slice_eigs(A, M, sigma, k, want_vectors)
         rho = float(np.max(np.abs(vals - sigma)))
+        lo, hi = sigma - inner * rho, sigma + inner * rho
         tries = 0
-        while slices and not sigma - rho < slices[-1][0] + slices[-1][1]:
-            # window too narrow for this shift: move the shift back so that the
-            # new window starts inside the previous one, and redo the slice
+        while slices and lo > slices[-1][0]:
+            # the new inner window must start below the centre of the previous one, so that
+            # every point is covered twice: pull the shift back and redo
             tries += 1
-            if tries > 8:
-                raise RuntimeError(f"slice windows do not overlap at sigma={sigma}")
-            sigma = slices[-1][0] + slices[-1][1] + 0.7 * rho
+            if tries > 10:
+                raise RuntimeError(f"cannot keep double coverage at sigma={sigma}")
+            sigma = slices[-1][0] + 0.5 * (sigma - slices[-1][0])
             vals, vecs = slice_eigs(A, M, sigma, k, want_vectors)
             rho = float(np.max(np.abs(vals - sigma)))
-        slices.append((sigma, rho, vals, vecs))
-        if verbose:
-            print(f"  slice sigma={sigma:10.2f} window=({sigma-rho:9.2f},{sigma+rho:9.2f})"
-                  f"  {time.time()-t0:6.1f}s", flush=True)
-        n_cert = np.count_nonzero(np.concatenate([s[2] for s in slices]) < sigma + rho)
-        # (an over-count of the certified total because of overlaps; exact count below)
-        cuts = [-np.inf] + [0.5 * ((slices[i + 1][0] - slices[i + 1][1]) + (slices[i][0] + slices[i][1]))
-                            for i in range(len(slices) - 1)] + [sigma + rho]
-        n_cert = sum(np.count_nonzero((s[2] >= cuts[i]) & (s[2] < cuts[i + 1]))
-                     for i, s in enumerate(slices))
-        if n_cert >= nev:
-            break
-        sigma = sigma + 1.5 * rho
-    lam, vec = [], []
-    for i, s in enumerate(slices):
-        sel = (s[2] >= cuts[i]) & (s[2] < cuts[i + 1])
-        lam.append(s[2][sel])
-        if want_vectors:
-            vec.append(s[3][:, sel])
-    lam = np.concatenate(lam)
+            lo, hi = sigma - inner * rho, sigma + inner * rho
+        slices.append((sigma, rho, lo, hi, vals, vecs))
+        cut = hi if len(slices) >= 2 else -np.inf
+        # every value below `cut` and above the first window's lower edge is covered twice
+        if len(slices) >= 2:
+            # distinct values below the doubly covered top, counted from the windows that own them
+            top_ = slices[-2][3]
+            nd = sum(np.count_nonzero((x[4] >= max(x[2], -np.inf)) & (x[4] < min(x[3], top_)) &
+                                      (x[4] >= (slices[i - 1][3] if i > 0 else -np.inf)))
+                     for i, x in enumerate(slices))
+            if nd >= nev:
+                break
+        sigma = sigma + 0.5 * inner * rho          # next centre inside this inner window
+        if len(slices) > 400:
+            raise RuntimeError("too many slices")
+    top = slices[-2][3]                            # below this every point has two windows
+    # cluster all inner values below top
+    allv = []
+    for i, (sg, rh, lo, hi, vals, vecs) in enumerate(slices):
+        for j, v in enumerate(vals):
+            if lo <= v < hi and v < top:
+                allv.append((v, i, j))
+    allv.sort()
+    clusters = []
+    for v, i, j in allv:
+        if clusters and abs(v - clusters[-1][-1][0]) <= rtol * max(abs(v), 1.0):
+            clusters[-1].append((v, i, j))
+        else:
+            clusters.append([(v, i, j)])
+    lam, vec_idx, misses = [], [], 0
+    for cl in clusters:
+        v0 = cl[0][0]
+        cover = [i for i, s in enumerate(slices) if s[2] <= v0 < s[3]]
+        counts = {i: sum(1 for (_, ii, _) in cl if ii == i) for i in cover}
+        mult = max(counts.values())
+        if min(counts.values()) < mult:
+            misses += 1
+        best = max(cover, key=lambda i: (counts[i], -abs(v0 - slices[i][0])))   # most central full copy
+        mine = sorted([(v, j) for (v, ii, j) in cl if ii == best])
+        for v, j in mine[:mult]:
+            lam.append(v)
+            vec_idx.append((best, j))
+    lam = np.array(lam)
     order = np.argsort(lam)
+    lam = lam[order]
+    info = dict(n_slices=len(slices), top=top, misses_repaired=misses)
     if want_vectors:
-        return lam[order], np.concatenate(vec, axis=1)[:, order]
-    return lam[order], None
+        V = np.column_stack([slices[i][5][:, j] for (i, j) in vec_idx])[:, order]
+        return lam, V, info
+    return lam, None, info
 
 
-def run(pqr, bc, h, order, nev, k=160, verbose=True):
+def eigenvalues(A, M, nev, k=K_SLICE, want_vectors=False, verbose=False):
+    """(lam, vecs or None) of eigenvalues_robust; the signature the callers use."""
+    lam, vecs, info = eigenvalues_robust(A, M, nev, k=k, want_vectors=want_vectors)
+    if verbose:
+        print(f"  {len(lam)} eigenvalues in {info['n_slices']} slices, "
+              f"{info['misses_repaired']} ARPACK misses repaired", flush=True)
+    return lam, vecs
+
+
+def run(pqr, bc, h, order, nev, k=K_SLICE, verbose=True):
     t0 = time.time()
     S = assemble(pqr, bc, h, order)
     if verbose:
@@ -184,7 +229,7 @@ if __name__ == "__main__":
     ap.add_argument("--h", type=float, required=True)
     ap.add_argument("--order", type=int, required=True)
     ap.add_argument("--nev", type=int, default=1000)
-    ap.add_argument("--k", type=int, default=160)
+    ap.add_argument("--k", type=int, default=K_SLICE)
     ap.add_argument("--threads", type=int, default=8)
     ap.add_argument("--out")
     a = ap.parse_args()

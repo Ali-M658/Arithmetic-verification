@@ -3,7 +3,8 @@ compare with the committed eigenvalues.
 
 Problem: the (3,3,12) triangle, Neumann, at the S3 production level
 (h, p) = (0.05, 10), with the S3 slicing parameters (NEV = 1300, k = 200),
-solved by the unmodified numerics/solve.py.  Reference:
+solved by the OLD single-window routine (numerics/legacy/single_window.py;
+LEGACY, no longer used - see CONSOLIDATION.md).  Reference:
 numerics/data/eigenvalues_3-3-12_N.csv (15 significant digits).
 
 Asserts (the precision S3 states, REPORT.md section 4a):
@@ -28,14 +29,17 @@ import time
 import numpy as np
 
 HERE = os.path.dirname(os.path.abspath(__file__))
-sys.path.insert(0, os.path.join(HERE, ".."))
+NUM = os.path.join(HERE, "..")
+MODULI = os.path.join(NUM, "moduli")
+sys.path.insert(0, NUM)
+sys.path.insert(0, HERE)
 
 
 def main(threads=16):
     import ngsolve as ngs
-    from solve import run      # S3 solver, unmodified
+    from single_window import run_single_window as run      # the old S3 single-window solver
     ngs.SetNumThreads(threads)
-    ref = list(csv.DictReader(open(os.path.join(HERE, "..", "data", "eigenvalues_3-3-12_N.csv"))))
+    ref = list(csv.DictReader(open(os.path.join(NUM, "data", "eigenvalues_3-3-12_N.csv"))))
     lam_ref = np.array([float(r["lambda"]) for r in ref])
     err = np.array([float(r["err_estimate"]) for r in ref])
     err_c = np.array([float(r["err_conservative"]) for r in ref])
@@ -58,8 +62,8 @@ def main(threads=16):
                max_diff_over_err_estimate=float(ratio.max()), median_diff_over_err_estimate=float(np.median(ratio)),
                max_diff_over_err_conservative=float((d[1:] / np.maximum(err_c[1:], 1e-300)).max()),
                seconds=secs, threads=threads, machine=platform.platform(), python=platform.python_version())
-    os.makedirs(os.path.join(HERE, "data"), exist_ok=True)
-    with open(os.path.join(HERE, "data", "s3_repro.json"), "w") as f:
+    os.makedirs(os.path.join(MODULI, "data"), exist_ok=True)
+    with open(os.path.join(MODULI, "data", "s3_repro.json"), "w") as f:
         json.dump(out, f, indent=1)
     print(json.dumps(out, indent=1))
     print("S3 REPRODUCIBILITY CHECK PASSED")

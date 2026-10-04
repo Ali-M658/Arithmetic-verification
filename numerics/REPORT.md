@@ -237,6 +237,14 @@ with NGSolve H¹ elements of order p on a netgen mesh:
 - Consecutive windows are forced to overlap, and each eigenvalue is taken from
   exactly one slice. The list is therefore complete with multiplicity. The
   Weyl check (§4c) confirms that no eigenvalue is missing.
+- **Superseded by the consolidation (S9b).** The routine described in the three bullets above
+  (single-window slicing) can silently drop an eigenvalue that ARPACK misses inside a window; the
+  moduli experiment found this (`moduli/REPORT.md` §4a). It is no longer used anywhere under
+  `numerics/`: `solve.py:eigenvalues_robust` (every eigenvalue covered by two independent windows,
+  ARPACK misses counted and repaired) is the only eigensolver, and the old routine is kept, unused,
+  in `legacy/single_window.py`. The committed `data/eigenvalues_*.csv` were produced with the old
+  routine; the four production problems were rerun with the new one, and the comparison is in
+  `data/rerun_double_window_comparison.json` (see `CONSOLIDATION.md`).
 - About 1420–1440 eigenvalues are computed per triangle and boundary
   condition, up to λ ≈ 21 700 (Neumann) and 23 800 (Dirichlet). The pillows
   therefore have about 2850 eigenvalues each, to λ ≈ 21 700.
@@ -498,6 +506,7 @@ cd numerics && ./fetch_refs.sh                 # literature + Bolza data (headle
 .venv/bin/python solve.py bench                # (2,3,8) benchmark runs, ~20 s
 .venv/bin/python solve.py suite                # 4 problems x 5 levels, ~1-1.5 h on 8-core M1
 .venv/bin/python validate.py                   # Step 4, all asserts
+.venv/bin/python validate_committed.py         # the same checks from the committed CSVs only; no NGSolve, no solver runs
 .venv/bin/python heat_trace.py                 # Step 5: fits, CSVs, headline.json
 .venv/bin/python heat_trace.py kernel          # Step 6: heat_kernel_diagonal.npz, ~30 min
 ```
