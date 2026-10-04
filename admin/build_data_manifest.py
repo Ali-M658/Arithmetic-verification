@@ -139,6 +139,8 @@ RULES = [
      "Figure F7 (least-order strata in the (S, R) plane)"),
     ("figures/data/f8_*.csv", "figures/gen/gen_f8_recovery.py", "python3 figures/gen/gen_f8_recovery.py",
      "Figure F8 (recovery error against coefficient error)"),
+    ("figures/style/third_party/*", "figures/style/fetch_third_party.py", "python3 figures/style/fetch_third_party.py   (--check re-fetches and compares)",
+     "All figures: colour tables (Crameri 8.0.1, viridis) and CVD matrices (Machado et al. 2009); see figures/SPEC.md"),
     ("numerics/moduli/logs/*.txt", "numerics/moduli/run_server.sh", "bash numerics/moduli/run_server.sh suite|fullquad|kernel   (on the server)",
      "Provenance of the moduli data (server logs); not cited"),
 ]
