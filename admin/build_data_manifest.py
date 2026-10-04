@@ -39,6 +39,9 @@ RULES = [
      "Provenance only: the original outputs, superseded by code/run_all.sh"),
     ("review/coverage-map.csv", "code/coverage_report.py", "cd code && python3 coverage_report.py",
      "Appendix A: claim-ledger coverage of the verification harness"),
+    # --- independent proof audit
+    ("review/audit/**", "independent proof audit (S9a); produced by the scripts in the same review/audit/<group>/ folder",
+     "see the group's README or check_*.py in that folder", "none (G5 audit evidence)"),
     # --- audibility
     ("theory/audibility/output/orlando_check.txt", "theory/audibility/orlando_check.py",
      "cd theory/audibility && python3 orlando_check.py > output/orlando_check.txt", "Theorem A (Orlando's identity, Lemma on Hurwitz determinants)"),
