@@ -1,0 +1,22 @@
+(1) n=2, orders 1..30: 39 pairs sharing I_1; each has Q(z)-Q(-z)=2kappa z^3, kappa!=0
+(1) n=3, orders 1..40: 37 pairs sharing I_2; each has Q(z)-Q(-z)=2kappa z^3, kappa!=0
+(1) n=4, orders 1..30: 1 pairs sharing I_3; each has Q(z)-Q(-z)=2kappa z^3, kappa!=0
+(1) 1800 random signed-integer pairs, n=1..6: [Q(z)-Q(-z) in C z^3] <=> [I_(n-1) agree]
+(1) without the hypothesis: m={1,-1,5}, m'={2,-2,5}: Q(z)=Q(-z) (kappa=0) but m != m'
+(1) kappa=0 <=> m'=m on 1000 random positive pairs, n=1..5
+(1) complex n=2 example {1+i,1-i} vs {2,2}: same R=1, Q(z)-Q(-z) = 2kappa z^3 with kappa != 0
+(2) n=2: multisets and certified steps 10^-k: [([17, 31], 3), ([22, 35], 3), ([14, 29], 3)]; at e_n = t0(1 +- 10^-k) the fibre polynomial has n distinct positive real roots (exact count), shares I_(n-1), differs in P_(2n-3)
+(2) n=3: multisets and certified steps 10^-k: [([2, 9, 31], 3), ([8, 11, 35], 3), ([20, 33, 34], 5)]; at e_n = t0(1 +- 10^-k) the fibre polynomial has n distinct positive real roots (exact count), shares I_(n-1), differs in P_(2n-3)
+(2) n=4: multisets and certified steps 10^-k: [([4, 10, 11, 17], 4), ([4, 6, 13, 18], 3), ([3, 13, 33, 39], 3)]; at e_n = t0(1 +- 10^-k) the fibre polynomial has n distinct positive real roots (exact count), shares I_(n-1), differs in P_(2n-3)
+(2) n=5: multisets and certified steps 10^-k: [([7, 18, 25, 35, 39], 3), ([4, 6, 16, 19, 39], 3), ([4, 12, 22, 33, 36], 3)]; at e_n = t0(1 +- 10^-k) the fibre polynomial has n distinct positive real roots (exact count), shares I_(n-1), differs in P_(2n-3)
+(2) n=6: multisets and certified steps 10^-k: [([15, 16, 23, 31, 35, 36], 5), ([13, 14, 16, 23, 38, 39], 5), ([3, 9, 12, 14, 26, 35], 3)]; at e_n = t0(1 +- 10^-k) the fibre polynomial has n distinct positive real roots (exact count), shares I_(n-1), differs in P_(2n-3)
+(2) informational, repeated values [3, 3, 3]: positive real roots at t0(1+1/1000), t0(1-1/1000): [1, 1]
+(2) informational, repeated values [2, 5, 5]: positive real roots at t0(1+1/1000), t0(1-1/1000): [1, 3]
+(2) informational, repeated values [4, 4, 4, 4]: positive real roots at t0(1+1/1000), t0(1-1/1000): [2, 0]
+(3) rational pair ['1', '4', '4'] / ['3/2', '3/2', '6'] scales by 2 to [2, 8, 8] / [3, 3, 12] sharing I_2
+(3) n=4 hyperbolic witnesses with orders <= 40: 1 classes, e.g. [[(3, 10, 15, 30), (4, 5, 21, 28)]]
+(sanity, mpmath, not a proof) e_4=200: m = ['(2.034708203 - 0.7117856389j)', '(2.034708203 + 0.7117856389j)', '(6.465291797 - 1.114235141j)', '(6.465291797 + 1.114235141j)']
+(sanity, mpmath, not a proof) e_4=210: m = ['7.0', '5.0', '3.0', '2.0']
+(sanity, mpmath, not a proof) e_4=230: m = ['7.929037071', '1.535827756', '(3.767567586 + 2.166221804j)', '(3.767567586 - 2.166221804j)']
+(sanity, mpmath, not a proof) e_4=260: m = ['8.549612325', '1.340955033', '(3.554716321 + 3.168975786j)', '(3.554716321 - 3.168975786j)']
+ALL CHECKS PASSED

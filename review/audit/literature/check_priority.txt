@@ -1,0 +1,4 @@
+1. DGGW Table 2 reproduced; c = S_1 + R - 2 on pillows
+2. 83 hyperbolic pillows with S_1 <= 18: c alone encodes (S_1, R)
+3. only c-collision with S_1 <= 18: [(2, 8, 8), (3, 3, 12)], c = 67/4
+ALL CHECKS PASSED

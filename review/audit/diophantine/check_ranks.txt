@@ -1,0 +1,44 @@
+PASS PARI version [2, 17, 2]
+     cypari2 ?
+PASS integral own model of C_27/2 = [0, 393, 0, 3456, 0] (as in the manuscript)
+     conductor 90; ellrank(E) = [0, 0, 0, []]
+PASS ellrank: r1 = r2 = 0, s = 0
+     elltors(E) = [12, [6, 2], [[-24, 360], [0, 0]]]
+PASS torsion order 12, structure Z/6 x Z/2
+     ellanalyticrank(E) = [0, 1.33759599458865]  (L(E,1) != 0; with modularity + Kolyvagin this independently gives rank 0)
+PASS analytic rank 0, L(E,1) far from 0
+     ellrootno(E) = 1
+PASS elltors generators produce 12 distinct points
+PASS image of (1, 0, 0) obtained through the group law
+PASS image of (0, 1, 0) obtained through the group law
+PASS the 12 plane points map bijectively onto E(Q)_tors (= E(Q), rank 0)
+PASS positive rational points of C_27/2: [(1, 1, 4), (1, 4, 1), (1, 4, 4), (4, 1, 1), (4, 1, 4), (4, 4, 1)] = permutations of (1,4,4),(1,1,4)
+PASS plane-cubic group law and PARI group law agree on test sums
+PASS S=136: all listed triples have the same lambda = {Fraction(68, 5)}
+PASS S=136: listed triples are distinct with sum 136, R = 1/10
+     S=136: lam = 68/5, model [0, 2509, 0, 136000, 0], conductor 82110, ellrank = [2, 2, 0], torsion [6], root number 1
+PASS S=136: PARI r1 = r2 = 2 (proven by PARI's bounds)
+PASS S=136: torsion Z/6
+     S=136: eigenvalues of the height matrix: -1.176e-19, 9.861e-01, 3.200e+00
+     S=136: numerical rank of the height matrix of the 3 fibre points = 2
+PASS S=1849: all listed triples have the same lambda = {Fraction(1849, 120)}
+PASS S=1849: listed triples are distinct with sum 1849, R = 1/120
+     S=1849: lam = 1849/120, model [0, 2044321, 0, 51121152000, 0], conductor 1715185290, ellrank = [3, 3, 0], torsion [6], root number -1
+PASS S=1849: PARI r1 = r2 = 3 (proven by PARI's bounds)
+PASS S=1849: torsion Z/6
+     S=1849: eigenvalues of the height matrix: -7.166e-19, 7.161e-19, 2.182e+00, 4.729e+00, 6.554e+00
+     S=1849: numerical rank of the height matrix of the 5 fibre points = 3
+PASS S=4600: all listed triples have the same lambda = {Fraction(230, 21)}
+PASS S=4600: listed triples are distinct with sum 4600, R = 1/420
+     S=4600: lam = 230/21, model [0, 22597, 0, 34080480, 0], conductor 41388270, ellrank = [3, 3, 0], torsion [6], root number -1
+PASS S=4600: PARI r1 = r2 = 3 (proven by PARI's bounds)
+PASS S=4600: torsion Z/6
+     S=4600: eigenvalues of the height matrix: -3.502e-19, -1.499e-19, 3.983e-19, 2.707e+00, 4.754e+00, 7.136e+00
+     S=4600: numerical rank of the height matrix of the 6 fibre points = 3
+PASS Thm3: all listed triples have the same lambda = {Fraction(155, 12)}
+     Thm3: lam = 155/12, model [0, 12433, 0, 4285440, 0], conductor 6250530, ellrank = [2, 2, 0], torsion [6], root number 1
+PASS Thm3: PARI r1 = r2 = 2 (proven by PARI's bounds)
+PASS Thm3: torsion Z/6
+     Thm3: eigenvalues of the height matrix: 1.453e+00
+     Thm3: numerical rank of the height matrix of the 1 fibre points = 1
+ALL PARI CHECKS PASSED

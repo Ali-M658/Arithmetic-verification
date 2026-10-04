@@ -1,0 +1,240 @@
+[
+ {
+  "m": [
+   2,
+   8,
+   8
+  ],
+  "printed_up": "2.485e-03",
+  "where_printed": "8-1/2",
+  "where_found": "8-1/2",
+  "shape": "real",
+  "dev_exact": "2.484862e-03",
+  "ratio_to_printed": 0.9999445863970408,
+  "within_tol": true,
+  "tie": true,
+  "corner_fail_threshold": "2.4849e-03",
+  "wrong": {
+   "tau": "-1/1000000",
+   "dev": "2.484944e-03",
+   "detail": "('count', 8, 1, 2)"
+  }
+ },
+ {
+  "m": [
+   3,
+   3,
+   12
+  ],
+  "printed_up": "4.589e-03",
+  "where_printed": "3+1/2",
+  "where_found": "3+1/2",
+  "shape": "real",
+  "dev_exact": "4.588272e-03",
+  "ratio_to_printed": 0.9998412621689237,
+  "within_tol": true,
+  "tie": true,
+  "corner_fail_threshold": "4.5883e-03",
+  "wrong": {
+   "tau": "1/1000000",
+   "dev": "4.588348e-03",
+   "detail": "('count', 3, 1, 2)"
+  }
+ },
+ {
+  "m": [
+   3,
+   10,
+   15,
+   30
+  ],
+  "printed_up": "7.488e-03",
+  "where_printed": "10+1/2",
+  "where_found": "10+1/2",
+  "shape": "real",
+  "dev_exact": "7.486520e-03",
+  "ratio_to_printed": 0.9998023915170461,
+  "within_tol": true,
+  "tie": true,
+  "corner_fail_threshold": "7.4865e-03",
+  "wrong": {
+   "tau": "1/10000000",
+   "dev": "7.488979e-03",
+   "detail": "('count', 10, 0, 1)"
+  }
+ },
+ {
+  "m": [
+   4,
+   5,
+   21,
+   28
+  ],
+  "printed_up": "2.018e-03",
+  "where_printed": "5-1/2",
+  "where_found": "4+1/2",
+  "shape": "real",
+  "dev_exact": "2.017668e-03",
+  "ratio_to_printed": 0.9998356899002474,
+  "within_tol": true,
+  "tie": true,
+  "corner_fail_threshold": "2.0177e-03",
+  "wrong": {
+   "tau": "-1/1000000",
+   "dev": "2.018572e-03",
+   "detail": "('count', 4, 2, 1)"
+  }
+ },
+ {
+  "m": [
+   2,
+   3,
+   7
+  ],
+  "printed_up": "6.587e-03",
+  "where_printed": "3-1/2",
+  "where_found": "2+1/2",
+  "shape": "real",
+  "dev_exact": "6.586914e-03",
+  "ratio_to_printed": 0.9999869037930195,
+  "within_tol": true,
+  "tie": true,
+  "corner_fail_threshold": "6.5869e-03",
+  "wrong": {
+   "tau": "-1/1000000",
+   "dev": "6.586984e-03",
+   "detail": "('count', 2, 2, 1)"
+  }
+ },
+ {
+  "m": [
+   4,
+   4,
+   4
+  ],
+  "printed_up": "5.036e-04",
+  "where_printed": "4+1/2",
+  "where_found": "4+1/2",
+  "shape": "real",
+  "dev_exact": "5.035826e-04",
+  "ratio_to_printed": 0.9999653903994311,
+  "within_tol": true,
+  "tie": true,
+  "corner_fail_threshold": "5.0358e-04",
+  "wrong": {
+   "tau": "1/1000000",
+   "dev": "5.037790e-04",
+   "detail": "('count', 4, 2, 3)"
+  }
+ },
+ {
+  "m": [
+   7,
+   7,
+   7
+  ],
+  "printed_up": "8.273e-05",
+  "where_printed": "7-1/2",
+  "where_found": "7-1/2",
+  "shape": "real",
+  "dev_exact": "8.272119e-05",
+  "ratio_to_printed": 0.9998934764735266,
+  "within_tol": true,
+  "tie": true,
+  "corner_fail_threshold": "8.2721e-05",
+  "wrong": {
+   "tau": "-1/10000000",
+   "dev": "8.275917e-05",
+   "detail": "('count', 7, 2, 3)"
+  }
+ },
+ {
+  "m": [
+   3,
+   3,
+   4,
+   4
+  ],
+  "printed_up": "1.195e-04",
+  "where_printed": "4-1/2",
+  "where_found": "4-1/2",
+  "shape": "real",
+  "dev_exact": "1.194359e-04",
+  "ratio_to_printed": 0.9994632580619341,
+  "within_tol": true,
+  "tie": true,
+  "corner_fail_threshold": "1.1944e-04",
+  "wrong": {
+   "tau": "1/10000000",
+   "dev": "1.194713e-04",
+   "detail": "('count', 3, 1, 2)"
+  }
+ },
+ {
+  "m": [
+   5,
+   5,
+   5,
+   5
+  ],
+  "printed_up": "3.826e-05",
+  "where_printed": "5-1/2",
+  "where_found": "5-1/2",
+  "shape": "real",
+  "dev_exact": "3.825799e-05",
+  "ratio_to_printed": 0.9999474020530208,
+  "within_tol": true,
+  "tie": true,
+  "corner_fail_threshold": "3.8258e-05",
+  "wrong": {
+   "tau": "-1/10000000",
+   "dev": "3.827763e-05",
+   "detail": "('count', 5, 3, 4)"
+  }
+ },
+ {
+  "m": [
+   2,
+   2,
+   2,
+   3
+  ],
+  "printed_up": "2.520e-04",
+  "where_printed": "3-1/2",
+  "where_found": "2+1/2",
+  "shape": "real",
+  "dev_exact": "2.519715e-04",
+  "ratio_to_printed": 0.999886869019981,
+  "within_tol": true,
+  "tie": true,
+  "corner_fail_threshold": "2.5197e-04",
+  "wrong": {
+   "tau": "1/1000000",
+   "dev": "2.520509e-04",
+   "detail": "('count', 2, 2, 3)"
+  }
+ },
+ {
+  "m": [
+   2,
+   2,
+   2,
+   2,
+   3
+  ],
+  "printed_up": "5.743e-05",
+  "where_printed": "2+1/2",
+  "where_found": "2+1/2",
+  "shape": "real",
+  "dev_exact": "5.311320e-05",
+  "ratio_to_printed": 0.9248336848484771,
+  "within_tol": true,
+  "tie": true,
+  "corner_fail_threshold": "5.3113e-05",
+  "wrong": {
+   "tau": "1/1000000",
+   "dev": "5.322246e-05",
+   "detail": "('count', 2, 3, 4)"
+  }
+ }
+]

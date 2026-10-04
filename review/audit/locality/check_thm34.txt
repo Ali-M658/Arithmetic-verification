@@ -1,0 +1,33 @@
+[exact] Lemma 3.3, second inequality: pi e^x - 2pi(cosh x - 1) = 2pi(1 - e^{-x}/2) > 0
+[exact] Area B(R) = int_0^R 2 pi sinh(rho) d rho = 2 pi (cosh R - 1)
+[exact] -f'/f = L/2t + 1/2 - 1/L, increasing in L, equal to 3/2 at L=ell on the boundary t = ell^2/(2(1+ell)) (larger for smaller t)
+[exact] ell^2/(2-ell) - ell^2/(2(1+ell)) = 3 ell^3/(2(2-ell)(1+ell)) > 0: stated range is sufficient, not sharp
+[exact] ell - ell^2/(2(1+ell)) = ell(2+ell)/(2(1+ell)) > 0, so ell - t > 0 on the range
+[exact] -f'(L) e^L = -(L e^phi)' + L e^phi, phi = L/2 - L^2/4t
+[exact] D = 2tL e^phi/(L-t): -D' = L e^phi + 2t^2 e^phi/(L-t)^2, so int_ell^oo L e^phi <= D(ell) for ell > t
+[exact] assembled bound == the right-hand side of Theorem 3.4(b), identically
+[exact] 1/(2 sinh(L/2)) = e^{-L/2}/(1-e^{-L})
+[exact identity + sanity value] extremal counting measure N=Ce^L: (sum f dN)/(bound) <= 1 at:
+        ell=1/100 t=1/20200        extremal/bound = 0.999983206526
+        ell=1/100 t=1/40400        extremal/bound = 0.999997048709
+        ell=1/100 t=1/202000       extremal/bound = 0.999999961474
+        ell=1/10  t=1/220          extremal/bound = 0.998640446307
+        ell=1/10  t=1/440          extremal/bound = 0.999762197649
+        ell=1/10  t=1/2200         extremal/bound = 0.999996963127
+        ell=1/2   t=1/12           extremal/bound = 0.983905742218
+        ell=1/2   t=1/24           extremal/bound = 0.997288461935
+        ell=1/2   t=1/120          extremal/bound = 0.999968255381
+        ell=1     t=1/4            extremal/bound = 0.967389269282
+        ell=1     t=1/8            extremal/bound = 0.994792697891
+        ell=1     t=1/40           extremal/bound = 0.999943996113
+        ell=2     t=2/3            extremal/bound = 0.949942414395
+        ell=2     t=1/3            extremal/bound = 0.992717169977
+        ell=2     t=1/15           extremal/bound = 0.999930311877
+        ell=5     t=25/12          extremal/bound = 0.941344402519
+        ell=5     t=25/24          extremal/bound = 0.992865745997
+        ell=5     t=5/24           extremal/bound = 0.999942535748
+[exact] Thm 3.4(c): term(t)/term(t1) = sqrt(t1/t) e^{(t1-t)/4} e^{ell^2/4t1} e^{-ell^2/4t} * e^{-(L^2-ell^2)(1/4t-1/4t1)}, last factor <= 1 for L>=ell, t<=t1
+[exact] LO.10: sqrt(t) e^{ell^2/4t} (main term) -> w/(2 sinh(ell/2) sqrt(4pi)); without sqrt(t) it -> oo, so no constant C works when L* = ell
+[exact] if L* > ell: sup_t t^{-1/2} e^{-a/4t} = (a/2)^{-1/2} e^{-1/2}, a = L*^2-ell^2, finite -> constant-C bound holds
+[exact] Thm 3.5 toy models (incl. ell1=ell2 with different multiplicity, and a large later weight 50 at L=11/10): (Z1-Z2)/leading -> 1
+ALL CHECKS PASSED

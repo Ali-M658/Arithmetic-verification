@@ -1,0 +1,7 @@
+H regular at x = 2 pi n (n=1,2), bracket -> 0 there, k = 2..5: exact. (The existing proof is right; REVIEW.md DV.1(c) wrongly lists x = 2 pi n among the poles; no consequence.)
+a_1(2,8,8) = -1601/480, a_1(3,3,12) = -867/160, a_0(2,8,8) = 67/48: reproduced exactly
+s_k = sum_i 4^{i-k}/(k-i)! iota_i (divergence proof, Theorem 3) equals Ucar (4.35) s_k for k < 60: exact
+genus 10^4 + {2}: smooth part dominates exactly for l = 0..8 (both proof and its attack log say l <= 5)
+curvature proof table of 12 a_0 reproduced exactly
+Part 4: 299 sample points k/1000 with a strictly interior level-set fibre (matches F4)
+ALL CHECKS PASSED

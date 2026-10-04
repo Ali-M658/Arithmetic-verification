@@ -1,0 +1,185 @@
+from | to | kind | evidence
+---|---|---|---
+AU.Rem2 | AU.ThmA | crosscheck | AU.3
+AU.Rem3 | AU.ThmA | uses | AU.3 padding
+AU.ThmA | AU.Lemma1 | inferred | parity lemma (proof not in register)
+AU.ThmA | AU.ThmB | inferred | hypothesis e_n Delta_{n-1} != 0 is det M != 0 of Theorem B
+AU.ThmA | AU.heat | uses | I_n triangular
+AU.ThmA | EXT.HoltzTyaglov | uses | Orlando
+AU.ThmB | AU.heat | uses | coefficients are polynomials in I_n
+AU.ThmB | EXT.HoltzTyaglov | uses | Delta_{n-1}
+AU.ThmC | AU.heat | uses | I_{n-1}
+AU.heat | EXT.Schueth | uses | AU.0 (l<=2)
+AU.heat | EXT.Ucar | uses | AU.0
+AU.witness | AU.ThmC | crosscheck | AU.4
+CU.flat | DV.L1 | uses | CU.1 positivity for all l
+CU.flat | EXT.DGGW | uses | CU.1
+CU.flat | EXT.Kokotov | uses | CU.1
+CU.prop | AU.ThmA | uses | Part 3 'is Theorem A'
+CU.prop | AU.ThmC | uses | Part 3 sharpness
+CU.prop | CU.L2 | uses | Part 2
+CU.prop | CU.flat | uses | Part 1, 4
+CU.prop | EXT.DGGW | crosscheck | Strength: DGGW 5.15, 5.22
+CU.prop | EXT.Ucar | crosscheck | Cor 4.21(iv)
+DF.def:K | DF.def:heatcoef | definition | H_k
+DF.def:K | DF.def:signature | definition | sigma
+DF.def:heatcoef | EXT.DGGW | uses | DF.1 cites donnelly1976, dggw2008
+DF.def:heatcoef | EXT.Donnelly | uses | DF.1
+DF.eq:Kcompare | DF.def:K | uses | DF.2
+DF.eq:moduli | EXT.Thurston | uses | DF.4
+DF.eq:moduli | EXT.Troyanov | uses | DF.4
+DF.prop:Kinf | DF.eq:moduli | uses | n>=4 case
+DF.prop:Kinf | DF.thm:locality | uses | DF.5 'Conditional on thm:locality'
+DF.prop:rigidity | DF.eq:moduli | inferred | rigidity = zero-dimensional moduli for n=3 (proof not in register)
+DF.rem:nconerestated | DF.eq:moduli | uses | DF.7(b)
+DF.rem:nconerestated | DF.prop:Kinf | uses | DF.7(b)
+DF.rem:nconerestated | DF.prop:rigidity | uses | DF.7(b)
+DF.rem:nconerestated | PC.prop:recovery | uses | DF.7(a)
+DF.rem:nconerestated | PC.rem:ncone | crosscheck | restates/corrects PC.20
+DF.thm:Crestated | DF.prop:rigidity | uses | K_iso = K_mult
+DF.thm:Crestated | PC.prop:recovery | reported | P8 brief; implied through thmC
+DF.thm:Crestated | PC.thmB | uses | example of value 3
+DF.thm:Crestated | PC.thmC | uses | DF.6 title
+DF.thm:locality | LO.T1 | proved_by | LO.1 'This proves thm:locality'
+DI.P1 | PC.degdef | definition | degeneracy
+DI.T3 | DI.P1 | uses | 
+DI.T3 | DI.pencil | uses | positive-rank fibres
+DI.T4 | DI.countconv | uses | (*)
+DI.T4 | DI.recip | uses | dual family
+DI.T5 | DI.countconv | uses | 
+DI.countconv | PC.conj:density | definition | 'the paper's convention'
+DI.counts | DI.P1 | uses | 
+DI.isolation | EXT.PARI | uses | ellrank, elltors
+DI.isolation | PC.thmB | reported | P8 brief: 'the isolation theorem using Theorem B' (only the base pair itself is borrowed)
+DI.pencil | EXT.BGN | crosscheck | 
+DI.pencil | EXT.Beauville | uses | 
+DI.pencil | EXT.Shioda | uses | MW rank 0 (zbMATH report only)
+DI.recip | DI.pencil | uses | 
+DV.Borel | DV.T3 | uses | 
+DV.C4 | DV.T3 | uses | 
+DV.C4 | EXT.Ucar | crosscheck | Cor 4.21(iv)
+DV.L1 | EXT.Ucar | uses | DV.0
+DV.T2 | DV.L1 | uses | 
+DV.T3 | DV.T2 | uses | 
+LO.C2.3 | DF.def:K | definition | LO.5
+LO.C2.3 | DF.prop:Kinf | crosscheck | same content as prop:Kinf (unconditional form)
+LO.C2.3 | DF.prop:rigidity | inferred | triangle case K_iso = K_mult
+LO.C2.3 | DF.rem:nconerestated | definition | LO.5 class P_n
+LO.C2.3 | LO.P2.2 | uses | LO.5
+LO.C2.3 | LO.T1 | uses | same signature -> same coefficients
+LO.L3.2 | EXT.DS | uses | LO.7 '[DS] (1) holds for h_R'
+LO.L3.2 | LO.T1 | reported | P8 brief: Lemma 3.2 uses a Weyl bound taken from Theorem 1
+LO.P2.1 | EXT.Thurston | uses | LO.2 Cor 13.3.7
+LO.P2.2 | LO.P2.1 | uses | LO.4
+LO.T1 | EXT.DGGW | uses | LO.1 (4.9) and strata
+LO.T1 | EXT.Ucar | uses | LO.1 constants (Ucar Thm 4.20 at kappa=-1)
+LO.T1 | LO.T3.1 | reported | P8 brief: 'Proof C' of Theorem 1 via Theorem 3.1 (alternative proof)
+LO.T3.1 | EXT.DS | uses | LO.6 Selberg trace formula
+LO.T3.1 | LO.L3.2 | uses | admissibility
+LO.T3.1 | LO.L3.3 | uses | absolute convergence of H
+LO.T3.4 | LO.L3.3 | uses | counting
+LO.T3.4 | LO.T3.1 | uses | exact cancellation
+LO.T3.5 | LO.T3.1 | uses | 
+LO.claim | LO.T3.4 | uses | LO.10
+LO.claim | LO.T3.5 | uses | LO.10
+PC.S36 | PC.prop:scaling | crosscheck | PC.18
+PC.conj:density | PC.thm:density-lower | crosscheck | PC.19
+PC.conj:density | PC.thmC | uses | PC.19 last paragraph: 'Theorem thmC gives K(F)<=3'
+PC.cor:conevals | PC.prop:csc | uses | def:cone in csc^2
+PC.corD | PC.eq:a2red | uses | first three detect sum m_i^3
+PC.corD | PC.eq:s1inv | uses | first two factor through (R,S_1)
+PC.corD | PC.thmA | uses | range S<=17 sharp
+PC.corD | PC.thmB | uses | first failure at 18
+PC.degdef | PC.lem:chamber | uses | PC.17 'by lem:chamber the two triples share the sum'
+PC.eq:a0conv | EXT.DGGW | uses | PC.2 'We use the orbifold heat-trace expansion of DGGW'
+PC.eq:a0conv | PC.cor:conevals | uses | cone sum
+PC.eq:a2red | PC.eq:b1 | uses | summing eq:b1 at K=-1
+PC.eq:b1 | EXT.DGGW | uses | PC.8 footnote (DGGW 5.6)
+PC.eq:b1 | EXT.Schueth | uses | PC.8 footnote
+PC.eq:b1 | EXT.Ucar | crosscheck | PC.8 footnote 'consistent with Ucar'
+PC.eq:s1inv | PC.eq:a0conv | uses | PC.7 (ii)
+PC.eq:s1inv | PC.eq:area | uses | PC.7 (i)
+PC.jacobian | PC.prop:recovery | crosscheck | PC.10 infinitesimal counterpart
+PC.lem:bound | PC.lem:chamber | uses | PC.12
+PC.prop:csc | PC.lem:cot | inferred | csc^2 = 1 + cot^2
+PC.prop:min | PC.eq:a0conv | uses | PC.13
+PC.prop:min | PC.lem:chamber | inferred | monotonicity of R in a stratum
+PC.prop:recovery | PC.eq:a2red | uses | P_3 from c_3
+PC.prop:recovery | PC.eq:s1inv | uses | R, S_1 from c_1, c_2
+PC.prop:scaling | PC.degdef | definition | PC.17
+PC.rem:ncone | PC.thmC | crosscheck | PC.20
+PC.remA0 | PC.prop:cs | uses | PC.16
+PC.remA0 | PC.prop:min | uses | PC.16
+PC.tab:enum | PC.thm:separation | crosscheck | PC.21 'independent cross-check'
+PC.thm:density-lower | PC.prop:scaling | uses | PC.17b
+PC.thm:density-lower | PC.thmB | uses | base pair
+PC.thm:separation | PC.lem:bound | uses | PC.15
+PC.thm:separation | PC.lem:chamber | uses | PC.14
+PC.thmA | PC.eq:s1inv | uses | first two coefficients -> (R,S_1)
+PC.thmA | PC.thm:separation | uses | PC.15 'hence Theorem thmA'
+PC.thmA | PC.thmB | sharpness | PC.1 'The bound 17 is sharp ... (Theorem thmB)'
+PC.thmB | PC.eq:s1inv | uses | identical first two coefficients <=> equal (R,S_1)
+PC.thmB | PC.thm:separation | uses | PC.14 second sentence; PC.15 S=18 computation
+PC.thmC | DF.prop:rigidity | inferred | 'up to isometry, equivalently ... cone orders' needs rigidity; not cited in PC
+PC.thmC | PC.eq:a2red | uses | third coefficient delivers P_3
+PC.thmC | PC.prop:recovery | uses | PC.9b 'equivalently ... first three heat coefficients is injective'
+PC.thmC | PC.thmB | uses | K(F)=3 for the collision pair
+SG.H | DF.def:heatcoef | definition | SG.0 (H3)
+SG.H | EXT.DGGW | uses | SG.0 (H1)
+SG.H | EXT.Ucar | uses | SG.0 (H1),(H2)
+SG.L1 | SG.H | uses | SG.1
+SG.L2 | SG.L1 | uses | SG.2
+SG.L3 | SG.H | uses | SG.3
+SG.L4 | SG.L2 | uses | SG.4 'It follows for all L from Lemma 2'
+SG.L4 | SG.L3 | uses | padding
+SG.N1 | SG.S2 | uses | upper bound
+SG.N1 | SG.ThmN | uses | lower bound
+SG.S1 | SG.ThmS | uses | SG.6
+SG.S2 | DF.def:K | definition | SG.7
+SG.S2 | SG.S1 | uses | SG.7
+SG.T1 | AU.ThmA | reported | P8 brief: 'Theorem T1 using Theorem A'
+SG.T1 | SG.S1 | uses | T1(3) is S1 at g=g'=0
+SG.T1 | SG.S2 | uses | T1(2)
+SG.ThmN | SG.L4 | uses | converse direction of Lemma 4
+SG.ThmN | SG.PropP | uses | Prouhet construction
+SG.ThmS | SG.L4 | uses | SG.5
+SG.ex:siggenus | SG.L4 | crosscheck | exact computation
+SG.rem:sigK | AU.ThmA | crosscheck | SG.13 'now proved independently (Theorem A)'
+SG.rem:sigK | DF.eq:Kcompare | uses | SG.13
+SG.rem:sigK | DF.prop:Kinf | uses | SG.13
+SG.rem:sigK | DF.rem:nconerestated | crosscheck | SG.13
+ST.LemS3 | EXT.Ostrowski | crosscheck | ST.6 global vs local
+ST.S1 | ST.setup | uses | 
+ST.S2.1 | AU.ThmB | definition | ST.3 'replaces c_n ... in Theorem B'
+ST.S2.1 | ST.S2.2 | uses | det M = det B / det S
+ST.S2.2 | AU.ThmB | definition | matrix M only
+ST.S3.2 | AU.ThmB | uses | ST.9(ii)
+ST.S4 | ST.ThmS3 | uses | 
+ST.S5 | ST.S2.1 | uses | ST.12 'G exact (Lemma S2.1)'
+ST.S5 | ST.table | uses | |L^{-1}|
+ST.ThmS2 | ST.S2.1 | uses | 
+ST.ThmS2 | ST.S2.2 | uses | kappa bound via B, S
+ST.ThmS3 | ST.LemS3 | uses | 
+ST.ThmS3 | ST.ThmS2 | uses | 
+ST.ThmS3 | ST.table | uses | l = (2,14,498,4062,...)
+ST.results | ST.S4 | uses | delta_thm
+ST.results | ST.S5 | uses | delta_cert
+ST.setup | AU.ThmB | uses | linear solve
+ST.setup | EXT.Ucar | uses | ST.0
+ST.table | ST.S1 | uses | L^{-1}
+TH.0 | PC.lem:bound | uses | TH.0
+TH.0 | PC.lem:chamber | uses | TH.0
+TH.C2 | PC.thmB | crosscheck | same content as thmA/thmB
+TH.C2 | TH.L2 | uses | 
+TH.C2 | TH.T1 | uses | 
+TH.L1 | TH.0 | uses | 
+TH.L2 | PC.thm:separation | crosscheck | 'the chain in the proof of thm:separation'
+TH.L2 | TH.L1 | uses | 
+TH.P3 | TH.T1 | uses | 
+TH.T1 | TH.L1 | uses | 
+TH.table | DI.counts | crosscheck | 'reproduces all 2,977 collision fibres of groups.csv'
+
+cycles (all edges): [['LO.L3.2', 'LO.T1', 'LO.T3.1']]
+cycles (logical edges): [['LO.L3.2', 'LO.T1', 'LO.T3.1']]
+cycles (statement-visible logical edges): []
+cycles (logical, Proof C demoted to cross-check): []

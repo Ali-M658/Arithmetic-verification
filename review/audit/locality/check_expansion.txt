@@ -1,0 +1,14 @@
+[sanity, mpmath] mu_j closed form agrees with quadrature for j<=3
+[sanity, mpmath] F^{(2j)}(a) = int r^{2j} e^{-ar}/(1+e^{-2pi r}) dr for sample (l,m), j<=2
+[exact] sum csc^2 = (m^2-1)/3 and sum csc^4 = (m^4+10m^2-11)/45 for m=2..13
+[exact] alpha_k (trace formula identity term) == LO.1 formula == Ucar (4.35)/vol at kappa=-1, k=0..7
+        alpha = 1, -1/3, 1/15, -4/315, 1/315, -4/3465, 382/675675, -232/675675
+        beta_k(2) = 1/8, -1/16, 1/32, -5/192, 13/384, -227/3840, 2957/23040, -21425/64512
+        beta_k(3) = 2/9, -4/27, 4/27, -8/27, 220/243, -4424/1215, 21928/1215, -2707984/25515
+        beta_k(4) = 5/16, -9/32, 33/64, -247/128, 2735/256, -197281/2560, 10484527/15360, -1539891239/215040
+[exact] beta_k(m) (trace formula elliptic term) == Ucar (4.33) at kappa=-1, m=2..13, k=0..7
+[exact] beta_2(m) == Schueth Thm 4.1 at K=-1, Delta K=0, m=2..13
+[exact] beta_0(m) == (m^2-1)/(12m)  [DGGW (5.7)];  beta_1(m) == -(m^4+10m^2-11)/(360m)  [DGGW (5.10), R1212=-1]
+[exact] (A/4pi)*alpha_1 = (-chi/2)(-1/3) = chi/6, matching DGGW (5.7)
+[exact] a factor-2 change in the DS elliptic weight 1/(2 m sin theta) would contradict DGGW (5.7)
+ALL CHECKS PASSED

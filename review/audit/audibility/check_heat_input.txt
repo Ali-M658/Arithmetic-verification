@@ -1,0 +1,29 @@
+l= 0  deg= 2 even=True p_l(1)=0 lead=1/12  |B_2|/(2(l+1)!(2l+1))=1/12
+       p_0(k) = k**2/12 - 1/12
+l= 1  deg= 4 even=True p_l(1)=0 lead=1/360  |B_4|/(2(l+1)!(2l+1))=1/360
+       p_1(k) = k**4/360 + k**2/36 - 11/360
+l= 2  deg= 6 even=True p_l(1)=0 lead=1/2520  |B_6|/(2(l+1)!(2l+1))=1/2520
+       p_2(k) = k**6/2520 + k**4/720 + k**2/180 - 37/5040
+l= 3  deg= 8 even=True p_l(1)=0 lead=1/10080  |B_8|/(2(l+1)!(2l+1))=1/10080
+       p_3(k) = k**8/10080 + k**6/3780 + k**4/2160 + k**2/945 - 19/10080
+l= 4  deg=10 even=True p_l(1)=0 lead=1/28512  |B_10|/(2(l+1)!(2l+1))=1/28512
+l= 5  deg=12 even=True p_l(1)=0 lead=691/43243200  |B_12|/(2(l+1)!(2l+1))=691/43243200
+l= 6  deg=14 even=True p_l(1)=0 lead=1/112320  |B_14|/(2(l+1)!(2l+1))=1/112320
+l= 7  deg=16 even=True p_l(1)=0 lead=3617/616896000  |B_16|/(2(l+1)!(2l+1))=3617/616896000
+l= 8  deg=18 even=True p_l(1)=0 lead=43867/9845660160  |B_18|/(2(l+1)!(2l+1))=43867/9845660160
+l= 9  deg=20 even=True p_l(1)=0 lead=174611/45505152000  |B_20|/(2(l+1)!(2l+1))=174611/45505152000
+l=10  deg=22 even=True p_l(1)=0 lead=77683/21032524800  |B_22|/(2(l+1)!(2l+1))=77683/21032524800
+l=11  deg=24 even=True p_l(1)=0 lead=236364091/60153020928000  |B_24|/(2(l+1)!(2l+1))=236364091/60153020928000
+l=12  deg=26 even=True p_l(1)=0 lead=657931/143700480000  |B_26|/(2(l+1)!(2l+1))=657931/143700480000
+sign(B_{2l+2}) = (-1)^l checked for l < 80
+l=0 agrees with DGGW Prop 5.5: (m^2-1)/(12m)
+l=2 agrees with Schueth Thm 4.1 (K^2 term; Delta K = 0)
+a_0/(vol*kappa^0) = 1
+a_1/(vol*kappa^1) = 1/3
+a_2/(vol*kappa^2) = 1/15
+a_3/(vol*kappa^3) = 4/315
+a_4/(vol*kappa^4) = 1/315
+a_5/(vol*kappa^5) = 4/3465
+each b_l(m) is a Q-combination of m^{-1}, m, m^3, ..., m^{2l+1}; top term nonzero
+b_l(1) = 0 for l <= 12; n-2-R invariant under (n,R)->(n+1,R+1)
+ALL CHECKS PASSED

@@ -1,0 +1,45 @@
+PASS pencil identity (x+y)(y+z)(z+x) = e1 e2 - e3
+PASS C_lambda is the member t = 1 - lambda of (X+Y)(Y+Z)(Z+X) + t XYZ = 0
+PASS chart z=1: F = (y+1)x^2 + (y^2+(3-lam)y+1)x + y(y+1)
+PASS discriminant quartic v^2=Q(y) is monic with Q(0)=1
+     Q(y) = y**4 + y**3*(2 - 2*lambda) + y**2*(lambda**2 - 6*lambda + 3) + y*(2 - 2*lambda) + 1
+PASS own model E_lam: W^2 = s(s^2 + (lam^2-6lam-3)s + 16 lam)
+PASS forward map (x:y:1) -> (s,W) lands on E_lam
+PASS forward map has s = -4 e2 / z^2 (z=1)
+     W = -4*(-lambda*x*y - lambda*x + lambda*y + 2*x*y**2 + 3*x*y + x + 2*y**2 + y)
+PASS inverse map (s,W) -> (x:y:1) lands on C_lam
+PASS s(forward(inverse(s,W))) = s
+PASS W(forward(inverse(s,W))) = W
+PASS C meets z=0 in (1:0:0),(0:1:0),(1:-1:0)
+     O_E (point at infinity) <-> (1:-1:0) since e2(1,-1,0) = -1 != 0 (the other two have e2=0)
+PASS Delta(E_lam) = 2^12 lam^2 (lam-9)(lam-1)^3
+PASS c4^3 - c6^2 = 1728 Delta
+PASS fibre at lam=0: ord Delta=2, c4 != 0 -> I2
+PASS fibre at lam=1: ord Delta=3, c4 != 0 -> I3
+PASS fibre at lam=9: ord Delta=1, c4 != 0 -> I1
+PASS at lam=oo: deg a2=2<=2, deg a4=1<=4 (model regular at oo), ord_oo Delta = 12-6 = 6, ord_oo c4 = 4-4 = 0 -> I6
+PASS Euler numbers 2+3+1+6 = 12: rational elliptic surface
+PASS Shioda-Tate: rank over Qbar(lam) = 8 - (1+2+0+5) = 0
+PASS manuscript model has the same Delta = 2^12 lam^2 (lam-9)(lam-1)^3
+PASS manuscript model has identical (c4, c6): isomorphic to E_lam over Q(lam) (not a twist)
+     manuscript model: rational 2-torsion abscissa [-4]; it is E_lam translated by s = x + 4
+PASS line P T2 meets C in a quadratic in the z-coordinate (T2 at infinity)
+PASS product of the two roots = p0 p1, so third point is (p0:p1:p0p1/p2) = (p0p2:p1p2:p0p1)
+PASS O=(1:-1:0), (p0p2:p1p2:p0p1), (p1p2:p0p2:p0p1) are collinear
+PASS F(p1p2,p0p2,p0p1) = p0p1p2 * F(p0,p1,p2): (p1p2:p0p2:p0p1) lies on C_lam whenever P does
+     => P + T2 = O*(P*T2) = (1/p0 : 1/p1 : 1/p2) = iota(P); iota involution => 2 T2 = O
+PASS dual family: both sums equal e1 e2
+PASS dual family: both reciprocal sums equal 1/e3
+PASS D_{u,v}: both sums = (2u+v)(u+2v)
+PASS D_{u,v}: both reciprocal sums = 1/(uv) (before division by g)
+PASS g | 2(2u+v)-(u+2v) = 3u and g | 3v, so g | 3 gcd(u,v) = 3
+PASS isosceles points (r:1:1) on C_lam: 2r^2+(5-lam)r+2 = 0, roots r and 1/r
+     => each C_lam carries at most one isosceles pair {(u,v,v),(v,u,u)} up to permutation
+PASS area{0<u<v, (2u+v)(u+2v) <= 1} = (1/2) int_1^oo ds/((2+s)(1+2s)) = log2/6 (whole quadrant: log2/3)
+PASS c_iso = (6/pi^2)(log2/6)(3/4 + 3/4) = 3 log2/(2 pi^2) = 0.10534574
+PASS Prop 2: c1+c2=d and 1/c1+1/c2=1/d force c1^2+c1c2+c2^2 = 0, impossible for c_i > 0
+     DI.8: G = gcd(e2 a, e2 b, e2 c, e1 bc, e1 ca, e1 ab) divides e2*gcd(a,b,c) = e2 (t primitive); any positive integer triple has R <= 3 anyway
+PASS stated forward map sigma=-4e2/z^2, tau=4l(l-1)(x-y)/(x+y-(l-1)z) lands on BGN (6)
+PASS stated inverse map (x+y)/z = s(l-1)/(s-4l), (x-y)/z = tau((x+y)/z-l+1)/(4l(l-1)) lands on C_lam
+PASS own map and stated map agree up to the sign of the ordinate (W_own = -tau on C_lam)
+ALL ALGEBRA CHECKS PASSED

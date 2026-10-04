@@ -1,0 +1,12 @@
+(2, 8, 8)        delta_cert=2.341e-03: 2008 samples (8 corners + 2000 uniform) -> 0 failures | info: 1/8 corners of the (1+1e-3)delta_up box fail
+(3, 3, 12)       delta_cert=4.040e-03: 2008 samples (8 corners + 2000 uniform) -> 0 failures | info: 1/8 corners of the (1+1e-3)delta_up box fail
+(3, 10, 15, 30)  delta_cert=3.660e-03: 2016 samples (16 corners + 2000 uniform) -> 0 failures | info: 2/16 corners of the (1+1e-3)delta_up box fail
+(4, 5, 21, 28)   delta_cert=1.461e-03: 2016 samples (16 corners + 2000 uniform) -> 0 failures | info: 2/16 corners of the (1+1e-3)delta_up box fail
+(2, 3, 7)        delta_cert=3.658e-03: 2008 samples (8 corners + 2000 uniform) -> 0 failures | info: 1/8 corners of the (1+1e-3)delta_up box fail
+(4, 4, 4)        delta_cert=4.539e-04: 2008 samples (8 corners + 2000 uniform) -> 0 failures | info: 1/8 corners of the (1+1e-3)delta_up box fail
+(7, 7, 7)        delta_cert=8.068e-05: 2008 samples (8 corners + 2000 uniform) -> 0 failures | info: 1/8 corners of the (1+1e-3)delta_up box fail
+(3, 3, 4, 4)     delta_cert=9.597e-05: 2016 samples (16 corners + 2000 uniform) -> 0 failures | info: 1/16 corners of the (1+1e-3)delta_up box fail
+(5, 5, 5, 5)     delta_cert=3.617e-05: 2016 samples (16 corners + 2000 uniform) -> 0 failures | info: 1/16 corners of the (1+1e-3)delta_up box fail
+(2, 2, 2, 3)     delta_cert=1.858e-04: 2016 samples (16 corners + 2000 uniform) -> 0 failures | info: 1/16 corners of the (1+1e-3)delta_up box fail
+(2, 2, 2, 2, 3)  delta_cert=7.908e-06: 2032 samples (32 corners + 2000 uniform) -> 0 failures | info: 3/32 corners of the (1+1e-3)delta_up box fail
+ALL CHECKS PASSED

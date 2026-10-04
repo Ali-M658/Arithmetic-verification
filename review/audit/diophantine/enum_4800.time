@@ -1,0 +1,1 @@
+./enum_classes 10 4800 4800 > enum_4800.txt  93.95s user 29.61s system 21% cpu 9:42.19 total

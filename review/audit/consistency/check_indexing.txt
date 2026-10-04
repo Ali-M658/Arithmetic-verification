@@ -1,0 +1,31 @@
+== A. Index dictionary (power of t  ->  name in each group) ==
+t^-1 | c_1 | H_{-1} | a_0^{sm}/(4pi) [PC.3, Ucar a_0] | - | - | 1st
+t^0 | c_2 | H_0 | a_0 [PC.2, DV], a_1^{sm}/(4pi)+sum b_0 | C_0 (+alpha_0 Area) | a_0 (DV) | 2nd
+t^1 | c_3 | H_1 | 'third coefficient' [PC.7-8] | C_1 (+alpha_1 Area) | a_1 (DV) | 3rd
+t^l | c_{l+2} | H_l | a_l (PC eq:a0conv style) | C_l | a_l | (l+2)-th
+c_j = H_{j-2} = coefficient of t^{j-2}; c_1=(n-2-R)/2; c_2=a_0=H_0=(P_1+R-2n+4)/12 [(S_1+R-2)/12 at n=3]; c_3 = (1-R)/30 + eq:a2red: OK
+
+== B. Quoted numbers recomputed ==
+(2,8,8): c1=1/8, a_0=67/48, a_1=-1601/480;  (3,3,12): c1=1/8, a_0=67/48, a_1=-867/160  [DV quotes -1601/480, -867/160, 67/48: OK]
+eq:a2red sum b_1 = -P_3/360 - S_1/36 + 11R/360 (K=-1): OK
+PC.2 (2,3,5) a_0 = 271/360 (spherical, K=+1); S_1 = 12a_0+2-R = 10; rem:bugfix wrong formula negative: OK
+PC.16 min a_0 over pillows = 107/144 at (3,3,4): OK
+
+== C. Stability front end L, L^{-1} (from derived coefficients) ==
+L^{-1} rows (R..P_7), diagonal 2,12,360,2520,10080,28512,43243200/691,112320 and row sums 2,14,498,4062,56230/3,303654/5,104899830/691,10805786/35: OK
+ST.2 kappa_r(2,8,8) = 0.33, 0.94, 1.33 and amplification ratios 1.17,1.38,1.61: OK
+ST.14 relative-precision columns reproduced from derived H_nu (2 s.f.) for all 11 rows: OK; entries rounded to nearest rather than down: [((2, 3, 7), 0.003999, 0.004)]
+
+== D. Theorem B determinant constant vs Lemma S2.1; S2.2; Jacobians ==
+Theorem B system built from tanh(sum P_k z^k/k); true e solves it; det M = c_n prod(m_i+m_j)/e_n with c_n = (-1)^{n(n+1)/2} for n=2..8; equals Theorem B's list (+1,+1,-1,-1,+1,+1 for n=3..8) and Lemma S2.1; S2.2 B=SM and det B: OK
+AU Remark 2 Jacobian with c_n=-prod(2r-1) (n<=6) and PC.10 det DF = -3(p-q)(p-r)(q-r)(p+q)(p+r)(q+r)/(pqr)^2: OK (mutually consistent)
+ST.5 sigma_k, zeta_n values; ST.9 Delta R, Delta P_3 for (2,8+s,8-s); ST.10 identity: OK
+
+== F. Cross-group witnesses ==
+n=3 pair shares c_1,c_2, differs at c_3; n=4 pair shares c_1..c_3, differs at c_4; P values, Phi=500z^3, 1544400z^3: OK
+ex:siggenus: (1;15)~(0;3,3,5,5) share exactly 2; (1;15,15,15)~(0;3,3,5,7,7,21) share exactly 3: OK
+SG Lemma 4 mirror identity s_{-1}(X)=s_j(X)=2(g-g') for the two examples: OK
+DI.11 'sharing a_0 and a_1': the size-3 fibre shares t^-1 and t^0 only; its t^1 coefficients (paper/DV a_1) are distinct ['-509549/400', '-646049/400', '-732989/400'] -> DI uses Ucar's a_nu indexing (a_0 = area term), the paper/DV use a_l = t^l. INCONSISTENT LABEL.
+c_j (j>=2) involves R, P_1, ..., P_{2j-3} with nonzero top weight (j<=9): OK
+PC.15 / TH.0 tau_p, phi_p, endpoint values at S=18: OK
+ALL INDEXING CHECKS PASSED

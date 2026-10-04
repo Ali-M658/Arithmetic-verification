@@ -1,0 +1,4 @@
+anchors: (71,1) and Theoreme XXX on p. 212; (69,4) preceded by gamma = Max(|x_v|,|y_v|) (both root sets): OK
+reading gamma = max |roots of f| only: f=z^2, g=z^2-z gives eps=0 while a root moves by 1 -> the quote must say "of f and g"
+heuristic check of (71,1) with gamma over both root sets: 3000 random cases, max ratio 0.3333
+ALL CHECKS PASSED

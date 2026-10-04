@@ -1,0 +1,16 @@
+CU.2 Lemma 2 = Molien count, exact, for C2..C8, D2..D8, T, O, I and l = 0..40
+Cone series: spectral (Lemma 2 + Hurwitz) expansion = Ucar beta_l(m) (K=1) for m = 2..13, all l = 0..24; exact
+Whole spherical orbifolds S^2, S^2(2,2), S^2(5,5), S^2(2,2,7), S^2(2,3,3/4/5): spectral expansion = (|chi|/2) s_{l+1} + sum beta_l, exact
+chi>0 genus-0 multisets with orders <= 60 are exactly: (), (n), (n1,n2), (2,2,n), (2,3,3), (2,3,4), (2,3,5)
+chi=0 closed orientable: T^2 and S^2(2,2,2,2), S^2(3,3,3), S^2(2,4,4), S^2(2,3,6) (orders < 200, n <= 5; n >= 5 gives sum >= 5/2)
+a_0 injective on good spherical class (n < 3000); closed forms (n^2+1)/(6n), (n^2+1)/(12n)+1/4; DGGW Table 1 values 43/72, 97/144 reproduced
+cross-family a_0 collisions: n=p or n=2p forced; only p=1 (S^2(2,2) itself). Platonic a_0 < 1.
+Part 2 sharpness pair chi(S^2(2,2,n)) = chi(S^2(2n,2n)) = 1/n: exact n = 2..99 (n=1 gives the same orbifold)
+Part 2: spherical coefficients t^l, l=0..39, all > 0 for sample orbifolds
+Part 1 c_0 = {'T2': '0', '2222': '1/2', '333': '2/3', '244': '3/4', '236': '5/6'}
+Kokotov (10): residue (2/3)(b/2pi - 2pi/b) and constant (1/12)(2pi/b - b/2pi) = (m^2-1)/(12m) at b = 2pi/m: exact
+sum_{j<m} 1/(4 sin^2(j pi/m)) = (m^2-1)/12 for m=2..12 (80-digit sanity check, DGGW Prop 5.5)
+Part 4: doubled (1/4,1/4,1/2) and (1/5,2/5,2/5) both have t^0 coefficient 3/4 (= S^2(2,4,4))
+  level set sum(1/alpha)=10: alpha_1 ranges over Interval(1/5, 1/2)
+Part 3 witnesses: {2,8,8}/{3,3,12} first differ at t^1 (k=3 coeffs needed); {3,10,15,30}/{4,5,21,28} first differ at t^2 (k=4)
+ALL CHECKS PASSED

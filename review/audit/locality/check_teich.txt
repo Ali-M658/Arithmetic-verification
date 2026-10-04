@@ -1,0 +1,15 @@
+[exact] 49407 hyperbolic signatures (g<=3, n<=6, m<=12): Thurston dim = 6g-6+2n; 0 iff (0;3); otherwise even and >= 2
+[exact] smallest |chi| in the enumeration: 1/42 at (0;2,3,7)  -> area 2pi|chi| = pi/21
+        (0;2,2,2,3): chi = -1/6, hyperbolic = True, area = 1/3*pi, dim T = 2
+        (0;2,2,2,2,2): chi = -1/2, hyperbolic = True, area = 1*pi, dim T = 4
+        (1;2): chi = -1/2, hyperbolic = True, area = 1*pi, dim T = 2
+        (1;): chi = 0, hyperbolic = False, area = -, dim T = n/a (Cor 13.3.7 needs chi<0)
+        (0;2,2,2,2): chi = 0, hyperbolic = False, area = -, dim T = n/a (Cor 13.3.7 needs chi<0)
+        (0;2,3,7): chi = -1/42, hyperbolic = True, area = 1/21*pi, dim T = 0
+        (0;2,3,6): chi = 0, hyperbolic = False, area = -, dim T = n/a (Cor 13.3.7 needs chi<0)
+        (2;): chi = -2, hyperbolic = True, area = 4*pi, dim T = 6
+        (0;3,3,4): chi = -1/12, hyperbolic = True, area = 1/6*pi, dim T = 0
+        (0;2,2,2,2,2,2): chi = -1, hyperbolic = True, area = 2*pi, dim T = 6
+[exact] (1;) and (0;2,2,2,2), (0;2,3,6) are Euclidean (chi=0): excluded from every statement, consistent with 'hyperbolic'
+[exact] c_1 = Area/4pi = -chi/2 on all listed hyperbolic cases
+ALL CHECKS PASSED

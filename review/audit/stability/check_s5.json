@@ -1,0 +1,497 @@
+[
+ {
+  "m": [
+   2,
+   8,
+   8
+  ],
+  "n": 3,
+  "p_thm": "3.80e-07",
+  "my_thm": "3.80e-07",
+  "my_thm_exact": "1/2629632",
+  "thm_rounddown": "3.80e-07",
+  "thm_ok": true,
+  "p_cert": "2.341e-03",
+  "cert_test_i": false,
+  "cert_test_ii": true,
+  "certified": true,
+  "radii": {
+   "2": [
+    "1/2",
+    "1/2"
+   ],
+   "8": [
+    "None",
+    "1/2"
+   ]
+  },
+  "my_max": "2.341e-03",
+  "next_up": "2.342e-03",
+  "next_up_certified": false,
+  "rel": [
+   "1.9e-02",
+   "1.7e-03",
+   "7.0e-04"
+  ],
+  "rel_ok": true,
+  "p_eps": "1.9e-03",
+  "eps_certified": true,
+  "my_eps_max": "1.9e-03",
+  "zeta": "1",
+  "kappa": "1.00000e+00",
+  "rho": "1.78333e+01",
+  "lam": "1.60000e+01"
+ },
+ {
+  "m": [
+   3,
+   3,
+   12
+  ],
+  "n": 3,
+  "p_thm": "1.18e-07",
+  "my_thm": "1.19e-07",
+  "my_thm_exact": "1/8408448",
+  "thm_rounddown": "1.18e-07",
+  "thm_ok": true,
+  "p_cert": "4.040e-03",
+  "cert_test_i": false,
+  "cert_test_ii": true,
+  "certified": true,
+  "radii": {
+   "3": [
+    "None",
+    "1/2"
+   ],
+   "12": [
+    "1/2",
+    "1/2"
+   ]
+  },
+  "my_max": "4.040e-03",
+  "next_up": "4.041e-03",
+  "next_up_certified": false,
+  "rel": [
+   "3.2e-02",
+   "2.9e-03",
+   "7.5e-04"
+  ],
+  "rel_ok": true,
+  "p_eps": "4.4e-03",
+  "eps_certified": true,
+  "my_eps_max": "4.4e-03",
+  "zeta": "1",
+  "kappa": "1.00000e+00",
+  "rho": "1.68958e+01",
+  "lam": "2.40000e+01"
+ },
+ {
+  "m": [
+   3,
+   10,
+   15,
+   30
+  ],
+  "n": 4,
+  "p_thm": "4.02e-11",
+  "my_thm": "4.02e-11",
+  "my_thm_exact": "1001/24894183502800",
+  "thm_rounddown": "4.02e-11",
+  "thm_ok": true,
+  "p_cert": "3.660e-03",
+  "cert_test_i": false,
+  "cert_test_ii": true,
+  "certified": true,
+  "radii": {
+   "3": [
+    "None",
+    "1/2"
+   ],
+   "10": [
+    "None",
+    "1/2"
+   ],
+   "15": [
+    "None",
+    "1/2"
+   ],
+   "30": [
+    "None",
+    "1/2"
+   ]
+  },
+  "my_max": "3.660e-03",
+  "next_up": "3.661e-03",
+  "next_up_certified": false,
+  "rel": [
+   "5.0e-03",
+   "8.1e-04",
+   "4.1e-05",
+   "3.6e-07"
+  ],
+  "rel_ok": true,
+  "p_eps": "8.7e-04",
+  "eps_certified": true,
+  "my_eps_max": "8.7e-04",
+  "zeta": "79/3",
+  "kappa": "2.34297e+00",
+  "rho": "4.71861e+02",
+  "lam": "6.00000e+01"
+ },
+ {
+  "m": [
+   4,
+   5,
+   21,
+   28
+  ],
+  "n": 4,
+  "p_thm": "3.14e-11",
+  "my_thm": "3.15e-11",
+  "my_thm_exact": "411125/13062458646372128",
+  "thm_rounddown": "3.14e-11",
+  "thm_ok": true,
+  "p_cert": "1.461e-03",
+  "cert_test_i": false,
+  "cert_test_ii": true,
+  "certified": true,
+  "radii": {
+   "4": [
+    "None",
+    "1/2"
+   ],
+   "5": [
+    "None",
+    "19/40"
+   ],
+   "21": [
+    "None",
+    "1/2"
+   ],
+   "28": [
+    "None",
+    "1/2"
+   ]
+  },
+  "my_max": "1.461e-03",
+  "next_up": "1.462e-03",
+  "next_up_certified": false,
+  "rel": [
+   "2.0e-03",
+   "3.2e-04",
+   "1.6e-05",
+   "1.7e-07"
+  ],
+  "rel_ok": true,
+  "p_eps": "4.6e-04",
+  "eps_certified": true,
+  "my_eps_max": "4.6e-04",
+  "zeta": "79/3",
+  "kappa": "2.20356e+00",
+  "rho": "4.75782e+02",
+  "lam": "5.60000e+01"
+ },
+ {
+  "m": [
+   2,
+   3,
+   7
+  ],
+  "n": 3,
+  "p_thm": "4.49e-07",
+  "my_thm": "4.49e-07",
+  "my_thm_exact": "1/2226168",
+  "thm_rounddown": "4.49e-07",
+  "thm_ok": true,
+  "p_cert": "3.658e-03",
+  "cert_test_i": false,
+  "cert_test_ii": true,
+  "certified": true,
+  "radii": {
+   "2": [
+    "None",
+    "1/2"
+   ],
+   "3": [
+    "None",
+    "17/40"
+   ],
+   "7": [
+    "None",
+    "1/2"
+   ]
+  },
+  "my_max": "3.658e-03",
+  "next_up": "3.659e-03",
+  "next_up_certified": false,
+  "rel": [
+   "3.1e-01",
+   "4.0e-03",
+   "2.7e-03"
+  ],
+  "rel_ok": true,
+  "p_eps": "5.0e-03",
+  "eps_certified": true,
+  "my_eps_max": "5.0e-03",
+  "zeta": "1",
+  "kappa": "1.00000e+00",
+  "rho": "1.71701e+01",
+  "lam": "1.40000e+01"
+ },
+ {
+  "m": [
+   4,
+   4,
+   4
+  ],
+  "n": 3,
+  "p_thm": "9.35e-07",
+  "my_thm": "9.35e-07",
+  "my_thm_exact": "1/1069056",
+  "thm_rounddown": "9.35e-07",
+  "thm_ok": true,
+  "p_cert": "4.539e-04",
+  "cert_test_i": false,
+  "cert_test_ii": true,
+  "certified": true,
+  "radii": {
+   "4": [
+    "None",
+    "1/2"
+   ]
+  },
+  "my_max": "4.539e-04",
+  "next_up": "4.540e-04",
+  "next_up_certified": false,
+  "rel": [
+   "3.6e-03",
+   "5.1e-04",
+   "5.4e-04"
+  ],
+  "rel_ok": true,
+  "p_eps": "8.2e-04",
+  "eps_certified": true,
+  "my_eps_max": "8.2e-04",
+  "zeta": "1",
+  "kappa": "1.00000e+00",
+  "rho": "1.93333e+01",
+  "lam": "8.00000e+00"
+ },
+ {
+  "m": [
+   7,
+   7,
+   7
+  ],
+  "n": 3,
+  "p_thm": "9.97e-08",
+  "my_thm": "9.97e-08",
+  "my_thm_exact": "1/10026576",
+  "thm_rounddown": "9.97e-08",
+  "thm_ok": true,
+  "p_cert": "8.068e-05",
+  "cert_test_i": false,
+  "cert_test_ii": true,
+  "certified": true,
+  "radii": {
+   "7": [
+    "None",
+    "1/2"
+   ]
+  },
+  "my_max": "8.068e-05",
+  "next_up": "8.069e-05",
+  "next_up_certified": false,
+  "rel": [
+   "2.8e-04",
+   "5.0e-05",
+   "2.4e-05"
+  ],
+  "rel_ok": true,
+  "p_eps": "1.2e-04",
+  "eps_certified": true,
+  "my_eps_max": "1.2e-04",
+  "zeta": "1",
+  "kappa": "1.00000e+00",
+  "rho": "1.93333e+01",
+  "lam": "1.40000e+01"
+ },
+ {
+  "m": [
+   3,
+   3,
+   4,
+   4
+  ],
+  "n": 4,
+  "p_thm": "1.48e-09",
+  "my_thm": "1.49e-09",
+  "my_thm_exact": "245/164770288128",
+  "thm_rounddown": "1.48e-09",
+  "thm_ok": true,
+  "p_cert": "9.597e-05",
+  "cert_test_i": false,
+  "cert_test_ii": true,
+  "certified": true,
+  "radii": {
+   "3": [
+    "None",
+    "19/40"
+   ],
+   "4": [
+    "None",
+    "1/2"
+   ]
+  },
+  "my_max": "9.597e-05",
+  "next_up": "9.598e-05",
+  "next_up_certified": false,
+  "rel": [
+   "2.3e-04",
+   "1.0e-04",
+   "1.2e-04",
+   "7.3e-05"
+  ],
+  "rel_ok": true,
+  "p_eps": "1.1e-04",
+  "eps_certified": true,
+  "my_eps_max": "1.1e-04",
+  "zeta": "79/3",
+  "kappa": "1.81633e+00",
+  "rho": "5.58013e+02",
+  "lam": "8.00000e+00"
+ },
+ {
+  "m": [
+   5,
+   5,
+   5,
+   5
+  ],
+  "n": 4,
+  "p_thm": "4.74e-10",
+  "my_thm": "4.74e-10",
+  "my_thm_exact": "1/2108058750",
+  "thm_rounddown": "4.74e-10",
+  "thm_ok": true,
+  "p_cert": "3.617e-05",
+  "cert_test_i": false,
+  "cert_test_ii": true,
+  "certified": true,
+  "radii": {
+   "5": [
+    "None",
+    "1/2"
+   ]
+  },
+  "my_max": "3.617e-05",
+  "next_up": "3.618e-05",
+  "next_up_certified": false,
+  "rel": [
+   "6.0e-05",
+   "2.6e-05",
+   "1.9e-05",
+   "6.3e-06"
+  ],
+  "rel_ok": true,
+  "p_eps": "3.1e-05",
+  "eps_certified": true,
+  "my_eps_max": "3.1e-05",
+  "zeta": "79/3",
+  "kappa": "1.75000e+00",
+  "rho": "5.94867e+02",
+  "lam": "1.00000e+01"
+ },
+ {
+  "m": [
+   2,
+   2,
+   2,
+   3
+  ],
+  "n": 4,
+  "p_thm": "2.03e-09",
+  "my_thm": "2.03e-09",
+  "my_thm_exact": "625/307721117718",
+  "thm_rounddown": "2.03e-09",
+  "thm_ok": true,
+  "p_cert": "1.858e-04",
+  "cert_test_i": false,
+  "cert_test_ii": true,
+  "certified": true,
+  "radii": {
+   "2": [
+    "None",
+    "1/2"
+   ],
+   "3": [
+    "None",
+    "19/40"
+   ]
+  },
+  "my_max": "1.858e-04",
+  "next_up": "1.859e-04",
+  "next_up_certified": false,
+  "rel": [
+   "2.2e-03",
+   "3.3e-04",
+   "5.6e-04",
+   "7.7e-04"
+  ],
+  "rel_ok": true,
+  "p_eps": "4.3e-04",
+  "eps_certified": true,
+  "my_eps_max": "4.3e-04",
+  "zeta": "79/3",
+  "kappa": "1.93150e+00",
+  "rho": "5.26607e+02",
+  "lam": "1.84444e+01"
+ },
+ {
+  "m": [
+   2,
+   2,
+   2,
+   2,
+   3
+  ],
+  "n": 5,
+  "p_thm": "2.72e-12",
+  "my_thm": "2.73e-12",
+  "my_thm_exact": "350000/128215445811292593",
+  "thm_rounddown": "2.72e-12",
+  "thm_ok": true,
+  "p_cert": "7.908e-06",
+  "cert_test_i": false,
+  "cert_test_ii": true,
+  "certified": true,
+  "radii": {
+   "2": [
+    "None",
+    "1/2"
+   ],
+   "3": [
+    "None",
+    "17/40"
+   ]
+  },
+  "my_max": "7.908e-06",
+  "next_up": "7.909e-06",
+  "next_up_certified": false,
+  "rel": [
+   "2.4e-05",
+   "1.3e-05",
+   "2.1e-05",
+   "2.9e-05",
+   "2.0e-05"
+  ],
+  "rel_ok": true,
+  "p_eps": "1.4e-05",
+  "eps_certified": true,
+  "my_eps_max": "1.4e-05",
+  "zeta": "14048/15",
+  "kappa": "3.51089e+00",
+  "rho": "2.39506e+04",
+  "lam": "1.84444e+01"
+ }
+]

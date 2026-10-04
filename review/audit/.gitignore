@@ -1,0 +1,11 @@
+sources/
+.venv-pari/
+__pycache__/
+*.pyc
+*/sources/
+diophantine/enum_classes
+threshold/enum
+audibility/ht_0912.4703.*
+audibility/n5_search
+stability/holtz_tyaglov_0912.4703.*
+*.pdf

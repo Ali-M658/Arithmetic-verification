@@ -1,0 +1,5 @@
+cycles (all edges): [['LO.L3.2', 'LO.T1', 'LO.T3.1']]
+cycles (logical edges): [['LO.L3.2', 'LO.T1', 'LO.T3.1']]
+cycles (statement-visible logical edges): []
+cycles (logical, Proof C demoted to cross-check): []
+119 nodes, 178 edges. DEPENDENCY CHECKS PASSED

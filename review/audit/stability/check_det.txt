@@ -1,0 +1,16 @@
+n= 2: c_n = -1, det M, B = S M, det B, det S, M^-1 = B^-1 S verified on 9 exact cases
+n= 3: c_n = +1, det M, B = S M, det B, det S, M^-1 = B^-1 S verified on 9 exact cases
+n= 4: c_n = +1, det M, B = S M, det B, det S, M^-1 = B^-1 S verified on 9 exact cases
+n= 5: c_n = -1, det M, B = S M, det B, det S, M^-1 = B^-1 S verified on 9 exact cases
+n= 6: c_n = -1, det M, B = S M, det B, det S, M^-1 = B^-1 S verified on 9 exact cases
+n= 7: c_n = +1, det M, B = S M, det B, det S, M^-1 = B^-1 S verified on 9 exact cases
+n= 8: c_n = +1, det M, B = S M, det B, det S, M^-1 = B^-1 S verified on 9 exact cases
+n= 9: c_n = -1, det M, B = S M, det B, det S, M^-1 = B^-1 S verified on 9 exact cases
+n=10: c_n = -1, det M, B = S M, det B, det S, M^-1 = B^-1 S verified on 9 exact cases
+ST.0 weighted homogeneity M(I^) = D_r^-1 M(I) D_c (row weights 2j+1, n-1; column weights k): OK n=2..7
+n=2: det B = (-1)^{n(n-1)/2} prod(m_i+m_j) as a polynomial identity (sympy)
+n=3: det B = (-1)^{n(n-1)/2} prod(m_i+m_j) as a polynomial identity (sympy)
+n=4: det B = (-1)^{n(n-1)/2} prod(m_i+m_j) as a polynomial identity (sympy)
+n=5: det B = (-1)^{n(n-1)/2} prod(m_i+m_j) as a polynomial identity (sympy)
+weight of det B equals deg prod(m_i+m_j) = n(n-1)/2: OK
+ALL CHECKS PASSED
