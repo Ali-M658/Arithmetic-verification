@@ -22,6 +22,7 @@ from figlib import ROOT, check_only, finish, fs
 T_INDEX = 2
 KEYS = {"2-8-8": ((2, 8, 8), "Z_2_8_8"), "3-3-12": ((3, 3, 12), "Z_3_3_12")}
 VMAX = np.log(12.0)
+SHADE_WEIGHT = 0.10      # light shading: the brightness of the surface is the colour scale
 
 
 def data():
@@ -54,10 +55,16 @@ def renders(vmin):
     subprocess.run([sys.executable, str(ROOT / "figures/src/pillow_mesh.py"), str(T_INDEX)], check=True,
                    stdout=subprocess.DEVNULL)
     out = {}
-    for key in KEYS:
-        mesh = bj.BUILD / f"mesh_{key}_t{T_INDEX}.npz"
-        out[key] = bj.two_pass(mesh, f"F1_{key}", ["--res", "1700x1400", "--view", "-20,62",
-                                                    "--vmin", repr(vmin), "--vmax", repr(VMAX)])
+    meshes = {key: bj.BUILD / f"mesh_{key}_t{T_INDEX}.npz" for key in KEYS}
+    radius = []
+    for mesh in meshes.values():
+        V = np.load(mesh)["vertices"]
+        radius.append(float(np.max(np.linalg.norm((V - V.mean(axis=0))[:, :2], axis=1))))
+    ortho = 2.25 * max(radius)                      # one orthographic scale for both pillows
+    for key, mesh in meshes.items():
+        out[key] = bj.two_pass(mesh, f"F1_{key}", ["--res", "1700x1400", "--view", "-20,62", "--ortho", repr(ortho),
+                                                    "--vmin", repr(float(vmin)), "--vmax", repr(float(VMAX))],
+                               weight=SHADE_WEIGHT)
     return out
 
 
@@ -68,15 +75,16 @@ def draw(t, vmin, imgs):
     import blender_jobs as bj
     fs.use()
     fig = fs.figure(66)
-    for i, key in enumerate(KEYS):
-        ax = fig.add_axes([0.02 + 0.5 * i, 0.27, 0.46, 0.70])
-        ax.imshow(bj.crop(plt.imread(imgs[key])[..., :3]), interpolation="none")
+    crops = bj.crop_common([plt.imread(imgs[key]) for key in KEYS])     # one scale, white ground
+    for i, img in enumerate(crops):
+        ax = fig.add_axes([0.04 + 0.5 * i, 0.31, 0.44, 0.66])
+        ax.imshow(img, interpolation="none")
         ax.set_axis_off()
         fs.letter_at(fig, 0.005 + 0.5 * i, 0.99, "ab"[i])
-    cax = fig.add_axes([0.25, 0.14, 0.50, 0.035])
+    cax = fig.add_axes([0.25, 0.21, 0.50, 0.035])
     cb = ColorbarBase(cax, cmap=fs.SEQ, norm=LogNorm(np.exp(vmin), np.exp(VMAX)), orientation="horizontal")
-    cb.set_ticks([1, 2, 3, 4, 8, 12])
-    cb.set_ticklabels(["1", "2", "3", "4", "8", "12"])
+    cb.set_ticks([1, 2, 3, 4, 6, 8, 12])
+    cb.set_ticklabels(["1", "2", "3", "4", "6", "8", "12"])
     cb.minorticks_off()
     cb.outline.set_linewidth(fs.LW["axis"])
     cb.set_label(r"$4\pi t\,\mathfrak{h}_t(x,x)$")

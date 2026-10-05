@@ -38,9 +38,10 @@ python3 figures/src/contact_sheet.py            # the G6 palette proof (figures/
 committed ones. The F1 and F6 renders are skipped by the suite, with a reason, and their data
 assertions still run.
 
-Blender renders run one at a time, with 4 threads and the Workbench engine. Before each render
-the swap use is checked: the render waits while swap is above 75%, and gives up after 20 minutes
-(`src/blender_jobs.py`).
+Blender renders run one at a time, with 2 threads and the Workbench engine. Before each render
+`memory_pressure -Q` is read: the render starts only if the system-wide memory free percentage
+is at least 20%. Otherwise it re-checks every 2 minutes and gives up after 30 minutes. A render
+that runs longer than 10 minutes is stopped (`src/blender_jobs.py`, SPEC section 5).
 
 ## Layout
 

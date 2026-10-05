@@ -100,9 +100,21 @@ If the chosen palette is a Crameri map, the paper should cite Crameri (2023) and
 
 ## 5. Blender renders
 
-Workbench engine with 4 threads. Two passes are rendered: a flat, unlit pass with the exact
+Workbench engine with 2 threads. Two passes are rendered: a flat, unlit pass with the exact
 vertex colours, and a studio-lit pass of a uniform grey surface. `figstyle.shade` multiplies
-them, with the shading allowed to darken by at most 30%. There is no specular highlight,
+them, with the shading allowed to darken by at most 30% (F1, whose surface brightness is the colour
+scale, uses 10%). There is no specular highlight,
 outline, cavity, shadow or depth of field. The background is neutral (L* 97), and the
-'Standard' view transform keeps the colours as computed. Before each render the script checks
-`sysctl vm.swapusage` and waits while swap use exceeds 75%. Renders are never run in parallel.
+'Standard' view transform keeps the colours as computed.
+
+**Machine-safety guard** (`src/blender_jobs.py`, used for every render):
+
+- Before each render, run `memory_pressure -Q` and read "System-wide memory free percentage".
+  Render only if it is at least 20%. Otherwise re-check every 2 minutes, for at most 30
+  minutes, then report and stop (`MemoryBusy`).
+- Blender runs with `--threads 2`, one render at a time, never in parallel.
+- A render that runs longer than 10 minutes is stopped and reported (`RenderTimeout`).
+
+Swap use is not the signal. On macOS swap stays allocated after the memory pressure has passed,
+so the earlier rule (wait while `sysctl vm.swapusage` exceeds 75%) blocked renders on an idle
+machine. It was replaced on 2026-10-05.

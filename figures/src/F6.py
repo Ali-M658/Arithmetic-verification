@@ -82,18 +82,27 @@ def draw(theta, lines, sy, imgs):
     import matplotlib.pyplot as plt
     fs.use()
     fig = fs.figure(118)
-    for i, th in enumerate(SHOWN):
-        ax = fig.add_axes([0.005 + 0.25 * i, 0.70, 0.24, 0.29])
-        ax.imshow(plt.imread(imgs[th])[..., :3], interpolation="none")
+    import blender_jobs as bj
+    crops = bj.crop_common([plt.imread(imgs[th]) for th in SHOWN])      # one scale, white ground
+    for i, img in enumerate(crops):
+        ax = fig.add_axes([0.03 + 0.25 * i, 0.70, 0.21, 0.29])
+        ax.imshow(img, interpolation="none")
         ax.set_axis_off()
     fs.letter_at(fig, 0.005, 0.995, "a")
     bx = fig.add_axes([0.11, 0.08, 0.86, 0.56])
     for ys in lines:
-        bx.plot(theta, ys, color=fs.GREY["dark"], lw=fs.LW["thin"], marker="o", ms=1.6, mfc=fs.GREY["ink"], mec="none")
+        bx.plot(theta, ys, color=fs.GREY["mid"], lw=fs.LW["thin"], marker="o", ms=1.6, mfc=fs.GREY["dark"], mec="none")
+    l1 = np.sort(np.array(lines), axis=0)[1]          # lambda_1 at each modulus, across the sectors
+    bx.plot(theta, l1, color=fs.GREY["ink"], lw=fs.LW["heavy"], marker="o", ms=2.4, mfc=fs.GREY["ink"], mec="none",
+            zorder=4)
     for th in SHOWN:
         bx.axvline(float(th), color=fs.GREY["light"], lw=fs.LW["thin"], zorder=0)
     bx.set_xlim(-0.05, 2.85)
-    bx.set_ylim(-2, LAMBDA_MAX)
+    bx.set_yscale("function", functions=(lambda y: np.sqrt(np.clip(y, 0, None)), lambda r: r ** 2))   # square-root
+    bx.set_ylim(0, LAMBDA_MAX)
+    bx.set_yticks([0, 1, 5, 10, 20, 40, 60, 80, 100, 120])
+    bx.set_yticklabels(["0", "1", "5", "10", "20", "40", "60", "80", "100", "120"])
+    bx.minorticks_off()
     bx.set_xlabel(r"$\vartheta$")
     bx.set_ylabel(r"$\lambda_j$")
     fs.letter_at(fig, 0.005, 0.665, "b")

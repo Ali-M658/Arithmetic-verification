@@ -171,7 +171,7 @@ def save(fig, path, **kw):
 SHADE_WEIGHT = 0.30      # at most 30% darkening by the light, on the shading pass's range
 
 
-def shade(colour_png, shade_png, background=None):
+def shade(colour_png, shade_png, background=None, weight=SHADE_WEIGHT):
     """Combine a flat colour render and a shading render: colour * (1 - w + w * s), s the
     shading normalised to [0, 1] over the object; the background keeps the colour pass."""
     c = plt.imread(colour_png)[..., :3].astype(float)
@@ -181,5 +181,5 @@ def shade(colour_png, shade_png, background=None):
     lo, hi = np.percentile(s[obj], 1), np.percentile(s[obj], 99.5)
     sn = np.clip((s - lo) / (hi - lo), 0, 1)
     out = c.copy()
-    out[obj] = c[obj] * (1 - SHADE_WEIGHT + SHADE_WEIGHT * sn[obj])[:, None]
+    out[obj] = c[obj] * (1 - weight + weight * sn[obj])[:, None]
     return out

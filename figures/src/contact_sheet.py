@@ -21,7 +21,6 @@ theory/stability/stab_common.heat_direct); the plotted quantity at the smallest 
 import os
 import subprocess
 import sys
-import time
 from fractions import Fraction as Fr
 from pathlib import Path
 
@@ -29,6 +28,7 @@ import numpy as np
 
 ROOT = Path(__file__).resolve().parents[2]
 sys.path[:0] = [str(ROOT / "figures" / "style"), str(ROOT / "theory" / "stability")]
+import blender_jobs as bj  # noqa: E402
 import colourtools as ct  # noqa: E402
 import figstyle as fs  # noqa: E402
 from stab_common import heat_direct  # noqa: E402
@@ -42,33 +42,19 @@ T_INDEX = 2                           # t = 0.02
 DPI = 300
 
 
-def swap_ok(limit=0.75):
-    out = subprocess.check_output(["sysctl", "-n", "vm.swapusage"]).decode()
-    tot = float(out.split("total =")[1].split("M")[0])
-    used = float(out.split("used =")[1].split("M")[0])
-    return used / tot <= limit, used / tot
-
-
 def render(key):
     """Blender render of the (3,3,12) pillow for palette candidate `key` (one job at a time)."""
     out = BUILD / f"contact_render_{key}.png"
     mesh = BUILD / f"mesh_3-3-12_t{T_INDEX}.npz"
     if out.exists() and out.stat().st_mtime > mesh.stat().st_mtime:
         return out
-    for _ in range(60):                       # machine safety: wait (up to 30 min) while swap use > 75%
-        ok, frac = swap_ok()
-        if ok:
-            break
-        print(f"swap use {frac:.0%} > 75%: waiting before the render", flush=True)
-        time.sleep(30)
-    assert ok, f"swap use {frac:.0%} stayed above 75%: not starting Blender"
     lo = min(float(np.log(np.load(BUILD / f"mesh_{k}_t{T_INDEX}.npz")["ratio"]).min()) for k in ("2-8-8", "3-3-12"))
     hi = float(np.log(12.0))
     for kind in ("colour", "shade"):
-        subprocess.run(["blender", "-b", "--factory-startup", "--threads", "4", "-P", str(ROOT / "figures/src/render_pillow.py"),
-                        "--", str(BUILD / f"mesh_3-3-12_t{T_INDEX}.npz"), str(out).replace(".png", f"_{kind}.png"),
-                        "--palette", key, "--res", "1000x800", "--view", "-20,62", "--vmin", repr(lo), "--vmax", repr(hi),
-                        "--pass", kind], check=True, stdout=subprocess.DEVNULL)
+        bj.blender(ROOT / "figures/src/render_pillow.py",
+                   [str(BUILD / f"mesh_3-3-12_t{T_INDEX}.npz"), str(out).replace(".png", f"_{kind}.png"),
+                    "--palette", key, "--res", "1000x800", "--view", "-20,62", "--vmin", repr(float(lo)), "--vmax", repr(float(hi)),
+                    "--pass", kind])     # memory guard and time limit of SPEC section 5
     from PIL import Image
     img = fs.shade(str(out).replace(".png", "_colour.png"), str(out).replace(".png", "_shade.png"))
     Image.fromarray((img * 255).round().astype(np.uint8)).save(out)

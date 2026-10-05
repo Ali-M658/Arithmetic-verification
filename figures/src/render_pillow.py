@@ -1,6 +1,6 @@
 """Blender render of one stylised pillow coloured by the heat-kernel diagonal.
 
-    blender -b --factory-startup --threads 4 -P figures/src/render_pillow.py -- \
+    blender -b --factory-startup --threads 2 -P figures/src/render_pillow.py -- \
         MESH.npz OUT.png [--palette A] [--res 1200x900] [--vmin V] [--vmax V] [--view az,el]
 
 --pass colour renders the exact vertex colours (flat, unlit); --pass shade renders a uniform grey

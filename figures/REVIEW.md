@@ -53,24 +53,51 @@ listed with what was done about it.
 
 ## 3. F1 and F6 (Blender)
 
-**Built and asserted, not yet rendered.** The scripts, meshes, data assertions and captions of
-F1 and F6 are complete, and `F1.py --check` and `F6.py --check` pass in the suite. The F1
-assertions include one physical check: twice the hyperbolic integral of 𝔥_t(x,x) over the
-triangle equals the computed Z(t) to 0.5%. The F6 assertions check that the sector spectra add
-up to the orbifold spectrum and that the drawn geodesic has length exactly 4b, the systole.
+**Rendered on 2026-10-05, 10:05–10:20 IST**, under the new machine-safety guard (SPEC section 5:
+`memory_pressure -Q` free ≥ 20%, `--threads 2`, one render at a time, 10-minute limit). Memory
+free was 34–54% at every check. Each figure took under 30 s.
 
-Every render attempt on 2026-10-05, five of them between 03:32 and 06:35 IST, ran into the machine-safety guard.
-Swap use stayed between 87% and 95% throughout, and the swap file grew from 8 to 15 GB, all from
-other processes. At the fifth check (06:35 IST) swap stood at 92% (12.3 of 13.3 GB), uptime 11 h 51 min (no
-restart had happened), with an orphaned `python3 -` process started at about 03:20 from `figures/src` still
-holding about 0.8 GB resident; it was left running. The fifth was a `sysctl vm.swapusage` check only. The first four each waited
-the full 20 minutes and then gave up without starting Blender, as SPEC section 5 requires. The prototype renders of the contact sheet (two-pass
-Workbench, 1000 × 800 px, about 10 s each) show that the pipeline works.
+The swap-based guard blocked five attempts between 03:32 and 06:35 IST at 87–95% swap. Swap
+stays allocated on macOS after the memory pressure has passed, so it was the wrong signal, and
+it was replaced. An orphaned `python3 -` process (PID 65651, from an earlier render attempt in
+`figures/src`) was stopped before rendering.
 
-To finish, once swap is below 75%:
-`python3 figures/src/F1.py && python3 figures/src/F6.py`. Renders are cached in
-`figures/build/`. Then view `figures/out/F1.png` and `F6.png`, run `figures/src/checklist.py F1 F6`,
-and send both to the referee pass.
+**Two render bugs, fixed before the figures could be built.**
+- **Unparseable bounds:** under numpy 2, `repr(np.float64)` is `'np.float64(…)'`, which
+  `render_pillow.py` cannot parse. The colour-scale bounds are now passed as plain floats.
+- **Silent script failures:** Blender exited 0 after a Python error. It now runs with
+  `--python-exit-code 1`.
+- **Stale cache:** the render cache now includes the arguments (`.args` stamp), so a changed
+  argument re-renders.
+
+**Own check against SPEC and palette E.**
+- Palette E holds: F1 uses only the lajolla sequential map, with no pillow hue on the heat
+  surface. The F6 geodesic is ink, chosen by rule 2 (contrast 11.2 against 6.1 for the dark hue).
+- `checklist.py F1 F6`: 119 mm wide, fonts embedded, thinnest line ≥ 0.5 pt.
+
+The first renders had three faults, all fixed:
+
+| # | Fig | Finding | Resolution |
+|---|-----|---------|------------|
+| O1 | F1 | Colour-bar label clipped at the bottom edge. | **Fixed.** The bar and panels moved up. |
+| O2 | F1, F6 | Renders sat in visible grey boxes (the L* 97 render ground). | **Fixed.** `blender_jobs.crop_common` paints the flat ground white. |
+| O3 | F1, F6(a) | F1's two pillows were framed at different scales; F6(a) objects were small in large tiles. | **Fixed.** F1 passes one `--ortho` scale for both pillows. Both figures crop to one common box size, each object centred, so one scale is kept. |
+
+**Referee pass** (a separate agent given only `F1.png`, `F6.png` and the two captions):
+
+| # | Fig | Finding | Resolution |
+|---|-----|---------|------------|
+| R1 | F6(b) | Sectors cannot be told apart, so "only lines of different sectors cross" cannot be checked. | **Caption reworded, figure kept.** The caption now says crossing lines belong to different sectors (an explanation, not a claim to verify). Coding eight sectors would need eight hues or dash styles, which breaks the grey-only rule for non-pillow data (SPEC section 4). Small multiples would lose the one-panel spectral flow. |
+| R2 | F6(b) | The headline fall of λ₁ (4.12 → 0.43) is about 3% of a linear 0–120 axis. | **Fixed.** The y axis is square-root (ticks 0, 1, 5, 10, 20, …, 120), and λ₁ is a heavy ink line; the other branches are mid grey. The caption names both. |
+| R3 | F1 | The 3-D shading darkens the surface, so it cannot be read against the colour bar. | **Fixed.** F1 uses shading weight 0.10 instead of 0.30, so the brightness change is at most 10%. Some shading is kept to show the puffed shape. |
+| R4 | F1 | Cone points are not labelled with their orders; the darkest tip is a sliver. | **Caption.** SPEC section 2 allows no in-figure text beyond axes and letters, so the caption names the sharp dark tips (orders 8, 12) and the blunt corners (orders 2, 3). The narrow dark tip is how the kernel concentrates at t = 0.02, and is kept. |
+| R5 | F1 | Each pillow looks like one flat triangle. | **Caption.** "Seen from above (only the upper sheet shows)". |
+| R6 | F6(a) | Members are not labelled with ϑ and length. | **Caption.** "From left to right"; in-figure text is excluded by SPEC section 2. |
+| R7 | F6(a) | The four cone points are not marked. | **Caption.** "The four corners are the cone points". |
+| R8 | F6 | Nothing links (a) to (b); "all eight moduli have grid lines". | **Caption.** The referee is wrong that all eight have lines: they are drawn only at the four ϑ of (a). The caption now says so. |
+| R9 | F1 | The bar starts at 1 and clips the interior value 0.993. | **Not changed.** The bar starts at the data minimum, 0.9934 (`F1.data()`), so nothing is clipped. A tick at 6 was added. |
+| R10 | F1 | Fraktur 𝔥 on the bar, plain h in the caption. | **Not changed.** The caption uses `\mathfrak h`; the referee was shown a plain-text copy. |
+| R11 | F1 | Dead space; label (b) far from its pillow. | **Partly.** Each pillow is centred in an equal column (O3). The letters stay at the fixed column corner (SPEC section 2). |
 
 ## 4. Suite
 
