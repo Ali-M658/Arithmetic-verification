@@ -110,3 +110,6 @@ renders F1 F6" (SKIP, with its reason).
 Rerun on 2026-10-05 after the decimal log-axis labels (row 24), same venv: **36 passed, 0 failed,
 9 skipped** (28 min). "figures vector F2-F5 F7-F9" passes with the new F4, F5 and F9 PDFs and PNGs.
 DATA-MANIFEST.md is unchanged (`admin/build_data_manifest.py --check`: current).
+
+Rerun on 2026-10-05 after the F1/F6 renders and the new render guard (commit 7db13ac): **36
+passed, 0 failed, 9 skipped** (18 min). DATA-MANIFEST.md is unchanged (`--check`: current).
