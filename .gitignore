@@ -65,3 +65,7 @@ paper/build/
 # figures: fetched third-party guideline pages, papers and images (study only, never committed)
 figures/_fetched/
 figures/build/
+
+# review/referee-sim: the manuscript PDF given to the simulated referees and their scratch work
+review/referee-sim/_input/
+review/referee-sim/*/scratch/
