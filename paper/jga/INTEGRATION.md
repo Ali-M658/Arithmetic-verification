@@ -148,4 +148,16 @@ and the captions fit below their figures without overflow.
 
 ## 9. Verification
 
-(Filled in after the suite run.)
+- `admin/build_data_manifest.py` regenerated DATA-MANIFEST.md: two rows changed, the hashes of
+  `threshold_output.md` and `threshold_results.json`. No new rules were needed. `--check`
+  reports it current.
+- `PYTHON=.venv/bin/python code/run_all.sh --quick` on commit 226ed7d: **36 passed, 0 failed,
+  9 skipped**, 16:35. Every skip has its stated reason: four full-mode-only stages (sharpness
+  N=120, stability threshold, divergence, numerics validate full and moduli validate full), PARI
+  not installed, the deferred S3 rerun record, the NGSolve re-solve, and the Blender renders. The
+  stability threshold stage is full-mode only, so the regeneration in section 6 was run separately.
+  "figures vector F2-F5 F7-F9" rebuilt every vector figure byte-identically, the new F9 included.
+- `git ls-files | grep -iE '\.(pdf|djvu|ps)$'`: `figures/out/F1.pdf` ... `F9.pdf` and
+  `figures/proofs/contact-sheet.pdf`. The last is also our own output: it is written by
+  `figures/src/contact_sheet.py` (the G6 palette proof) and carries no producer metadata. No
+  third-party document is tracked.
