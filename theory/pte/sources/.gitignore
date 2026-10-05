@@ -1,0 +1,5 @@
+# Raw fetched files are kept locally only (third-party texts); NOTES.md quotes them and SHA256SUMS pins them.
+*
+!.gitignore
+!NOTES.md
+!SHA256SUMS

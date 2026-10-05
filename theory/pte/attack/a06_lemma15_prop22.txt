@@ -1,0 +1,10 @@
+(2) pigeonhole: #multisets > #odd-power-sum vectors for n=(L-1)^2+1, M=n!n^(L-1)+1, L=2..7: exact OK
+(3) L=3: size-2 multisets from [1..400] with equal P_j (odd j<=3): 0 collisions
+(3) L=4: size-3 multisets from [1..90] with equal P_j (odd j<=5): 0 collisions
+(3) L=5: size-4 multisets from [1..32] with equal P_j (odd j<=7): 0 collisions
+(3) size-L examples for L=3..6 verified => N_odd(L) = L for 3 <= L <= 6
+    N_odd(2) = 2 ([1,4]=[2,3]); Lemma 1.5(2) at L=7 gives N_odd(7) <= 37 (pigeonhole), vs N(11) = 12 from the size-12 ideal solution (Lemma 1.5(1)) -- (1) is far stronger in practice
+Prop 2.2: [Z] =_(2L-2) [-Z] (and not =_(2L-1)) for all 18 witness configurations
+    remark: N(2L-2) = 2L-1 for L <= 6 (ideal solutions), so Prop 2.2 gives tau_L >= 2L-1,
+    weaker than Theorem S (2L+2) in every known case; it matters only asymptotically (Thm 4.2(a)).
+ALL CHECKS PASSED

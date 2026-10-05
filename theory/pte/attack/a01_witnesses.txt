@@ -1,0 +1,32 @@
+b_l sanity: matches Schueth a0,a1,a2 at K=-1; b_l(1)=0; p_l even of degree 2l+2
+genus L=2    T=  6 iota=+2 cones=4/1 genera=0/1 shares=2 area/2pi~0.9333333333
+genus L=3    T= 10 iota=+2 cones=6/3 genera=0/1 shares=3 area/2pi~2.8000000000
+genus L=4    T= 16 iota=+2 cones=9/7 genera=0/1 shares=4 area/2pi~6.9999006130
+genus L=5    T= 20 iota=+2 cones=11/9 genera=0/1 shares=5 area/2pi~8.9999979592
+genus L=6    T= 26 iota=+2 cones=14/12 genera=0/1 shares=6 area/2pi~12.0000000000
+genus L=7    T= 40 iota=+2 cones=21/19 genera=0/1 shares=7 area/2pi~19.0000000000
+balanced L=2 T=  6 iota=+0 cones=3/3 genera=0/0 shares=2 area/2pi~0.2500000000
+balanced L=3 T=  8 iota=+0 cones=4/4 genera=0/0 shares=3 area/2pi~1.4666666667
+balanced L=4 T= 14 iota=+0 cones=7/7 genera=0/0 shares=4 area/2pi~5.0000000000
+balanced L=5 T= 18 iota=+0 cones=9/9 genera=0/0 shares=5 area/2pi~7.0000000000
+balanced L=6 T= 24 iota=+0 cones=12/12 genera=0/0 shares=6 area/2pi~10.0000000000
+balanced L=7 T= 40 iota=+0 cones=20/20 genera=0/0 shares=7 area/2pi~18.0000000000
+cone L=2     T=  8 iota=+0 cones=4/3 genera=0/0 shares=2 area/2pi~0.4000000000
+cone L=3     T= 16 iota=+0 cones=7/8 genera=0/0 shares=3 area/2pi~3.7666666667
+cone L=4     T= 24 iota=+0 cones=12/11 genera=0/0 shares=4 area/2pi~8.2810925931
+cone L=5     T= 46 iota=+0 cones=23/22 genera=0/0 shares=5 area/2pi~18.5959731429
+cone L=6     T= 60 iota=+0 cones=30/29 genera=0/0 shares=6 area/2pi~26.5591135328
+cone L=7     T= 72 iota=+0 cones=36/35 genera=0/0 shares=7 area/2pi~32.3088542430
+L=2: least area/2pi = 0.250000000000000  (<= table value 1/4: True)
+L=3: least area/2pi = 1.466666666666667  (<= table value 22/15: True)
+L=4: least area/2pi = 4.999999999967312  (<= table value 5: True)
+L=5: least area/2pi = 7.000000000000000  (<= table value 7: True)
+L=6: least area/2pi = 10.000000000000000  (<= table value 10: True)
+L=7: least area/2pi = 18.000000000000000  (<= table value 18: True)
+balanced L=4: area/2pi - 5.0 = -3.269e-11
+balanced L=5: area/2pi - 7.0 = 0.000e+00
+balanced L=6: area/2pi - 10.0 = 0.000e+00
+balanced L=7: area/2pi - 18.0 = 0.000e+00
+sec 5 L=4 recipe: size-6 solution is =_5; shift by -11/2 cancels two pairs -> (3,5) piece with s1=s3=s5=0, s_-1!=0: OK
+
+ALL 18 WITNESSES PASS (own b_l, own config checks)

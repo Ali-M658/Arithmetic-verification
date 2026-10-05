@@ -1,0 +1,20 @@
+(i) own elimination: cubic = C*Rd - C*Rn*t - Rd*S**3 + 3*Rd*S*t**2 - 3*Rd*t**3 + Rn*S**3*t - 3*Rn*S**2*t**2 + 3*Rn*S*t**3;  ratio to proof.md's cubic = -1  -> matches
+    planted U={2,3,7} recovered exactly from (S, C, R)
+    note: K=0 would need S*R=1, impossible (S*R >= 25 by Cauchy-Schwarz for 5 positive v)
+          triple root u: S*R = 9 < 25, impossible, so the C code's Q>0 guard loses nothing
+(ii) own exact search, v5 <= 45: 1828418 primitive V; 12423 cubics with 3 distinct positive real roots; cubics splitting completely over Q: 0
+(iii) project search_T3.c on v5 <= 45: stderr: N=45 v5 in [1,45]: V-sets 1828418, 3 positive real roots 12423, candidates 0
+     candidates printed: 0 (all must be non-splitting, as (ii) found none)
+     V-sets: C 1828418 vs own 1828418;  3-positive-real-root cubics: C 12423 (+0 degenerate) vs own exact 12423
+(iv) filter of search_T3.c on 27900 planted NON-integral rational U (denominators 2..33, K' from 4 to 1089): accepted 27866, rejected 34
+     REJECTED (false negative): ['24382/29', '24396/29', '815'] S = 2497 code 0
+     REJECTED (false negative): ['1681/15', '1694/15', '112'] S = 337 code 0
+     REJECTED (false negative): ['3429/19', '3430/19', '161'] S = 522 code 0
+     REJECTED (false negative): ['3981/20', '4019/20', '201'] S = 601 code 0
+     REJECTED (false negative): ['5323/22', '5325/22', '245'] S = 729 code 0
+     REJECTED (false negative): ['5319/22', '5329/22', '241'] S = 725 code 0
+     REJECTED (false negative): ['6083/23', '6084/23', '293'] S = 822 code 0
+     REJECTED (false negative): ['6081/23', '6086/23', '276'] S = 805 code 0
+     of which inside the searched regime S <= 1100: 33 (family 3 near-double cases: 14685 planted)
+     (project control plants integer U only: there K' = 1 always, so the q | K' logic is untested there)
+FINDINGS: ['BROKEN (rigour): float filter of search_T3.c rejects 34 genuine rational U (33 with S <= 1100)']

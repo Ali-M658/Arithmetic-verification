@@ -1,0 +1,90 @@
+T3 exhaustive search log (search_T3.c with the certified filter of 2026-10-06; control: output/search_T3_control.txt)
+N=220 v5 in [1,5]: V-sets 118, 3 positive real roots 0, candidates 0 (repeated-root 0, undecided 0)
+exact splits: 0
+N=220 v5 in [6,10]: V-sets 1732, 3 positive real roots 9, candidates 0 (repeated-root 0, undecided 0)
+exact splits: 0
+N=220 v5 in [11,15]: V-sets 9170, 3 positive real roots 54, candidates 0 (repeated-root 0, undecided 0)
+exact splits: 0
+N=220 v5 in [16,20]: V-sets 29193, 3 positive real roots 190, candidates 0 (repeated-root 0, undecided 0)
+exact splits: 0
+N=220 v5 in [21,25]: V-sets 73291, 3 positive real roots 488, candidates 0 (repeated-root 0, undecided 0)
+exact splits: 0
+N=220 v5 in [26,30]: V-sets 150959, 3 positive real roots 1024, candidates 0 (repeated-root 0, undecided 0)
+exact splits: 0
+N=220 v5 in [31,35]: V-sets 287481, 3 positive real roots 1954, candidates 0 (repeated-root 0, undecided 0)
+exact splits: 0
+N=220 v5 in [36,40]: V-sets 484723, 3 positive real roots 3295, candidates 0 (repeated-root 0, undecided 0)
+exact splits: 0
+N=220 v5 in [41,45]: V-sets 791751, 3 positive real roots 5409, candidates 0 (repeated-root 0, undecided 0)
+exact splits: 0
+N=220 v5 in [46,50]: V-sets 1198245, 3 positive real roots 8178, candidates 0 (repeated-root 0, undecided 0)
+exact splits: 0
+N=220 v5 in [51,55]: V-sets 1781270, 3 positive real roots 12196, candidates 0 (repeated-root 0, undecided 0)
+exact splits: 0
+N=220 v5 in [56,60]: V-sets 2492803, 3 positive real roots 17067, candidates 0 (repeated-root 0, undecided 0)
+exact splits: 0
+N=220 v5 in [61,65]: V-sets 3502265, 3 positive real roots 23958, candidates 0 (repeated-root 0, undecided 0)
+exact splits: 0
+N=220 v5 in [66,70]: V-sets 4641924, 3 positive real roots 31766, candidates 0 (repeated-root 0, undecided 0)
+exact splits: 0
+N=220 v5 in [71,75]: V-sets 6215454, 3 positive real roots 42531, candidates 0 (repeated-root 0, undecided 0)
+exact splits: 0
+N=220 v5 in [76,80]: V-sets 7971066, 3 positive real roots 54572, candidates 0 (repeated-root 0, undecided 0)
+exact splits: 0
+N=220 v5 in [81,85]: V-sets 10288262, 3 positive real roots 70409, candidates 0 (repeated-root 0, undecided 0)
+exact splits: 0
+N=220 v5 in [86,90]: V-sets 12767733, 3 positive real roots 87355, candidates 0 (repeated-root 0, undecided 0)
+exact splits: 0
+N=220 v5 in [91,95]: V-sets 16134113, 3 positive real roots 110316, candidates 0 (repeated-root 0, undecided 0)
+exact splits: 0
+N=220 v5 in [96,100]: V-sets 19507746, 3 positive real roots 133424, candidates 0 (repeated-root 0, undecided 0)
+exact splits: 0
+N=220 v5 in [101,105]: V-sets 24059634, 3 positive real roots 164459, candidates 0 (repeated-root 0, undecided 0)
+exact splits: 0
+N=220 v5 in [106,110]: V-sets 28699869, 3 positive real roots 196218, candidates 2 (repeated-root 0, undecided 2)
+exact splits: 0
+N=220 v5 in [111,115]: V-sets 34687208, 3 positive real roots 237051, candidates 3 (repeated-root 0, undecided 3)
+exact splits: 0
+N=220 v5 in [116,120]: V-sets 40589443, 3 positive real roots 277269, candidates 5 (repeated-root 0, undecided 5)
+exact splits: 0
+N=220 v5 in [121,125]: V-sets 48614685, 3 positive real roots 332094, candidates 33 (repeated-root 0, undecided 33)
+exact splits: 0
+N=220 v5 in [126,130]: V-sets 55994021, 3 positive real roots 382382, candidates 48 (repeated-root 0, undecided 48)
+exact splits: 0
+N=220 v5 in [131,135]: V-sets 66037037, 3 positive real roots 451000, candidates 71 (repeated-root 0, undecided 71)
+exact splits: 0
+N=220 v5 in [136,140]: V-sets 75611246, 3 positive real roots 516304, candidates 171 (repeated-root 0, undecided 171)
+exact splits: 0
+N=220 v5 in [141,145]: V-sets 88003908, 3 positive real roots 600697, candidates 172 (repeated-root 0, undecided 172)
+exact splits: 0
+N=220 v5 in [146,150]: V-sets 99460335, 3 positive real roots 678855, candidates 407 (repeated-root 0, undecided 407)
+exact splits: 0
+N=220 v5 in [151,155]: V-sets 115291883, 3 positive real roots 786702, candidates 652 (repeated-root 0, undecided 651)
+exact splits: 0
+N=220 v5 in [156,160]: V-sets 128900275, 3 positive real roots 879643, candidates 1077 (repeated-root 0, undecided 1076)
+exact splits: 0
+N=220 v5 in [161,165]: V-sets 147784895, 3 positive real roots 1008287, candidates 1639 (repeated-root 0, undecided 1637)
+exact splits: 0
+N=220 v5 in [166,170]: V-sets 164836319, 3 positive real roots 1124384, candidates 2806 (repeated-root 0, undecided 2805)
+exact splits: 0
+N=220 v5 in [171,175]: V-sets 187165442, 3 positive real roots 1276529, candidates 3988 (repeated-root 0, undecided 3987)
+exact splits: 0
+N=220 v5 in [176,180]: V-sets 206766134, 3 positive real roots 1409937, candidates 5830 (repeated-root 0, undecided 5829)
+exact splits: 0
+N=220 v5 in [181,185]: V-sets 234486963, 3 positive real roots 1598995, candidates 8271 (repeated-root 0, undecided 8265)
+exact splits: 0
+N=220 v5 in [186,190]: V-sets 256848549, 3 positive real roots 1751298, candidates 7558 (repeated-root 0, undecided 7554)
+exact splits: 0
+N=220 v5 in [191,195]: V-sets 288899303, 3 positive real roots 1969609, candidates 16923 (repeated-root 0, undecided 16917)
+exact splits: 0
+N=220 v5 in [196,200]: V-sets 316382859, 3 positive real roots 2156482, candidates 21762 (repeated-root 0, undecided 21757)
+exact splits: 0
+N=220 v5 in [201,205]: V-sets 353069819, 3 positive real roots 2406438, candidates 23815 (repeated-root 0, undecided 23806)
+exact splits: 0
+N=220 v5 in [206,210]: V-sets 383694174, 3 positive real roots 2614988, candidates 26743 (repeated-root 0, undecided 26738)
+exact splits: 0
+N=220 v5 in [211,215]: V-sets 428470511, 3 positive real roots 2920022, candidates 51602 (repeated-root 0, undecided 51580)
+exact splits: 0
+N=220 v5 in [216,220]: V-sets 462431959, 3 positive real roots 3151064, candidates 46850 (repeated-root 0, undecided 46838)
+exact splits: 0
+TOTAL v5 = 1..220: V-sets 4325115770, three positive real roots 29494902, candidates 220428 (undecided 220352, repeated-root 0), exact splits 0

@@ -1,0 +1,18 @@
+Thm 4.1 bound vs Cor. N1 on [4, 1e6] (585 breakpoints): new < old at 0 points
+  first intervals where new > old: [('13', '15'), ('28', 'open')]
+  strictly larger for every x >= 28: True
+  claim '(the two agree on [4,28))': False;  e.g. x = 13: new = 4, old = 3; x = 14.9: new = 4, old = 3
+Thm 4.1: L = floor(sqrt((x-1)/3)) + 1 is the largest L with 3(L-1)^2+1 <= x, and 3N_odd-2 <= 3(L-1)^2+1: OK
+Thm 4.2(b) C=2, beta=2: claimed bound <= delivered bound on x in [4, 3004]; max ratio 1.000
+Thm 4.2(b) C=1, beta=2: claimed bound <= delivered bound on x in [4, 3004]; max ratio 1.000
+Thm 4.2(b) C=3, beta=1.5: claimed bound <= delivered bound on x in [4, 3004]; max ratio 1.000
+Thm 4.2(b) C=5, beta=1: claimed bound <= delivered bound on x in [4, 3004]; max ratio 1.000
+Thm 4.2(a): |U*|+|V*| <= 2max(n+g-g', n'+g'-g) <= 2floor(A/pi)+8 on all 18 witnesses: OK
+Thm 4.3: f_g >= L+1 for A >= 8 pi N(2L-3); f_n >= L+1 for A >= 2pi(3N(2L-3)-2):
+  L=2: N(2L-3)<=2: genus threshold A/2pi >= 8, cone threshold A/2pi >= 4  (witness tables: genus pair at 0.933, cone pair at 0.400)
+  L=3: N(2L-3)<=4: genus threshold A/2pi >= 16, cone threshold A/2pi >= 10  (witness tables: genus pair at 2.800, cone pair at 3.767)
+  L=4: N(2L-3)<=6: genus threshold A/2pi >= 24, cone threshold A/2pi >= 16  (witness tables: genus pair at 7.000, cone pair at 8.281)
+  L=5: N(2L-3)<=8: genus threshold A/2pi >= 32, cone threshold A/2pi >= 22  (witness tables: genus pair at 9.000, cone pair at 18.596)
+  L=6: N(2L-3)<=10: genus threshold A/2pi >= 40, cone threshold A/2pi >= 28  (witness tables: genus pair at 12.000, cone pair at 26.559)
+  L=7: N(2L-3)<=12: genus threshold A/2pi >= 48, cone threshold A/2pi >= 34  (witness tables: genus pair at 19.000, cone pair at 32.309)
+RESULT: inequalities SURVIVE; the parenthetical '(the two agree on [4,28))' after Thm 4.1 is FALSE (new > old on [13,15)).

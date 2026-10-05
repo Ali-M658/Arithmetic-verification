@@ -1,0 +1,5 @@
+L=5: 43 PTE solutions, 684 imbalanced pieces, 963 balanced pieces
+new best 20 (5, 14, 23, 24, 2, 16, 21, 25) 9/2
+progress 0 2s best 20
+FINAL 20 (5, 14, 23, 24, 2, 16, 21, 25) 9/2
+ALL CHECKS PASSED

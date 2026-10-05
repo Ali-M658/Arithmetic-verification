@@ -1,0 +1,36 @@
+(A) multisets from [1..16], sizes <= 7: 2024 disjoint pairs with L>=2 checked
+    L=2 T= 6: max |iota| = 2  (bound T-2L = 2)
+    L=2 T= 7: max |iota| = 1  (bound T-2L = 3)
+    L=2 T= 8: max |iota| = 2  (bound T-2L = 4)
+    L=2 T= 9: max |iota| = 3  (bound T-2L = 5)
+    L=2 T=10: max |iota| = 2  (bound T-2L = 6)
+    L=2 T=11: max |iota| = 3  (bound T-2L = 7)
+    L=2 T=12: max |iota| = 2  (bound T-2L = 8)
+    L=2 T=13: max |iota| = 1  (bound T-2L = 9)
+    L=2 T=14: max |iota| = 0  (bound T-2L = 10)
+    L=3 T=10: max |iota| = 0  (bound T-2L = 4)
+    L=3 T=14: max |iota| = 0  (bound T-2L = 8)
+    bound attained (L,T,|iota|): {(2, 6, 2): 1}
+    983 primitive odd-moment pieces (equal P1,P3, entries <= 24, size <= 4 per side)
+(B) random exact rational configurations (count, max|iota|) per (L, T):
+    L=2 T= 5:   6 configs, max |iota| = 1, T-2L = 1   <-- ODD size
+    L=2 T= 6: 855 configs, max |iota| = 2, T-2L = 2
+    L=2 T= 7: 1728 configs, max |iota| = 1, T-2L = 3   <-- ODD size
+    L=2 T= 8: 2407 configs, max |iota| = 2, T-2L = 4
+    L=2 T= 9: 3113 configs, max |iota| = 3, T-2L = 5   <-- ODD size
+    L=2 T=10: 2285 configs, max |iota| = 4, T-2L = 6
+    L=2 T=11: 1438 configs, max |iota| = 5, T-2L = 7   <-- ODD size
+    L=2 T=12: 743 configs, max |iota| = 6, T-2L = 8
+    L=3 T= 8:   1 configs, max |iota| = 0, T-2L = 2
+    L=3 T=12:  42 configs, max |iota| = 0, T-2L = 6
+    L=3 T=14: 1906 configs, max |iota| = 0, T-2L = 8
+    L=3 T=16: 18020 configs, max |iota| = 0, T-2L = 10
+(C) odd-size L-configurations (Definition 1.1 allows them):
+    L>=2 T=5: Z = [-45, -5, 8, 18, 24], iota = 1, Lemma 1.2(4) 'T even, T>=2L+2' fails; also T < 2L+2
+    L>=2 T=7: Z = [-60, -10, -3, 4, 9, 15, 45], iota = 1, Lemma 1.2(4) 'T even, T>=2L+2' fails
+    L>=2 T=9: Z = [-166603848500, -77424922575, -67459227000, -12387987612, 18397971000, 42928599000, 59282351000, 89812910187, 113454154500], iota = 1, Lemma 1.2(4) 'T even, T>=2L+2' fails
+    L>=2 T=11: Z = [-14158321680230, -609763670978, -297445693160, -290009550831, -178467415896, 113630190050, 446168539740, 749959254330, 929517791125, 1704452850750, 11590279385100], iota = 1, Lemma 1.2(4) 'T even, T>=2L+2' fails
+    explicit: Z = [-24, -18, -8, 5, 45]: s_1 = s_-1 = 0, no +-pair, T = 5 < 2L+2 = 6 for L = 2, iota = -1
+    => as written, tau_2 <= 5 < 6 = 2L+2, contradicting Definition 1.3's '2L+2 <= tau_L'.
+       (Not realisable by orbifolds: |U|-|V| must be even.  Fix: require T even in Def. 1.1.)
+Theorem 2.1 (even T): no counterexample found.  Lemma 1.2(4) as stated for Def. 1.1: BROKEN (odd T).

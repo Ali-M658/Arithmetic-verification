@@ -1,0 +1,28 @@
+inputs: ideal PTE solutions of degree 2L-3 for L=2..7 and odd equalities L=3..6 re-verified exactly
+
+Theorem 3.4, T_L <= 4N(2L-3): shift + balanced shift, every admissible window c
+  L=2: n=N(2L-3)<=2: 3 windows tried; least T=8 <= 4n=8, iota=-2, shares>=2, genera 1/0, area/2pi=2.9961 < T
+  L=3: n=N(2L-3)<=4: 7 windows tried; least T=16 <= 4n=16, iota=-2, shares>=3, genera 1/0, area/2pi=7.0000 < T
+  L=4: n=N(2L-3)<=6: 11 windows tried; least T=22 <= 4n=24, iota=-2, shares>=4, genera 1/0, area/2pi=10.0000 < T
+  L=5: n=N(2L-3)<=8: 15 windows tried; least T=32 <= 4n=32, iota=-2, shares>=5, genera 1/0, area/2pi=15.0000 < T
+  L=6: n=N(2L-3)<=10: 19 windows tried; least T=40 <= 4n=40, iota=2, shares>=6, genera 0/1, area/2pi=19.0000 < T
+  L=7: n=N(2L-3)<=12: 23 windows tried; least T=46 <= 4n=48, iota=-2, shares>=7, genera 1/0, area/2pi=22.0000 < T
+
+Proposition 3.3 / Theorem 3.4: doubling
+  L=2: T=12 <= 6N=12; cone counts 5 vs 6; shares 2; area/2pi=1.9167 < 3n-2=4; contains 1: True
+  L=3: T=24 <= 6N=24; cone counts 11 vs 12; shares 3; area/2pi=8.1452 < 3n-2=10; contains 1: True
+  L=4: T=32 <= 6N=36; cone counts 17 vs 18; shares 4; area/2pi=13.5085 < 3n-2=16; contains 1: True
+  L=5: T=46 <= 6N=48; cone counts 23 vs 24; shares 5; area/2pi=19.4960 < 3n-2=22; contains 1: True
+  L=6: T=60 <= 6N=60; cone counts 29 vs 30; shares 6; area/2pi=26.8014 < 3n-2=28; contains 1: True
+  L=7: T=72 <= 6N=72; cone counts 35 vs 36; shares 7; area/2pi=32.3089 < 3n-2=34; contains 1: True
+  tau_L, L=3: N_odd=3: T=16 <= 6n=18; cones 8/9; shares 3; area/2pi=4.6000 < 3n-2=7
+  tau_L, L=4: N_odd=4: T=24 <= 6n=24; cones 11/12; shares 4; area/2pi=8.2811 < 3n-2=10
+  tau_L, L=5: N_odd=5: T=30 <= 6n=30; cones 15/15; shares 5; area/2pi=12.2829 < 3n-2=13
+  tau_L, L=6: N_odd=6: T=36 <= 6n=36; cones 18/18; shares 6; area/2pi=15.7630 < 3n-2=16
+
+Proposition 3.3 edge cases (all pairs X != Y, sizes 2..3, entries <= 12, equal odd P_j):
+  cases (L, where 1 lies): {(2, '1inX'): 800, (2, '1inY'): 800, (2, 'none'): 3700, (2, '1inX&Y'): 250, (3, '1inX'): 2, (3, '1inY'): 2, (3, 'none'): 6}
+  non-hyperbolic genus-0 realisations: [] count 0
+  NOTE: Prop. 3.3's bullets cover only '1 in X\Y' and '1 not in X u Y'; when 1 in Y the stated pair
+        (0;U\{1}), (0;V) contains an order-1 'cone point' (must drop 1s from V too). Cosmetic.
+ALL CHECKS PASSED

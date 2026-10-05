@@ -1,0 +1,132 @@
+% theory/pte/statements.tex -- a standalone LaTeX fragment. NOT wired into paper/main.tex.
+%
+% Assumes the preamble of paper/main.tex, the macros of theory/definitions.tex (\Orb, \Kmult),
+% and theory/signatures/statements.tex (\Sig, lem:sigdata, thm:sigsep, cor:sigarea,
+% thm:signonuniform, cor:siggrowth). It is meant to replace cor:siggrowth and the last sentence
+% of thm:signonuniform's discussion.
+% Citation keys: borweiningalls1994 (as in review/literature-pass/references-additions.bib);
+% melzak1961, blp2003, cmsv2024, chen2025survey, wooley2019, crootmaoyip2026
+% (entries in theory/pte/references-pte.bib).
+% Full proofs: theory/pte/proof.md. Exact checks: witnesses.py, structure.py, growth.py,
+% pencil_search.py, search_T3.sh in theory/pte.
+
+\subsection{How many coefficients: the Prouhet--Tarry--Escott connection}\label{subsec:pte}
+
+By Lemma~\ref{lem:sigdata} and Theorem~\ref{thm:sigsep}, two orbifolds in $\Sig$ with different
+signatures share their first $L$ heat coefficients exactly when the cancelled mirror multiset
+$Z=U^*\uplus(-V^*)$ is an \emph{$L$-configuration}. This means a nonempty multiset of nonzero
+rationals, of even size and with no pair $\{z,-z\}$, such that
+\[
+  \sum_{z\in Z}z^{j}=0\quad(j\ \text{odd},\ 1\le j\le 2L-3),\qquad \sum_{z\in Z}z^{-1}=0 .
+\]
+Its size is $|Z|=|U^*|+|V^*|$, and its imbalance is $\iota(Z)=\#\{z>0\}-\#\{z<0\}=2(g'-g)$.
+
+Let $N(k)$ be the least size of a non-trivial solution of the Prouhet--Tarry--Escott problem
+of degree $k$, i.e.\ two distinct multisets of $n$ integers with equal power sums of exponents
+$1,\dots,k$ \cite[\S1]{borweiningalls1994}. One has $k+1\le N(k)\le\tfrac12k(k+1)+1$
+\cite[Props.~2, 3]{borweiningalls1994}. No bound $N(k)=o(k^2)$ is known, and this is listed
+as an open problem in \cite[\S6]{borweiningalls1994}.
+
+\begin{theorem}[Shape of a genus collision]\label{thm:ptedescartes}
+Every $L$-configuration satisfies $|\iota(Z)|\le|Z|-2L$. Hence, if orbifolds in $\Sig$ of genera
+$g\neq g'$ share their first $L$ heat coefficients, then
+\[
+  |U^*|+|V^*|\ \ge\ 2L+2|g-g'| ,
+\]
+and equality $|U^*|+|V^*|=2L+2$ forces $\{|U^*|,|V^*|\}=\{L,L+2\}$.
+\end{theorem}
+
+\begin{proof}[Sketch]
+Write $Q(x)=\prod_{z\in Z}(x-z)$. Its odd elementary symmetric functions $e_k$ vanish for
+$k\le2L-3$ and for $k=|Z|-1$. Since $|Z|$ is even, at most $(|Z|-2L)/2$ odd-degree coefficients
+of $Q$ are nonzero. All roots are real and nonzero, so Descartes' rule of signs is an equality
+for $Q(x)$ and $Q(-x)$. The imbalance is then the signed number of odd gaps between consecutive
+nonzero coefficients, and each odd-degree coefficient creates at most two of them.
+\end{proof}
+
+\begin{proposition}[Symmetric constructions do not change the genus]\label{prop:ptebalanced}
+Let $A$ be an odd ideal symmetric solution of size $2L-1$, i.e.\ $\sum_{a\in A}a^j=0$ for odd
+$j\le2L-3$ \cite[p.~8]{borweiningalls1994}. Then
+$\#\{a>0\}-\#\{a<0\}=\operatorname{sgn}\sum_{a\in A}a^{-1}$. Consequently, for two such sets
+$A,B$, every $L$-configuration $A\uplus\lambda B$ ($\lambda\in\mathbb Q^\times$) has
+$\iota=0$.
+\end{proposition}
+
+\begin{theorem}[Growth]\label{thm:ptegrowth}
+Let $f(A)=\max\{\Kmult(\Orb;\Sig):\operatorname{Area}(\Orb)\le A\}$.
+\begin{enumerate}[label=(\alph*)]
+\item For $A\ge8\pi$,
+  \[
+    \Bigl\lfloor\sqrt{\tfrac13\bigl(\tfrac{A}{2\pi}-1\bigr)}\Bigr\rfloor+2\ \le\ f(A)\ \le\ \Bigl\lfloor\frac{A}{\pi}\Bigr\rfloor+4 .
+  \]
+\item If $f(A)\ge L+1$, then $N(2L-2)\le2\lfloor A/\pi\rfloor+8$.
+\item For $0<\alpha\le1$: $f(A)\ge cA^{\alpha}$ for all large $A$ and some $c>0$ if and only if
+  $N(k)\le Ck^{1/\alpha}$ for all $k$ and some $C$. In particular $f(A)=\Theta(A)$ if and only
+  if $N(k)=O(k)$.
+\end{enumerate}
+The lower bound in (a) also holds, up to the constant, for the number of coefficients needed
+to determine the genus alone, and for the number needed to determine the cone count alone
+within genus $0$.
+\end{theorem}
+
+\begin{proof}[Sketch]
+(a) Upper bound: Corollary~\ref{cor:sigarea}. Lower bound: by pigeonhole there are distinct
+$n$-multisets $X,Y$ of positive integers with $n\le(L-1)^2+1$ and equal power sums of every
+odd exponent $j\le2L-3$. Put
+\[
+  U=X\uplus2Y\uplus2Y,\qquad V=Y\uplus2X\uplus2X .
+\]
+Then
+$\sum_Uu^j-\sum_Vv^j=(1-2^{j+1})\bigl(\sum_Xx^j-\sum_Yy^j\bigr)$, which vanishes for odd
+$j\le2L-3$ and for $j=-1$. So $(0;U)$ and $(0;V)$, with any 1s removed, are distinct hyperbolic
+orbifolds of area $<2\pi(3(L-1)^2+1)$ sharing $L$ coefficients.
+
+(b) A configuration $Z$ of size $T$ gives the PTE solution $[Z]=_{2L-2}[-Z]$ of size $T$, and
+$T\le2\lfloor A/\pi\rfloor+8$ by the proof of Corollary~\ref{cor:sigarea}.
+
+(c) Combine (a) and (b), using that $N$ is nondecreasing. For the genus, shift a PTE solution
+$X,Y$ of degree $2L-3$ into $(X+c)\uplus(-(Y+c))$. For the cone count, translate it so that it
+contains $1$ and apply the doubling above.
+\end{proof}
+
+\begin{remark}[What the exponent means]\label{rem:pteexponent}
+All known bounds on $N(k)$ are quadratic \cite[Prop.~3 and p.~7]{borweiningalls1994}, and with any
+quadratic bound Theorem~\ref{thm:ptegrowth}(c) gives exactly the exponent $\tfrac12$ of (a). Any exponent $\alpha>\tfrac12$ would give
+$N(k)=O(k^{1/\alpha})$, which would settle in a strong form the open problem
+$N(k)=o(k^2)$ \cite[\S6, Q3]{borweiningalls1994}. Linear growth of $f$ is equivalent to
+$N(k)=O(k)$, which is implied by the conjecture $N(k)=k+1$. Ideal solutions are known only for
+$k\le9$ and $k=11$ \cite{cmsv2024,crootmaoyip2026}.
+\end{remark}
+
+\begin{example}[Small pairs]\label{ex:ptepairs}
+The following pairs share exactly $L$ heat coefficients (exact computation with the cone
+coefficients):
+\begin{itemize}
+\item $L=3$, same genus and cone count: $(0;3,10,15,30)$ and $(0;4,5,21,28)$, of area
+  $2\pi\cdot\frac{22}{15}$. Previously the smallest area known to share three coefficients was
+  $2\pi\cdot\frac{14}5$, for $(1;15,15,15)$ and $(0;3,3,5,7,7,21)$.
+\item $L=3$, genus $0$ with $7$ and $8$ cone points: $(0;4,4,5,5,6,12,12)$ and
+  $(0;2,2,2,3,10,10,10,10)$, obtained from $[1,5,5]=[2,3,6]$ \cite{chen2025survey} by the doubling
+  above. This replaces $103$ vs $104$.
+\item $L=4,5,6,7$: genus-$0$ pairs with equal cone counts and area
+  $<2\pi\cdot5,\,7,\,10,\,18$. They come from pairs of odd ideal symmetric solutions of sizes $7$
+  and $9$ \cite{borweiningalls1994,blp2003}, from equal sums of odd powers
+  \cite{chen2025survey}, and from the size-$12$ ideal solution \cite{cmsv2024}. The
+  Prouhet--Thue--Morse pairs of Theorem~\ref{thm:signonuniform} need area up to
+  $2\pi(4^{L-1}-1)$.
+\item Genus $1$ versus genus $0$ sharing $L=4,5,6,7$ coefficients: configurations of size
+  $16,20,26,40$, against $2^{2L-1}=128,512,2048,8192$ for Thue--Morse.
+\end{itemize}
+\end{example}
+
+\begin{remark}[The first open case]\label{rem:ptet3}
+By Theorem~\ref{thm:ptedescartes}, a genus collision sharing three coefficients with
+$|U^*|+|V^*|=8$ must have shape $(3,5)$. An exhaustive exact search excludes all such collisions
+whose five-element side, made primitive, has entries $\le220$. Real solutions of this shape
+exist. So whether the least size is $8$ or $10$ remains open.
+\end{remark}
+
+% Exact extent. thm:ptedescartes, prop:ptebalanced, thm:ptegrowth are proved for all L given the
+% heat input of lem:sigdata (theory/pte/proof.md sections 2-4); ex:ptepairs is exact computation
+% (witnesses.py). The bound N(k) <= k(k+1)/2+1 is cited (borweiningalls1994 Prop. 3) and also
+% reproved by the same pigeonhole in proof.md Lemma 1.5.

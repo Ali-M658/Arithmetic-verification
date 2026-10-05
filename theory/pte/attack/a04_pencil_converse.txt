@@ -1,0 +1,12 @@
+balanced size-8 3-configurations, primitive, entries <= 80: 7
+  U=[3, 10, 15, 30] V=[4, 5, 21, 28]: pencil A=[-28, 3, 10, 15] B=[-30, 4, 5, 21]
+  U=[7, 15, 50, 75] V=[9, 10, 56, 72]: pencil A=[-72, 7, 15, 50] B=[-75, 9, 10, 56]
+  U=[7, 21, 44, 77] V=[9, 12, 56, 72]: pencil A=[-72, 7, 21, 44] B=[-77, 9, 12, 56]
+  U=[7, 26, 39, 78] V=[9, 13, 56, 72]: pencil A=[-72, 7, 26, 39] B=[-78, 9, 13, 56]
+  U=[10, 21, 44, 77] V=[12, 15, 50, 75]: pencil A=[-75, 10, 21, 44] B=[-77, 12, 15, 50]
+  U=[10, 26, 39, 78] V=[13, 15, 50, 75]: pencil A=[-75, 10, 26, 39] B=[-78, 13, 15, 50]
+  U=[12, 26, 39, 78] V=[13, 21, 44, 77]: pencil A=[-77, 12, 26, 39] B=[-78, 13, 21, 44]
+non-pencil balanced size-8 configurations: 0
+section 6.4: rho(c) for shifted size-4 symmetric solution factors as -2*c*(-a + p)*(a + p)*(-b + p)*(b + p)*(a**2 + b**2 - 2*c**2)/((a - c)*(a + c)*(b - c)*(b + c)*(-c + p)*(c + p)*(c - sqrt(a**2 + b**2 - p**2))*(c + sqrt(a**2 + b**2 - p**2)))
+  numerator (generic): -2*c*(2*a**2*b**2*c**2 - a**2*b**2*p**2 - a**2*b**2*q**2 - a**2*c**4 + a**2*p**2*q**2 - b**2*c**4 + b**2*p**2*q**2 + c**4*p**2 + c**4*q**2 - 2*c**2*p**2*q**2)
+RESULT: every balanced size-8 3-configuration in range is a pencil point (converse survives in range; it is still unproved).

@@ -1,0 +1,18 @@
+(a) random real-rooted odd-ideal-symmetric Q_A (exact Sturm): {3: 120, 5: 120, 7: 120, 9: 120} all iota = sgn s_-1
+(a) integer odd ideal symmetric sets checked: 1816 (sizes 3,5,7,9; 5-sets: 102 primitive, entries<=40)
+(b) 1590 configurations A u lam*B: all balanced (iota=0), level >= L
+(3.1) m=4: r=3, k0=2: d s_j/d e_k0 = 0 for odd j <= 3: True; nonzero at j=5: True
+(3.1) m=5: r=5, k0=2: d s_j/d e_k0 = 0 for odd j <= 5: True; nonzero at j=7: True
+(3.1) m=6: r=5, k0=4: d s_j/d e_k0 = 0 for odd j <= 7: True; nonzero at j=9: True
+(3.1) m=7: r=7, k0=4: d s_j/d e_k0 = 0 for odd j <= 9: True; nonzero at j=11: True
+(3.1) m=8: r=7, k0=6: d s_j/d e_k0 = 0 for odd j <= 11: True; nonzero at j=13: True
+(3.1) m=9: r=9, k0=6: d s_j/d e_k0 = 0 for odd j <= 13: True; nonzero at j=15: True
+(3.1) m=4: 60 random real pencil pairs (both real-rooted): moments ok, iota(Z)=0 in all; tries 1105
+(3.1) m=5: 60 random real pencil pairs (both real-rooted): moments ok, iota(Z)=0 in all; tries 3824
+(3.1) m=6: 60 random real pencil pairs (both real-rooted): moments ok, iota(Z)=0 in all; tries 15327
+(3.1) m=7: 17 random real pencil pairs (both real-rooted): moments ok, iota(Z)=0 in all; tries 20000
+(3.1) own m=4 pencil search, |entries| <= 45: 2 distinct configurations, all size 8, iota 0, level>=3
+      smallest: [(-28, -21, -5, -4, 3, 10, 15, 30), (-30, -15, -10, -3, 4, 5, 21, 28)]
+      any containing +-1: []
+(3.1) instance A=[-30, -3, 5, 28], B=[-21, -4, 10, 15]: e1=0, e3=-1650, e4=12600 equal, e2 -859 vs -391; gives {3,10,15,30}~{4,5,21,28}, exact 3-configuration: OK
+ALL CHECKS PASSED
