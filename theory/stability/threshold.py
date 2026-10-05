@@ -240,9 +240,33 @@ def exact_poly(c, y2, g):
     return out
 
 
+def minimax(fun_vec, x0):
+    """min_x max_nu |fun_vec(x)_nu| in the epigraph form (SLSQP), then a Nelder-Mead polish.
+    Nelder-Mead alone on the max-norm stalls at a kink (review/audit/stability/COMPARISON.md ST.13)."""
+    t0 = float(np.max(np.abs(fun_vec(x0))))
+    best = (t0, x0)
+    cons = [{"type": "ineq", "fun": lambda z: z[-1] - fun_vec(z[:-1])},
+            {"type": "ineq", "fun": lambda z: z[-1] + fun_vec(z[:-1])}]
+    try:
+        r = minimize(lambda z: z[-1], np.concatenate([x0, [t0]]), method="SLSQP", constraints=cons,
+                     options=dict(maxiter=500, ftol=1e-16))
+        v = float(np.max(np.abs(fun_vec(r.x[:-1]))))
+        if v < best[0]:
+            best = (v, r.x[:-1])
+    except (ValueError, ArithmeticError):
+        pass
+    r = minimize(lambda x: float(np.max(np.abs(fun_vec(x)))), best[1], method="Nelder-Mead",
+                 options=dict(xatol=1e-13, fatol=1e-18, maxiter=6000, maxfev=6000))
+    if r.fun < best[0]:
+        best = (r.fun, r.x)
+    return best
+
+
 def counterexample(m):
     """Search real monic q~ = (z - c) g(z), c = a +- 1/2, and ((z-c)^2 + y^2) g(z), minimising
-    max_nu |H(q~) - H(m)|; return the best one, rebuilt in exact rationals (root real part exactly c)."""
+    max_nu |H(q~) - H(m)|; return the best one, rebuilt in exact rationals (root real part exactly c).
+    Candidates: Nelder-Mead on the coefficients of g, and the epigraph solve on coefficients scaled
+    by those of the start."""
     n = len(m)
     Hf = H_float_factory(n)
     H0 = np.array([float(x) for x in heat_direct(m, n)])
@@ -281,7 +305,12 @@ def counterexample(m):
                                   options=dict(xatol=1e-15, fatol=1e-19, maxiter=40000, maxfev=80000))
                     if res is None or r1.fun < res.fun:
                         res = r1
-                x = [Fr(float(v)).limit_denominator(10 ** 15) for v in res.x]
+                xbest = res.x
+                sc = np.where(np.abs(x0) > 0, np.abs(x0), 1.0)
+                v, y = minimax(lambda y: Hf(qf(x0 + sc * y)) - H0, np.zeros(len(x0)))
+                if v < res.fun:
+                    xbest = x0 + sc * y
+                x = [Fr(float(v)).limit_denominator(10 ** 15) for v in xbest]
                 if shape == "real":
                     q = exact_poly(c, None, [Fr(1)] + x)
                 else:
