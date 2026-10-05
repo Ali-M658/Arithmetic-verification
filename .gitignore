@@ -61,3 +61,7 @@ theory/locality/sources_cache/
 numerics/moduli/runs/
 research/raw/*.pdf
 paper/build/
+
+# figures: fetched third-party guideline pages, papers and images (study only, never committed)
+figures/_fetched/
+figures/build/

@@ -89,9 +89,10 @@ for line in open(sys.argv[1]):
     if m:
         pins[m.group(1).lower()] = m.group(2)
 missing, warn, ok = [], [], []
+IMPORT_NAME = {"pillow": "PIL"}          # distribution name -> module name, where they differ
 for name, want in pins.items():
     try:
-        mod = importlib.import_module(name)
+        mod = importlib.import_module(IMPORT_NAME.get(name, name))
         have = getattr(mod, "__version__", "?")
     except ImportError:
         missing.append(name)
@@ -153,7 +154,7 @@ record() { STAGE_NAMES+=("$1"); STAGE_STATUS+=("$2"); STAGE_TIME+=("$3"); STAGE_
 
 # stage NAME MODE NEEDS DIR COMMAND [NOTE]
 #   MODE   q = quick and full, f = full only
-#   NEEDS  exact | ngsolve | pari
+#   NEEDS  exact | ngsolve | pari | record | blender (always skipped, with NOTE as the reason)
 #   DIR    working directory, relative to the repository root
 #   NOTE   for f stages: the cost that keeps them out of the quick run
 stage() {
@@ -174,6 +175,11 @@ stage() {
     if [ "$needs" = "record" ] && [ ! -f "$ROOT/numerics/data/rerun_double_window_comparison.json" ]; then
         record "$name" SKIP "-" "rerun comparison record deferred to the final submission check"
         echo "${yellow}--- ${name}: SKIP (rerun comparison record deferred to the final submission check)${reset}"; echo
+        return
+    fi
+    if [ "$needs" = "blender" ]; then
+        record "$name" SKIP "-" "Blender renders are not part of the suite${note:+: $note}"
+        echo "${yellow}--- ${name}: SKIP (Blender renders are not part of the suite${note:+: $note})${reset}"; echo
         return
     fi
     if [ "$needs" = "pari" ] && [ "$HAVE_PARI" -ne 1 ]; then
@@ -267,6 +273,11 @@ stage "numerics S3 rerun record"         q record numerics "$P rerun_double_wind
 stage "numerics validate (full)"         f exact numerics "$P validate_committed.py" "heat traces and fits, a few minutes"
 stage "numerics moduli validate (full)"  f exact numerics/moduli "$P validate_committed.py" "trace formula for 8 members, about 5 min"
 stage "numerics S3 re-solve (NGSolve)"   f ngsolve numerics '$PYTHON_NUMERICS rerun_double_window.py --no-record "$LOGDIR/rerun"' "about an hour; needs NGSolve"
+
+# --- figures (figures/README.md): data generators, vector figures, assertions of every figure script
+stage "figures data F4 F7 F8"            q exact . "$P figures/gen/gen_f4_area_classes.py && $P figures/gen/gen_f7_strata.py && $P figures/gen/gen_f8_recovery.py"
+stage "figures vector F2-F5 F7-F9"       q exact . "$P figures/src/build_vector.py"
+stage "figures Blender renders F1 F6"    q blender . "" "F1 and F6 need Blender; their data assertions run in the stage above; rebuild with python3 figures/src/F1.py and F6.py"
 
 # --------------------------------------------------------------------------
 # Summary
