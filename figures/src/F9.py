@@ -1,13 +1,14 @@
-"""F9 (Section 8): the curve C_{27/2} and the growth of the degeneracies.
+"""F9 (Sections 5.4 and 8.4): the curve C_{27/2} and the growth of the degeneracies.
 
 (a) The real locus of C_{27/2}: (x+y+z)(xy+yz+zx) = (27/2) xyz in the affine chart x+y+z = 1,
     drawn in barycentric coordinates (the positive triangle x, y, z > 0 is outlined; equal aspect).
     Its only positive rational points are the permutations of (1,4,4)/9 and (1,1,4)/6, i.e.
     (2,8,8) and (3,3,12) up to scale (rank C_{27/2} = 0, theory/diophantine/ranks.py), drawn in
     the pillow hues.
-(b) N(S)/S, with N(S) the number of unordered pairs of hyperbolic triads with equal sum S' <= S and equal R
-    (theory/diophantine/data/per_S.csv, cum_pairs), ink step curve; the empirical law
-    N(S) = N(599) + c sum_{s=600}^{S} (log s)^q fitted on 600 <= S <= 4800 with q = 4.5 (dashed),
+(b) calN(S)/S, with calN(S) the number of unordered pairs of hyperbolic triads with equal sum S' <= S
+    and equal R (the cumulative count, calligraphic N in the manuscript, where N(S) counts the pairs
+    at sum exactly S; theory/diophantine/data/per_S.csv, cum_pairs), ink step curve; the empirical
+    law calN(S) = calN(599) + c sum_{s=600}^{S} (log s)^q fitted on 600 <= S <= 4800 with q = 4.5 (dashed),
     drawn heavier, on top, over its window (the fits with q = 4.0 and 5.0 are asserted to stay
     within 15% of the data there too, so a band would have no visible width); the exact count of the
     isosceles family {(2u+v)(u,v,v), (u+2v)(v,u,u)}/g and all its hyperbolic multiples (the base
@@ -174,7 +175,7 @@ def draw(pts, Ncum, fits, iso_cum, _k):
     fs.decimal_log_ticks(bx.xaxis, [100, 1000])
     fs.decimal_log_ticks(bx.yaxis, [0.01, 0.1, 1, 10])
     bx.set_xlabel(r"$S$")
-    bx.set_ylabel(r"$N(S)/S$")
+    bx.set_ylabel(r"$\mathcal{N}(S)/S$")
     fs.letter_at(fig, 0.48, 0.985, "b")
     return fig
 
