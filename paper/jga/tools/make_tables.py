@@ -11,8 +11,7 @@ in manuscript.tex, so that the manuscript stays a single file as the journal tem
 
 Sources (all committed):
   overlap     theory/threshold/first_overlap_vs_collision.csv
-  thresholds  theory/stability/threshold_results.json, and for the (2,2,2,2,3) upper bound
-              review/audit/stability/check_dup.txt (G5-VERDICT item 8)
+  thresholds  theory/stability/threshold_results.json
   fibres      theory/diophantine/data/groups.csv, theory/diophantine/data/ranks.txt
   density     review/audit/threshold/check_enum.txt (to S = 6000), cross-checked against
               theory/diophantine/data/per_S.csv (to S = 4800)
@@ -75,23 +74,14 @@ def table_overlap():
 
 
 # ------------------------------------------------------------- thresholds
-def dup_override():
-    txt = (ROOT / "review/audit/stability/check_dup.txt").read_text()
-    m = re.search(r"\(2, 2, 2, 2, 3\).*?exact \|\|dH\|\| = ([0-9.e+-]+)", txt)
-    assert m, "check_dup.txt: (2,2,2,2,3) line not found"
-    return float(m.group(1))
-
-
 def table_thresholds():
     d = json.load(open(ROOT / "theory/stability/threshold_results.json"))
-    override = {"(2, 2, 2, 2, 3)": dup_override()}
     out = []
     for key, v in d.items():
         m = eval(key)
         n = len(m)
         cert_exact = Fraction(v["delta_cert_exact"])
-        up = override.get(key, v["delta_up"])
-        assert up <= v["delta_up"] + 1e-15
+        up = v["delta_up"]
         thm_s = sig(v["delta_thm"], 3, "down")
         cert_s = sig(cert_exact, 4, "down")
         up_s = sig(up, 4, "up")
@@ -105,8 +95,7 @@ def table_thresholds():
         "\\caption{Thresholds for exact recovery of integer orders under the uniform model $|\\delta c_j|\\le\\delta$: "
         "the closed form $\\delta_{\\rm thm}$ of Theorem~\\ref{thm:S4}, the certified $\\delta_{\\rm cert}$ of "
         "Proposition~\\ref{prop:S5}, a constructed failure $\\delta_{\\rm up}$, their ratio, and the largest certified "
-        "uniform relative error $\\epsilon_{\\rm cert}$. The value $\\delta_{\\rm up}$ for $(2,2,2,2,3)$ is "
-        "from the audit's better-converged search.}\\label{tab:thresholds}\n"
+        "uniform relative error $\\epsilon_{\\rm cert}$.}\\label{tab:thresholds}\n"
         "\\centering\\footnotesize\n"
         "\\begin{tabular}{@{}lrlllrl@{}}\n\\toprule\n"
         "$m$ & $n$ & $\\delta_{\\rm thm}$ & $\\delta_{\\rm cert}$ & $\\delta_{\\rm up}$ & ratio & $\\epsilon_{\\rm cert}$\\\\\n\\midrule\n"
