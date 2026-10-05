@@ -152,7 +152,7 @@ and the captions fit below their figures without overflow.
   `threshold_output.md` and `threshold_results.json`. No new rules were needed. `--check`
   reports it current.
 - `PYTHON=.venv/bin/python code/run_all.sh --quick` on commit 226ed7d: **36 passed, 0 failed,
-  9 skipped**, 16:35. Every skip has its stated reason: four full-mode-only stages (sharpness
+  9 skipped**, 16:35. Every skip has its stated reason: five full-mode-only stages (sharpness
   N=120, stability threshold, divergence, numerics validate full and moduli validate full), PARI
   not installed, the deferred S3 rerun record, the NGSolve re-solve, and the Blender renders. The
   stability threshold stage is full-mode only, so the regeneration in section 6 was run separately.
