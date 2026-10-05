@@ -1,0 +1,98 @@
+% theory/revision/descent.tex -- Task 5(a) (G7-4a): the proof of Theorem 5.16 written out, with no
+% PARI dependence.  Verified step by step by check_descent.py (exact arithmetic).
+%
+% PLACEMENT.  Replace the proof of Theorem~\ref{thm:isolation} (manuscript ll. 1041--1046) by the
+% material below.  It does not use Section 8, so it survives the split of Section 8 into a
+% separate note (G7-1).  New bibliography entry (fetched from the author's page, second edition
+% text with corrections; Section 3.6 "Method 1: descent using 2-isogeny", printed pp. 84--85, and
+% the torsion remark on printed p. 70):
+%
+% @book{cremona1997,
+%   author    = {Cremona, J. E.},
+%   title     = {Algorithms for Modular Elliptic Curves},
+%   edition   = {Second},
+%   publisher = {Cambridge University Press},
+%   address   = {Cambridge},
+%   year      = {1997},
+%   note      = {Online edition: \url{https://johncremona.github.io/book/fulltext/index.html}}
+% }
+
+\begin{proof}
+\emph{The model.} Put $e_2=XY+YZ+ZX$ and let
+\[
+  \varphi(X:Y:Z)=\Big(-\frac{16e_2}{Z^2},\ \frac{8(X-Y)}Z\Big(-\frac{4e_2}{Z^2}-54\Big)\Big),\qquad
+  \psi(x,y)=\big(25x+y:\ 25x-y:\ 4(x-216)\big).
+\]
+A direct substitution shows that $\varphi$ maps $C_{27/2}$ into the curve
+\[
+  E:\ y^2=x(x+9)(x+384)=x^3+393x^2+3456x,
+\]
+that $\psi$ maps $E$ into $C_{27/2}$, and that $\varphi\circ\psi$ is the identity of $E$. The
+discriminant of $E$ is $16\cdot3456^2\cdot(393^2-4\cdot3456)=2^{18}3^85^6\ne0$, so $E$ is an elliptic
+curve. The closure of $\psi(E)$ is an irreducible curve contained in the cubic $C_{27/2}$ and
+birational to $E$, so it has geometric genus $1$; it is therefore not a line, a conic or a singular
+cubic, hence it is all of $C_{27/2}$, which is a nonsingular cubic. So $\varphi$ and $\psi$ are mutually
+inverse isomorphisms defined over $\Q$. As $(x,y)\to\infty$ on $E$, $y/x\to\pm\infty$ and $\psi(x,y)\to(1:-1:0)$, so
+$\psi$ sends the origin of $E$ to $O=(1:-1:0)$, and $C_{27/2}(\Q)$ with base point $O$ is a group isomorphic to
+$E(\Q)$. For example $\varphi(1:4:4)=(-24,360)$.
+
+\emph{Rank.} We use the descent via $2$-isogeny in the form of
+\cite[\S3.6, Method~1 and (3.6.2)]{cremona1997}. Write $E:y^2=x(x^2+cx+d)$ with $c=393$,
+$d=3456=2^73^3$; the isogenous curve is $E':y^2=x(x^2+c'x+d')$ with $c'=-2c=-786$ and
+$d'=c^2-4d=140625=3^25^6$. For squarefree $d_1\mid d$ let $n_1$ be the number of classes $d_1$ for
+which $H(d_1):v^2=d_1u^4+cu^2+d/d_1$ has a rational point, and define $n_1'$ in the same way with
+$c',d'$. Then $n_1=2^{e_1}$, $n_1'=2^{e_1'}$ and $\operatorname{rank}E(\Q)=e_1+e_1'-2$
+\cite[(3.6.2)]{cremona1997}. A rational point of $H(d_1)$ gives, after clearing denominators,
+integers $M,e,N$ with $N^2=d_1M^4+cM^2e^2+(d/d_1)e^4$ and $\gcd(M,e)=1$; so it suffices to exclude
+such solutions.
+\begin{enumerate}[label=(\roman*)]
+\item On $E$, $d_1\in\{\pm1,\pm2,\pm3,\pm6\}$. For $d_1\in\{\pm2,\pm3\}$ we have $d_1\equiv\pm2\pmod5$, a quadratic non-residue,
+  $d/d_1\equiv d_1^{-1}\pmod5$ since $d\equiv1$, so $d_1+d_1^{-1}\equiv0$, and $c\equiv3\pmod5$. Since $M^4,e^4\in\{0,1\}$ modulo $5$,
+  with $5$ dividing at most one of $M,e$, the right side is $\equiv d_1$, $\equiv d_1^{-1}$, or
+  $\equiv d_1+3M^2e^2+d_1^{-1}\equiv3M^2e^2\pmod5$; each is a quadratic non-residue modulo $5$
+  ($M^2e^2\equiv\pm1$), so there is no solution. The classes $\pm1,\pm6$ are attained:
+  the points $(-9,0)$, $(-384,0)$, $(0,0)$ give $-9\equiv-1$, $-384\equiv-6$ and $d\equiv6$ modulo
+  squares, and $O$ gives $1$. So $n_1=4$ and $e_1=2$.
+\item On $E'$, $d_1\in\{\pm1,\pm3,\pm5,\pm15\}$. If $d_1<0$, all three coefficients
+  $d_1,\,c'=-786,\,d'/d_1$ are negative, so the right side is negative for $(M,e)\ne(0,0)$. For
+  $d_1=3,5,15$ write $f=d_1M^4-786M^2e^2+(d'/d_1)e^4$ and $f=3^vf_0$ with $3\nmid f_0$; then $v$ is odd
+  or $f_0\equiv2\pmod3$, so $f$ is not a square:
+  \begin{itemize}
+  \item $d_1=3$: $f=3(M^4-262M^2e^2+15625e^4)$ and the bracket is $\equiv M^4-M^2e^2+e^4\equiv1\pmod3$;
+  \item $d_1=5$: $f\equiv2M^4\pmod3$; if $3\mid M$, $M=3M_1$, then $f=9(45M_1^4-786M_1^2e^2+3125e^4)$ with
+    bracket $\equiv2\pmod3$;
+  \item $d_1=15$: $f=3g$, $g=5M^4-262M^2e^2+3125e^4\equiv2M^4-M^2e^2+2e^4\pmod3$; if $3$ divides one of
+    $M,e$ then $g\equiv2\pmod3$; otherwise, with $w\equiv M^2/e^2\in\{1,4,7\}\pmod9$,
+    $g\equiv e^4(5w^2-w+2)\equiv6e^4\pmod9$, so $f=9g'$ with $g'\equiv2e^4\equiv2\pmod3$.
+  \end{itemize}
+  So $n_1'=1$ and $e_1'=0$.
+\end{enumerate}
+Hence $\operatorname{rank}E(\Q)=2+0-2=0$. (The two Selmer groups are
+$\{\pm1,\pm6\}$ and $\{1\}$; every class is decided by a local condition, so no
+Tate--Shafarevich ambiguity arises.)
+
+\emph{Torsion.} $E$ has good reduction at $7$ and $11$, and for an odd prime of good reduction the
+reduction map on $E(\Q)_{\rm tors}$ is injective \cite[\S3.3, p.~70]{cremona1997}. Counting points,
+$\#E(\mathbb F_7)=\#E(\mathbb F_{11})=12$, so $\#E(\Q)_{\rm tors}$ divides $12$. The twelve points
+\[
+  O,\ (0,0),\ (-9,0),\ (-384,0),\ (-24,\pm360),\ (-144,\pm2160),\ (16,\pm400),\ (216,\pm5400)
+\]
+lie on $E$; $(0,0)$, $(-9,0)$, $(-384,0)$ have order $2$, $(16,\pm400)$ have order $3$, and
+$(-24,\pm360)$, $(-144,\pm2160)$, $(216,\pm5400)$ have order $6$ (for instance the tangent at $(16,400)$ has
+slope $21$ and meets $E$ again at $(16,-400)$). So $E(\Q)=E(\Q)_{\rm tors}\cong\Z/2\times\Z/6$.
+
+\emph{The points of $C_{27/2}$.} The twelve points $(1:0:0)$, $(0:1:0)$, $(0:0:1)$, $(1:-1:0)$,
+$(0:1:-1)$, $(1:0:-1)$ and the permutations of $(1:4:4)$ and $(1:1:4)$ lie on $C_{27/2}$ and are
+distinct, so they are all of $C_{27/2}(\Q)$; the positive ones are the six permutations of $(1:4:4)$
+and $(1:1:4)$.
+
+A triad with $S_1=18k$ and $R=\frac3{4k}$ has $\Lambda=\frac{27}2$, so it is a positive rational point of
+$C_{27/2}$, hence a permutation of $(1:4:4)$ or $(1:1:4)$. Each has exactly one integer representative
+with sum $18k$, namely $(2k,8k,8k)$ and $(3k,3k,12k)$, and both are hyperbolic since $R=\frac3{4k}<1$.
+\end{proof}
+
+% ---- Statement of Theorem 5.16: unchanged.  Remove "PARI/GP 2.17.2 [pari2172], ellrank ...
+%      elltors gives torsion of order 12" from the proof; PARI may stay as a one-sentence
+%      corroboration ("PARI/GP's ellrank and elltors agree") if desired.
+% ---- The order-6 points of E: (-24,+-360), (-144,+-2160), (216,+-5400); order 3: (16,+-400);
+%      order 2: (0,0), (-9,0), (-384,0) -- check_descent.py (d) checks each point's order.

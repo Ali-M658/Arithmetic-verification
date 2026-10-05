@@ -1,0 +1,49 @@
+% theory/revision/remark212.tex -- Task 5(c) (G7-4c): Remark 2.12.
+% Verified by check_remark212.py.
+%
+% RECOMMENDATION: CUT Remark 2.12 to the short remark below, which is proved in full from
+% lemma25.tex.  Nothing in the paper uses it.  Drop, as unproved in the paper and not needed:
+%   - the peeling statement ("any tail (c_j)_{j>=J} determines the cone orders, the area and the
+%     genus", and "a small strengthening of [Ucar, Cor. 4.21(iv)]"): its proof needs Theorem 3 and
+%     Corollary 4 of theory/divergence/proof.md, about a page;
+%   - the Borel-transform radius pi^2/m_max^2;
+%   - the sphere identity for s_k and the genus-10^4 example.
+% If kept anyway, those belong in the supplement with theory/divergence/proof.md.
+%
+% CHECKED, so that whoever keeps them knows: the manuscript's "for genus 10^4 with a single cone
+% point of order 2, the smooth part dominates for l <= 8" is CORRECT (exact computation,
+% check_remark212.py (f)); theory/divergence/proof.md and STATUS.md say "l <= 5", which is wrong
+% (repository-only inconsistency; not in the paper).
+%
+% PLACEMENT: replaces Remark~\ref{rem:divergence} (manuscript ll. 355--358).
+
+\begin{remark}[The series diverges]\label{rem:divergence}
+For $m\ge2$, the closed form \eqref{eq:Phi} has simple poles at $u=\pm\pi/m$, with residues
+$\mp(4m\sin(\pi/m))^{-1}$, and no other singularity in $|u|<2\pi/m$ (in $|u|<3\pi/2$ if $m=2$). Subtracting the two principal parts leaves a function analytic on that larger disc, so Cauchy's
+estimate gives
+$\phi_k(m)=(m/\pi)^{2k}(1+\varepsilon_k)/(2\pi\sin(\pi/m))$ with $\varepsilon_k=O(4^{-k})$, and \eqref{eq:bl}
+gives (the terms $k\le l-2$ of \eqref{eq:bl} carry weights $O(l^{-2})$ relative to $k=l$)
+\[
+  \frac{p_l(m)}m=A_l(m)\Big(1+\frac{\pi^2}{2m^2(2l-1)}+O(l^{-2})\Big),\qquad
+  A_l(m)=\frac{(2l)!}{l!\;m\sin(\pi/m)}\Big(\frac m{2\pi}\Big)^{2l+1},
+\]
+the term $k=l$ of \eqref{eq:bl} giving $A_l(m)$ and the term $k=l-1$ the correction. The smooth
+coefficients are smaller: by the formula for $\alpha_k$ in the proof of Proposition~\ref{prop:heatinput},
+with $\nu_j\le\int_0^\infty r^{2j+1}e^{-2\pi r}dr=(2j+1)!/(2\pi)^{2j+2}$ and $(2j+1)!/j!$ increasing in $j$,
+$|\alpha_{l+1}|\le4^{-l-1}/(l+1)!+4e^{\pi^2}(2l+1)!/(l!\,(2\pi)^{2l+2})$, which is $O(l\,A_l(m)\,m^{-2l})$. So if
+$\Orb$ has a cone point, of largest order $M$, then $|c_{l+2}|/(l\,|c_{l+1}|)\to M^2/\pi^2$: the heat
+series diverges, at a rate set by the largest cone order, and its terms stop decreasing near
+$l\approx\pi^2/(M^2t)$, which limits the usable range of $t$ in Section~\ref{sec:experiments}. No proof below uses this
+remark.
+\end{remark}
+
+% ---- Proof details for the referee file (not for the paper): with u_0 = pi/m, the principal
+% parts sum to (1/(4 m sin(pi/m) u_0)) * 2 sum_k (u/u_0)^{2k}; the remainder is analytic in
+% |u| < 2u_0 (resp. 3u_0 for m = 2), so Cauchy's estimate gives eps_k = O(4^{-k}) (resp. 9^{-k}).
+% In (eq:bl) the k-th term relative to the k = l term is
+%   (pi/m)^{2(l-k)} l! (2k)! / ((2l)! k! (l-k)!) <= (pi^2/(2m^2))^{l-k} / ((l-k)! (2l-1)...(2k+1)/...),
+% the k = l-1 term is exactly pi^2/(2m^2(2l-1)) (1 + O(4^{-l})), and the terms k <= l-2 sum to
+% O(l^{-2}); the eps_k with k <= l/2 carry super-exponentially small weights.  This is the
+% computation of theory/divergence/proof.md, Theorem 2, in the variable u = it/2.
+% The alpha bound: alpha_{l+1} = (-1/4)^{l+1}/(l+1)! - 4 sum_i (-1/4)^i/i! (-1)^{l-i} nu_{l-i}/(l-i)!,
+% nu_j = int_0^inf r^{2j+1}/(e^{2 pi r}+1) dr <= (2j+1)!/(2pi)^{2j+2}, and (2j+1)!/j! increases in j.

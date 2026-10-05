@@ -96,8 +96,12 @@ try:
         mults[n] = mul(lam, n, P)
         check(mults[n] != Oo, f"{n}P != O", log)
     log.append("     Mazur: a rational torsion point has order in {1..10,12}; nP != O for all n <= 12 => P has infinite order")
-    check(mults[3] == (162833463, 287876366, 723926268) or set(mults[3]) == {162833463, 287876366, 723926268},
-          f"3P = {mults[3]} (as a set {{162833463, 287876366, 723926268}})", log)
+    # Compare as an ordered projective point: the curve is symmetric, so a permutation of 3P is
+    # another point on it ((162833463 : 287876366 : 723926268) is (1:0:-1) - 3P), not 3P.
+    check(mults[3] == normalize((162833463, 723926268, 287876366)),
+          f"3P = {mults[3]} = (162833463 : 723926268 : 287876366) as an ordered point", log)
+    check(mults[3] != normalize((162833463, 287876366, 723926268)),
+          "the permutation (162833463 : 287876366 : 723926268) printed after Thm 8.9 is not 3P", log)
     for n in range(1, 10):
         pos = is_positive(mults[n])
         check(pos == (n % 2 == 1), f"{n}P positive: {pos} (expected {n % 2 == 1}); height ~ 10^{len(str(max(abs(c) for c in mults[n])))-1}", log)

@@ -1,0 +1,20 @@
+% theory/revision/point3P.tex -- Task 6 (G7-15): the coordinates of 3P after Theorem 8.9.
+% Verified by check_point3P.py (group law re-implemented from scratch, exact integers) and by the
+% corrected audit check review/audit/diophantine/check_groups.py, which now compares the
+% coordinates as an ordered projective point.
+%
+% With base point O = (1:-1:0) and P = (4:9:18) on C_{155/12}:
+%   2P = (16352 : 288 : -365),   3P = (162833463 : 723926268 : 287876366).
+% The manuscript prints (162833463 : 287876366 : 723926268), which is also a point of C_{155/12}
+% (the curve is symmetric) but a different one: it is (1:0:-1) - 3P, the image of 3P under the
+% transposition Y <-> Z.  As an unordered triple, i.e. as a triangle orbifold, it is the same
+% triad, so no statement about orbifolds changes; only the projective point is misprinted.
+%
+% The old audit check accepted the printed point because it compared coordinates as a SET
+% (check_groups.py l. 99: `... or set(mults[3]) == {...}`).  It now compares the ordered,
+% normalised point and asserts that the printed permutation is not 3P.
+
+% ---- Replace, in the paragraph after Theorem 8.9 (manuscript l. 1426),
+%   "($3P=(162833463:287876366:723926268)$)"
+% by
+($3P=(162833463:723926268:287876366)$)

@@ -1,0 +1,15 @@
+PASS DS p. 3, eq. (1): "Selberg's trace formula for orbisurfaces (see [7], [8]) reads"
+PASS DS p. 3: "where h is any entire function of uniform exponential type and h(r) = h(-r)"
+PASS DS ref. [7]: "Dennis A. Hejhal. The Selberg trace formula for PSL(2, R). Vol. I"
+PASS DS ref. [8]: "Henryk Iwaniec. Spectral Methods of Automorphic Forms"
+PASS Cremona 3.6, p. 84: "Method 1: descent using 2-isogeny"
+PASS Cremona (3.6.2): "rank(E(Q)) = rank(E'(Q)) = e1 + e'1 - 2"
+PASS Cremona 3.3, p. 70: "for an odd prime p of good reduction (that is, p ∤2∆), the reduction map from E(Q)tors to E(Z/pZ) is injective"
+PASS zbMATH Zbl 0347.10018: "Hier werden erstmals auch Gruppen"
+PASS zbMATH Zbl 0347.10018: "mit kompaktem Quotienten zugelassen, welche elliptische Elemente enthalten"
+PASS Huber II p. 388 fn. 4: "allgemeinen Spurformel"
+PASS Buser (snippet): "Following McKean"
+PASS Buser (snippet): "plug the heat kernel"
+PASS Buser (snippet): "exp (L + 6) oriented closed"
+
+13 quotations, 0 failures

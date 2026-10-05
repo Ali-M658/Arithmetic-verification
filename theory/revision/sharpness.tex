@@ -1,0 +1,60 @@
+% theory/revision/sharpness.tex -- Task 7 (G7-7): the corrected sharpness statement.
+% Verified by check_sharpness.py.  No result changes: Remark 6.8 already proves the 1/2 exponent;
+% the abstract, Theorem 1.4 and the sentence after Theorem 6.6 overstated "sharp".
+%
+% What is proved, exactly:
+%   * Lipschitz at simple orders (Theorem 6.6).
+%   * Exponent 1/k at a k-fold order, for every k >= 2: sharp for ARBITRARY real data vectors
+%     (Proposition 6.7(ii)); the witnesses q_s have non-real roots when k >= 3, so their data are
+%     not the heat invariants of any real multiset.
+%   * Data that ARE the heat invariants of a real multiset:
+%       - double order (k = 2), any n: exponent 1/2, sharp (Proposition 6.7(i));
+%       - all orders equal, m = (a,...,a) with n = k >= 3: exponent 1/2, sharp.  Remark 6.8's
+%         inequality sum(3a d_i^2 + d_i^3) >= 2a sum d_i^2 (for d_i >= -a) holds verbatim for any
+%         n = k, and the family (a+s, a-s, a, ..., a) attains 1/2; so 1/k is not attained for k >= 3;
+%       - a k-fold order (k >= 3) inside a multiset with other orders, and mixed clusters: not settled.
+
+% ---- (1) Abstract.  Replace
+%   "Recovering the orders from approximate coefficients is Lipschitz at simple orders and
+%    H\"older of exponent $1/k$ at $k$-fold orders, and both rates are sharp."
+% by
+Recovering the orders from approximate coefficients is Lipschitz at simple orders and H\"older of
+exponent $1/k$ at $k$-fold orders; the exponent $1/k$ is sharp for arbitrary data, while for the
+coefficients of real orders it is $1/2$ when all the orders are equal.
+
+% ---- (2) Theorem 1.4.  Replace the sentence "The exponent $1/k_a$ cannot be improved." by
+The exponent $1/k_a$ cannot be improved for arbitrary data. For data that are the heat invariants
+of real orders it is $\frac12$, and sharp, at a double order, and at an order of any multiplicity
+$k=n\ge3$, that is, when all the orders are equal.
+
+% ---- (3) Pointer sentence after Theorem 1.4 (manuscript l. 168): replace
+%   "This is Theorems~\ref{thm:S3} and~\ref{thm:S4} and Proposition~\ref{prop:sharpexp}."
+% by
+This is Theorems~\ref{thm:S3} and~\ref{thm:S4}, Proposition~\ref{prop:sharpexp} and
+Remark~\ref{rem:triple}.
+
+% ---- (4) Sentence after Theorem 6.6 (manuscript l. 1162).  Replace
+%   "Recovery is Lipschitz at simple orders and H\"older of exponent $1/k$ at a $k$-fold
+%    coincidence. The exponent is sharp (Figure~\ref{fig:F8})."
+% by
+Recovery is Lipschitz at simple orders and H\"older of exponent $1/k$ at a $k$-fold coincidence.
+The exponent $1/k$ is sharp for arbitrary data (Proposition~\ref{prop:sharpexp}(ii)); for data
+coming from real orders it is $\frac12$ at a double order (Proposition~\ref{prop:sharpexp}(i)) and when all
+the orders are equal (Remark~\ref{rem:triple}); other configurations are not settled
+(Figure~\ref{fig:F8}).
+
+% ---- (5) Proposition 6.7: retitle "Sharpness of the exponents", and add at the end of (ii):
+%   "For $k\ge3$ the roots $a+se^{2\pi ij/k}$ are not all real, and these data are not the heat
+%    invariants of any real multiset $m'$: the system of Theorem~\ref{thmB} at these data is
+%    invertible, so it would give $e(m')=e(q_s)$, and $m'$ would be the roots of $q_s$.
+%    Remark~\ref{rem:triple} shows that some such restriction is necessary when all orders are equal."
+
+% ---- (6) Remark 6.8: replace the first sentence by
+%   "The exponent $1/k$ concerns arbitrary data vectors, the right model for noisy measurements, and
+%    for $k\ge3$ the witnesses of Proposition~\ref{prop:sharpexp}(ii) are not realised by real
+%    multisets."
+% and add at the end, before "No statement ...":
+%   "The argument applies verbatim to $(a,\dots,a)$ with any $n\ge3$ entries. The family
+%    $(a+s,a-s,a,\dots,a)$, with $\delta P_1=0$, $\delta P_3=6as^2$ and all other data changes $O(s^2)$,
+%    shows that $\frac12$ is attained."
+%  and replace "near $(a,a,a)$" by "near $(a,\dots,a)$, $n\ge3$".

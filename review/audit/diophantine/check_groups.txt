@@ -85,7 +85,8 @@ PASS 10P != O
 PASS 11P != O
 PASS 12P != O
      Mazur: a rational torsion point has order in {1..10,12}; nP != O for all n <= 12 => P has infinite order
-PASS 3P = (162833463, 723926268, 287876366) (as a set {162833463, 287876366, 723926268})
+PASS 3P = (162833463, 723926268, 287876366) = (162833463 : 723926268 : 287876366) as an ordered point
+PASS the permutation (162833463 : 287876366 : 723926268) printed after Thm 8.9 is not 3P
 PASS 1P positive: True (expected True); height ~ 10^1
 PASS 2P positive: False (expected False); height ~ 10^4
 PASS 3P positive: True (expected True); height ~ 10^8

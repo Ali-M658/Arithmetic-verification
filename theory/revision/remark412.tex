@@ -1,0 +1,66 @@
+% theory/revision/remark412.tex -- Task 2: the corrected Remark 4.12 (G7-3).
+% Verified by check_remark412.py (identity-term moments give alpha_k exactly, k <= 14).
+%
+% WHAT WAS WRONG.  The manuscript says (l. 627 and Remark 4.12) that the trace-formula route is
+% "a consistency check rather than an independent proof", "because it uses the leading term of
+% the expansion".  The route uses that leading term only to bound #{lambda_j <= x} = O(x) in
+% Lemma 4.7, so that the spectral side converges for h_t.  That is Weyl's law at order t^{-1};
+% it fixes no c_j with j >= 2, and in particular none of the coefficient values of [DGGW] or
+% [Ucar].  The route is an independent proof of Theorem 4.1 and of every coefficient.
+%
+% TWO REPLACEMENTS.
+
+% (1) Replace the sentence after the proof of Theorem 4.1 (manuscript l. 627,
+%     "No local invariant can see the moduli: ... (Remark~\ref{rem:proofC}).") by
+%     (1B) if the paper keeps Ucar's formulas as the definition (version 2B below):
+
+No local invariant can see the moduli: any two hyperbolic orbifolds of the same signature are
+locally isometric, point by point and cone point by cone point. The trace formula of
+Theorem~\ref{thm:IEH} gives a second, independent proof, with the coefficients
+(Remark~\ref{rem:proofC}).
+
+% (1A) if lemma25.tex is adopted (version 2A), where the trace formula is the primary proof:
+%   "No local invariant can see the moduli: any two hyperbolic orbifolds of the same signature
+%    are locally isometric, point by point and cone point by cone point; this structural reading,
+%    through the locality of the heat invariants \cite{donnelly1976,dggw2008}, is a second proof.
+
+% (2) Replace Remark 4.12 (manuscript ll. 790--792) by the version matching the adopted
+%     structure.
+
+% (2A) If lemma25.tex is adopted (Proposition 2.4 and Lemma 2.5 proved from Theorem 4.6):
+
+\begin{remark}[The trace-formula proof of locality]\label{rem:proofC}
+Theorem~\ref{thm:IEH} proves Theorem~\ref{thm:locality} directly: $\mathrm I$ depends only on the
+area and $\mathrm E$ only on the cone orders, and $0\le\Hyp(t)=O(t^{-1/2}e^{-\ell^2/4t})=O(t^N)$ for
+every $N$ (Lemma~\ref{lem:hypbound}), so the asymptotic series of $\cZ_\Orb$ is that of
+$\mathrm I+\mathrm E$. This is how Proposition~\ref{prop:heatinput} and Lemma~\ref{lem:conepoly} were
+proved, and it is independent of the coefficient computations of \cite{dggw2008} and
+\cite{ucar2017}. The only input from the heat-kernel literature is the a-priori bound
+$\#\{\lambda_j\le x\}\le e\,\cZ_\Orb(1/x)=O(x)$ in the proof of Lemma~\ref{lem:admissible}, which uses
+only the a-priori bound $\cZ_\Orb(s)=O(1/s)$ as $s\downarrow0$, a consequence of \cite[Thm~4.8]{dggw2008}
+(or of Weyl's law). It determines no coefficient $c_j$ with $j\ge2$, so nothing is circular. U\c{c}ar's
+cone terms \cite[(4.25), (4.33)--(4.34)]{ucar2017} agree with Proposition~\ref{prop:heatinput} for every
+order (Remark~\ref{rem:ucaragree}), and his smooth coefficients \cite[(4.35)]{ucar2017} are given by
+the same formula as \eqref{eq:alphak}.
+\end{remark}
+
+% (2B) If the paper keeps Ucar's formulas as the definition of p_l (lemma25.tex not adopted):
+
+\begin{remark}[The trace-formula proof of locality]\label{rem:proofC}
+Theorem~\ref{thm:IEH} gives an independent proof of Theorem~\ref{thm:locality}: $\mathrm I$ and
+$\mathrm E$ depend only on the signature, and $0\le\Hyp(t)=O(t^{-1/2}e^{-\ell^2/4t})=O(t^N)$ for every
+$N$, so the asymptotic series of $\cZ_\Orb$ is that of $\mathrm I+\mathrm E$. Expanding
+$e^{-tr^2}$ under the integrals, with the moments
+$\int_0^\infty r^{2k+1}(e^{2\pi r}+1)^{-1}dr=(1-2^{-2k-1})(-1)^kB_{2k+2}/(4(k+1))$ and
+$\int_\R e^{-ar}(1+e^{-2\pi r})^{-1}e^{sr}dr=1/(2\sin((a-s)/2))$, reproduces the constants $\alpha_k$
+and $b_l(m)$ of Proposition~\ref{prop:heatinput} for every order. This route does not use the
+coefficient computations of \cite{dggw2008} or \cite{ucar2017}. Its only input from the
+heat-kernel literature is the a-priori bound $\#\{\lambda_j\le x\}\le e\,\cZ_\Orb(1/x)=O(x)$ in
+Lemma~\ref{lem:admissible}, which uses only $\cZ_\Orb(s)=O(1/s)$, a consequence of
+\cite[Thm~4.8]{dggw2008} (or of Weyl's law), and determines no $c_j$ with $j\ge2$.
+\end{remark}
+
+% NOTE on (2A)/(2B).  If locality.tex's recommendation is adopted and Lemma 4.7 is replaced by a
+% citation of the classical admissible class (Hejhal / Iwaniec), the Weyl sentence changes:
+% the dependence on [DGGW, Thm 4.8] disappears if the cited theorem covers h_t with its own
+% convergence proof.  See locality.tex, section "Lemma 4.7", for the wording that applies.

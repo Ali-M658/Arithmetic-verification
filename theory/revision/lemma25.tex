@@ -1,0 +1,203 @@
+% theory/revision/lemma25.tex -- Task 1 (G7-3): Lemma 2.5 for every order, from the elliptic
+% term of the trace formula, independent of Ucar's thesis.  Verified by check_lemma25.py.
+%
+% PLACEMENT.  Replace the proof of Proposition~\ref{prop:heatinput} and Lemma~\ref{lem:conepoly}
+% (manuscript ll. 231--265) by the material below.  The trace formula, Theorem~\ref{thm:IEH},
+% is used in Section 2; its proof and Lemmas~\ref{lem:admissible}, \ref{lem:counting} do not use
+% Sections 2--3, so either (a) move Theorem~\ref{thm:IEH} with Lemmas~\ref{lem:admissible} and
+% \ref{lem:counting} to the start of Section 2.2, or (b) keep them in Section 4 and add the
+% sentence ``Theorem~\ref{thm:IEH}, Lemmas~\ref{lem:admissible}, \ref{lem:counting} and~\ref{lem:hypbound}
+% use nothing from Sections 2 and 3.''  Option (a) is recommended for the shortened paper; it moves,
+% together with Theorem~\ref{thm:IEH}, the definitions of $h_t$, $g_t$, $\gamma_0$, closed geodesic and
+% systole (manuscript ll. 679--680), Lemmas~\ref{lem:admissible} and~\ref{lem:counting}, and the new
+% Lemma~\ref{lem:hypbound} below.  Theorem~\ref{thm:quantlocality}(b) then cites Lemma~\ref{lem:hypbound}.  Equations (eq:ucarlune), (eq:pl) are no longer
+% definitions; U\c{c}ar's formula becomes Remark~\ref{rem:ucaragree}.
+
+\subsection{The expansion}\label{sec:heatexp}
+
+The structure of the expansion is due to Donnelly and to Dryden, Gordon, Greenwald and Webb
+\cite{donnelly1976,dggw2008}, and U\c{c}ar computed every coefficient at constant curvature
+\cite{ucar2017}. We derive the coefficients again from the trace formula of
+Theorem~\ref{thm:IEH}, which gives them in closed form for every order. For $0<a<2\pi$ put
+\[
+  F_a(r)=\frac{e^{-ar}}{1+e^{-2\pi r}},\qquad \mu_n(a)=\int_\R r^nF_a(r)\,dr ,
+\]
+so that $F_a(r)\le e^{-ar}$ for $r\ge0$ and $F_a(r)\le e^{(2\pi-a)r}$ for $r\le0$, and every
+$\mu_n(a)$ is finite.
+
+\begin{lemma}[Elliptic moments]\label{lem:ellmoments}
+Let $0<a<2\pi$.
+\begin{enumerate}[label=(\roman*)]
+\item For $a-2\pi<s<a$, $\displaystyle\int_\R F_a(r)\,e^{sr}\,dr=\frac1{2\sin((a-s)/2)}$; hence
+  $\mu_n(a)=\frac{d^n}{ds^n}\big[2\sin((a-s)/2)\big]^{-1}\big|_{s=0}$.
+\item For every $K\ge1$ and $t>0$,
+  \[
+    \Big|\int_\R F_a(r)\,e^{-tr^2}\,dr-\sum_{k=0}^{K-1}\frac{(-t)^k}{k!}\,\mu_{2k}(a)\Big|
+    \le\frac{t^K}{K!}\,\mu_{2K}(a).
+  \]
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+(i) Substituting $x=-2\pi r$ and $c=(a-s)/2\pi\in(0,1)$ turns the integral into
+$\frac1{2\pi}\int_\R e^{cx}(1+e^x)^{-1}dx=\frac1{2\pi}\cdot\frac\pi{\sin\pi c}$, Euler's beta integral.
+For $|s|\le s_0<\min(a,2\pi-a)$ the integrands $|r|^ne^{sr}F_a(r)$ are dominated by the integrable
+$|r|^ne^{s_0|r|}F_a(r)$, so the integral may be differentiated under the sign at $s=0$.
+(ii) For $x\ge0$, $|e^{-x}-\sum_{k<K}(-x)^k/k!|\le x^K/K!$. Put $x=tr^2$, multiply by $F_a>0$ and
+integrate.
+\end{proof}
+
+Write $\theta_j=\pi j/m$ and, for an integer $m\ge1$,
+\[
+  \Phi_m(u)=\sum_{j=1}^{m-1}\frac1{4m\,\sin\theta_j\,\sin(\theta_j-u)} .
+\]
+Each term is analytic in $|u|<\pi/m$, so $\Phi_m$ is analytic there; $\Phi_1=0$, and
+$\Phi_m(-u)=\Phi_m(u)$ (replace $j$ by $m-j$).
+
+\begin{lemma}[Closed form]\label{lem:Phi}
+For $m\ge1$ and $0<|u|<\pi/m$,
+\begin{equation}\label{eq:Phi}
+  \Phi_m(u)=\frac{\cot u-m\cot(mu)}{4m\sin u}.
+\end{equation}
+Write $u/\sin u=\sum_{i\ge0}\sigma_iu^{2i}$, so $\sigma_i\in\Q$, $\sigma_0=1$ and in fact $\sigma_i>0$.
+Then $\Phi_m(u)=\sum_{k\ge0}\phi_k(m)\,u^{2k}$ with
+\begin{equation}\label{eq:phik}
+  m\,\phi_k(m)=\frac14\sum_{n=1}^{k+1}\sigma_{k+1-n}\,\frac{4^n|B_{2n}|}{(2n)!}\,\big(m^{2n}-1\big).
+\end{equation}
+\end{lemma}
+
+\begin{proof}
+For $\sin u\ne0$, $\big(\sin\theta\,\sin(\theta-u)\big)^{-1}=(\cot(\theta-u)-\cot\theta)/\sin u$. The
+cotangents $\cot\theta_j$ cancel in pairs $j,m-j$. The function $x\mapsto\sum_{j=0}^{m-1}\cot(x+\pi j/m)-m\cot(mx)$
+is $\pi/m$-periodic and has no poles (both terms have simple poles of residue $1$ exactly on
+$\frac\pi m\Z$), and it tends to $0$ as $\operatorname{Im}x\to\pm\infty$; by Liouville's theorem it
+vanishes. At $x=-u$ this gives $\sum_{j=1}^{m-1}\cot(\theta_j-u)=\cot u-m\cot(mu)$, hence
+\eqref{eq:Phi}. From $\frac x2\coth\frac x2=\sum_{n\ge0}B_{2n}x^{2n}/(2n)!$ at $x=2iu$,
+$u\cot u=\sum_{n\ge0}(-4)^nB_{2n}u^{2n}/(2n)!$ for $|u|<\pi$, so for $|u|<\pi/m$
+\[
+  \cot u-m\cot(mu)=\sum_{n\ge1}\frac{(-4)^nB_{2n}}{(2n)!}\big(1-m^{2n}\big)u^{2n-1},
+\]
+the terms $n=0$ cancelling. Since $\operatorname{sgn}B_{2n}=(-1)^{n+1}$ for $n\ge1$ (Euler's formula
+$B_{2n}=(-1)^{n+1}2(2n)!\,\zeta(2n)/(2\pi)^{2n}$), $(-4)^nB_{2n}(1-m^{2n})=4^n|B_{2n}|(m^{2n}-1)$.
+Multiplying by $u/\sin u$ and by $1/(4mu)$ gives \eqref{eq:phik}. Finally
+$u/\sin u=\prod_{n\ge1}(1-u^2/n^2\pi^2)^{-1}$ is a product of series with positive
+coefficients, so $\sigma_i>0$.
+\end{proof}
+
+\begin{lemma}[The hyperbolic term is small]\label{lem:hypbound}
+Let $\Orb\in\Sig$ have area $A$, systole $\ell$ and diameter $D$. For $0<t\le\ell^2/(2(1+\ell))$,
+\[
+  0\le\Hyp(t)\le\frac{\pi e^{3D}}{A(1-e^{-\ell})}\;\ell e^{\ell/2}\Big(1+\frac{2t}{\ell-t}\Big)\frac{e^{-\ell^2/4t}}{\sqrt{4\pi t}} .
+\]
+In particular $\Hyp(t)=O(t^N)$ as $t\downarrow0$ for every $N$.
+\end{lemma}
+
+\begin{proof}
+This is the bound for one $\Hyp_i$ established in the proof of Theorem~\ref{thm:quantlocality}(b), which
+uses only Lemma~\ref{lem:counting}; in the reorganised text that argument is given here and
+Theorem~\ref{thm:quantlocality}(b) quotes it.
+\end{proof}
+
+\begin{proposition}[The heat expansion at curvature $-1$]\label{prop:heatinput}
+Let $\Orb\in\Sig$ have signature $(g;m_1,\dots,m_n)$. As $t\downarrow0$,
+\[
+  \cZ_\Orb(t)\ \sim\ \frac{\Area(\Orb)}{4\pi t}\sum_{k\ge0}\alpha_kt^k\;+\;\sum_{i=1}^n\sum_{l\ge0}b_l(m_i)\,t^l,
+\]
+where
+\begin{equation}\label{eq:alphak}
+  \alpha_k=\frac{(-1)^k}{k!\,4^k}\sum_{l=0}^k\binom kl(-4)^lB_{2l}\big(\tfrac12\big)
+\end{equation}
+and, for every integer $m\ge1$,
+\begin{equation}\label{eq:bl}
+  b_l(m)=\frac{(-1)^l\,p_l(m)}{m},\qquad
+  p_l(m)=\frac1{4^l}\sum_{k=0}^{l}\frac{(2k)!}{k!\,(l-k)!}\;m\,\phi_k(m).
+\end{equation}
+Consequently $c_1=\Area(\Orb)/4\pi$ and, for $j\ge2$,
+\begin{equation}\label{eq:cj}
+  c_j(\Orb)=\alpha_{j-1}\,\frac{\Area(\Orb)}{4\pi}+\sum_{i=1}^nb_{j-2}(m_i).
+\end{equation}
+\end{proposition}
+
+\begin{proof}
+By Theorem~\ref{thm:IEH}, $\cZ_\Orb=\mathrm I+\mathrm E+\Hyp$ for every $t>0$, and
+$0\le\Hyp(t)=O(t^N)$ for every $N$ by Lemma~\ref{lem:hypbound}.
+\emph{Elliptic term.} $\mathrm E_m(t)=e^{-t/4}\sum_j(2m\sin\theta_j)^{-1}\int_\R F_{2\theta_j}(r)e^{-tr^2}dr$,
+with $0<2\theta_j<2\pi$. By Lemma~\ref{lem:ellmoments}(ii) it has the asymptotic expansion
+$e^{-t/4}\sum_k\frac{(-t)^k}{k!}\sum_j\frac{\mu_{2k}(2\theta_j)}{2m\sin\theta_j}$, and by
+Lemma~\ref{lem:ellmoments}(i)
+\[
+  \sum_{j=1}^{m-1}\frac{\mu_{2k}(2\theta_j)}{2m\sin\theta_j}
+  =\frac{d^{2k}}{ds^{2k}}\sum_{j=1}^{m-1}\frac1{4m\sin\theta_j\sin(\theta_j-s/2)}\Big|_{s=0}
+  =\frac{\Phi_m^{(2k)}(0)}{4^k}=\frac{(2k)!}{4^k}\,\phi_k(m).
+\]
+Multiplying by $e^{-t/4}=\sum_i(-t/4)^i/i!$ and collecting $t^l$ gives
+$b_l(m)=(-1)^l4^{-l}\sum_{k\le l}(2k)!\,\phi_k(m)/(k!(l-k)!)$, which is \eqref{eq:bl}.
+\emph{Identity term.} $r\tanh(\pi r)=|r|-2|r|/(e^{2\pi|r|}+1)$ and $\int_\R|r|e^{-tr^2}dr=1/t$, so
+$\mathrm I(t)=\frac{\Area}{4\pi}e^{-t/4}\big(t^{-1}-4\int_0^\infty re^{-tr^2}(e^{2\pi r}+1)^{-1}dr\big)$;
+expanding $e^{-tr^2}$ as in Lemma~\ref{lem:ellmoments}(ii) with the moments
+$\nu_k=\int_0^\infty r^{2k+1}(e^{2\pi r}+1)^{-1}dr=(1-2^{-2k-1})(-1)^kB_{2k+2}/(4(k+1))$ gives
+$\frac{\Area}{4\pi t}\sum_k\alpha_kt^k$ with
+$\alpha_k=\frac{(-1/4)^k}{k!}-4\sum_{i+j=k-1}\frac{(-1/4)^i}{i!}\,\frac{(-1)^j\nu_j}{j!}$, which is \eqref{eq:alphak}
+term by term, since $B_{2l}(\frac12)=(2^{1-2l}-1)B_{2l}$.
+The area is \eqref{eq:area}.
+\end{proof}
+
+\begin{lemma}[Cone polynomials]\label{lem:conepoly}
+For every $l\ge0$, $p_l$ is an even polynomial with rational coefficients, of degree exactly
+$2l+2$, with $p_l(1)=0$ and leading coefficient
+\[
+  \frac{|B_{2l+2}|}{2\,(l+1)!\,(2l+1)}\ne0 .
+\]
+Moreover $p_l(m)>0$ for every real $m>1$.
+\end{lemma}
+
+\begin{proof}
+By \eqref{eq:phik}, each $m\phi_k(m)$ is a rational combination of the even polynomials $m^{2n}-1$,
+$1\le n\le k+1$, all of which vanish at $m=1$; by \eqref{eq:bl} so is $p_l$, with $n\le l+1$. The
+degree $2l+2$ occurs only for $k=l$ and $n=l+1$, where $\sigma_0=1$, with coefficient
+\[
+  \frac1{4^l}\cdot\frac{(2l)!}{l!}\cdot\frac14\cdot\frac{4^{l+1}|B_{2l+2}|}{(2l+2)!}
+  =\frac{(2l)!\,|B_{2l+2}|}{l!\,(2l+2)!}=\frac{|B_{2l+2}|}{2\,(l+1)!\,(2l+1)},
+\]
+which is nonzero by Euler's formula. All weights in \eqref{eq:phik} and \eqref{eq:bl} are positive,
+and $m^{2n}-1>0$ for $m>1$.
+\end{proof}
+
+The first values are $\alpha_0,\dots,\alpha_4=1,-\tfrac13,\tfrac1{15},-\tfrac4{315},\tfrac1{315}$, and
+\begin{equation}\label{eq:plexplicit}
+  p_0(m)=\frac{m^2-1}{12},\qquad p_1(m)=\frac{m^4}{360}+\frac{m^2}{36}-\frac{11}{360},\qquad p_2(m)=\frac{m^6}{2520}+\frac{m^4}{720}+\frac{m^2}{180}-\frac{37}{5040}.
+\end{equation}
+The polynomials $p_1,p_2$ agree with the cone coefficients of Schueth \cite[Rem.~4.2, Thm~4.1]{schueth2019},
+which she attributes to \cite[\S5.6]{dggw2008} at order $t^1$.
+The value $p_l(1)=0$ has a direct meaning: an ``order-$1$ cone point'' is a smooth point, and the sum
+defining $\Phi_1$ is empty.
+
+\begin{remark}[Agreement with U\c{c}ar]\label{rem:ucaragree}
+Put $u=it/2$ in \eqref{eq:Phi}: $m t^2\,\Phi_m(it/2)=\frac{t/2}{\sinh(t/2)}\big[\frac{mt}2\coth\frac{mt}2-\frac t2\coth\frac t2\big]$.
+Expanding the right side with $\frac x2\coth\frac x2=\sum_jB_{2j}x^{2j}/(2j)!$ and
+$\frac{t/2}{\sinh(t/2)}=\sum_nB_n(\frac12)t^n/n!$ shows that $m\Phi_m^{(2k)}(0)=2\cdot4^k\,k!\;m\,c^{\mathbb S}_k(\pi/m)$,
+where, by \cite[(4.25)]{ucar2017},
+\[
+  c^{\mathbb S}_k\Big(\frac\pi m\Big)=\frac1{4m}\cdot\frac{(-1)^k}{(k+1)!\,(2k+1)}\sum_{j=0}^{k+1}\binom{2k+2}{2j}\big(m^{2j}-1\big)B_{2j}\,B_{2k+2-2j}\big(\tfrac12\big).
+\]
+Then \eqref{eq:bl} becomes $p_l(m)/m=\sum_{i\le l}2(4^ii!)^{-1}c^{\mathbb S}_{l-i}(\pi/m)$, which is $(-1)^l$
+times U\c{c}ar's cone contribution \cite[(4.33)--(4.34)]{ucar2017} at $K=-1$. So the cone terms of
+Proposition~\ref{prop:heatinput} are U\c{c}ar's for every $l$; his smooth coefficients
+\cite[(4.35)]{ucar2017} are given by the same formula as \eqref{eq:alphak}. The two were also compared in
+exact arithmetic for $l\le40$ (code in the archived repository, Appendix~\ref{app:reproducibility}).
+\end{remark}
+
+% ---- Lemma 2.10 (triangular basis) needs no change: its proof uses only Lemma 2.5 as stated
+% above (evenness, p_l(1) = 0, nonzero top coefficient).  The F-matrix diagonal of
+% Proposition 6.2 likewise cites Lemma 2.5.  check_lemma25.py (g) verifies the expansion
+% p_l(x)/x = sum_{k=1}^{l+1} a_{l,k} psi_k(x) with a_{l,l+1} != 0 for l <= 40.
+%
+% ---- EXTERNAL INPUT of the new proof (to be stated in the paper, e.g. after
+% Proposition 2.4): (1) the Selberg trace formula for cocompact Fuchsian groups with elliptic
+% elements, in the form of [DS, eq. (1)] (which takes it from Hejhal, LNM 548, and Iwaniec,
+% GSM 53), for even entire h of uniform exponential type; (2) its extension to the heat
+% function h_t, by Lemma 4.7 (which uses only the a-priori bound Z(s) = O(1/s), hence
+% #{lambda_j <= x} <= e Z(1/x) = O(x), taken from [DGGW, Thm 4.8] or from Weyl's law) or by citing the admissible class of Hejhal /
+% Iwaniec (see locality.tex); (3) classical analysis: Euler's beta integral, the Bernoulli
+% expansion of coth, Euler's formula for zeta(2n), Liouville's theorem, the product for sin.
+% No coefficient computation of [DGGW] or [Ucar] is used.

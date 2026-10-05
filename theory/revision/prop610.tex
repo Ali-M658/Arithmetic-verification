@@ -1,0 +1,65 @@
+% theory/revision/prop610.tex -- Task 5(d) (G7-4d): Proposition 6.10 with explicit formulas for the
+% residual, its remainder r_rem and |delta M|, so that delta_cert is checkable from the paper alone.
+% Verified by check_prop610.py: an independent implementation of exactly these formulas reproduces
+% r_rem, A and E of theory/stability/threshold.py EXACTLY for all 11 cases of Table 4, and certifies
+% every printed delta_cert and delta_thm.
+%
+% PLACEMENT.  Replace step 3 of Proposition~\ref{prop:S5} (manuscript l. 1213) and add the
+% definition of J before test (ii).  Also fix the typo noted by G7-34: the proof should read
+% $M(\tilde\cI)=M(I+X)$ with $X=M^{-1}\delta M$ (it does), i.e. $M+\delta M=M(I+X)$.  Under G7-1 this
+% proposition may move to the supplement with Table 4; the formulas travel with it.
+
+% ---- Notation added before the proposition (after "Let spr denote the spectral radius."):
+
+Write $\cI=(R,P_1,P_3,\dots,P_{2n-3})$, indexed $\cI_0=R$ and $\cI_k=P_{2k-1}$, and
+$U(z)=\sum_{k=1}^{n-1}P_{2k-1}z^{2k-1}/(2k-1)$; all power series are truncated after $z^{2n-3}$, and
+$e_k=0$ for $k>n$. Write $\operatorname{sech}^2U=1-T^2=\sum_ks_kz^k$, $T=\tanh U$.
+
+% ---- Steps 1--3 of Proposition~\ref{prop:S5}, replacing the current steps 1--3:
+
+\begin{enumerate}[label=\arabic*.]
+\item Put $\Delta=|\mathbf F^{-1}|\,\delta$, so $|\tilde\cI_k-\cI_k|\le\Delta_k$, and
+  $|\delta U|(z)=\sum_{k=1}^{n-1}\Delta_kz^{2k-1}/(2k-1)$.
+\item Put
+  \[
+    \tau^{\rm lin}=|\operatorname{sech}^2U|*|\delta U|,\qquad
+    \tau^{\rm rem}=\tan(U+|\delta U|)-\tan U-\sec^2U\cdot|\delta U|,\qquad
+    \tau=\tau^{\rm lin}+\tau^{\rm rem},
+  \]
+  coefficientwise; then $|\tilde T_k-T_k|\le\tau_k$, and the part of $\tilde T_k-T_k$ beyond first order
+  in $\delta\cI$ is at most $\tau^{\rm rem}_k$ in absolute value.
+\item Put, for $0\le j\le n-2$,
+  \[
+    \rho_j=\sum_{i=0}^{j}\tau_{2i+1}\,e_{2j-2i},\qquad
+    \rho^{\rm rem}_j=\sum_{i=0}^{j}\tau^{\rm rem}_{2i+1}\,e_{2j-2i},
+  \]
+  and $\rho_{n-1}=\Delta_0e_n$, $\rho^{\rm rem}_{n-1}=0$. Let $\Delta_M$ be the $n\times n$ matrix, rows
+  indexed by $0\le j\le n-1$ and columns by the unknowns $e_1,\dots,e_n$, with entry $\tau_{2i+1}$ in
+  row $j$, column $e_{2j-2i}$, for $0\le i<j\le n-2$ and $2j-2i\le n$; entry $\Delta_0$ in row $n-1$,
+  column $e_n$; and zero elsewhere. Then $|r|\le\rho$, $|r_{\rm rem}|\le\rho^{\rm rem}$ and
+  $|\delta M|\le\Delta_M$ entrywise. Put $A=|M^{-1}|\Delta_M$.
+\end{enumerate}
+Steps 4 and 5 are unchanged, with $\rho$ in place of $|r|$. In test (ii), $|\varrho|\le|M^{-1}|\rho^{\rm rem}+AE$
+and $G=-M^{-1}J\,\mathbf F^{-1}$, where $J=\partial(Me-b)/\partial\cI$ at fixed $e$ is
+\[
+  J_{j,k}=-\frac1{2k-1}\sum_{\substack{k-1\le i\le j\\2j-2i\le n}}e_{2j-2i}\,s_{2i+2-2k}\quad(0\le j\le n-2,\ 1\le k\le n-1),
+  \qquad J_{n-1,0}=-e_n,
+\]
+and $J_{j,0}=0$ for $j\le n-2$, $J_{n-1,k}=0$ for $k\ge1$.
+
+% ---- Additions to the proof (Steps 1--2 stay; replace "Step 3--4" opening by):
+
+\emph{Step 3.} Row $j\le n-2$ of $M(\cI)e=b(\cI)$ reads $e_{2j+1}-\sum_{i=0}^{j}T_{2i+1}e_{2j-2i}=0$ with
+$e_0=1$, and the last row reads $e_{n-1}-Re_n=0$. Since the exact $e$ solves the exact system,
+$r=b(\tilde\cI)-M(\tilde\cI)e=(\tilde b-b)-(\tilde M-M)e$ has components
+$r_j=\sum_{i=0}^{j}(\tilde T_{2i+1}-T_{2i+1})e_{2j-2i}$ for $j\le n-2$ and $r_{n-1}=(\tilde R-R)e_n$. All
+$e_k>0$, so step 2 gives $|r|\le\rho$; the last component is linear in $\delta\cI$, and the nonlinear
+part of the others comes only from $\tilde T-T$, which gives $|r_{\rm rem}|\le\rho^{\rm rem}$. The
+entries of $\tilde M-M$ are $-(\tilde T_{2i+1}-T_{2i+1})$ in row $j$, column $e_{2j-2i}$ ($i<j$), and
+$-(\tilde R-R)$ in row $n-1$, column $e_n$, which gives $\Delta_M$. Finally
+$\partial T_{2i+1}/\partial P_{2k-1}=[z^{2i+1}]\operatorname{sech}^2U\cdot z^{2k-1}/(2k-1)=s_{2i+2-2k}/(2k-1)$, which gives $J$.
+
+% ---- Sentence after Table 4 (manuscript l. 1256), add:
+%   "Every entry of the $\delta_{\rm cert}$ column can be re-derived from Proposition 6.2 and the
+%    formulas above in exact rational arithmetic; for $n\le5$ every series is truncated after $z^7$
+%    and has at most four nonzero (odd) coefficients."

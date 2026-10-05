@@ -1,0 +1,55 @@
+% theory/revision/thm12iii.tex -- Task 4 (G7-8): Theorem 1.2(iii) with the diameter dependence
+% of the constant explicit, and "attained" qualified.  Verified by check_thm12iii.py.
+%
+% The constant comes from Theorem 4.9(b): on 0 < t <= l^2/(2(1+l)) the factor 1 + 2t/(l-t) is
+% increasing in t, with maximum (2+3l)/(2+l) < 3 at the endpoint, and pi/sqrt(4 pi) = sqrt(pi)/2.
+% Notation: the diameter is written diam, not delta (G7-31: delta is also the data error).
+
+% ---- (1) Replace Theorem 1.2(iii) (manuscript l. 140) by:
+
+\item Let $\Orb_1,\Orb_2$ have the same signature and area $A$, let $\ell$ be the smaller of their
+systoles and $D$ the larger of their diameters. For $0<t\le\ell^2/(2(1+\ell))$,
+\[
+  |\cZ_{\Orb_1}(t)-\cZ_{\Orb_2}(t)|\le C(A,\ell,D)\,t^{-1/2}e^{-\ell^2/4t},\qquad
+  C(A,\ell,D)=\frac{\sqrt\pi\,e^{3D}\,\ell\,e^{\ell/2}\,(2+3\ell)}{2A\,(1-e^{-\ell})\,(2+\ell)} .
+\]
+The constant depends on the diameter, which the signature does not determine. If the two length
+spectra, counted with the weights $\ell(\gamma_0)$, first differ at the length $\ell$ (in particular,
+if the two systoles differ), then $\sqrt t\,e^{\ell^2/4t}|\cZ_{\Orb_1}(t)-\cZ_{\Orb_2}(t)|$ has a
+nonzero limit as $t\downarrow0$: the exponent $\ell^2/4$ and the factor $t^{-1/2}$ are attained,
+the constant $C$ is not claimed to be. If they first differ at a length $L_*>\ell$, the difference
+is of the smaller order $t^{-1/2}e^{-L_*^2/4t}$; if the weighted length spectra never differ
+(equivalently, the orbifolds are isospectral) the difference vanishes identically. Here the
+systole is the least length of a closed geodesic, including those through cone points.
+
+% ---- (2) The sentence after Theorem 1.2 (manuscript l. 144) is unchanged; add after it:
+%   "The diameter enters only through the counting bound of Lemma~\ref{lem:counting}."
+
+% ---- (3) Theorem 4.9(b): state the same simplified bound, keeping the proof.  Replace the
+%      display of (b) by
+%
+%   For $0<t\le\ell^2/(2(1+\ell))$,
+%   \[
+%     |\cZ_{\Orb_1}(t)-\cZ_{\Orb_2}(t)|\le\frac{\pi e^{3D}}{A(1-e^{-\ell})}\;\ell e^{\ell/2}\Big(1+\frac{2t}{\ell-t}\Big)\frac{e^{-\ell^2/4t}}{\sqrt{4\pi t}}
+%     \le C(A,\ell,D)\,t^{-1/2}e^{-\ell^2/4t},
+%   \]
+%   with $D=\max(\operatorname{diam}\Orb_1,\operatorname{diam}\Orb_2)$ and $C$ as in Theorem 1.2(iii);
+%
+%   and add one sentence at the end of the proof of (b):
+%   "On this range $t<\ell/2$, and $1+2t/(\ell-t)$ increases in $t$ to $(2+3\ell)/(2+\ell)$ at
+%    $t=\ell^2/(2(1+\ell))$; with $\pi/\sqrt{4\pi}=\sqrt\pi/2$ this gives the second inequality."
+%
+%   Rename delta -> D (diameter) throughout Section 4 (Lemma 4.8, Theorem 4.9, Lemma 4.7 does not
+%   use it).
+
+% ---- (4) Abstract: replace "and this rate is attained." by
+%   "and this rate is attained whenever the two length spectra first differ at the shorter
+%    systole, for instance when the systoles differ."
+
+% ---- (5) Section 1 pointer sentence (manuscript l. 144): "These are Theorem 4.1, Corollary 4.5
+%   and Theorems 4.9 and 4.10, with Corollary 4.11." stays; the attainment clause is
+%   Theorem 4.10(ii)--(iii) and Corollary 4.11, whose hypothesis L_* = ell is exactly the
+%   condition stated above.
+
+% ---- OPTIONAL (not done here): a counting bound depending on (area, systole) only would remove
+%   D from C.  Not attempted; G7-8 lists it as optional.

@@ -1,0 +1,131 @@
+% theory/revision/locality.tex -- Task 3 (G7-2): what in Section 4 is classical, what is new, and
+% the shortened section.  Sources: locality-sources.md (retrieval log, quotations, instrument
+% gaps); every quotation below is checked verbatim against sources_cache/ by check_quotes.py.
+%
+% WHAT WAS SEEN (primary text):  Dryden--Strohmaier, eq. (1) and refs [7],[8] (full);
+%   Huber 1959, Huber II 1961 and its Nachtrag (full GDZ scans);  Wolpert, Bull. AMS 1977 (full);
+%   Hejhal LNM 548: first two pages of each chapter only, plus the zbMATH review Zbl 0347.10018;
+%   Buser 1992: Internet Archive full-text-search snippets only (no page numbers).
+% INSTRUMENT GAPS (not seen; never read as absences):  Hejhal LNM 548 Ch. 3 interior (the
+%   elliptic trace formula, its hypotheses on h, p. 351);  Iwaniec, Spectral Methods (Thm 10.2);
+%   McKean, CPAM 25 (1972) and its correction;  Wolpert, Annals 1979.
+%
+% DECISIONS
+% (a) Classical, cite:
+%   * Signature locality (Thm 4.1).  For surfaces the heat expansion depends on the genus only:
+%     this is McKean's use of the heat kernel in the trace formula (Buser, as quoted below, says
+%     "Following McKean [1], we plug the heat kernel pM of M into the trace formula to prove
+%     Huber's theorem."; McKean's own text NOT SEEN -- pinpoint to be added with library access).
+%     For orbifolds it is immediate from the locality of the coefficients [Donnelly; DGGW Thm 4.8]
+%     and homogeneity of H^2.  -> Demote to a Proposition with the structural proof (5 lines).
+%   * The trace formula with elliptic terms (Thm 4.6) is classical: DS eq. (1) states it and cites
+%     Hejhal LNM 548 and Iwaniec; zbMATH's review of Hejhal says of Ch. III: "Hier werden erstmals
+%     auch Gruppen \(\Gamma\) mit kompaktem Quotienten zugelassen, welche elliptische Elemente
+%     enthalten."  -> Present Thm 4.6 as a citation (DS eq. (1); Hejhal Ch. 3; Iwaniec).
+%   * The mechanism "difference of heat traces = difference of hyperbolic terms, of size
+%     e^{-l^2/4t}" is the standard Selberg/Huber/McKean mechanism; Huber compares length and
+%     eigenvalue spectra (Huber 1959, Satz 7--8) by Dirichlet series, not heat kernels, and notes
+%     (Huber II, p. 388, fn. 4) that his relation "auch aus der allgemeinen Spurformel von A.
+%     Selberg ... hergeleitet werden" could be.  -> Say so; no novelty claim for the mechanism.
+%   * Geodesic counting: for closed surfaces Buser gives an explicit bound depending on the genus
+%     only, quoted below (snippet; lemma number from a forward reference "Lemma 6.6.4", not joined
+%     to the statement in any snippet).  Huber gives asymptotics with implicit constants.
+% (b) Lemma 4.7 (admissibility of h_t): NOT replaced by a citation.  The class of test functions
+%   in Hejhal's elliptic trace formula could not be read, so it is not confirmed that the cited
+%   theorem covers h_t "in the form needed".  Keep the minimal part: Lemma 4.7 stays, shortened to
+%   the approximation argument (about 10 lines), introduced as standard.  ACTION FOR THE REWRITE
+%   SESSION (library access): read Hejhal LNM 548, Ch. 3 (pp. 326--354, the theorem on p. 351 or
+%   near it) and Iwaniec Thm 10.2.  If the hypothesis is "h even, holomorphic in
+%   |Im r| <= 1/2 + eps, h(r) = O((1+|r|)^{-2-eps})", h_t qualifies and Lemma 4.7 becomes the
+%   sentence in (S3) below marked [IF CONFIRMED]; the Weyl input of remark412.tex then also goes.
+% (c) New: (i) the orbifold counting bound with explicit constant (Lemma 4.8; elementary, the
+%   surface analogue is Buser's); (ii) the explicit small-t bound C(A,l,D) t^{-1/2} e^{-l^2/4t}
+%   with its range (Thm 4.9(b)) and the a-posteriori form (Thm 4.9(c)); (iii) sharpness: the
+%   leading asymptotic of the difference at the first length where the weighted length spectra
+%   differ, and the fact that the factor t^{-1/2} cannot be dropped (Thm 4.10, Cor 4.11).  These
+%   are an explicit packaging of the classical mechanism, and are to be presented as such.
+
+% =====================================================================================
+% SHORTENED SECTION 4 (target about 4 pp.).  Plan, with the exact wording of the new/classical
+% sentences.  Theorem numbers refer to the current manuscript.
+% =====================================================================================
+
+\section{Heat does not hear the shape}\label{sec:locality}
+
+% (S1) Opening paragraph -- replaces the current §4.1 heading text and Thm 4.1 statement.
+Write $\Orb=\Gamma\backslash\mathbb H^2$ with $\Gamma\subset PSL(2,\R)$ a cocompact Fuchsian group. That
+the heat expansion cannot see the moduli is classical: for closed hyperbolic surfaces it goes back to
+McKean's use of the heat kernel in Selberg's trace formula \cite{mckean1972} (see also
+\cite[Ch.~9]{buser1992}), and for orbifolds it follows from the locality of the heat invariants
+\cite{donnelly1976}, \cite[Thm~4.8]{dggw2008}. We record it in the form used below.
+
+\begin{proposition}[Signature locality]\label{thm:locality}
+For every $j\ge1$, $c_j(\Orb)=\Phi_j(\sigma(\Orb))$ with $\Phi_1(g;m)=\frac12(2g-2+\sum_i(1-\frac1{m_i}))$ and
+$\Phi_j(g;m)=\alpha_{j-1}\Phi_1(g;m)+\sum_ib_{j-2}(m_i)$ for $j\ge2$.
+\end{proposition}
+
+\begin{proof}
+This is Proposition~\ref{prop:heatinput}. Structurally: the regular-stratum coefficients are
+integrals of universal local invariants of the metric \cite[Def.~4.7]{dggw2008}, constant on a
+hyperbolic orbifold, and each cone point contributes Donnelly's local terms for the rotations of its
+isotropy group \cite[\S4.1]{dggw2008}, \cite{donnelly1976}, which depend only on the order since any
+two cone points of the same order have isometric neighbourhoods.
+\end{proof}
+
+% (S2) §4.2 Moduli: keep Prop 4.2 (Thurston) and Prop 4.3 (rigidity, Troyanov) as they are; replace
+% the proof of Prop 4.4 by the one-line argument of G7-20 (countable mapping-class orbits:
+% Teich(O) = R^d with d > 0, the isometry classes of a signature are the orbits of the countable
+% mapping-class group, and a countable union of countable sets is not R^d); keep Cor 4.5.
+
+% (S3) §4.3 "Where the shape becomes audible".  Theorem 4.6 becomes a cited statement:
+
+The shape is visible only beyond all orders, through the closed geodesics, by the classical
+mechanism of Selberg, Huber and McKean \cite{huber1959,mckean1972,hejhal1976}: two orbifolds of the
+same signature have the same identity and elliptic terms in the trace formula, and their heat traces
+differ by the difference of the hyperbolic terms. We make this explicit.
+
+% Theorem 4.6 statement unchanged; its proof becomes:
+%   "This is the Selberg trace formula for cocompact Fuchsian groups with elliptic elements, in the
+%    normalization of \cite[eq.~(1)]{drydenstrohmaier2009}, who take it from
+%    \cite{hejhal1976,iwaniec2002}, applied to $h_t$ (Lemma~\ref{lem:admissible})."
+% Lemma 4.7: keep, opening with "The following approximation argument is standard; for torsion-free
+%   groups see \cite{marklof2011}."
+%   [IF CONFIRMED in Hejhal/Iwaniec, replace Lemma 4.7 by: "The function $h_t$ is even, entire and
+%    $O((1+|r|)^{-N})$ in every horizontal strip, so it belongs to the class of test functions of
+%    \cite[Ch.~3, Thm ~X]{hejhal1976}, \cite[Thm~10.2]{iwaniec2002}."]
+% Lemma 4.8: keep; add after it:
+%   "For closed surfaces Buser gives a bound depending on the genus alone, at most
+%    $(g-1)e^{L+6}$ closed geodesics of length at most $L$ that are not iterates of short ones
+%    \cite[Lemma~6.6.4]{buser1992}; the diameter in Lemma~\ref{lem:counting} is the price of the
+%    elementary argument, which also covers cone points."
+% Theorems 4.9, 4.10, Corollary 4.11: keep (with thm12iii.tex), and introduce them by:
+
+What is new in this section is quantitative: an explicit bound with explicit constants and range
+(Theorem~\ref{thm:quantlocality}), and its sharpness, the leading term of the difference at the
+first length where the two length spectra differ, which shows that the factor $t^{-1/2}$ cannot be
+removed (Theorem~\ref{thm:sharp}, Corollary~\ref{cor:prefactor}).
+
+% Remark 4.12: remark412.tex.  Remark 4.13: keep, shortened to its last two sentences, and cite
+%   Huber for surfaces (equivalence of length and eigenvalue spectra, \cite[Satz~7--8]{huber1959})
+%   next to \cite[Thm~1.1]{drydenstrohmaier2009} for orbisurfaces.
+
+% (S4) Theorem 1.2 in the introduction: (i) becomes "Every heat invariant is a function of the
+%   signature alone (classical; Proposition 4.1)"; (ii) unchanged; (iii) as in thm12iii.tex.
+%   §1.1 "Prior work": add one sentence --
+%   "That the heat expansion of a closed hyperbolic surface sees only its genus, and that the
+%    moduli enter only through exponentially small geodesic terms, is classical
+%    \cite{mckean1972,huber1959,buser1992}; the orbifold version is immediate from
+%    \cite{dggw2008,drydenstrohmaier2009}. Our contribution in Section~\ref{sec:locality} is the
+%    explicit constant and its sharpness."
+%   and remove Thm 1.2 from the list of headline results in the abstract's novelty framing.
+
+% NEW BIBLIOGRAPHY ENTRIES (verify every field against Crossref / the books before use):
+%   huber1959  H. Huber, Zur analytischen Theorie hyperbolischer Raumformen und Bewegungsgruppen,
+%              Math. Ann. 138 (1959) 1--26.  [seen]
+%   hejhal1976 D. A. Hejhal, The Selberg Trace Formula for PSL(2,R), Vol. 1, LNM 548, Springer
+%              1976.  [Ch. 3 interior NOT seen]
+%   iwaniec2002 H. Iwaniec, Spectral Methods of Automorphic Forms, 2nd ed., GSM 53, AMS 2002. [NOT seen]
+%   mckean1972 H. P. McKean, Selberg's trace formula as applied to a compact Riemann surface,
+%              Comm. Pure Appl. Math. 25 (1972) 225--246.  [NOT seen]
+%   buser1992  P. Buser, Geometry and Spectra of Compact Riemann Surfaces, Birkhauser 1992.
+%              [snippets only; lemma number and page to be verified]

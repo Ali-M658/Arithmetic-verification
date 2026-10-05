@@ -1,0 +1,52 @@
+% theory/revision/thm513.tex -- Task 5(b) (G7-4b): Theorem 5.13 without "and so on".
+% Verified by check_thm513.py (exhaustive at the 38 sums; an exactly re-verified witness at each of
+% the other 4745 sums in [18, 4800]).
+%
+% RECOMMENDATION.  Split Theorem 5.13: the theorem keeps only the proved threshold; the list of
+% collision-free sums becomes a labelled computational proposition with its method, printed in
+% full (38 numbers fit in two lines).  Nothing downstream uses the list.
+
+% ---- (1) Theorem 5.13, replacing manuscript ll. 967--973:
+
+\begin{theorem}[The threshold]\label{thm:threshold}
+If $p+q+r\le17$, the first two heat invariants determine the hyperbolic triangle orbifold
+$\Orb(p,q,r)$ among all hyperbolic triangle orbifolds: $\Kiso(\Orb(p,q,r);\Pill_3)\le2$. The bound
+$17$ is sharp: the first failure occurs at cone-order sum $18$ (Theorem~\ref{thm:minimal}).
+\end{theorem}
+
+\begin{proof}
+A collision has equal sums and equal $R$, and by Theorem~\ref{thm:separation} none has sum at most
+$17$; a triad of sum at most $17$ cannot share $\keytwo$ with one of a different sum.
+\end{proof}
+
+% ---- (2) New proposition, placed directly after it:
+
+\begin{proposition}[Collision-free sums; computational]\label{prop:collisionfree}
+Among the sums $18\le S\le4800$, exactly the $38$ sums
+\[
+\begin{gathered}
+  19,\,21\text{--}25,\,27\text{--}30,\,33,\,41,\,44,\,46\text{--}51,\,59,\,65,\,67,\,81,\,99,\\
+  115,\,119,\,123,\,125,\,173,\,199,\,203,\,223,\,235,\,243,\,251,\,307,\,329,\,557
+\end{gathered}
+\]
+carry no collision, that is, no two hyperbolic triads of sum $S$ have the same reciprocal sum.
+\end{proposition}
+
+\begin{proof}[Method]
+The statement is a finite computation, in two parts, both in exact rational arithmetic.
+(a) For each of the $38$ listed sums, all hyperbolic triads of sum $S$ are enumerated
+($p\le q\le r$, $p+q+r=S$, $qr+rp+pq<pqr$) and their reciprocal sums are compared; they are pairwise
+distinct. The largest case, $S=557$, has $25\,575$ triads.
+(b) For each of the other $4745$ sums a collision is exhibited: two distinct hyperbolic triads of
+sum $S$ with the same $R$. If $d\mid S$ and $d$ carries a collision, so does $S$, by scaling both
+triads by $S/d$; this covers $3962$ sums, and the remaining $783$ have explicit pairs, the first
+being $(2,8,8),(3,3,12)$ at $18$, $(4,8,8),(5,5,10)$ at $20$ and $(4,10,12),(5,6,15)$ at $26$. The
+pairs are listed in the supplementary data, and each was checked directly.
+Part (a) is independent of the enumeration of Section~\ref{sec:degeneracies}, which reports the
+same list.
+\end{proof}
+
+% ---- (3) Wherever the paper says "exactly 38 carry no collision, namely 19, 21--25, 27--30, 33,
+%      and so on, the largest being 557", cite Proposition~\ref{prop:collisionfree} instead.
+% ---- (4) Supplementary data: the 783 primitive witness pairs are in
+%      theory/revision/collision_witnesses.csv (S, both triads, R); ship it with the code archive.
