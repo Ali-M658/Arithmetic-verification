@@ -52,4 +52,27 @@ listed with what was done about it.
 
 ## 3. F1 and F6 (Blender)
 
-Status: see the final section of this file. It is updated when the renders are done.
+**Built and asserted, not yet rendered.** The scripts, meshes, data assertions and captions of
+F1 and F6 are complete, and `F1.py --check` and `F6.py --check` pass in the suite. The F1
+assertions include one physical check: twice the hyperbolic integral of 𝔥_t(x,x) over the
+triangle equals the computed Z(t) to 0.5%. The F6 assertions check that the sector spectra add
+up to the orbifold spectrum and that the drawn geodesic has length exactly 4b, the systole.
+
+Every render attempt on 2026-10-05, four of them between 03:32 and 06:07 IST, ran into the machine-safety guard.
+Swap use stayed between 87% and 95% throughout, and the swap file grew from 8 to 15 GB, all from
+other processes. Each attempt waited the full 20 minutes and then gave up without starting
+Blender, as SPEC section 5 requires. The prototype renders of the contact sheet (two-pass
+Workbench, 1000 × 800 px, about 10 s each) show that the pipeline works.
+
+To finish, once swap is below 75%:
+`python3 figures/src/F1.py && python3 figures/src/F6.py`. Renders are cached in
+`figures/build/`. Then view `figures/out/F1.png` and `F6.png`, run `figures/src/checklist.py F1 F6`,
+and send both to the referee pass.
+
+## 4. Suite
+
+`PYTHON=.venv/bin/python code/run_all.sh --quick`, in a fresh venv built from
+`requirements.txt`, on 2026-10-05: **36 passed, 0 failed, 9 skipped** (52 min, under a load
+average of about 10). The new stages are "figures data F4 F7 F8" (PASS), "figures vector F2-F5
+F7-F9" (PASS, byte-identical rebuild of the committed PDFs and PNGs) and "figures Blender
+renders F1 F6" (SKIP, with its reason).
