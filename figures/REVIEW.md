@@ -47,8 +47,9 @@ listed with what was done about it.
 | 19 | F9 | The q fit spans less than a decade. | **Fixed (wording).** The caption calls it an empirical fit. The ±0.5 comes from the block-bootstrap of `exponent_fits.txt`. |
 | 20 | F2 | "Dark/light tone" clashes with the pillow-pair meaning. | **Fixed.** The caption now says "deep shade" and "pale shade" of the pillow's hue. |
 | 21 | F7 | Circle at the frame edge; small dots; integer S. | **Fixed.** x runs to 126, the dots are larger, and the caption says the bounds are joined across integer S. |
-| 22 | all | Ticks 8 pt, exponents 5.6 pt. | **Fixed.** Ticks are 9 pt (exponents 6.3 pt), and titles and letters 10 pt. Exponents stay below 8 pt because mathtext fixes superscripts at 0.7 of the font size. This is the one place below the guideline's 8 pt. |
+| 22 | all | Ticks 8 pt, exponents 5.6 pt. | **Fixed.** Ticks are 9 pt (exponents 6.3 pt), and titles and letters 10 pt. Exponents stay below 8 pt because mathtext fixes superscripts at 0.7 of the font size. Superseded in part by row 24. |
 | 23 | F3/F4/F5 | Long caption sentences. | **Partly.** Each caption is still at most three sentences, and the F3 argument is shorter. The rest is left to the author's edit of the text. |
+| 24 | F4/F5/F8/F9 | Log axes: exponents are 6.3 pt. | **Fixed where the range allows.** Plain decimal labels (`figstyle.decimal_log_ticks`), all 9 pt: F4 x (0.1 to 1000), F5 x in both panels (0.01, 0.1), F9(b) x (100, 1000) and y (0.01 to 10). F7 and the F1 colour bar already had plain labels. **Powers kept** on F5(b) y (10⁻¹⁵ to 1) and on both F8 axes (10⁻¹⁴ to 10⁻¹, 10⁻¹⁴ to 10). There, decimals would run to 16 digits. These exponents are the only tick text below 8 pt (6.3 pt). |
 
 ## 3. F1 and F6 (Blender)
 
@@ -58,10 +59,12 @@ assertions include one physical check: twice the hyperbolic integral of 𝔥_t(x
 triangle equals the computed Z(t) to 0.5%. The F6 assertions check that the sector spectra add
 up to the orbifold spectrum and that the drawn geodesic has length exactly 4b, the systole.
 
-Every render attempt on 2026-10-05, four of them between 03:32 and 06:07 IST, ran into the machine-safety guard.
+Every render attempt on 2026-10-05, five of them between 03:32 and 06:35 IST, ran into the machine-safety guard.
 Swap use stayed between 87% and 95% throughout, and the swap file grew from 8 to 15 GB, all from
-other processes. Each attempt waited the full 20 minutes and then gave up without starting
-Blender, as SPEC section 5 requires. The prototype renders of the contact sheet (two-pass
+other processes. At the fifth check (06:35 IST) swap stood at 92% (12.3 of 13.3 GB), uptime 11 h 51 min (no
+restart had happened), with an orphaned `python3 -` process started at about 03:20 from `figures/src` still
+holding about 0.8 GB resident; it was left running. The fifth was a `sysctl vm.swapusage` check only. The first four each waited
+the full 20 minutes and then gave up without starting Blender, as SPEC section 5 requires. The prototype renders of the contact sheet (two-pass
 Workbench, 1000 × 800 px, about 10 s each) show that the pipeline works.
 
 To finish, once swap is below 75%:

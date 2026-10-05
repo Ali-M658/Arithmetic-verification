@@ -146,6 +146,16 @@ def letter_at(fig, x, y, s):
     fig.text(x, y, f"({s})", ha="left", va="top", fontsize=FONT_PT["letter"], color=GREY["ink"])
 
 
+def decimal_log_ticks(axis, ticks=None):
+    """Plain decimal labels (0.001, 0.01, 1000) on a log axis instead of powers of ten, so that no
+    tick text is a 0.7-size superscript; used wherever the range is short enough to read so."""
+    from matplotlib.ticker import FuncFormatter, NullFormatter
+    if ticks is not None:
+        axis.set_ticks(ticks)
+    axis.set_major_formatter(FuncFormatter(lambda v, _: f"{v:.10f}".rstrip("0").rstrip(".")))
+    axis.set_minor_formatter(NullFormatter())
+
+
 METADATA_PDF = {"Creator": None, "Producer": None, "CreationDate": None}
 METADATA_PNG = {"Software": None}
 

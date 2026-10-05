@@ -77,6 +77,7 @@ def draw(a, pairs):
     ax.plot(t, ell, color=fs.GREY["light"], lw=fs.LW["regular"], ls=(0, (3, 2)), zorder=4)   # on top of D
     ax.set_xscale("log")
     ax.set_xlim(*xl)
+    fs.decimal_log_ticks(ax.xaxis, [0.01, 0.1])
     ax.set_ylim(-0.03, 0.09)
     ax.set_ylabel(r"$D(t)$")
     ax.tick_params(labelbottom=False)
@@ -97,6 +98,7 @@ def draw(a, pairs):
     bx.set_xscale("log")
     bx.set_yscale("log")
     bx.set_xlim(*xl)
+    fs.decimal_log_ticks(bx.xaxis, [0.01, 0.1])
     bx.set_ylim(1e-15, 3)
     bx.set_yticks([1e-15, 1e-10, 1e-5, 1])
     bx.set_xlabel(r"$t$")

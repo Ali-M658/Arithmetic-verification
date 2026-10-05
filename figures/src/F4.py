@@ -68,6 +68,7 @@ def draw(s, k, cs, ck):
     ax.plot(cs, ck, ls="none", marker="s", ms=fs.MARKER_PT["regular"], mfc="white", mec=fs.GREY["ink"], mew=fs.LW["regular"])
     ax.set_xscale("log")
     ax.set_xlim(0.02, 2000)
+    fs.decimal_log_ticks(ax.xaxis, [0.1, 1, 10, 100, 1000])
     ax.set_ylim(0, 10.5)
     ax.set_yticks(range(0, 11, 2))
     ax.set_yticks(range(0, 11), minor=True)

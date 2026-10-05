@@ -171,6 +171,8 @@ def draw(pts, Ncum, fits, iso_cum, _k):
     bx.set_yscale("log")
     bx.set_xlim(15, 5000)
     bx.set_ylim(8e-3, 40)
+    fs.decimal_log_ticks(bx.xaxis, [100, 1000])
+    fs.decimal_log_ticks(bx.yaxis, [0.01, 0.1, 1, 10])
     bx.set_xlabel(r"$S$")
     bx.set_ylabel(r"$N(S)/S$")
     fs.letter_at(fig, 0.48, 0.985, "b")
