@@ -109,6 +109,9 @@ SOURCES = {
     "wooley2019": ("doi", "10.1112/plms.12204"),
     "crootmaoyip2026": ("arxiv", "2609.05061"),
     "cremona1997": ("zbmath", "0872.14041"),
+    # added in referee round 1 (review/round1-fixes/citations/)
+    "richardsonstanhope2020": ("doi", "10.1016/j.difgeo.2019.101577"),
+    "philippe2010tsg": ("doi", "10.5802/tsg.280"),
     # the authors' companion manuscript (paper/arith/note.tex), not a third-party record
     "companion": ("local", "paper/arith/note.tex"),
 }
@@ -295,6 +298,8 @@ TITLE_SC = {
     "watson2005": "The trace function expansion for spherical polygons",
     "philippe2008": "Les groupes de triangles $(2,p,q)$ sont d{\\'e}termin{\\'e}s par leur spectre des longueurs",
     "philippe2010gd": "Sur la rigidit{\\'e} des groupes de triangles $(r,p,q)$",
+    "philippe2010tsg": "Le spectre des longueurs des surfaces hyperboliques: un exemple de rigidit{\\'e}",
+    "richardsonstanhope2020": "You can hear the local orientability of an orbifold",
     "changdeturck1989": "On hearing the shape of a triangle",
     "aby2015": "Accuracy of spike-train {Fourier} reconstruction for colliding nodes",
     "bgy2020": "Super-resolution of near-colliding point sources",
@@ -315,6 +320,7 @@ TITLE_EXTRA_SOURCE = {
     "beauville1982": None,                          # "singuli\\`eres": print, p. 657 (CITATIONS.md section 4)
 }
 JOURNAL = {
+    "philippe2010tsg": "S{\\'e}minaire de Th{\\'e}orie Spectrale et G{\\'e}om{\\'e}trie",
     "kac1966": "American Mathematical Monthly",
     "sunada1985": "Annals of Mathematics (2)",
     "wolpert1979": "Annals of Mathematics (2)",
