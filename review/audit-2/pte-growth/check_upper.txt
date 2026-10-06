@@ -1,0 +1,77 @@
+OK   own degree-1 size-2 PTE solution: ([0, 2], [1, 1])
+OK   own degree-3 size-4 PTE solution: ([0, 3, 4, 7], [1, 1, 6, 6])
+OK   own degree-5 size-6 PTE solution (symmetric family): ([-7, -7, 0, 0, 7, 7], [-8, -5, -3, 3, 5, 8])
+OK   degree 1: equal P_1..P_1, size 2
+OK   degree 3: equal P_1..P_3, size 4
+OK   degree 5: equal P_1..P_5, size 6
+OK   eslpower (k=1..5) entry re-verified
+===== L = 2, k = 2L-3 = 1, N(k) = 2
+OK   tau: doubling of N_odd witness gives L-config, |Z|=12 <= 6*2, iota=0
+OK   tau: |Z| >= 2L+2 = 6 (Lemma 1.2(4) consistency)
+OK   T^cone: shifted, disjoint, 1 in X only: X=[1, 3] Y=[2, 2]
+OK   T^cone: shift preserves P_1..P_k
+OK   T^cone: Z is a balanced L-config, |Z|=12
+OK   T^cone: |Z| = 12 <= 6N(2L-3) = 12
+OK   T^cone: Z primitive integral and contains 1
+OK   T^cone: cancelled genus-0 realisation hyperbolic, Area/2pi = 5/3
+OK   T^cone: cone counts differ by multiplicity of 1
+OK   Prop 3.3 pair (0;U\1),(0;V): hyperbolic, Area/2pi = 5/3 < 3n-2 = 4
+OK   Thm 4.3 f_n threshold: Area/2pi = 5/3 <= 3N(2L-3)-2 = 4
+OK   T: c = -1/2 (iota(Z(c)) = -2), c' = 1 (iota = 0)
+OK   T: Prop 3.2(2) iota formula
+OK   T: lambda = 1/16 gives s_-1 = 0
+OK   T: L-configuration after cancelling +-pairs, |Z| = 8
+OK   T: iota = -2 != 0, |Z| = 8 <= 4N(2L-3) = 8
+OK   T: realisation genera 1 vs 0, Area/2pi = 13/8
+OK   T: Lemma 1.2(5) Area < 2pi T
+OK   Thm 4.3 f_g threshold: Area/2pi = 13/8 < 4N(2L-3) = 8 (Area < 8 pi N)
+     primitive Z = [-8, -8, -8, -2, -2, 1, 3, 24]
+===== L = 3, k = 2L-3 = 3, N(k) = 4
+OK   tau: doubling of N_odd witness gives L-config, |Z|=16 <= 6*3, iota=0
+OK   tau: |Z| >= 2L+2 = 8 (Lemma 1.2(4) consistency)
+OK   T^cone: shifted, disjoint, 1 in X only: X=[1, 4, 5, 8] Y=[2, 2, 7, 7]
+OK   T^cone: shift preserves P_1..P_k
+OK   T^cone: Z is a balanced L-config, |Z|=22
+OK   T^cone: |Z| = 22 <= 6N(2L-3) = 24
+OK   T^cone: Z primitive integral and contains 1
+OK   T^cone: cancelled genus-0 realisation hyperbolic, Area/2pi = 877/140
+OK   T^cone: cone counts differ by multiplicity of 1
+OK   Prop 3.3 pair (0;U\1),(0;V): hyperbolic, Area/2pi = 1999/280 < 3n-2 = 10
+OK   Thm 4.3 f_n threshold: Area/2pi = 1999/280 <= 3N(2L-3)-2 = 10
+OK   T: c = -1/2 (iota(Z(c)) = -2), c' = 1 (iota = 0)
+OK   T: Prop 3.2(2) iota formula
+OK   T: lambda = 429/8192 gives s_-1 = 0
+OK   T: L-configuration after cancelling +-pairs, |Z| = 16
+OK   T: iota = -2 != 0, |Z| = 16 <= 4N(2L-3) = 16
+OK   T: realisation genera 1 vs 0, Area/2pi = 28685199/4100096
+OK   T: Lemma 1.2(5) Area < 2pi T
+OK   Thm 4.3 f_g threshold: Area/2pi = 28685199/4100096 < 4N(2L-3) = 16 (Area < 8 pi N)
+     primitive Z = [-45056, -45056, -4096, -4096, -4096, -3003, -3003, -858, -858, 429, 1716, 2145, 3432, 20480, 28672, 53248]
+===== L = 4, k = 2L-3 = 5, N(k) = 6
+OK   tau: doubling of N_odd witness gives L-config, |Z|=24 <= 6*4, iota=0
+OK   tau: |Z| >= 2L+2 = 10 (Lemma 1.2(4) consistency)
+OK   T^cone: shifted, disjoint, 1 in X only: X=[1, 4, 6, 12, 14, 17] Y=[2, 2, 9, 9, 16, 16]
+OK   T^cone: shift preserves P_1..P_k
+OK   T^cone: Z is a balanced L-config, |Z|=34
+OK   T^cone: |Z| = 34 <= 6N(2L-3) = 36
+OK   T^cone: Z primitive integral and contains 1
+OK   T^cone: cancelled genus-0 realisation hyperbolic, Area/2pi = 103723/8568
+OK   T^cone: cone counts differ by multiplicity of 1
+OK   Prop 3.3 pair (0;U\1),(0;V): hyperbolic, Area/2pi = 111577/8568 < 3n-2 = 16
+OK   Thm 4.3 f_n threshold: Area/2pi = 111577/8568 <= 3N(2L-3)-2 = 16
+OK   T: c = 15/2 (iota(Z(c)) = 2), c' = 9 (iota = 0)
+OK   T: Prop 3.2(2) iota formula
+OK   T: lambda = 54501875/1067319296 gives s_-1 = 0
+OK   T: L-configuration after cancelling +-pairs, |Z| = 24
+OK   T: iota = 2 != 0, |Z| = 24 <= 4N(2L-3) = 24
+OK   T: realisation genera 0 vs 1, Area/2pi = 29685151374378919/2698650132480000
+OK   T: Lemma 1.2(5) Area < 2pi T
+OK   Thm 4.3 f_g threshold: Area/2pi = 29685151374378919/2698650132480000 < 4N(2L-3) = 24 (Area < 8 pi N)
+     primitive Z = [-16543449088, -13341491200, -11206852608, -4802936832, -2668298240, -926531875, -763026250, -654022500, -327011250, -218007500, -54501875, 109003750, 109003750, 490516875, 490516875, 533659648, 533659648, 533659648, 872030000, 872030000, 8004894720, 8004894720, 15476129792, 15476129792]
+===== Prop 3.3 wording: multiset difference with 1 in both
+OK   X={1,1,5}, Y={1,3,3}: equal P_1 (L = 2); mult_X(1) = 2 > mult_Y(1) = 1
+OK   V = [1, 2, 2, 2, 2, 3, 3, 10, 10] contains 1: '(0;V)' is not a signature; (0;V\{1}) is meant
+OK   cone counts of (0;U\1),(0;V\1) differ by mult_X(1)-mult_Y(1) = 1, not mult_X(1) = 2
+OK   still hyperbolic
+
+ALL CHECKS PASSED

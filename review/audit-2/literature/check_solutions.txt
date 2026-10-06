@@ -1,0 +1,96 @@
+== B10: Borwein-Ingalls p.9 table (abbreviated symmetric form) ==
+[OK] BI size 2 {+-3}/{+-1}: size 2, exponents [1]; exponent 2 differs: True
+[OK] BI size 3 {-2,-1,3} vs negatives: size 3, exponents [1, 2]; exponent 3 differs: True
+[OK] BI size 4 {+-3,+-11}/{+-7,+-9}: size 4, exponents [1, 2, 3]; exponent 4 differs: True
+[OK] BI size 5 {-8,-7,1,5,9}: size 5, exponents [1, 2, 3, 4]; exponent 5 differs: True
+[OK] BI size 6 {+-4,+-9,+-13}/{+-1,+-11,+-12}: size 6, exponents [1, 2, 3, 4, 5]; exponent 6 differs: True
+[OK] BI size 8 {+-2,+-16,+-21,+-25}/{+-5,+-14,+-23,+-24}: size 8, exponents [1, 2, 3, 4, 5, 6, 7]; exponent 8 differs: True
+[OK] BI p.25 perfect 7-set [-51, -33, -24, 7, 13, 38, 50]: size 7, exponents [1, 2, 3, 4, 5, 6]; exponent 7 differs: True
+   complete residue system mod 7 ('perfect'): True
+[OK] BI p.25 perfect 7-set [-90, -86, -39, -5, 48, 77, 95]: size 7, exponents [1, 2, 3, 4, 5, 6]; exponent 7 differs: True
+   complete residue system mod 7 ('perfect'): True
+[OK] BI p.25 perfect 7-set [-116, -104, -36, -19, 75, 77, 123]: size 7, exponents [1, 2, 3, 4, 5, 6]; exponent 7 differs: True
+   complete residue system mod 7 ('perfect'): True
+[OK] BI p.25 perfect 7-set [-120, -110, -23, -13, 38, 105, 123]: size 7, exponents [1, 2, 3, 4, 5, 6]; exponent 7 differs: True
+   complete residue system mod 7 ('perfect'): True
+[OK] BI p.25 perfect 7-set [-134, -75, -66, 8, 47, 87, 133]: size 7, exponents [1, 2, 3, 4, 5, 6]; exponent 7 differs: True
+   complete residue system mod 7 ('perfect'): True
+[OK] Letac 9-set [-98, -82, -58, -34, 13, 16, 69, 75, 99]: size 9, exponents [1, 2, 3, 4, 5, 6, 7, 8]; exponent 9 differs: True
+   complete residue system mod 9: True
+[OK] Letac 9-set [-169, -161, -119, -63, 8, 50, 132, 148, 174]: size 9, exponents [1, 2, 3, 4, 5, 6, 7, 8]; exponent 9 differs: True
+   complete residue system mod 9: True
+[OK] CMSV (3) second 9-set = -(BI second 9-set) (same solution, A and B swapped)
+[OK] BI size 10 #1 (Letac per BLP p.2069): size 10, exponents [1, 2, 3, 4, 5, 6, 7, 8, 9]; exponent 10 differs: True
+[OK] BI size 10 #2 (Smyth per BI p.10): size 10, exponents [1, 2, 3, 4, 5, 6, 7, 8, 9]; exponent 10 differs: True
+
+== B12: Proposition 4 (Smyth) at the two printed rational points ==
+point (153/61, 191/79): on curve x^2y^2-13x^2-13y^2+121=0: True
+[OK] Prop4 solution at (153/61,191/79): size 10, exponents [1, 2, 3, 4, 5, 6, 7, 8, 9]; exponent 10 differs: True
+   primitive form A=[12, 11881, 20231, 20885, 23738] B=[436, 11857, 20449, 20667, 23750]; matches BI p.9 size-10 entry #[1]
+point (-296313/249661, -1264969/424999): on curve x^2y^2-13x^2-13y^2+121=0: True
+[OK] Prop4 solution at (-296313/249661,-1264969/424999): size 10, exponents [1, 2, 3, 4, 5, 6, 7, 8, 9]; exponent 10 differs: True
+   primitive form A=[87647378809, 243086774390, 308520455907, 441746154196, 527907819623] B=[133225698289, 189880696822, 338027122801, 432967471212, 529393533005]; matches BI p.9 size-10 entry #[2]
+[OK] Prop. 4 symbolic: every non-constant coefficient (in z) of prod(z^2-A_i^2)-prod(z^2-B_i^2) is divisible by the curve polynomial
+
+== D3 / P2: CMSV and BLP ==
+[OK] BLP/CMSV size 10 (A.277): size 10, exponents [1, 2, 3, 4, 5, 6, 7, 8, 9]; exponent 10 differs: True
+[OK] BLP/CMSV size 10 (A.278): size 10, exponents [1, 2, 3, 4, 5, 6, 7, 8, 9]; exponent 10 differs: True
+[OK] Kuosa-Meyrignac-Chen size 12 (CMSV (5)): size 12, exponents [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]; exponent 12 differs: True
+[OK] Broadhurst size 12 (CMSV (6)): size 12, exponents [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]; exponent 12 differs: True
+[OK] Choudhry-Wroblewski size 12 (CMSV (7)): size 12, exponents [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]; exponent 12 differs: True
+[OK] BLP p.2064 Gloden family: sum alpha_i^e == 0 identically in f,k for e=1,3,5
+   f=3,k=1 gives [-7, 24, 33, -50, -38, -13, 51]; BLP prints {-7, 24, 33, -50, -38, -13, 51}: match = True
+   and this is -(BI perfect 7-set {-51,-33,-24,7,13,38,50}): True
+
+== C2 / D1 / D4: Chen survey Example 1.1 and 1.2 (ideal solutions of degree k, size k+1) ==
+[OK] Chen Ex.1.1 degree 6 (size 7): size 7, exponents [1, 2, 3, 4, 5, 6]; exponent 7 differs: True
+[OK] Chen Ex.1.1 degree 7 (size 8): size 8, exponents [1, 2, 3, 4, 5, 6, 7]; exponent 8 differs: True
+[OK] Chen Ex.1.1 degree 8 (size 9): size 9, exponents [1, 2, 3, 4, 5, 6, 7, 8]; exponent 9 differs: True
+[OK] Chen Ex.1.1 degree 9 (size 10): size 10, exponents [1, 2, 3, 4, 5, 6, 7, 8, 9]; exponent 10 differs: True
+[OK] Chen Ex.1.1 degree 11 (size 12): size 12, exponents [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]; exponent 12 differs: True
+[OK] Chen Ex.1.2 A.282 degree 5 non-symmetric: size 6, exponents [1, 2, 3, 4, 5]; exponent 6 differs: True
+[OK] Chen Ex.1.2 A.324 degree 6 non-symmetric: size 7, exponents [1, 2, 3, 4, 5, 6]; exponent 7 differs: True
+[OK] Chen Ex.1.2 A.358 degree 7 non-symmetric: size 8, exponents [1, 2, 3, 4, 5, 6, 7]; exponent 8 differs: True
+
+== S1: Chen Appendix A.1.6, A.1.17, A.1.26, A.1.33 (odd exponents) ==
+[OK] A.48 (A.1.6) [1,5,5]=[2,3,6]: size 3, exponents [1, 3]
+[OK] A.45: size 3, exponents [1, 3]
+[OK] A.46: size 3, exponents [1, 3]
+[OK] A.47: size 3, exponents [1, 3]
+[OK] A.178 (A.1.17) [1,13,17,23]=[3,9,21,21]: size 4, exponents [1, 3, 5]
+[OK] A.179: size 4, exponents [1, 3, 5]
+[OK] A.180: size 4, exponents [1, 3, 5]
+[OK] A.266 (A.1.26) [3,19,37,51,53]=[9,11,43,45,55]: size 5, exponents [1, 3, 5, 7]
+[OK] A.269 Letac: size 5, exponents [1, 3, 5, 7]
+[OK] A.270 Letac: size 5, exponents [1, 3, 5, 7]
+[OK] A.313 (A.1.33) Chen 2000: size 6, exponents [1, 3, 5, 7, 9]
+[OK] A.314 Wroblewski 2009: size 6, exponents [1, 3, 5, 7, 9]
+[OK] A.315 Wroblewski 2009: size 6, exponents [1, 3, 5, 7, 9]
+[OK] A.316 Wroblewski 2009: size 6, exponents [1, 3, 5, 7, 9]
+[OK] A.1.33 negative-entry solution (Wroblewski 2009): size 6, exponents [1, 3, 5, 7, 9]
+[OK] A.219 Chernick (A.1.21): size 5, exponents [1, 2, 3, 4]
+[OK] A.220 Chernick (A.1.21): size 5, exponents [1, 2, 3, 4]
+[OK] A.323 Chernick (A.1.35): size 7, exponents [1, 2, 3, 4, 5, 6]
+[OK] each odd-exponent entry has size = (number of exponents) + 1 = L
+
+== S3: negative exponents (Chen A.5) ==
+[OK] A.650 type (-1,1) [4,10,12]=[5,6,15]: size 3, exponents [-1, 1]
+[OK] A.651 type (-1,1): size 3, exponents [-1, 1]
+[OK] A.685 type (-1,1,3) [3,10,15,30]=[4,5,21,28]: size 4, exponents [-1, 1, 3]
+[OK] A.686: size 4, exponents [-1, 1, 3]
+[OK] A.692: size 4, exponents [-1, 1, 3]
+[OK] kminus.htm (-1,1,3) [7,15,78,91]=[6,25,60,100]: size 4, exponents [-1, 1, 3]
+[OK] A.693 type (-1,1,5) [81,374,585,891]=[85,286,702,858]: size 4, exponents [-1, 1, 5]
+[OK] A.661 type (-2,2): size 3, exponents [-2, 2]
+   A.685 at exponent 5 equal? False; at 2? False
+
+== Melzak p.234 construction: size 2^n solution of degree n from (1-x)^(n+1) ==
+[OK] Melzak (5) n=1: size 2, exponents [1]; exponent 2 differs: True
+[OK] Melzak (5) n=2: size 4, exponents [1, 2]; exponent 3 differs: True
+[OK] Melzak (5) n=3: size 8, exponents [1, 2, 3]; exponent 4 differs: True
+[OK] Melzak (5) n=4: size 16, exponents [1, 2, 3, 4]; exponent 5 differs: True
+[OK] Melzak (5) n=5: size 32, exponents [1, 2, 3, 4, 5]; exponent 6 differs: True
+[OK] Melzak (5) n=6: size 64, exponents [1, 2, 3, 4, 5, 6]; exponent 7 differs: True
+[OK] Melzak (5) n=7: size 128, exponents [1, 2, 3, 4, 5, 6, 7]; exponent 8 differs: True
+
+FAILURES: []

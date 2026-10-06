@@ -1,0 +1,5 @@
+[cube220] N=220: y1 done 220/220, missing [], count mismatches []
+[cube220] multisets examined: 4493032544; C(N+4,5) = 4493032544
+[cube220] survivors of the 16-prime certified filter: 0
+[cube220] exact solutions: 0
+[cube220] RESULT: NO size-8 (3,5) configuration with five-element side <= 220; coverage complete

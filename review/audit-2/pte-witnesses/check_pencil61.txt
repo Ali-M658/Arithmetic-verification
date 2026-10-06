@@ -1,0 +1,26 @@
+Part 1: the 61 listed configurations
+  all 61: primitive, no {z,-z}, s1=s3=s_-1=0, 4+4 signs, entries >= 2, hyperbolic, equal area, pairwise distinct mod scaling/negation, pencil-decomposable: OK
+  shared heat coefficients (direct, = criterion): {3: 61}
+  max |entry| over the list: 440;  #Z with max|z|<=220: 30, <=130: 14
+
+Part 2: own enumeration (C, exact) and comparison with the claimed set
+  N=130 mode=0: 15 distinct configurations; in the claimed list: 15; generated but not listed: 0
+  N=130 mode=1: 25 distinct configurations; in the claimed list: 25; generated but not listed: 0
+  N=220 mode=0: 35 distinct configurations; in the claimed list: 35; generated but not listed: 0
+  N=220 mode=1: 61 distinct configurations; in the claimed list: 61; generated but not listed: 0
+  CLAIM '61 configurations with entries <= 220' (as worded, mode 0): FALSE -- own count 35
+  CLAIM '25 with entries <= 130' (as worded, mode 0): FALSE -- own count 15
+  mode 1 (one entry unrestricted): N=220 -> 61, equal to the listed set: True; N=130 -> 25
+  listed Z having a pencil split with BOTH primitive sides <= 220: 35; with ONE side <= 220: 61
+   example listed but outside the worded recipe: (-221, -117, -68, -25, 35, 36, 150, 210) splits (A,B) primitive: [([-221, -25, 36, 210], [-150, -35, 68, 117]), ([-221, 35, 36, 150], [-210, 25, 68, 117])]
+   example listed but outside the worded recipe: (-221, -117, -68, -24, 33, 36, 152, 209) splits (A,B) primitive: [([-221, -24, 36, 209], [-152, -33, 68, 117]), ([-221, 33, 36, 152], [-209, 24, 68, 117])]
+   example listed but outside the worded recipe: (-222, -111, -74, -24, 33, 37, 152, 209) splits (A,B) primitive: [([-222, -24, 37, 209], [-152, -33, 74, 111]), ([-222, 33, 37, 152], [-209, 24, 74, 111])]
+   example listed but outside the worded recipe: (-222, -111, -74, -36, 37, 68, 117, 221) splits (A,B) primitive: [([-222, -36, 37, 221], [-117, -68, 74, 111]), ([-222, 37, 68, 117], [-221, 36, 74, 111])]
+   example listed but outside the worded recipe: (-222, -111, -74, -25, 35, 37, 150, 210) splits (A,B) primitive: [([-222, -25, 37, 210], [-150, -35, 74, 111]), ([-222, 35, 37, 150], [-210, 25, 74, 111])]
+  independent Python enumeration, N=130 mode 0: 15 configurations; equals the C result: True
+
+Part 3: A={-30,-3,5,28}, B={-21,-4,10,15}: e1=0, e3, e4 equal (lambda=1), e2: -859 -391
+  Z = A + (-B) = [-30, -15, -10, -3, 4, 5, 21, 28] -> m = [4, 5, 21, 28] , m' = [3, 10, 15, 30]
+  smallest listed configuration (by max entry): (-30, -15, -10, -3, 4, 5, 21, 28)
+
+verified facts: ALL OK (claim verdicts above)

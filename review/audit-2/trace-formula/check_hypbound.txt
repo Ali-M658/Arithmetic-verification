@@ -1,0 +1,6 @@
+1. C(A,l,D) re-derived: max of 1+2t/(l-t) at t=T is (2+3l)/(2+l); pi/sqrt(4pi)=sqrt(pi)/2; equals printed C
+2. d/dl log B = -1/2 - [l/2t-(1+l)/l] - e^-l/(1-e^-l) - 2t/(l^2-t^2) < -1/2 on t<=T(l); T increasing; B increasing in D
+3. interval check: B(l2,D,t) < B(l1,D,t) for l1<l2, t=theta T(l1): 390 cases OK
+4. weighted, all-class and primitive length counts first differ at the same length (4000 random pairs): OK
+sanity: saturating synthetic spectra satisfy the TF.3 inequality (not a certificate)
+ALL CHECKS PASSED

@@ -1,0 +1,114 @@
+=== m = (2, 8, 8), n = 3
+  delta_cert printed 2.341e-03: rho(A)<1 True, test (i) False, test (ii) True, mixed True -> certified by ii; a=2: (i) r=1/2 (ii) r=1/2, a=8: (i) r=None (ii) r=1/2
+  next 4-s.f. value 2.3420e-03: certifies (any test) = False; a=2: (i) r=1/2 (ii) r=1/2, a=8: (i) r=None (ii) r=None
+  4-s.f. max: test (i) 2.683e-04, test (ii) 2.341e-03, mixed 2.341e-03; 6-s.f.: (i) 2.68358e-04, (ii) 2.34171e-03, mixed 2.34171e-03
+  delta_thm (Thm S4) = 3.802813e-07 exact = 1/2629632
+    kappa = 1, zeta_n = 1, rho_n = 17.8333, lambda_mu = 16; binding term index 3 of ['6.250e-02', '3.125e-02', '2.282e-06', '3.803e-07']
+  delta_thm printed 3.80e-07 (round-down of exact: 3.80e-07): certificate (i) True, (ii) True
+  delta_cert/|H_nu| floor: ['1.8e-02', '1.6e-03', '7.0e-04']  nearest: ['1.9e-02', '1.7e-03', '7.0e-04']  printed: ['1.8e-02', '1.6e-03', '7.0e-04']
+  eps_cert printed 1.9e-03: certified by ii; next 2-s.f. 2.0e-03 certifies = False; 2-s.f. max 1.9e-03, 4-s.f. max 1.944e-03
+=== m = (3, 3, 12), n = 3
+  delta_cert printed 4.040e-03: rho(A)<1 True, test (i) False, test (ii) True, mixed True -> certified by ii; a=3: (i) r=None (ii) r=1/2, a=12: (i) r=1/2 (ii) r=1/2
+  next 4-s.f. value 4.0410e-03: certifies (any test) = False; a=3: (i) r=None (ii) r=None, a=12: (i) r=1/2 (ii) r=1/2
+  4-s.f. max: test (i) 9.484e-04, test (ii) 4.040e-03, mixed 4.040e-03; 6-s.f.: (i) 9.48493e-04, (ii) 4.04017e-03, mixed 4.04017e-03
+  delta_thm (Thm S4) = 1.189280e-07 exact = 1/8408448
+    kappa = 1, zeta_n = 1, rho_n = 16.8958, lambda_mu = 24; binding term index 2 of ['4.167e-02', '2.083e-02', '1.189e-07', '1.070e-06']
+  delta_thm printed 1.18e-07 (round-down of exact: 1.18e-07): certificate (i) True, (ii) True
+  delta_cert/|H_nu| floor: ['3.2e-02', '2.8e-03', '7.4e-04']  nearest: ['3.2e-02', '2.9e-03', '7.5e-04']  printed: ['3.2e-02', '2.8e-03', '7.4e-04']
+  eps_cert printed 4.4e-03: certified by ii; next 2-s.f. 4.5e-03 certifies = False; 2-s.f. max 4.4e-03, 4-s.f. max 4.491e-03
+=== m = (3, 10, 15, 30), n = 4
+  delta_cert printed 3.660e-03: rho(A)<1 True, test (i) False, test (ii) True, mixed True -> certified by ii; a=3: (i) r=None (ii) r=1/2, a=10: (i) r=None (ii) r=1/2, a=15: (i) r=None (ii) r=1/2, a=30: (i) r=None (ii) r=1/2
+  next 4-s.f. value 3.6610e-03: certifies (any test) = False; a=3: (i) r=None (ii) r=1/2, a=10: (i) r=None (ii) r=None, a=15: (i) r=None (ii) r=1/2, a=30: (i) r=None (ii) r=1/2
+  4-s.f. max: test (i) 7.433e-05, test (ii) 3.660e-03, mixed 3.660e-03; 6-s.f.: (i) 7.43363e-05, (ii) 3.66010e-03, mixed 3.66010e-03
+  delta_thm (Thm S4) = 4.021020e-11 exact = 1001/24894183502800
+    kappa = 2.34297, zeta_n = 79/3, rho_n = 471.861, lambda_mu = 60; binding term index 3 of ['1.667e-02', '1.351e-04', '1.303e-10', '4.021e-11', '5.170e-11', '4.653e-10']
+  delta_thm printed 4.02e-11 (round-down of exact: 4.02e-11): certificate (i) True, (ii) True
+  delta_cert/|H_nu| floor: ['4.9e-03', '8.0e-04', '4.1e-05', '3.6e-07']  nearest: ['5.0e-03', '8.1e-04', '4.1e-05', '3.6e-07']  printed: ['4.9e-03', '8.0e-04', '4.1e-05', '3.6e-07']
+  eps_cert printed 8.7e-04: certified by ii; next 2-s.f. 8.8e-04 certifies = False; 2-s.f. max 8.7e-04, 4-s.f. max 8.707e-04
+=== m = (4, 5, 21, 28), n = 4
+  delta_cert printed 1.461e-03: rho(A)<1 True, test (i) False, test (ii) True, mixed True -> certified by ii; a=4: (i) r=None (ii) r=1/2, a=5: (i) r=None (ii) r=19/40, a=21: (i) r=None (ii) r=1/2, a=28: (i) r=None (ii) r=1/2
+  next 4-s.f. value 1.4620e-03: certifies (any test) = False; a=4: (i) r=None (ii) r=1/2, a=5: (i) r=None (ii) r=None, a=21: (i) r=None (ii) r=1/2, a=28: (i) r=None (ii) r=1/2
+  4-s.f. max: test (i) 4.582e-05, test (ii) 1.461e-03, mixed 1.461e-03; 6-s.f.: (i) 4.58205e-05, (ii) 1.46177e-03, mixed 1.46177e-03
+  delta_thm (Thm S4) = 3.147378e-11 exact = 411125/13062458646372128
+    kappa = 2.20356, zeta_n = 79/3, rho_n = 475.782, lambda_mu = 56; binding term index 3 of ['1.786e-02', '1.539e-04', '3.489e-11', '3.147e-11', '1.628e-10', '3.305e-10']
+  delta_thm printed 3.14e-11 (round-down of exact: 3.14e-11): certificate (i) True, (ii) True
+  delta_cert/|H_nu| floor: ['1.9e-03', '3.2e-04', '1.6e-05', '1.7e-07']  nearest: ['2.0e-03', '3.2e-04', '1.6e-05', '1.7e-07']  printed: ['1.9e-03', '3.2e-04', '1.6e-05', '1.7e-07']
+  eps_cert printed 4.6e-04: certified by ii; next 2-s.f. 4.7e-04 certifies = False; 2-s.f. max 4.6e-04, 4-s.f. max 4.627e-04
+=== m = (2, 3, 7), n = 3
+  delta_cert printed 3.658e-03: rho(A)<1 True, test (i) False, test (ii) True, mixed True -> certified by ii; a=2: (i) r=None (ii) r=1/2, a=3: (i) r=None (ii) r=17/40, a=7: (i) r=None (ii) r=1/2
+  next 4-s.f. value 3.6590e-03: certifies (any test) = False; a=2: (i) r=None (ii) r=1/2, a=3: (i) r=None (ii) r=None, a=7: (i) r=None (ii) r=1/2
+  4-s.f. max: test (i) 6.220e-04, test (ii) 3.658e-03, mixed 3.658e-03; 6-s.f.: (i) 6.22006e-04, (ii) 3.65881e-03, mixed 3.65881e-03
+  delta_thm (Thm S4) = 4.492024e-07 exact = 1/2226168
+    kappa = 1, zeta_n = 1, rho_n = 17.1701, lambda_mu = 14; binding term index 3 of ['7.143e-02', '3.571e-02', '5.615e-07', '4.492e-07', '2.246e-06']
+  delta_thm printed 4.49e-07 (round-down of exact: 4.49e-07): certificate (i) True, (ii) True
+  delta_cert/|H_nu| floor: ['3.0e-01', '3.9e-03', '2.7e-03']  nearest: ['3.1e-01', '4.0e-03', '2.7e-03']  printed: ['3.0e-01', '4.0e-03', '2.7e-03']
+    NOTE: with the PRINTED delta_cert the round-down is ['3.0e-01', '3.9e-03', '2.7e-03']; the printed column equals the round-down of (certified sup 3.65881e-03)/|H_nu| = ['3.0e-01', '4.0e-03', '2.7e-03']
+  eps_cert printed 5.0e-03: certified by ii; next 2-s.f. 5.1e-03 certifies = False; 2-s.f. max 5.0e-03, 4-s.f. max 5.013e-03
+=== m = (4, 4, 4), n = 3
+  delta_cert printed 4.539e-04: rho(A)<1 True, test (i) False, test (ii) True, mixed True -> certified by ii; a=4: (i) r=None (ii) r=1/2
+  next 4-s.f. value 4.5400e-04: certifies (any test) = False; a=4: (i) r=None (ii) r=None
+  4-s.f. max: test (i) 5.928e-05, test (ii) 4.539e-04, mixed 4.539e-04; 6-s.f.: (i) 5.92804e-05, (ii) 4.53915e-04, mixed 4.53915e-04
+  delta_thm (Thm S4) = 9.354047e-07 exact = 1/1069056
+    kappa = 1, zeta_n = 1, rho_n = 19.3333, lambda_mu = 8; binding term index 2 of ['1.250e-01', '6.250e-02', '9.354e-07']
+  delta_thm printed 9.35e-07 (round-down of exact: 9.35e-07): certificate (i) True, (ii) True
+  delta_cert/|H_nu| floor: ['3.6e-03', '5.0e-04', '5.4e-04']  nearest: ['3.6e-03', '5.1e-04', '5.4e-04']  printed: ['3.6e-03', '5.0e-04', '5.4e-04']
+  eps_cert printed 8.2e-04: certified by ii; next 2-s.f. 8.3e-04 certifies = False; 2-s.f. max 8.2e-04, 4-s.f. max 8.259e-04
+=== m = (7, 7, 7), n = 3
+  delta_cert printed 8.068e-05: rho(A)<1 True, test (i) False, test (ii) True, mixed True -> certified by ii; a=7: (i) r=None (ii) r=1/2
+  next 4-s.f. value 8.0690e-05: certifies (any test) = False; a=7: (i) r=None (ii) r=None
+  4-s.f. max: test (i) 1.632e-05, test (ii) 8.068e-05, mixed 8.068e-05; 6-s.f.: (i) 1.63275e-05, (ii) 8.06865e-05, mixed 8.06865e-05
+  delta_thm (Thm S4) = 9.973494e-08 exact = 1/10026576
+    kappa = 1, zeta_n = 1, rho_n = 19.3333, lambda_mu = 14; binding term index 2 of ['7.143e-02', '3.571e-02', '9.973e-08']
+  delta_thm printed 9.97e-08 (round-down of exact: 9.97e-08): certificate (i) True, (ii) True
+  delta_cert/|H_nu| floor: ['2.8e-04', '4.9e-05', '2.3e-05']  nearest: ['2.8e-04', '5.0e-05', '2.4e-05']  printed: ['2.8e-04', '4.9e-05', '2.3e-05']
+  eps_cert printed 1.2e-04: certified by ii; next 2-s.f. 1.3e-04 certifies = False; 2-s.f. max 1.2e-04, 4-s.f. max 1.285e-04
+=== m = (3, 3, 4, 4), n = 4
+  delta_cert printed 9.597e-05: rho(A)<1 True, test (i) False, test (ii) True, mixed True -> certified by ii; a=3: (i) r=None (ii) r=19/40, a=4: (i) r=None (ii) r=1/2
+  next 4-s.f. value 9.5980e-05: certifies (any test) = False; a=3: (i) r=None (ii) r=None, a=4: (i) r=None (ii) r=1/2
+  4-s.f. max: test (i) 5.660e-07, test (ii) 9.597e-05, mixed 9.597e-05; 6-s.f.: (i) 5.66081e-07, (ii) 9.59730e-05, mixed 9.59730e-05
+  delta_thm (Thm S4) = 1.486919e-09 exact = 245/164770288128
+    kappa = 1.81633, zeta_n = 79/3, rho_n = 558.013, lambda_mu = 8; binding term index 2 of ['1.250e-01', '1.307e-03', '1.487e-09', '1.487e-09']
+  delta_thm printed 1.48e-09 (round-down of exact: 1.48e-09): certificate (i) True, (ii) True
+  delta_cert/|H_nu| floor: ['2.3e-04', '1.0e-04', '1.1e-04', '7.2e-05']  nearest: ['2.3e-04', '1.0e-04', '1.2e-04', '7.3e-05']  printed: ['2.3e-04', '1.0e-04', '1.1e-04', '7.2e-05']
+  eps_cert printed 1.1e-04: certified by ii; next 2-s.f. 1.2e-04 certifies = False; 2-s.f. max 1.1e-04, 4-s.f. max 1.185e-04
+=== m = (5, 5, 5, 5), n = 4
+  delta_cert printed 3.617e-05: rho(A)<1 True, test (i) False, test (ii) True, mixed True -> certified by ii; a=5: (i) r=None (ii) r=1/2
+  next 4-s.f. value 3.6180e-05: certifies (any test) = False; a=5: (i) r=None (ii) r=None
+  4-s.f. max: test (i) 2.321e-07, test (ii) 3.617e-05, mixed 3.617e-05; 6-s.f.: (i) 2.32142e-07, (ii) 3.61790e-05, mixed 3.61790e-05
+  delta_thm (Thm S4) = 4.743701e-10 exact = 1/2108058750
+    kappa = 1.75, zeta_n = 79/3, rho_n = 594.867, lambda_mu = 10; binding term index 2 of ['1.000e-01', '1.085e-03', '4.744e-10']
+  delta_thm printed 4.74e-10 (round-down of exact: 4.74e-10): certificate (i) True, (ii) True
+  delta_cert/|H_nu| floor: ['6.0e-05', '2.5e-05', '1.9e-05', '6.2e-06']  nearest: ['6.0e-05', '2.6e-05', '1.9e-05', '6.3e-06']  printed: ['6.0e-05', '2.5e-05', '1.9e-05', '6.2e-06']
+  eps_cert printed 3.1e-05: certified by ii; next 2-s.f. 3.2e-05 certifies = False; 2-s.f. max 3.1e-05, 4-s.f. max 3.149e-05
+=== m = (2, 2, 2, 3), n = 4
+  delta_cert printed 1.858e-04: rho(A)<1 True, test (i) False, test (ii) True, mixed True -> certified by ii; a=2: (i) r=None (ii) r=1/2, a=3: (i) r=None (ii) r=19/40
+  next 4-s.f. value 1.8590e-04: certifies (any test) = False; a=2: (i) r=None (ii) r=None, a=3: (i) r=None (ii) r=19/40
+  4-s.f. max: test (i) 2.268e-06, test (ii) 1.858e-04, mixed 1.858e-04; 6-s.f.: (i) 2.26815e-06, (ii) 1.85881e-04, mixed 1.85881e-04
+  delta_thm (Thm S4) = 2.031060e-09 exact = 625/307721117718
+    kappa = 1.9315, zeta_n = 79/3, rho_n = 526.607, lambda_mu = 166/9; binding term index 2 of ['5.422e-02', '5.330e-04', '2.031e-09', '2.031e-09']
+  delta_thm printed 2.03e-09 (round-down of exact: 2.03e-09): certificate (i) True, (ii) True
+  delta_cert/|H_nu| floor: ['2.2e-03', '3.2e-04', '5.6e-04', '7.7e-04']  nearest: ['2.2e-03', '3.3e-04', '5.6e-04', '7.7e-04']  printed: ['2.2e-03', '3.2e-04', '5.6e-04', '7.7e-04']
+  eps_cert printed 4.3e-04: certified by ii; next 2-s.f. 4.4e-04 certifies = False; 2-s.f. max 4.3e-04, 4-s.f. max 4.398e-04
+=== m = (2, 2, 2, 2, 3), n = 5
+  delta_cert printed 7.908e-06: rho(A)<1 True, test (i) False, test (ii) True, mixed True -> certified by ii; a=2: (i) r=None (ii) r=1/2, a=3: (i) r=None (ii) r=17/40
+  next 4-s.f. value 7.9090e-06: certifies (any test) = False; a=2: (i) r=None (ii) r=None, a=3: (i) r=None (ii) r=17/40
+  4-s.f. max: test (i) 1.188e-08, test (ii) 7.908e-06, mixed 7.908e-06; 6-s.f.: (i) 1.18853e-08, (ii) 7.90808e-06, mixed 7.90808e-06
+  delta_thm (Thm S4) = 2.729780e-12 exact = 350000/128215445811292593
+    kappa = 3.51089, zeta_n = 14048/15, rho_n = 23950.6, lambda_mu = 166/9; binding term index 2 of ['5.422e-02', '8.244e-06', '2.730e-12', '2.730e-12']
+  delta_thm printed 2.72e-12 (round-down of exact: 2.72e-12): certificate (i) True, (ii) True
+  delta_cert/|H_nu| floor: ['2.3e-05', '1.2e-05', '2.1e-05', '2.9e-05', '1.9e-05']  nearest: ['2.4e-05', '1.3e-05', '2.1e-05', '2.9e-05', '2.0e-05']  printed: ['2.3e-05', '1.2e-05', '2.1e-05', '2.9e-05', '1.9e-05']
+  eps_cert printed 1.4e-05: certified by ii; next 2-s.f. 1.5e-05 certifies = False; 2-s.f. max 1.4e-05, 4-s.f. max 1.466e-05
+
+SUMMARY  m | delta_cert printed | test | 4sf max (i)/(ii)/mixed | delta_thm printed/recomputed | eps printed/max | eps test
+  (2, 8, 8) | 2.341e-03 | ii | 2.683e-04 / 2.341e-03 / 2.341e-03 | 3.80e-07 / 3.80e-07 | 1.9e-03 / 1.9e-03 | ii
+  (3, 3, 12) | 4.040e-03 | ii | 9.484e-04 / 4.040e-03 / 4.040e-03 | 1.18e-07 / 1.18e-07 | 4.4e-03 / 4.4e-03 | ii
+  (3, 10, 15, 30) | 3.660e-03 | ii | 7.433e-05 / 3.660e-03 / 3.660e-03 | 4.02e-11 / 4.02e-11 | 8.7e-04 / 8.7e-04 | ii
+  (4, 5, 21, 28) | 1.461e-03 | ii | 4.582e-05 / 1.461e-03 / 1.461e-03 | 3.14e-11 / 3.14e-11 | 4.6e-04 / 4.6e-04 | ii
+  (2, 3, 7) | 3.658e-03 | ii | 6.220e-04 / 3.658e-03 / 3.658e-03 | 4.49e-07 / 4.49e-07 | 5.0e-03 / 5.0e-03 | ii
+  (4, 4, 4) | 4.539e-04 | ii | 5.928e-05 / 4.539e-04 / 4.539e-04 | 9.35e-07 / 9.35e-07 | 8.2e-04 / 8.2e-04 | ii
+  (7, 7, 7) | 8.068e-05 | ii | 1.632e-05 / 8.068e-05 / 8.068e-05 | 9.97e-08 / 9.97e-08 | 1.2e-04 / 1.2e-04 | ii
+  (3, 3, 4, 4) | 9.597e-05 | ii | 5.660e-07 / 9.597e-05 / 9.597e-05 | 1.48e-09 / 1.48e-09 | 1.1e-04 / 1.1e-04 | ii
+  (5, 5, 5, 5) | 3.617e-05 | ii | 2.321e-07 / 3.617e-05 / 3.617e-05 | 4.74e-10 / 4.74e-10 | 3.1e-05 / 3.1e-05 | ii
+  (2, 2, 2, 3) | 1.858e-04 | ii | 2.268e-06 / 1.858e-04 / 1.858e-04 | 2.03e-09 / 2.03e-09 | 4.3e-04 / 4.3e-04 | ii
+  (2, 2, 2, 2, 3) | 7.908e-06 | ii | 1.188e-08 / 7.908e-06 / 7.908e-06 | 2.72e-12 / 2.72e-12 | 1.4e-05 / 1.4e-05 | ii
+TOTAL FAILURES: 0

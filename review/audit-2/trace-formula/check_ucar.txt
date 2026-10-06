@@ -1,0 +1,6 @@
+(a) 2 c^S_k(pi/m) = (2k)!/(k!4^k) phi_k(m) as polynomials, k<=40: OK
+(b) p_l/m = sum_i 2(4^i i!)^-1 c^S_(l-i)(pi/m), l<=40: OK
+(c) Ucar (4.33) at kappa=-1 = b_l(m) = (-1)^l p_l(m)/m, l<=40: OK
+(d) Ucar (4.35) at kappa=-1 equals alpha_nu, nu<=40: OK
+(e) m t^2 Phi_m(it/2) = t^2/(4 sinh(t/2)) (m coth(mt/2) - coth(t/2)) through t^82, m<=12: OK
+ALL CHECKS PASSED

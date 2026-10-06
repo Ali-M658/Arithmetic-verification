@@ -1,0 +1,10 @@
+primitive odd symmetric 5-sets, at most 0 entries with |x|>200: 602 (counting A and -A separately), 301 up to sign
+primitive odd symmetric 5-sets, at most 1 entries with |x|>200: 674 (counting A and -A separately), 337 up to sign
+primitive odd symmetric 5-sets, at most 2 entries with |x|>200: 1592 (counting A and -A separately), 796 up to sign
+  mode 0: equals the exhaustive C enumeration check_n5.c (602 sets)
+  mode 1: equals the exhaustive C enumeration check_n5.c (674 sets)
+CLAIM '1,592 primitive 5-sets with entries <= 200': the number 1,592 is the family 'at least three entries in [-200,200]' (A and -A both counted); with all entries <= 200 it is 602.
+J-classes by size (A and -A share a class): {2: 796} ; sets with e4 = 0: 0
+non-trivial pencil pairs among the 1592: 0
+CLAIM 'no pencil pair' : TRUE on all three families (<=200; at most one >200; at most two >200)
+ALL OK

@@ -1,0 +1,10 @@
+L=2: |A|=3, entries<=60: 1800 sets (both signs); sets with an internal pair: 0; iota distribution {1: 900, -1: 900}; e.g. [(-60, 1, 59), (-60, 2, 58)]  [0.0s]
+L=3: |A|=5, entries<=40: 58 sets (both signs); sets with an internal pair: 0; iota distribution {-1: 29, 1: 29}; e.g. [(-45, -25, -5, 35, 40), (-42, -23, -4, 30, 39)]  [1.3s]
+L=4: |A|=7, entries<=60: 4 sets (both signs); sets with an internal pair: 0; iota distribution {1: 2, -1: 2}; e.g. [(-55, -40, -30, 6, 19, 49, 51), (-51, -49, -19, -6, 30, 40, 55)]  [287.0s]
+fetched Escott degree-6 solution, centred and doubled: (-102, -66, -48, 14, 26, 76, 100)  s_-1 = 11285167/129329200  iota = 1
+(b) L=2: {'empty': 55, 'full config': 3985, 'partial cancel': 0, 'pairs': 4040}; partial-cancellation example: None
+(b) L=3: {'empty': 292, 'full config': 3112, 'partial cancel': 0, 'pairs': 3404}; partial-cancellation example: None
+(b) L=4: {'empty': 16, 'full config': 8, 'partial cancel': 0, 'pairs': 24}; partial-cancellation example: None
+Prop 2.2: [Z] =_{2L-2} [-Z], Z != -Z for 352 enumerated configurations
+N(k) >= k+1 spot check (n<=3, entries 0..8): ok
+FAILURES: 0

@@ -91,7 +91,7 @@ GROUPS["pte-growth"] = {
         ("PG.1", "Proposition 3.3 (doubling)", [L(PRF, 283, 293, "**Proposition 3.3")]),
         ("PG.2", "Theorem 3.4 (upper bounds)", [L(PRF, 311, 314, "**Theorem 3.4")]),
         ("PG.3", "Theorem 4.1 (square-root lower bound)", [L(PRF, 329, 332, "**Theorem 4.1")]),
-        ("PG.4", "Theorem 4.2 (the exponent of f is a PTE exponent)", [L(PRF, 342, 350, "**Theorem 4.2")]),
+        ("PG.4", "Theorem 4.2 (the exponent of f is a PTE exponent)", [L(PRF, 342, 351, "**Theorem 4.2")]),
         ("PG.5", "Theorem 4.3 (genus alone, cone count alone)", [L(PRF, 380, 390, "**Theorem 4.3")]),
         ("PG.6", "Manuscript-facing version (statements.tex): Theorem (Growth) and Theorem (Descartes)", [
             L(STX, 55, 70, "\\begin{theorem}[Growth]"),

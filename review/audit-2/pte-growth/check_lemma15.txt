@@ -1,0 +1,52 @@
+== (3) L = 2
+OK   N_odd(2) <= 2 : [1,4] vs [2,3], P_1 = 5
+OK   N_odd(2) >= 2 trivially (distinct singletons differ in P_1)
+== (1) own exhaustive searches, size n = L
+OK   L=3: own search n=3, entries <= 20: ((1, 5, 5), (2, 3, 6))
+OK   L=4: own search n=4, entries <= 30: ((1, 13, 17, 23), (3, 9, 21, 21))
+OK   L=5: own search (streamed by P_1) n=5: (3, 19, 37, 51, 53) vs (9, 11, 43, 45, 55), P_1=163
+== (1) fetched witnesses (eslpower.org eslp.htm), re-verified exactly
+OK   L=3: [2, 10, 12] vs [3, 8, 13]: odd sums j<= 3 equal: (24, 2736)
+     P_5: 348864 vs 404304
+OK   L=4: [1, 13, 17, 23] vs [3, 9, 21, 21]: odd sums j<= 5 equal: (54, 19278, 8227494)
+     P_7: 3877912638 vs 3606962238
+OK   L=5: [3, 19, 37, 51, 53] vs [9, 11, 43, 45, 55]: odd sums j<= 7 equal: (163, 339067, 835041043, 2167947568747)
+     P_9: 5764213192405123 vs 5864642583867523
+OK   L=6: [7, 91, 173, 269, 289, 323] vs [29, 59, 193, 247, 311, 313]: odd sums j<= 9 equal: (1152, 83232576, 7101419380992, 641779096196799936, 59844313637175939484032)
+     P_11: 5704735697015710730053087296 vs 5679884276429462215747039296
+== (2) lower bound: symmetric lemma, exhaustive on boxes
+OK   L=2: every multiset of size <= 2 in [-12,12]\0 with odd sums j<= 1 zero is symmetric (12 such multisets)
+OK   L=3: every multiset of size <= 4 in [-7,7]\0 with odd sums j<= 3 zero is symmetric (35 such multisets)
+OK   L=4: every multiset of size <= 6 in [-4,4]\0 with odd sums j<= 5 zero is symmetric (34 such multisets)
+OK   L=2: no pair of distinct 1-multisets in [1,60] with equal odd sums (consistent with N_odd(L) >= L)
+OK   L=3: no pair of distinct 2-multisets in [1,40] with equal odd sums (consistent with N_odd(L) >= L)
+OK   L=4: no pair of distinct 3-multisets in [1,25] with equal odd sums (consistent with N_odd(L) >= L)
+== (4) pigeonhole
+OK   L=2: n=2, M=n!n^(L-1): #multisets > #power-sum vectors
+OK   L=2: sum of odd j <= 2L-3 is (L-1)^2
+OK   L=2: C(M+n-1,n) >= M^n/n!
+OK   L=3: n=5, M=n!n^(L-1): #multisets > #power-sum vectors
+OK   L=3: sum of odd j <= 2L-3 is (L-1)^2
+OK   L=3: C(M+n-1,n) >= M^n/n!
+OK   L=4: n=10, M=n!n^(L-1): #multisets > #power-sum vectors
+OK   L=4: sum of odd j <= 2L-3 is (L-1)^2
+OK   L=4: C(M+n-1,n) >= M^n/n!
+OK   L=5: n=17, M=n!n^(L-1): #multisets > #power-sum vectors
+OK   L=5: sum of odd j <= 2L-3 is (L-1)^2
+OK   L=5: C(M+n-1,n) >= M^n/n!
+OK   L=6: n=26, M=n!n^(L-1): #multisets > #power-sum vectors
+OK   L=6: sum of odd j <= 2L-3 is (L-1)^2
+OK   L=6: C(M+n-1,n) >= M^n/n!
+OK   L=7: n=37, M=n!n^(L-1): #multisets > #power-sum vectors
+OK   L=7: sum of odd j <= 2L-3 is (L-1)^2
+OK   L=7: C(M+n-1,n) >= M^n/n!
+OK   L=8: n=50, M=n!n^(L-1): #multisets > #power-sum vectors
+OK   L=8: sum of odd j <= 2L-3 is (L-1)^2
+OK   L=8: C(M+n-1,n) >= M^n/n!
+OK   L=9: n=65, M=n!n^(L-1): #multisets > #power-sum vectors
+OK   L=9: sum of odd j <= 2L-3 is (L-1)^2
+OK   L=9: C(M+n-1,n) >= M^n/n!
+OK   L=2: a collision of size (L-1)^2+1 = 2 exists in [1,12]: ((1, 3), (2, 2))
+OK   L=3: a collision of size (L-1)^2+1 = 5 exists in [1,12]: ((1, 1, 3, 4, 4), (2, 2, 2, 2, 5))
+
+ALL CHECKS PASSED

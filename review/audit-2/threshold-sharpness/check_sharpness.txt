@@ -1,0 +1,21 @@
+front end: R = -2 H_-1 + c, P1 = 2 H_-1 + 12 H_0 + c, P3 = -18 H_-1 - 120 H_0 - 360 H_1 + c  (matches ST.2)
+|dP3 - 3a^2 dP1| <= (498 + 42 a^2) * delta
+family (a+s,a-s,a,...,a), n=2..7: dR = 2s^2/(a(a^2-s^2)), dP1 = 0, dP3 = 6 a s^2, all changes even and O(s^2)
+identity (P3-3a^2P1)(a+d)-(..)(a) = sum(3a d^2 + d^3) = 2a sum d^2 + sum d^2(a+d); inequality holds iff each d_i >= -a
+negative-entry multiset ['16539/5000', '-3451/500', '3507/500', '38009/10000', '1503757/500000', '109/25'] violates the bound: d_i >= -a cannot be dropped (global form)
+3000 exact probes (n=3..6, real orders near (a,..,a), incl. all d_i >= -a): max|d|^2 / bound <= 0.5942839170767207
+k=2: roots a+s w^j real (a+s, a-s); cluster data change O(s^2)
+k=3: roots a+s w^j not all real; cluster data change O(s^3)
+k=4: roots a+s w^j not all real; cluster data change O(s^4)
+k=5: roots a+s w^j not all real; cluster data change O(s^5)
+k=6: roots a+s w^j not all real; cluster data change O(s^6)
+n=k=3 witness at a=4, s=1/10: data determine e uniquely; discriminant -27/1000000 < 0, so not the data of a real multiset
+   confluent det (3, 1) = 120*(a - b)**3*(a + b)**3/(a**3*b**2)
+   confluent det (2, 2) = -60*(a - b)**4*(a + b)**4/(a**3*b**3)
+   confluent det (4, 1) = -6720*(a - b)**4*(a + b)**4/(a**2*b**2)
+   confluent det (3, 1, 1) = 840*(a - b)**3*(a + b)**3*(a - c)**3*(a + c)**3*(b - c)*(b + c)/(a**3*b**2*c**2)
+   confluent det (3, 2) = -1680*(a - b)**6*(a + b)**6/(a**3*b**3)
+   confluent det (5,) = -107520
+   confluent det (2, 1, 1) = 30*(a - b)**2*(a + b)**2*(a - c)**2*(a + c)**2*(b - c)*(b + c)/(a**3*b**2*c**2)
+confluent Jacobians: products of x, (x-y), (x+y) only  -> nonsingular at any cluster pattern of positive distinct values
+ALL CHECKS PASSED

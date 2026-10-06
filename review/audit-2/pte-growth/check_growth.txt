@@ -1,0 +1,22 @@
+OK   Thm 4.1: 'largest L with 3(L-1)^2+1 <= A/2pi' + 1 == floor(sqrt((A/2pi-1)/3)) + 2 at 7493 points (all breakpoints m < 1500, +-1e-9, +-1e-30)
+OK   Thm 4.1 at A = 8 pi exactly: L = 2, bound = 3
+OK   just below A = 8 pi no L >= 2 qualifies (hypothesis A >= 8 pi is sharp for this route)
+OK   Thm 4.1: 3((L-1)^2+1)-2 == 3(L-1)^2+1 for L < 200
+OK   Thm 4.1 bound >= [Sig] N1 log bound at every integer A/2pi in [4,5000)
+OK   Thm 4.2(a): n+g-g' <= 2s+4 on 54708 (signature, g') cases
+OK   equality case (0;2,2,2,2,2): n = 2s+4
+OK   Thm 4.2(a): largest even integer <= floor(2A/pi)+8 equals 2 floor(A/pi)+8 (t = k/37, k < 4000)
+OK   evenness is genuinely used (t = 3/2)
+OK   (1;15) vs (0;3,3,5,5): Lemma 4 (4.2) with L = 2
+OK   |U|+|V| = 6 <= 2floor(A/pi)+8 = 10
+OK   [Z] =_{2L-2} [-Z] for L = 2 (PTE of degree 2, size 6); so N(2) <= 6
+OK   Thm 4.2(b): choice L = floor((x+3)/2) valid for x >= 1; for x < 1 the bound is < 1/2
+OK   k(k+1)/2+1 <= 2k^2 for 1 <= k < 3000 (C = 2, beta = 2 admissible)
+OK   (b) with C=2, beta=2, i.e. (1/2)sqrt(A/12pi), is <= the Thm 4.1 bound on a grid of A/pi in [8, 4000)
+OK   (c) =>: L = ceil(k/2)+1 has 2L-2 >= k, L >= 2 and L+1 <= 3k for 1 <= k < 1e5
+OK   commentary: alpha in (1/2, 1] gives exponent 1/alpha = 2 - eps with eps = 2 - 1/alpha > 0
+OK   N(2L-3) <= (2L-3)(2L-2)/2 + 1 == 2L^2-5L+4 for 2 <= L < 1e4
+OK   Thm 4.3: f_g(A) >= sqrt(A/16pi) for A >= 16pi and f_n(A) >= sqrt(A/12pi) for A >= 8pi (grid of A/pi up to 1e4)
+OK   thresholds at L = 2 (N(1) = 2): f_g >= 3 from A >= 16pi, f_n >= 3 from A >= 8pi
+
+ALL CHECKS PASSED

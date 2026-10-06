@@ -1,0 +1,114 @@
+(2, 8, 8) a=2 c=2.5 R: best float max|dH| = 3.433111e-02
+(2, 8, 8) a=2 c=2.5 C: best float max|dH| = 2.101065e-01
+(2, 8, 8) a=2 c=1.5 R: best float max|dH| = 6.712507e-02
+(2, 8, 8) a=2 c=1.5 C: best float max|dH| = 3.159235e-01
+(2, 8, 8) a=8 c=8.5 R: best float max|dH| = 3.132338e-03
+(2, 8, 8) a=8 c=8.5 C: best float max|dH| = 5.611845e-02
+(2, 8, 8) a=8 c=7.5 R: best float max|dH| = 2.484862e-03
+(2, 8, 8) a=8 c=7.5 C: best float max|dH| = 1.399993e-01
+== (2, 8, 8): best 2.484862e-03 at a=8 s=-1 shape=R (printed 2.485e-03); 65s
+(3, 3, 12) a=3 c=3.5 R: best float max|dH| = 4.588272e-03
+(3, 3, 12) a=3 c=3.5 C: best float max|dH| = 6.319341e-02
+(3, 3, 12) a=3 c=2.5 R: best float max|dH| = 6.171450e-03
+(3, 3, 12) a=3 c=2.5 C: best float max|dH| = 6.246979e-02
+(3, 3, 12) a=12 c=12.5 R: best float max|dH| = 1.704685e-01
+(3, 3, 12) a=12 c=12.5 C: best float max|dH| = 3.479032e-01
+(3, 3, 12) a=12 c=11.5 R: best float max|dH| = 9.448227e-02
+(3, 3, 12) a=12 c=11.5 C: best float max|dH| = 3.511415e-01
+== (3, 3, 12): best 4.588272e-03 at a=3 s=1 shape=R (printed 4.589e-03); 88s
+(3, 10, 15, 30) a=3 c=3.5 R: best float max|dH| = 1.816402e-02
+(3, 10, 15, 30) a=3 c=3.5 C: best float max|dH| = 3.411488e-01
+(3, 10, 15, 30) a=3 c=2.5 R: best float max|dH| = 2.774689e-02
+(3, 10, 15, 30) a=3 c=2.5 C: best float max|dH| = 2.139476e-01
+(3, 10, 15, 30) a=10 c=10.5 R: best float max|dH| = 7.486519e-03
+(3, 10, 15, 30) a=10 c=10.5 C: best float max|dH| = 3.898617e-01
+(3, 10, 15, 30) a=3 c=3.5 R: best float max|dH| = 1.816402e-02
+(3, 10, 15, 30) a=3 c=3.5 C: best float max|dH| = 3.411488e-01
+(3, 10, 15, 30) a=3 c=2.5 R: best float max|dH| = 2.774689e-02
+(3, 10, 15, 30) a=3 c=2.5 C: best float max|dH| = 4.735691e-01
+(3, 10, 15, 30) a=10 c=10.5 R: best float max|dH| = 7.486519e-03
+(3, 10, 15, 30) a=10 c=10.5 C: best float max|dH| = 3.898617e-01
+(3, 10, 15, 30) a=10 c=9.5 R: best float max|dH| = 7.702528e-03
+(3, 10, 15, 30) a=10 c=9.5 C: best float max|dH| = 3.418519e-01
+(3, 10, 15, 30) a=15 c=15.5 R: best float max|dH| = 1.672407e-02
+(3, 10, 15, 30) a=15 c=15.5 C: best float max|dH| = 2.757310e-01
+(3, 10, 15, 30) a=15 c=14.5 R: best float max|dH| = 1.259180e-02
+(3, 10, 15, 30) a=15 c=14.5 C: best float max|dH| = 2.432821e-01
+(3, 10, 15, 30) a=30 c=30.5 R: best float max|dH| = 2.737932e-01
+(3, 10, 15, 30) a=30 c=30.5 C: best float max|dH| = 2.374278e-01
+(3, 10, 15, 30) a=30 c=29.5 R: best float max|dH| = 1.622506e-01
+(3, 10, 15, 30) a=30 c=29.5 C: best float max|dH| = 2.342437e-01
+== (3, 10, 15, 30): best 7.486519e-03 at a=10 s=1 shape=R (printed 7.488e-03); 349s
+(4, 5, 21, 28) a=4 c=4.5 R: best float max|dH| = 2.017668e-03
+(4, 5, 21, 28) a=4 c=4.5 C: best float max|dH| = 2.786451e-03
+(4, 5, 21, 28) a=4 c=3.5 R: best float max|dH| = 7.049591e-03
+(4, 5, 21, 28) a=4 c=3.5 C: best float max|dH| = 1.399614e-01
+(4, 5, 21, 28) a=5 c=5.5 R: best float max|dH| = 5.446852e-03
+(4, 5, 21, 28) a=5 c=5.5 C: best float max|dH| = 1.388068e-01
+(4, 5, 21, 28) a=5 c=4.5 R: best float max|dH| = 2.017668e-03
+(4, 5, 21, 28) a=5 c=4.5 C: best float max|dH| = 2.786451e-03
+(4, 5, 21, 28) a=21 c=21.5 R: best float max|dH| = 6.233766e-02
+(4, 5, 21, 28) a=21 c=21.5 C: best float max|dH| = 2.390882e-01
+(4, 5, 21, 28) a=21 c=20.5 R: best float max|dH| = 6.166106e-02
+(4, 5, 21, 28) a=21 c=20.5 C: best float max|dH| = 2.408485e-01
+(4, 5, 21, 28) a=28 c=28.5 R: best float max|dH| = 2.211858e-01
+(4, 5, 21, 28) a=28 c=28.5 C: best float max|dH| = 2.295268e-01
+(4, 5, 21, 28) a=28 c=27.5 R: best float max|dH| = 1.292973e-01
+(4, 5, 21, 28) a=28 c=27.5 C: best float max|dH| = 2.212624e-01
+== (4, 5, 21, 28): best 2.017668e-03 at a=4 s=1 shape=R (printed 2.018e-03); 112s
+(2, 3, 7) a=2 c=2.5 R: best float max|dH| = 6.586914e-03
+(2, 3, 7) a=2 c=2.5 C: best float max|dH| = 1.652534e-02
+(2, 3, 7) a=2 c=1.5 R: best float max|dH| = 3.663713e-02
+(2, 3, 7) a=2 c=1.5 C: best float max|dH| = 1.043085e-01
+(2, 3, 7) a=3 c=3.5 R: best float max|dH| = 1.237742e-02
+(2, 3, 7) a=3 c=3.5 C: best float max|dH| = 1.215691e-01
+(2, 3, 7) a=3 c=2.5 R: best float max|dH| = 6.586914e-03
+(2, 3, 7) a=3 c=2.5 C: best float max|dH| = 1.652534e-02
+(2, 3, 7) a=7 c=7.5 R: best float max|dH| = 7.645951e-02
+(2, 3, 7) a=7 c=7.5 C: best float max|dH| = 3.530880e-01
+(2, 3, 7) a=7 c=6.5 R: best float max|dH| = 3.651721e-02
+(2, 3, 7) a=7 c=6.5 C: best float max|dH| = 1.907831e-01
+== (2, 3, 7): best 6.586914e-03 at a=2 s=1 shape=R (printed 6.587e-03); 15s
+(4, 4, 4) a=4 c=4.5 R: best float max|dH| = 5.035826e-04
+(4, 4, 4) a=4 c=4.5 C: best float max|dH| = 3.879796e-03
+(4, 4, 4) a=4 c=3.5 R: best float max|dH| = 5.213626e-04
+(4, 4, 4) a=4 c=3.5 C: best float max|dH| = 3.646760e-03
+== (4, 4, 4): best 5.035826e-04 at a=4 s=1 shape=R (printed 5.036e-04); 13s
+(7, 7, 7) a=7 c=7.5 R: best float max|dH| = 8.609527e-05
+(7, 7, 7) a=7 c=7.5 C: best float max|dH| = 6.408902e-04
+(7, 7, 7) a=7 c=6.5 R: best float max|dH| = 8.272119e-05
+(7, 7, 7) a=7 c=6.5 C: best float max|dH| = 6.909602e-04
+== (7, 7, 7): best 8.272119e-05 at a=7 s=-1 shape=R (printed 8.273e-05); 10s
+(3, 3, 4, 4) a=3 c=3.5 R: best float max|dH| = 1.194359e-04
+(3, 3, 4, 4) a=3 c=3.5 C: best float max|dH| = 1.357437e-04
+(3, 3, 4, 4) a=3 c=2.5 R: best float max|dH| = 1.120112e-03
+(3, 3, 4, 4) a=3 c=2.5 C: best float max|dH| = 4.862428e-03
+(3, 3, 4, 4) a=4 c=4.5 R: best float max|dH| = 1.191680e-03
+(3, 3, 4, 4) a=4 c=4.5 C: best float max|dH| = 5.451388e-03
+(3, 3, 4, 4) a=4 c=3.5 R: best float max|dH| = 1.194359e-04
+(3, 3, 4, 4) a=4 c=3.5 C: best float max|dH| = 1.357437e-04
+== (3, 3, 4, 4): best 1.194359e-04 at a=3 s=1 shape=R (printed 1.195e-04); 71s
+(5, 5, 5, 5) a=5 c=5.5 R: best float max|dH| = 4.246185e-05
+(5, 5, 5, 5) a=5 c=5.5 C: best float max|dH| = 1.595577e-04
+(5, 5, 5, 5) a=5 c=4.5 R: best float max|dH| = 3.825799e-05
+(5, 5, 5, 5) a=5 c=4.5 C: best float max|dH| = 1.585500e-04
+== (5, 5, 5, 5): best 3.825799e-05 at a=5 s=-1 shape=R (printed 3.826e-05); 48s
+(2, 2, 2, 3) a=2 c=2.5 R: best float max|dH| = 2.519715e-04
+(2, 2, 2, 3) a=2 c=2.5 C: best float max|dH| = 8.215961e-03
+(2, 2, 2, 3) a=2 c=1.5 R: best float max|dH| = 1.010543e-03
+(2, 2, 2, 3) a=2 c=1.5 C: best float max|dH| = 2.805840e-03
+(2, 2, 2, 3) a=3 c=3.5 R: best float max|dH| = 7.831538e-03
+(2, 2, 2, 3) a=3 c=3.5 C: best float max|dH| = 2.515100e-02
+(2, 2, 2, 3) a=3 c=2.5 R: best float max|dH| = 2.519715e-04
+(2, 2, 2, 3) a=3 c=2.5 C: best float max|dH| = 8.215961e-03
+== (2, 2, 2, 3): best 2.519715e-04 at a=2 s=1 shape=R (printed 2.520e-04); 65s
+(2, 2, 2, 2, 3) a=2 c=2.5 R: best float max|dH| = 5.311320e-05
+(2, 2, 2, 2, 3) a=2 c=2.5 C: best float max|dH| = 8.530600e-04
+(2, 2, 2, 2, 3) a=2 c=1.5 R: best float max|dH| = 1.562544e-04
+(2, 2, 2, 2, 3) a=2 c=1.5 C: best float max|dH| = 4.066013e-04
+(2, 2, 2, 2, 3) a=3 c=3.5 R: best float max|dH| = 5.866752e-03
+(2, 2, 2, 2, 3) a=3 c=3.5 C: best float max|dH| = 1.984132e-02
+(2, 2, 2, 2, 3) a=3 c=2.5 R: best float max|dH| = 5.311320e-05
+(2, 2, 2, 2, 3) a=3 c=2.5 C: best float max|dH| = 8.530600e-04
+== (2, 2, 2, 2, 3): best 5.311320e-05 at a=2 s=1 shape=R (printed 5.743e-05); 124s
+main-exit 0

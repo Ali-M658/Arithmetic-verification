@@ -105,7 +105,7 @@ $$f(A)\ \ge\ \Bigl\lfloor\sqrt{\tfrac13\bigl(\tfrac{A}{2\pi}-1\bigr)}\Bigr\rfloo
 
 ### PG.4. Theorem 4.2 (the exponent of f is a PTE exponent)
 
-Source: `theory/pte/proof.md` lines 342-350 (verbatim).
+Source: `theory/pte/proof.md` lines 342-351 (verbatim).
 
 ````
 **Theorem 4.2 (the exponent of $f$ is a PTE exponent).**
@@ -117,6 +117,7 @@ $A\ge8\pi$.
 
 (c) For $0<\alpha\le1$: $f(A)\ge cA^\alpha$ for all large $A$ (some $c>0$) if and only if
 $N(k)\le Ck^{1/\alpha}$ for all $k$ (some $C$). In particular $f(A)=\Theta(A)$ iff
+$N(k)=O(k)$.
 ````
 
 ### PG.5. Theorem 4.3 (genus alone, cone count alone)

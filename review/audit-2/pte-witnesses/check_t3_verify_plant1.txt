@@ -1,0 +1,9 @@
+[plant1_60] N=60: y1 done 60/60, missing [], count mismatches []
+[plant1_60] multisets examined: 7624512; C(N+4,5) = 7624512
+[plant1_60] survivors of the 16-prime certified filter: 4
+   survivor Y=(1, 1, 1, 1, 30): three rational roots ['0', '0', '34'], not all positive -> not of the shape
+   survivor Y=(1, 1, 4, 9, 9): three rational roots ['0', '0', '24'], not all positive -> not of the shape
+   survivor Y=(1, 4, 4, 4, 11): three rational roots ['0', '0', '24'], not all positive -> not of the shape
+   SOLUTION Y=(2, 2, 8, 8, 8) X=['1', '3', '24'] disjoint=True
+[plant1_60] exact solutions: 1
+[plant1_60] planted Y0=(2, 2, 8, 8, 8), X0=[1, 3, 24] (delta=12300) recovered: True

@@ -1,0 +1,57 @@
+== (1) Theorem 3 of eslpower TarryPrb.htm ==
+[OK]   identity sum[(T+a)^k+(T-b)^k-(T+b)^k-(T-a)^k] = sum_{j odd<=k} 2 C(k,j) T^(k-j) (p_j(a)-p_j(b)) holds for m<=4, k<=9
+   => if p_j(a)=p_j(b) for j=1,3,...,2n-1 then the lifted pair agrees for k=1..2n (only odd j<=k<=2n, i.e. j<=2n-1, occur).
+[OK]   A.48 [1,5,5]=[2,3,6] (k=1,3), n=2, T=0: lifted size 6 agrees for k=1..4; nontrivial=True; differs at 5: True
+[OK]   A.48 [1,5,5]=[2,3,6] (k=1,3), n=2, T=1: lifted size 6 agrees for k=1..4; nontrivial=True; differs at 5: True
+[OK]   A.48 [1,5,5]=[2,3,6] (k=1,3), n=2, T=7: lifted size 6 agrees for k=1..4; nontrivial=True; differs at 5: True
+[OK]   A.48 [1,5,5]=[2,3,6] (k=1,3), n=2, T=100: lifted size 6 agrees for k=1..4; nontrivial=True; differs at 5: True
+[OK]   A.48 [1,5,5]=[2,3,6] (k=1,3), n=2, T=-3: lifted size 6 agrees for k=1..4; nontrivial=True; differs at 5: True
+[OK]   A.178 [1,13,17,23]=[3,9,21,21] (k=1,3,5), n=3, T=0: lifted size 8 agrees for k=1..6; nontrivial=True; differs at 7: True
+[OK]   A.178 [1,13,17,23]=[3,9,21,21] (k=1,3,5), n=3, T=1: lifted size 8 agrees for k=1..6; nontrivial=True; differs at 7: True
+[OK]   A.178 [1,13,17,23]=[3,9,21,21] (k=1,3,5), n=3, T=7: lifted size 8 agrees for k=1..6; nontrivial=True; differs at 7: True
+[OK]   A.178 [1,13,17,23]=[3,9,21,21] (k=1,3,5), n=3, T=100: lifted size 8 agrees for k=1..6; nontrivial=True; differs at 7: True
+[OK]   A.178 [1,13,17,23]=[3,9,21,21] (k=1,3,5), n=3, T=-3: lifted size 8 agrees for k=1..6; nontrivial=True; differs at 7: True
+[OK]   A.266 (k=1,3,5,7), n=4, T=0: lifted size 10 agrees for k=1..8; nontrivial=True; differs at 9: True
+[OK]   A.266 (k=1,3,5,7), n=4, T=1: lifted size 10 agrees for k=1..8; nontrivial=True; differs at 9: True
+[OK]   A.266 (k=1,3,5,7), n=4, T=7: lifted size 10 agrees for k=1..8; nontrivial=True; differs at 9: True
+[OK]   A.266 (k=1,3,5,7), n=4, T=100: lifted size 10 agrees for k=1..8; nontrivial=True; differs at 9: True
+[OK]   A.266 (k=1,3,5,7), n=4, T=-3: lifted size 10 agrees for k=1..8; nontrivial=True; differs at 9: True
+[OK]   A.313 (k=1,...,9), n=5, T=0: lifted size 12 agrees for k=1..10; nontrivial=True; differs at 11: True
+[OK]   A.313 (k=1,...,9), n=5, T=1: lifted size 12 agrees for k=1..10; nontrivial=True; differs at 11: True
+[OK]   A.313 (k=1,...,9), n=5, T=7: lifted size 12 agrees for k=1..10; nontrivial=True; differs at 11: True
+[OK]   A.313 (k=1,...,9), n=5, T=100: lifted size 12 agrees for k=1..10; nontrivial=True; differs at 11: True
+[OK]   A.313 (k=1,...,9), n=5, T=-3: lifted size 12 agrees for k=1..10; nontrivial=True; differs at 11: True
+[OK]   degenerate case B=-A (T=0): lifting returns A doubled vs -A doubled (still a solution, degree 6 only; size doubles)
+[OK]   A={1,-1,5}, B={2,-2,5}: all odd power sums agree, A != B
+[OK]   ...and the lifted pair is trivial (equal multisets): Theorem 3 needs A u (-B) != B u (-A) for a non-trivial lift
+
+== (2) Bounds quoted for N(k) ==
+k= 2: BI p.7 printed bound      0  N(k)>=k+1=  3  VIOLATES lower bound  | Wright via Melzak (k^2+4)/2=     4 | pigeonhole k(k+1)/2+1=4 | known N(k)=k+1
+k= 3: BI p.7 printed bound      3  N(k)>=k+1=  4  VIOLATES lower bound  | Wright via Melzak (k^2+4)/2=  13/2 | pigeonhole k(k+1)/2+1=7 | known N(k)=k+1
+k= 4: BI p.7 printed bound      6  N(k)>=k+1=  5    | Wright via Melzak (k^2+4)/2=    10 | pigeonhole k(k+1)/2+1=11 | known N(k)=k+1
+k= 5: BI p.7 printed bound     11  N(k)>=k+1=  6    | Wright via Melzak (k^2+4)/2=  29/2 | pigeonhole k(k+1)/2+1=16 | known N(k)=k+1
+k= 6: BI p.7 printed bound     16  N(k)>=k+1=  7    | Wright via Melzak (k^2+4)/2=    20 | pigeonhole k(k+1)/2+1=22 | known N(k)=k+1
+k= 7: BI p.7 printed bound     23  N(k)>=k+1=  8    | Wright via Melzak (k^2+4)/2=  53/2 | pigeonhole k(k+1)/2+1=29 | known N(k)=k+1
+k= 8: BI p.7 printed bound     30  N(k)>=k+1=  9    | Wright via Melzak (k^2+4)/2=    34 | pigeonhole k(k+1)/2+1=37 | known N(k)=k+1
+k= 9: BI p.7 printed bound     39  N(k)>=k+1= 10    | Wright via Melzak (k^2+4)/2=  85/2 | pigeonhole k(k+1)/2+1=46 | known N(k)=k+1
+k=10: BI p.7 printed bound     48  N(k)>=k+1= 11    | Wright via Melzak (k^2+4)/2=    52 | pigeonhole k(k+1)/2+1=56
+k=11: BI p.7 printed bound     59  N(k)>=k+1= 12    | Wright via Melzak (k^2+4)/2= 125/2 | pigeonhole k(k+1)/2+1=67 | known N(k)=k+1
+k=12: BI p.7 printed bound     70  N(k)>=k+1= 13    | Wright via Melzak (k^2+4)/2=    74 | pigeonhole k(k+1)/2+1=79
+k=13: BI p.7 printed bound     83  N(k)>=k+1= 14    | Wright via Melzak (k^2+4)/2= 173/2 | pigeonhole k(k+1)/2+1=92
+[OK]   BI's printed bound is false for k=2 ((k^2-4)/2 = 0 < N(2) = 3) and k=3 ((k^2-3)/2 = 3 < N(3) = 4)
+[OK]   BI's (k^2-3)/2, (k^2-4)/2 differ from Melzak's report of Wright (k^2+4)/2 by the constant 7/2 (odd) or 4 (even): not an index shift
+   index shifts k -> k+d (|d|<=2, k<200) under which Wright/Melzak's (n^2+4)/2 equals BI's printed value: []
+[OK]   no uniform index shift reconciles the two formulas
+[OK]   Melzak Table 1 last column equals n(n+1)/2+1 for every n=2..29
+[OK]   every Melzak table bound b_n >= n+1 (consistent with K(n) >= n+1)
+   n with Melzak's individual b_n below BI's closed form: [5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29]
+   ratio b_29 / 29^2 = 266/841 ~ 0.316
+
+== (3) BI Prop. 3 pigeonhole inequality ==
+[OK]   k=1, s=2, n=s^k s!+1: #value-vectors < s^k n^(s-1) < n^s/s! (<= number of multisets)
+[OK]   k=2, s=4, n=s^k s!+1: #value-vectors < s^k n^(s-1) < n^s/s! (<= number of multisets)
+[OK]   k=3, s=7, n=s^k s!+1: #value-vectors < s^k n^(s-1) < n^s/s! (<= number of multisets)
+[OK]   k=4, s=11, n=s^k s!+1: #value-vectors < s^k n^(s-1) < n^s/s! (<= number of multisets)
+[OK]   k=5, s=16, n=s^k s!+1: #value-vectors < s^k n^(s-1) < n^s/s! (<= number of multisets)
+
+FAILURES: []

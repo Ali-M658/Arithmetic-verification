@@ -1,0 +1,24 @@
+m=4: r=3, k0=2; odd part of prod_Z(x-z) = c*kappa * x^3 (free odd coefficient c = e_3)
+m=5: r=5, k0=2; odd part of prod_Z(x-z) = c*kappa * x^3 (free odd coefficient c = e_5)
+m=6: r=5, k0=4; odd part of prod_Z(x-z) = c*kappa * x^3 (free odd coefficient c = e_5)
+m=7: r=7, k0=4; odd part of prod_Z(x-z) = c*kappa * x^3 (free odd coefficient c = e_7)
+m=8: r=7, k0=6; odd part of prod_Z(x-z) = c*kappa * x^3 (free odd coefficient c = e_7)
+m=9: r=9, k0=6; odd part of prod_Z(x-z) = c*kappa * x^3 (free odd coefficient c = e_9)
+m=10: r=9, k0=8; odd part of prod_Z(x-z) = c*kappa * x^3 (free odd coefficient c = e_9)
+=> e_k(Z)=0 for every odd k except k=2m-3; hence s_j(Z)=0 for odd j<=2m-5, s_{-1}(Z)=e_{2m-1}/e_{2m}=0, s_{2m-3}(Z)=(2m-3)e_{2m-3}(Z) = +-(2m-3) c kappa.
+Part 3 ('Equivalently'): A = (-24, -15, -8, -5)  B = (-20, -20, -6, -6)
+   pA - pB = [Fraction(0, 1), Fraction(0, 1), Fraction(-9, 1), Fraction(0, 1), Fraction(0, 1)] (only x^2 term) but e_1(A) = -52 ; Z = A (+) -B = (-24, -15, -8, -5, 6, 6, 20, 20) : s_1 = 0  s_3 = -1404  s_-1 = 0 -> not a 3-configuration
+Part 4: A = {+-1,+-2}, B = {+-1/2,+-4} (m=4, c=e_3=0): A (+) -B cancels to the empty set
+   m=4: pA(z) - pA(-z) = -2*e3*z
+   m=5: pA(z) + pA(-z) = -2*e5
+   m=6: pA(z) - pA(-z) = -2*e5*z
+   m=7: pA(z) + pA(-z) = -2*e7
+   kappa = 0 forces pA = pB, i.e. A = B, excluded by hypothesis.
+m=4 (r=3, k0=2), entries<=40, all splits: 14762 sets A, 461 pairs; {'empty': 457, 'nonempty': 4, 'iota(A)=0': 2, 'iota(A)=2': 1, 'iota(A)=-2': 1}  [0.8s]
+    e.g. A=(-30, -3, 5, 28) B=(-21, -4, 10, 15) kappa=-468
+         Z=(-30, -15, -10, -3, 4, 5, 21, 28)
+m=5 (r=5, k0=2), entries<=150, splits (2,3),(3,2): by Prop 2.3(a) these are the only ones: 658 sets A, 0 pairs; {}  [3.4s]
+m=6 (r=5, k0=4), entries<=45, splits (2,4),(3,3),(4,2): 17159 sets A, 22 pairs; {'empty': 22}  [2.6s]
+m=7 (r=7, k0=4), entries<=60, splits (3,4),(4,3): by Prop 2.3(a) the only ones: 4 sets A, 0 pairs; {}  [5.0s]
+m=8 (r=7, k0=6), entries<=30, splits (3,5),(4,4),(5,3): 40924 sets A, 1 pairs; {'empty': 1}  [7.8s]
+FAILURES: 0

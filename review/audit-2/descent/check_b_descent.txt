@@ -1,0 +1,58 @@
+[ok] E': c' = -2c = -786, d' = c^2 - 4d = 140625 = 375^2
+[ok] d' is a square (E has full rational 2-torsion)
+[ok] d d' != 0 (nonsingular)
+
+=== E: y^2 = x(x^2 + 393 x + 3456);  d = 3456, c^2 - 4d = 140625
+primes dividing 2 d d' : [2, 3, 5] ; squarefree divisors d1 of d: [1, 2, 3, 6, -1, -2, -3, -6]
+[ok] d1=1: global point (N,M,e)=(1, 1, 0) on N^2 = d1 M^4 + c M^2 e^2 + d2 e^4
+[ok] d1=1: global point implies all local tests 'yes' (consistency)
+   d1=1: point at infinity of the quartic (d1 square)
+d1=   1, d2=  3456: 2: yes [(-1, 0, 1)]; 3: yes [(-1, -1, 3850)]; 5: yes [(-1, -1, 3850)]; R: yes [(-30, -30)]; global point: (1, 1, 0)
+d1=   2, d2=  1728: 2: yes [(-2, -1, 3332)]; 3: yes [(-3, -1, 5427)]; 5: no [no primitive (M,e) mod 5^1 makes the right side a square mod 5^1]; R: yes [(-30, -30)]; global point: None
+d1=   3, d2=  1152: 2: yes [(-3, -1, 4932)]; 3: yes [(-1, -1, 1548)]; 5: no [no primitive (M,e) mod 5^1 makes the right side a square mod 5^1]; R: yes [(-30, -30)]; global point: None
+[ok] d1=6: global point (N,M,e)=(24, 0, 1) on N^2 = d1 M^4 + c M^2 e^2 + d2 e^4
+[ok] d1=6: global point implies all local tests 'yes' (consistency)
+[ok] d1=6: (d1 u^2, d1 u v) = (Fraction(0, 1), Fraction(0, 1)) lies on the curve
+d1=   6, d2=   576: 2: yes [(0, -1, 576)]; 3: yes [(0, -1, 576)]; 5: yes [(-1, -1, 975)]; R: yes [(-30, -30)]; global point: (24, 0, 1)
+[ok] d1=-1: global point (N,M,e)=(0, 3, 1) on N^2 = d1 M^4 + c M^2 e^2 + d2 e^4
+[ok] d1=-1: global point implies all local tests 'yes' (consistency)
+[ok] d1=-1: (d1 u^2, d1 u v) = (Fraction(-9, 1), Fraction(0, 1)) lies on the curve
+d1=  -1, d2= -3456: 2: yes [(-4, -3, -223600)]; 3: yes [(-3, -2, -41229)]; 5: yes [(-1, -1, -3064)]; R: yes [(-30, -9)]; global point: (0, 3, 1)
+d1=  -2, d2= -1728: 2: yes [(-2, -1, -188)]; 3: yes [(-1, -1, -1337)]; 5: no [no primitive (M,e) mod 5^1 makes the right side a square mod 5^1]; R: yes [(-30, -14)]; global point: None
+d1=  -3, d2= -1152: 2: yes [(-1, -2, -16863)]; 3: yes [(0, -1, -1152)]; 5: no [no primitive (M,e) mod 5^1 makes the right side a square mod 5^1]; R: yes [(-30, -17)]; global point: None
+[ok] d1=-6: global point (N,M,e)=(30, 2, 1) on N^2 = d1 M^4 + c M^2 e^2 + d2 e^4
+[ok] d1=-6: global point implies all local tests 'yes' (consistency)
+[ok] d1=-6: (d1 u^2, d1 u v) = (Fraction(-24, 1), Fraction(-360, 1)) lies on the curve
+d1=  -6, d2=  -576: 2: yes [(-2, -1, 900)]; 3: yes [(-2, -1, 900)]; 5: yes [(-1, -1, -189)]; R: yes [(-30, -24)]; global point: (30, 2, 1)
+[ok] E: everywhere-locally-soluble set = globally soluble set = [-6, -1, 1, 6] = {+-1, +-6}
+[ok] E: {+-1,+-6} is a subgroup of Q*/Q*^2
+
+=== E': y^2 = x(x^2 + -786 x + 140625);  d = 140625, c^2 - 4d = 55296
+primes dividing 2 d d' : [2, 3, 5] ; squarefree divisors d1 of d: [1, 3, 5, 15, -1, -3, -5, -15]
+[ok] d1=1: global point (N,M,e)=(375, 0, 1) on N^2 = d1 M^4 + c M^2 e^2 + d2 e^4
+[ok] d1=1: global point implies all local tests 'yes' (consistency)
+[ok] d1=1: (d1 u^2, d1 u v) = (Fraction(0, 1), Fraction(0, 1)) lies on the curve
+d1=   1, d2=140625: 2: yes [(-1, -1, 139840)]; 3: yes [(-1, -1, 139840)]; 5: yes [(-1, 0, 1)]; R: yes [(-30, -30)]; global point: (375, 0, 1)
+d1=   3, d2= 46875: 2: no [no primitive (M,e) mod 2^4 makes the right side a square mod 2^4]; 3: no [no primitive (M,e) mod 3^2 makes the right side a square mod 3^2]; 5: yes [(-2, -1, 43779)]; R: yes [(-30, -30)]; global point: None
+d1=   5, d2= 28125: 2: no [no primitive (M,e) mod 2^7 makes the right side a square mod 2^7]; 3: no [no primitive (M,e) mod 3^3 makes the right side a square mod 3^3]; 5: yes [(-1, -1, 27344)]; R: yes [(-30, -30)]; global point: None
+d1=  15, d2=  9375: 2: no [no primitive (M,e) mod 2^4 makes the right side a square mod 2^4]; 3: no [no primitive (M,e) mod 3^3 makes the right side a square mod 3^3]; 5: yes [(-1, -1, 8604)]; R: yes [(-30, -30)]; global point: None
+d1=  -1, d2=-140625: 2: no [no primitive (M,e) mod 2^4 makes the right side a square mod 2^4]; 3: no [no primitive (M,e) mod 3^3 makes the right side a square mod 3^3]; 5: yes [(-1, 0, -1)]; R: no [d1<0, c<=0, d2<0: right side < 0 for (M,e) != 0]; global point: None
+d1=  -3, d2=-46875: 2: no [no primitive (M,e) mod 2^7 makes the right side a square mod 2^7]; 3: no [no primitive (M,e) mod 3^3 makes the right side a square mod 3^3]; 5: yes [(-1, -1, -47664)]; R: no [d1<0, c<=0, d2<0: right side < 0 for (M,e) != 0]; global point: None
+d1=  -5, d2=-28125: 2: no [no primitive (M,e) mod 2^4 makes the right side a square mod 2^4]; 3: yes [(-1, -1, -28916)]; 5: yes [(-1, -1, -28916)]; R: no [d1<0, c<=0, d2<0: right side < 0 for (M,e) != 0]; global point: None
+d1= -15, d2= -9375: 2: yes [(-1, -1, -10176)]; 3: no [no primitive (M,e) mod 3^2 makes the right side a square mod 3^2]; 5: yes [(-1, -1, -10176)]; R: no [d1<0, c<=0, d2<0: right side < 0 for (M,e) != 0]; global point: None
+[ok] E': everywhere-locally-soluble set = globally soluble set = [1] = {1}
+[ok] n1, n1' are powers of 2
+[ok] (3.6.2): rank = e1 + e1' - 2 = 2 + 0 - 2 = 0
+[ok] n1 = n2 and n1' = n2': Sha(E)[phi] = Sha(E')[phi'] = 0, no ambiguity
+[ok] images of the torsion points in E(Q)/phi'(E'(Q)): [-6, -1, 1, 6]
+
+=== independent route: full 2-Selmer group via the roots 0, -9, -384
+[ok] local Kummer image at 2 has the full size 8
+[ok] local Kummer image at 3 has the full size 4
+[ok] local Kummer image at 5 has the full size 4
+[ok] local Kummer image at R has the full size 2
+2-Selmer group (b1, b2): [(1, 1), (-1, -15), (6, 1), (-6, -15)]
+[ok] |Sel^2(E/Q)| = 4
+[ok] Sel^2 = kappa(E(Q)[2]) = [(-6, -15), (-1, -15), (1, 1), (6, 1)]
+[ok] 2^(r+2) <= |Sel^2| = 4 forces r = 0; Sha(E)[2] = 0
+ALL 31 CHECKS PASSED

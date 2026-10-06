@@ -1,0 +1,6 @@
+(i) (2, (15,)) (0, (3, 3, 5, 5)) : Z = (-5, -5, -3, -3, 1, 15) is a 2-configuration, iota = -2 != 2(g'-g) = -4 ; Area/2pi = 44/15 vs 14/15 -> not even c_1 shared
+    with genus 1 instead of 2: (1;15) ~ (0;3,3,5,5) share 2 coefficients, iota = 2(g'-g) = -2
+(ii) (2;40) and (0;4,4,5,8,10,10) share exactly 2 coefficients; |U*|+|V*| = 8 = 2L+2|g-g'| (equality), shape {2,6} != {L,L+2} = {2,4}
+(iii) A = {-1,0,1}: |A| = 3 = 2L-1, s_1(A) = 0, but sum a^{-1} is undefined (0 in A); the proof.md version excludes it by '0 notin A'
+(iv) Z = (-15, -5, -1, -1, 2, 2, 2, 3, 3, 10) : V = {15,5,1,1}; removing a single 1 leaves an order-1 'cone point'; the signature must be (1;5,15)
+FAILURES: 0

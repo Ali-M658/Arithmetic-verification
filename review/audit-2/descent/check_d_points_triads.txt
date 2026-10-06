@@ -1,0 +1,202 @@
+[ok] (1, 0, 0) lies on C_27/2
+[ok] (0, 1, 0) lies on C_27/2
+[ok] (0, 0, 1) lies on C_27/2
+[ok] (1, -1, 0) lies on C_27/2
+[ok] (0, 1, -1) lies on C_27/2
+[ok] (1, 0, -1) lies on C_27/2
+[ok] (1, 4, 4) lies on C_27/2
+[ok] (4, 1, 4) lies on C_27/2
+[ok] (4, 4, 1) lies on C_27/2
+[ok] (1, 1, 4) lies on C_27/2
+[ok] (1, 4, 1) lies on C_27/2
+[ok] (4, 1, 1) lies on C_27/2
+[ok] the 12 listed points are pairwise distinct projective points
+[ok] psi(E(Q)) = the 12 listed points, so C_27/2(Q) = these 12
+[ok] positive points = 6 permutations of (1,4,4),(1,1,4): [(1, 1, 4), (1, 4, 1), (1, 4, 4), (4, 1, 1), (4, 1, 4), (4, 4, 1)]
+[ok] 6 points with a zero coordinate: the base points
+[ok] brute force |coords| <= 80: exactly the 12 points (12)
+orders on C_27/2 with base O=(1:-1:0): {(1, 0, 0): 6, (0, 1, 0): 6, (0, 0, 1): 2, (1, -1, 0): 1, (0, 1, -1): 3, (1, 0, -1): 3, (1, 4, 4): 6, (4, 1, 4): 6, (4, 4, 1): 2, (1, 1, 4): 2, (1, 4, 1): 6, (4, 1, 1): 6}
+[ok] base-point orders 6,6,2,1,3,3 in the listed order
+[ok] (1:4:4) has order 6
+[ok] the 12 points = six base points and their translates by (1:4:4)
+[ok] k=1: S_1 R = 27/2
+[ok] k=1: all positive integer triples with S=18k, R=3/(4k): [(2, 8, 8), (3, 3, 12)]
+[ok] k=1: (2, 8, 8) hyperbolic (R=3/4 < 1, entries >= 2)
+[ok] k=1: (3, 3, 12) hyperbolic (R=3/4 < 1, entries >= 2)
+[ok] k=2: S_1 R = 27/2
+[ok] k=2: all positive integer triples with S=18k, R=3/(4k): [(4, 16, 16), (6, 6, 24)]
+[ok] k=2: (4, 16, 16) hyperbolic (R=3/8 < 1, entries >= 2)
+[ok] k=2: (6, 6, 24) hyperbolic (R=3/8 < 1, entries >= 2)
+[ok] k=3: S_1 R = 27/2
+[ok] k=3: all positive integer triples with S=18k, R=3/(4k): [(6, 24, 24), (9, 9, 36)]
+[ok] k=3: (6, 24, 24) hyperbolic (R=1/4 < 1, entries >= 2)
+[ok] k=3: (9, 9, 36) hyperbolic (R=1/4 < 1, entries >= 2)
+[ok] k=4: S_1 R = 27/2
+[ok] k=4: all positive integer triples with S=18k, R=3/(4k): [(8, 32, 32), (12, 12, 48)]
+[ok] k=4: (8, 32, 32) hyperbolic (R=3/16 < 1, entries >= 2)
+[ok] k=4: (12, 12, 48) hyperbolic (R=3/16 < 1, entries >= 2)
+[ok] k=5: S_1 R = 27/2
+[ok] k=5: all positive integer triples with S=18k, R=3/(4k): [(10, 40, 40), (15, 15, 60)]
+[ok] k=5: (10, 40, 40) hyperbolic (R=3/20 < 1, entries >= 2)
+[ok] k=5: (15, 15, 60) hyperbolic (R=3/20 < 1, entries >= 2)
+[ok] k=6: S_1 R = 27/2
+[ok] k=6: all positive integer triples with S=18k, R=3/(4k): [(12, 48, 48), (18, 18, 72)]
+[ok] k=6: (12, 48, 48) hyperbolic (R=1/8 < 1, entries >= 2)
+[ok] k=6: (18, 18, 72) hyperbolic (R=1/8 < 1, entries >= 2)
+[ok] k=7: S_1 R = 27/2
+[ok] k=7: all positive integer triples with S=18k, R=3/(4k): [(14, 56, 56), (21, 21, 84)]
+[ok] k=7: (14, 56, 56) hyperbolic (R=3/28 < 1, entries >= 2)
+[ok] k=7: (21, 21, 84) hyperbolic (R=3/28 < 1, entries >= 2)
+[ok] k=8: S_1 R = 27/2
+[ok] k=8: all positive integer triples with S=18k, R=3/(4k): [(16, 64, 64), (24, 24, 96)]
+[ok] k=8: (16, 64, 64) hyperbolic (R=3/32 < 1, entries >= 2)
+[ok] k=8: (24, 24, 96) hyperbolic (R=3/32 < 1, entries >= 2)
+[ok] k=9: S_1 R = 27/2
+[ok] k=9: all positive integer triples with S=18k, R=3/(4k): [(18, 72, 72), (27, 27, 108)]
+[ok] k=9: (18, 72, 72) hyperbolic (R=1/12 < 1, entries >= 2)
+[ok] k=9: (27, 27, 108) hyperbolic (R=1/12 < 1, entries >= 2)
+[ok] k=10: S_1 R = 27/2
+[ok] k=10: all positive integer triples with S=18k, R=3/(4k): [(20, 80, 80), (30, 30, 120)]
+[ok] k=10: (20, 80, 80) hyperbolic (R=3/40 < 1, entries >= 2)
+[ok] k=10: (30, 30, 120) hyperbolic (R=3/40 < 1, entries >= 2)
+[ok] k=11: S_1 R = 27/2
+[ok] k=11: all positive integer triples with S=18k, R=3/(4k): [(22, 88, 88), (33, 33, 132)]
+[ok] k=11: (22, 88, 88) hyperbolic (R=3/44 < 1, entries >= 2)
+[ok] k=11: (33, 33, 132) hyperbolic (R=3/44 < 1, entries >= 2)
+[ok] k=12: S_1 R = 27/2
+[ok] k=12: all positive integer triples with S=18k, R=3/(4k): [(24, 96, 96), (36, 36, 144)]
+[ok] k=12: (24, 96, 96) hyperbolic (R=1/16 < 1, entries >= 2)
+[ok] k=12: (36, 36, 144) hyperbolic (R=1/16 < 1, entries >= 2)
+[ok] k=13: S_1 R = 27/2
+[ok] k=13: all positive integer triples with S=18k, R=3/(4k): [(26, 104, 104), (39, 39, 156)]
+[ok] k=13: (26, 104, 104) hyperbolic (R=3/52 < 1, entries >= 2)
+[ok] k=13: (39, 39, 156) hyperbolic (R=3/52 < 1, entries >= 2)
+[ok] k=14: S_1 R = 27/2
+[ok] k=14: all positive integer triples with S=18k, R=3/(4k): [(28, 112, 112), (42, 42, 168)]
+[ok] k=14: (28, 112, 112) hyperbolic (R=3/56 < 1, entries >= 2)
+[ok] k=14: (42, 42, 168) hyperbolic (R=3/56 < 1, entries >= 2)
+[ok] k=15: S_1 R = 27/2
+[ok] k=15: all positive integer triples with S=18k, R=3/(4k): [(30, 120, 120), (45, 45, 180)]
+[ok] k=15: (30, 120, 120) hyperbolic (R=1/20 < 1, entries >= 2)
+[ok] k=15: (45, 45, 180) hyperbolic (R=1/20 < 1, entries >= 2)
+[ok] k=16: S_1 R = 27/2
+[ok] k=16: all positive integer triples with S=18k, R=3/(4k): [(32, 128, 128), (48, 48, 192)]
+[ok] k=16: (32, 128, 128) hyperbolic (R=3/64 < 1, entries >= 2)
+[ok] k=16: (48, 48, 192) hyperbolic (R=3/64 < 1, entries >= 2)
+[ok] k=17: S_1 R = 27/2
+[ok] k=17: all positive integer triples with S=18k, R=3/(4k): [(34, 136, 136), (51, 51, 204)]
+[ok] k=17: (34, 136, 136) hyperbolic (R=3/68 < 1, entries >= 2)
+[ok] k=17: (51, 51, 204) hyperbolic (R=3/68 < 1, entries >= 2)
+[ok] k=18: S_1 R = 27/2
+[ok] k=18: all positive integer triples with S=18k, R=3/(4k): [(36, 144, 144), (54, 54, 216)]
+[ok] k=18: (36, 144, 144) hyperbolic (R=1/24 < 1, entries >= 2)
+[ok] k=18: (54, 54, 216) hyperbolic (R=1/24 < 1, entries >= 2)
+[ok] k=19: S_1 R = 27/2
+[ok] k=19: all positive integer triples with S=18k, R=3/(4k): [(38, 152, 152), (57, 57, 228)]
+[ok] k=19: (38, 152, 152) hyperbolic (R=3/76 < 1, entries >= 2)
+[ok] k=19: (57, 57, 228) hyperbolic (R=3/76 < 1, entries >= 2)
+[ok] k=20: S_1 R = 27/2
+[ok] k=20: all positive integer triples with S=18k, R=3/(4k): [(40, 160, 160), (60, 60, 240)]
+[ok] k=20: (40, 160, 160) hyperbolic (R=3/80 < 1, entries >= 2)
+[ok] k=20: (60, 60, 240) hyperbolic (R=3/80 < 1, entries >= 2)
+[ok] k=21: S_1 R = 27/2
+[ok] k=21: all positive integer triples with S=18k, R=3/(4k): [(42, 168, 168), (63, 63, 252)]
+[ok] k=21: (42, 168, 168) hyperbolic (R=1/28 < 1, entries >= 2)
+[ok] k=21: (63, 63, 252) hyperbolic (R=1/28 < 1, entries >= 2)
+[ok] k=22: S_1 R = 27/2
+[ok] k=22: all positive integer triples with S=18k, R=3/(4k): [(44, 176, 176), (66, 66, 264)]
+[ok] k=22: (44, 176, 176) hyperbolic (R=3/88 < 1, entries >= 2)
+[ok] k=22: (66, 66, 264) hyperbolic (R=3/88 < 1, entries >= 2)
+[ok] k=23: S_1 R = 27/2
+[ok] k=23: all positive integer triples with S=18k, R=3/(4k): [(46, 184, 184), (69, 69, 276)]
+[ok] k=23: (46, 184, 184) hyperbolic (R=3/92 < 1, entries >= 2)
+[ok] k=23: (69, 69, 276) hyperbolic (R=3/92 < 1, entries >= 2)
+[ok] k=24: S_1 R = 27/2
+[ok] k=24: all positive integer triples with S=18k, R=3/(4k): [(48, 192, 192), (72, 72, 288)]
+[ok] k=24: (48, 192, 192) hyperbolic (R=1/32 < 1, entries >= 2)
+[ok] k=24: (72, 72, 288) hyperbolic (R=1/32 < 1, entries >= 2)
+[ok] k=25: S_1 R = 27/2
+[ok] k=25: all positive integer triples with S=18k, R=3/(4k): [(50, 200, 200), (75, 75, 300)]
+[ok] k=25: (50, 200, 200) hyperbolic (R=3/100 < 1, entries >= 2)
+[ok] k=25: (75, 75, 300) hyperbolic (R=3/100 < 1, entries >= 2)
+[ok] k=26: S_1 R = 27/2
+[ok] k=26: all positive integer triples with S=18k, R=3/(4k): [(52, 208, 208), (78, 78, 312)]
+[ok] k=26: (52, 208, 208) hyperbolic (R=3/104 < 1, entries >= 2)
+[ok] k=26: (78, 78, 312) hyperbolic (R=3/104 < 1, entries >= 2)
+[ok] k=27: S_1 R = 27/2
+[ok] k=27: all positive integer triples with S=18k, R=3/(4k): [(54, 216, 216), (81, 81, 324)]
+[ok] k=27: (54, 216, 216) hyperbolic (R=1/36 < 1, entries >= 2)
+[ok] k=27: (81, 81, 324) hyperbolic (R=1/36 < 1, entries >= 2)
+[ok] k=28: S_1 R = 27/2
+[ok] k=28: all positive integer triples with S=18k, R=3/(4k): [(56, 224, 224), (84, 84, 336)]
+[ok] k=28: (56, 224, 224) hyperbolic (R=3/112 < 1, entries >= 2)
+[ok] k=28: (84, 84, 336) hyperbolic (R=3/112 < 1, entries >= 2)
+[ok] k=29: S_1 R = 27/2
+[ok] k=29: all positive integer triples with S=18k, R=3/(4k): [(58, 232, 232), (87, 87, 348)]
+[ok] k=29: (58, 232, 232) hyperbolic (R=3/116 < 1, entries >= 2)
+[ok] k=29: (87, 87, 348) hyperbolic (R=3/116 < 1, entries >= 2)
+[ok] k=30: S_1 R = 27/2
+[ok] k=30: all positive integer triples with S=18k, R=3/(4k): [(60, 240, 240), (90, 90, 360)]
+[ok] k=30: (60, 240, 240) hyperbolic (R=1/40 < 1, entries >= 2)
+[ok] k=30: (90, 90, 360) hyperbolic (R=1/40 < 1, entries >= 2)
+[ok] k=36: S_1 R = 27/2
+[ok] k=36: all positive integer triples with S=18k, R=3/(4k): [(72, 288, 288), (108, 108, 432)]
+[ok] k=36: (72, 288, 288) hyperbolic (R=1/48 < 1, entries >= 2)
+[ok] k=36: (108, 108, 432) hyperbolic (R=1/48 < 1, entries >= 2)
+[ok] k=42: S_1 R = 27/2
+[ok] k=42: all positive integer triples with S=18k, R=3/(4k): [(84, 336, 336), (126, 126, 504)]
+[ok] k=42: (84, 336, 336) hyperbolic (R=1/56 < 1, entries >= 2)
+[ok] k=42: (126, 126, 504) hyperbolic (R=1/56 < 1, entries >= 2)
+[ok] k=49: S_1 R = 27/2
+[ok] k=49: all positive integer triples with S=18k, R=3/(4k): [(98, 392, 392), (147, 147, 588)]
+[ok] k=49: (98, 392, 392) hyperbolic (R=3/196 < 1, entries >= 2)
+[ok] k=49: (147, 147, 588) hyperbolic (R=3/196 < 1, entries >= 2)
+[ok] k=60: S_1 R = 27/2
+[ok] k=60: all positive integer triples with S=18k, R=3/(4k): [(120, 480, 480), (180, 180, 720)]
+[ok] k=60: (120, 480, 480) hyperbolic (R=1/80 < 1, entries >= 2)
+[ok] k=60: (180, 180, 720) hyperbolic (R=1/80 < 1, entries >= 2)
+non-integer k:
+   k=1/2: S=9, members [(1, 4, 4)], hyperbolic []
+[ok] k=1/2 (non-integer): the class has 1 member(s), not two
+   k=3/2: S=27, members [(3, 12, 12)], hyperbolic [(3, 12, 12)]
+[ok] k=3/2 (non-integer): the class has 1 member(s), not two
+   k=5/2: S=45, members [(5, 20, 20)], hyperbolic [(5, 20, 20)]
+[ok] k=5/2 (non-integer): the class has 1 member(s), not two
+   k=1/3: S=6, members [(1, 1, 4)], hyperbolic []
+[ok] k=1/3 (non-integer): the class has 1 member(s), not two
+   k=2/3: S=12, members [(2, 2, 8)], hyperbolic []
+[ok] k=2/3 (non-integer): the class has 1 member(s), not two
+   k=1/6: S=3, members [], hyperbolic []
+[ok] k=1/6 (non-integer): the class has 0 member(s), not two
+   k=7/6: S=21, members [], hyperbolic []
+[ok] k=7/6 (non-integer): the class has 0 member(s), not two
+   k=1/18: S=1, members [], hyperbolic []
+[ok] k=1/18 (non-integer): the class has 0 member(s), not two
+[ok] k=1: unique scaling of (1, 4, 4) with sum 18k (m=[2])
+[ok] k=1: unique scaling of (1, 1, 4) with sum 18k (m=[3])
+[ok] k=2: unique scaling of (1, 4, 4) with sum 18k (m=[4])
+[ok] k=2: unique scaling of (1, 1, 4) with sum 18k (m=[6])
+[ok] k=3: unique scaling of (1, 4, 4) with sum 18k (m=[6])
+[ok] k=3: unique scaling of (1, 1, 4) with sum 18k (m=[9])
+[ok] unique representative with sum 18k for k = 1..49
+[ok] j=1 odd: (j,4j,4j) is alone in its class
+[ok] j=3 odd: (j,4j,4j) is alone in its class
+[ok] j=5 odd: (j,4j,4j) is alone in its class
+[ok] j=7 odd: (j,4j,4j) is alone in its class
+[ok] j=9 odd: (j,4j,4j) is alone in its class
+[ok] j=11 odd: (j,4j,4j) is alone in its class
+[ok] j=13 odd: (j,4j,4j) is alone in its class
+[ok] j=15 odd: (j,4j,4j) is alone in its class
+[ok] j=17 odd: (j,4j,4j) is alone in its class
+[ok] j=19 odd: (j,4j,4j) is alone in its class
+[ok] j=21 odd: (j,4j,4j) is alone in its class
+[ok] j=23 odd: (j,4j,4j) is alone in its class
+[ok] j=25 odd: (j,4j,4j) is alone in its class
+[ok] j=27 odd: (j,4j,4j) is alone in its class
+[ok] j=29 odd: (j,4j,4j) is alone in its class
+[ok] j=31 odd: (j,4j,4j) is alone in its class
+[ok] j=33 odd: (j,4j,4j) is alone in its class
+[ok] j=35 odd: (j,4j,4j) is alone in its class
+[ok] j=37 odd: (j,4j,4j) is alone in its class
+[ok] j=39 odd: (j,4j,4j) is alone in its class
+ALL 191 CHECKS PASSED

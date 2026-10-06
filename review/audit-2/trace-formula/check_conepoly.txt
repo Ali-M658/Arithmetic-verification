@@ -1,0 +1,11 @@
+Lemma 2.5 holds for every l<=40: even, rational, deg 2l+2, p(1)=0, leading coeff,
+  positive weights on (m^2n-1), p_l(1+x) has positive coefficients; (bl) from the
+  defining sum equals the polynomial for m=1..30, l<=40.
+(alphak) = identity-term coefficients for k<=40; moment formula = zeta form for k<=40
+printed alpha_0..alpha_4 and p_0, p_1, p_2: OK
+  alpha_5..alpha_7 = ['-4/3465', '382/675675', '-232/675675']
+  p_3 = ['-19/10080', '1/945', '1/2160', '1/3780', '1/10080'] (coefficients of m^0, m^2, ...)
+c_j indexing: DGGW (5.7),(5.10) [R1212=K=-1] and Schueth Rem 4.2/Thm 4.1 [K=-1]
+  reproduced for m=2..30; trig sums of DGGW checked exactly.
+sanity (mpmath, not a certificate): Lemma (i) integral; I(t), E_m(t) at t=0.02 match the series
+ALL CHECKS PASSED

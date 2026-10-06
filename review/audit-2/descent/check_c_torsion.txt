@@ -1,0 +1,44 @@
+[ok] (0, 0) on E
+[ok] order of (0, 0) is 2 (computed 2)
+[ok] (-9, 0) on E
+[ok] order of (-9, 0) is 2 (computed 2)
+[ok] (-384, 0) on E
+[ok] order of (-384, 0) is 2 (computed 2)
+[ok] (16, 400) on E
+[ok] order of (16, 400) is 3 (computed 3)
+[ok] (16, -400) on E
+[ok] order of (16, -400) is 3 (computed 3)
+[ok] (-24, 360) on E
+[ok] order of (-24, 360) is 6 (computed 6)
+[ok] (-24, -360) on E
+[ok] order of (-24, -360) is 6 (computed 6)
+[ok] (-144, 2160) on E
+[ok] order of (-144, 2160) is 6 (computed 6)
+[ok] (-144, -2160) on E
+[ok] order of (-144, -2160) is 6 (computed 6)
+[ok] (216, 5400) on E
+[ok] order of (216, 5400) is 6 (computed 6)
+[ok] (216, -5400) on E
+[ok] order of (216, -5400) is 6 (computed 6)
+[ok] 11 affine points + O = 12 points
+[ok] the 12 points are closed under addition (144 sums checked)
+[ok] exactly 3 elements of order 2, so the group of order 12 is Z/2 x Z/6, not Z/12
+[ok] sanity
+[ok] <(216,5400)> has order 6
+[ok] (-9,0) not in <(216,5400)>, so G = <(216,5400)> x <(-9,0)> = Z/6 x Z/2
+[ok] Delta = 26873856000000 = {2: 18, 3: 8, 5: 6}: bad primes of this model are 2, 3, 5
+c4 = 2305296 {2: 4, 3: 2, 7: 1, 2287: 1}
+#E(F_7) = 12
+#E(F_11) = 12
+#E(F_13) = 12
+#E(F_17) = 24
+#E(F_19) = 24
+#E(F_23) = 24
+[ok] #E(F_7) = #E(F_11) = 12
+[ok] gcd of #E(F_p), p = 7..23, is 12
+[ok] the 12 points stay distinct mod 7
+[ok] the 12 points stay distinct mod 11
+[ok] Delta = -16 Delta0 (Cremona p. 70)
+Lutz-Nagell candidates: [(-384, 0), (-144, -2160), (-144, 2160), (-24, -360), (-24, 360), (-9, 0), (0, 0), (16, -400), (16, 400), (216, -5400), (216, 5400)]
+[ok] Lutz-Nagell: the integral candidates of finite order are exactly the 11 listed affine points
+ALL 35 CHECKS PASSED

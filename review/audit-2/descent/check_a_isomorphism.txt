@@ -1,0 +1,102 @@
+C_{27/2}: 2(X+Y+Z)(XY+YZ+ZX) - 27XYZ = 2*X**2*Y + 2*X**2*Z + 2*X*Y**2 - 21*X*Y*Z + 2*X*Z**2 + 2*Y**2*Z + 2*Y*Z**2
+[ok] C_{27/2}: 2 e1 e2 - 27 e3 = 0
+[ok] X^6 lies in the ideal of the partials (no singular point over Qbar)
+[ok] Y^6 lies in the ideal of the partials (no singular point over Qbar)
+[ok] Z^6 lies in the ideal of the partials (no singular point over Qbar)
+[ok] x(x+9)(x+384) = x^3+393x^2+3456x
+[ok] disc of x(x^2+cx+d) = d^2(c^2-4d) = 1679616000000 != 0, E nonsingular
+[ok] Delta(E) = 26873856000000 = 16 d^2 (c^2-4d) = {2: 18, 3: 8, 5: 6}
+[ok] phi(C) in E: numerator of y^2 - x(x+9)(x+384) at phi is a multiple of F
+[ok] psi(E) in C: F(psi(x,y)) = 0 modulo y^2 = x(x+9)(x+384)
+   F(psi) factorised: 21600*(x**3 + 393*x**2 + 3456*x - y**2)
+[ok] F(psi(x,y)) = -21600 (y^2 - x(x+9)(x+384)) identically
+[ok] psi(P+Q) = psi(P) + psi(Q) for P=None, Q=None
+[ok] psi(P+Q) = psi(P) + psi(Q) for P=None, Q=(Fraction(0, 1), Fraction(0, 1))
+[ok] psi(P+Q) = psi(P) + psi(Q) for P=None, Q=(Fraction(-9, 1), Fraction(0, 1))
+[ok] psi(P+Q) = psi(P) + psi(Q) for P=None, Q=(Fraction(-24, 1), Fraction(360, 1))
+[ok] psi(P+Q) = psi(P) + psi(Q) for P=None, Q=(Fraction(16, 1), Fraction(400, 1))
+[ok] psi(P+Q) = psi(P) + psi(Q) for P=None, Q=(Fraction(216, 1), Fraction(5400, 1))
+[ok] psi(P+Q) = psi(P) + psi(Q) for P=(Fraction(0, 1), Fraction(0, 1)), Q=None
+[ok] psi(P+Q) = psi(P) + psi(Q) for P=(Fraction(0, 1), Fraction(0, 1)), Q=(Fraction(0, 1), Fraction(0, 1))
+[ok] psi(P+Q) = psi(P) + psi(Q) for P=(Fraction(0, 1), Fraction(0, 1)), Q=(Fraction(-9, 1), Fraction(0, 1))
+[ok] psi(P+Q) = psi(P) + psi(Q) for P=(Fraction(0, 1), Fraction(0, 1)), Q=(Fraction(-24, 1), Fraction(360, 1))
+[ok] psi(P+Q) = psi(P) + psi(Q) for P=(Fraction(0, 1), Fraction(0, 1)), Q=(Fraction(16, 1), Fraction(400, 1))
+[ok] psi(P+Q) = psi(P) + psi(Q) for P=(Fraction(0, 1), Fraction(0, 1)), Q=(Fraction(216, 1), Fraction(5400, 1))
+[ok] psi(P+Q) = psi(P) + psi(Q) for P=(Fraction(-9, 1), Fraction(0, 1)), Q=None
+[ok] psi(P+Q) = psi(P) + psi(Q) for P=(Fraction(-9, 1), Fraction(0, 1)), Q=(Fraction(0, 1), Fraction(0, 1))
+[ok] psi(P+Q) = psi(P) + psi(Q) for P=(Fraction(-9, 1), Fraction(0, 1)), Q=(Fraction(-9, 1), Fraction(0, 1))
+[ok] psi(P+Q) = psi(P) + psi(Q) for P=(Fraction(-9, 1), Fraction(0, 1)), Q=(Fraction(-24, 1), Fraction(360, 1))
+[ok] psi(P+Q) = psi(P) + psi(Q) for P=(Fraction(-9, 1), Fraction(0, 1)), Q=(Fraction(16, 1), Fraction(400, 1))
+[ok] psi(P+Q) = psi(P) + psi(Q) for P=(Fraction(-9, 1), Fraction(0, 1)), Q=(Fraction(216, 1), Fraction(5400, 1))
+[ok] psi(P+Q) = psi(P) + psi(Q) for P=(Fraction(-24, 1), Fraction(360, 1)), Q=None
+[ok] psi(P+Q) = psi(P) + psi(Q) for P=(Fraction(-24, 1), Fraction(360, 1)), Q=(Fraction(0, 1), Fraction(0, 1))
+[ok] psi(P+Q) = psi(P) + psi(Q) for P=(Fraction(-24, 1), Fraction(360, 1)), Q=(Fraction(-9, 1), Fraction(0, 1))
+[ok] psi(P+Q) = psi(P) + psi(Q) for P=(Fraction(-24, 1), Fraction(360, 1)), Q=(Fraction(-24, 1), Fraction(360, 1))
+[ok] psi(P+Q) = psi(P) + psi(Q) for P=(Fraction(-24, 1), Fraction(360, 1)), Q=(Fraction(16, 1), Fraction(400, 1))
+[ok] psi(P+Q) = psi(P) + psi(Q) for P=(Fraction(-24, 1), Fraction(360, 1)), Q=(Fraction(216, 1), Fraction(5400, 1))
+[ok] psi(P+Q) = psi(P) + psi(Q) for P=(Fraction(16, 1), Fraction(400, 1)), Q=None
+[ok] psi(P+Q) = psi(P) + psi(Q) for P=(Fraction(16, 1), Fraction(400, 1)), Q=(Fraction(0, 1), Fraction(0, 1))
+[ok] psi(P+Q) = psi(P) + psi(Q) for P=(Fraction(16, 1), Fraction(400, 1)), Q=(Fraction(-9, 1), Fraction(0, 1))
+[ok] psi(P+Q) = psi(P) + psi(Q) for P=(Fraction(16, 1), Fraction(400, 1)), Q=(Fraction(-24, 1), Fraction(360, 1))
+[ok] psi(P+Q) = psi(P) + psi(Q) for P=(Fraction(16, 1), Fraction(400, 1)), Q=(Fraction(16, 1), Fraction(400, 1))
+[ok] psi(P+Q) = psi(P) + psi(Q) for P=(Fraction(16, 1), Fraction(400, 1)), Q=(Fraction(216, 1), Fraction(5400, 1))
+[ok] psi(P+Q) = psi(P) + psi(Q) for P=(Fraction(216, 1), Fraction(5400, 1)), Q=None
+[ok] psi(P+Q) = psi(P) + psi(Q) for P=(Fraction(216, 1), Fraction(5400, 1)), Q=(Fraction(0, 1), Fraction(0, 1))
+[ok] psi(P+Q) = psi(P) + psi(Q) for P=(Fraction(216, 1), Fraction(5400, 1)), Q=(Fraction(-9, 1), Fraction(0, 1))
+[ok] psi(P+Q) = psi(P) + psi(Q) for P=(Fraction(216, 1), Fraction(5400, 1)), Q=(Fraction(-24, 1), Fraction(360, 1))
+[ok] psi(P+Q) = psi(P) + psi(Q) for P=(Fraction(216, 1), Fraction(5400, 1)), Q=(Fraction(16, 1), Fraction(400, 1))
+[ok] psi(P+Q) = psi(P) + psi(Q) for P=(Fraction(216, 1), Fraction(5400, 1)), Q=(Fraction(216, 1), Fraction(5400, 1))
+[ok] phi(psi(x,y)).x = x on E
+[ok] phi(psi(x,y)).y = y on E
+[ok] psi(phi(P)) ~ P on C: cross product (0,1) is a multiple of F
+[ok] psi(phi(P)) ~ P on C: cross product (0,2) is a multiple of F
+[ok] psi(phi(P)) ~ P on C: cross product (1,2) is a multiple of F
+   psi at the origin (u:v:0)=(0:1:0): [1, -1, 0]
+[ok] psi(origin of E) = (1:-1:0) = O
+[ok] None on E
+[ok] psiNone = (1, -1, 0) on C_27/2
+[ok] (Fraction(0, 1), Fraction(0, 1)) on E
+[ok] psi(Fraction(0, 1), Fraction(0, 1)) = (0, 0, 1) on C_27/2
+[ok] phi(0, 0, 1) = (Fraction(0, 1), Fraction(0, 1))
+[ok] (Fraction(-9, 1), Fraction(0, 1)) on E
+[ok] psi(Fraction(-9, 1), Fraction(0, 1)) = (1, 1, 4) on C_27/2
+[ok] phi(1, 1, 4) = (Fraction(-9, 1), Fraction(0, 1))
+[ok] (Fraction(-384, 1), Fraction(0, 1)) on E
+[ok] psi(Fraction(-384, 1), Fraction(0, 1)) = (4, 4, 1) on C_27/2
+[ok] phi(4, 4, 1) = (Fraction(-384, 1), Fraction(0, 1))
+[ok] (Fraction(-24, 1), Fraction(360, 1)) on E
+[ok] psi(Fraction(-24, 1), Fraction(360, 1)) = (1, 4, 4) on C_27/2
+[ok] phi(1, 4, 4) = (Fraction(-24, 1), Fraction(360, 1))
+[ok] (Fraction(-24, 1), Fraction(-360, 1)) on E
+[ok] psi(Fraction(-24, 1), Fraction(-360, 1)) = (4, 1, 4) on C_27/2
+[ok] phi(4, 1, 4) = (Fraction(-24, 1), Fraction(-360, 1))
+[ok] (Fraction(-144, 1), Fraction(2160, 1)) on E
+[ok] psi(Fraction(-144, 1), Fraction(2160, 1)) = (1, 4, 1) on C_27/2
+[ok] phi(1, 4, 1) = (Fraction(-144, 1), Fraction(2160, 1))
+[ok] (Fraction(-144, 1), Fraction(-2160, 1)) on E
+[ok] psi(Fraction(-144, 1), Fraction(-2160, 1)) = (4, 1, 1) on C_27/2
+[ok] phi(4, 1, 1) = (Fraction(-144, 1), Fraction(-2160, 1))
+[ok] (Fraction(16, 1), Fraction(400, 1)) on E
+[ok] psi(Fraction(16, 1), Fraction(400, 1)) = (1, 0, -1) on C_27/2
+[ok] phi(1, 0, -1) = (Fraction(16, 1), Fraction(400, 1))
+[ok] (Fraction(16, 1), Fraction(-400, 1)) on E
+[ok] psi(Fraction(16, 1), Fraction(-400, 1)) = (0, 1, -1) on C_27/2
+[ok] phi(0, 1, -1) = (Fraction(16, 1), Fraction(-400, 1))
+[ok] (Fraction(216, 1), Fraction(5400, 1)) on E
+[ok] psi(Fraction(216, 1), Fraction(5400, 1)) = (1, 0, 0) on C_27/2
+[ok] (Fraction(216, 1), Fraction(-5400, 1)) on E
+[ok] psi(Fraction(216, 1), Fraction(-5400, 1)) = (0, 1, 0) on C_27/2
+[ok] the 12 images are distinct
+images: [(1, -1, 0), (0, 0, 1), (1, 1, 4), (4, 4, 1), (1, 4, 4), (4, 1, 4), (1, 4, 1), (4, 1, 1), (1, 0, -1), (0, 1, -1), (1, 0, 0), (0, 1, 0)]
+[ok] p=7: #C(F_p) = 12 = #E(F_p) = 12 (a_p = -4)
+[ok] p=11: #C(F_p) = 12 = #E(F_p) = 12 (a_p = 0)
+[ok] p=13: #C(F_p) = 12 = #E(F_p) = 12 (a_p = 2)
+[ok] p=17: #C(F_p) = 24 = #E(F_p) = 24 (a_p = -6)
+[ok] p=19: #C(F_p) = 24 = #E(F_p) = 24 (a_p = -4)
+[ok] p=23: #C(F_p) = 24 = #E(F_p) = 24 (a_p = 0)
+[ok] p=29: #C(F_p) = 24 = #E(F_p) = 24 (a_p = 6)
+[ok] p=31: #C(F_p) = 24 = #E(F_p) = 24 (a_p = 8)
+[ok] p=37: #C(F_p) = 36 = #E(F_p) = 36 (a_p = 2)
+[ok] p=41: #C(F_p) = 36 = #E(F_p) = 36 (a_p = 6)
+[ok] p=43: #C(F_p) = 48 = #E(F_p) = 48 (a_p = -4)
+ALL 97 CHECKS PASSED

@@ -1,0 +1,19 @@
+n=1: no PTE solution of degree >= 1 (x = y forced)
+n=2, k=1 (L<=2), entries 0..12: 161 disjoint solutions
+   (testing the first 40 and last 40)
+   X=(0, 2) Y=(1, 1): iota=2f on c in (-1,0) is -2; numerator of rho = 2; rational zeros -> (c, iota, no pair) []
+   X=(0, 3) Y=(1, 2): iota=2f on c in (-1,0) is -2; numerator of rho = 2*(2*c + 3); rational zeros -> (c, iota, no pair) [(Fraction(-3, 2), 0, False)]
+   rational zeros of rho giving a pair-free configuration with iota != 0: 0
+n=3, k=2 (L<=2), entries 0..12: 45 disjoint solutions
+   X=(0, 3, 3) Y=(1, 1, 4): iota=2f on c in (-1,0) is -2; numerator of rho = 12; rational zeros -> (c, iota, no pair) []
+   X=(0, 4, 5) Y=(1, 2, 6): iota=2f on c in (-1,0) is -2; numerator of rho = 12*(3*c**2 + 18*c + 20); rational zeros -> (c, iota, no pair) []
+   rational zeros of rho giving a pair-free configuration with iota != 0: 0
+n=4, k=3 (L<=3), entries 0..10: 5 disjoint solutions
+   X=(0, 3, 4, 7) Y=(1, 1, 6, 6): iota=2f on c in (-1,0) is -2; numerator of rho = 72*(2*c + 7); rational zeros -> (c, iota, no pair) [(Fraction(-7, 2), 0, False)]
+   X=(0, 5, 5, 10) Y=(1, 2, 8, 9): iota=2f on c in (-1,0) is -2; numerator of rho = 288*(2*c**2 + 20*c + 25); rational zeros -> (c, iota, no pair) []
+   rational zeros of rho giving a pair-free configuration with iota != 0: 0
+n=3, k=1 (L<=2), entries 0..6: 54 disjoint solutions
+   X=(0, 0, 3) Y=(1, 1, 1): iota=2f on c in (-1,0) is -4; numerator of rho = 6; rational zeros -> (c, iota, no pair) []
+   X=(0, 0, 4) Y=(1, 1, 2): iota=2f on c in (-1,0) is -4; numerator of rho = 2*(5*c + 8); rational zeros -> (c, iota, no pair) [(Fraction(-8, 5), 0, True)]
+   rational zeros of rho giving a pair-free configuration with iota != 0: 8
+FAILURES: 0

@@ -1,0 +1,6 @@
+Y ranges over all multisets of 5 positive integers <= 24: 98280
+  disc > 0 (three distinct positive real x): 635 (0.65%)
+  disc = 0: 0;  disc < 0 (no real configuration): 97645
+  first Y with a real configuration: (1, 1, 1, 1, 7), cubic x^3 - 11 x^2 + 1189/39 x - 287/39
+  [non-certificate, mpmath 40 digits] its real X: ['0.266357413879022', '4.28304244790393', '6.45060013821705']
+ALL OK

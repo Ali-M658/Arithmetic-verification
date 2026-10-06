@@ -1,0 +1,12 @@
+p_l even, deg 2l+2, p_l(1)=0, leading coefficient |B_{2l+2}|/(2(l+1)!(2l+1)): l=0..12 OK
+  p_0(m) = (-1/12)m^0 + (1/12)m^2
+  p_1(m) = (-11/360)m^0 + (1/36)m^2 + (1/360)m^4
+  p_2(m) = (-37/5040)m^0 + (1/180)m^2 + (1/720)m^4 + (1/2520)m^6
+  p_3(m) = (-19/10080)m^0 + (1/945)m^2 + (1/2160)m^4 + (1/3780)m^6 + (1/10080)m^8
+b_0(m) = (m^2-1)/(12m), m=1..59 OK
+cone terms b_l(m) == Ucar (4.25)+(4.33) at kappa=-1 for l<=12, m<=40: OK
+alpha_k == Ucar (4.35) at kappa=-1 for k<=13: OK
+alpha_0..alpha_4 = ['1', '-1/3', '1/15', '-4/315', '1/315']
+b_1(m)  = (-11/360)m^-1 + (1/36)m^1 + (1/360)m^3   times (-1)
+[non-certificate, mpmath 50 digits] Phi_m closed form == trig sum and == series, m=2..8: OK
+ALL OK

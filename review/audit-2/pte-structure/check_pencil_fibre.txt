@@ -1,0 +1,1 @@
+m=5: 658 sets A (entries<=150); levels with >= 4 integer points in [-4000,4000]: 0

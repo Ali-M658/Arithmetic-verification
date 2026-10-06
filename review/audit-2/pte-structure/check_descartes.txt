@@ -1,0 +1,42 @@
+partition-DFS pruning cross-checked against brute force for S<=18
+== Part A: exhaustive enumeration of integer configurations ==
+H=30 T<=6: 48 configurations (Z and -Z both counted), 0.8s
+   (T, maxL, iota) = (6, 2, -2) count 6
+   (T, maxL, iota) = (6, 2, 0) count 36
+   (T, maxL, iota) = (6, 2, 2) count 6
+H=22 T<=8: 152 configurations (Z and -Z both counted), 5.9s
+   (T, maxL, iota) = (6, 2, -2) count 2
+   (T, maxL, iota) = (6, 2, 0) count 22
+   (T, maxL, iota) = (6, 2, 2) count 2
+   (T, maxL, iota) = (8, 2, -2) count 18
+   (T, maxL, iota) = (8, 2, 0) count 90
+   (T, maxL, iota) = (8, 2, 2) count 18
+H=15 T<=10: 200 configurations (Z and -Z both counted), 5.1s
+   (T, maxL, iota) = (6, 2, -2) count 1
+   (T, maxL, iota) = (6, 2, 0) count 6
+   (T, maxL, iota) = (6, 2, 2) count 1
+   (T, maxL, iota) = (8, 2, -2) count 7
+   (T, maxL, iota) = (8, 2, 0) count 26
+   (T, maxL, iota) = (8, 2, 2) count 7
+   (T, maxL, iota) = (10, 2, -2) count 28
+   (T, maxL, iota) = (10, 2, 0) count 94
+   (T, maxL, iota) = (10, 2, 2) count 28
+   (T, maxL, iota) = (10, 3, 0) count 2
+H=10 T<=12: 98 configurations (Z and -Z both counted), 1.3s
+   (T, maxL, iota) = (6, 2, 0) count 2
+   (T, maxL, iota) = (8, 2, -2) count 1
+   (T, maxL, iota) = (8, 2, 0) count 4
+   (T, maxL, iota) = (8, 2, 2) count 1
+   (T, maxL, iota) = (10, 2, -2) count 5
+   (T, maxL, iota) = (10, 2, 0) count 10
+   (T, maxL, iota) = (10, 2, 2) count 5
+   (T, maxL, iota) = (12, 2, -2) count 16
+   (T, maxL, iota) = (12, 2, 0) count 38
+   (T, maxL, iota) = (12, 2, 2) count 16
+attainment |iota| = T-2L > 0 (first example per (L,T)):
+   (2, 6) 18 e.g. (-30, -2, 5, 9, 9, 9)
+== Part B: targeted search for Descartes violators (N <= L-1) ==
+L=2: all V with |V|<=L-1, entries<=400 (400 multisets), every U (no bound on |U| or its entries): violators found = 0  [0.0s]
+L=3: all V with |V|<=L-1, entries<=60 (1890 multisets), every U (no bound on |U| or its entries): violators found = 0  [5.6s]
+L=4: all V with |V|<=L-1, entries<=18 (1329 multisets), every U (no bound on |U| or its entries): violators found = 0  [1.2s]
+FAILURES: 0

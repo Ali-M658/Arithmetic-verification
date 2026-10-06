@@ -1,0 +1,18 @@
+[ok] (1, -1, 0) on every C_L
+[ok] (1, -1, 0): tangent line meets C_L with multiplicity 3 (flex) for every L; F|line = 8*L*t**3*(L - 1)
+[ok] (0, 1, -1) on every C_L
+[ok] (0, 1, -1): tangent line meets C_L with multiplicity 3 (flex) for every L; F|line = 8*L*t**3*(L - 1)
+[ok] (1, 0, -1) on every C_L
+[ok] (1, 0, -1): tangent line meets C_L with multiplicity 3 (flex) for every L; F|line = -8*L*t**3*(L - 1)
+[ok] on X+Y+Z=0, F = L XY(X+Y): the three flexes are collinear
+[ok] lambda=155/12: (1:0:-1) has order 3
+[ok] lambda=68/5: (1:0:-1) has order 3
+[ok] lambda=68/5: (1:0:-1) has order 3
+[ok] lambda=82/7: (1:0:-1) has order 3
+[ok] lambda=1957/165: (1:0:-1) has order 3
+[ok] lambda=15: (1:0:-1) has order 3
+[ok] lambda=955/91: (1:0:-1) has order 3
+[ok] Q + sigma(Q) = (1:0:-1) on 28 points of 7 curves
+[ok] 1,482 isosceles triples (u,v,v), u != v <= 39
+[ok] all are torsion: order counts {6: 1482}; 2Q = (1:0:-1) for every one
+ALL 17 CHECKS PASSED

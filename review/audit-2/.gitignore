@@ -2,3 +2,6 @@
 sources/
 **/sources/
 __pycache__/
+literature/txt/
+literature/search/
+pte-structure/fetched/

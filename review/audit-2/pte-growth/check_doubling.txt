@@ -1,0 +1,34 @@
+n=2 L=2 entries<= 40: 5130 unordered pairs (each run both ways)
+n=3 L=2 entries<= 14: 5514 unordered pairs (each run both ways)
+n=4 L=2 entries<= 8: 2672 unordered pairs (each run both ways)
+n=3 L=3 entries<= 40: 231 unordered pairs (each run both ways)
+n=4 L=3 entries<= 16: 324 unordered pairs (each run both ways)
+n=4 L=4 entries<= 30: 2 unordered pairs (each run both ways)
+case statistics:
+   (2, 2, '1 in X only') 380
+   (2, 2, '1 in Y only') 380
+   (2, 2, '1 in neither') 9500
+   (3, 2, '1 in X only') 1435
+   (3, 2, '1 in X\\Y as MULTISET difference but 1 in Y: (0;V) has order-1 points') 42
+   (3, 2, '1 in Y only') 1435
+   (3, 2, '1 in both') 406
+   (3, 2, '1 in neither') 7752
+   (3, 3, '1 in X only') 29
+   (3, 3, '1 in Y only') 29
+   (3, 3, '1 in neither') 404
+   (4, 2, '1 in X only') 1091
+   (4, 2, '1 in X\\Y as MULTISET difference but 1 in Y: (0;V) has order-1 points') 160
+   (4, 2, '1 in Y only') 1091
+   (4, 2, '1 in both') 780
+   (4, 2, '1 in neither') 2382
+   (4, 3, '1 in X only') 122
+   (4, 3, '1 in X\\Y as MULTISET difference but 1 in Y: (0;V) has order-1 points') 5
+   (4, 3, '1 in Y only') 122
+   (4, 3, '1 in both') 24
+   (4, 3, '1 in neither') 380
+   (4, 4, '1 in X only') 1
+   (4, 4, '1 in Y only') 1
+   (4, 4, '1 in neither') 2
+examples where the cancelled genus-0 realisation is not hyperbolic:
+
+ALL CHECKS PASSED (13873 unordered pairs)

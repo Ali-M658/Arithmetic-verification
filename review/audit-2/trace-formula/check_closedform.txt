@@ -1,0 +1,6 @@
+sigma_i: rational, sigma_0=1, sigma_i>0 and = (4^i-2)|B_2i|/(2i)! for i<=42
+  sigma_1..sigma_4 = ['1/6', '7/360', '31/15120', '127/604800']
+(A)=(C) for m=1..30, (A)=(B) for m=1..12, all k<=40: OK
+  phi_0..phi_3 at m=2: ['1/8', '1/16', '5/192', '61/5760']
+  phi_0..phi_3 at m=7: ['4/7', '2', '2711/294', '397729/8820']
+ALL CHECKS PASSED

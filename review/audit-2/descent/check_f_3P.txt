@@ -1,0 +1,42 @@
+C_{155/12}: 12(X+Y+Z)(XY+YZ+ZX) - 155XYZ = 0
+[ok] X^6 in the ideal of partials: C_155/12 is nonsingular
+[ok] Y^6 in the ideal of partials: C_155/12 is nonsingular
+[ok] Z^6 in the ideal of partials: C_155/12 is nonsingular
+[ok] P = (4:9:18) lies on C_155/12  (S=31, e2=270, e3=648, 31*270 = 155*648/12)
+[ok] O = (1:-1:0) lies on C_155/12
+O*O (tangent at O meets again) = (1, -1, 0)
+[ok] O = (1:-1:0) IS a flex: the tangent -X-Y+(lam-1)Z=0 meets C in 3*O (lam s^3/(lam-1)^2 with s=X+Y)
+[ok] (0, 1, -1) is a flex too
+[ok] (1, 0, -1) is a flex too
+[ok] (1, 0, 0) is not a flex
+[ok] (0, 1, 0) is not a flex
+[ok] (0, 0, 1) is not a flex
+2P = (16352, 288, -365)
+3P = (162833463, 723926268, 287876366)
+[ok] 2P = (16352 : 288 : -365)
+[ok] P + 2P = 2P + P
+[ok] 3P = (162833463 : 723926268 : 287876366)  [corrected claim]
+[ok] 3P != (162833463 : 287876366 : 723926268)  [old printing]
+[ok] the old printing is also a point of C_155/12 (Y<->Z symmetry)
+[ok] coordinates of 3P are coprime: unique primitive integer representative up to sign
+[ok] unordered: both printings are the same triad {162833463, 287876366, 723926268}
+[ok] 3P triad has S*R = 155/12 (S = 1174636097)
+[ok] sigma(O) = (1:0:-1)
+[ok] 3P + (old printing) = (1:0:-1), i.e. old printing = -3P + (1:0:-1)
+[ok] (1:0:-1) has order 3 on C_155/12
+[ok] old printing = -3P + (1:0:-1) = sigma(3P)
+[ok] associativity (A+B)+D = A+(B+D) on 343 triples
+[ok] A + (-A) = O and A + O = A on the sample
+[ok] P has no order <= 12 (so P is of infinite order by Mazur's bound <= 12)
+[3]P with different base points:
+   base (1, 0, 0): 3P = (287876366, 162833463, 723926268) 
+   base (0, 1, 0): 3P = (723926268, 287876366, 162833463) 
+   base (0, 0, 1): 3P = (162833463, 723926268, 287876366) corrected
+   base (1, -1, 0): 3P = (162833463, 723926268, 287876366) corrected
+   base (0, 1, -1): 3P = (287876366, 162833463, 723926268) 
+   base (1, 0, -1): 3P = (723926268, 287876366, 162833463) 
+[ok] BGN image of P = (Fraction(-10, 3), Fraction(275, 18)) lies on tau^2 = s(s^2 + 12433/144 s + 620/3)
+[ok] BGN inverse maps it back to P
+[ok] 3P computed on the BGN Weierstrass model maps back to (162833463 : 723926268 : 287876366)
+[ok] 2P agrees through the BGN model too
+ALL 30 CHECKS PASSED

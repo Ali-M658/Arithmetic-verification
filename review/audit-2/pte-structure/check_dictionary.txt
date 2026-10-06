@@ -1,0 +1,12 @@
+Def 1.1 odd example {-24,-18,-8,5,45}: s_1 = 0  s_{-1} = 0
+primitive integer configurations tested (both signs): 364
+   ('gmin', 0, 'iota!=0') 126
+   ('gmin', 0, 'iota0') 238
+   ('max Area/(2pi T), iota!=0',) 53/176
+examples:
+   1 with multiplicity >=2 : ((-15, -5, -1, -1, 2, 2, 2, 3, 3, 10), (0, (2, 2, 2, 3, 3, 10)), (1, (5, 15)))
+L=1 (entries<=8, T<=6):  74 configurations; (T,iota) counts [((4, -2), 5), ((4, 0), 4), ((4, 2), 5), ((6, -4), 6), ((6, -2), 14), ((6, 0), 20), ((6, 2), 14), ((6, 4), 6)]
+   e.g. (-8, -8, -8, -8, -2, 1) -> min size 4
+L=1: (smaller genus, iota==0) counts: {(0, False): 42, (0, True): 10, (1, True): 14, (1, False): 8} ; gmin=1 examples: {True: ((-8, -8, -1, 2, 2, 4), (1, (2, 2, 4)), (1, (8, 8))), False: ((-6, -3, -2, 1), (2, ()), (1, (2, 3, 6)))}
+L>=2 (all tested): smaller genus is always 0
+FAILURES: 0
