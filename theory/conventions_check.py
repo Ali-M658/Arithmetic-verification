@@ -246,7 +246,8 @@ def check_free_symbols():
                  "revision", "audit-2", "literature-pass", "referee-sim"}   # session work areas: reports, fetched papers, check transcripts
     skip_files = {"CONVENTIONS.md", "conventions_check.py"}
     texts = {}
-    for top in ("theory", "numerics", "code", "review", "paper", "."):
+    # review/ is not walked: review rounds, audits and literature notes are prose or fetched text, not paper notation
+    for top in ("theory", "numerics", "code", "paper", "."):
         for dp, dn, fn in os.walk(os.path.join(ROOT, top)):
             dn[:] = [d for d in dn if d not in skip_dirs and not d.startswith(".")]
             if top == "." and dp != ROOT:
