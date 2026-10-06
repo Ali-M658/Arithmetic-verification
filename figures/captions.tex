@@ -2,17 +2,19 @@
 % Notation: theory/CONVENTIONS.md. Colours are named by tone only ("dark", "light"), so the
 % captions hold in greyscale print: (2,8,8) is drawn in the dark hue, (3,3,12) in the light hue.
 % Needs \usepackage{amssymb} (\mathfrak). The \ref labels are those of paper/jga/manuscript.tex,
-% which reads this file and attaches \figcapOne ... \figcapNine to F1 ... F9. If palette E stays,
+% which reads this file and attaches \figcapOne, \figcapThree, \figcapFour, \figcapFive, \figcapSeven
+% and \figcapEight to F1, F3, F4, F5, F7, F8; paper/jga/supplement.tex uses \figcapSix (F6). F2 and F9
+% are not used by the 30-35 page paper (F9 belongs to the companion note, which has its own caption). If palette E stays,
 % cite Crameri (2023) and Crameri, Shephard and Heron (2020) for the colour map of F1
 % (figures/SPEC.md, section 3).
 
 % F1 (Introduction) -- figures/out/F1.pdf
-\newcommand{\figcapOne}{Stylised renderings, not isometric embeddings, of the pillows
+\newcommand{\figcapOne}{Stylised renderings, not isometric embeddings, of the orbifolds
 $\mathcal O(2,8,8)$ (a) and $\mathcal O(3,3,12)$ (b), at one scale and seen from above (only the
 upper sheet shows), coloured by $4\pi t\,\mathfrak h_t(x,x)$, with $\mathfrak h_t$ the heat kernel, at $t=0.02$ on one logarithmic scale,
 darker meaning larger. Away from the cone points the value is $1-t/3+O(t^2)$, and at a cone point
 of order $m$ it rises to $m$: the sharp dark tips are the points of order $8$ (a) and $12$ (b), the
-blunt corners those of order $2$ and $3$. The two pillows have the same area and the same
+blunt corners those of order $2$ and $3$. The two orbifolds have the same area and the same
 $c_1,c_2$.}
 
 % F2 (Section 5) -- figures/out/F2.pdf
@@ -25,27 +27,31 @@ form one copy of the pillow. The other tiles alternate between white and grey.}
 % F3 (Section 3) -- figures/out/F3.pdf
 \newcommand{\figcapThree}{The mirror argument of Theorem~\ref{thm:sigsep}: discs mark $X^*=U^*\uplus(-V^*)$ on
 the real axis (stacked by multiplicity), rings mark $-X^*$, and sharing $c_1,\dots,c_L$ with
-$|X^*|\le 2L$ forces $X^*=-X^*$, hence equal signatures. (a) $(2,8,8)$ (dark) against $(3,3,12)$
-(light): $|X^*|=6$ and exactly $c_1,c_2$ are shared; below, the symmetric configuration that
-sharing $c_3$ as well would force. (b) $(1;15)$ (black) against $(0;3,3,5,5)$ (grey), with
-$U=\{1,15\}$, i.e.\ $15$ padded by one order~$1$: $|V|-|U|=2=2(g-g')$, and exactly $c_1,c_2$ are
-shared.}
+$|X^*|\le 2L$ would force $X^*=-X^*$, which for disjoint $U^*,V^*$ leaves only $X^*=\emptyset$.
+(a) $(2,8,8)$ (dark) against $(3,3,12)$ (light): $|X^*|=6$ and exactly $c_1,c_2$ are shared; below,
+for comparison, the mirror-symmetric multiset of $(2,8,8)$ against itself, which shows what
+$X^*=-X^*$ would mean and, $U^*$ and $V^*$ being disjoint, is the configuration of no pair, so the
+pair cannot share $c_3$. (b) $(1;15)$ (black) against $(0;3,3,5,5)$ (grey), with $U=\{1,15\}$, i.e.\
+$15$ padded by one order~$1$: $|V|-|U|=2=2(g-g')$, and exactly $c_1,c_2$ are shared.}
 
 % F4 (Section 3) -- figures/out/F4.pdf
-\newcommand{\figcapFour}{Dots: for each of the $525$ complete area classes with
-$s=\mathrm{Area}/2\pi\le 7/5$, the largest $K_{\mathrm{mult}}(\mathcal O;\mathrm{Sig})$ (the least
-$k$ such that $c_1,\dots,c_k$ determine the signature of $\mathcal O$); the split disc (half dark,
-half light) is the class of $(2,8,8)$ and $(3,3,12)$. Solid steps: the upper bound
-$\lfloor 2s\rfloor+4$. Dashed steps, from $s=3$ (the hypothesis $A\ge 6\pi$ of Corollary~\ref{cor:siggrowth}):
-the lower bound $\lfloor\log_4(s+1)\rfloor+2$ for $\max_{\mathrm{Area}\le 2\pi s}K_{\mathrm{mult}}$;
-squares: the pairs of Theorem~\ref{thm:signonuniform}, which share $c_1,\dots,c_L$ ($L=2,\dots,6$).}
+\newcommand{\figcapFour}{Dots: for each of the $525$ area classes with $s=\mathrm{Area}/2\pi\le 7/5$ (a class is the set
+of all signatures with that area), the largest $K_{\mathrm{mult}}(\mathcal O;\mathrm{Sig})$, the least
+$k$ such that $c_1,\dots,c_k$ determine the signature; the split disc (half dark, half light) is the
+class of $(2,8,8)$ and $(3,3,12)$. Solid steps: the upper bound $\lfloor 2s\rfloor+4$ of
+Corollary~\ref{cor:sigarea}; dashed steps, from $s=4$: the lower bound
+$\lfloor\sqrt{(s-1)/3}\rfloor+2$ of Theorem~\ref{thm:growth}(a) for
+$\max_{\mathrm{Area}\le 2\pi s}K_{\mathrm{mult}}$. Diamonds: the pairs of Examples~\ref{ex:siggenus}
+and~\ref{ex:ptepairs} and their companions, which share exactly $c_1,\dots,c_L$ ($L=2,\dots,7$), so
+$K_{\mathrm{mult}}\ge L+1$; squares: genus pairs built from Prouhet's partition and checked
+exactly to share $c_1,\dots,c_L$ ($L=2,\dots,6$).}
 
 % F5 (Sections 4.3 and 7) -- figures/out/F5.pdf
-\newcommand{\figcapFive}{(a) $D(t)=Z_{(2,8,8)}(t)-Z_{(3,3,12)}(t)$ from the computed spectra
+\newcommand{\figcapFive}{(a) $D(t)=\mathrm Z_{(2,8,8)}(t)-\mathrm Z_{(3,3,12)}(t)$ from the computed spectra
 (heavy), the cone-point contribution of the trace formula (light, dashed), and the partial sums
 $d_3t$, $d_3t+d_4t^2$, $d_3t+d_4t^2+d_5t^3$ of its small-$t$ expansion (light to dark grey). The
 expansion diverges, the closed geodesics take over beyond $t\approx0.1$, and $D$ changes sign near
-$t=0.34$. (b) For $(0;3,3,3,3)$: $|Z_0-Z_\vartheta|$, $\vartheta=0.4,\dots,2.8$ (shorter systole
+$t=0.34$. (b) On the same $t$ axis, for $(0;3,3,3,3)$: $|\mathrm Z_0-\mathrm Z_\vartheta|$, $\vartheta=0.4,\dots,2.8$ (shorter systole
 darker), the predicted $|\mathrm{Hyp}(0)-\mathrm{Hyp}(\vartheta)|$ (thin dashed, equal to the data
 above the noise), and the region below the error budget (shaded); circles mark where the predicted
 difference first exceeds ten times the budget, which is also where the measured one does.}

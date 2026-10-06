@@ -8,8 +8,8 @@ could not retrieve, and every place where the manuscript states less than a sour
 The manuscript contains a clearly marked placeholder and no statement. The authors decide the
 content.
 
-**Location of the placeholder.** Appendix C, "Computational methods and reproducibility",
-paragraph "Use of AI tools". The journal's guidelines (quoted below) ask for use of an LLM to be
+**Location of the placeholder.** Appendix B, "Computational methods and reproducibility",
+paragraph "Use of AI tools" (Appendix C before the 30-35 page revision). The journal's guidelines (quoted below) ask for use of an LLM to be
 documented "in the Methods section (and if a Methods section is not available, in a suitable
 alternative part) of the manuscript". The manuscript has no section called Methods; Appendix C,
 which describes how every computation was done, is the closest equivalent and was chosen as the
@@ -87,112 +87,81 @@ fetched 2026-10-05. Verbatim, opening of the section:
 
 | placeholder | where | what is needed |
 |---|---|---|
-| Author contributions | Statements and Declarations, "Author contributions" | the authors' contribution statement (the guidelines suggest free text or CRediT) |
-| AI-use statement | Appendix C, "Use of AI tools" | see section 1 |
-| Zenodo DOI | Statements and Declarations, "Data and code availability"; Appendix C, "Repository" | mint the archive at submission and insert the DOI in both places |
+| Author contributions | Statements and Declarations, "Author contributions" | the authors' contribution statement (free text or CRediT) |
+| AI-use statement | Appendix B, "Use of AI tools" | see section 1 |
+| Zenodo DOI | Statements and Declarations, "Data and code availability"; Appendix B | mint the archive at submission and insert the DOI in both places |
 
-## 3. Figures
+## 3. Library sources (brief: refs/manual/)
 
-Resolved at integration (branch s11b-integrate; details in `INTEGRATION.md`). The manuscript
-reads `figures/captions.tex` as the figure session wrote it (`\figcapOne` ... `\figcapNine`) and
-attaches the macros to F1-F9 with `\setfigcap`; each figure is included at its drawn width of
-119 mm, near its first mention, and is referenced in the text. No placeholder box or TODO-CAPTION
-marker remains. At submission, when the template's single `.tex` file is required, paste the
-nine caption macros into the preamble in place of the `\input`.
+`refs/manual/` does not exist in this working tree, so none of Hejhal LNM 548 Ch. 3, Iwaniec
+Ch. 10, McKean 1972/1974, Buser, Steinig, Drury-Marshall, Donnelly 1976, Watson 2005 or Wolpert 1979
+was read in this session. Consequences, as the brief prescribes for this case:
 
-## 4. Instrument gaps
+- Lemma 2.5 (the heat function is admissible) is kept self-contained; the bracketed replacement
+  sentence of `theory/revision/locality.tex` was **not** used.
+- Citations are limited to what was verified: DS eq. (1) is cited as DS state it, taken from Hejhal
+  and Iwaniec (read in DS); the heat-kernel form is cited to Garbin-Jorgenson Rem. 2.7, (2.8) (read
+  in the literature pass); McKean, Buser and Wolpert are cited without pinpoints; Steinig is cited
+  for "n distinct positive reals" via Laurens; Watson only for the credit Ucar gives (pp. 134, 144).
+- The pinpoints of `review/literature-pass/GAPS.md` section 4 and of
+  `theory/revision/locality-sources.md` ("Open (needs library access)") remain open: Hejhal Ch. 3,
+  Thm 5.1 hypothesis wording; Iwaniec Thm 10.2 for cocompact groups; Buser Lemma 6.6.4 numbering;
+  McKean 1972 section; Steinig's scope; Korobov-Bugaevskaya s. 3 / Thm 3.1; published numbering of
+  the arXiv-read items; the NGSolve ASC report.
 
-Accepted and standing (`review/outstanding-fetches.md`): Steinig 1971 (cited through Laurens,
-as THEOREM-A-PRIOR-ART.md prescribes), Drury-Marshall 1987 (not cited), Donnelly 1976 (cited for
-the structure, which is quoted from DGGW Section 4.1), Watson 2005 (not cited), Shioda-Tate (the
-Mordell-Weil rank remark is omitted; nothing uses it).
+## 4. Unresolved G7 items (details in G7-CHANGES.md)
 
-New in this session:
+- **G7-5.** The double-window recomputation of the four spectra has not been run (NGSolve is not
+  installed here; `numerics/rerun_double_window.py` exists). The paper says so and restricts
+  "no eigenvalue missing" to lambda below about 1.6e4.
+- **G7-14.** The repository is `github.com/Ali-M658/Arithmetic-verification`, an account that
+  matches none of the six authors. Declarations are unchanged by instruction; the authors must move
+  the repository or state the account holder's relation, add a licence, and mint the Zenodo DOI.
+- **G7-31.** No notation table (no room at 35 pp.); T still denotes the tanh series and T_L, and
+  locally abs(Z) in two proofs.
+- **G7-32.** F5(a) has tick marks but no tick labels on its own t axis (the axis is shared with (b),
+  as the caption now says), and F7 has no in-figure p labels. `figures/src/F5.py` and `F7.py` are
+  outside this session's write scope.
 
-- `link.springer.com` returned a JavaScript challenge to headless requests; the Springer
-  journal policy was read from an Internet Archive capture instead.
-- `zbmath.org/bibtex/...` returned a Cloudflare challenge; zbMATH records were taken from the
-  zbMATH Open API (`api.zbmath.org`).
-- The Shams-Stanhope-Webb paper (Arch. Math. 87 (2006)) was not retrieved: Crossref carries no
-  abstract and no arXiv version was found. The manuscript uses only its title-level claim
-  ("one cannot hear orbifold isotropy type"), together with the fact, from Dryden-Strohmaier
-  Thm 1.1, that no closed orientable hyperbolic 2-orbifold can be such an example.
-- Guy, Unsolved Problems in Number Theory, section D16: text unretrieved (as logged in
-  `review/outstanding-fetches.md` 1.4); Guy is therefore not cited, and the equal-sum,
-  equal-product problem is credited to Schinzel's paper, which was read.
-- The published FoCM version of Mueller et al. is closed access; it is cited from its Crossref
-  record for a negative statement only.
-- MSC: the JGA guidelines (as captured) do not require MSC codes; codes are given anyway, each
-  checked against the fetched MSC 2020 list.
+## 5. Figure choice at 35 pages
 
-## 5. Open items in the repository that the manuscript reports as such
+The paper carries F3, F4, F7, F8 and F5 (five of the six recommended). F1 moved to the supplement
+(Fig. S1) to meet the 35-page limit; F6 is in the supplement (Fig. S2); F2 is not used; F9 belongs
+to the companion note. F4 was rebuilt through `figures/src/F4.py` (new data source
+`theory/pte/data/witnesses.json`, read only; new sqrt step curve; height 56 mm; all assertions pass),
+which changes `figures/out/F4.pdf` and `F4.png`; `DATA-MANIFEST.md` is to be regenerated by the
+close-out session. F1 and F6 were not re-rendered.
 
-- The recomputation of the four S3 spectra with the double-window eigensolver has not been run
-  (`CONSOLIDATION.md`, T3). Section 7.1 says so and gives the two checks that exclude a missing
-  eigenvalue in the committed data.
-- Resolved at integration: `theory/stability/threshold_output.md` was regenerated by
-  `threshold.py` (with the audit's epigraph search added to its failure construction) and prints
-  the corrected (2,2,2,2,3) upper bound 5.312e-05; the table is now generated from
-  `threshold_results.json` alone (`INTEGRATION.md`).
-- The rank stage of `code/run_all.sh` is skipped on machines without PARI/cypari2; the ranks
-  quoted are those recorded in `theory/diophantine/data/ranks.txt` and confirmed by the audit's
-  independent 2-isogeny descent.
+## 6. Instrument gaps (standing)
 
-## 6. Places where the manuscript states less than a source
-
-- **Register row 94** ("any other pair on the same curve differs by a point of infinite
-  order"). The source has no proof, and the audit's suggested lemma (positive torsion points
-  are isosceles or geometric progressions, and their torsion cosets consist of permutations of
-  the point and its dual) is only sketched. The manuscript proves the statement when the
-  torsion of C_Lambda(Q) is the cyclic group of base points (for example every integer
-  Lambda != 10, by Bremner-Guy-Nowakowski), and states the general case only as the exact
-  computation for S <= 600 (1330 non-dual primitive pairs, none differing by a point of order
-  at most 12, hence by Mazur all of infinite order). A complete proof needs the classification
-  of rational torsion on C_Lambda for rational Lambda.
-- **Register row 50, Theorem N(b).** Proved with the audit's doubling construction (which gives
-  the 23 vs 24 witness) rather than the source's Egyptian-fraction route; the statement is
-  unchanged.
-- **Register rows 83, 86 and 82** (invariant multiplicities; flat cone surfaces that are not
-  orbifolds; the Kokotov input) are remark-level and are omitted.
-- **Register row 28** (eq:moduli) is superseded by Proposition 4.2, as its register note says.
+As recorded in `review/literature-pass/GAPS.md` and `review/outstanding-fetches.md`. In this
+session the bibliography records were re-fetched (Crossref/DataCite content negotiation, arXiv API,
+zbMATH Open API; no contact parameter was sent); the PARI release date is taken from the fetched
+release announcement (5 March 2025), not the changelog (1 March), as `CITATIONS.md` section 4 asks.
 
 ## 7. Decisions for the authors
 
-- **Preprints in the reference list.** The JGA guidelines say the reference list "should only
-  include works that are cited in the text and that have been published or accepted for
-  publication". Two cited works are not published: Doyle-Rossetti (arXiv:1103.4372, cited for
-  Theorem 1 and the quotation in Section 1.1) and Ucar's thesis (a dissertation, published by
-  Humboldt-Universitat, DOI 10.18452/18463, so it should qualify). The authors should decide
-  whether Doyle-Rossetti stays in the list or moves to the text. Checked at integration
-  (`INTEGRATION.md`): arXiv:1103.4372 has no journal reference, no Crossref record and is listed
-  by zbMATH as a preprint. The New York J. Math. 14 (2008) 193-204 paper cited by the legacy
-  draft is a different work ("Isospectral hyperbolic surfaces have matching geodesics") and does
-  not contain Theorem 1 or the quoted sentence.
-- **K_iso versus K_mult** (DEFECTS MAJ-03). The manuscript uses both, each with its comparison
-  class; the triangle-orbifold theorems are stated for K_iso, equal to K_mult there.
-- **ORCID iDs.** The class's `\orcid` macro needs a logo file the template does not ship, so the
-  six iDs are printed as a title-page note. The submission system will also ask for them.
-- **Title-page acknowledgements.** The guidelines ask for acknowledgements "in a separate section
-  on the title page"; the template puts them in the back matter, where they are now.
+- **Preprints in the reference list.** Doyle-Rossetti (arXiv:1103.4372v2), Dryden 2004
+  (arXiv:math/0411290), Chen's survey (arXiv:2506.11429) and Croot-Mao-Yip (arXiv:2609.05061) are
+  unpublished; the JGA guidelines ask for published or accepted works only. Ucar's thesis has a DOI.
+  The companion manuscript is cited as in preparation.
+- **ORCID iDs** are printed as a title-page note (the class's `\orcid` macro needs a logo file).
+- **"Corresponding author(s). E-mail(s):"** is printed by the sn-jnl class itself.
+- **Line numbers** come from the `lineno` package (the class option `lineno` needs `vruler.sty`,
+  which this TeX installation lacks); remove `\linenumbers` for the final version if wanted.
+- **MSC.** 58J53 (primary); 58J50, 35K08, 57R18, 30F35, 11D72, 11G05. 11D72 covers the
+  Prouhet-Tarry-Escott systems of Section 3.3 and 11G05 the descent of Theorem 5.10.
 
-## 8. `code/run_all.sh --quick` after this session
+## 8. Places where the manuscript states less than a source
 
-Run with `PYTHON=` the miniforge interpreter (the default `python3` lacks the pinned packages):
-33 passed, 1 failed, 8 skipped, total 49:30 (machine under load). The 8 skips are those of the
-consolidation record (full-mode stages, PARI not installed, the deferred S3 rerun record).
-
-The one failure is `theory conventions-check`, in `check_free_symbols` of
-`theory/conventions_check.py`. That check asserts that the replacement symbols CONVENTIONS.md
-introduces for the paper (`d_j`, `varsigma`, `varpi`, `varkappa`, `vartheta`, `mathfrak D`,
-`Hyp`, ...) occur in no text file of the working tree outside CONVENTIONS.md, so that the paper
-could adopt them. The manuscript now does adopt them, and the check finds them in
-`paper/jga/manuscript.tex`, `TRACE.md` and `OUTSTANDING.md`. The same stage passes on an
-untouched export of the starting commit 09638ff (14 symbols free across 388 files, 45 checks
-passed). Everything else in the stage (the 45 translation checks) passes. The fix is outside
-this session's write scope: add `"jga"` to `skip_dirs` in `check_free_symbols` (the manuscript is
-where the symbols are meant to be used). The symbols were not disguised to pass the check.
-Resolved at integration: `"jga"` was added to `skip_dirs`, and the stage passes (`INTEGRATION.md`).
-
-An earlier run in this session also reported `audibility verify_elimination` as failed (exit 97):
-the committed-file guard saw paper/jga files that were being committed during that stage and
-restored them. The stage's own assertions passed, and in the clean rerun above it passes.
+- The pencil construction is used only for m = 4 (Remark 3.2); the general pencil theorem,
+  Proposition 2.3 (symmetric constructions are balanced), N_odd, tau_L and T^cone_L of
+  `theory/pte/proof.md` are not stated.
+- Theorem 4.4 no longer contains the a-posteriori bound (c) of the old Theorem 4.9; the supplement
+  says only that (b) holds and is loose.
+- Proposition 5.8 keeps only part (1) (tangency at p = 2, 4); part (2) (first collision strictly
+  after the first overlap for p not in {2, 4}) is dropped for space; Table S3 shows the data.
+- The divergence remark (old Remark 2.12, `theory/revision/remark212.tex`) is not in the paper; Section 7
+  quotes only the growth rate of the cone coefficients with its reason.
+- Philippe 2010 (Geom. Dedicata) and the a-posteriori bound of old Theorem 4.9(c) were dropped for the
+  page limit; Philippe 2008 Thm A is cited.

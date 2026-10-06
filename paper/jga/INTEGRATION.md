@@ -1,5 +1,9 @@
 # INTEGRATION: figures (s10-figures) and manuscript (s11-rewrite) joined on s11b-integrate
 
+> Superseded in part by the 30-35 page revision (2026-10-06): the paper now carries F3, F4, F7, F8
+> and F5 (Figs 1-5); F1 and F6 are in `supplement.tex`; F2 and F9 are not used. Current placement
+> and data sources: `TRACE.md`, section "Figures". The caption interface below is unchanged.
+
 Branch `s11b-integrate`, created from `origin/main` at 09638ff. Python: a git-ignored `.venv`
 built from `requirements.txt` (pinned versions; NGSolve not installed).
 

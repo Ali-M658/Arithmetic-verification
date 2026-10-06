@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Regenerate the tables of paper/jga/manuscript.tex from committed data.
+"""Regenerate the tables of paper/jga/manuscript.tex and supplement.tex from committed data.
 
 Each table is written between the markers
     % BEGIN GENERATED TABLE <name>
@@ -65,7 +65,7 @@ def table_overlap():
         "\\begin{table}[t]\n"
         "\\caption{First overlap and first collision of the adjacent strata $p$ and $p+1$, for $2\\le p\\le14$, "
         "from the exhaustive enumeration of all hyperbolic triads with $S\\le600$. The gap is the first collision sum "
-        "minus $S^*(p)$; it vanishes only for $p=2$ and $p=4$ (Proposition~\\ref{prop:tangency}).}\\label{tab:overlap}\n"
+        "minus $S^*(p)$; it vanishes only for $p=2$ and $p=4$ (Proposition~\\ref{P-prop:tangency} of the paper).}\\label{tab:overlap}\n"
         "\\centering\\small\n"
         "\\begin{tabular}{@{}rrrrrl@{}}\n\\toprule\n"
         "$p$ & $x^*(p)$ & $S^*(p)$ & first collision & gap & colliding pair\\\\\n\\midrule\n"
@@ -88,17 +88,29 @@ def table_thresholds():
         ratio = float(Decimal(up_s.split("\\times")[0]).scaleb(int(up_s.split("{")[1].rstrip("}")))) / float(
             Decimal(cert_s.split("\\times")[0]).scaleb(int(cert_s.split("{")[1].rstrip("}"))))
         eps_s = sig(v["eps_cert"], 2, "down")
-        out.append(f"${tex_triple(m)}$ & {n} & ${thm_s}$ & ${cert_s}$ & ${up_s}$ & {ratio:.2f} & ${eps_s}$ \\\\")
+        # relative precision delta_cert/|c_j| of each coefficient under the uniform model, from the
+        # printed (rounded-down) delta_cert and the exact c_j, rounded down (review/audit-2 F8)
+        cert_printed = Decimal(cert_s.split("\\times")[0]).scaleb(int(cert_s.split("{")[1].rstrip("}")))
+        cert_printed = Fraction(str(cert_printed))
+        rel = [sig(cert_printed / abs(Fraction(h)), 2, "down") for h in v["H"]]
+        assert len(rel) == n
+        def e(x):          # compact a\text{e}b notation for this wide table
+            return x.replace("\\times10^", "\\text{e}")
+        rel_s = "$, $".join(e(r) for r in rel)          # separate math groups so the cell can wrap
+        out.append(f"${tex_triple(m)}$ & ${e(thm_s)}$ & ${e(cert_s)}$ & ${e(up_s)}$ & {ratio:.2f} & ${e(eps_s)}$ & ${rel_s}$ \\\\")
     body = "\n".join(out)
     return (
         "\\begin{table}[t]\n"
         "\\caption{Thresholds for exact recovery of integer orders under the uniform model $|\\delta c_j|\\le\\delta$: "
         "the closed form $\\delta_{\\rm thm}$ of Theorem~\\ref{thm:S4}, the certified $\\delta_{\\rm cert}$ of "
         "Proposition~\\ref{prop:S5}, a constructed failure $\\delta_{\\rm up}$, their ratio, and the largest certified "
-        "uniform relative error $\\epsilon_{\\rm cert}$.}\\label{tab:thresholds}\n"
-        "\\centering\\footnotesize\n"
-        "\\begin{tabular}{@{}lrlllrl@{}}\n\\toprule\n"
-        "$m$ & $n$ & $\\delta_{\\rm thm}$ & $\\delta_{\\rm cert}$ & $\\delta_{\\rm up}$ & ratio & $\\epsilon_{\\rm cert}$\\\\\n\\midrule\n"
+        "uniform relative error $\\epsilon_{\\rm cert}$; the last column is $\\delta_{\\rm cert}/|c_j|$; "
+        "aeb means $a\\times10^b$. Every entry is rounded so that it keeps its meaning: "
+        "$\\delta_{\\rm thm}$, $\\delta_{\\rm cert}$, $\\epsilon_{\\rm cert}$ and the last column down, "
+        "$\\delta_{\\rm up}$ up.}\\label{tab:thresholds}\n"
+        "\\centering\\footnotesize\\setlength{\\tabcolsep}{4pt}\n"
+        "\\begin{tabular}{@{}llllrl>{\\raggedright\\arraybackslash}p{30mm}@{}}\n\\toprule\n"
+        "$m$ & $\\delta_{\\rm thm}$ & $\\delta_{\\rm cert}$ & $\\delta_{\\rm up}$ & ratio & $\\epsilon_{\\rm cert}$ & $\\delta_{\\rm cert}/|c_j|$, $j=1,\\dots,n$\\\\\n\\midrule\n"
         f"{body}\n\\bottomrule\n\\end{{tabular}}\n\\end{{table}}"
     )
 
@@ -224,25 +236,31 @@ def table_enum():
     )
 
 
+# The 30-35 page revision keeps the threshold table in the paper and the overlap table and the
+# triad list in the supplement;
+# fibres and density moved to the companion note (paper/arith) and are not written here.
 TABLES = {"overlap": table_overlap, "thresholds": table_thresholds, "fibres": table_fibres,
           "density": table_density, "enum": table_enum}
+FILES = {TEX: ["thresholds"], TEX.parent / "supplement.tex": ["overlap", "enum"]}
 
 
 def main():
-    src = TEX.read_text(encoding="utf-8")
-    new = src
-    for name, fn in TABLES.items():
-        pat = re.compile(r"(% BEGIN GENERATED TABLE " + name + r"\n).*?(% END GENERATED TABLE " + name + r")", re.S)
-        if not pat.search(new):
-            raise SystemExit(f"markers for table {name} not found")
-        new = pat.sub(lambda m: m.group(1) + fn() + "\n" + m.group(2), new)
+    stale = False
+    for path, names in FILES.items():
+        src = path.read_text(encoding="utf-8")
+        new = src
+        for name in names:
+            pat = re.compile(r"(% BEGIN GENERATED TABLE " + name + r"\n).*?(% END GENERATED TABLE " + name + r")", re.S)
+            if not pat.search(new):
+                raise SystemExit(f"markers for table {name} not found in {path.name}")
+            new = pat.sub(lambda m, fn=TABLES[name]: m.group(1) + fn() + "\n" + m.group(2), new)
+        if "--check" in sys.argv:
+            stale |= new != src
+            continue
+        path.write_text(new, encoding="utf-8")
     if "--check" in sys.argv:
-        if new != src:
-            print("tables are out of date; run make_tables.py")
-            sys.exit(1)
-        print("tables up to date")
-        return
-    TEX.write_text(new, encoding="utf-8")
+        print("tables are out of date; run make_tables.py" if stale else "tables up to date")
+        sys.exit(1 if stale else 0)
     print("tables written")
 
 

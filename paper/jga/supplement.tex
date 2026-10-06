@@ -1,0 +1,195 @@
+%% Electronic supplementary material for "How much of a hyperbolic orbifold does heat hear?"
+%% Same template and class as manuscript.tex; built into its own PDF (build/supplement.pdf).
+%% References to the paper ("Theorem P-4.7") are read from build/manuscript.aux by xr, so
+%% manuscript.tex is built first (latexmkrc lists both files in that order).
+\documentclass[pdflatex,sn-mathphys-num]{sn-jnl}
+
+\usepackage{graphicx}%
+\usepackage{amsmath,amssymb,amsfonts}%
+\usepackage{amsthm}%
+\usepackage{booktabs}%
+\usepackage{xr}%
+\externaldocument[P-]{build/manuscript}
+
+\graphicspath{{../../}}
+
+\newcommand{\Orb}{\mathcal{O}}
+\newcommand{\cZ}{\mathrm{Z}}
+\newcommand{\Hyp}{\operatorname{Hyp}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\doiurl}[1]{\expandafter\url\expandafter{\detokenize{https://doi.org/#1}}}
+\newcommand{\pref}[1]{\ref{P-#1}}% a label of the paper
+\renewcommand{\thesection}{S\arabic{section}}
+\renewcommand{\thetable}{S\arabic{table}}
+\renewcommand{\thefigure}{S\arabic{figure}}
+
+\input{../../figures/captions.tex}
+
+\raggedbottom
+\hypersetup{pdftitle={How much of a hyperbolic orbifold does heat hear? Electronic supplementary material},
+  pdfauthor={Palaash Gang, Akshaj Agadi, Arjun Veluri, Jerry Wang, Jeremy Barreto, Aarin Chouthaiwale}}
+
+\begin{document}
+
+\title[Supplement: How much of a hyperbolic orbifold does heat hear?]{Electronic supplementary material for ``How much of a hyperbolic orbifold does heat hear?''}
+
+\author[1]{\fnm{Palaash} \sur{Gang}}
+\author[2]{\fnm{Akshaj} \sur{Agadi}}
+\author[1]{\fnm{Arjun} \sur{Veluri}}
+\author[3]{\fnm{Jerry} \sur{Wang}}
+\author[4]{\fnm{Jeremy} \sur{Barreto}}
+\author[5]{\fnm{Aarin} \sur{Chouthaiwale}}
+
+\affil[1]{\orgname{Indus International School}, \orgaddress{\city{Pune}, \country{India}}}
+\affil[2]{\orgname{Texas A\&M University}, \orgaddress{\city{College Station}, \state{Texas}, \country{USA}}}
+\affil[3]{\orgname{University of California, Irvine}, \orgaddress{\city{Irvine}, \state{California}, \country{USA}}}
+\affil[4]{\orgname{Lawrence High School}, \orgaddress{\city{Lawrenceville}, \state{New Jersey}, \country{USA}}}
+\affil[5]{\orgname{DriveChange Learning and Resource Centre}, \orgaddress{\city{Pune}, \country{India}}}
+
+\abstract{This supplement contains the numerical experiments summarised in Section~\pref{sec:numerics} of the paper: the computed spectra of $\Orb(2,8,8)$ and $\Orb(3,3,12)$ in full, a blind recovery of their cone orders, and a family of orbifolds of signature $(0;3,3,3,3)$ that share every heat invariant while their spectra move. It also lists the hyperbolic triads of small sum. Nothing here is used in a proof. Numbers such as ``Theorem~\pref{thm:sharp}'' refer to the paper.}
+
+\maketitle
+
+\section{Computed spectra of the minimal pair}\label{sec:listening}
+
+Figure~\ref{fig:F1} shows the two orbifolds of Theorem~\pref{thm:minimal}, which share their first two heat invariants, coloured by the diagonal of the heat kernel computed from their spectra.
+
+\begin{figure}[ht]
+\centering
+\includegraphics[width=119mm]{figures/out/F1.pdf}
+\caption{\figcapOne}\label{fig:F1}
+\end{figure}
+
+
+\emph{Method.} The triangle orbifold $\Orb(p,q,r)$ is the double of a hyperbolic triangle $T$ with angles $\pi/p,\pi/q,\pi/r$. The reflection exchanging the two copies splits $H^1(\Orb)$ into even and odd parts, orthogonal for the $L^2$ product and the Dirichlet form, which restrict to $H^1(T)$ and $H^1_0(T)$; so the spectrum of $\Orb$ is the union, with multiplicity, of the Neumann and Dirichlet spectra of $T$, and $\cZ_\Orb=\cZ_N+\cZ_D$. The problems $-\Delta_Eu=\lambda wu$, $w=4/(1-|z|^2)^2$, were solved in the Poincar\'e disc with $H^1$ finite elements of order $p$ on NETGEN meshes \cite{schoberl1997} of uniform hyperbolic size $h$, with NGSolve \cite{ngsolve}; the geodesic side is an exact rational quadratic spline, curved to order $p$, and the finite-element area is exact to $2\times10^{-14}$. The production level is $(h,p)=(0.05,10)$, with $h$-sweeps at $p=10$ ($h=0.1,0.07$) and $p$-sweeps at $h=0.07$ ($p=8,10,12$). Eigenvalues were computed by shift-invert Lanczos iteration (ARPACK \cite{arpack1998}) in overlapping spectral windows of $200$ eigenvalues, one sparse factorisation per window, each eigenvalue taken from one window (software versions are pinned in the repository's \texttt{requirements.txt} files): $1420$--$1440$ per triangle and boundary condition, up to $\lambda\approx21{,}700$ (Neumann) and $23{,}800$ (Dirichlet), about $2850$ per orbifold.
+
+\emph{Convergence and error per eigenvalue.} The error estimate $\mathrm{err}_j$ of each eigenvalue is $|\lambda_j(0.05,10)-\lambda_j(0.07,12)|$, two independent discretisations, and $|\lambda_j(0.05,10)-\lambda_j(0.07,10)|$ is carried as a conservative bound. For the first $500$ eigenvalues the estimate is at most $2.9\times10^{-11}$ relative and the conservative bound at most $1.2\times10^{-8}$. The empirical $h$-convergence at $p=10$ is $h^{13}$ to $h^{19}$ (medians over mid-spectrum modes; the meshes are not nested) and the $p$-convergence is geometric, a factor $150$ to $350$ per two orders; all modes converge from above. A corner singularity would cap the rate at an $h$-independent algebraic order; none occurs, as reflection predicts: at a corner of angle $\pi/k$ the eigenfunctions extend to smooth $\Z_k$-symmetric functions. Table~\ref{tab:conv} shows representative eigenvalues.
+
+\begin{table}[ht]
+\caption{Representative eigenvalues $\lambda_j$ at the production level, the error estimate, and the differences from the coarser levels $(0.07,10)$ and $(0.1,10)$ and between $p=8$ and $p=12$ at $h=0.07$ (file \texttt{numerics/data/convergence.csv}).}\label{tab:conv}
+\centering\footnotesize
+\begin{tabular}{@{}llrrllll@{}}
+\toprule
+triangle & b.c. & $j$ & $\lambda_j$ & estimate & $(0.07,10)$ & $(0.1,10)$ & $p=8$ vs $12$\\
+\midrule
+$(2,8,8)$ & N & 1 & 3.838887 & 5.9e-13 & 8.5e-14 & 3.0e-14 & 5.9e-13\\
+ & N & 500 & 7400.919040 & 2.8e-08 & 1.4e-05 & 2.3e-03 & 4.3e-03\\
+ & N & 1400 & 21373.180248 & 2.1e-02 & 8.8e-01 & 2.0e+01 & 1.5e+01\\
+ & D & 1 & 73.663812 & 1.3e-11 & 1.4e-13 & 1.7e-13 & 1.4e-11\\
+ & D & 500 & 8642.496608 & 4.4e-08 & 2.3e-05 & 6.4e-03 & 8.1e-03\\
+ & D & 1400 & 23446.967233 & 1.4e-02 & 6.2e-01 & 3.8e+01 & 1.8e+01\\
+$(3,3,12)$ & N & 1 & 3.499847 & 5.5e-13 & 4.8e-14 & 7.3e-14 & 5.8e-13\\
+ & N & 500 & 7394.453593 & 4.6e-10 & 1.4e-06 & 2.2e-03 & 1.2e-03\\
+ & N & 1400 & 21388.053620 & 5.3e-04 & 9.9e-02 & 3.0e+01 & 7.0e+00\\
+ & D & 1 & 72.365158 & 1.3e-11 & 2.1e-13 & 2.1e-13 & 1.4e-11\\
+ & D & 500 & 8629.414252 & 4.9e-09 & 1.9e-05 & 3.8e-02 & 8.9e-03\\
+ & D & 1400 & 23438.658440 & 1.9e-03 & 2.4e-01 & 4.6e+01 & 1.6e+01\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\emph{Error budget.} By the mean value theorem $|e^{-\tilde\lambda t}-e^{-\lambda t}|\le t|\tilde\lambda-\lambda|e^{-\min(\lambda,\tilde\lambda)t}$, so the eigenvalue errors contribute at most $t\sum_j\mathrm{err}_je^{-(\lambda_j-\mathrm{err}_j)t}$ to a computed trace, with no cancellation assumed. The truncation tail satisfies $\sum_{\lambda>\Lambda}e^{-\lambda t}\le-n_\Lambda e^{-\Lambda t}+t\int_\Lambda^\infty e^{-\lambda t}N_{\rm up}(\lambda)\,d\lambda$, where $N_{\rm up}(\lambda)=A\lambda/4\pi\pm L\lambda^{1/2}/4\pi+C_{\rm up}$ is the Weyl law of the triangle (area $A$, perimeter $L$, sign $+$ for Neumann) with $C_{\rm up}$ twice the largest observed excess of the counting function over the two-term law plus $10$, and the integral is in closed form. On $0.0015\le t\le0.012$ the total for $D(t)=\cZ_{\Orb(2,8,8)}(t)-\cZ_{\Orb(3,3,12)}(t)$ is at most $2.9\times10^{-11}$, and $3.9\times10^{-10}$ with the conservative estimates; the tail is at most $7.6\times10^{-13}$, against $d_3t=3.1\times10^{-3}$ at $t=0.0015$.
+
+\emph{Validation.} (i) \emph{Weyl law.} With area, boundary and constant terms, $N(\lambda)\approx A\lambda/4\pi\pm L\lambda^{1/2}/4\pi+c_2/2$, the residuals have mean $|{\cdot}|\le0.003$ and root mean square $0.66$--$0.70$ over $1420$ or more eigenvalues; without the boundary term they drift by about $\pm65$. (ii) \emph{Traces.} For $0.0015\le t\le0.03$, each computed trace agrees with the identity and elliptic terms of Theorem~\pref{thm:IEH} to $7.1\times10^{-13}$, against an error bound of $1.5\times10^{-11}$, while closed geodesics contribute less than $10^{-12}$; $\cZ_N-\cZ_D$ agrees with the boundary term to $1.8\times10^{-13}$. A missing eigenvalue $\lambda$ would add $e^{-\lambda t}$, which exceeds the error bound at $t=0.0015$ when $\lambda\lesssim1.6\times10^4$, so no eigenvalue below about $1.6\times10^4$ is missing; above that, about $1.6$ to $2.4\times10^4$, the test is blind. (iii) \emph{Bolza benchmark.} The Bolza surface covers $\Orb(2,3,8)$, so every eigenvalue of the $(2,3,8)$ triangle with a sign character of its reflection group occurs in Bolza's spectrum. The relation at the corner of angle $\pi/3$ leaves four characters: Neumann, Dirichlet, and two mixed conditions. The list of Strohmaier and Uski \cite[\S7.1 and the ancillary file of arXiv:1110.2150v4]{strohmaieruski2013}, \cite{strohmaieruski2018} has $42$ multiplicity-one eigenvalues below $998$; the four triangle problems give exactly $42$ eigenvalues in that range ($15$, $6$, $10$, $11$), matched one-to-one to $5.7\times10^{-11}$ relative, the precision of the published digits. Only the $21$ Neumann and Dirichlet ones belong to $\Orb(2,3,8)$. (iv) \emph{Second machine.} The $(3,3,12)$ Neumann spectrum, $1434$ eigenvalues, was recomputed on a second machine; the largest relative difference is $1.0\times10^{-12}$, at most $0.15$ times the error estimate.
+
+\emph{Prediction.} Both orbifolds have area $\pi/2$ and $c_2=\frac{67}{48}$, and $D(t)=\sum_{j\ge3}d_jt^{j-2}$ with $d_3=\frac{25}{12}$, $d_4=-\frac{1775}{24}$, $d_5=\frac{153025}{48}$ (Section~\pref{sec:numerics}). The orbifold with the smaller $P_3$ has the larger heat trace.
+
+\emph{Result.} The model $D(t)/t=\sum_{\nu=1}^{n_c}\hat d_\nu t^{\nu-1}$ was fitted by unweighted least squares with a column-scaled Vandermonde matrix, over nine windows inside $[0.0015,0.012]$ and $n_c=2,\dots,11$. For each configuration the \emph{data error} is the worst-case change of a coefficient under any perturbation of the data within the error budget, $|\mathrm{pinv}|\cdot\mathrm{err}$, and the \emph{model error} the change from $n_c-1$ to $n_c$; the reported configuration minimizes the larger of the two and was chosen without reference to the prediction: window $[0.0015,0.012]$, $n_c=10$. It gives $\hat d_1=2.0833320\pm0.0000031$ and $\hat d_2=-73.9551\pm0.0062$, against $d_3=2.0833333$ and $d_4=-73.9583$. The error bars are $\max(\text{data error},\text{model error})$, heuristic and not standard errors; the deviations are $0.42$ and $0.53$ of them, and with the conservative eigenvalue errors the bars are $1.4\times10^{-5}$ and $0.028$. Applied to the exact difference of the elliptic terms, the same fit recovers $d_3$ to about $10^{-6}$ and $d_4$ to about $0.005$, so the method is not the limiting factor. The fitted $t^{-1}$ and $t^0$ terms of the two traces agree to within the fit error. For $0.0015\le t\le0.03$ the computed $D(t)$ agrees pointwise with the exact difference of the elliptic terms to $4.0\times10^{-13}$. The coefficient $\hat d_3=3184.5\pm5.2$ (data error only) against $\frac{153025}{48}=3188.0$ is only a by-product; across stable configurations it ranges over $3180$--$3188$.
+
+\emph{Closed geodesics.} The shortest lengths, from enumerating triangle-group words of length at most $10$, are $2.2568$, $2.8816$, $3.0571$ for $(2,8,8)$ and $1.8626$, $2.9807$, $3.4027$ for $(3,3,12)$. With a generous multiplicity per length, the hyperbolic term is below $10^{-30}$ on the fit window. Fitting $\cZ-\mathrm I-\mathrm E$ on $[0.06,0.5]$ by the hyperbolic term gives leading multiplicities $1.997$ and $1.9998$: one geodesic, two orientations. $D(t)$ changes sign near $t=0.34$, solely because of the geodesics.
+
+\emph{Limitations.} The eigenvalue errors are a-posteriori agreements, not certified enclosures, and ``certified'' below is conditional on them. The tail bound assumes that the counting function beyond the computed range stays below the Weyl law plus twice its largest observed excess. The spectra were computed with single-window spectral slicing, which the experiment of Section~\ref{sec:moduli} showed can miss an eigenvalue at a window boundary; for these spectra this is excluded below about $1.6\times10^4$ by the trace test, and a recomputation of all four spectra with the double-window solver of Section~\ref{sec:moduli} has not been run.
+
+\section{Blind recovery}\label{sec:blind}
+
+The recovery chain of Section~\pref{sec:stability} was run on the computed spectra of Section~\ref{sec:listening} under a protocol committed to the repository before the pipeline and before any result (commit \texttt{3c1139a}, 1 October 2026). \emph{What was assumed:} each specimen is the double of a hyperbolic triangle, so it has genus $0$ and exactly $n=3$ cone points, and $K=-1$; the universal front-end constants for $n=3$ were used. \emph{What was blinded:} only the labels; the specimens were called A and B, the pipeline read the four eigenvalue files without parsing their names, and the label-to-truth map was used once, after every estimate and verdict had been written. No area, perimeter, $c_2$, geodesic length or Weyl constant derived from the orders was used; the truncation tail was bounded from a fit of the counting function of the data alone. The test is easy by design: it separates two candidates whose third coefficients differ by about $10^4$ error bars, so it exercises the pipeline rather than a hard inference.
+
+The traces $\cZ(t)$ were fitted as $t\cZ(t)=\sum_{j\le d}\gamma_jt^j$ over the windows and degrees of the protocol, with data error and model error as in Section~\ref{sec:listening}; the error bar of each coefficient is the larger of the best configuration's $\max(\text{data},\text{model})$ and half the range over the eight best configurations, again heuristic. The candidate was obtained by solving the system of Theorem~\pref{thmB} in exact arithmetic and rounding, and then certified a posteriori by Proposition~\pref{prop:S5} at the candidate, with radii equal to the distance from the estimates to the candidate's exact invariants plus the error bars. The certificate is rigorous given the error bars.
+
+\begin{table}[ht]
+\caption{Blind recovery: heat invariants estimated from about $2850$ computed eigenvalues of each specimen, with their error bars, and the recovered orders.}\label{tab:blind}
+\centering\small
+\begin{tabular}{@{}lll@{}}
+\toprule
+ & specimen A & specimen B\\
+\midrule
+$c_1$ & $0.1250000000\pm1.1\times10^{-11}$ & $0.1250000000\pm4.9\times10^{-11}$\\
+$c_2$ & $1.3958333303\pm2.4\times10^{-8}$ & $1.3958332915\pm1.3\times10^{-7}$\\
+$c_3$ & $-3.3354134980\pm2.1\times10^{-5}$ & $-5.4186953214\pm1.4\times10^{-4}$\\
+roots & $2$, $8\pm0.0050i$ & $2.9915$, $3.0085$, $11.99995$\\
+recovered & $(2,8,8)$, certified & $(3,3,12)$, certified\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+Three coefficients recover both multisets exactly (Table~\ref{tab:blind}), with a margin to the certified threshold of about $100$ for A and $20$ for B. The recovered double roots show the square-root law of Proposition~\pref{prop:sharpexp}(i): an error of order $10^{-4}$ in $c_3$ splits the double order $3$ of B into $2.9915$ and $3.0085$. Two coefficients cannot separate the specimens, since $c_1=(1-R)/2$ and $c_2=(P_1+R-2)/12$ depend only on $(R,P_1)=(\frac34,18)$; the estimates of $c_1$ and $c_2$ for A and B differ by $0.21$ and $0.26$ of their combined error bars, while those of $c_3$ differ by $2.0833\pm1.6\times10^{-4}$, against the exact $\frac{25}{12}$. An exhaustive enumeration of hyperbolic integer triads consistent with the first two estimates returns exactly $\{(2,8,8),(3,3,12)\}$ for both specimens, and adding $c_3$ leaves one triad each.
+
+\section{Changing the shape}\label{sec:moduli}
+
+\emph{The family.} The signature $(0;3,3,3,3)$ is hyperbolic, with area $4\pi/3$ and a $2$-dimensional Teichm\"uller space. Each member of the family is the double of a geodesic quadrilateral with all angles $\pi/3$, symmetric under $z\mapsto\bar z$ and $z\mapsto-\bar z$; the two mirror axes cut it into four congruent Lambert quadrilaterals, and with $a,b$ the distances from the centre to two adjacent sides, $\sinh a\sinh b=\cos\frac\pi3$, leaving one parameter $\vartheta=\log(\sinh a/\sinh b)$. Eight members, $\vartheta\in\{0,0.4,\dots,2.8\}$, were computed, about $5450$ eigenvalues each up to $\lambda\approx1.6\times10^4$, with every eigenvalue covered by two independent shift-invert windows (misses counted and repaired). Their systoles are $4b(\vartheta)$, falling strictly from $2.634$ to $0.694$, so the members are pairwise non-isometric and every pair has different systoles. The worst eigenvalue error is $1.3\times10^{-10}$ relative ($8.3\times10^{-9}$ conservative). The family is a real one-parameter slice, the orbifolds with an orientation-reversing isometry fixing the four cone points; Theorem~\pref{thm:sharp} does not need genericity.
+
+\emph{Same expansion, different spectra.} Every member's heat trace equals $\mathrm I+4\mathrm E_3$ to at most $1.2\times10^{-12}$ wherever closed geodesics are negligible, against an error budget of $2.2\times10^{-11}$, and on $t\in[0.0025,0.0037]$ the eight traces are the same function to $1.3\times10^{-13}$: Proposition~\pref{prop:locality} in the data. The eigenvalues move with the shape: $\lambda_1$ falls from $4.1224$ to $0.4348$, and the first $200$ eigenvalues move by up to $89\%$ (Figure~\ref{fig:F6}).
+
+\begin{figure}[ht]
+\centering
+\includegraphics[width=119mm]{figures/out/F6.pdf}
+\caption{\figcapSix}\label{fig:F6}
+\end{figure}
+
+\emph{The difference is the closed geodesics.} For all $28$ pairs, $\cZ_i-\cZ_j$ equals $\Hyp_i-\Hyp_j$, computed from the closed geodesics enumerated in floating point up to length $6.5$ (checked by the integrality of the weights $w/\ell$ and by agreement with the computed traces) with nothing fitted, to at most $1.1\times10^{-13}$ for $t\le0.33$, where the traces differ by up to $0.79$. The difference leaves the noise at a time $t^*$ set by the shorter systole alone, with $\ell^2/4t^*\approx24.5$ in every case. Once it is $10^3$ times the noise, its ratio to the leading term of Theorem~\pref{thm:sharp} is between $0.9997$ and $1.0000$. The bound of Theorem~\pref{thm:quantlocality}(b) holds for every pair, but it is loose because of its factor $e^{3D}$.
+
+\section{Strata and triads of small sum}\label{sec:enum}
+
+Table~\ref{tab:overlap} compares, for $p\le14$, the first overlap $S^*(p)$ of the strata $p$ and $p+1$ (Theorem~\pref{thm:Sstar}) with their first collision. Table~\ref{tab:enum} lists every hyperbolic triad with $10\le S_1\le18$ and its reciprocal sum, an independent check of Theorems~\pref{thm:threshold} and~\pref{thm:minimal}: within each sum the values of $R$ are distinct, except for the pair at $S_1=18$ in bold. The $783$ explicit collisions used in Proposition~\pref{prop:collisionfree} are in \texttt{theory/revision/collision\_witnesses.csv} of the repository.
+
+% BEGIN GENERATED TABLE overlap
+\begin{table}[t]
+\caption{First overlap and first collision of the adjacent strata $p$ and $p+1$, for $2\le p\le14$, from the exhaustive enumeration of all hyperbolic triads with $S\le600$. The gap is the first collision sum minus $S^*(p)$; it vanishes only for $p=2$ and $p=4$ (Proposition~\ref{P-prop:tangency} of the paper).}\label{tab:overlap}
+\centering\small
+\begin{tabular}{@{}rrrrrl@{}}
+\toprule
+$p$ & $x^*(p)$ & $S^*(p)$ & first collision & gap & colliding pair\\
+\midrule
+2 & $18$ & 18 & 18 & 0 & $(2,8,8)$ and $(3,3,12)$ \\
+3 & $18$ & 19 & 38 & 19 & $(3,14,21)$ and $(4,6,28)$ \\
+4 & $20$ & 20 & 20 & 0 & $(4,8,8)$ and $(5,5,10)$ \\
+5 & $45/2$ & 23 & 117 & 94 & $(5,32,80)$ and $(6,15,96)$ \\
+6 & $126/5$ & 26 & 34 & 8 & $(6,14,14)$ and $(7,9,18)$ \\
+7 & $28$ & 29 & 62 & 33 & $(7,20,35)$ and $(8,14,40)$ \\
+8 & $216/7$ & 32 & 64 & 32 & $(8,20,36)$ and $(9,15,40)$ \\
+9 & $135/4$ & 34 & 42 & 8 & $(9,15,18)$ and $(10,12,20)$ \\
+10 & $110/3$ & 37 & 109 & 72 & $(10,44,55)$ and $(11,28,70)$ \\
+11 & $198/5$ & 40 & 66 & 26 & $(11,22,33)$ and $(12,18,36)$ \\
+12 & $468/11$ & 43 & 188 & 145 & $(12,72,104)$ and $(13,45,130)$ \\
+13 & $91/2$ & 46 & 94 & 48 & $(13,39,42)$ and $(14,28,52)$ \\
+14 & $630/13$ & 49 & 69 & 20 & $(14,20,35)$ and $(15,18,36)$ \\
+\bottomrule
+\end{tabular}
+\end{table}
+% END GENERATED TABLE overlap
+
+% BEGIN GENERATED TABLE enum
+\begin{table}[ht]
+\caption{All $83$ hyperbolic triads $(p,q,r)$ with $10\le S_1\le18$, each followed by its reciprocal sum $R$. The only coincidence of $R$ within a sum is the pair in bold.}\label{tab:enum}
+\centering\footnotesize
+\begin{tabular}{@{}rp{0.9\textwidth}@{}}
+\toprule
+$S_1$ & triads and $R$\\
+\midrule
+10 & $(3,3,4)\,11/12$ \\
+11 & $(2,4,5)\,19/20$; $(3,3,5)\,13/15$; $(3,4,4)\,5/6$ \\
+12 & $(2,3,7)\,41/42$; $(2,4,6)\,11/12$; $(2,5,5)\,9/10$; $(3,3,6)\,5/6$; $(3,4,5)\,47/60$; $(4,4,4)\,3/4$ \\
+13 & $(2,3,8)\,23/24$; $(2,4,7)\,25/28$; $(2,5,6)\,13/15$; $(3,3,7)\,17/21$; $(3,4,6)\,3/4$; $(3,5,5)\,11/15$; $(4,4,5)\,7/10$ \\
+14 & $(2,3,9)\,17/18$; $(2,4,8)\,7/8$; $(2,5,7)\,59/70$; $(2,6,6)\,5/6$; $(3,3,8)\,19/24$; $(3,4,7)\,61/84$; $(3,5,6)\,7/10$; $(4,4,6)\,2/3$; $(4,5,5)\,13/20$ \\
+15 & $(2,3,10)\,14/15$; $(2,4,9)\,31/36$; $(2,5,8)\,33/40$; $(2,6,7)\,17/21$; $(3,3,9)\,7/9$; $(3,4,8)\,17/24$; $(3,5,7)\,71/105$; $(3,6,6)\,2/3$; $(4,4,7)\,9/14$; $(4,5,6)\,37/60$; $(5,5,5)\,3/5$ \\
+16 & $(2,3,11)\,61/66$; $(2,4,10)\,17/20$; $(2,5,9)\,73/90$; $(2,6,8)\,19/24$; $(2,7,7)\,11/14$; $(3,3,10)\,23/30$; $(3,4,9)\,25/36$; $(3,5,8)\,79/120$; $(3,6,7)\,9/14$; $(4,4,8)\,5/8$; $(4,5,7)\,83/140$; $(4,6,6)\,7/12$; $(5,5,6)\,17/30$ \\
+17 & $(2,3,12)\,11/12$; $(2,4,11)\,37/44$; $(2,5,10)\,4/5$; $(2,6,9)\,7/9$; $(2,7,8)\,43/56$; $(3,3,11)\,25/33$; $(3,4,10)\,41/60$; $(3,5,9)\,29/45$; $(3,6,8)\,5/8$; $(3,7,7)\,13/21$; $(4,4,9)\,11/18$; $(4,5,8)\,23/40$; $(4,6,7)\,47/84$; $(5,5,7)\,19/35$; $(5,6,6)\,8/15$ \\
+18 & $(2,3,13)\,71/78$; $(2,4,12)\,5/6$; $(2,5,11)\,87/110$; $(2,6,10)\,23/30$; $(2,7,9)\,95/126$; $\mathbf{(2,8,8)\,3/4}$; $\mathbf{(3,3,12)\,3/4}$; $(3,4,11)\,89/132$; $(3,5,10)\,19/30$; $(3,6,9)\,11/18$; $(3,7,8)\,101/168$; $(4,4,10)\,3/5$; $(4,5,9)\,101/180$; $(4,6,8)\,13/24$; $(4,7,7)\,15/28$; $(5,5,8)\,21/40$; $(5,6,7)\,107/210$; $(6,6,6)\,1/2$ \\
+\bottomrule
+\end{tabular}
+\end{table}
+% END GENERATED TABLE enum
+
+\bibliography{references}
+
+\end{document}
