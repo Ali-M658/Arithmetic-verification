@@ -1,0 +1,5 @@
+family P: 514425 planted genuine U; decisions {1: 514425}; false negatives 0
+family N: 772 planted genuine U; decisions {1: 771, 2: 1}; false negatives 0
+family T: 20000 planted genuine U; decisions {1: 20000}; false negatives 0
+family W: 1080 planted genuine U; decisions {1: 360, 2: 720}; false negatives 0
+total false negatives: 0

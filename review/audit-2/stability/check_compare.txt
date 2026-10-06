@@ -1,0 +1,145 @@
+  ok   ladders identical: threshold.RADII, check_prop610.RADII, mine
+=== (2, 8, 8)
+  ok   Theorem B M, b identical (stab_common, check_prop610, mine)
+  ok   threshold._common E, A, r_rem == mine at printed delta_cert
+  ok   check_prop610.bounds E, A, rho_rem, varrho == mine
+  ok   G identical (threshold via N_matrix, check_prop610 via printed J, mine)
+  ok   lipschitz_e.N_matrix == printed J (my J_matrix)
+  ok   delta_thm exact identical (3.802813e-07)
+  ok   threshold sup 2.34171176e-03 in my 6-s.f. bracket [2.341710e-03, +1e-8) and certifies with mine
+       delta_up: threshold_results 2.4848623e-03, mine 2.4848623e-03, printed 2.485e-03; output.md 2.485e-03
+  ok   threshold_results delta_up == my best (rel 1e-6)
+       eps: output.md 1.944e-03 (float 1.94435577e-03), my 4-s.f. max 1.944e-03; output.md value certifies: mine True, threshold.certify True
+  ok   my certificate and threshold.certify agree on the output.md eps string
+  ok   printed (2 s.f.) eps 1.9e-03 certifies
+=== (3, 3, 12)
+  ok   Theorem B M, b identical (stab_common, check_prop610, mine)
+  ok   threshold._common E, A, r_rem == mine at printed delta_cert
+  ok   check_prop610.bounds E, A, rho_rem, varrho == mine
+  ok   G identical (threshold via N_matrix, check_prop610 via printed J, mine)
+  ok   lipschitz_e.N_matrix == printed J (my J_matrix)
+  ok   delta_thm exact identical (1.189280e-07)
+  ok   threshold sup 4.04017982e-03 in my 6-s.f. bracket [4.040170e-03, +1e-8) and certifies with mine
+       delta_up: threshold_results 4.5882716e-03, mine 4.5882716e-03, printed 4.589e-03; output.md 4.589e-03
+  ok   threshold_results delta_up == my best (rel 1e-6)
+       eps: output.md 4.492e-03 (float 4.49158774e-03), my 4-s.f. max 4.491e-03; output.md value certifies: mine False, threshold.certify False
+  ok   my certificate and threshold.certify agree on the output.md eps string
+  ok   printed (2 s.f.) eps 4.4e-03 certifies
+=== (3, 10, 15, 30)
+  ok   Theorem B M, b identical (stab_common, check_prop610, mine)
+  ok   threshold._common E, A, r_rem == mine at printed delta_cert
+  ok   check_prop610.bounds E, A, rho_rem, varrho == mine
+  ok   G identical (threshold via N_matrix, check_prop610 via printed J, mine)
+  ok   lipschitz_e.N_matrix == printed J (my J_matrix)
+  ok   delta_thm exact identical (4.021020e-11)
+  ok   threshold sup 3.66010310e-03 in my 6-s.f. bracket [3.660100e-03, +1e-8) and certifies with mine
+       delta_up: threshold_results 7.4865192e-03, mine 7.4865192e-03, printed 7.488e-03; output.md 7.487e-03
+  ok   threshold_results delta_up == my best (rel 1e-6)
+       eps: output.md 8.708e-04 (float 8.70775496e-04), my 4-s.f. max 8.707e-04; output.md value certifies: mine False, threshold.certify False
+  ok   my certificate and threshold.certify agree on the output.md eps string
+  ok   printed (2 s.f.) eps 8.7e-04 certifies
+=== (4, 5, 21, 28)
+  ok   Theorem B M, b identical (stab_common, check_prop610, mine)
+  ok   threshold._common E, A, r_rem == mine at printed delta_cert
+  ok   check_prop610.bounds E, A, rho_rem, varrho == mine
+  ok   G identical (threshold via N_matrix, check_prop610 via printed J, mine)
+  ok   lipschitz_e.N_matrix == printed J (my J_matrix)
+  ok   delta_thm exact identical (3.147378e-11)
+  ok   threshold sup 1.46177380e-03 in my 6-s.f. bracket [1.461770e-03, +1e-8) and certifies with mine
+       delta_up: threshold_results 2.0176678e-03, mine 2.0176678e-03, printed 2.018e-03; output.md 2.018e-03
+  ok   threshold_results delta_up == my best (rel 1e-6)
+       eps: output.md 4.627e-04 (float 4.62710551e-04), my 4-s.f. max 4.627e-04; output.md value certifies: mine True, threshold.certify True
+  ok   my certificate and threshold.certify agree on the output.md eps string
+  ok   printed (2 s.f.) eps 4.6e-04 certifies
+=== (2, 3, 7)
+  ok   Theorem B M, b identical (stab_common, check_prop610, mine)
+  ok   threshold._common E, A, r_rem == mine at printed delta_cert
+  ok   check_prop610.bounds E, A, rho_rem, varrho == mine
+  ok   G identical (threshold via N_matrix, check_prop610 via printed J, mine)
+  ok   lipschitz_e.N_matrix == printed J (my J_matrix)
+  ok   delta_thm exact identical (4.492024e-07)
+  ok   threshold sup 3.65881793e-03 in my 6-s.f. bracket [3.658810e-03, +1e-8) and certifies with mine
+       delta_up: threshold_results 6.5869137e-03, mine 6.5869137e-03, printed 6.587e-03; output.md 6.587e-03
+  ok   threshold_results delta_up == my best (rel 1e-6)
+       eps: output.md 5.014e-03 (float 5.01361323e-03), my 4-s.f. max 5.013e-03; output.md value certifies: mine False, threshold.certify False
+  ok   my certificate and threshold.certify agree on the output.md eps string
+  ok   printed (2 s.f.) eps 5.0e-03 certifies
+=== (4, 4, 4)
+  ok   Theorem B M, b identical (stab_common, check_prop610, mine)
+  ok   threshold._common E, A, r_rem == mine at printed delta_cert
+  ok   check_prop610.bounds E, A, rho_rem, varrho == mine
+  ok   G identical (threshold via N_matrix, check_prop610 via printed J, mine)
+  ok   lipschitz_e.N_matrix == printed J (my J_matrix)
+  ok   delta_thm exact identical (9.354047e-07)
+  ok   threshold sup 4.53915958e-04 in my 6-s.f. bracket [4.539150e-04, +1e-9) and certifies with mine
+       delta_up: threshold_results 5.0358257e-04, mine 5.0358257e-04, printed 5.036e-04; output.md 5.036e-04
+  ok   threshold_results delta_up == my best (rel 1e-6)
+       eps: output.md 8.259e-04 (float 8.25941151e-04), my 4-s.f. max 8.259e-04; output.md value certifies: mine True, threshold.certify True
+  ok   my certificate and threshold.certify agree on the output.md eps string
+  ok   printed (2 s.f.) eps 8.2e-04 certifies
+=== (7, 7, 7)
+  ok   Theorem B M, b identical (stab_common, check_prop610, mine)
+  ok   threshold._common E, A, r_rem == mine at printed delta_cert
+  ok   check_prop610.bounds E, A, rho_rem, varrho == mine
+  ok   G identical (threshold via N_matrix, check_prop610 via printed J, mine)
+  ok   lipschitz_e.N_matrix == printed J (my J_matrix)
+  ok   delta_thm exact identical (9.973494e-08)
+  ok   threshold sup 8.06865625e-05 in my 6-s.f. bracket [8.068650e-05, +1e-10) and certifies with mine
+       delta_up: threshold_results 8.2721187e-05, mine 8.2721187e-05, printed 8.273e-05; output.md 8.273e-05
+  ok   threshold_results delta_up == my best (rel 1e-6)
+       eps: output.md 1.285e-04 (float 1.28526490e-04), my 4-s.f. max 1.285e-04; output.md value certifies: mine True, threshold.certify True
+  ok   my certificate and threshold.certify agree on the output.md eps string
+  ok   printed (2 s.f.) eps 1.2e-04 certifies
+=== (3, 3, 4, 4)
+  ok   Theorem B M, b identical (stab_common, check_prop610, mine)
+  ok   threshold._common E, A, r_rem == mine at printed delta_cert
+  ok   check_prop610.bounds E, A, rho_rem, varrho == mine
+  ok   G identical (threshold via N_matrix, check_prop610 via printed J, mine)
+  ok   lipschitz_e.N_matrix == printed J (my J_matrix)
+  ok   delta_thm exact identical (1.486919e-09)
+  ok   threshold sup 9.59730162e-05 in my 6-s.f. bracket [9.597300e-05, +1e-10) and certifies with mine
+       delta_up: threshold_results 1.1943586e-04, mine 1.1943586e-04, printed 1.195e-04; output.md 1.195e-04
+  ok   threshold_results delta_up == my best (rel 1e-6)
+       eps: output.md 1.186e-04 (float 1.18572580e-04), my 4-s.f. max 1.185e-04; output.md value certifies: mine False, threshold.certify False
+  ok   my certificate and threshold.certify agree on the output.md eps string
+  ok   printed (2 s.f.) eps 1.1e-04 certifies
+=== (5, 5, 5, 5)
+  ok   Theorem B M, b identical (stab_common, check_prop610, mine)
+  ok   threshold._common E, A, r_rem == mine at printed delta_cert
+  ok   check_prop610.bounds E, A, rho_rem, varrho == mine
+  ok   G identical (threshold via N_matrix, check_prop610 via printed J, mine)
+  ok   lipschitz_e.N_matrix == printed J (my J_matrix)
+  ok   delta_thm exact identical (4.743701e-10)
+  ok   threshold sup 3.61790330e-05 in my 6-s.f. bracket [3.617900e-05, +1e-10) and certifies with mine
+       delta_up: threshold_results 3.8257987e-05, mine 3.8257987e-05, printed 3.826e-05; output.md 3.826e-05
+  ok   threshold_results delta_up == my best (rel 1e-6)
+       eps: output.md 3.149e-05 (float 3.14912673e-05), my 4-s.f. max 3.149e-05; output.md value certifies: mine True, threshold.certify True
+  ok   my certificate and threshold.certify agree on the output.md eps string
+  ok   printed (2 s.f.) eps 3.1e-05 certifies
+=== (2, 2, 2, 3)
+  ok   Theorem B M, b identical (stab_common, check_prop610, mine)
+  ok   threshold._common E, A, r_rem == mine at printed delta_cert
+  ok   check_prop610.bounds E, A, rho_rem, varrho == mine
+  ok   G identical (threshold via N_matrix, check_prop610 via printed J, mine)
+  ok   lipschitz_e.N_matrix == printed J (my J_matrix)
+  ok   delta_thm exact identical (2.031060e-09)
+  ok   threshold sup 1.85881086e-04 in my 6-s.f. bracket [1.858810e-04, +1e-9) and certifies with mine
+       delta_up: threshold_results 2.5197149e-04, mine 2.5197149e-04, printed 2.520e-04; output.md 2.520e-04
+  ok   threshold_results delta_up == my best (rel 1e-6)
+       eps: output.md 4.399e-04 (float 4.39879305e-04), my 4-s.f. max 4.398e-04; output.md value certifies: mine False, threshold.certify False
+  ok   my certificate and threshold.certify agree on the output.md eps string
+  ok   printed (2 s.f.) eps 4.3e-04 certifies
+=== (2, 2, 2, 2, 3)
+  ok   Theorem B M, b identical (stab_common, check_prop610, mine)
+  ok   threshold._common E, A, r_rem == mine at printed delta_cert
+  ok   check_prop610.bounds E, A, rho_rem, varrho == mine
+  ok   G identical (threshold via N_matrix, check_prop610 via printed J, mine)
+  ok   lipschitz_e.N_matrix == printed J (my J_matrix)
+  ok   delta_thm exact identical (2.729780e-12)
+  ok   threshold sup 7.90808442e-06 in my 6-s.f. bracket [7.908080e-06, +1e-11) and certifies with mine
+       delta_up: threshold_results 5.3113199e-05, mine 5.3113199e-05, printed 5.743e-05; output.md 5.312e-05
+  ok   threshold_results delta_up == my best (rel 1e-6)
+       eps: output.md 1.466e-05 (float 1.46612828e-05), my 4-s.f. max 1.466e-05; output.md value certifies: mine True, threshold.certify True
+  ok   my certificate and threshold.certify agree on the output.md eps string
+  ok   printed (2 s.f.) eps 1.4e-05 certifies
+TOTAL FAILURES: 0

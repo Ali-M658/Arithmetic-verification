@@ -1,0 +1,3 @@
+collision_witnesses.csv: 783 rows, all re-verified exactly; S set identical to the blind 783 primitive sums
+rows whose pair equals the first pair found by the blind C search: 781 of 783
+ALL CHECKS PASSED

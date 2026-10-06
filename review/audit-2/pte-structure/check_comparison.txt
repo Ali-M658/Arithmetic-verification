@@ -1,0 +1,5 @@
+producer-style count (3 entries bounded by 40, primitive): 102
+  of these with all 5 entries <= 40: 40
+reviewer (all entries <= 40), primitive: 42
+in reviewer list, not in producer-style list: [(-42, -23, -4, 30, 39), (-39, -30, 4, 23, 42)]
+producer's all-in-box sets contained in reviewer's list: True

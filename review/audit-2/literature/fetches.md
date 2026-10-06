@@ -64,3 +64,11 @@ Google Scholar not queried (no headless API). The arXiv + zbMATH + OpenAlex + BL
 3. Hua, *Introduction to Number Theory* (1982) and Hua 1938/1949 (the source of the M(k) bound): not attempted (book, paywalled).
 4. Published versions of Wooley 2012 (Annals) and 2019 (PLMS): theorem numbers checked in the arXiv versions only.
 5. Gloden, *Mehrgradige Gleichungen* (1944), Letac 1942: not reachable; Letac attributions rest on BI, BLP, CMSV, Chen.
+
+## Comparison phase (2026-10-06), contact parameter research@example.com only
+
+| service | query | HTTP | file |
+|---|---|---|---|
+| Crossref | works/10.4153/CMB-1961-025-1; works/10.1090/S0025-5718-02-01504-1; works/10.1080/00029890.1937.11988045 | 200 | search/cr_10.*.json (Chernick printed only) |
+| Crossref | bibliographic queries: CMSV, Wooley 2019, Wooley 2012, Borwein-Ingalls | 200 | search/cr_cmsv.json, cr_wooley2019.json, cr_wooley2012.json, cr_bi.json |
+| arXiv API | id_list=2304.11254,2506.11429,2609.05061,1708.01220 | 200 | (printed in session; summarised in COMPARISON.md §5) |

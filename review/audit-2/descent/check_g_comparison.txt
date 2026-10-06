@@ -1,0 +1,16 @@
+[ok] tangent slope at (16,400) is 21
+[ok] third x on the tangent: m^2 - a2 - 2 x1 = 16
+[ok] the tangent line at x = 16 has y = 400: its third intersection is (16,400) itself (a flex)
+[ok] (16,-400) is NOT on the tangent line at (16,400): 'meets E again at (16,-400)' is false
+[ok] E restricted to the tangent: (X - 16)**3 = (x-16)^3, triple contact
+[ok] 2(16,400) = (16,-400) = -(16,400), so order 3 (conclusion right)
+[ok] the script's inverse equals the printed psi identically (but the script never evaluates the printed psi in (b))
+[ok] E, d1=2: right side mod 5 in [2, 3] (non-residues), as in descent.tex (i)
+[ok] E, d1=-2: right side mod 5 in [2, 3] (non-residues), as in descent.tex (i)
+[ok] E, d1=3: right side mod 5 in [2, 3] (non-residues), as in descent.tex (i)
+[ok] E, d1=-3: right side mod 5 in [2, 3] (non-residues), as in descent.tex (i)
+[ok] E', d1=15: 5w^2 - w + 2 = 6 mod 9 at w = 1
+[ok] E', d1=15: 5w^2 - w + 2 = 6 mod 9 at w = 4
+[ok] E', d1=15: 5w^2 - w + 2 = 6 mod 9 at w = 7
+[ok] the constants used in (ii) of descent.tex
+ALL 15 CHECKS PASSED
