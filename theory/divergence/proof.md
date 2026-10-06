@@ -173,7 +173,7 @@ huge $|\chi|$, delay the asymptotic regime. Independent tests:
 - $1000\times49$ together with one cone of order 50: the estimator still rounds to 49 at
   $\ell=150$.
 - Genus $10^4$ with one cone of order 2: the smooth part dominates, with the opposite sign, for
-  $\ell\le5$.
+  $\ell\le8$.
 
 *Proof.* For an orbifold the coefficient has the stated form with $C=|\chi|/2$, since
 $\operatorname{Area}/4\pi=|\chi|/2$ (Gauss–Bonnet, Thurston 13.3.5), and
