@@ -44,8 +44,8 @@ Keywords:        heat invariants, hyperbolic orbifolds, inverse spectral problem
 Author:          Palaash Gang, Akshaj Agadi, Arjun Veluri, Jerry Wang, Jeremy Barreto, Aarin Chouthaiwale
 Creator:         LaTeX with hyperref
 Producer:        pdfTeX-1.40.29
-CreationDate:    Tue Oct  6 23:29:13 2026 IST
-ModDate:         Tue Oct  6 23:29:13 2026 IST
+CreationDate:    Wed Oct  7 00:47:35 2026 IST
+ModDate:         Wed Oct  7 00:47:35 2026 IST
 Custom Metadata: yes
 Metadata Stream: no
 Tagged:          no
@@ -57,7 +57,7 @@ Pages:           35
 Encrypted:       no
 Page size:       595.276 x 841.89 pts (A4)
 Page rot:        0
-File size:       751810 bytes
+File size:       752444 bytes
 Optimized:       no
 PDF version:     1.7
 ```

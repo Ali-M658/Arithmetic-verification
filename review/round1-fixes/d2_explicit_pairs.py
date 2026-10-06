@@ -103,6 +103,11 @@ def fmt_sig(sig):
 def fmt_area(s):
     if len(str(s)) <= 22:
         return f"${s.numerator}/{s.denominator}$" if s.denominator > 1 else f"${s}$"
+    n = round(s)
+    d = s - n
+    if d != 0 and abs(d) < Fraction(1, 10 ** 9):      # within 1e-9 of an integer: show the offset
+        m, e = f"{float(abs(d)):.2e}".split("e")
+        return f"${n}{'+' if d > 0 else '-'}{m}\\times10^{{{int(e)}}}$"
     return f"$\\approx{float(s):.10g}$"
 
 
