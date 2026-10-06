@@ -1,7 +1,9 @@
 """F4 (Section 3): how many heat coefficients are needed, against the area.
 
-Points: for each of the 525 complete area classes Sig(s), s = Area/2pi <= 7/5, the largest
-K_mult(O; Sig) in the class (figures/data/f4_area_classes.csv). Step curves: the proven upper
+Points: for each of the 525 values s = Area/2pi <= 7/5 attained by a signature of genus <= 1 with
+at most four cone points of order <= 12, the largest K_mult(O; Sig) over the complete area class
+Sig(s), enumerated with no bound on the orders (figures/data/f4_area_classes.csv; recomputed
+independently by review/round1-fixes/a1_fig2_kmult.py, no value changed). Step curves: the proven upper
 bound floor(2s) + 4 (Theorem S, Corollary S2) and, from s = 4 (A >= 8 pi, the hypothesis of
 the growth theorem), the square-root lower bound floor(sqrt((s - 1)/3)) + 2 of
 f(A) = max_{Area <= A} K_mult (theory/pte/proof.md Theorem 4.1). Split disc: the class s = 1/4 of
