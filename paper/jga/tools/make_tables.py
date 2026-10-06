@@ -11,7 +11,7 @@ in manuscript.tex, so that the manuscript stays a single file as the journal tem
 
 Sources (all committed):
   overlap     theory/threshold/first_overlap_vs_collision.csv
-  thresholds  theory/stability/threshold_results.json
+  thresholds, thresholds_full  theory/stability/threshold_results.json (four columns in the paper, all in the supplement)
   fibres      theory/diophantine/data/groups.csv, theory/diophantine/data/ranks.txt
   density     review/audit/threshold/check_enum.txt (to S = 6000), cross-checked against
               theory/diophantine/data/per_S.csv (to S = 4800)
@@ -74,7 +74,9 @@ def table_overlap():
 
 
 # ------------------------------------------------------------- thresholds
-def table_thresholds():
+def threshold_rows():
+    """One dict per multiset of theory/stability/threshold_results.json, every entry rounded so that
+    it keeps its meaning (delta_thm, delta_cert, eps_cert and the relative precisions down, delta_up up)."""
     d = json.load(open(ROOT / "theory/stability/threshold_results.json"))
     out = []
     for key, v in d.items():
@@ -94,23 +96,57 @@ def table_thresholds():
         cert_printed = Fraction(str(cert_printed))
         rel = [sig(cert_printed / abs(Fraction(h)), 2, "down") for h in v["H"]]
         assert len(rel) == n
-        def e(x):          # compact a\text{e}b notation for this wide table
-            return x.replace("\\times10^", "\\text{e}")
-        rel_s = "$, $".join(e(r) for r in rel)          # separate math groups so the cell can wrap
-        out.append(f"${tex_triple(m)}$ & ${e(thm_s)}$ & ${e(cert_s)}$ & ${e(up_s)}$ & {ratio:.2f} & ${e(eps_s)}$ & ${rel_s}$ \\\\")
-    body = "\n".join(out)
+        # the relative box of radius min_j delta_cert/|c_j| lies in the uniform box of radius delta_cert
+        # and the certificate is monotone in the radii, so eps_cert >= min_j delta_cert/|c_j|
+        assert Fraction(repr(v["eps_cert"])) >= min(cert_exact / abs(Fraction(h)) for h in v["H"]), key
+        out.append({"m": m, "thm": thm_s, "cert": cert_s, "up": up_s, "ratio": ratio, "eps": eps_s, "rel": rel})
+    return out
+
+
+def _e(x):          # compact a\text{e}b notation for these wide tables
+    return x.replace("\\times10^", "\\text{e}")
+
+
+def table_thresholds():
+    body = "\n".join(f"${tex_triple(r['m'])}$ & ${_e(r['thm'])}$ & ${_e(r['cert'])}$ & ${_e(r['up'])}$ \\\\"
+                      for r in threshold_rows())
     return (
         "\\begin{table}[t]\n"
-        "\\caption{Thresholds for exact recovery of integer orders under the uniform model $|\\delta c_j|\\le\\delta$: "
-        "the closed form $\\delta_{\\rm thm}$ of Theorem~\\ref{thm:S4}, the certified $\\delta_{\\rm cert}$ of "
-        "Proposition~\\ref{prop:S5}, a constructed failure $\\delta_{\\rm up}$, their ratio, and the largest certified "
-        "uniform relative error $\\epsilon_{\\rm cert}$; the last column is $\\delta_{\\rm cert}/|c_j|$; "
-        "aeb means $a\\times10^b$. Every entry is rounded so that it keeps its meaning: "
-        "$\\delta_{\\rm thm}$, $\\delta_{\\rm cert}$, $\\epsilon_{\\rm cert}$ and the last column down, "
-        "$\\delta_{\\rm up}$ up.}\\label{tab:thresholds}\n"
+        "\\caption{Thresholds for exact recovery of integer orders under the uniform model $|\\delta c_j|\\le\\delta$ "
+        "on the heat invariants: the closed form $\\delta_{\\rm thm}$ of Theorem~\\ref{thm:S4}, the threshold "
+        "$\\delta_{\\rm cert}$ certified in exact arithmetic by Proposition~\\sref{prop:S5} of the supplement, and "
+        "a constructed failure $\\delta_{\\rm up}$; aeb means $a\\times10^b$, $\\delta_{\\rm thm}$ and "
+        "$\\delta_{\\rm cert}$ are rounded down and $\\delta_{\\rm up}$ up. Table~\\sref{tab:thresholdsfull} "
+        "adds the relative precisions.}\\label{tab:thresholds}\n"
+        "\\centering\\footnotesize\n"
+        "\\begin{tabular}{@{}llll@{}}\n\\toprule\n"
+        "$m$ & $\\delta_{\\rm thm}$ & $\\delta_{\\rm cert}$ & $\\delta_{\\rm up}$\\\\\n\\midrule\n"
+        f"{body}\n\\bottomrule\n\\end{{tabular}}\n\\end{{table}}"
+    )
+
+
+def table_thresholds_full():
+    out = []
+    for r in threshold_rows():
+        rel_s = "$, $".join(_e(x) for x in r["rel"])      # separate math groups so the cell can wrap
+        out.append(f"${tex_triple(r['m'])}$ & ${_e(r['thm'])}$ & ${_e(r['cert'])}$ & ${_e(r['up'])}$ & "
+                   f"{r['ratio']:.2f} & ${_e(r['eps'])}$ & ${rel_s}$ \\\\")
+    body = "\n".join(out)
+    return (
+        "\\begin{table}[ht]\n"
+        "\\caption{Table~\\ref{P-tab:thresholds} of the paper with three more columns: the ratio "
+        "$\\delta_{\\rm up}/\\delta_{\\rm cert}$; the largest uniform relative error $\\epsilon_{\\rm cert}$ "
+        "certified by Proposition~\\ref{prop:S5}, that is, for errors $|\\delta c_j|\\le\\epsilon|c_j|$ for all $j$; "
+        "and $\\delta_{\\rm cert}/|c_j|$, $j=1,\\dots,n$, the relative precision that the uniform threshold "
+        "$\\delta_{\\rm cert}$ demands of each coefficient (not a tolerance for one coefficient alone). The relative "
+        "box of radius $\\min_j\\delta_{\\rm cert}/|c_j|$ lies inside the uniform box of radius $\\delta_{\\rm cert}$ "
+        "and the certificate is monotone in the radii, so $\\epsilon_{\\rm cert}\\ge\\min_j\\delta_{\\rm cert}/|c_j|$; "
+        "it is larger when the box of the relative model is not the binding one. aeb means $a\\times10^b$; "
+        "$\\delta_{\\rm up}$ is rounded up, every other entry down.}\\label{tab:thresholdsfull}\n"
         "\\centering\\footnotesize\\setlength{\\tabcolsep}{4pt}\n"
         "\\begin{tabular}{@{}llllrl>{\\raggedright\\arraybackslash}p{30mm}@{}}\n\\toprule\n"
-        "$m$ & $\\delta_{\\rm thm}$ & $\\delta_{\\rm cert}$ & $\\delta_{\\rm up}$ & ratio & $\\epsilon_{\\rm cert}$ & $\\delta_{\\rm cert}/|c_j|$, $j=1,\\dots,n$\\\\\n\\midrule\n"
+        "$m$ & $\\delta_{\\rm thm}$ & $\\delta_{\\rm cert}$ & $\\delta_{\\rm up}$ & ratio & $\\epsilon_{\\rm cert}$ & "
+        "$\\delta_{\\rm cert}/|c_j|$, $j=1,\\dots,n$\\\\\n\\midrule\n"
         f"{body}\n\\bottomrule\n\\end{{tabular}}\n\\end{{table}}"
     )
 
@@ -237,11 +273,13 @@ def table_enum():
 
 
 # The 30-35 page revision keeps the threshold table in the paper and the overlap table and the
-# triad list in the supplement;
+# triad list in the supplement; referee round 1 keeps four columns of the threshold table in the
+# paper and moves the full table to the supplement (thresholds_full);
 # fibres and density moved to the companion note (paper/arith) and are not written here.
-TABLES = {"overlap": table_overlap, "thresholds": table_thresholds, "fibres": table_fibres,
+TABLES = {"overlap": table_overlap, "thresholds": table_thresholds, "thresholds_full": table_thresholds_full,
+          "fibres": table_fibres,
           "density": table_density, "enum": table_enum}
-FILES = {TEX: ["thresholds"], TEX.parent / "supplement.tex": ["overlap", "enum"]}
+FILES = {TEX: ["thresholds"], TEX.parent / "supplement.tex": ["overlap", "enum", "thresholds_full"]}
 
 
 def main():
