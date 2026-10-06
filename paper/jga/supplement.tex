@@ -8,6 +8,8 @@
 \usepackage{amsmath,amssymb,amsfonts}%
 \usepackage{amsthm}%
 \usepackage{booktabs}%
+\usepackage{array}%
+\usepackage{longtable}%
 \usepackage{xr}%
 \externaldocument[P-]{build/manuscript}
 
@@ -16,10 +18,17 @@
 \newcommand{\Orb}{\mathcal{O}}
 \newcommand{\cZ}{\mathrm{Z}}
 \newcommand{\Hyp}{\operatorname{Hyp}}
+\newcommand{\cI}{\mathcal{I}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\diam}{\operatorname{diam}}
 \newcommand{\Z}{\mathbb{Z}}
 \newcommand{\doiurl}[1]{\expandafter\url\expandafter{\detokenize{https://doi.org/#1}}}
 \newcommand{\pref}[1]{\ref{P-#1}}% a label of the paper
 \renewcommand{\thesection}{S\arabic{section}}
+\theoremstyle{thmstyleone}%
+\newtheorem{proposition}{Proposition}[section]%
+\newtheorem{lemma}[proposition]{Lemma}%
 \renewcommand{\thetable}{S\arabic{table}}
 \renewcommand{\thefigure}{S\arabic{figure}}
 
@@ -46,97 +55,101 @@
 \affil[4]{\orgname{Lawrence High School}, \orgaddress{\city{Lawrenceville}, \state{New Jersey}, \country{USA}}}
 \affil[5]{\orgname{DriveChange Learning and Resource Centre}, \orgaddress{\city{Pune}, \country{India}}}
 
-\abstract{This supplement contains the numerical experiments summarised in Section~\pref{sec:numerics} of the paper: the computed spectra of $\Orb(2,8,8)$ and $\Orb(3,3,12)$ in full, a blind recovery of their cone orders, and a family of orbifolds of signature $(0;3,3,3,3)$ that share every heat invariant while their spectra move. It also lists the hyperbolic triads of small sum. Nothing here is used in a proof. Numbers such as ``Theorem~\pref{thm:sharp}'' refer to the paper.}
+\abstract{This supplement contains the material behind five sections of the paper: the admissibility of the heat function in the trace formula of Section~\pref{sec:heat} (Section~\ref{sec:admissible}), the computer searches and the explicit pairs of Section~\pref{sec:signature} (Section~\ref{sec:searches}), the triads of small sum of Section~\pref{sec:rigid} (Section~\ref{sec:enum}), the exact-arithmetic certificate of Section~\pref{sec:stability} with the full threshold table (Section~\ref{sec:certificates}), and the numerical experiments of Section~\pref{sec:numerics}: the computed spectra of $\Orb(2,8,8)$ and $\Orb(3,3,12)$, a blind recovery of their cone orders, and a family of orbifolds of signature $(0;3,3,3,3)$ that share every heat invariant while their spectra move (Sections~\ref{sec:listening}--\ref{sec:moduli}). No theorem of the paper depends on it; Proposition~\ref{prop:S5}, proved here, gives the column $\delta_{\rm cert}$ of Table~\pref{tab:thresholds}. Numbers such as ``Theorem~\pref{thm:sharp}'' refer to the paper.}
 
 \maketitle
 
-\section{Computed spectra of the minimal pair}\label{sec:listening}
+\section{Admissibility of the heat function}\label{sec:admissible}
 
-Figure~\ref{fig:F1} shows the two orbifolds of Theorem~\pref{thm:minimal}, which share their first two heat invariants, coloured by the diagonal of the heat kernel computed from their spectra.
+The trace formula of Theorem~\pref{thm:IEH} is stated by Dryden and Strohmaier for $h=\hat g$ with $g\in C_c^\infty(\R)$ even \cite[eq.~(1)]{drydenstrohmaier2009}; Garbin and Jorgenson state it for the heat function \cite[Rem.~2.7]{garbinjorgenson2020}. For completeness, here is the standard approximation argument, in the notation of Section~\pref{sec:trace} of the paper.
 
-\begin{figure}[ht]
-\centering
-\includegraphics[width=119mm]{figures/out/F1.pdf}
-\caption{\figcapOne}\label{fig:F1}
-\end{figure}
+\begin{lemma}[The heat function is admissible]\label{lem:admissible}
+Fix an even $\omega\in C_c^\infty(\R)$, $0\le\omega\le1$, $\omega=1$ on $[-1,1]$, and put $h_\varrho=\hat g_\varrho$ with $g_\varrho=g_t\,\omega(\cdot/\varrho)$. As $\varrho\to\infty$, every term of the trace formula for $h_\varrho$ tends to the corresponding term for $h_t$; hence Theorem~\pref{thm:IEH} holds.
+\end{lemma}
 
+\begin{proof}
+\emph{Counting eigenvalues.} Let $\lambda_j=\frac14+r_j^2$ and take $\psi\in C_c^\infty(\R)$ even, nonnegative, $\int\psi=1$, supported in $[-\epsilon,\epsilon]$ with $2\epsilon<\ell$, $\epsilon\le1$; then $|\hat\psi|\le1$ and $\hat\psi(r)\ge\cos(\epsilon r)\ge\frac12$ for $|r|\le1$. The function $h_T(r)=\hat\psi(r-T)^2+\hat\psi(r+T)^2=\hat g$ for $g=2\cos(Tu)(\psi*\psi)(u)$, supported in $[-2\epsilon,2\epsilon]$, so the hyperbolic side vanishes for it; its identity term is $O(T+1)$, each elliptic term $O(1)$, and the finitely many imaginary $r_j$ contribute $O(1)$. Since $h_T\ge\frac14$ on $|r-T|\le1$, $\#\{j:|r_j-T|\le1\}=O(T+1)$, hence $\#\{\lambda_j\le x\}=O(x)$, with no heat-kernel input (the leading term of \cite[Thm~4.8]{dggw2008} gives the same).
+\emph{Convergence.} On the hyperbolic side $0\le g_\varrho\le g_t$, with equality on $[0,\varrho]$, and Lemma~\pref{lem:counting} gives dominated convergence. With $f_\varrho=g_t(1-\omega(\cdot/\varrho))$, $h_t-h_\varrho=\hat f_\varrho$ and $\|f_\varrho^{(k)}\|_{L^1}\to0$ ($k\le3$), so $|\hat f_\varrho(r)|\le\epsilon_\varrho\min(1,|r|^{-3})$ with $\epsilon_\varrho\to0$, which handles the identity and elliptic terms and, as $\sum_j\min(1,|r_j|^{-3})<\infty$, the real $r_j$; for imaginary $r_j$, $|\hat f_\varrho(r_j)|\le\int|f_\varrho|e^{|u|/2}\to0$.
+\end{proof}
 
-\emph{Method.} The triangle orbifold $\Orb(p,q,r)$ is the double of a hyperbolic triangle $T$ with angles $\pi/p,\pi/q,\pi/r$. The reflection exchanging the two copies splits $H^1(\Orb)$ into even and odd parts, orthogonal for the $L^2$ product and the Dirichlet form, which restrict to $H^1(T)$ and $H^1_0(T)$; so the spectrum of $\Orb$ is the union, with multiplicity, of the Neumann and Dirichlet spectra of $T$, and $\cZ_\Orb=\cZ_N+\cZ_D$. The problems $-\Delta_Eu=\lambda wu$, $w=4/(1-|z|^2)^2$, were solved in the Poincar\'e disc with $H^1$ finite elements of order $p$ on NETGEN meshes \cite{schoberl1997} of uniform hyperbolic size $h$, with NGSolve \cite{ngsolve}; the geodesic side is an exact rational quadratic spline, curved to order $p$, and the finite-element area is exact to $2\times10^{-14}$. The production level is $(h,p)=(0.05,10)$, with $h$-sweeps at $p=10$ ($h=0.1,0.07$) and $p$-sweeps at $h=0.07$ ($p=8,10,12$). Eigenvalues were computed by shift-invert Lanczos iteration (ARPACK \cite{arpack1998}) in overlapping spectral windows of $200$ eigenvalues, one sparse factorisation per window, each eigenvalue taken from one window (software versions are pinned in the repository's \texttt{requirements.txt} files): $1420$--$1440$ per triangle and boundary condition, up to $\lambda\approx21{,}700$ (Neumann) and $23{,}800$ (Dirichlet), about $2850$ per orbifold.
+\section{Searches and explicit pairs}\label{sec:searches}
 
-\emph{Convergence and error per eigenvalue.} The error estimate $\mathrm{err}_j$ of each eigenvalue is $|\lambda_j(0.05,10)-\lambda_j(0.07,12)|$, two independent discretisations, and $|\lambda_j(0.05,10)-\lambda_j(0.07,10)|$ is carried as a conservative bound. For the first $500$ eigenvalues the estimate is at most $2.9\times10^{-11}$ relative and the conservative bound at most $1.2\times10^{-8}$. The empirical $h$-convergence at $p=10$ is $h^{13}$ to $h^{19}$ (medians over mid-spectrum modes; the meshes are not nested) and the $p$-convergence is geometric, a factor $150$ to $350$ per two orders; all modes converge from above. A corner singularity would cap the rate at an $h$-independent algebraic order; none occurs, as reflection predicts: at a corner of angle $\pi/k$ the eigenfunctions extend to smooth $\Z_k$-symmetric functions. Table~\ref{tab:conv} shows representative eigenvalues.
+\emph{Pencil splittings (Remark~\pref{rem:witnesses}).} A pencil splitting is a pair $(A,B)$ of $4$-multisets of nonzero integers with $e_1(A)=e_1(B)=0$, $e_3(A)=e_3(B)$, $e_4(A)=e_4(B)$, such that $Z=A\uplus(-B)$ has four positive and four negative entries and no pair $\{z,-z\}$; its witness is the pair formed by $Z_{>0}$ and $-Z_{<0}$, two disjoint multisets of orders with equal $R$, $P_1$ and $P_3$. The eight orders of the witness are the absolute values of the entries of $A$ and $B$, so a bound on the entries is a bound on the orders. Counting distinct witnesses (unordered, and primitive when the eight orders have gcd $1$), pencil splittings with entries of absolute value at most $130$ give $17$ witnesses, $14$ of them primitive, and at most $220$ give $49$, $30$ primitive (\texttt{review/round1-fixes/d1\_pencil\_counts.py}; every witness is rechecked exactly, with $P_5$ different). An exhaustive search of all pairs of $4$-multisets of orders in $[2,440]$ with equal $(R,P_1,P_3)$ finds $193$ pairs, $107$ of them primitive; among the primitive ones with largest order at most $130$, $220$, $440$ there are $16$, $33$, $107$, of which $14$, $30$, $101$ have a pencil splitting. The six without one are
+\[
+\begin{gathered}
+(16,16,74,74;\,11,37,44,88),\quad(11,21,99,99;\,9,51,51,119),\\
+(17,17,88,136;\,11,52,52,143),\quad(77,88,182,208;\,68,112,154,221),\\
+(154,175,308,350;\,143,200,280,364),\quad(22,50,209,418;\,19,85,170,425),
+\end{gathered}
+\]
+each written as the two orbifolds' orders separated by a semicolon. Chen's survey lists the witness of Theorem~\pref{thmC}(3) as an ideal solution of type $(-1,1,3)$ \cite[A.685]{chen2025survey}; for the type $(-1,1,3,5)$ that $n=5$ requires it gives the identity \cite[(3.33)]{chen2025survey} but lists no numerical solution. For $n=5$, all $216{,}071{,}394$ multisets of orders in $[2,120]$, grouped by $P_1$ and keyed on the exact integers $(P_3,P_5,\operatorname{lcm}(2,\dots,120)R)$, give no witness.
 
-\begin{table}[ht]
-\caption{Representative eigenvalues $\lambda_j$ at the production level, the error estimate, and the differences from the coarser levels $(0.07,10)$ and $(0.1,10)$ and between $p=8$ and $p=12$ at $h=0.07$ (file \texttt{numerics/data/convergence.csv}).}\label{tab:conv}
-\centering\footnotesize
-\begin{tabular}{@{}llrrllll@{}}
+\emph{The first open case (Remark~\pref{rem:T3}).} A genus pair of size $8$ sharing three heat invariants has shape $(3,5)$. For each $5$-multiset $V$ of positive integers with gcd $1$ and entries at most $220$, the $3$-element side is the root set of the cubic $z^3-e_1z^2+Re_3z-e_3$ with $e_1=P_1(V)$, $R=R(V)$ and $e_3=(P_3(V)-e_1^3)/(3-3e_1R)$; it must have three positive rational roots. Of the $4{,}325{,}115{,}770$ such $V$, $29{,}494{,}902$ give three positive real roots; a filter in floating point with rigorous inclusion disks rejects a $V$ only when three rational roots are excluded, and the remaining $220{,}428$ candidates were decided in exact arithmetic: none splits over $\Q$ (\texttt{theory/pte/search\_T3.c}, log \texttt{theory/pte/data/T3\_search\_log.txt}). Real solutions of the shape exist: $\{1,1,1,1,7\}$ has exactly one partner triple, $\{0.2664,4.2830,6.4506\}$.
+
+\emph{Explicit pairs.} Table~\ref{tab:pairs} writes out every pair of Example~\pref{ex:ptepairs} and every diamond and square of Figure~\pref{fig:F4}.
+
+% BEGIN GENERATED TABLE pairs
+{\scriptsize\setlength{\LTcapwidth}{\textwidth}
+\begin{longtable}{@{}rlll@{}}
+\caption{The explicit pairs behind Example~\pref{ex:ptepairs} and the diamonds and squares of Figure~\pref{fig:F4}: both signatures, the area $s=\mathrm{Area}/2\pi$ (exact in the data file when an approximation is shown) and the exact number $L$ of shared heat invariants. Each pair was rechecked by \texttt{review/round1-fixes/d2\_explicit\_pairs.py}, which recomputes the area and the shared count exactly, from the cone coefficients and again from the power sums. ``Equal count'' rows with $L=4,\dots,7$ are Example~\pref{ex:ptepairs}(iii). For the Prouhet squares with $L\ge4$, $T_e=\{0\le i<4^{L-1}:\ \text{the binary digits of $i$ have sum}\equiv e\ (2)\}$, $U_0=\{2i-1:i\in T_0,\ i\ne0\}$, $V_0=\{2i-1:i\in T_1\}\cup\{1\}$, $A'=\{2i+1:i\in T_0\}$, $B'=\{2i+1:i\in T_1\}$; their cone lists are in \texttt{review/round1-fixes/output/d2\_pairs.csv}.}\label{tab:pairs}\\
 \toprule
-triangle & b.c. & $j$ & $\lambda_j$ & estimate & $(0.07,10)$ & $(0.1,10)$ & $p=8$ vs $12$\\
+$L$ & kind & $s$ & shared\\
 \midrule
-$(2,8,8)$ & N & 1 & 3.838887 & 5.9e-13 & 8.5e-14 & 3.0e-14 & 5.9e-13\\
- & N & 500 & 7400.919040 & 2.8e-08 & 1.4e-05 & 2.3e-03 & 4.3e-03\\
- & N & 1400 & 21373.180248 & 2.1e-02 & 8.8e-01 & 2.0e+01 & 1.5e+01\\
- & D & 1 & 73.663812 & 1.3e-11 & 1.4e-13 & 1.7e-13 & 1.4e-11\\
- & D & 500 & 8642.496608 & 4.4e-08 & 2.3e-05 & 6.4e-03 & 8.1e-03\\
- & D & 1400 & 23446.967233 & 1.4e-02 & 6.2e-01 & 3.8e+01 & 1.8e+01\\
-$(3,3,12)$ & N & 1 & 3.499847 & 5.5e-13 & 4.8e-14 & 7.3e-14 & 5.8e-13\\
- & N & 500 & 7394.453593 & 4.6e-10 & 1.4e-06 & 2.2e-03 & 1.2e-03\\
- & N & 1400 & 21388.053620 & 5.3e-04 & 9.9e-02 & 3.0e+01 & 7.0e+00\\
- & D & 1 & 72.365158 & 1.3e-11 & 2.1e-13 & 2.1e-13 & 1.4e-11\\
- & D & 500 & 8629.414252 & 4.9e-09 & 1.9e-05 & 3.8e-02 & 8.9e-03\\
- & D & 1400 & 23438.658440 & 1.9e-03 & 2.4e-01 & 4.6e+01 & 1.6e+01\\
-\bottomrule
-\end{tabular}
-\end{table}
-
-\emph{Error budget.} By the mean value theorem $|e^{-\tilde\lambda t}-e^{-\lambda t}|\le t|\tilde\lambda-\lambda|e^{-\min(\lambda,\tilde\lambda)t}$, so the eigenvalue errors contribute at most $t\sum_j\mathrm{err}_je^{-(\lambda_j-\mathrm{err}_j)t}$ to a computed trace, with no cancellation assumed. The truncation tail satisfies $\sum_{\lambda>\Lambda}e^{-\lambda t}\le-n_\Lambda e^{-\Lambda t}+t\int_\Lambda^\infty e^{-\lambda t}N_{\rm up}(\lambda)\,d\lambda$, where $N_{\rm up}(\lambda)=A\lambda/4\pi\pm L\lambda^{1/2}/4\pi+C_{\rm up}$ is the Weyl law of the triangle (area $A$, perimeter $L$, sign $+$ for Neumann) with $C_{\rm up}$ twice the largest observed excess of the counting function over the two-term law plus $10$, and the integral is in closed form. On $0.0015\le t\le0.012$ the total for $D(t)=\cZ_{\Orb(2,8,8)}(t)-\cZ_{\Orb(3,3,12)}(t)$ is at most $2.9\times10^{-11}$, and $3.9\times10^{-10}$ with the conservative estimates; the tail is at most $7.6\times10^{-13}$, against $d_3t=3.1\times10^{-3}$ at $t=0.0015$.
-
-\emph{Validation.} (i) \emph{Weyl law.} With area, boundary and constant terms, $N(\lambda)\approx A\lambda/4\pi\pm L\lambda^{1/2}/4\pi+c_2/2$, the residuals have mean $|{\cdot}|\le0.003$ and root mean square $0.66$--$0.70$ over $1420$ or more eigenvalues; without the boundary term they drift by about $\pm65$. (ii) \emph{Traces.} For $0.0015\le t\le0.03$, each computed trace agrees with the identity and elliptic terms of Theorem~\pref{thm:IEH} to $7.1\times10^{-13}$, against an error bound of $1.5\times10^{-11}$, while closed geodesics contribute less than $10^{-12}$; $\cZ_N-\cZ_D$ agrees with the boundary term to $1.8\times10^{-13}$. A missing eigenvalue $\lambda$ would add $e^{-\lambda t}$, which exceeds the error bound at $t=0.0015$ when $\lambda\lesssim1.6\times10^4$, so no eigenvalue below about $1.6\times10^4$ is missing; above that, about $1.6$ to $2.4\times10^4$, the test is blind. (iii) \emph{Bolza benchmark.} The Bolza surface covers $\Orb(2,3,8)$, so every eigenvalue of the $(2,3,8)$ triangle with a sign character of its reflection group occurs in Bolza's spectrum. The relation at the corner of angle $\pi/3$ leaves four characters: Neumann, Dirichlet, and two mixed conditions. The list of Strohmaier and Uski \cite[\S7.1 and the ancillary file of arXiv:1110.2150v4]{strohmaieruski2013}, \cite{strohmaieruski2018} has $42$ multiplicity-one eigenvalues below $998$; the four triangle problems give exactly $42$ eigenvalues in that range ($15$, $6$, $10$, $11$), matched one-to-one to $5.7\times10^{-11}$ relative, the precision of the published digits. Only the $21$ Neumann and Dirichlet ones belong to $\Orb(2,3,8)$. (iv) \emph{Second machine.} The $(3,3,12)$ Neumann spectrum, $1434$ eigenvalues, was recomputed on a second machine; the largest relative difference is $1.0\times10^{-12}$, at most $0.15$ times the error estimate.
-
-\emph{Prediction.} Both orbifolds have area $\pi/2$ and $c_2=\frac{67}{48}$, and $D(t)=\sum_{j\ge3}d_jt^{j-2}$ with $d_3=\frac{25}{12}$, $d_4=-\frac{1775}{24}$, $d_5=\frac{153025}{48}$ (Section~\pref{sec:numerics}). The orbifold with the smaller $P_3$ has the larger heat trace.
-
-\emph{Result.} The model $D(t)/t=\sum_{\nu=1}^{n_c}\hat d_\nu t^{\nu-1}$ was fitted by unweighted least squares with a column-scaled Vandermonde matrix, over nine windows inside $[0.0015,0.012]$ and $n_c=2,\dots,11$. For each configuration the \emph{data error} is the worst-case change of a coefficient under any perturbation of the data within the error budget, $|\mathrm{pinv}|\cdot\mathrm{err}$, and the \emph{model error} the change from $n_c-1$ to $n_c$; the reported configuration minimizes the larger of the two and was chosen without reference to the prediction: window $[0.0015,0.012]$, $n_c=10$. It gives $\hat d_1=2.0833320\pm0.0000031$ and $\hat d_2=-73.9551\pm0.0062$, against $d_3=2.0833333$ and $d_4=-73.9583$. The error bars are $\max(\text{data error},\text{model error})$, heuristic and not standard errors; the deviations are $0.42$ and $0.53$ of them, and with the conservative eigenvalue errors the bars are $1.4\times10^{-5}$ and $0.028$. Applied to the exact difference of the elliptic terms, the same fit recovers $d_3$ to about $10^{-6}$ and $d_4$ to about $0.005$, so the method is not the limiting factor. The fitted $t^{-1}$ and $t^0$ terms of the two traces agree to within the fit error. For $0.0015\le t\le0.03$ the computed $D(t)$ agrees pointwise with the exact difference of the elliptic terms to $4.0\times10^{-13}$. The coefficient $\hat d_3=3184.5\pm5.2$ (data error only) against $\frac{153025}{48}=3188.0$ is only a by-product; across stable configurations it ranges over $3180$--$3188$.
-
-\emph{Closed geodesics.} The shortest lengths, from enumerating triangle-group words of length at most $10$, are $2.2568$, $2.8816$, $3.0571$ for $(2,8,8)$ and $1.8626$, $2.9807$, $3.4027$ for $(3,3,12)$. With a generous multiplicity per length, the hyperbolic term is below $10^{-30}$ on the fit window. Fitting $\cZ-\mathrm I-\mathrm E$ on $[0.06,0.5]$ by the hyperbolic term gives leading multiplicities $1.997$ and $1.9998$: one geodesic, two orientations. $D(t)$ changes sign near $t=0.34$, solely because of the geodesics.
-
-\emph{Limitations.} The eigenvalue errors are a-posteriori agreements, not certified enclosures, and ``certified'' below is conditional on them. The tail bound assumes that the counting function beyond the computed range stays below the Weyl law plus twice its largest observed excess. The spectra were computed with single-window spectral slicing, which the experiment of Section~\ref{sec:moduli} showed can miss an eigenvalue at a window boundary; for these spectra this is excluded below about $1.6\times10^4$ by the trace test, and a recomputation of all four spectra with the double-window solver of Section~\ref{sec:moduli} has not been run.
-
-\section{Blind recovery}\label{sec:blind}
-
-The recovery chain of Section~\pref{sec:stability} was run on the computed spectra of Section~\ref{sec:listening} under a protocol committed to the repository before the pipeline and before any result (commit \texttt{3c1139a}, 1 October 2026). \emph{What was assumed:} each specimen is the double of a hyperbolic triangle, so it has genus $0$ and exactly $n=3$ cone points, and $K=-1$; the universal front-end constants for $n=3$ were used. \emph{What was blinded:} only the labels; the specimens were called A and B, the pipeline read the four eigenvalue files without parsing their names, and the label-to-truth map was used once, after every estimate and verdict had been written. No area, perimeter, $c_2$, geodesic length or Weyl constant derived from the orders was used; the truncation tail was bounded from a fit of the counting function of the data alone. The test is easy by design: it separates two candidates whose third coefficients differ by about $10^4$ error bars, so it exercises the pipeline rather than a hard inference.
-
-The traces $\cZ(t)$ were fitted as $t\cZ(t)=\sum_{j\le d}\gamma_jt^j$ over the windows and degrees of the protocol, with data error and model error as in Section~\ref{sec:listening}; the error bar of each coefficient is the larger of the best configuration's $\max(\text{data},\text{model})$ and half the range over the eight best configurations, again heuristic. The candidate was obtained by solving the system of Theorem~\pref{thmB} in exact arithmetic and rounding, and then certified a posteriori by Proposition~\pref{prop:S5} at the candidate, with radii equal to the distance from the estimates to the candidate's exact invariants plus the error bars. The certificate is rigorous given the error bars.
-
-\begin{table}[ht]
-\caption{Blind recovery: heat invariants estimated from about $2850$ computed eigenvalues of each specimen, with their error bars, and the recovered orders.}\label{tab:blind}
-\centering\small
-\begin{tabular}{@{}lll@{}}
+\endfirsthead
 \toprule
- & specimen A & specimen B\\
+$L$ & kind & $s$ & shared\\
 \midrule
-$c_1$ & $0.1250000000\pm1.1\times10^{-11}$ & $0.1250000000\pm4.9\times10^{-11}$\\
-$c_2$ & $1.3958333303\pm2.4\times10^{-8}$ & $1.3958332915\pm1.3\times10^{-7}$\\
-$c_3$ & $-3.3354134980\pm2.1\times10^{-5}$ & $-5.4186953214\pm1.4\times10^{-4}$\\
-roots & $2$, $8\pm0.0050i$ & $2.9915$, $3.0085$, $11.99995$\\
-recovered & $(2,8,8)$, certified & $(3,3,12)$, certified\\
+\endhead
 \bottomrule
-\end{tabular}
-\end{table}
-
-Three coefficients recover both multisets exactly (Table~\ref{tab:blind}), with a margin to the certified threshold of about $100$ for A and $20$ for B. The recovered double roots show the square-root law of Proposition~\pref{prop:sharpexp}(i): an error of order $10^{-4}$ in $c_3$ splits the double order $3$ of B into $2.9915$ and $3.0085$. Two coefficients cannot separate the specimens, since $c_1=(1-R)/2$ and $c_2=(P_1+R-2)/12$ depend only on $(R,P_1)=(\frac34,18)$; the estimates of $c_1$ and $c_2$ for A and B differ by $0.21$ and $0.26$ of their combined error bars, while those of $c_3$ differ by $2.0833\pm1.6\times10^{-4}$, against the exact $\frac{25}{12}$. An exhaustive enumeration of hyperbolic integer triads consistent with the first two estimates returns exactly $\{(2,8,8),(3,3,12)\}$ for both specimens, and adding $c_3$ leaves one triad each.
-
-\section{Changing the shape}\label{sec:moduli}
-
-\emph{The family.} The signature $(0;3,3,3,3)$ is hyperbolic, with area $4\pi/3$ and a $2$-dimensional Teichm\"uller space. Each member of the family is the double of a geodesic quadrilateral with all angles $\pi/3$, symmetric under $z\mapsto\bar z$ and $z\mapsto-\bar z$; the two mirror axes cut it into four congruent Lambert quadrilaterals, and with $a,b$ the distances from the centre to two adjacent sides, $\sinh a\sinh b=\cos\frac\pi3$, leaving one parameter $\vartheta=\log(\sinh a/\sinh b)$. Eight members, $\vartheta\in\{0,0.4,\dots,2.8\}$, were computed, about $5450$ eigenvalues each up to $\lambda\approx1.6\times10^4$, with every eigenvalue covered by two independent shift-invert windows (misses counted and repaired). Their systoles are $4b(\vartheta)$, falling strictly from $2.634$ to $0.694$, so the members are pairwise non-isometric and every pair has different systoles. The worst eigenvalue error is $1.3\times10^{-10}$ relative ($8.3\times10^{-9}$ conservative). The family is a real one-parameter slice, the orbifolds with an orientation-reversing isometry fixing the four cone points; Theorem~\pref{thm:sharp} does not need genericity.
-
-\emph{Same expansion, different spectra.} Every member's heat trace equals $\mathrm I+4\mathrm E_3$ to at most $1.2\times10^{-12}$ wherever closed geodesics are negligible, against an error budget of $2.2\times10^{-11}$, and on $t\in[0.0025,0.0037]$ the eight traces are the same function to $1.3\times10^{-13}$: Proposition~\pref{prop:locality} in the data. The eigenvalues move with the shape: $\lambda_1$ falls from $4.1224$ to $0.4348$, and the first $200$ eigenvalues move by up to $89\%$ (Figure~\ref{fig:F6}).
-
-\begin{figure}[ht]
-\centering
-\includegraphics[width=119mm]{figures/out/F6.pdf}
-\caption{\figcapSix}\label{fig:F6}
-\end{figure}
-
-\emph{The difference is the closed geodesics.} For all $28$ pairs, $\cZ_i-\cZ_j$ equals $\Hyp_i-\Hyp_j$, computed from the closed geodesics enumerated in floating point up to length $6.5$ (checked by the integrality of the weights $w/\ell$ and by agreement with the computed traces) with nothing fitted, to at most $1.1\times10^{-13}$ for $t\le0.33$, where the traces differ by up to $0.79$. The difference leaves the noise at a time $t^*$ set by the shorter systole alone, with $\ell^2/4t^*\approx24.5$ in every case. Once it is $10^3$ times the noise, its ratio to the leading term of Theorem~\pref{thm:sharp} is between $0.9997$ and $1.0000$. The bound of Theorem~\pref{thm:quantlocality}(b) holds for every pair, but it is loose because of its factor $e^{3D}$.
+\endfoot
+2 & genus & $14/15$ & 2\\*
+\multicolumn{4}{@{}p{\linewidth}@{}}{\raggedright $\sigma_1=$ (0;3,\allowbreak 3,\allowbreak 5,\allowbreak 5)\newline $\sigma_2=$ (1;15)}\\[2pt]
+3 & genus & $14/5$ & 3\\*
+\multicolumn{4}{@{}p{\linewidth}@{}}{\raggedright $\sigma_1=$ (0;3,\allowbreak 3,\allowbreak 5,\allowbreak 7,\allowbreak 7,\allowbreak 21)\newline $\sigma_2=$ (1;15,\allowbreak 15,\allowbreak 15)}\\[2pt]
+4 & genus & $41149074301/5878522650$ & 4\\*
+\multicolumn{4}{@{}p{\linewidth}@{}}{\raggedright $\sigma_1=$ (0;34986,\allowbreak 38775,\allowbreak 58310,\allowbreak 116325,\allowbreak 128282,\allowbreak 271425,\allowbreak 271425,\allowbreak 454818,\allowbreak 524790)\newline $\sigma_2=$ (1;12925,\allowbreak 168025,\allowbreak 219725,\allowbreak 268226,\allowbreak 297275,\allowbreak 384846,\allowbreak 548114)}\\[2pt]
+5 & genus & $\approx8.999997959$ & 5\\*
+\multicolumn{4}{@{}p{\linewidth}@{}}{\raggedright $\sigma_1=$ (0;1517814,\allowbreak 2063997,\allowbreak 2522663,\allowbreak 7589070,\allowbreak 9861319,\allowbreak 10319985,\allowbreak 12613315,\allowbreak 19731582,\allowbreak 59194746,\allowbreak 77408514,\allowbreak 89551026)\newline $\sigma_2=$ (1;687999,\allowbreak 4357327,\allowbreak 8485321,\allowbreak 11695983,\allowbreak 12154649,\allowbreak 34909722,\allowbreak 50087862,\allowbreak 83479770,\allowbreak 86515398)}\\[2pt]
+6 & genus & $\approx12$ & 6\\*
+\multicolumn{4}{@{}p{\linewidth}@{}}{\raggedright $\sigma_1=$ (0;4093411365093597322848394806575,\allowbreak 7271375040829745152760217600000,\allowbreak 9824187276224633574836147535780,\allowbreak 9987923730828377467750083328043,\allowbreak 14793487152032929793546649600000,\allowbreak 48392254582073821189059379200000,\allowbreak 52886874837009277411201260900949,\allowbreak 61237434021800215949811986306362,\allowbreak 61932056382239553542474956800000,\allowbreak 77283606572967117455377693948136,\allowbreak 77979228886139680776152678400000,\allowbreak 78480703026886559752205107200000,\allowbreak 84160537666324360957762997223182,\allowbreak 90218786486662884995578621536913)\newline $\sigma_2=$ (1;1755159492614076416183500800000,\allowbreak 22817073403982993410385510400000,\allowbreak 33074763829956266368615030037126,\allowbreak 37986857468068583156033103805016,\allowbreak 43377513174605031428535091200000,\allowbreak 67448271930455222279051673600000,\allowbreak 70079202570402386167164519088564,\allowbreak 72463013337924012039575961600000,\allowbreak 76137451390740910204980143402295,\allowbreak 80988073730620954632467251200000,\allowbreak 81049545028853226992398217170185,\allowbreak 91364941668889092245976172082754)}\\[2pt]
+7 & genus & $\approx19$ & 7\\*
+\multicolumn{4}{@{}p{\linewidth}@{}}{\raggedright $\sigma_1=$ (0;495461702484924819341859189302493184,\allowbreak 683624372840614274768382863229231445,\allowbreak 771998466662557276648943387982954496,\allowbreak 818087927358829352866790754429698048,\allowbreak 1093798996544982839629412581166770312,\allowbreak 1716832410936134839114814400141197312,\allowbreak 1855100793024951067768356499481427968,\allowbreak 2292950669639535791837906480725491712,\allowbreak 2734497491362457099073531452916925780,\allowbreak 3053426771128025049432388027096760320,\allowbreak 3237784613913113354303777492883734528,\allowbreak 3537366108438881849719785374787567616,\allowbreak 3790858142268378268917945890244657152,\allowbreak 6699518853838019892730152059646468161,\allowbreak 9160566596064231281896330367271701363,\allowbreak 12031788961994811235923538392834473432,\allowbreak 12852138209403548365645597828709551166,\allowbreak 16270260073606619739487512144855708391,\allowbreak 21055630683490919662866192187460328506,\allowbreak 22833054052876516777263987631856330263,\allowbreak 24337027673125868181754429930960639442)\newline $\sigma_2=$ (1;195880207959156323925851307398660096,\allowbreak 1094624691536461810173874953110159360,\allowbreak 1117669421884597848282798636333531136,\allowbreak 1394206186062230305589882835013992448,\allowbreak 1670742950239862762896967033694453760,\allowbreak 2615576894513440325362838045852696576,\allowbreak 2915158389039208820778845927756529664,\allowbreak 3168650422868705239977006443213619200,\allowbreak 3675634490527698078373327474127798272,\allowbreak 3721723951223970154591174840574541824,\allowbreak 4648645735316177068425003469958773826,\allowbreak 8066767599519248442266917786104931051,\allowbreak 8476942223223617007127947504042469918,\allowbreak 10117640718041091266572066375792625386,\allowbreak 13672487456812285495367657264584628900,\allowbreak 16953884446447234014255895008084939836,\allowbreak 20235281436082182533144132751585250772,\allowbreak 23653403300285253906986047067731407997,\allowbreak 23926853049421499616893400213023100575)}\\[2pt]
+2 & equal count & $1/4$ & 2\\*
+\multicolumn{4}{@{}p{\linewidth}@{}}{\raggedright $\sigma_1=$ (0;3,\allowbreak 3,\allowbreak 12)\newline $\sigma_2=$ (0;2,\allowbreak 8,\allowbreak 8)}\\[2pt]
+3 & equal count & $22/15$ & 3\\*
+\multicolumn{4}{@{}p{\linewidth}@{}}{\raggedright $\sigma_1=$ (0;3,\allowbreak 10,\allowbreak 15,\allowbreak 30)\newline $\sigma_2=$ (0;4,\allowbreak 5,\allowbreak 21,\allowbreak 28)}\\[2pt]
+4 & equal count & $\approx5$ & 4\\*
+\multicolumn{4}{@{}p{\linewidth}@{}}{\raggedright $\sigma_1=$ (0;74493387367,\allowbreak 138344862253,\allowbreak 217482072530,\allowbreak 404392674278,\allowbreak 532095624050,\allowbreak 600937305675,\allowbreak 703955129505)\newline $\sigma_2=$ (0;74401761655,\allowbreak 131633886005,\allowbreak 255405899544,\allowbreak 351183111873,\allowbreak 542737536531,\allowbreak 629553367850,\allowbreak 686785492200)}\\[2pt]
+5 & equal count & $\approx7$ & 5\\*
+\multicolumn{4}{@{}p{\linewidth}@{}}{\raggedright $\sigma_1=$ (0;5806604053259408,\allowbreak 20770022346082906,\allowbreak 35431214590376722,\allowbreak 36291275332871300,\allowbreak 50092406834670538,\allowbreak 59866534997533082,\allowbreak 95808966878780232,\allowbreak 107422174985299048,\allowbreak 126293638158392124)\newline $\sigma_2=$ (0;7941479132325817,\allowbreak 9774128162862544,\allowbreak 42150927702344721,\allowbreak 45727006919417838,\allowbreak 45816225763418175,\allowbreak 60477418007711991,\allowbreak 86373235292233694,\allowbreak 116857906571845586,\allowbreak 122664510625104994)}\\[2pt]
+6 & equal count & $\approx10$ & 6\\*
+\multicolumn{4}{@{}p{\linewidth}@{}}{\raggedright $\sigma_1=$ (0;71623872894939389150,\allowbreak 129265225362823216755,\allowbreak 138389829506081326173,\allowbreak 430377162090340827549,\allowbreak 436460231519179567161,\allowbreak 507595273125005236150,\allowbreak 563648738868870845050,\allowbreak 612869244955503015909,\allowbreak 701073751673664740283,\allowbreak 1061901767703231813050,\allowbreak 1080586256284520349350,\allowbreak 1267431142097405712350)\newline $\sigma_2=$ (0;65392996360016450829,\allowbreak 115221012917945973850,\allowbreak 244843544510759269383,\allowbreak 330006516514501623951,\allowbreak 370575690195555969950,\allowbreak 509457064665244442505,\allowbreak 594620036668986797073,\allowbreak 688211996077461087050,\allowbreak 704115286388084110089,\allowbreak 968479324796789131550,\allowbreak 1155324210609674494550,\allowbreak 1254974816376546688150)}\\[2pt]
+7 & equal count & $\approx18$ & 7\\*
+\multicolumn{4}{@{}p{\linewidth}@{}}{\raggedright $\sigma_1=$ (0;595958629909279070099829518275115563729823,\allowbreak 1030537353727106401413686917679685652027815,\allowbreak 1605720993016654160342256360105556713624735,\allowbreak 1701584932898245453497017933843201890557555,\allowbreak 3570931760589275670014868621727282840747545,\allowbreak 3858523580234049549479153342940218371546005,\allowbreak 4769231009109166834449388293447847552407795,\allowbreak 6350986017155423171502954260118992971799325,\allowbreak 6734441776681788344122000555069573679530605,\allowbreak 7236640506041245851212215579054974702433565,\allowbreak 7357557385912131749627950784364267329593935,\allowbreak 7884809055260883861979139439921315802724445,\allowbreak 9620475025678362131611533652155436957352857,\allowbreak 13877322382173212632324601639834833841137307,\allowbreak 14217870170692800672381647078849185591840063,\allowbreak 21369373729604149513579601298150572356597939,\allowbreak 25626221086099000014292669285829969240382389,\allowbreak 32607450750750554835462100785624180129788887,\allowbreak 34821011376127877095832896139217466509356801,\allowbreak 36694024212985611316146646053796401138221959)\newline $\sigma_2=$ (0;407421744496762995907736688384992001964485,\allowbreak 2276768572187793212425587376269072952154475,\allowbreak 2324700542128588859002968163137895540620885,\allowbreak 2899884181418136617931537605563766602217805,\allowbreak 2979793149546395350499147591375577818649115,\allowbreak 3475067820707684376860107047989637663814725,\allowbreak 3660888726585571430613238469404281320054627,\allowbreak 5440278588280305886532719309611363790937535,\allowbreak 6063394197510649292038669538906057441000865,\allowbreak 6590645866859401404389858194463105914131375,\allowbreak 7645149205556905629092235505577202860392395,\allowbreak 7741013145438496922246997079314848037325215,\allowbreak 10642118391237126251782669969198492209461125,\allowbreak 12855679016614448512153465322791778589029039,\allowbreak 16942252478849504992838010590963999597462111,\allowbreak 18985539209967033233180283225050110101678647,\allowbreak 26988412240177352174520851041887376243193413,\allowbreak 31585807385191790715290964468581124877680619,\allowbreak 35842654741686641216004032456260521761465069,\allowbreak 36183202530206229256061077895274873512167825)}\\[2pt]
+2 & cone count & $2/5$ & 2\\*
+\multicolumn{4}{@{}p{\linewidth}@{}}{\raggedright $\sigma_1=$ (0;2,\allowbreak 2,\allowbreak 2,\allowbreak 10)\newline $\sigma_2=$ (0;5,\allowbreak 5,\allowbreak 5)}\\[2pt]
+3 & cone count & $113/30$ & 3\\*
+\multicolumn{4}{@{}p{\linewidth}@{}}{\raggedright $\sigma_1=$ (0;4,\allowbreak 4,\allowbreak 5,\allowbreak 5,\allowbreak 6,\allowbreak 12,\allowbreak 12)\newline $\sigma_2=$ (0;2,\allowbreak 2,\allowbreak 2,\allowbreak 3,\allowbreak 10,\allowbreak 10,\allowbreak 10,\allowbreak 10)}\\[2pt]
+4 & cone count & $2651846/320229$ & 4\\*
+\multicolumn{4}{@{}p{\linewidth}@{}}{\raggedright $\sigma_1=$ (0;2,\allowbreak 2,\allowbreak 3,\allowbreak 9,\allowbreak 21,\allowbreak 21,\allowbreak 26,\allowbreak 26,\allowbreak 34,\allowbreak 34,\allowbreak 46,\allowbreak 46)\newline $\sigma_2=$ (0;6,\allowbreak 6,\allowbreak 13,\allowbreak 17,\allowbreak 18,\allowbreak 18,\allowbreak 23,\allowbreak 42,\allowbreak 42,\allowbreak 42,\allowbreak 42)}\\[2pt]
+5 & cone count & $564239482/30342025$ & 5\\*
+\multicolumn{4}{@{}p{\linewidth}@{}}{\raggedright $\sigma_1=$ (0;2,\allowbreak 2,\allowbreak 2,\allowbreak 3,\allowbreak 10,\allowbreak 12,\allowbreak 20,\allowbreak 20,\allowbreak 21,\allowbreak 31,\allowbreak 40,\allowbreak 48,\allowbreak 48,\allowbreak 49,\allowbreak 50,\allowbreak 56,\allowbreak 56,\allowbreak 84,\allowbreak 84,\allowbreak 94,\allowbreak 94,\allowbreak 102,\allowbreak 102)\newline $\sigma_2=$ (0;4,\allowbreak 4,\allowbreak 5,\allowbreak 6,\allowbreak 6,\allowbreak 24,\allowbreak 24,\allowbreak 24,\allowbreak 28,\allowbreak 42,\allowbreak 42,\allowbreak 42,\allowbreak 47,\allowbreak 51,\allowbreak 62,\allowbreak 62,\allowbreak 80,\allowbreak 80,\allowbreak 98,\allowbreak 98,\allowbreak 100,\allowbreak 100)}\\[2pt]
+6 & cone count & $\approx26.55911353$ & 6\\*
+\multicolumn{4}{@{}p{\linewidth}@{}}{\raggedright $\sigma_1=$ (0;2,\allowbreak 2,\allowbreak 6,\allowbreak 7,\allowbreak 26,\allowbreak 26,\allowbreak 134,\allowbreak 183,\allowbreak 243,\allowbreak 252,\allowbreak 252,\allowbreak 385,\allowbreak 428,\allowbreak 428,\allowbreak 430,\allowbreak 430,\allowbreak 445,\allowbreak 494,\allowbreak 621,\allowbreak 622,\allowbreak 826,\allowbreak 826,\allowbreak 828,\allowbreak 828,\allowbreak 1004,\allowbreak 1004,\allowbreak 1230,\allowbreak 1230,\allowbreak 1254,\allowbreak 1254)\newline $\sigma_2=$ (0;12,\allowbreak 12,\allowbreak 13,\allowbreak 14,\allowbreak 14,\allowbreak 126,\allowbreak 214,\allowbreak 215,\allowbreak 268,\allowbreak 268,\allowbreak 366,\allowbreak 366,\allowbreak 413,\allowbreak 414,\allowbreak 486,\allowbreak 486,\allowbreak 502,\allowbreak 615,\allowbreak 627,\allowbreak 770,\allowbreak 770,\allowbreak 890,\allowbreak 890,\allowbreak 988,\allowbreak 988,\allowbreak 1242,\allowbreak 1242,\allowbreak 1244,\allowbreak 1244)}\\[2pt]
+7 & cone count & $\approx32.30885424$ & 7\\*
+\multicolumn{4}{@{}p{\linewidth}@{}}{\raggedright $\sigma_1=$ (0;2,\allowbreak 2,\allowbreak 4,\allowbreak 6,\allowbreak 24,\allowbreak 24,\allowbreak 31,\allowbreak 50,\allowbreak 50,\allowbreak 58,\allowbreak 105,\allowbreak 117,\allowbreak 132,\allowbreak 132,\allowbreak 182,\allowbreak 182,\allowbreak 187,\allowbreak 199,\allowbreak 246,\allowbreak 260,\allowbreak 260,\allowbreak 273,\allowbreak 298,\allowbreak 300,\allowbreak 348,\allowbreak 348,\allowbreak 426,\allowbreak 426,\allowbreak 476,\allowbreak 476,\allowbreak 558,\allowbreak 558,\allowbreak 584,\allowbreak 584,\allowbreak 606,\allowbreak 606)\newline $\sigma_2=$ (0;8,\allowbreak 8,\allowbreak 12,\allowbreak 12,\allowbreak 12,\allowbreak 25,\allowbreak 62,\allowbreak 62,\allowbreak 66,\allowbreak 91,\allowbreak 116,\allowbreak 116,\allowbreak 130,\allowbreak 174,\allowbreak 210,\allowbreak 210,\allowbreak 213,\allowbreak 234,\allowbreak 234,\allowbreak 238,\allowbreak 279,\allowbreak 292,\allowbreak 303,\allowbreak 374,\allowbreak 374,\allowbreak 398,\allowbreak 398,\allowbreak 492,\allowbreak 492,\allowbreak 546,\allowbreak 546,\allowbreak 596,\allowbreak 596,\allowbreak 600,\allowbreak 600)}\\[2pt]
+2 & Prouhet & $12/5$ & 2\\*
+\multicolumn{4}{@{}p{\linewidth}@{}}{\raggedright $\sigma_1=$ (1;2,\allowbreak 14,\allowbreak 35)\newline $\sigma_2=$ (0;6,\allowbreak 7,\allowbreak 7,\allowbreak 10,\allowbreak 21)}\\[2pt]
+3 & Prouhet & $\approx14.99999999$ & 3\\*
+\multicolumn{4}{@{}p{\linewidth}@{}}{\raggedright $\sigma_1=$ (1;164778968,\allowbreak 1153452776,\allowbreak 1812568648,\allowbreak 2142126584,\allowbreak 2964981515,\allowbreak 3130800392,\allowbreak 3460358328,\allowbreak 4119474200,\allowbreak 5108148008,\allowbreak 5336966727,\allowbreak 6522959333,\allowbreak 10080937151,\allowbreak 11266929757,\allowbreak 13638914969,\allowbreak 17196892787)\newline $\sigma_2=$ (0;494336904,\allowbreak 592996303,\allowbreak 592996303,\allowbreak 823894840,\allowbreak 1483010712,\allowbreak 1778988909,\allowbreak 2471684520,\allowbreak 2801242456,\allowbreak 3789916264,\allowbreak 4150974121,\allowbreak 4449032136,\allowbreak 4778590072,\allowbreak 7708951939,\allowbreak 8894944545,\allowbreak 12452922363,\allowbreak 14824907575,\allowbreak 16010900181)}\\[2pt]
+4 & Prouhet & $\approx63$ & 4\\*
+\multicolumn{4}{@{}p{\linewidth}@{}}{\raggedright $\sigma_1=$ $(1;qU_0\cup pB')$, $63$ cone points, $p,q$ of $45$ and $46$ digits (in the CSV)\newline $\sigma_2=$ $(0;qV_0\cup pA')$, $65$ cone points (SHA-256 of both lists 471cb266ee04\dots)}\\[2pt]
+5 & Prouhet & $\approx255$ & 5\\*
+\multicolumn{4}{@{}p{\linewidth}@{}}{\raggedright $\sigma_1=$ $(1;qU_0\cup pB')$, $255$ cone points, $p,q$ of $208$ and $208$ digits (in the CSV)\newline $\sigma_2=$ $(0;qV_0\cup pA')$, $257$ cone points (SHA-256 of both lists c62b7cc9f13e\dots)}\\[2pt]
+6 & Prouhet & $\approx1023$ & 6\\*
+\multicolumn{4}{@{}p{\linewidth}@{}}{\raggedright $\sigma_1=$ $(1;qU_0\cup pB')$, $1023$ cone points, $p,q$ of $864$ and $865$ digits (in the CSV)\newline $\sigma_2=$ $(0;qV_0\cup pA')$, $1025$ cone points (SHA-256 of both lists 368233926dd0\dots)}\\[2pt]
+\end{longtable}}
+% END GENERATED TABLE pairs
 
 \section{Strata and triads of small sum}\label{sec:enum}
 
@@ -189,6 +202,132 @@ $S_1$ & triads and $R$\\
 \end{tabular}
 \end{table}
 % END GENERATED TABLE enum
+
+\section{Certificates for exact recovery}\label{sec:certificates}
+
+We use the notation of Section~\pref{sec:stability} of the paper: the front end $c=\mathbf F\cI_n+h_0$ of Proposition~\pref{prop:frontend}, the system $M(\cI)e=b(\cI)$ of Theorem~\pref{thmB} and the recovery map. The certificate below is sharper than Theorem~\pref{thm:S4} and equally rigorous for errors in the heat invariants; it is evaluated in rational arithmetic. Index $\cI_0=R$, $\cI_k=P_{2k-1}$, let $U(z)=\sum_{k=1}^{n-1}P_{2k-1}z^{2k-1}/(2k-1)$, $T=\tanh U$ and $\operatorname{sech}^2U=\sum_ks_kz^k$, all series truncated after $z^{2n-3}$, and write $|\cdot|$ coefficientwise or entrywise and $*$ for the Cauchy product.
+
+\begin{proposition}[Certificates]\label{prop:S5}
+Let $m$ be integer orders, $e=e(m)$, $M=M(\cI)$ and $\delta_1,\dots,\delta_n\ge0$ data radii. Put (1) $\Delta=|\mathbf F^{-1}|\delta$ and $|\delta U|(z)=\sum_{k=1}^{n-1}\Delta_kz^{2k-1}/(2k-1)$; (2) $\tau^{\rm lin}=|\operatorname{sech}^2U|*|\delta U|$, $\tau^{\rm rem}=\tan(U+|\delta U|)-\tan U-\sec^2U\cdot|\delta U|$, $\tau=\tau^{\rm lin}+\tau^{\rm rem}$; (3) $\rho_j=\sum_{i\le j}\tau_{2i+1}e_{2j-2i}$ and $\rho^{\rm rem}_j=\sum_{i\le j}\tau^{\rm rem}_{2i+1}e_{2j-2i}$ for $j\le n-2$, $\rho_{n-1}=\Delta_0e_n$, $\rho^{\rm rem}_{n-1}=0$, $\Delta_M$ the matrix with entry $\tau_{2i+1}$ in row $j$, column $e_{2j-2i}$ ($0\le i<j\le n-2$, $2j-2i\le n$), entry $\Delta_0$ in row $n-1$, column $e_n$, and zeros elsewhere, and $A=|M^{-1}|\Delta_M$; (4) if $v=(I-A)^{-1}\mathbf 1$ exists and is positive, $E=(I-A)^{-1}|M^{-1}|\rho$ and $\xi=|M^{-1}|\rho^{\rm rem}+AE$. Then every data vector with $|\tilde c_j-c_j(m)|\le\delta_j$ is recovered exactly after rounding if, for every distinct order $a$ and some $r_0\in\{\frac{20}{40},\dots,\frac1{40},\frac1{100},\frac1{1000}\}$, either (i) $r_0^{k_a}\prod_{b\ne a}(|a-b|-r_0)^{k_b}>\sum_jE_j(a+r_0)^{n-j}$, or (ii) $r_0^{k_a}\prod_{b\ne a}(|a-b|-r_0)^{k_b}>\sum_c\delta_c\sum_l|p_c^{(l)}(a)/l!|\,r_0^l+\sum_j\xi_j(a+r_0)^{n-j}$, where $p_c(z)=\sum_j(-1)^jG_{jc}z^{n-j}$, $G=-M^{-1}J\mathbf F^{-1}$, $J_{j,k}=-\frac1{2k-1}\sum_{k-1\le i\le j,\,2j-2i\le n}e_{2j-2i}s_{2i+2-2k}$ ($j\le n-2$, $k\ge1$), $J_{n-1,0}=-e_n$ and the other entries of $J$ zero.
+\end{proposition}
+
+\begin{proof}
+As formal series $\tilde T-T=\sum_jt_j((U+\delta U)^{2j+1}-U^{2j+1})$, with $|t_j|$ the coefficients of $\tan$; its linear part is $\operatorname{sech}^2(U)\delta U$, and since $U\ge0$ coefficientwise the rest is bounded by $\tau^{\rm rem}$. As the exact $e$ solves the exact system, $r_j=\sum_{i\le j}(\tilde T_{2i+1}-T_{2i+1})e_{2j-2i}$ and $r_{n-1}=(\tilde R-R)e_n$, so $|r|\le\rho$, the nonlinear part is at most $\rho^{\rm rem}$, $|\tilde M-M|\le\Delta_M$, and $\partial T_{2i+1}/\partial P_{2k-1}=s_{2i+2-2k}/(2k-1)$ gives $J$. If $v>0$, $\operatorname{diag}(v)^{-1}A\operatorname{diag}(v)$ has row sums $1-1/v_i<1$, so the spectral radius of $A$, and of $X=M^{-1}(\tilde M-M)$ since $|X|\le A$, is less than $1$; then $\tilde M=M(I+X)$ is invertible and $|\tilde e-e|\le|M^{-1}||r|+A|\tilde e-e|$ gives $|\tilde e-e|\le E$. Test (i) is Rouch\'e's theorem on $|z-a|=r_0$; for (ii), $\tilde e-e=G(\tilde c-c)+\xi'$ with $|\xi'|\le\xi$, and Taylor expansion of $p_c$ at $a$ bounds the linear part.
+\end{proof}
+
+For $n\le5$ the odd series $U$, $|\delta U|$, $T$ have at most four nonzero coefficients ($z,z^3,z^5,z^7$) and the even series $\operatorname{sech}^2U$, $\sec^2U$ at most four ($1,\dots,z^6$); for $(2,2,2,2,3)$, $\operatorname{sech}^2U=1-121z^2+9328z^4-601472z^6$. So every $\delta_{\rm cert}$ in Table~\pref{tab:thresholds} of the paper, and every entry of Table~\ref{tab:thresholdsfull}, can be re-derived in exact arithmetic.
+
+% BEGIN GENERATED TABLE thresholds_full
+\begin{table}[ht]
+\caption{Table~\ref{P-tab:thresholds} of the paper with three more columns: the ratio $\delta_{\rm up}/\delta_{\rm cert}$; the largest uniform relative error $\epsilon_{\rm cert}$ certified by Proposition~\ref{prop:S5}, that is, for errors $|\delta c_j|\le\epsilon|c_j|$ for all $j$; and $\delta_{\rm cert}/|c_j|$, $j=1,\dots,n$, the relative precision that the uniform threshold $\delta_{\rm cert}$ demands of each coefficient (not a tolerance for one coefficient alone). The relative box of radius $\min_j\delta_{\rm cert}/|c_j|$ lies inside the uniform box of radius $\delta_{\rm cert}$ and the certificate is monotone in the radii, so $\epsilon_{\rm cert}\ge\min_j\delta_{\rm cert}/|c_j|$; it is larger when the box of the relative model is not the binding one. aeb means $a\times10^b$; $\delta_{\rm up}$ is rounded up, every other entry down.}\label{tab:thresholdsfull}
+\centering\footnotesize\setlength{\tabcolsep}{4pt}
+\begin{tabular}{@{}llllrl>{\raggedright\arraybackslash}p{30mm}@{}}
+\toprule
+$m$ & $\delta_{\rm thm}$ & $\delta_{\rm cert}$ & $\delta_{\rm up}$ & ratio & $\epsilon_{\rm cert}$ & $\delta_{\rm cert}/|c_j|$, $j=1,\dots,n$\\
+\midrule
+$(2,8,8)$ & $3.80\text{e}{-7}$ & $2.341\text{e}{-3}$ & $2.485\text{e}{-3}$ & 1.06 & $1.9\text{e}{-3}$ & $1.8\text{e}{-2}$, $1.6\text{e}{-3}$, $7.0\text{e}{-4}$ \\
+$(3,3,12)$ & $1.18\text{e}{-7}$ & $4.040\text{e}{-3}$ & $4.589\text{e}{-3}$ & 1.14 & $4.4\text{e}{-3}$ & $3.2\text{e}{-2}$, $2.8\text{e}{-3}$, $7.4\text{e}{-4}$ \\
+$(3,10,15,30)$ & $4.02\text{e}{-11}$ & $3.660\text{e}{-3}$ & $7.487\text{e}{-3}$ & 2.05 & $8.7\text{e}{-4}$ & $4.9\text{e}{-3}$, $8.0\text{e}{-4}$, $4.1\text{e}{-5}$, $3.6\text{e}{-7}$ \\
+$(4,5,21,28)$ & $3.14\text{e}{-11}$ & $1.461\text{e}{-3}$ & $2.018\text{e}{-3}$ & 1.38 & $4.6\text{e}{-4}$ & $1.9\text{e}{-3}$, $3.2\text{e}{-4}$, $1.6\text{e}{-5}$, $1.7\text{e}{-7}$ \\
+$(2,3,7)$ & $4.49\text{e}{-7}$ & $3.658\text{e}{-3}$ & $6.587\text{e}{-3}$ & 1.80 & $5.0\text{e}{-3}$ & $3.0\text{e}{-1}$, $3.9\text{e}{-3}$, $2.7\text{e}{-3}$ \\
+$(4,4,4)$ & $9.35\text{e}{-7}$ & $4.539\text{e}{-4}$ & $5.036\text{e}{-4}$ & 1.11 & $8.2\text{e}{-4}$ & $3.6\text{e}{-3}$, $5.0\text{e}{-4}$, $5.4\text{e}{-4}$ \\
+$(7,7,7)$ & $9.97\text{e}{-8}$ & $8.068\text{e}{-5}$ & $8.273\text{e}{-5}$ & 1.03 & $1.2\text{e}{-4}$ & $2.8\text{e}{-4}$, $4.9\text{e}{-5}$, $2.3\text{e}{-5}$ \\
+$(3,3,4,4)$ & $1.48\text{e}{-9}$ & $9.597\text{e}{-5}$ & $1.195\text{e}{-4}$ & 1.25 & $1.1\text{e}{-4}$ & $2.3\text{e}{-4}$, $1.0\text{e}{-4}$, $1.1\text{e}{-4}$, $7.2\text{e}{-5}$ \\
+$(5,5,5,5)$ & $4.74\text{e}{-10}$ & $3.617\text{e}{-5}$ & $3.826\text{e}{-5}$ & 1.06 & $3.1\text{e}{-5}$ & $6.0\text{e}{-5}$, $2.5\text{e}{-5}$, $1.9\text{e}{-5}$, $6.2\text{e}{-6}$ \\
+$(2,2,2,3)$ & $2.03\text{e}{-9}$ & $1.858\text{e}{-4}$ & $2.520\text{e}{-4}$ & 1.36 & $4.3\text{e}{-4}$ & $2.2\text{e}{-3}$, $3.2\text{e}{-4}$, $5.6\text{e}{-4}$, $7.7\text{e}{-4}$ \\
+$(2,2,2,2,3)$ & $2.72\text{e}{-12}$ & $7.908\text{e}{-6}$ & $5.312\text{e}{-5}$ & 6.72 & $1.4\text{e}{-5}$ & $2.3\text{e}{-5}$, $1.2\text{e}{-5}$, $2.1\text{e}{-5}$, $2.9\text{e}{-5}$, $1.9\text{e}{-5}$ \\
+\bottomrule
+\end{tabular}
+\end{table}
+% END GENERATED TABLE thresholds_full
+
+\section{Computed spectra of the minimal pair}\label{sec:listening}
+
+Figure~\ref{fig:F1} shows the two orbifolds of Theorem~\pref{thm:minimal}, which share their first two heat invariants, coloured by the diagonal of the heat kernel computed from their spectra.
+
+\begin{figure}[ht]
+\centering
+\includegraphics[width=119mm]{figures/out/F1.pdf}
+\caption{\figcapOne}\label{fig:F1}
+\end{figure}
+
+
+\emph{Method.} The triangle orbifold $\Orb(p,q,r)$ is the double of a hyperbolic triangle $T$ with angles $\pi/p,\pi/q,\pi/r$. The reflection exchanging the two copies splits $H^1(\Orb)$ into even and odd parts, orthogonal for the $L^2$ product and the Dirichlet form, which restrict to $H^1(T)$ and $H^1_0(T)$; so the spectrum of $\Orb$ is the union, with multiplicity, of the Neumann and Dirichlet spectra of $T$, and $\cZ_\Orb=\cZ_N+\cZ_D$. The problems $-\Delta_Eu=\lambda wu$, $w=4/(1-|z|^2)^2$, were solved in the Poincar\'e disc with $H^1$ finite elements of order $p$ on NETGEN meshes \cite{schoberl1997} of uniform hyperbolic size $h$, with NGSolve \cite{ngsolve}; the geodesic side is an exact rational quadratic spline, curved to order $p$, and the finite-element area is exact to $2\times10^{-14}$. The production level is $(h,p)=(0.05,10)$, with $h$-sweeps at $p=10$ ($h=0.1,0.07$) and $p$-sweeps at $h=0.07$ ($p=8,10,12$). Eigenvalues were computed by shift-invert Lanczos iteration (ARPACK \cite{arpack1998}) in overlapping spectral windows of $200$ eigenvalues, one sparse factorisation per window, each eigenvalue taken from one window (software versions are pinned in the repository's \texttt{requirements.txt} files): $1420$--$1440$ per triangle and boundary condition, up to $\lambda\approx21{,}700$ (Neumann) and $23{,}800$ (Dirichlet), about $2850$ per orbifold.
+
+\emph{Convergence and error per eigenvalue.} The error estimate $\mathrm{err}_j$ of each eigenvalue is $|\lambda_j(0.05,10)-\lambda_j(0.07,12)|$, two independent discretisations, and $|\lambda_j(0.05,10)-\lambda_j(0.07,10)|$ is carried as a conservative bound. For the first $500$ eigenvalues the estimate is at most $2.9\times10^{-11}$ relative and the conservative bound at most $1.2\times10^{-8}$. The empirical $h$-convergence at $p=10$ is $h^{13}$ to $h^{19}$ (medians over mid-spectrum modes; the meshes are not nested) and the $p$-convergence is geometric, a factor $150$ to $350$ per two orders; all modes converge from above. A corner singularity would cap the rate at an $h$-independent algebraic order; none occurs, as reflection predicts: at a corner of angle $\pi/k$ the eigenfunctions extend to smooth $\Z_k$-symmetric functions. Table~\ref{tab:conv} shows representative eigenvalues.
+
+\begin{table}[ht]
+\caption{Representative eigenvalues $\lambda_j$ at the production level, the error estimate, and the differences from the coarser levels $(0.07,10)$ and $(0.1,10)$ and between $p=8$ and $p=12$ at $h=0.07$ (file \texttt{numerics/data/convergence.csv}).}\label{tab:conv}
+\centering\footnotesize
+\begin{tabular}{@{}llrrllll@{}}
+\toprule
+triangle & b.c. & $j$ & $\lambda_j$ & estimate & $(0.07,10)$ & $(0.1,10)$ & $p=8$ vs $12$\\
+\midrule
+$(2,8,8)$ & N & 1 & 3.838887 & 5.9e-13 & 8.5e-14 & 3.0e-14 & 5.9e-13\\
+ & N & 500 & 7400.919040 & 2.8e-08 & 1.4e-05 & 2.3e-03 & 4.3e-03\\
+ & N & 1400 & 21373.180248 & 2.1e-02 & 8.8e-01 & 2.0e+01 & 1.5e+01\\
+ & D & 1 & 73.663812 & 1.3e-11 & 1.4e-13 & 1.7e-13 & 1.4e-11\\
+ & D & 500 & 8642.496608 & 4.4e-08 & 2.3e-05 & 6.4e-03 & 8.1e-03\\
+ & D & 1400 & 23446.967233 & 1.4e-02 & 6.2e-01 & 3.8e+01 & 1.8e+01\\
+$(3,3,12)$ & N & 1 & 3.499847 & 5.5e-13 & 4.8e-14 & 7.3e-14 & 5.8e-13\\
+ & N & 500 & 7394.453593 & 4.6e-10 & 1.4e-06 & 2.2e-03 & 1.2e-03\\
+ & N & 1400 & 21388.053620 & 5.3e-04 & 9.9e-02 & 3.0e+01 & 7.0e+00\\
+ & D & 1 & 72.365158 & 1.3e-11 & 2.1e-13 & 2.1e-13 & 1.4e-11\\
+ & D & 500 & 8629.414252 & 4.9e-09 & 1.9e-05 & 3.8e-02 & 8.9e-03\\
+ & D & 1400 & 23438.658440 & 1.9e-03 & 2.4e-01 & 4.6e+01 & 1.6e+01\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\emph{Error budget.} By the mean value theorem $|e^{-\tilde\lambda t}-e^{-\lambda t}|\le t|\tilde\lambda-\lambda|e^{-\min(\lambda,\tilde\lambda)t}$, so the eigenvalue errors contribute at most $t\sum_j\mathrm{err}_je^{-(\lambda_j-\mathrm{err}_j)t}$ to a computed trace, with no cancellation assumed. The truncation tail satisfies $\sum_{\lambda>\Lambda}e^{-\lambda t}\le-n_\Lambda e^{-\Lambda t}+t\int_\Lambda^\infty e^{-\lambda t}N_{\rm up}(\lambda)\,d\lambda$, where $N_{\rm up}(\lambda)=A\lambda/4\pi\pm L\lambda^{1/2}/4\pi+C_{\rm up}$ is the Weyl law of the triangle (area $A$, perimeter $L$, sign $+$ for Neumann) with $C_{\rm up}$ twice the largest observed excess of the counting function over the two-term law plus $10$, and the integral is in closed form. On $0.0015\le t\le0.012$ the total for $D(t)=\cZ_{\Orb(2,8,8)}(t)-\cZ_{\Orb(3,3,12)}(t)$ is at most $2.9\times10^{-11}$, and $3.9\times10^{-10}$ with the conservative estimates; the tail is at most $7.6\times10^{-13}$, against $d_3t=3.1\times10^{-3}$ at $t=0.0015$.
+
+\emph{Validation.} (i) \emph{Weyl law.} With area, boundary and constant terms, $N(\lambda)\approx A\lambda/4\pi\pm L\lambda^{1/2}/4\pi+c_2/2$, the residuals have mean $|{\cdot}|\le0.003$ and root mean square $0.66$--$0.70$ over $1420$ or more eigenvalues; without the boundary term they drift by about $\pm65$. (ii) \emph{Traces.} For $0.0015\le t\le0.03$, each computed trace agrees with the identity and elliptic terms of Theorem~\pref{thm:IEH} to $7.1\times10^{-13}$, against an error bound of $1.5\times10^{-11}$, while closed geodesics contribute less than $10^{-12}$; $\cZ_N-\cZ_D$ agrees with the boundary term to $1.8\times10^{-13}$. A missing eigenvalue $\lambda$ would add $e^{-\lambda t}$, which exceeds the error bound at $t=0.0015$ when $\lambda\lesssim1.6\times10^4$, so no eigenvalue below about $1.6\times10^4$ is missing; above that, about $1.6$ to $2.4\times10^4$, the test is blind. (iii) \emph{Bolza benchmark.} The Bolza surface covers $\Orb(2,3,8)$, so every eigenvalue of the $(2,3,8)$ triangle with a sign character of its reflection group occurs in Bolza's spectrum. The relation at the corner of angle $\pi/3$ leaves four characters: Neumann, Dirichlet, and two mixed conditions. The list of Strohmaier and Uski \cite[\S7.1 and the ancillary file of arXiv:1110.2150v4]{strohmaieruski2013}, \cite{strohmaieruski2018} has $42$ multiplicity-one eigenvalues below $998$; the four triangle problems give exactly $42$ eigenvalues in that range ($15$, $6$, $10$, $11$), matched one-to-one to $5.7\times10^{-11}$ relative, the precision of the published digits. Only the $21$ Neumann and Dirichlet ones belong to $\Orb(2,3,8)$. (iv) \emph{Second machine.} The $(3,3,12)$ Neumann spectrum, $1434$ eigenvalues, was recomputed on a second machine; the largest relative difference is $1.0\times10^{-12}$, at most $0.15$ times the error estimate.
+
+\emph{Prediction.} Both orbifolds have area $\pi/2$ and $c_2=\frac{67}{48}$, and $D(t)=\sum_{j\ge3}d_jt^{j-2}$ with $d_3=\frac{25}{12}$, $d_4=-\frac{1775}{24}$, $d_5=\frac{153025}{48}$ (Section~\pref{sec:numerics}). The orbifold with the smaller $P_3$ has the larger heat trace.
+
+\emph{Result.} The model $D(t)/t=\sum_{\nu=1}^{n_c}\hat d_\nu t^{\nu-1}$ was fitted by unweighted least squares with a column-scaled Vandermonde matrix, over nine windows inside $[0.0015,0.012]$ and $n_c=2,\dots,11$. For each configuration the \emph{data error} is the worst-case change of a coefficient under any perturbation of the data within the error budget, $|\mathrm{pinv}|\cdot\mathrm{err}$, and the \emph{model error} the change from $n_c-1$ to $n_c$; the reported configuration minimizes the larger of the two and was chosen without reference to the prediction: window $[0.0015,0.012]$, $n_c=10$. It gives $\hat d_1=2.0833320\pm0.0000031$ and $\hat d_2=-73.9551\pm0.0062$, against $d_3=2.0833333$ and $d_4=-73.9583$. The error bars are $\max(\text{data error},\text{model error})$, heuristic and not standard errors; the deviations are $0.42$ and $0.53$ of them, and with the conservative eigenvalue errors the bars are $1.4\times10^{-5}$ and $0.028$. Applied to the exact difference of the elliptic terms, the same fit recovers $d_3$ to about $10^{-6}$ and $d_4$ to about $0.005$, so the method is not the limiting factor. The fitted $t^{-1}$ and $t^0$ terms of the two traces agree to within the fit error. For $0.0015\le t\le0.03$ the computed $D(t)$ agrees pointwise with the exact difference of the elliptic terms to $4.0\times10^{-13}$. The coefficient $\hat d_3=3184.5\pm5.2$ (data error only) against $\frac{153025}{48}=3188.0$ is only a by-product; across stable configurations it ranges over $3180$--$3188$.
+
+\emph{Closed geodesics.} The shortest lengths, from enumerating triangle-group words of length at most $10$, are $2.2568$, $2.8816$, $3.0571$ for $(2,8,8)$ and $1.8626$, $2.9807$, $3.4027$ for $(3,3,12)$. With a generous multiplicity per length, the hyperbolic term is below $10^{-30}$ on the fit window. Fitting $\cZ-\mathrm I-\mathrm E$ on $[0.06,0.5]$ by the hyperbolic term gives leading multiplicities $1.997$ and $1.9998$: one geodesic, two orientations. $D(t)$ changes sign near $t=0.34$, solely because of the geodesics.
+
+\emph{Limitations.} The eigenvalue errors are a-posteriori agreements between two discretisations, not enclosures, so nothing in Sections~\ref{sec:listening}--\ref{sec:moduli} is certified: the recovery of Section~\ref{sec:blind} is validated, not proved. The tail bound assumes that the counting function beyond the computed range stays below the Weyl law plus twice its largest observed excess. The spectra were computed with single-window spectral slicing, which the experiment of Section~\ref{sec:moduli} showed can miss an eigenvalue at a window boundary; for these spectra this is excluded below about $1.6\times10^4$ by the trace test, and a recomputation of all four spectra with the double-window solver of Section~\ref{sec:moduli} has not been run.
+
+\section{Blind recovery}\label{sec:blind}
+
+The recovery chain of Section~\pref{sec:stability} was run on the computed spectra of Section~\ref{sec:listening} under a protocol committed to the repository before the pipeline and before any result (commit \texttt{3c1139a}, 1 October 2026). \emph{What was assumed:} each specimen is the double of a hyperbolic triangle, so it has genus $0$ and exactly $n=3$ cone points, and $K=-1$; the universal front-end constants for $n=3$ were used. \emph{What was blinded:} only the labels; the specimens were called A and B, the pipeline read the four eigenvalue files without parsing their names, and the label-to-truth map was used once, after every estimate and verdict had been written. No area, perimeter, $c_2$, geodesic length or Weyl constant derived from the orders was used; the truncation tail was bounded from a fit of the counting function of the data alone. The test is easy by design: it separates two candidates whose third coefficients differ by about $10^4$ error bars, so it exercises the pipeline rather than a hard inference.
+
+The traces $\cZ(t)$ were fitted as $t\cZ(t)=\sum_{j\le d}\gamma_jt^j$ over the windows and degrees of the protocol, with data error and model error as in Section~\ref{sec:listening}; the error bar of each coefficient is the larger of the best configuration's $\max(\text{data},\text{model})$ and half the range over the eight best configurations, again heuristic. The candidate was obtained by solving the system of Theorem~\pref{thmB} in exact arithmetic and rounding, and then checked a posteriori by Proposition~\ref{prop:S5} at the candidate, with radii equal to the distance from the estimates to the candidate's exact invariants plus the error bars. The check is rigorous only given the error bars; since these are heuristic, a-posteriori discretisation agreements and not enclosures, and the double-window recomputation of the spectra has not been run, it validates the recovery but does not certify it.
+
+\begin{table}[ht]
+\caption{Blind recovery: heat invariants estimated from about $2850$ computed eigenvalues of each specimen, with their error bars, and the recovered orders.}\label{tab:blind}
+\centering\small
+\begin{tabular}{@{}lll@{}}
+\toprule
+ & specimen A & specimen B\\
+\midrule
+$c_1$ & $0.1250000000\pm1.1\times10^{-11}$ & $0.1250000000\pm4.9\times10^{-11}$\\
+$c_2$ & $1.3958333303\pm2.4\times10^{-8}$ & $1.3958332915\pm1.3\times10^{-7}$\\
+$c_3$ & $-3.3354134980\pm2.1\times10^{-5}$ & $-5.4186953214\pm1.4\times10^{-4}$\\
+roots & $2$, $8\pm0.0050i$ & $2.9915$, $3.0085$, $11.99995$\\
+recovered & $(2,8,8)$, validated & $(3,3,12)$, validated\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+Three coefficients recover both multisets exactly (Table~\ref{tab:blind}), with a margin to the threshold of Proposition~\ref{prop:S5} of about $100$ for A and $20$ for B. The recovered double roots show the square-root law of Proposition~\pref{prop:sharpexp}(i): an error of order $10^{-4}$ in $c_3$ splits the double order $3$ of B into $2.9915$ and $3.0085$. Two coefficients cannot separate the specimens, since $c_1=(1-R)/2$ and $c_2=(P_1+R-2)/12$ depend only on $(R,P_1)=(\frac34,18)$; the estimates of $c_1$ and $c_2$ for A and B differ by $0.21$ and $0.26$ of their combined error bars, while those of $c_3$ differ by $2.0833\pm1.6\times10^{-4}$, against the exact $\frac{25}{12}$. An exhaustive enumeration of hyperbolic integer triads consistent with the first two estimates returns exactly $\{(2,8,8),(3,3,12)\}$ for both specimens, and adding $c_3$ leaves one triad each.
+
+\section{Changing the shape}\label{sec:moduli}
+
+\emph{The family.} The signature $(0;3,3,3,3)$ is hyperbolic, with area $4\pi/3$ and a $2$-dimensional Teichm\"uller space. Each member of the family is the double of a geodesic quadrilateral with all angles $\pi/3$, symmetric under $z\mapsto\bar z$ and $z\mapsto-\bar z$; the two mirror axes cut it into four congruent Lambert quadrilaterals, and with $a,b$ the distances from the centre to two adjacent sides, $\sinh a\sinh b=\cos\frac\pi3$, leaving one parameter $\vartheta=\log(\sinh a/\sinh b)$. Eight members, $\vartheta\in\{0,0.4,\dots,2.8\}$, were computed, about $5450$ eigenvalues each up to $\lambda\approx1.6\times10^4$, with every eigenvalue covered by two independent shift-invert windows (misses counted and repaired). Their systoles are $4b(\vartheta)$, falling strictly from $2.634$ to $0.694$, so the members are pairwise non-isometric and every pair has different systoles. The worst eigenvalue error is $1.3\times10^{-10}$ relative ($8.3\times10^{-9}$ conservative). The family is a real one-parameter slice, the orbifolds with an orientation-reversing isometry fixing the four cone points; Theorem~\pref{thm:sharp} does not need genericity.
+
+\emph{Same expansion, different spectra.} Every member's heat trace equals $\mathrm I+4\mathrm E_3$ to at most $1.2\times10^{-12}$ wherever closed geodesics are negligible, against an error budget of $2.2\times10^{-11}$, and on $t\in[0.0025,0.0037]$ the eight traces are the same function to $1.3\times10^{-13}$: Proposition~\pref{prop:locality} in the data. The eigenvalues move with the shape: $\lambda_1$ falls from $4.1224$ to $0.4348$, and the first $200$ eigenvalues move by up to $89\%$ (Figure~\ref{fig:F6}).
+
+\begin{figure}[ht]
+\centering
+\includegraphics[width=119mm]{figures/out/F6.pdf}
+\caption{\figcapSix}\label{fig:F6}
+\end{figure}
+
+\emph{The difference is the closed geodesics.} For all $28$ pairs, $\cZ_i-\cZ_j$ equals $\Hyp_i-\Hyp_j$, computed from the closed geodesics enumerated in floating point up to length $6.5$ (checked by the integrality of the weights $w/\ell$ and by agreement with the computed traces) with nothing fitted, to at most $1.1\times10^{-13}$ for $t\le0.33$, where the traces differ by up to $0.79$. The difference leaves the noise at a time $t^*$ set by the shorter systole alone, with $\ell^2/4t^*\approx24.5$ in every case. Once it is $10^3$ times the noise, its ratio to the leading term of Theorem~\pref{thm:sharp} is between $0.9997$ and $1.0000$. The bound of Theorem~\pref{thm:quantlocality}(b) holds for every pair, but it is loose because of its factor $e^{3\diam}$.
 
 \bibliography{references}
 
