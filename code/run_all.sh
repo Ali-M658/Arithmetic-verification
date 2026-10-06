@@ -317,6 +317,15 @@ stage "audit-2 stability"                q exact review/audit-2/stability "$AUDI
 stage "audit-2 threshold-sharpness"      q exact review/audit-2/threshold-sharpness "$AUDIT"
 stage "audit-2 trace-formula"            q exact review/audit-2/trace-formula "$AUDIT"
 
+# --- review/round1-fixes (referee round 1): each script's stdout must equal its committed transcript, and the
+#     CSV files it rewrites must come back byte-identical; D2 first checks that the supplement's pairs table is current
+R1='same_txt "$1.py" "output/$1.txt" && git diff --quiet -- output/'
+stage "round1 A1 Fig. 2 K_mult"          q exact review/round1-fixes 'set -- a1_fig2_kmult; '"$R1"
+stage "round1 D1 pencil counts"          q exact review/round1-fixes 'set -- d1_pencil_counts; '"$R1"
+stage "round1 D2 explicit pairs"         q exact review/round1-fixes '"$PYTHON" d2_explicit_pairs.py --check > /dev/null && set -- d2_explicit_pairs && '"$R1"
+
+stage "round1 paper tables current"     q exact . "$P paper/jga/tools/make_tables.py --check"
+
 # --- paper/arith: the exact checks of the arithmetic note, including the S <= 6000 enumeration (about 1 min);
 #     the script rewrites check_note.txt, which must come back byte-identical
 stage "arith check_note"                 q exact . "$P paper/arith/checks/check_note.py --enum"

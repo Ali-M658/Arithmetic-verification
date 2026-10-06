@@ -177,6 +177,13 @@ RULES = [
      "G5-bis audit of the threshold and sharpness theorems (collision-free up to S = 4800); none in the paper"),
     ("review/audit-2/trace-formula/check_*.txt", "review/audit-2/trace-formula/check_*.py", "cd review/audit-2/trace-formula && python3 check_NAME.py > check_NAME.txt",
      "G5-bis audit of the trace-formula statements (closed form, cone polynomials, hyperbolic bound, Ucar); none in the paper"),
+    # --- review/round1-fixes (referee round 1: the computations and records behind paper/jga/ROUND1-CHANGES.md)
+    ("review/round1-fixes/output/*", "review/round1-fixes/NAME.py for NAME = a1_fig2_kmult, d1_pencil_counts, d2_explicit_pairs (NAME.txt is its stdout; d1_pencil_N*.csv come from d1, d2_pairs.csv from d2)",
+     "python3 review/round1-fixes/NAME.py > review/round1-fixes/output/NAME.txt   (from the repository root)",
+     "Referee round 1: Fig. 2 recomputed from complete area classes (A1), the pencil counts of Remark 3.2 (D1), the explicit pairs of Table S1 (D2)"),
+    ("review/round1-fixes/citations/*", "fetched records: api.crossref.org/works/DOI, CSL records by doi.org content negotiation (paper/jga/tools/build_bib.py), pages by hyperresearch fetch",
+     "none (fetched; review/round1-fixes/citations/README.md lists each source)",
+     "Referee round 1, items C1-C3: the records behind the changed citations (Philippe, Abreu-Dryden-Freitas-Godinho, Richardson-Stanhope, Bremner-Guy-Nowakowski, citation details)"),
     # --- paper/arith (arithmetic companion note)
     ("paper/arith/checks/check_note.txt", "paper/arith/checks/check_note.py", "python3 paper/arith/checks/check_note.py   (add --enum for the S <= 6000 enumeration)",
      "The companion note on triples with equal sum and equal reciprocal sum (paper/arith/note.tex): the checks of its new statements"),
