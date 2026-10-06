@@ -1,0 +1,4 @@
+# fetched third-party texts: re-create with fetch_sources.sh
+sources/
+**/sources/
+__pycache__/
