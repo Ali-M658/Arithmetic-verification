@@ -242,7 +242,8 @@ FREE_SYMBOLS = {
 def check_free_symbols():
     """Each symbol CONVENTIONS.md introduces occurs nowhere else in the repository's text files."""
     import re
-    skip_dirs = {".git", ".venv", "research", "refs", "__pycache__", "runs", "refs_cache", "sources_cache", "env", "jga"}
+    skip_dirs = {".git", ".venv", "research", "refs", "__pycache__", "runs", "refs_cache", "sources_cache", "env", "jga",
+                 "revision", "audit-2", "literature-pass", "referee-sim"}   # session work areas: reports, fetched papers, check transcripts
     skip_files = {"CONVENTIONS.md", "conventions_check.py"}
     texts = {}
     for top in ("theory", "numerics", "code", "review", "paper", "."):

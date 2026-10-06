@@ -216,6 +216,15 @@ stage() {
 # --------------------------------------------------------------------------
 P='$PYTHON'      # expanded when the stage runs, in the stage's directory
 
+# same_txt SCRIPT TRANSCRIPT: run SCRIPT (from the current directory) and require its output to equal the committed
+# transcript, apart from run times ("[4.4s]", "(0.8s)", "7s") and the "exit 0" line some transcripts end with.
+norm() { sed -E -e 's/[0-9]+(\.[0-9]+)?s([],)]|$)/<t>\2/g' -e '/^exit 0$/d' "$1"; }
+same_txt() {
+    local out="$LOGDIR/out.$$.$(basename "$1")"
+    "$PYTHON" "$1" > "$out" 2>&1 || { cat "$out"; echo "$1 exited nonzero"; return 1; }
+    diff <(norm "$out") <(norm "$2") > /dev/null || { echo "$1: output differs from $2:"; diff <(norm "$out") <(norm "$2") | head -20; return 1; }
+}
+
 # --- the original verification harness (code/): arithmetic claims of the manuscript
 stage "code 1 enumerator self-test"      q exact code "$P orbifold_enum.py"
 stage "code 2 displayed identities"      q exact code "$P verify_identities.py"
@@ -278,6 +287,39 @@ stage "numerics S3 re-solve (NGSolve)"   f ngsolve numerics '$PYTHON_NUMERICS re
 stage "figures data F4 F7 F8"            q exact . "$P figures/gen/gen_f4_area_classes.py && $P figures/gen/gen_f7_strata.py && $P figures/gen/gen_f8_recovery.py"
 stage "figures vector F2-F5 F7-F9"       q exact . "$P figures/src/build_vector.py"
 stage "figures Blender renders F1 F6"    q blender . "" "F1 and F6 need Blender; their data assertions run in the stage above; rebuild with python3 figures/src/F1.py and F6.py"
+
+# --- theory/revision (G7 revision): every check script, which writes its own transcript (about 30 s)
+stage "revision run_checks"              q exact .    'PY="$PYTHON" bash theory/revision/run_checks.sh'
+
+# --- theory/pte (Prouhet-Tarry-Escott and genus growth): stdout compared with output/*.txt; witnesses.py and
+#     pencil_search.py also rewrite their data/*.json, which must come back byte-identical. The long searches
+#     (genus_search.py 4 and 5, search_T3.sh, the audit-2 check_t3.c runs) are not part of the suite.
+stage "pte structure"                    q exact theory/pte "same_txt structure.py output/structure.txt"
+stage "pte growth"                       q exact theory/pte "same_txt growth.py output/growth.txt"
+stage "pte witnesses"                    q exact theory/pte "same_txt witnesses.py output/witnesses.txt"
+stage "pte real_shapes"                  q exact theory/pte "same_txt real_shapes.py output/real_shapes.txt"
+stage "pte search_T3_control"            q exact theory/pte "same_txt search_T3_control.py output/search_T3_control.txt"
+stage "pte pencil_search"                q exact theory/pte "same_txt pencil_search.py output/pencil_search.txt"
+
+# --- review/audit-2 (G5-bis): every check_*.py of a group against its committed check_*.txt
+AUDIT='for s in check_*.py; do same_txt "$s" "${s%.py}.txt" || exit 1; done'
+stage "audit-2 descent"                  q exact review/audit-2/descent "$AUDIT"
+stage "audit-2 literature"               q exact review/audit-2/literature "$AUDIT"
+stage "audit-2 pte-growth"               q exact review/audit-2/pte-growth "$AUDIT"
+stage "audit-2 pte-structure"            q exact review/audit-2/pte-structure "$AUDIT"
+# check_t3_verify.py takes arguments: the real run (0 survivors) and the two planted controls
+stage "audit-2 pte-witnesses"            q exact review/audit-2/pte-witnesses 'for s in check_*.py; do [ "$s" = check_t3_verify.py ] && continue; same_txt "$s" "${s%.py}.txt" || exit 1; done
+    T3=check_t3_verify.py
+    "$PYTHON" $T3 t3run cube220 220 2 0 > "$LOGDIR/t3main.out" 2>&1 && cmp "$LOGDIR/t3main.out" check_t3_verify_main.txt &&
+    "$PYTHON" $T3 t3run plant1_60 60 1 12300 2,2,8,8,8 1,3,24 > "$LOGDIR/t3p1.out" 2>&1 && cmp "$LOGDIR/t3p1.out" check_t3_verify_plant1.txt &&
+    "$PYTHON" $T3 t3run plant2_220 220 1 18099612 2,2,28,77,220 1,20,308 > "$LOGDIR/t3p2.out" 2>&1 && cmp "$LOGDIR/t3p2.out" check_t3_verify_plant2.txt'
+stage "audit-2 stability"                q exact review/audit-2/stability "$AUDIT"
+stage "audit-2 threshold-sharpness"      q exact review/audit-2/threshold-sharpness "$AUDIT"
+stage "audit-2 trace-formula"            q exact review/audit-2/trace-formula "$AUDIT"
+
+# --- paper/arith: the exact checks of the arithmetic note, including the S <= 6000 enumeration (about 1 min);
+#     the script rewrites check_note.txt, which must come back byte-identical
+stage "arith check_note"                 q exact . "$P paper/arith/checks/check_note.py --enum"
 
 # --------------------------------------------------------------------------
 # Summary
