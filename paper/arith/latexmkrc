@@ -1,0 +1,6 @@
+# latexmk configuration for the arithmetic note: pdflatex + BibTeX; note.pdf is written next to
+# note.tex and every auxiliary file goes to build/ (not committed).
+$pdf_mode = 1;
+$out_dir = '.';
+$aux_dir = 'build';
+$bibtex_use = 2;
