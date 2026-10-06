@@ -80,7 +80,6 @@ def draw(a, pairs):
     fs.decimal_log_ticks(ax.xaxis, [0.01, 0.1])
     ax.set_ylim(-0.03, 0.09)
     ax.set_ylabel(r"$D(t)$")
-    ax.tick_params(labelbottom=False)
 
     bx = fig.add_axes([0.13, 0.09, 0.84, 0.41])
     greys = grey_ramp(len(THETAS), lo="light", hi="ink")

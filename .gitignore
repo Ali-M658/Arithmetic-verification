@@ -69,3 +69,7 @@ figures/build/
 # review/referee-sim: the manuscript PDF given to the simulated referees and their scratch work
 review/referee-sim/_input/
 review/referee-sim/*/scratch/
+
+# Compiled manuscripts (build outputs only; figures/out/ is tracked)
+paper/arith/*.pdf
+paper/jga/*.pdf
