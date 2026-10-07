@@ -1,4 +1,4 @@
-# latexmk configuration for the JGA manuscript and its electronic supplement: pdflatex + BibTeX,
+# latexmk configuration for the manuscript (target: AGAG; folder name kept) and its electronic supplement: pdflatex + BibTeX,
 # output in build/. The supplement reads build/manuscript.aux (xr), so the manuscript is first.
 @default_files = ('manuscript.tex', 'supplement.tex');
 $pdf_mode = 1;

@@ -165,3 +165,19 @@ release announcement (5 March 2025), not the changelog (1 March), as `CITATIONS.
   quotes only the growth rate of the cone coefficients with its reason.
 - Philippe 2010 (Geom. Dedicata) and the a-posteriori bound of old Theorem 4.9(c) were dropped for the
   page limit; Philippe 2008 Thm A is cited.
+
+## 9. After referee round 2 (retarget to AGAG, 2026-10-07)
+
+- The target journal is now Annals of Global Analysis and Geometry. Section 1 above quotes the JGA
+  guidelines; the AGAG paragraph on LLMs is word for word the same (AGAG.md §8a), so the placeholder
+  location is unchanged. AGAG.md lists everything else.
+- **Slot.** Section 4 of `manuscript.tex` ("From heat invariants to eigenvalues", `sec:eigen`) and the
+  last clause of the abstract and one sentence of §1.1 are placeholders for the theorem being proved
+  in a parallel session.
+- **Generator fixes outside this session's scope** (`review/round1-fixes/d2_explicit_pairs.py`):
+  add "(A′ and B′ exchanged when R(U_0) < R(V_0))" to the Table S1 caption, and print the exact
+  exponent of tiny area deficits in `fmt_area` (the L = 6 Prouhet row is 1023 − 9.14×10^−864).
+  The supplement states both corrections next to the table until then.
+- **Companion note.** It cites the paper (Theorem 6.8) for the isolation; posting it to arXiv would let
+  the paper cite it in the reference list (AGAG allows only published/accepted works there).
+- Acknowledgements on the title page (AGAG wording) and the arXiv preprints in the list: authors' call.

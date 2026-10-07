@@ -11,7 +11,7 @@ in manuscript.tex, so that the manuscript stays a single file as the journal tem
 
 Sources (all committed):
   overlap     theory/threshold/first_overlap_vs_collision.csv
-  thresholds, thresholds_full  theory/stability/threshold_results.json (four columns in the paper, all in the supplement)
+  thresholds_full  theory/stability/threshold_results.json (in the supplement; the paper's four-column table was removed in referee round 2)
   fibres      theory/diophantine/data/groups.csv, theory/diophantine/data/ranks.txt
   density     review/audit/threshold/check_enum.txt (to S = 6000), cross-checked against
               theory/diophantine/data/per_S.csv (to S = 4800)
@@ -65,7 +65,7 @@ def table_overlap():
         "\\begin{table}[t]\n"
         "\\caption{First overlap and first collision of the adjacent strata $p$ and $p+1$, for $2\\le p\\le14$, "
         "from the exhaustive enumeration of all hyperbolic triads with $S\\le600$. The gap is the first collision sum "
-        "minus $S^*(p)$; it vanishes only for $p=2$ and $p=4$ (Proposition~\\ref{P-prop:tangency} of the paper).}\\label{tab:overlap}\n"
+        "minus $S^*(p)$; it vanishes only for $p=2$ and $p=4$ (Proposition~\\ref{prop:tangency}).}\\label{tab:overlap}\n"
         "\\centering\\small\n"
         "\\begin{tabular}{@{}rrrrrl@{}}\n\\toprule\n"
         "$p$ & $x^*(p)$ & $S^*(p)$ & first collision & gap & colliding pair\\\\\n\\midrule\n"
@@ -134,7 +134,12 @@ def table_thresholds_full():
     body = "\n".join(out)
     return (
         "\\begin{table}[ht]\n"
-        "\\caption{Table~\\ref{P-tab:thresholds} of the paper with three more columns: the ratio "
+        "\\caption{Thresholds for exact recovery of integer orders under the uniform model "
+        "$|\\delta c_j|\\le\\delta$ on the heat invariants: the closed form $\\delta_{\\rm thm}$ of "
+        "Theorem~\\ref{P-thm:S4} of the paper, the threshold $\\delta_{\\rm cert}$ certified in exact arithmetic "
+        "by Proposition~\\ref{prop:S5}, a constructed failure $\\delta_{\\rm up}$, which minimizes "
+        "$\\|c(\\tilde q)-c(m)\\|_\\infty$ over real monic $\\tilde q$ with a root, or a complex pair, of real "
+        "part $a\\pm\\frac12$, where rounding is a tie; then the ratio "
         "$\\delta_{\\rm up}/\\delta_{\\rm cert}$; the largest uniform relative error $\\epsilon_{\\rm cert}$ "
         "certified by Proposition~\\ref{prop:S5}, that is, for errors $|\\delta c_j|\\le\\epsilon|c_j|$ for all $j$; "
         "and $\\delta_{\\rm cert}/|c_j|$, $j=1,\\dots,n$, the relative precision that the uniform threshold "
@@ -279,7 +284,8 @@ def table_enum():
 TABLES = {"overlap": table_overlap, "thresholds": table_thresholds, "thresholds_full": table_thresholds_full,
           "fibres": table_fibres,
           "density": table_density, "enum": table_enum}
-FILES = {TEX: ["thresholds"], TEX.parent / "supplement.tex": ["overlap", "enum", "thresholds_full"]}
+# Referee round 2 (R4): the threshold table left the paper; only the full table is written.
+FILES = {TEX.parent / "supplement.tex": ["overlap", "enum", "thresholds_full"]}
 
 
 def main():

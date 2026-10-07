@@ -38,7 +38,7 @@
 
 \begin{document}
 
-\title[Supplement: How much of a hyperbolic orbifold does heat hear?]{Electronic supplementary material for ``How much of a hyperbolic orbifold does heat hear?''}
+\title[Online Resource 1: How much of a hyperbolic orbifold does heat hear?]{Online Resource 1. Electronic supplementary material for ``How much of a hyperbolic orbifold does heat hear?'', Annals of Global Analysis and Geometry}
 
 \author[1]{\fnm{Palaash} \sur{Gang}}
 \author[2]{\fnm{Akshaj} \sur{Agadi}}
@@ -53,7 +53,7 @@
 \affil[4]{\orgname{Lawrence High School}, \orgaddress{\city{Lawrenceville}, \state{New Jersey}, \country{USA}}}
 \affil[5]{\orgname{DriveChange Learning and Resource Centre}, \orgaddress{\city{Pune}, \country{India}}}
 
-\abstract{This supplement contains the material behind four sections of the paper: the computer searches and the explicit pairs of Section~\pref{sec:signature} (Section~\ref{sec:searches}), the triads of small sum of Section~\pref{sec:rigid} (Section~\ref{sec:enum}), the exact-arithmetic certificate of Section~\pref{sec:stability} with the full threshold table (Section~\ref{sec:certificates}), and the numerical experiments of Section~\pref{sec:numerics}: the computed spectra of $\Orb(2,8,8)$ and $\Orb(3,3,12)$, a blind recovery of their cone orders, and a family of orbifolds of signature $(0;3,3,3,3)$ that share every heat invariant while their spectra move (Sections~\ref{sec:listening}--\ref{sec:moduli}). No theorem of the paper depends on it; Proposition~\ref{prop:S5}, proved here, gives the column $\delta_{\rm cert}$ of Table~\pref{tab:thresholds}. Numbers such as ``Theorem~\pref{thm:sharp}'' refer to the paper.}
+\abstract{This supplement contains the material behind six sections of the paper and its computational methods (Section~\ref{sec:methods}): the computer searches and the explicit pairs of Section~\pref{sec:signature} (Section~\ref{sec:searches}), the triads of small sum of Section~\pref{sec:rigid} (Section~\ref{sec:enum}), the exact-arithmetic certificate of Section~\pref{sec:stability} with the full threshold table (Section~\ref{sec:certificates}), and the numerical experiments of Section~\pref{sec:numerics}: the computed spectra of $\Orb(2,8,8)$ and $\Orb(3,3,12)$, a blind recovery of their cone orders, and a family of orbifolds of signature $(0;3,3,3,3)$ that share every heat invariant while their spectra move (Sections~\ref{sec:listening}--\ref{sec:moduli}); a $2$-descent for the curve of Theorem~\pref{thm:isolation} (Section~\ref{sec:descent}); and a derivation of the heat expansion of Section~\pref{sec:heat} from the trace formula, with the admissibility of the heat function (Section~\ref{sec:derivation}). No theorem of the paper depends on it; Proposition~\ref{prop:S5}, proved here, gives the certified thresholds $\delta_{\rm cert}$ of Table~\ref{tab:thresholdsfull} that the paper quotes. Numbers such as ``Theorem~\pref{thm:sharp}'' refer to the paper.}
 
 \maketitle
 
@@ -71,7 +71,7 @@ each written as the two orbifolds' orders separated by a semicolon. Chen's surve
 
 \emph{The first open case (Remark~\pref{rem:T3}).} A genus pair of size $8$ sharing three heat invariants has shape $(3,5)$. For each $5$-multiset $V$ of positive integers with gcd $1$ and entries at most $220$, the $3$-element side is the root set of the cubic $z^3-e_1z^2+Re_3z-e_3$ with $e_1=P_1(V)$, $R=R(V)$ and $e_3=(P_3(V)-e_1^3)/(3-3e_1R)$; it must have three positive rational roots. Of the $4{,}325{,}115{,}770$ such $V$, $29{,}494{,}902$ give three positive real roots; a filter in floating point with rigorous inclusion disks rejects a $V$ only when three rational roots are excluded, and the remaining $220{,}428$ candidates were decided in exact arithmetic: none splits over $\Q$ (\texttt{theory/pte/search\_T3.c}, log \texttt{theory/pte/data/T3\_search\_log.txt}). Real solutions of the shape exist: $\{1,1,1,1,7\}$ has exactly one partner triple, $\{0.2664,4.2830,6.4506\}$.
 
-\emph{Explicit pairs.} Table~\ref{tab:pairs} writes out every pair of Example~\pref{ex:ptepairs} and every diamond and square of Figure~\pref{fig:F4}.
+\emph{Explicit pairs.} Table~\ref{tab:pairs} writes out every pair of Example~\pref{ex:ptepairs} and every diamond and square of Figure~\pref{fig:F4}, except the Prouhet squares with $L\ge4$, whose cone lists are in the data file named in its caption. Two corrections to the table as generated: in the construction of the Prouhet squares given in the caption, $A'$ and $B'$ are exchanged when $R(U_0)<R(V_0)$, as the generating program does (without the exchange the reciprocal condition would force $p/q<0$); and the area of the Prouhet square with $L=6$ is $1023-9.14\times10^{-864}$, which the table prints as $1023-0.00\times10^{0}$ because the deficit underflows the floating-point format of the program.
 
 % BEGIN GENERATED TABLE pairs
 {\scriptsize\setlength{\LTcapwidth}{\textwidth}
@@ -138,11 +138,35 @@ $L$ & kind & $s$ & shared\\
 
 \section{Strata and triads of small sum}\label{sec:enum}
 
-Table~\ref{tab:overlap} compares, for $p\le14$, the first overlap $S^*(p)$ of the strata $p$ and $p+1$ (Theorem~\pref{thm:Sstar}) with their first collision. Table~\ref{tab:enum} lists every hyperbolic triad with $10\le S_1\le18$ and its reciprocal sum, an independent check of Theorems~\pref{thm:threshold} and~\pref{thm:minimal}: within each sum the values of $R$ are distinct, except for the pair at $S_1=18$ in bold. The $783$ explicit collisions used in Proposition~\pref{prop:collisionfree} are in \texttt{theory/revision/collision\_witnesses.csv} of the repository.
+Table~\ref{tab:overlap} compares, for $p\le14$, the first overlap $S^*(p)$ of the strata $p$ and $p+1$ (Theorem~\pref{thm:Sstar}) with their first collision. Table~\ref{tab:enum} lists every hyperbolic triad with $10\le S_1\le18$ and its reciprocal sum, an independent check of Theorems~\pref{thm:threshold} and~\pref{thm:minimal}: within each sum the values of $R$ are distinct, except for the pair at $S_1=18$ in bold. Proposition~\ref{prop:collisionfree}, moved here from the paper, lists the sums that carry no collision.
+
+\begin{proposition}[Collision-free sums; computational]\label{prop:collisionfree}
+Among the sums $18\le S\le4800$, exactly the $38$ sums
+\[
+\begin{gathered}
+  19,\,21\text{--}25,\,27\text{--}30,\,33,\,41,\,44,\,46\text{--}51,\,59,\,65,\,67,\,81,\,99,\\
+  115,\,119,\,123,\,125,\,173,\,199,\,203,\,223,\,235,\,243,\,251,\,307,\,329,\,557
+\end{gathered}
+\]
+carry no collision. We do not know whether only finitely many sums are collision-free.
+\end{proposition}
+
+\begin{proof}[Method]
+Exact rational arithmetic. (a) At each listed sum the reciprocal sums of all hyperbolic triads are pairwise distinct ($S=557$ has $25\,575$ triads). (b) Each of the other $4745$ sums carries an exhibited collision: $3962$ by scaling one at a divisor $d\mid S$, and $783$ by explicit pairs, the first being $(2,8,8),(3,3,12)$ at $18$, $(4,8,8),(5,5,10)$ at $20$ and $(4,10,12),(5,6,15)$ at $26$, listed in \texttt{theory/revision/collision\_witnesses.csv} and each checked directly (\texttt{theory/revision/check\_thm513.py}).
+\end{proof}
+
+
+\begin{proposition}[Tangency only at $p=2$ and $p=4$]\label{prop:tangency}
+For $S\ge3p+3$, the balanced triad of stratum $p$ and the spread triad of stratum $p+1$ have equal $R$ if and only if $p\in\{2,4\}$ and $S=x^*(p)$, that is, $(2,8,8),(3,3,12)$ at $S=18$ and $(4,8,8),(5,5,10)$ at $S=20$.
+\end{proposition}
+
+\begin{proof}
+For $S-p$ even, equality forces $S=x^*(p)\in\Z$, so $(p-1)\mid6$, and of $p\in\{2,3,4,7\}$, with $x^*(p)-p=16,15,16,21$, only $p=2,4$ have the right parity. For $S-p$ odd, the decreasing odd-parity gap is positive at the last odd-parity sum below its zero and negative at the next (proof of Theorem~\pref{thm:Sstar}), so it vanishes at no such sum.
+\end{proof}
 
 % BEGIN GENERATED TABLE overlap
 \begin{table}[t]
-\caption{First overlap and first collision of the adjacent strata $p$ and $p+1$, for $2\le p\le14$, from the exhaustive enumeration of all hyperbolic triads with $S\le600$. The gap is the first collision sum minus $S^*(p)$; it vanishes only for $p=2$ and $p=4$ (Proposition~\ref{P-prop:tangency} of the paper).}\label{tab:overlap}
+\caption{First overlap and first collision of the adjacent strata $p$ and $p+1$, for $2\le p\le14$, from the exhaustive enumeration of all hyperbolic triads with $S\le600$. The gap is the first collision sum minus $S^*(p)$; it vanishes only for $p=2$ and $p=4$ (Proposition~\ref{prop:tangency}).}\label{tab:overlap}
 \centering\small
 \begin{tabular}{@{}rrrrrl@{}}
 \toprule
@@ -200,11 +224,11 @@ Let $m$ be integer orders, $e=e(m)$, $M=M(\cI)$ and $\delta_1,\dots,\delta_n\ge0
 As formal series $\tilde T-T=\sum_jt_j((U+\delta U)^{2j+1}-U^{2j+1})$, with $|t_j|$ the coefficients of $\tan$; its linear part is $\operatorname{sech}^2(U)\delta U$, and since $U\ge0$ coefficientwise the rest is bounded by $\tau^{\rm rem}$. As the exact $e$ solves the exact system, $r_j=\sum_{i\le j}(\tilde T_{2i+1}-T_{2i+1})e_{2j-2i}$ and $r_{n-1}=(\tilde R-R)e_n$, so $|r|\le\rho$, the nonlinear part is at most $\rho^{\rm rem}$, $|\tilde M-M|\le\Delta_M$, and $\partial T_{2i+1}/\partial P_{2k-1}=s_{2i+2-2k}/(2k-1)$ gives $J$. If $v>0$, $\operatorname{diag}(v)^{-1}A\operatorname{diag}(v)$ has row sums $1-1/v_i<1$, so the spectral radius of $A$, and of $X=M^{-1}(\tilde M-M)$ since $|X|\le A$, is less than $1$; then $\tilde M=M(I+X)$ is invertible and $|\tilde e-e|\le|M^{-1}||r|+A|\tilde e-e|$ gives $|\tilde e-e|\le E$. Test (i) is Rouch\'e's theorem on $|z-a|=r_0$; for (ii), $\tilde e-e=G(\tilde c-c)+\xi'$ with $|\xi'|\le\xi$, and Taylor expansion of $p_c$ at $a$ bounds the linear part.
 \end{proof}
 
-For $n\le5$ the odd series $U$, $|\delta U|$, $T$ have at most four nonzero coefficients ($z,z^3,z^5,z^7$) and the even series $\operatorname{sech}^2U$, $\sec^2U$ at most four ($1,\dots,z^6$); for $(2,2,2,2,3)$, $\operatorname{sech}^2U=1-121z^2+9328z^4-601472z^6$. So every $\delta_{\rm cert}$ in Table~\pref{tab:thresholds} of the paper, and every entry of Table~\ref{tab:thresholdsfull}, can be re-derived in exact arithmetic.
+For $n\le5$ the odd series $U$, $|\delta U|$, $T$ have at most four nonzero coefficients ($z,z^3,z^5,z^7$) and the even series $\operatorname{sech}^2U$, $\sec^2U$ at most four ($1,\dots,z^6$); for $(2,2,2,2,3)$, $\operatorname{sech}^2U=1-121z^2+9328z^4-601472z^6$. So every entry of Table~\ref{tab:thresholdsfull} can be re-derived in exact arithmetic.
 
 % BEGIN GENERATED TABLE thresholds_full
 \begin{table}[ht]
-\caption{Table~\ref{P-tab:thresholds} of the paper with three more columns: the ratio $\delta_{\rm up}/\delta_{\rm cert}$; the largest uniform relative error $\epsilon_{\rm cert}$ certified by Proposition~\ref{prop:S5}, that is, for errors $|\delta c_j|\le\epsilon|c_j|$ for all $j$; and $\delta_{\rm cert}/|c_j|$, $j=1,\dots,n$, the relative precision that the uniform threshold $\delta_{\rm cert}$ demands of each coefficient (not a tolerance for one coefficient alone). The relative box of radius $\min_j\delta_{\rm cert}/|c_j|$ lies inside the uniform box of radius $\delta_{\rm cert}$ and the certificate is monotone in the radii, so $\epsilon_{\rm cert}\ge\min_j\delta_{\rm cert}/|c_j|$; it is larger when the box of the relative model is not the binding one. aeb means $a\times10^b$; $\delta_{\rm up}$ is rounded up, every other entry down.}\label{tab:thresholdsfull}
+\caption{Thresholds for exact recovery of integer orders under the uniform model $|\delta c_j|\le\delta$ on the heat invariants: the closed form $\delta_{\rm thm}$ of Theorem~\ref{P-thm:S4} of the paper, the threshold $\delta_{\rm cert}$ certified in exact arithmetic by Proposition~\ref{prop:S5}, a constructed failure $\delta_{\rm up}$, which minimizes $\|c(\tilde q)-c(m)\|_\infty$ over real monic $\tilde q$ with a root, or a complex pair, of real part $a\pm\frac12$, where rounding is a tie; then the ratio $\delta_{\rm up}/\delta_{\rm cert}$; the largest uniform relative error $\epsilon_{\rm cert}$ certified by Proposition~\ref{prop:S5}, that is, for errors $|\delta c_j|\le\epsilon|c_j|$ for all $j$; and $\delta_{\rm cert}/|c_j|$, $j=1,\dots,n$, the relative precision that the uniform threshold $\delta_{\rm cert}$ demands of each coefficient (not a tolerance for one coefficient alone). The relative box of radius $\min_j\delta_{\rm cert}/|c_j|$ lies inside the uniform box of radius $\delta_{\rm cert}$ and the certificate is monotone in the radii, so $\epsilon_{\rm cert}\ge\min_j\delta_{\rm cert}/|c_j|$; it is larger when the box of the relative model is not the binding one. aeb means $a\times10^b$; $\delta_{\rm up}$ is rounded up, every other entry down.}\label{tab:thresholdsfull}
 \centering\footnotesize\setlength{\tabcolsep}{4pt}
 \begin{tabular}{@{}llllrl>{\raggedright\arraybackslash}p{30mm}@{}}
 \toprule
@@ -300,7 +324,40 @@ Three coefficients recover both multisets exactly (Table~\ref{tab:blind}), with 
 
 \emph{Same expansion, different spectra.} Every member's heat trace equals $\mathrm I+4\mathrm E_3$ to at most $1.2\times10^{-12}$ wherever closed geodesics are negligible, against an error budget of $2.2\times10^{-11}$, and on $t\in[0.0025,0.0037]$ the eight traces are the same function to $1.3\times10^{-13}$: Proposition~\pref{prop:locality} in the data. The eigenvalues move with the shape: $\lambda_1$ falls from $4.1224$ to $0.4348$, and the first $200$ eigenvalues move by up to $89\%$ (Figure~\pref{fig:F6} of the paper).
 
-\emph{The difference is the closed geodesics.} For all $28$ pairs, $\cZ_i-\cZ_j$ equals $\Hyp_i-\Hyp_j$, computed from the closed geodesics enumerated in floating point up to length $6.5$ (checked by the integrality of the weights $w/\ell$ and by agreement with the computed traces) with nothing fitted, to at most $1.1\times10^{-13}$ for $t\le0.33$, where the traces differ by up to $0.79$. The difference leaves the noise at a time $t^*$ set by the shorter systole alone, with $\ell^2/4t^*\approx24.5$ in every case. Once it is $10^3$ times the noise, its ratio to the leading term of Theorem~\pref{thm:sharp} is between $0.9997$ and $1.0000$. The bound of Theorem~\pref{thm:quantlocality}(b) holds for every pair, but it is loose because of its factor $e^{3\diam}$.
+\emph{The difference is the closed geodesics.} For all $28$ pairs, $\cZ_i-\cZ_j$ equals $\Hyp_i-\Hyp_j$, computed from the closed geodesics enumerated in floating point up to length $6.5$ (checked by the integrality of the weights $w/\ell$ and by agreement with the computed traces) with nothing fitted, to at most $1.1\times10^{-13}$ for $t\le0.33$, where the traces differ by up to $0.79$. The difference leaves the noise at a time $t^*$ set by the shorter systole alone, with $\ell^2/4t^*\approx24.5$ in every case. Once it is $10^3$ times the noise, its ratio to the leading term of Theorem~\pref{thm:sharp} is between $0.9997$ and $1.0000$. The bound of Theorem~\pref{thm:quantlocality}(a) holds for every pair, but it is loose because of its factor $e^{3\diam}$.
+
+\section{Computational methods}\label{sec:methods}
+
+Results are exact (integer or rational arithmetic) unless stated, and each is produced by a committed program of the repository named in the data statement; Sections~\ref{sec:searches}--\ref{sec:enum} name the programs. (i)~Remark~\pref{rem:witnesses}, $n=4$: all pairs of $4$-multisets of orders in $[2,440]$ with equal $(R,P_1,P_3)$, found by sorting every multiset on these exact keys; $n=5$: all $216{,}071{,}394$ multisets of orders in $[2,120]$, grouped by $P_1$ and keyed on the exact integers $(P_3,P_5,\operatorname{lcm}(2,\dots,120)\,R)$. (ii)~Remark~\pref{rem:T3}: for each of the $4{,}325{,}115{,}770$ five-multisets $V$ with gcd $1$ and entries at most $220$, the other side is the root set of an explicit cubic. A filter in C rejects $V$ only when inclusion disks, with every rounding and coefficient error bounded by $64\varepsilon$ relative, times further safety factors, where $\varepsilon$ is the machine epsilon of \texttt{long double} (on the platform used, arm64 macOS, \texttt{long double} is IEEE binary64, $\varepsilon=2^{-52}$, with the default rounding to nearest), exclude three rational roots; the $220{,}428$ remaining $V$ were decided in exact arithmetic, and planted solutions were recovered. (iii)~Figures~\pref{fig:F4} and~\pref{fig:F7}, Proposition~\ref{prop:collisionfree}, the rank of $C_{27/2}$ (PARI/GP's \texttt{ellrank}) and the comparison with U\c{c}ar's coefficients for $l\le40$: exact, the enumerations recomputed independently. \texttt{code/run\_all.sh} reruns all of these except the $n=4$ search of (i), whose committed output it rechecks, and the search of (ii), which is logged.
+
+\section{The rank of $C_{27/2}$ by hand}\label{sec:descent}
+
+In the notation of the proof of Theorem~\pref{thm:isolation}, $E:y^2=x(x+9)(x+384)$. We use descent via $2$-isogeny \cite[\S3.6, Method~1 and (3.6.2)]{cremona1997}. Write $E:y^2=x(x^2+cx+d)$ with $c=393$, $d=3456=2^73^3$; the isogenous curve is $E':y^2=x(x^2+c'x+d')$ with $c'=-786$, $d'=c^2-4d=3^25^6$. For squarefree $d_1\mid d$ let $n_1$ be the number of classes $d_1$ for which $v^2=d_1u^4+cu^2+d/d_1$ has a rational point, and $n_1'$ likewise for $c',d'$; then $n_1=2^{e_1}$, $n_1'=2^{e_1'}$ and $\operatorname{rank}E(\Q)=e_1+e_1'-2$. A rational point gives coprime integers $M,e$ and an integer $N$ with $N^2=d_1M^4+cM^2e^2+(d/d_1)e^4$.
+(i) On $E$, $d_1\in\{\pm1,\pm2,\pm3,\pm6\}$. For $d_1\in\{\pm2,\pm3\}$, $d_1\equiv\pm2$ is a non-residue modulo $5$, $d/d_1\equiv d_1^{-1}$ (as $d\equiv1$), $d_1+d_1^{-1}\equiv0$ and $c\equiv3$. Since $M^4,e^4\in\{0,1\}$ modulo $5$ and $5$ divides at most one of $M,e$, the right side is $\equiv d_1$ if $5\mid e$, $\equiv d_1^{-1}$ if $5\mid M$, and $\equiv d_1+d_1^{-1}+3M^2e^2\equiv3M^2e^2\equiv\pm3$ if $5\nmid Me$, each a non-residue. The classes $\pm1,\pm6$ are the images of $O,(0,0),(-9,0),(-384,0)$. So $n_1=4$, $e_1=2$.
+(ii) On $E'$, $d_1\in\{\pm1,\pm3,\pm5,\pm15\}$. If $d_1<0$ all three coefficients are negative. For $d_1=3,5,15$ write $f=d_1M^4-786M^2e^2+(d'/d_1)e^4=3^vf_0$ with $3\nmid f_0$; then $v$ is odd or $f_0\equiv2\pmod3$: for $d_1=3$, $f=3(M^4-262M^2e^2+15625e^4)$ with bracket $\equiv1\pmod3$; for $d_1=5$, $f\equiv2M^4\pmod3$, and if $M=3M_1$ then $f=9(45M_1^4-786M_1^2e^2+3125e^4)$ with bracket $\equiv2$; for $d_1=15$, $f=3g$ with $g\equiv2M^4-M^2e^2+2e^4\pmod3$, so $g\equiv2$ if $3$ divides $M$ or $e$, and otherwise $g\equiv e^4(5w^2-w+2)\equiv6e^4\pmod9$ with $w\equiv M^2/e^2\in\{1,4,7\}$, so $f=9g'$ with $g'\equiv2\pmod3$. So $n_1'=1$, $e_1'=0$, and the rank is $0$; the Selmer groups are $\{\pm1,\pm6\}$ and $\{1\}$, every class being decided by a local condition.
+
+\section{The heat expansion from the trace formula}\label{sec:derivation}
+
+The paper cites U\c{c}ar for Proposition~\pref{prop:heatinput}. This section derives it directly from the trace formula (Theorem~\pref{thm:IEH}), independently of the coefficient computations of \cite{dggw2008,ucar2017} and of the locality theorem of \cite{donnelly1976,dggw2008}: it uses only the trace formula for $\hat g$, $g\in C_c^\infty(\R)$ even, Lemma~\pref{lem:counting}, the approximation argument of Lemma~\ref{lem:admissible}, Lemma~\pref{lem:Phi} and classical analysis.
+
+Dryden and Strohmaier state the trace formula of Theorem~\pref{thm:IEH} for $h=\hat g$ with $g\in C_c^\infty(\R)$ even \cite[eq.~(1)]{drydenstrohmaier2009}. Here is the standard approximation argument that extends it to the heat function, in the notation of Section~\pref{sec:trace} of the paper.
+
+\begin{lemma}[The heat function is admissible]\label{lem:admissible}
+Fix an even $\omega\in C_c^\infty(\R)$, $0\le\omega\le1$, $\omega=1$ on $[-1,1]$, and put $h_\varrho=\hat g_\varrho$ with $g_\varrho=g_t\,\omega(\cdot/\varrho)$. As $\varrho\to\infty$, every term of the trace formula for $h_\varrho$ tends to the corresponding term for $h_t$; hence Theorem~\pref{thm:IEH} holds.
+\end{lemma}
+
+\begin{proof}
+\emph{Counting eigenvalues.} Let $\lambda_j=\frac14+r_j^2$ and take $\psi\in C_c^\infty(\R)$ even, nonnegative, $\int\psi=1$, supported in $[-\epsilon,\epsilon]$ with $2\epsilon<\ell$, $\epsilon\le1$; then $|\hat\psi|\le1$ and $\hat\psi(r)\ge\cos(\epsilon r)\ge\frac12$ for $|r|\le1$. The function $h_T(r)=\hat\psi(r-T)^2+\hat\psi(r+T)^2=\hat g$ for $g=2\cos(Tu)(\psi*\psi)(u)$, supported in $[-2\epsilon,2\epsilon]$, so the hyperbolic side vanishes for it; its identity term is $O(T+1)$, each elliptic term $O(1)$, and the finitely many imaginary $r_j$ contribute $O(1)$. Since $h_T\ge\frac14$ on $|r-T|\le1$, $\#\{j:|r_j-T|\le1\}=O(T+1)$, hence $\#\{\lambda_j\le x\}=O(x)$, with no heat-kernel input (the leading term of \cite[Thm~4.8]{dggw2008} gives the same).
+\emph{Convergence.} On the hyperbolic side $0\le g_\varrho\le g_t$, with equality on $[0,\varrho]$, and Lemma~\pref{lem:counting} gives dominated convergence. With $f_\varrho=g_t(1-\omega(\cdot/\varrho))$, $h_t-h_\varrho=\hat f_\varrho$ and $\|f_\varrho^{(k)}\|_{L^1}\to0$ ($k\le3$), so $|\hat f_\varrho(r)|\le\epsilon_\varrho\min(1,|r|^{-3})$ with $\epsilon_\varrho\to0$, which handles the identity and elliptic terms and, as $\sum_j\min(1,|r_j|^{-3})<\infty$, the real $r_j$; for imaginary $r_j$, $|\hat f_\varrho(r_j)|\le\int|f_\varrho|e^{|u|/2}\to0$.
+\end{proof}
+
+\begin{proof}[Proof of Proposition~\pref{prop:heatinput}]
+By Theorem~\pref{thm:IEH} and Lemma~\pref{lem:hypbound}, $\cZ_\Orb=\mathrm I+\mathrm E+O(t^K)$ for every $K$. For $0<a<2\pi$ let $F_a(r)=e^{-ar}/(1+e^{-2\pi r})$; Euler's beta integral gives $\int F_a(r)e^{sr}dr=[2\sin((a-s)/2)]^{-1}$ for $a-2\pi<s<a$, so the moments $\mathfrak m_n(a)=\int r^nF_a$ are its derivatives at $s=0$ (differentiation under the integral being dominated by $|r|^ne^{s_0|r|}F_a$ for $|s|\le s_0<\min(a,2\pi-a)$), and $|e^{-x}-\sum_{k<K}(-x)^k/k!|\le x^K/K!$ ($x=tr^2\ge0$) gives $\int F_ae^{-tr^2}dr\sim\sum_k\frac{(-t)^k}{k!}\mathfrak m_{2k}(a)$. Since $\mathrm E_m(t)=e^{-t/4}\sum_j(2m\sin\theta_j)^{-1}\int F_{2\theta_j}e^{-tr^2}dr$ and
+\[
+  \sum_{j=1}^{m-1}\frac{\mathfrak m_{2k}(2\theta_j)}{2m\sin\theta_j}=\frac{d^{2k}}{ds^{2k}}\Phi_m\Big(\frac s2\Big)\Big|_{s=0}=\frac{(2k)!}{4^k}\phi_k(m),
+\]
+multiplying by $e^{-t/4}=\sum_i(-t/4)^i/i!$ gives (\pref{eq:bl}). For $\mathrm I$, $r\tanh\pi r=|r|-2|r|/(e^{2\pi|r|}+1)$, $\int|r|e^{-tr^2}dr=1/t$, and the moments $\int_0^\infty r^{2k+1}(e^{2\pi r}+1)^{-1}dr=(1-2^{-2k-1})(-1)^kB_{2k+2}/(4(k+1))$ give $\alpha_k$, since $B_{2l}(\frac12)=(2^{1-2l}-1)B_{2l}$.
+\end{proof}
 
 \bibliography{references}
 

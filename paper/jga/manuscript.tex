@@ -110,7 +110,7 @@
 \presentaddresstxt{ORCID iDs}
 \presentaddress{P.~Gang 0009-0006-7448-9488; A.~Agadi 0009-0009-1378-0556; A.~Veluri 0009-0001-5940-3272; J.~Wang 0009-0004-1814-275X; J.~Barreto 0009-0006-6894-7323; A.~Chouthaiwale 0009-0008-3878-7183.}
 
-\abstract{For closed orientable hyperbolic $2$-orbifolds with cone points, we ask how many heat invariants determine the genus and the cone orders. The first $\lfloor\mathrm{Area}/\pi\rfloor+4$ always do, and no number independent of the area does. The number needed grows at least like the square root of the area; whether it grows linearly is equivalent to the open question whether the Prouhet--Tarry--Escott function satisfies $N(k)=O(k)$. For spheres with $n$ cone points, $n$ invariants suffice, and $n-1$ fail on integer orders for $n=3,4$. Among triangle orbifolds, two invariants determine every orbifold of cone-order sum at most $17$ and first fail at sum $18$, on $\mathcal O(2,8,8)$ and $\mathcal O(3,3,12)$, a pair isolated by a rank-$0$ elliptic curve; two suffice again at exactly $38$ sums between $19$ and $4800$, the first being $19$ and $21$--$25$, and three always suffice. For spheres with known $n$, recovering the orders from perturbed heat invariants is Lipschitz at simple orders and H\"older of exponent $1/k$ at $k$-fold orders, with constants depending on the true orders.}
+\abstract{Heat released on a surface explores, for a short time $t$, only a disc of radius about $\sqrt t$, and the small-time heat invariants record what it learns there. For closed orientable hyperbolic $2$-orbifolds with cone points we ask how many heat invariants determine the genus and the cone orders. The first $\lfloor\mathrm{Area}/\pi\rfloor+4$ always do, and no number independent of the area does: the number needed lies between constant multiples of the square root of the area and of the area, and it grows linearly exactly when the Prouhet--Tarry--Escott function satisfies $N(k)=O(k)$, an open question. Among triangle orbifolds two invariants suffice up to cone-order sum $17$ and first fail on $\mathcal O(2,8,8)$ and $\mathcal O(3,3,12)$, a pair isolated by a rank-$0$ elliptic curve; three always suffice. The pairs that share heat invariants have different signatures, hence different spectra, so these are statements about short-time diffusion, not spectral rigidity. \textbf{[PLACEHOLDER: one clause stating the theorem of Section~4, that finitely many approximately known eigenvalues determine the signature among orbifolds of bounded area, systole bounded below and cone orders bounded above.]}}
 
 \keywords{Heat invariants, Hyperbolic orbifolds, Inverse spectral problems, Cone singularities, Power sums, Prouhet--Tarry--Escott problem}
 
@@ -124,28 +124,30 @@ Put a unit of heat at a point of a closed surface and let it spread. For a short
 \begin{equation}\label{eq:heatseries}
   \cZ_\Orb(t)=\operatorname{tr}e^{-t\Delta}\ \sim\ \sum_{j\ge1}c_j(\Orb)\,t^{\,j-2}\qquad(t\downarrow0),
 \end{equation}
-and the coefficients $c_j(\Orb)$, the heat invariants, are spectral invariants \cite{donnelly1976,dggw2008}; see also the erratum \cite{dggw2017erratum}, which concerns only \cite[Thm~5.1]{dggw2008}. We ask a quantitative version of Kac's question \cite{kac1966}: how many heat invariants are needed to hear the cone points and the genus of $\Orb$, how fast that number must grow, and what heat cannot hear at all.
+and the coefficients $c_j(\Orb)$, the heat invariants, are spectral invariants \cite{donnelly1976,dggw2008} (the erratum \cite{dggw2017erratum} concerns only \cite[Thm~5.1]{dggw2008}). We ask how many heat invariants are needed to hear the cone points and the genus of $\Orb$, how fast that number must grow, and what heat cannot hear at all.
 
-Write $\sigma(\Orb)=(g;m_1,\dots,m_n)$ for the \emph{signature} (genus and multiset of cone orders), $H_k(\Orb)=(c_1,\dots,c_k)$, $\Sig$ for the class of all closed orientable hyperbolic $2$-orbifolds whose singular points are cone points (orbifolds with mirrors are not locally orientable, so never isospectral to these \cite[Thm~4.7]{richardsonstanhope2020}; non-orientable ones are not considered) and $\Sig_0$ for its genus-$0$ part, and let $\Kmult(\Orb;\Cl)$ be the least $k$ such that $H_k$ separates $\Orb$ from every member of $\Cl$ with a different signature (Definition~\ref{def:K}). Let
+Write $\sigma(\Orb)=(g;m_1,\dots,m_n)$ for the \emph{signature} (genus and multiset of cone orders), $H_k(\Orb)=(c_1,\dots,c_k)$, $\Sig$ for the class of all closed orientable hyperbolic $2$-orbifolds whose singular points are cone points (orbifolds with mirrors are not locally orientable, so never isospectral to these \cite[Thm~4.7]{richardsonstanhope2020}) and $\Sig_0$ for its genus-$0$ part, and let $\Kmult(\Orb;\Cl)$ be the least $k$ such that $H_k$ separates $\Orb$ from every member of $\Cl$ with a different signature (Definition~\ref{def:K}). Let
 \[
   f(A)=\max\{\Kmult(\Orb;\Sig):\ \Orb\in\Sig,\ \Area(\Orb)\le A\},
 \]
-and let $N(k)$ be the least size of a nontrivial solution of degree $k$ of the Prouhet--Tarry--Escott problem: two distinct $s$-multisets of integers with equal power sums of every exponent $1,\dots,k$ \cite[\S2, p.~6]{borweiningalls1994}.
+and let $N(k)$ be the least size of a nontrivial solution of degree $k$ of the Prouhet--Tarry--Escott problem: two distinct multisets of integers of a common size with equal power sums of every exponent $1,\dots,k$ \cite[\S2, p.~6]{borweiningalls1994}.
 
 \begin{theorem}[Hearing the signature]\label{thm:intro-signature}
 \leavevmode
 \begin{enumerate}[label=(\roman*)]
-\item For every $\Orb\in\Sig$, the first $\lfloor\Area(\Orb)/\pi\rfloor+4$ heat invariants determine the genus and the cone-order multiset of $\Orb$ among all closed orientable hyperbolic $2$-orbifolds, and the number is read off from $c_1=\Area/4\pi$. No number independent of the area suffices: $\sup_\Orb\Kmult(\Orb;\Sig)=\sup_\Orb\Kmult(\Orb;\Sig_0)=\infty$.
+\item For every $\Orb\in\Sig$, the first $\lfloor\Area(\Orb)/\pi\rfloor+4$ heat invariants determine the genus and the cone-order multiset of $\Orb$ among all closed orientable hyperbolic $2$-orbifolds, and the number is computable from $c_1=\Area/4\pi$. No number independent of the area suffices: $\sup_\Orb\Kmult(\Orb;\Sig)=\sup_\Orb\Kmult(\Orb;\Sig_0)=\infty$.
 \item For $A\ge8\pi$,
 \[
   \Big\lfloor\sqrt{\tfrac13\big(\tfrac A{2\pi}-1\big)}\Big\rfloor+2\ \le\ f(A)\ \le\ \Big\lfloor\frac A\pi\Big\rfloor+4 .
 \]
-For $0<\alpha\le1$, $f(A)\ge cA^\alpha$ for all large $A$ and some $c>0$ if and only if $N(k)\le Ck^{1/\alpha}$ for all $k\ge1$ and some $C$. In particular $f$ grows linearly if and only if $N(k)=O(k)$.
-\item Among spheres with $n$ cone points the first $n$ heat invariants determine the cone orders. The first $n-1$ do not: for $n=3,4$ they fail on integer orders, and for every $n\ge2$, as functions of real orders (the cone coefficients are rational in the order), they are not injective near any $n$ distinct positive reals; for integer orders and $n\ge5$ this is open (Problem~\ref{prob:sharp} in Section~\ref{sec:open}).
+For $0<\alpha\le1$, $f(A)\ge cA^\alpha$ for all large $A$ and some $c>0$ if and only if $N(k)\le Ck^{1/\alpha}$ for all $k\ge1$ and some $C$. In particular $f$ grows linearly if and only if $N(k)=O(k)$. The true growth exponent, between $\frac12$ and $1$, is open.
+\item Among spheres with the same number $n$ of cone points the first $n$ heat invariants determine the cone orders. The first $n-1$ do not: for $n=3,4$ they fail on integer orders, and for every $n\ge2$, as functions of real orders (the cone coefficients are rational in the order), they are not injective near any $n$ distinct positive reals; for integer orders and $n\ge5$ this is open (Problem~\ref{prob:sharp}).
 \end{enumerate}
 \end{theorem}
 
-The mechanism is the same throughout. Heat sees a handle only through the area it uses up, and a cone point through a fixed function of its order; the $j$-th invariant adds one new odd power sum $\sum_im_i^{2j-3}$. Comparing two orbifolds becomes a moment problem for the orders of the first together with the negatives of the orders of the second: an odd-power Prouhet--Tarry--Escott system. Triangle orbifolds $\Orb(p,q,r)$ have no moduli, so for them the count can be made exact.
+Genus here is that of an orientable underlying surface, and the restriction matters. A cone-point orbifold on a non-orientable surface with $k=2g$ crosscaps has $\chi=2-2g-\sum_i(1-1/m_i)$, the area and cone orders of the orientable one of genus $g$; heat invariants are local \cite[Thm~4.8]{dggw2008}, and at curvature $-1$ the smooth part enters through the area and a cone point through its order alone, so the two share every heat invariant: heat invariants cannot hear orientability. Whether the whole spectrum hears it for closed hyperbolic orbifolds we do not know; for flat surfaces with boundary it does not, by the Neumann-isospectral pair of Bérard and Webb, one orientable and one not \cite[Thm~3.1]{berardwebb2022}, announced in \cite{berardwebb1995}.
+
+The mechanism is the same throughout. Heat sees a handle only through the area it uses up and a cone point through a fixed function of its order, and the $j$-th invariant adds one new odd power sum $\sum_im_i^{2j-3}$; comparing two orbifolds becomes an odd-power Prouhet--Tarry--Escott system for the orders of the first and the negatives of those of the second. Triangle orbifolds $\Orb(p,q,r)$ have no moduli, so for them the count can be made exact.
 
 \begin{theorem}[The rigid case]\label{thm:intro-rigid}
 Let $\Orb(p,q,r)$ be a hyperbolic triangle orbifold.
@@ -157,29 +159,31 @@ Let $\Orb(p,q,r)$ be a hyperbolic triangle orbifold.
 \end{enumerate}
 \end{theorem}
 
-Figure~\ref{fig:F1} shows the two orbifolds of part~(ii) coloured by how much heat stays at each point. Finally, a measured heat trace is never exact.
+Figure~\ref{fig:F1} shows the two orbifolds of part~(ii), each panel one of the two triangles that form it, in a stylised shape: $4\pi t\,\mathfrak h_t(x,x)$, computed on the true hyperbolic triangle, is drawn at the point with the same Poincar\'e-disc coordinates. It is near $1$ at smooth points and approaches the order at each cone point, so the darkest tips are the cone points of largest order, two of order $8$ in (a), one of order $12$ in (b). A measured heat trace is never exact.
 
 \begin{theorem}[Stability]\label{thm:intro-stability}
-Let $m$ be the cone orders of a hyperbolic sphere (genus $0$) with a known number $n$ of cone points, and $\tilde c_1,\dots,\tilde c_n$ approximations to its heat invariants $c_1,\dots,c_n$ with error at most $\delta$. For $\delta$ below an explicit bound, the recovery map of Section~\ref{sec:stability} returns, for each distinct order $a$ of multiplicity $k_a$, exactly $k_a$ numbers within $C_a\delta^{1/k_a}$ of $a$; the bound and the $C_a$ are explicit functions of $m$. The exponent $1/k_a$ cannot be improved for arbitrary data. For data that are the heat invariants of positive real orders it is $\frac12$, and sharp, at a double order (any $n$) and when all $n\ge3$ orders are equal; other configurations are open. For integer orders and $\delta$ below an explicit $\delta_{\rm thm}(m)$, rounding returns $m$ exactly.
+For a hyperbolic sphere with a known number $n$ of cone points, recovering the orders from approximate $c_1,\dots,c_n$ with error at most $\delta$ (Section~\ref{sec:stability}) is, for $\delta$ below an explicit bound, Lipschitz at simple orders and H\"older of exponent $1/k$ at $k$-fold orders, with constants explicit in the orders; for integer orders and $\delta\le\delta_{\rm thm}(m)$, rounding returns them exactly. The exponent $1/k$ cannot be improved for arbitrary data; for data that are heat invariants of positive real orders it is $\frac12$, and attained, at a double order and when all $n\ge3$ orders are equal.
 \end{theorem}
 
-Three limits of scope. The errors are errors in heat invariants, not in eigenvalues. The constants are evaluated at the true orders, so in practice the theorem is used a posteriori: recover a candidate, then check it (Remark~\ref{rem:stabscope}). And although Theorem~\ref{thm:intro-signature}(i) shows that the heat invariants determine $(g,n)$, we give no recovery procedure when $(g,n)$ is unknown.
+The errors are in heat invariants, not eigenvalues, the theorem is used a posteriori (Remark~\ref{rem:stabscope}), and we give no recovery procedure when $(g,n)$ is unknown.
 
-\emph{What heat does not hear.} Every heat invariant is a function of the signature (classical; Proposition~\ref{prop:locality}), so off the triangle orbifolds no finite number of them determines $\Orb$ up to isometry (Corollary~\ref{cor:Kinf}). The shape enters the heat trace at order $t^{-1/2}e^{-\ell^2/4t}$, $\ell$ the systole: Theorem~\ref{thm:quantlocality} bounds this term with an explicit but qualitative constant, and Theorem~\ref{thm:sharp} shows that the exponent and the factor $t^{-1/2}$ are attained.
+\emph{Roadmap.} Sections~\ref{sec:heat}--\ref{sec:signature} compute the heat invariants and prove Theorem~\ref{thm:intro-signature}; Section~\ref{sec:eigen} connects them to finitely many eigenvalues; Section~\ref{sec:locality} shows that within a signature heat hears nothing at any order and identifies the term, of order $t^{-1/2}e^{-\ell^2/4t}$ with $\ell$ the systole, through which the shape enters; Sections~\ref{sec:rigid}--\ref{sec:stability} prove Theorems~\ref{thm:intro-rigid}--\ref{thm:intro-stability}; Section~\ref{sec:numerics} tests the expansion on computed spectra; Section~\ref{sec:open} lists open problems.
 
-\emph{Roadmap.} Theorem~\ref{thm:intro-signature} is proved in Corollary~\ref{cor:sigarea} and Theorems~\ref{thm:signonuniform}, \ref{thm:growth}, \ref{thmA}, \ref{thmC}; Theorem~\ref{thm:intro-rigid} in Theorems~\ref{thm:three}, \ref{thm:threshold}, \ref{thm:minimal}, \ref{thm:isolation}; Theorem~\ref{thm:intro-stability} in Theorems~\ref{thm:S3}, \ref{thm:S4}, Proposition~\ref{prop:sharpexp} and Remark~\ref{rem:triple}. The lettered Theorems A--C are the algebraic core of Section~\ref{sec:signature}.
+\subsection{Why heat invariants}\label{sec:why}
+
+Short-time heat diffusion is local. Up to an error smaller than every power of $t$, the heat trace is a sum of contributions from arbitrarily small neighbourhoods of points, and the heat invariants are these contributions: the integral of a universal polynomial in the curvature and its derivatives, and, for each cone point, a term that depends only on the germ of the metric there \cite{donnelly1976}, \cite[Thm~4.8]{dggw2008}, \cite[\S1]{schueth2025}. They are the natural language of short-time diffusion: if two orbifolds share $c_1,\dots,c_k$ but not $c_{k+1}$, then $\cZ_\Orb-\cZ_{\Orb'}$ has exact order $t^{k-1}$, so our counts say for how many orders in $t$ diffusion cannot tell two cone configurations apart. They are also what is available when the geometry is known only locally. On a surface of variable curvature a cone point contributes through $K(p)$ at order $t$ and through $K(p)^2$ and $\Delta K(p)$ at order $t^2$, with coefficients rational in the order, and Schueth computes such terms for curved cones from the metric near the cone point alone \cite[Abstract and \S1]{schueth2025}; the eigenvalues depend on the whole surface. At curvature $-1$ the local terms are functions of the order (Section~\ref{sec:heat}).
+
+The collisions exhibited below are never isospectral: orbifolds in $\Sig$ with different signatures have different spectra \cite[Thm~1.1]{drydenstrohmaier2009}, while isospectral non-isometric pairs, which exist \cite[Thm~A and the sentence following it]{linowitzvoight2015}, share a signature and hence every heat invariant (Section~\ref{sec:locality}). The results are therefore statements about short-time diffusion, not about spectral rigidity. Section~\ref{sec:eigen} connects the heat invariants to finitely many eigenvalues, the data one can actually measure. \textbf{[SLOT: one or two sentences summarising the theorem of Section~\ref{sec:eigen}, to be written with it.]}
+
+The paper continues a line of work that reads the singular data of an orbifold from its heat expansion or its spectrum: Donnelly \cite{donnelly1976}; Dryden, Gordon, Greenwald and Webb \cite{dggw2008}; Stanhope, who bounds the isotropy types and the number of singular points of isospectral orbifolds \cite[Main Thms~1--2]{stanhope2005}; Dryden and Strohmaier, who show that the spectrum determines the signature \cite[Thm~1.1, Prop.~3.3]{drydenstrohmaier2009}; Abreu, Dryden, Freitas and Godinho, who recover the weights of a weighted projective plane $\mathbb{CP}^2(N_1,N_2,N_3)$ with isolated singularities from the heat invariants $a_0,a_1,a_2$ on functions and $1$-forms \cite[Thm~1 and \S6.1]{adfg2008}, the closest precedent we know; and Schueth \cite{schueth2019,schueth2025}.
 
 \subsection{Prior work and what is new}\label{sec:prior}
 
-That the Laplace spectrum of a closed orientable hyperbolic $2$-orbifold determines its genus and its cone orders is due to Dryden and Strohmaier \cite[Thm~1.1, Prop.~3.3]{drydenstrohmaier2009}, after finiteness results of Stanhope \cite[Main Thms~1--2]{stanhope2005} and Dryden \cite[Thm~4.5]{dryden2004}; see also \cite[Thm~1]{doylerossetti2011}. U\c{c}ar recovered the cone orders from the whole sequence of heat invariants at any fixed nonzero curvature, with the curvature given \cite[Cors~4.21(iv), 4.23; method of Thm~3.40]{ucar2017}, and for $\chi\ge0$ a single coefficient determines the orbifold type: the invariant $c$, twelve times the $t^0$ coefficient, is a complete topological invariant there \cite[Thms~5.14--5.15]{dggw2008}. In dimension four, Abreu, Dryden, Freitas and Godinho recovered the weights of a weighted projective plane $\mathbb{CP}^2(N_1,N_2,N_3)$ with isolated singularities from the heat invariants $a_0,a_1,a_2$ of the Laplacian on functions and on $1$-forms \cite[Thm~1 and \S6.1]{adfg2008}, the closest precedent we know for finitely many heat invariants determining the orders of singular points. Theorem~\ref{thm:intro-signature} adds a count; that some finite number suffices for each area already follows, since only finitely many signatures have a given area and the whole sequence of heat invariants separates any two of them (Theorem~\ref{thm:sigsep}). To our knowledge, $\lfloor\Area/\pi\rfloor+4$ is the first explicit finite number of heat invariants shown to determine the genus and the cone-order multiset uniformly over all closed orientable hyperbolic $2$-orbifolds. Part~(i) also shows that the dependence on the area cannot be removed; explicit witnesses can be built from Prouhet's partition \cite[\S5.1, Thm~6]{alloucheshallit1999}, \cite{borweiningalls1994}, and Section~\ref{sec:pte} builds much smaller ones. A finite but likewise non-uniform count is known for Euclidean triangles and their Dirichlet eigenvalues \cite{changdeturck1989}. Part~(ii) ties the growth of the number of invariants needed, in both directions, to the Prouhet--Tarry--Escott problem; this relocates the growth question rather than settling it. All known bounds on $N(k)$ are quadratic, which gives the exponent $\frac12$ of (ii), and any exponent above $\frac12$ would settle in a strong form the open problem $N(k)=o(k^2)$ \cite[\S6, Problem~3]{borweiningalls1994}.
+U\c{c}ar recovered the cone orders from the whole sequence of heat invariants at fixed nonzero curvature \cite[Cors~4.21(iv), 4.23]{ucar2017}, and for $\chi\ge0$ the invariant $c$, twelve times the $t^0$ coefficient, determines the type of a closed orientable orbifold \cite[Thms~5.14--5.15]{dggw2008}. That some finite number of heat invariants suffices for each area follows, since only finitely many signatures have a given area (Corollary~\ref{cor:sigarea} bounds $n$ and $g$); to our knowledge $\lfloor\Area/\pi\rfloor+4$ is the first explicit such number for closed orientable hyperbolic $2$-orbifolds. A finite, likewise non-uniform count is known for Euclidean triangles and their Dirichlet eigenvalues \cite{changdeturck1989}. Theorem~\ref{thm:intro-signature}(ii) relocates the growth question to the Prouhet--Tarry--Escott problem rather than settling it; all known bounds on $N(k)$ are quadratic, and any exponent above $\frac12$ would settle in a strong form the open problem $N(k)=o(k^2)$ \cite[\S6, Problem~3]{borweiningalls1994}.
 
-The mechanism of Theorem~\ref{thmA} is classical. By Newton's identities, two $n$-multisets of complex numbers have equal odd power sums $P_1,P_3,\dots,P_{2n-1}$ if and only if they agree after deleting pairs $\{a,-a\}$; this is the symmetric form of the Prouhet--Tarry--Escott problem \cite[Prop.~1 and \S3]{borweiningalls1994}. For positive reals, uniqueness of $n$ distinct numbers with $n$ prescribed power sums goes back to Steinig \cite{steinig1971}; see \cite[Lemma~3.2 and the remark following it]{laurens2023}, and \cite[Prop.~24]{msw2022} for positive integer exponents. Theorem~\ref{thmA} replaces the top odd power sum by the reciprocal sum $R$, which is the quantity the heat invariants supply; the condition $\prod_{i<j}(m_i+m_j)\ne0$ excludes pairs $\{a,-a\}$ in $m$. The linear system of Theorem~\ref{thmB} is the analogue, with $R$, of the odd-power-sum Newton identities of \cite[\S3]{korobovbugaevskaya2016}. What we add is the replacement of $P_{2n-1}$ by $R$, the closed form of $\det M$, whose zero set is the Orlando locus, and the sharpness statements of Theorem~\ref{thmC}.
+On the power-sum side, by Newton's identities two $n$-multisets of complex numbers have equal $P_1,P_3,\dots,P_{2n-1}$ exactly when they agree after deleting pairs $\{a,-a\}$ \cite[Prop.~1 and \S3]{borweiningalls1994}, and for positive orders Theorem~\ref{thmA} is of the type of Steinig's uniqueness theorem for $n$ distinct positive reals with $n$ prescribed power sums \cite{steinig1971}, \cite[Lemma~3.2 and the remark following it]{laurens2023}, \cite[Prop.~24]{msw2022}. It adds the replacement of $P_{2n-1}$ by $R$, the quantity heat supplies, for complex multisets with multiplicity, and the closed form of $\det M$ in Theorem~\ref{thmB}, whose zero set is the Orlando locus; the linear system itself is the analogue, with $R$, of the odd-power-sum Newton identities of \cite[\S3]{korobovbugaevskaya2016}. The integer witness $[3,10,15,30]=[4,5,21,28]$ of Theorem~\ref{thmC}(3) and seven further solutions for the exponents $-1,1,3$ are in Chen's survey, from a computer search of 2017 \cite[\S A.5.8, (A.685)--(A.692)]{chen2025survey}; they are exactly the eight primitive witnesses with all orders at most $84$ in our search. The forward direction of the pair criterion of Theorem~\ref{thmC}(1) is Chen's Identity~9 with $m=3$ \cite[(3.27)--(3.28)]{chen2025survey}. New on this side are the separation bound (Theorem~\ref{thm:sigsep}), the Descartes imbalance bound (Theorem~\ref{thm:descartes}), doubling (Proposition~\ref{prop:doubling}), the growth equivalence through the minimal configuration size (Theorem~\ref{thm:growth}, Proposition~\ref{prop:Tmin}) and the exhaustive searches.
 
-Since $0<R<1$ for a hyperbolic triangle orbifold, the invariant $c$ of Dryden, Gordon, Greenwald and Webb encodes exactly the first two heat invariants. They observe that $c$ ``does not seem sufficiently strong to distinguish among'' the triangular pillows (their term for triangle orbifolds) with $\chi<0$, and note that the full spectrum determines the cone orders at curvature $-1$ \cite[Rem.~5.16]{dggw2008}. Theorem~\ref{thm:intro-rigid} makes this observation precise. The invariant $c$ separates the hyperbolic triangle orbifolds with $p+q+r\le17$ and first fails on $\Orb(2,8,8)$ and $\Orb(3,3,12)$, and the third heat invariant always separates them. To our knowledge no earlier result locates where a fixed finite number of heat invariants first fails on a family of hyperbolic orbifolds. On the length side, Philippe showed that triangle groups $(2,p,q)$, those with a right angle, are determined up to isometry by their length spectrum among such groups \cite[Thm~A]{philippe2008}, and later that any two triangle groups $(r,p,q)$ with the same length spectrum coincide \cite{philippe2010gd}, \cite[Thm~3.1]{philippe2010tsg}, a proof that compares the first two or three lengths counted with multiplicity; for Euclidean triangles the first three heat invariants suffice \cite[Thm~1]{griesermaronna2013}. The degeneracies are positive rational points on the cubics $C_\Lambda$, which Bremner, Guy and Nowakowski study for integer $\Lambda$ \cite[p.~117]{bgn1993}. Their remark that solutions come in reciprocal pairs $(x,y,z)$, $(1/x,1/y,1/z)$ (loc.\ cit.) does not use integrality, and at $\Lambda=\frac{27}2$, which they do not treat, the minimal pair is such a pair, $(1:4:4)$ and $(4:1:1)$, rescaled to a common sum. Its isolation is the statement that $C_{27/2}$ has rank $0$. The arithmetic of the two-coefficient degeneracies (their number, families and classes of every size) is the subject of the companion manuscript \cite{companion}; no proof here depends on it.
-
-We know of no earlier quantitative stability estimate for recovering cone orders from heat invariants. For a sphere with a known number of cone points, the estimates of Section~\ref{sec:stability} combine the linear system of Theorem~\ref{thmB} with Ostrowski's root-perturbation bound \cite[Th\'eor\`eme~XXX]{ostrowski1940}. The loss of Lipschitz stability at a $k$-fold order, with H\"older exponent $1/k$, is the familiar behaviour of coalescing roots, and $1/k$ is sharp for general data. The rate is milder than in Prony-type moment problems with unknown amplitudes, where an $l$-node cluster costs the exponent $1/(2l-1)$ \cite{aby2015,bgy2020}, because here every weight equals $1$.
-
-That heat invariants do not hear the shape is classical in substance. Selberg's trace formula for cocompact Fuchsian groups with elliptic elements \cite{hejhal1976}, in the form of \cite[eq.~(1)]{drydenstrohmaier2009} and applied to the heat kernel \cite{mckean1972,mckean1974corr}, \cite[Rem.~2.7]{garbinjorgenson2020}, writes the heat trace of a closed hyperbolic $2$-orbifold as three terms: an area term, one term for each cone point depending only on its order, and a sum over closed geodesics of size $O(t^{-1/2}e^{-\ell^2/4t})$. In particular every heat invariant is a function of the signature, as also follows from \cite[Thm~4.20]{ucar2017} at curvature $-1$. For surfaces the mechanism goes back to Huber and McKean \cite{huber1959,mckean1972}, and for hyperbolic orbisurfaces Dryden already read the systole off the rate $e^{-\ell^2/4t}$ \cite[proof of Thm~4.5]{dryden2004}. We record three consequences. No finite number of heat invariants determines an orbifold with moduli within its signature. The difference of two heat traces of one signature is bounded explicitly, with a constant depending on the area, the systole and the diameter. The prefactor $t^{-1/2}$ is attained when the systoles differ. Within one signature isospectral non-isometric pairs do exist \cite[Thm~A]{linowitzvoight2015}. The electronic supplement contains the full experiments and a blind recovery.
+For a hyperbolic triangle orbifold the invariant $c$ of Dryden, Gordon, Greenwald and Webb encodes exactly the first two heat invariants, and they observe that it ``does not seem sufficiently strong to distinguish among'' the triangular pillows with $\chi<0$ \cite[Rem.~5.16]{dggw2008}; Theorem~\ref{thm:intro-rigid} makes this precise. We are not aware of an earlier result that locates where a fixed finite number of heat invariants first fails on a family of hyperbolic orbifolds; for Euclidean triangles the first three suffice \cite[Thm~1]{griesermaronna2013}, and two hyperbolic triangle groups with the same length spectrum coincide \cite[Thm~3.1]{philippe2010tsg}. The degeneracies are positive rational points on the cubics $C_\Lambda$ that Bremner, Guy and Nowakowski study for integer $\Lambda$ \cite[p.~117]{bgn1993}; at $\Lambda=\frac{27}2$, which they do not treat, the minimal pair is one of their reciprocal pairs, and its isolation is the statement that $C_{27/2}$ has rank $0$. The arithmetic of these degeneracies is the subject of a companion manuscript by the same authors, \emph{Triples with equal sum and equal reciprocal sum} (in preparation), which cites Theorem~\ref{thm:isolation} for the isolation; no proof here depends on it. We know of no earlier stability estimate for recovering cone orders from heat invariants. That heat invariants do not hear the shape is classical in substance \cite{hejhal1976,mckean1972}, \cite[Rem.~2.7]{garbinjorgenson2020}, \cite[proof of Thm~4.5]{dryden2004}; Section~\ref{sec:locality} records the consequences.
 
 \section{Heat invariants of constant-curvature orbifolds}\label{sec:heat}
 
@@ -199,7 +203,7 @@ Throughout, $R=\sum_i1/m_i$, $P_k=\sum_im_i^k$, $S_1=P_1$, and $e_k$ are the ele
 For a class $\Cl$ and $\Orb\in\Cl$, $\Kiso(\Orb;\Cl)$ and $\Kmult(\Orb;\Cl)$ are the least $k\ge1$ such that every $\Orb'\in\Cl$ with $H_k(\Orb')=H_k(\Orb)$ is isometric to $\Orb$, respectively has $\sigma(\Orb')=\sigma(\Orb)$ ($\min\emptyset=\infty$). So $\Kmult\le\Kiso$.
 \end{definition}
 
-Write $\Orb=\Gamma\backslash\mathbb H^2$ with $\Gamma\subset PSL(2,\R)$ cocompact, $h_t(r)=e^{-t(1/4+r^2)}$ and $g_t(u)=e^{-t/4}e^{-u^2/4t}/\sqrt{4\pi t}=\frac1{2\pi}\int h_t(r)e^{-iru}dr$, the normalization of \cite[eq.~(1)]{drydenstrohmaier2009}. For hyperbolic $\gamma\in\Gamma$ let $\ell(\gamma)$ be its translation length and $\gamma=\gamma_0^k$ with $\gamma_0$ primitive. A \emph{closed geodesic} is a hyperbolic conjugacy class (it may pass through cone points); the \emph{systole} $\ell$ is the least $\ell(\gamma)$ over hyperbolic $\gamma\in\Gamma$, and $\diam$ is the diameter of $\Orb$.
+Write $\Orb=\Gamma\backslash\mathbb H^2$ with $\Gamma\subset PSL(2,\R)$ cocompact, $h_t(r)=e^{-t(1/4+r^2)}$ and $g_t(u)=e^{-t/4}e^{-u^2/4t}/\sqrt{4\pi t}=\frac1{2\pi}\int h_t(r)e^{-iru}dr$, the normalization of \cite[Rems~2.6--2.7]{garbinjorgenson2020}. For hyperbolic $\gamma\in\Gamma$ let $\ell(\gamma)$ be its translation length and $\gamma=\gamma_0^k$ with $\gamma_0$ primitive. A \emph{closed geodesic} is a hyperbolic conjugacy class (it may pass through cone points); the \emph{systole} $\ell$ is the least $\ell(\gamma)$ over hyperbolic $\gamma\in\Gamma$, and $\diam$ is the diameter of $\Orb$.
 
 \begin{theorem}[Trace formula for the heat function]\label{thm:IEH}
 For every $t>0$, $\cZ_\Orb(t)=\mathrm I(t)+\mathrm E(t)+\Hyp(t)$, all series and integrals converging absolutely, where $\mathrm E=\sum_i\mathrm E_{m_i}$ and
@@ -211,28 +215,26 @@ For every $t>0$, $\cZ_\Orb(t)=\mathrm I(t)+\mathrm E(t)+\Hyp(t)$, all series and
 \end{theorem}
 
 \begin{proof}
-This is the Selberg trace formula for cocompact Fuchsian groups with elliptic elements as stated by Dryden and Strohmaier \cite[eq.~(1)]{drydenstrohmaier2009}, who take it from \cite{hejhal1976,iwaniec2002}; a cone point of order $m$ gives the elliptic classes $\rho^j$, $1\le j\le m-1$ \cite[p.~68]{drydenstrohmaier2009}. We use it for $h=\hat g$ with $g\in C_c^\infty(\R)$ even, the class \cite{drydenstrohmaier2009} intend. Garbin and Jorgenson state it for the heat function with the same normalization \cite[Rem.~2.7, (2.8)]{garbinjorgenson2020}; Lemma~\ref{lem:admissible} in Appendix~\ref{app:admissible} gives the standard approximation argument, using Lemma~\ref{lem:counting}.
+This is the Selberg trace formula for cocompact Fuchsian groups with elliptic elements as stated by Dryden and Strohmaier \cite[eq.~(1)]{drydenstrohmaier2009}, who take it from \cite{hejhal1976,iwaniec2002}; a cone point of order $m$ gives the classes of $\rho^j$, $1\le j\le m-1$, for a generator $\rho$ of its stabiliser \cite[p.~68]{drydenstrohmaier2009}. We use it for $h=\hat g$ with $g\in C_c^\infty(\R)$ even, the class \cite{drydenstrohmaier2009} intend. Garbin and Jorgenson state it for the heat function with the same normalization \cite[Rem.~2.7, (2.8)]{garbinjorgenson2020}; Lemma~\sref{lem:admissible} of the supplement gives the standard approximation argument, using Lemma~\ref{lem:counting}.
 \end{proof}
 
 \begin{lemma}[Counting closed geodesics]\label{lem:counting}
-The number $n_\Orb(x)$ of closed geodesics of length at most $x$ satisfies $n_\Orb(x)\le2\pi(\cosh(x+3\diam)-1)/\Area(\Orb)\le\pi e^{x+3\diam}/\Area(\Orb)$.
+The number $n_\Orb(x)$ of closed geodesics, primitive or not, of length at most $x$ satisfies $n_\Orb(x)\le2\pi(\cosh(x+3\diam)-1)/\Area(\Orb)\le\pi e^{x+3\diam}/\Area(\Orb)$.
 \end{lemma}
 
 \begin{proof}
 Let $F$ be the Dirichlet domain at a point $x_0$ fixed by no nontrivial element; $F\subset\bar B(x_0,\diam)$. Every hyperbolic class has a representative $\gamma$ whose axis meets $F$, at $y$ say, and $d(x_0,\gamma x_0)\le2d(x_0,y)+d(y,\gamma y)\le\ell(\gamma)+2\diam$. The translates $\gamma F$ with $d(x_0,\gamma x_0)\le x+2\diam$ have disjoint interiors, area $\Area(\Orb)$ each, and lie in $B(x_0,x+3\diam)$.
 \end{proof}
 
-For closed surfaces Huber gave the asymptotic count \cite[Satz~9]{huber1959} and Buser a bound depending on the genus alone \cite{buser1992}.
-
 \begin{lemma}[The hyperbolic term is small]\label{lem:hypbound}
 For $0<t\le\ell^2/(2(1+\ell))$,
 \[
-  0<\Hyp(t)\le B(\ell,\diam,t):=\frac{\pi e^{3\diam}\,\ell e^{\ell/2}}{\Area(\Orb)\,(1-e^{-\ell})}\Big(1+\frac{2t}{\ell-t}\Big)\frac{e^{-\ell^2/4t}}{\sqrt{4\pi t}}\le\frac{C(\Area,\ell,\diam)}{t^{1/2}e^{\ell^2/4t}},
+  0<\Hyp(t)\le B(\ell,\diam,t):=\frac{\pi e^{3\diam}\,\ell e^{\ell/2}}{\Area(\Orb)\,(1-e^{-\ell})}\Big(1+\frac{2t}{\ell-t}\Big)\frac{e^{-\ell^2/4t}}{\sqrt{4\pi t}}\le\frac{C(\Area(\Orb),\ell,\diam)}{t^{1/2}e^{\ell^2/4t}},
 \]
 \begin{equation}\label{eq:Cconst}
   C(A,\ell,\diam)=\frac{\sqrt\pi\,e^{3\diam}\,\ell\,e^{\ell/2}\,(2+3\ell)}{2A\,(1-e^{-\ell})\,(2+\ell)} .
 \end{equation}
-On this range $B$ increases with $\diam$ and decreases with $\ell$. In particular $\Hyp(t)=O(t^N)$ for every $N$.
+On this range $B$ increases with $\diam$ and decreases with $\ell$. In particular $\Hyp(t)=O(t^K)$ for every $K$.
 \end{lemma}
 
 \begin{proof}
@@ -241,7 +243,7 @@ With $\ell(\gamma_0)\le\ell(\gamma)$, $e^{-t/4}\le1$ and $2\sinh(x/2)\ge e^{x/2}
 
 \subsection{The expansion for every order}\label{sec:heatexp}
 
-The structure of the expansion is due to Donnelly and to Dryden, Gordon, Greenwald and Webb \cite{donnelly1976,dggw2008}, and U\c{c}ar computed every coefficient at constant curvature \cite{ucar2017}, starting from Watson's expansion for spherical lunes \cite{watson2005}, which he reproves with minor corrections; see also \cite[p.~2]{schueth2025}. We derive the coefficients again from Theorem~\ref{thm:IEH}, in closed form for every order. Write $\theta_j=\pi j/m$ and, for an integer $m\ge1$, $\Phi_m(u)=\sum_{j=1}^{m-1}(4m\sin\theta_j\sin(\theta_j-u))^{-1}$, analytic and even in $|u|<\pi/m$, with $\Phi_1=0$.
+The structure of the expansion is due to Donnelly and to Dryden, Gordon, Greenwald and Webb \cite{donnelly1976,dggw2008}, and U\c{c}ar computed every coefficient at constant curvature \cite{ucar2017}, starting from Watson's expansion for spherical lunes \cite{watson2005}; Schueth discusses these all-order formulas \cite[p.~2]{schueth2025}. We derive the coefficients again from Theorem~\ref{thm:IEH}, in a closed form for every order that the later sections use. Write $\theta_j=\pi j/m$ and, for an integer $m\ge1$, $\Phi_m(u)=\sum_{j=1}^{m-1}(4m\sin\theta_j\sin(\theta_j-u))^{-1}$, analytic and even in $|u|<\pi/m$, with $\Phi_1=0$.
 
 \begin{lemma}[Closed form]\label{lem:Phi}
 For $0<|u|<\pi/m$, $\Phi_m(u)=\dfrac{\cot u-m\cot(mu)}{4m\sin u}$. Writing $u/\sin u=\sum_{i\ge0}\sigma_iu^{2i}$, so that $\sigma_0=1$ and $\sigma_i>0$, $\Phi_m(u)=\sum_k\phi_k(m)u^{2k}$ with
@@ -266,18 +268,14 @@ with Bernoulli polynomials $B_{2l}(x)$ and, for every integer $m\ge1$,
   b_l(m)=\frac{(-1)^l\,p_l(m)}{m},\qquad
   p_l(m)=\frac1{4^l}\sum_{k=0}^{l}\frac{(2k)!}{k!\,(l-k)!}\;m\,\phi_k(m).
 \end{equation}
-Consequently $c_1=\Area(\Orb)/4\pi$ and, for $j\ge2$,
+Through the polynomial $p_l$ (Lemma~\ref{lem:conepoly}), $b_l$ extends to every real $m>0$, and Sections~\ref{sec:signature} and~\ref{sec:stability} use this extension. Consequently $c_1=\Area(\Orb)/4\pi$ and, for $j\ge2$,
 \begin{equation}\label{eq:cj}
   c_j(\Orb)=\alpha_{j-1}\,\frac{\Area(\Orb)}{4\pi}+\sum_{i=1}^nb_{j-2}(m_i).
 \end{equation}
 \end{proposition}
 
 \begin{proof}
-By Theorem~\ref{thm:IEH} and Lemma~\ref{lem:hypbound}, $\cZ_\Orb=\mathrm I+\mathrm E+O(t^N)$. For $0<a<2\pi$ let $F_a(r)=e^{-ar}/(1+e^{-2\pi r})$; Euler's beta integral gives $\int F_a(r)e^{sr}dr=[2\sin((a-s)/2)]^{-1}$ for $a-2\pi<s<a$, so the moments $\mathfrak m_n(a)=\int r^nF_a$ are its derivatives at $s=0$ (differentiation under the integral being dominated by $|r|^ne^{s_0|r|}F_a$ for $|s|\le s_0<\min(a,2\pi-a)$), and $|e^{-x}-\sum_{k<K}(-x)^k/k!|\le x^K/K!$ ($x=tr^2\ge0$) gives $\int F_ae^{-tr^2}dr\sim\sum_k\frac{(-t)^k}{k!}\mathfrak m_{2k}(a)$. Since $\mathrm E_m(t)=e^{-t/4}\sum_j(2m\sin\theta_j)^{-1}\int F_{2\theta_j}e^{-tr^2}dr$ and
-\[
-  \sum_{j=1}^{m-1}\frac{\mathfrak m_{2k}(2\theta_j)}{2m\sin\theta_j}=\frac{d^{2k}}{ds^{2k}}\Phi_m\Big(\frac s2\Big)\Big|_{s=0}=\frac{(2k)!}{4^k}\phi_k(m),
-\]
-multiplying by $e^{-t/4}=\sum_i(-t/4)^i/i!$ gives \eqref{eq:bl}. For $\mathrm I$, $r\tanh\pi r=|r|-2|r|/(e^{2\pi|r|}+1)$, $\int|r|e^{-tr^2}dr=1/t$, and the moments $\int_0^\infty r^{2k+1}(e^{2\pi r}+1)^{-1}dr=(1-2^{-2k-1})(-1)^kB_{2k+2}/(4(k+1))$ give $\alpha_k$, since $B_{2l}(\frac12)=(2^{1-2l}-1)B_{2l}$.
+This is U\c{c}ar's expansion \cite[Thm~4.20(ii), (4.35)]{ucar2017} at curvature $-1$, written in closed form through Lemma~\ref{lem:Phi} (Remark~\ref{rem:ucaragree}). Section~\sref{sec:derivation} of the supplement derives it directly from Theorem~\ref{thm:IEH}, independently of \cite{dggw2008,ucar2017}.
 \end{proof}
 
 \begin{lemma}[Cone polynomials]\label{lem:conepoly}
@@ -292,10 +290,10 @@ The first values are $\alpha_0,\dots,\alpha_4=1,-\frac13,\frac1{15},-\frac4{315}
 \begin{equation}\label{eq:plexplicit}
   p_0(m)=\frac{m^2-1}{12},\qquad p_1(m)=\frac{m^4}{360}+\frac{m^2}{36}-\frac{11}{360},\qquad p_2(m)=\frac{m^6}{2520}+\frac{m^4}{720}+\frac{m^2}{180}-\frac{37}{5040}.
 \end{equation}
-At $K=-1$ the cone terms $b_0=p_0(m)/m$, $b_1=-p_1(m)/m$, $b_2=p_2(m)/m$ agree with Schueth's $a_0,a_1$ \cite[Rem.~4.2]{schueth2019} and $a_2$ \cite[Thm~4.1]{schueth2019}; she notes that the first two were already computed in \cite[\S5.6]{dggw2008} (there Prop.~5.5 and (5.10)). That $p_l(1)=0$ says that an ``order-$1$ cone point'' is a smooth point.
+At $K=-1$ the cone terms $b_0=p_0(m)/m$, $b_1=-p_1(m)/m$, $b_2=p_2(m)/m$ agree with Schueth's $a_0,a_1$ \cite[Rem.~4.2]{schueth2019} and $a_2$ \cite[Thm~4.1]{schueth2019}; she notes that the first two were already computed in \cite[Ex.~5.6]{dggw2008} (with Prop.~5.5 and (5.10) there). That $p_l(1)=0$ says that an ``order-$1$ cone point'' is a smooth point.
 
-\begin{remark}[Agreement with U\c{c}ar; independence]\label{rem:ucaragree}\label{rem:proofC}
-Putting $u=it/2$ in Lemma~\ref{lem:Phi} gives $m\Phi_m^{(2k)}(0)=2\cdot4^kk!\,m\,c^{\mathbb S}_k(\pi/m)$, with $c^{\mathbb S}_k$ the lune coefficient \cite[(4.25)]{ucar2017} (Watson's, as reproved there), so \eqref{eq:bl} is $(-1)^l$ times U\c{c}ar's cone contribution \cite[Thm~4.20(ii), with (4.33)--(4.34)]{ucar2017} at $\kappa=-1$, for every $l$; his smooth coefficients \cite[(4.35)]{ucar2017} are our $\alpha_k$ (also compared exactly for $l\le40$). The derivation is independent of the coefficient computations of \cite{dggw2008,ucar2017} and of the locality theorem of \cite{donnelly1976,dggw2008}: it uses only the trace formula for $\hat g$, $g\in C_c^\infty(\R)$ even, Lemma~\ref{lem:counting}, the approximation argument of Lemma~\ref{lem:admissible} and classical analysis.
+\begin{remark}[Agreement with U\c{c}ar]\label{rem:ucaragree}\label{rem:proofC}
+Comparing the Taylor coefficients of Lemma~\ref{lem:Phi} with those of the lune coefficients gives $m\Phi_m^{(2k)}(0)=2\cdot4^kk!\,m\,c^{\mathbb S}_k(\pi/m)$, with $c^{\mathbb S}_k$ the lune coefficient \cite[(4.25)]{ucar2017} (Watson's, as reproved there), so \eqref{eq:bl} is $(-1)^l$ times U\c{c}ar's cone contribution \cite[Thm~4.20(ii), with (4.33)--(4.34)]{ucar2017} at $\kappa=-1$, for every $l$; his smooth coefficients \cite[(4.35)]{ucar2017} are our $\alpha_k$ (the two were also compared exactly for $l\le40$; Appendix~\ref{app:reproducibility}).
 \end{remark}
 
 \subsection{One odd power sum per coefficient}\label{sec:basis}
@@ -320,9 +318,7 @@ $c_j$ being the first to involve $P_{2j-3}$ (Proposition~\ref{prop:frontend}). I
 \end{equation}
 so $c_1,c_2$ are equivalent to $(R,S_1)$ and $c_3$ adds $P_3$. A flat cone contributes nothing at order $t^1$: the cubic term is a curvature effect.
 
-\begin{remark}[Other curvatures]\label{rem:curvature}
-None of this is new. Proposition~\ref{prop:heatinput} holds at constant curvature $K$ with $K^l$ in place of $(-1)^l$ \cite[Thm~4.20]{ucar2017}; at $K=0$ the coefficients of $t^l$, $l\ge1$, vanish, and at $K=0,+1$ the $t^0$ coefficient determines the closed orientable orbifold type \cite[Thms~5.14--5.15, Prop.~5.22]{dggw2008}, as does, at $K=+1$, the full sequence of heat invariants \cite[Cor.~4.21(iv)]{ucar2017}. At $K=-1$ it no longer suffices (Theorem~\ref{thm:intro-rigid}(ii)).
-\end{remark}
+At constant curvature $K$ the expansion holds with $K^l$ in place of $(-1)^l$ \cite[Thm~4.20]{ucar2017}; at $K=0,+1$ the $t^0$ coefficient already determines the orbifold type (Section~\ref{sec:prior}), and at $K=-1$ it does not (Theorem~\ref{thm:intro-rigid}(ii)). An unknown $K$ is one more unknown, tied to $\chi$ by $K\Area=2\pi\chi$.
 
 \section{Hearing the signature}\label{sec:signature}
 
@@ -373,18 +369,18 @@ So recovering the orders is a linear problem followed by root-finding, singular 
 \begin{lettered}[The fibres of $n-1$ invariants]\label{thmC}
 \leavevmode
 \begin{enumerate}[label=(\arabic*)]
-\item \emph{Pair criterion} (an odd symmetric system in the sense of \cite[\S3]{borweiningalls1994}). For multisets $m,m'$ of $n\ge2$ nonzero complex numbers and $Q(z)=\prod_i(z-m_i)\prod_j(z+m'_j)$, $\cI_{n-1}(m)=\cI_{n-1}(m')$ if and only if $Q(z)-Q(-z)=2\varkappa z^3$ for some $\varkappa\in\C$; if $m_i+m_j\ne0$ for $i<j$, then $\varkappa=0$ exactly when $m'=m$.
+\item \emph{Pair criterion} (an odd symmetric system in the sense of \cite[\S3]{borweiningalls1994}; the forward direction is \cite[Identity~9 with $m=3$]{chen2025survey}). For multisets $m,m'$ of $n\ge2$ nonzero complex numbers and $Q(z)=\prod_i(z-m_i)\prod_j(z+m'_j)$, $\cI_{n-1}(m)=\cI_{n-1}(m')$ if and only if $Q(z)-Q(-z)=2\varkappa z^3$ for some $\varkappa\in\C$; if $m_i+m_j\ne0$ for $i<j$, then $\varkappa=0$ exactly when $m'=m$.
 \item \emph{Real sharpness.} For $n\ge2$, every multiset of $n$ distinct positive reals lies on a real curve of multisets of positive reals sharing $\cI_{n-1}$.
-\item \emph{Integer sharpness for $n=3,4$.} $\{2,8,8\}$ and $\{3,3,12\}$ share $\cI_2$ ($R=\frac34$, $P_1=18$) and have $P_3=1032\ne1782$; $\{3,10,15,30\}$ and $\{4,5,21,28\}$ share $\cI_3$ ($R=\frac8{15}$, $P_1=58$, $P_3=31402$) and have $P_5=25159618\ne21298618$. So $\Kmult(\Orb;\Sig_{0,n})=n$ for these orbifolds.
+\item \emph{Integer sharpness for $n=3,4$.} $\{2,8,8\}$ and $\{3,3,12\}$ share $\cI_2$ ($R=\frac34$, $P_1=18$) and have $P_3=1032\ne1782$; $\{3,10,15,30\}$ and $\{4,5,21,28\}$ share $\cI_3$ ($R=\frac8{15}$, $P_1=58$, $P_3=31402$) and have $P_5=25159618\ne21298618$; this pair is \cite[(A.685)]{chen2025survey}. So $\Kmult(\Orb;\Sig_{0,n})=n$ for these orbifolds.
 \end{enumerate}
 \end{lettered}
 
 \begin{proof}
-(1) As in Theorem~\ref{thmA}, agreement gives $e_j(X)=0$ for odd $j\ne2n-3$, so $Q(z)-Q(-z)=-2e_{2n-3}(X)z^3$, and conversely by the second half of Lemma~\ref{lem:parity}; if $\varkappa=0$, $Q$ is even and $m'=m$. (2) Scaling column $i$ of the Jacobian of $\cI_{n-1}$ by $m_i^2$ gives a Vandermonde-type matrix of rank $n-1$ at distinct $m_i$, so the fibre is a smooth curve near $m$, whose other points are multisets different from $m$. (3) Direct computation; the four multisets are hyperbolic signatures, and spheres with $n$ cone points share $H_{n-1}$ exactly when they share $\cI_{n-1}$.
+(1) As in Theorem~\ref{thmA}, agreement gives $e_j(X)=0$ for odd $j\ne2n-3$, so $Q(z)-Q(-z)=-2e_{2n-3}(X)z^3$, and conversely by the second half of Lemma~\ref{lem:parity}; if $\varkappa=0$, $Q$ is even and $m'=m$. (2) Scaling column $i$ of the $(n-1)\times n$ Jacobian of $\cI_{n-1}$ by $m_i^2$ gives the matrix with rows $\varpi_rm_i^{2r}$, $0\le r\le n-2$ ($\varpi_0=-1$, $\varpi_r=2r-1$), whose rows are, up to these nonzero factors, those of a Vandermonde matrix in the distinct $m_i^2$; it has rank $n-1$, so the fibre is a smooth curve near $m$, whose other points are multisets different from $m$. (3) Direct computation; the four multisets are hyperbolic signatures, and spheres with $n$ cone points share $H_{n-1}$ exactly when they share $\cI_{n-1}$.
 \end{proof}
 
 \begin{remark}[Integer witnesses]\label{rem:witnesses}
-Rational witnesses scale to hyperbolic integer ones, and a witness is disjoint, since a common order could be cancelled, contradicting Theorem~\ref{thmA}. For $n=4$, call a pair $(A,B)$ of $4$-multisets of nonzero integers a \emph{pencil splitting} if $e_1(A)=e_1(B)=0$, $e_3(A)=e_3(B)$, $e_4(A)=e_4(B)$ and $A\uplus(-B)$ has four entries of each sign and no pair $\{z,-z\}$. Then $s_1$, $s_3=3e_3$ and $s_{-1}=e_3/e_4$ agree, so the positive part of $A\uplus(-B)$ and the negative of its negative part form a witness ($A=\{-30,-3,5,28\}$, $B=\{-21,-4,10,15\}$ give that of Theorem~\ref{thmC}(3)). Pencil splittings with all entries of absolute value at most $130$ (respectively $220$) give exactly $17$ (respectively $49$) witnesses, of which $14$ (respectively $30$) are primitive. Not every witness arises so: of the $107$ primitive witnesses with all orders at most $440$, $6$ have no pencil splitting, the smallest being $(0;16,16,74,74)$ and $(0;11,37,44,88)$. For $n=5$ no witness has all orders at most $120$. The searches, their programs and the witnesses are in Section~\sref{sec:searches} of the supplement.
+Rational witnesses scale to hyperbolic integer ones, and a witness is disjoint, by Theorem~\ref{thmA}. For $n=4$ an exhaustive exact search finds $193$ unordered pairs of $4$-multisets of orders at most $440$ with equal $(R,P_1,P_3)$, $107$ of them primitive (orders with greatest common divisor $1$), and no three multisets with a common key; the eight primitive ones with all orders at most $84$ are exactly (A.685)--(A.692) of \cite[\S A.5.8]{chen2025survey}. All but six of the $107$ come from a ``pencil'' of quartics, the smallest exception being $(0;16,16,74,74)$, $(0;11,37,44,88)$. For $n=5$ no witness has all orders at most $120$. Searches, programs and the pencil construction: Section~\sref{sec:searches} of the supplement.
 \end{remark}
 
 \subsection{Heat data of a signature}
@@ -435,7 +431,7 @@ $(1;15)$ and $(0;3,3,5,5)$ share exactly two heat invariants: both areas are $2\
 An \emph{$L$-configuration} is a nonempty finite multiset $Z$ of nonzero rationals of even size, with no pair $\{z,-z\}$, such that $\sum_{z\in Z}z^j=0$ for odd $j\le2L-3$ and $\sum_{z\in Z}z^{-1}=0$. Its \emph{imbalance} is $\iota(Z)=\#\{z>0\}-\#\{z<0\}$.
 \end{definition}
 
-By Lemma~\ref{lem:sigdata} and Theorem~\ref{thm:sigsep}, two orbifolds in $\Sig$ with different signatures share their first $L$ heat invariants exactly when $Z=U^*\uplus(-V^*)$ is an $L$-configuration with imbalance $\iota(Z)=2(g'-g)$. Conversely, an $L$-configuration $Z$ scaled to coprime integers gives, with $U=Z_{>0}$, $V=-Z_{<0}$ and all entries $1$ removed, signatures $(g;U)$ and $(g';V)$ with $g'-g=\iota(Z)/2$ and equal area, the smaller genus being the least that makes its side hyperbolic (the other side then has the same positive area), sharing exactly $L$ heat invariants if and only if $\sum_Zz^{2L-1}\ne0$. Since $Z$ has no pair $\{z,-z\}$, $Z$ and $-Z$ form a solution of degree $2L-2$ of the Prouhet--Tarry--Escott problem, so $|Z|\ge N(2L-2)$.
+By Lemma~\ref{lem:sigdata} and Theorem~\ref{thm:sigsep}, two orbifolds in $\Sig$ with different signatures share their first $L$ heat invariants exactly when $Z=U^*\uplus(-V^*)$ is an $L$-configuration with imbalance $\iota(Z)=2(g'-g)$. Conversely, an $L$-configuration $Z$ scaled to coprime integers gives, with $U=Z_{>0}$, $V=-Z_{<0}$ and all entries $1$ removed, signatures $(g;U)$ and $(g';V)$ with $g'-g=\iota(Z)/2$ and equal area, the smaller genus being the least that makes its side hyperbolic (the other side then has the same positive area), sharing exactly $L$ heat invariants if and only if $\sum_Zz^{2L-1}\ne0$, since $R$ agrees and $c_{L+1}$ adds $P_{2L-1}$ (Lemma~\ref{lem:triangular}). Since $Z$ has no pair $\{z,-z\}$, $Z$ and $-Z$ form a solution of degree $2L-2$ of the Prouhet--Tarry--Escott problem, so $|Z|\ge N(2L-2)$.
 
 \begin{theorem}[Descartes bound]\label{thm:descartes}
 Every $L$-configuration has $|\iota(Z)|\le|Z|-2L$. Hence if orbifolds of genera $g\ne g'$ share their first $L$ heat invariants, then $|U^*|+|V^*|\ge2L+2|g-g'|$, and if moreover $g\ne g'$ and $|U^*|+|V^*|=2L+2$, the least size allowed by Theorem~\ref{thm:sigsep}, then $|g-g'|=1$ and $\{|U^*|,|V^*|\}=\{L,L+2\}$.
@@ -454,14 +450,14 @@ For every $j$, including $j=-1$, $P_j(U)-P_j(V)=(1-2^{j+1})(P_j(X)-P_j(Y))$, and
 \end{proof}
 
 \begin{theorem}[No uniform number of heat invariants]\label{thm:signonuniform}
-For every $L\ge2$ there are orbifolds in $\Sig$ of different genera, the smaller of which can be any integer $g\ge1$, and orbifolds in $\Sig_0$ with different numbers of cone points, sharing their first $L$ heat invariants. Hence $\sup_\Orb\Kmult(\Orb;\Sig)=\sup_\Orb\Kmult(\Orb;\Sig_0)=\infty$.
+For every $L\ge2$ there are orbifolds in $\Sig$ of different genera, the smaller of which can be any prescribed integer $g\ge2$ (add equally many handles to both), and orbifolds in $\Sig_0$ with different numbers of cone points, sharing their first $L$ heat invariants. Hence $\sup_\Orb\Kmult(\Orb;\Sig)=\sup_\Orb\Kmult(\Orb;\Sig_0)=\infty$.
 \end{theorem}
 
 \begin{proof}
-The genus pairs are built in the proof of Theorem~\ref{thm:growth}(e); adding equally many handles to both keeps the areas, hence the invariants, equal. For the cone count, take a nontrivial solution of degree $2L-3$ of the Prouhet--Tarry--Escott problem \cite[Prop.~3]{borweiningalls1994}, cancel common elements and translate so that the least element is $1$, in $X$ say; Proposition~\ref{prop:doubling} with $\mult_X\ge1$, $\mult_Y=0$ applies.
+The genus pairs are built in the proof of Theorem~\ref{thm:growth}(c); adding equally many handles to both keeps the areas, hence the invariants, equal. For the cone count, take a nontrivial solution of degree $2L-3$ of the Prouhet--Tarry--Escott problem \cite[Prop.~3]{borweiningalls1994}, cancel common elements and translate so that the least element is $1$, in $X$ say; Proposition~\ref{prop:doubling} with $\mult_X\ge1$, $\mult_Y=0$ applies.
 \end{proof}
 
-For the growth, let $f_g(A)$ and $f_n(A)$ be the maxima over orbifolds of area at most $A$ of the least $k$ such that every $\Orb'\in\Sig$ (respectively every genus-$0$ $\Orb'$) with $H_k(\Orb')=H_k(\Orb)$ has the same genus (respectively the same number of cone points), $f_n$ being maximised over genus-$0$ $\Orb$; $f_g,f_n\le f$. One has $k+1\le N(k)\le\frac12k(k+1)+1$ \cite[Props.~2--3]{borweiningalls1994}; Melzak credits the pigeonhole bound on the right to Hardy and Wright \cite[p.~233]{melzak1961} and reports Wright's improvement $N(k)\le(k^2+4)/2$ (1935) \cite[p.~234]{melzak1961}, together with an exact but non-constructive formula and numerical bounds for $k\le29$ \cite[Table~1]{melzak1961}. None of these is $o(k^2)$, and $N(k)=o(k^2)$ remains open \cite[\S6, Problem~3]{borweiningalls1994}; Problem~4 there, $O(k^2)$ for the exact-degree analogue, was settled by Wooley; his bound for it is now $\frac12k(k+1)+1$ \cite[Thm~13.1]{wooley2019}. Ideal solutions, $N(k)=k+1$, are known only for $k\le9$ and $k=11$, and whether $N(k)=k+1$ for all $k$ is open \cite{cmsv2024}, \cite[\S1]{crootmaoyip2026}.
+For the growth, let $f_g(A)$ and $f_n(A)$ be the maxima over orbifolds of area at most $A$ of the least $k$ such that every $\Orb'\in\Sig$ (respectively every genus-$0$ $\Orb'$) with $H_k(\Orb')=H_k(\Orb)$ has the same genus (respectively the same number of cone points), $f_n$ being maximised over genus-$0$ $\Orb$; $f_g,f_n\le f$. One has $k+1\le N(k)\le\frac12k(k+1)+1$ \cite[Props.~2--3]{borweiningalls1994}, and Melzak reports Wright's improvement $N(k)\le(k^2+4)/2$ \cite[p.~234]{melzak1961}. No bound $o(k^2)$ is known, and $N(k)=o(k^2)$ is open \cite[\S6, Problem~3]{borweiningalls1994}. Ideal solutions, $N(k)=k+1$, are known only for $k\le9$ and $k=11$, and whether $N(k)=k+1$ for all $k$ is open \cite{cmsv2024}, \cite[\S1]{crootmaoyip2026}.
 
 \begin{theorem}[Growth]\label{thm:growth}
 \leavevmode
@@ -470,42 +466,79 @@ For the growth, let $f_g(A)$ and $f_n(A)$ be the maxima over orbifolds of area a
 \[
   \Big\lfloor\sqrt{\tfrac13\big(\tfrac A{2\pi}-1\big)}\Big\rfloor+2\ \le\ f(A)\ \le\ \Big\lfloor\frac A\pi\Big\rfloor+4 .
 \]
-\item If $L\ge2$ and $f(A)\ge L+1$, then $N(2L-2)\le2\lfloor A/\pi\rfloor+8$. (c) If $\beta>0$ and $N(k)\le Ck^\beta$ for all $k\ge1$, then $f(A)\ge\frac12(A/6\pi C)^{1/\beta}$ for all $A\ge8\pi$.
-\item[(d)] For $0<\alpha\le1$, $f(A)\ge cA^\alpha$ for all large $A$ and some $c>0$ if and only if $N(k)\le Ck^{1/\alpha}$ for all $k\ge1$ and some $C$. In particular $f(A)=\Theta(A)$ if and only if $N(k)=O(k)$.
-\item[(e)] $f_g(A)\ge\sqrt{A/16\pi}$ for $A\ge16\pi$, $f_n(A)\ge\sqrt{A/12\pi}$ for $A\ge8\pi$, and (d) holds verbatim for $f_g$ and $f_n$.
+\item If $\beta>0$ and $N(k)\le Ck^\beta$ for all $k\ge1$, then $f(A)\ge\frac12(A/6\pi C)^{1/\beta}$ for all $A\ge8\pi$.
+\item $f_g(A)\ge\sqrt{A/16\pi}$ for $A\ge16\pi$ and $f_n(A)\ge\sqrt{A/12\pi}$ for $A\ge8\pi$.
+\item For $0<\alpha\le1$, $f(A)\ge cA^\alpha$ for all large $A$ and some $c>0$ if and only if $N(k)\le Ck^{1/\alpha}$ for all $k\ge1$ and some $C$, and likewise for $f_g$ and $f_n$. In particular $f(A)=\Theta(A)$ if and only if $N(k)=O(k)$.
 \end{enumerate}
 \end{theorem}
 
-The proofs are in Appendix~\ref{app:pte}. With the known quadratic bounds on $N(k)$, (c) gives exactly the exponent $\frac12$ of (a), and any exponent above $\frac12$ in (d) would prove $N(k)=O(k^{2-\epsilon})$. Figure~\ref{fig:F4} compares the bounds with the pairs below and with the exact largest $\Kmult$ on the complete classes of the $525$ areas $2\pi s$, $s\le7/5$, attained by a signature of genus at most $1$ with at most four cone points of order at most $12$ (each class enumerated with no bound on the orders; $504$ contain orders above $12$); beyond $s=7/5$ only bounds and constructed pairs are shown.
+The proofs of (a)--(c) are in Appendix~\ref{app:pte}, and (d) is proved after Proposition~\ref{prop:Tmin}. With the known quadratic bounds on $N(k)$, (b) gives exactly the exponent $\frac12$ of (a), and any exponent above $\frac12$ in (d) would prove $N(k)=O(k^{2-\epsilon})$. All of this passes through one quantity. Let $T(L)$ be the least size of an $L$-configuration and $A_{\min}(L)$ the infimum of the areas of orbifolds $\Orb\in\Sig$ with $\Kmult(\Orb;\Sig)\ge L+1$, so that $f(A)\ge L+1$ for $A>A_{\min}(L)$ and $f(A)\le L$ for $A<A_{\min}(L)$.
+
+\begin{proposition}[Minimal configurations]\label{prop:Tmin}
+For $L\ge2$,
+\begin{gather*}
+  \tfrac\pi2\big(T(L)-8\big)\le A_{\min}(L)<2\pi\,T(L),\\
+  \max\big(2L+2,\,N(2L-2)\big)\le T(L)\le6\min\big((L-1)^2+1,\,N(2L-3)\big).
+\end{gather*}
+So $f$ is, up to constant factors in $A$, the inverse function of $T$, and $f(A)=\Theta(A)$, $T(L)=O(L)$ and $N(k)=O(k)$ are equivalent.
+\end{proposition}
+
+\begin{proof}
+A pair of area $A$ sharing $H_L$ gives an $L$-configuration with $|Z|\le|U|+|V|\le2\lfloor A/\pi\rfloor+8$ (proof of Corollary~\ref{cor:sigarea}), so $T(L)\le2A_{\min}(L)/\pi+8$. Conversely, an $L$-configuration of size $T$ is realised as above by a pair sharing $H_L$ whose smaller genus $g_0$ is the least that makes its side $W$ hyperbolic; the area is below $2\pi(|W|-2)<2\pi T$ if $g_0=0$ and at most $4\pi<2\pi T$ otherwise, also when every entry of $W$ is $1$. The lower bounds on $T$ are Theorem~\ref{thm:sigsep} and the Prouhet--Tarry--Escott solution $Z,-Z$; the upper bound is Proposition~\ref{prop:doubling}, with $|U|+|V|=6n$, applied to Lemma~\ref{lem:pigeon}. The equivalences follow, as $N$ is nondecreasing.
+\end{proof}
+
+\begin{proof}[Proof of Theorem~\ref{thm:growth}(d)]
+If $f(A)\ge cA^\alpha$ for large $A$, then $f(A)\ge L+1$ for $A=((L+1)/c)^{1/\alpha}$, so $A\ge A_{\min}(L)$ and Proposition~\ref{prop:Tmin} gives $N(2L-2)\le T(L)\le2A/\pi+8=O(L^{1/\alpha})$; as $N$ is nondecreasing, $N(k)=O(k^{1/\alpha})$. The converse is (b). For $f_g,f_n$, the converse follows from the thresholds in the proof of (c), and the direct implication from $f_g,f_n\le f$.
+\end{proof}
+
+Theorem~\ref{thm:sigsep} and the pairs of Example~\ref{ex:ptepairs} give the following values; $T(L)=2L+2$, the analogue of an ideal Prouhet--Tarry--Escott solution, holds for $L=2,3$ and is open from $L=4$ on (Problem~\ref{prob:ideal}).
+\[
+\begin{array}{@{}c|cccccc@{}}
+  L&2&3&4&5&6&7\\\hline
+  2L+2\le T(L)&6&8&10&12&14&16\\
+  T(L)\le&6&8&14&18&24&40
+\end{array}
+\] Figure~\ref{fig:F4} compares the bounds with the pairs below and with the exact largest $\Kmult$ on the complete classes of the $525$ areas $2\pi s$, $s\le7/5$, attained by a signature of genus at most $1$ with at most four cone points of order at most $12$ (each class enumerated with no bound on the orders; $504$ contain orders above $12$); beyond $s=7/5$ only bounds and constructed pairs are shown.
 
 \paperfigure{F4}{fig:F4}
 
 \begin{example}[Small pairs]\label{ex:ptepairs}
-These pairs share exactly $L$ heat invariants (exact computation); all of them are written out in Table~\sref{tab:pairs} of the supplement. (i) $L=3$: $(0;3,10,15,30)$ and $(0;4,5,21,28)$, of area $2\pi\cdot\frac{22}{15}$. This is the $n=4$ witness of Theorem~\ref{thmC}(3). Its area is less than that of the smallest genus-changing pair sharing three invariants found here, $(1;15,15,15)$ and $(0;3,3,5,7,7,21)$, of area $2\pi\cdot\frac{14}5$. (ii) $L=3$, genus $0$ with $7$ and $8$ cone points: $(0;4,4,5,5,6,12,12)$ and $(0;2,2,2,3,10,10,10,10)$, the doubling of $[1,5,5]=[2,3,6]$ \cite[A.1.6]{chen2025survey} after cancelling the common order $6$. (iii) $L=4,\dots,7$: genus-$0$ pairs with equal cone counts and area less than $2\pi\cdot5,7,10,18$, from odd ideal symmetric solutions of size $7$ \cite[p.~9]{borweiningalls1994}, Letac's two solutions of size $9$ \cite[p.~2]{cmsv2024}, equal sums of odd powers \cite[A.1.33]{chen2025survey} and the ideal solution of size $12$ \cite{cmsv2024}, and genus pairs with $|U^*|+|V^*|=16,20,26,40$. So $f(A)\ge L+1$ already for $A/2\pi\ge2L-3$, $2\le L\le5$, and for $A/2\pi\ge10$, $18$ when $L=6,7$.
+These pairs share exactly $L$ heat invariants (exact computation); Table~\sref{tab:pairs} of the supplement writes them out with their constructions. (i) $L=3$: $(0;3,10,15,30)$ and $(0;4,5,21,28)$, of area $2\pi\cdot\frac{22}{15}$, the witness of Theorem~\ref{thmC}(3), and the genus-changing pair $(1;15,15,15)$ and $(0;3,3,5,7,7,21)$, of area $2\pi\cdot\frac{14}5$. (ii) $L=3$, $7$ against $8$ cone points: $(0;4,4,5,5,6,12,12)$ and $(0;2,2,2,3,10,10,10,10)$, the doubling of $[1,5,5]=[2,3,6]$, equal sums of first and third powers \cite[A.1.6]{chen2025survey}, after cancelling the common order $6$. (iii) $L=4,\dots,7$: genus-$0$ pairs with equal cone counts, $|U^*|+|V^*|=14,18,24,40$ and area less than $2\pi\cdot5,7,10,18$, from symmetric ideal solutions \cite[p.~9]{borweiningalls1994}, \cite{cmsv2024} and equal sums of odd powers \cite[A.1.33]{chen2025survey}, and genus pairs with $|U^*|+|V^*|=16,20,26,40$.
 \end{example}
 
 \begin{remark}[The first open case]\label{rem:T3}
-Let $T_L$ be the least $|U^*|+|V^*|$ over genus-changing pairs sharing $L$ invariants; $T_2=6$ and $T_3\le10$. By Theorem~\ref{thm:descartes} a pair of size $8$ has shape $(3,5)$, and an exhaustive exact search excludes every one whose five-element side, scaled to coprime integers, has entries at most $220$ (supplement, Section~\sref{sec:searches}). Real solutions of that shape form a nonempty open set; for example $\{1,1,1,1,7\}$ has a partner triple of positive reals. So $T_3\in\{8,10\}$ is undecided, and an obstruction, if any, is arithmetic.
+Let $T_{\rm g}(L)$ be the least size of an $L$-configuration with $\iota(Z)\ne0$, that is, the least $|U^*|+|V^*|$ over genus-changing pairs sharing $L$ invariants; $T_{\rm g}(2)=6$ and $T_{\rm g}(3)\le10$. By Theorem~\ref{thm:descartes} a pair of size $8$ has shape $(3,5)$, and an exhaustive exact search excludes every one whose five-element side, scaled to coprime integers, has entries at most $220$ (supplement, Section~\sref{sec:searches}). Real solutions of that shape form a nonempty open set; for example $\{1,1,1,1,7\}$ has a partner triple of positive reals. So $T_{\rm g}(3)\in\{8,10\}$ is undecided, and an obstruction, if any, is arithmetic.
 \end{remark}
+
+%% ===================================================================================
+%% SLOT FOR THE NEW SECTION (being written in a parallel session; do not fill here).
+%% Content: finitely many approximately known eigenvalues determine the signature, in a class
+%% with bounded area, systole bounded below and cone orders bounded above.
+%% Keep the label sec:eigen: the introduction (Section 1.1, abstract, roadmap) refers to it.
+%% ===================================================================================
+\section{From heat invariants to eigenvalues}\label{sec:eigen}
+
+\textbf{[SLOT: this section is to be written. It will state and prove that finitely many approximately known eigenvalues determine the signature among orbifolds in $\Sig$ of bounded area, systole bounded below and cone orders bounded above, connecting the heat invariants of Sections~\ref{sec:heat}--\ref{sec:signature} to finitely many eigenvalues. No other section depends on it.]}
+%% END OF SLOT ========================================================================
 
 \section{What heat does not hear}\label{sec:locality}
 
-That the heat expansion cannot see the moduli is classical (Section~\ref{sec:prior}); we record it and then make the mechanism quantitative.
+That the heat expansion cannot see the moduli is classical (Section~\ref{sec:prior}); we record it and make the mechanism quantitative.
 
 \begin{proposition}[Signature locality]\label{prop:locality}
 For every $j\ge1$, $c_j(\Orb)=\Phi_j(\sigma(\Orb))$, where $\Phi_1(g;m)=\frac12(2g-2+\sum_i(1-\frac1{m_i}))$ and $\Phi_j(g;m)=\alpha_{j-1}\Phi_1(g;m)+\sum_ib_{j-2}(m_i)$ for $j\ge2$. In particular two orbifolds of the same signature have the same heat expansion to all orders.
 \end{proposition}
 
 \begin{proof}
-This is Proposition~\ref{prop:heatinput} with \eqref{eq:area}: in Theorem~\ref{thm:IEH}, $\mathrm I$ depends only on the area, $\mathrm E$ only on the cone orders, and $\Hyp(t)=O(t^N)$ for every $N$ (Lemma~\ref{lem:hypbound}).
+This is Proposition~\ref{prop:heatinput} with \eqref{eq:area}: in Theorem~\ref{thm:IEH}, $\mathrm I$ depends only on the area, $\mathrm E$ only on the cone orders, and $\Hyp(t)=O(t^K)$ for every $K$ (Lemma~\ref{lem:hypbound}).
 \end{proof}
 
 \begin{proposition}[Moduli and rigidity]\label{prop:teich}\label{prop:rigidity}
-For a closed orientable hyperbolic $2$-orbifold of signature $(g;m_1,\dots,m_n)$, $\Teich(\Orb)\cong\R^{6g-6+2n}$ \cite[Cor.~13.3.7]{thurston1980}; the dimension vanishes exactly for the triangle orbifolds. Two hyperbolic triangle orbifolds with the same signature are isometric, so $\Kiso(\Orb;\Sig_{0,3})=\Kmult(\Orb;\Sig_{0,3})$.
+For a closed orientable hyperbolic $2$-orbifold of signature $(g;m_1,\dots,m_n)$, $\Teich(\Orb)\cong\R^{6g-6+2n}$ \cite[Cor.~13.3.7]{thurston1980}, and $6g-6+2n=0$ exactly for the triangle orbifolds. Two hyperbolic triangle orbifolds with the same signature are isometric, so $\Kiso(\Orb;\Sig_{0,3})=\Kmult(\Orb;\Sig_{0,3})$.
 \end{proposition}
 
 \begin{proof}
-Thurston's dimension is $-3\chi(X_\Orb)+2k+l$ with $k=n$ cone points and $l=0$ corner reflectors, which vanishes only for $(g,n)\in\{(1,0),(0,3)\}$. For rigidity, let $\varphi$ be the M\"obius transformation taking the cone points of $\Orb$ to those of $\Orb'$, with equal orders corresponding. The pull-back of the metric of $\Orb'$ is a conformal metric of curvature $-1$ with cone angles $2\pi/m_i$, and by Troyanov's Theorem~A \cite{troyanov1991} (curvature $-1$, angles $2\pi/m_i$; its hypothesis of negative Euler characteristic is $\sum_i(1-1/m_i)>2$) such a metric is unique in its conformal class, so $\varphi$ is an isometry.
+With $n\ge0$, $6g-6+2n=0$ only for $(g,n)\in\{(1,0),(0,3)\}$, and $(1;\emptyset)$ is not hyperbolic. For a triangle orbifold $\Teich(\Orb)$ is therefore a point: any two hyperbolic structures of signature $(0;p,q,r)$ are isotopic, hence isometric.
 \end{proof}
 
 \begin{corollary}[$\Kiso=\infty$ off the triangle orbifolds]\label{cor:Kinf}\label{prop:uncountable}
@@ -516,58 +549,35 @@ If $6g-6+2n>0$, the orbifolds of signature $\sigma=(g;m_1,\dots,m_n)$ form uncou
 Points of $\Teich(\Orb)\cong\R^{6g-6+2n}$ are classes of discrete faithful representations of $\Gamma$ in $PSL(2,\R)$, and two of them give isometric orbifolds only if they differ by an automorphism of $\Gamma$ and a conjugation in $PGL(2,\R)$; so each isometry class meets $\Teich(\Orb)$ in an orbit of the countable group $\operatorname{Out}(\Gamma)$, and a countable union of countable sets is not $\R^d$, $d>0$. Any $\Orb'$ of signature $\sigma$ not isometric to $\Orb$ has $H_k(\Orb')=H_k(\Orb)$ for every $k$ (Proposition~\ref{prop:locality}).
 \end{proof}
 
-Figure~\ref{fig:F6} shows this for a real one-parameter family of signature $(0;3,3,3,3)$: doubles of geodesic quadrilaterals with all angles $\pi/3$ and two mirror symmetries, parametrised by $\vartheta=\log(\sinh a/\sinh b)$, with $a,b$ the distances from the centre to two adjacent sides ($\sinh a\sinh b=\frac12$). The eight computed members have systoles $4b(\vartheta)$ falling strictly from $2.634$ to $0.694$, so they are pairwise non-isometric; their heat traces agree with $\mathrm I+4\mathrm E_3$ to $1.2\times10^{-12}$ wherever closed geodesics are negligible, while $\lambda_1$ falls from $4.122$ to $0.435$ (Section~\ref{sec:numerics}).
+Figure~\ref{fig:F6} shows this for a real one-parameter family of signature $(0;3,3,3,3)$: doubles of geodesic quadrilaterals with all angles $\pi/3$ and two mirror symmetries, parametrised by $\vartheta=\log(\sinh a/\sinh b)$, with $a,b$ the distances from the centre to two adjacent sides ($\sinh a\sinh b=\frac12$). The eight computed members have systoles $4b(\vartheta)$ falling strictly from $2.634$ to $0.694$, so they are pairwise non-isometric; their heat traces agree with $\mathrm I+4\mathrm E_3$ to $1.2\times10^{-12}$ wherever closed geodesics are negligible, while $\lambda_1$ falls from $4.122$ to $0.435$ (Section~\ref{sec:numerics}). Panel (a) draws the members $\vartheta=0,0.8,1.6,2.8$, cone points unmarked, marked by thin verticals in (b); the eigenvalue axis of (b) has a square-root scale, and eigenvalues of one symmetry sector are joined in order, so lines of different sectors may cross.
 
 \paperfigure{F6}{fig:F6}
 
-The shape is visible only beyond all orders, by the classical mechanism of Selberg, Huber and McKean \cite{huber1959,mckean1972,hejhal1976}: the heat traces of two orbifolds of one signature differ by the difference of their hyperbolic terms. We make this explicit: a bound with explicit constants and range (Theorem~\ref{thm:quantlocality}) and its sharpness: the leading term at the first length where the length spectra differ, so the factor $t^{-1/2}$ cannot be removed (Theorem~\ref{thm:sharp}, Corollary~\ref{cor:prefactor}).
+The shape is visible only beyond all orders, by the classical mechanism of Selberg, Huber and McKean \cite{huber1959,mckean1972,hejhal1976}. For $x>0$ let $w_\Orb(x)=\sum_{[\gamma]:\,\ell(\gamma)=x}\ell(\gamma_0)$, the weighted length spectrum; it has finite support on every bounded interval (Lemma~\ref{lem:counting}).
 
-\begin{theorem}[Quantitative locality]\label{thm:quantlocality}
-Let $\Orb_1,\Orb_2\in\Sig$ have the same signature and area $A$, let $\ell$ be the smaller of their systoles (taken over all closed geodesics, including those through cone points) and $\diam$ the larger of their diameters.
+\begin{theorem}[Where the shape enters]\label{thm:quantlocality}\label{thm:sharp}
+Let $\Orb_1,\Orb_2\in\Sig$ have the same signature, let $\ell$ be the smaller of their systoles (over all closed geodesics, including those through cone points), $\diam$ the larger of their diameters, and $w_i=w_{\Orb_i}$.
 \begin{enumerate}[label=(\alph*)]
-\item For every $t>0$, $\cZ_{\Orb_1}(t)-\cZ_{\Orb_2}(t)=\Hyp_1(t)-\Hyp_2(t)$, so $|\cZ_{\Orb_1}(t)-\cZ_{\Orb_2}(t)|\le\max_i\Hyp_i(t)$.
-\item For $0<t\le\ell^2/(2(1+\ell))$, with $B$ and $C$ as in Lemma~\ref{lem:hypbound} and \eqref{eq:Cconst},
+\item $\cZ_{\Orb_1}-\cZ_{\Orb_2}=\Hyp_1-\Hyp_2$, and for $0<t\le\ell^2/(2(1+\ell))$, with $B$ and $C$ as in Lemma~\ref{lem:hypbound}, $|\cZ_{\Orb_1}(t)-\cZ_{\Orb_2}(t)|\le B(\ell,\diam,t)\le C\,t^{-1/2}e^{-\ell^2/4t}$.
+\item If $w_1\equiv w_2$, the orbifolds are isospectral. Otherwise, with $L_*=\min\{x:w_1(x)\ne w_2(x)\}$, as $t\downarrow0$
 \[
-  |\cZ_{\Orb_1}(t)-\cZ_{\Orb_2}(t)|\le B(\ell,\diam,t)\le C(A,\ell,\diam)\,t^{-1/2}e^{-\ell^2/4t}.
+  \cZ_{\Orb_1}(t)-\cZ_{\Orb_2}(t)=\frac{w_1(L_*)-w_2(L_*)}{2\sinh(L_*/2)}\,\frac{e^{-t/4}e^{-L_*^2/4t}}{\sqrt{4\pi t}}\big(1+o(1)\big),
 \]
+and $L_*=\ell$ if $\ell_1\ne\ell_2$. In that case the exponent $\ell^2/4$ and the factor $t^{-1/2}$ of (a) are attained (the constant $C$ is not claimed to be).
 \end{enumerate}
 \end{theorem}
 
 \begin{proof}
-(a) is Theorem~\ref{thm:IEH}, since $\mathrm I$ and $\mathrm E$ agree and $\Hyp_i\ge0$. (b) Lemma~\ref{lem:hypbound} bounds $\Hyp_i(t)$ by $B(\ell_i,\diam_i,t)$ whenever $t\le\ell_i^2/(2(1+\ell_i))$, which holds since $\ell\le\ell_i$ and $x\mapsto x^2/(2(1+x))$ is increasing. On the segment $[\ell,\ell_i]$ the function $B(\cdot,\diam_i,t)$ is decreasing, because $t\le x^2/(2(1+x))$ there, and $B$ is increasing in the diameter; so $B(\ell_i,\diam_i,t)\le B(\ell,\diam,t)$.
+(a) By Theorem~\ref{thm:IEH} $\mathrm I$ and $\mathrm E$ agree and $\Hyp_i\ge0$. Lemma~\ref{lem:hypbound} bounds $\Hyp_i(t)$ by $B(\ell_i,\diam_i,t)$, as $\ell\le\ell_i$ and $x\mapsto x^2/(2(1+x))$ increases; on $[\ell,\ell_i]$, $B(\cdot,\diam_i,t)$ decreases, and $B$ increases with the diameter, so $B(\ell_i,\diam_i,t)\le B(\ell,\diam,t)$. (b) Group $\Hyp_1-\Hyp_2$ by length and let $L'>L_*$ be the next length in the union of the supports of $w_1,w_2$. The terms of length at least $L'$ are $O(t^{-1/2}e^{-L'^2/4t})$ by the argument of Lemma~\ref{lem:hypbound} with $L'$ for $\ell$, which is $o$ of the $L_*$ term. If $w_1\equiv w_2$ the traces agree, and a heat trace determines the spectrum. Finally $w_i(x)=0$ for $x<\ell_i$ and $w_i(\ell_i)>0$.
 \end{proof}
 
-The explicit constant is qualitative. It carries the factor $e^{3\diam}$ of Lemma~\ref{lem:counting}, through which alone the diameter, not determined by the signature, enters, and the admissible range ends where $e^{-\ell^2/4t}=e^{-(1+\ell)/2}$, so (b) says something only for small $t$ (the experiment in the supplement shows that it is loose); only the exponent and the factor $t^{-1/2}$ are sharp (Corollary~\ref{cor:prefactor}). For $x>0$ let $w_\Orb(x)=\sum_{[\gamma]:\,\ell(\gamma)=x}\ell(\gamma_0)$, the weighted length spectrum; it has finite support on every bounded interval.
+The constant of (a) is qualitative: through the factor $e^{3\diam}$ of Lemma~\ref{lem:counting} it depends on the diameter, which the signature does not determine, and the experiment in the supplement shows that it is loose. The sharp part, the exponent and the factor $t^{-1/2}$, is classical \cite{huber1959,mckean1972}, \cite[proof of Thm~4.5]{dryden2004}: $t^{-1/2}$ is the one-dimensional heat kernel along the closed geodesic. Pairs with $\ell_1\ne\ell_2$ exist in every signature in which the systole varies on Teichm\"uller space, for instance in the family of Figure~\ref{fig:F6} (Section~\ref{sec:numerics}).
 
-\begin{theorem}[Sharpness]\label{thm:sharp}
-Let $\Orb_1,\Orb_2\in\Sig$ have the same signature and write $w_i=w_{\Orb_i}$.
-\begin{enumerate}[label=(\roman*)]
-\item If $w_1\equiv w_2$, then $\cZ_{\Orb_1}\equiv\cZ_{\Orb_2}$ and the orbifolds are isospectral.
-\item Otherwise let $L_*=\min\{x:w_1(x)\ne w_2(x)\}$. As $t\downarrow0$,
-\[
-  \cZ_{\Orb_1}(t)-\cZ_{\Orb_2}(t)=\frac{w_1(L_*)-w_2(L_*)}{2\sinh(L_*/2)}\,\frac{e^{-t/4}e^{-L_*^2/4t}}{\sqrt{4\pi t}}\big(1+o(1)\big).
-\]
-\item If $\ell_1\ne\ell_2$, then $L_*=\ell=\min(\ell_1,\ell_2)$.
-\end{enumerate}
-\end{theorem}
 
-\begin{proof}
-Group $\Hyp_1-\Hyp_2$ by length, and let $L'>L_*$ be the next length in the union of the supports of $w_1,w_2$. The terms of length at least $L'$ are bounded by the corresponding parts of $\Hyp_1+\Hyp_2$, which are $O(t^{-1/2}e^{-L'^2/4t})$ by the argument of Lemma~\ref{lem:hypbound} with $\ell$ replaced by $L'$; divided by the $L_*$ term this tends to $0$. If $w_1\equiv w_2$, the traces agree, and a heat trace determines the spectrum by uniqueness of the Laplace transform. For (iii), $w_i(x)=0$ for $x<\ell_i$ and $w_i(\ell_i)>0$.
-\end{proof}
-
-\begin{corollary}[What is attained]\label{cor:prefactor}
-If the weighted length spectra first differ at the shorter systole $\ell$, in particular if the systoles differ, then $\sqrt t\,e^{\ell^2/4t}|\cZ_{\Orb_1}(t)-\cZ_{\Orb_2}(t)|\to|w_1(\ell)-w_2(\ell)|/(2\sinh(\ell/2)\sqrt{4\pi})\ne0$: the exponent $\ell^2/4$ and the factor $t^{-1/2}$ of Theorem~\ref{thm:quantlocality} are attained (the constant $C$ is not claimed to be). If they first differ at $L_*>\ell$, the difference is of the smaller order $t^{-1/2}e^{-L_*^2/4t}$, and if they never differ, it vanishes identically.
-\end{corollary}
-
-The factor $t^{-1/2}$ is the one-dimensional heat kernel along the closed geodesic: heat must travel the length $\ell$ in one dimension. Pairs with $\ell_1\ne\ell_2$ exist in every signature in which the systole varies on Teichm\"uller space, for instance in the family of Figure~\ref{fig:F6}, where Section~\ref{sec:numerics} compares them with Theorem~\ref{thm:sharp}(ii).
-
-\begin{remark}[The expansion is blind; the trace is not]\label{rem:blind}
-The heat trace as a function of $t$ determines the spectrum and the length spectrum \cite[Thm~1.1]{drydenstrohmaier2009}. For surfaces, length and eigenvalue spectra determine each other \cite[S\"atze~7--8]{huber1959}, the length spectrum determines a generic surface \cite{wolpert1979}, and isospectral sets are finite \cite{mckean1972}, as for hyperbolic orbisurfaces of genus at least one \cite[Thm~5.1]{dryden2004}. ``Heat does not hear the shape'' concerns the asymptotic series, not the spectrum.
-\end{remark}
 
 \section{The rigid case: triangle orbifolds}\label{sec:rigid}
 
-A triangle orbifold $\Orb(p,q,r)$ is the double of a hyperbolic triangle with angles $\pi/p,\pi/q,\pi/r$ (Figure~\ref{fig:F2}), determined by its signature (Proposition~\ref{prop:rigidity}), so $\Kiso=\Kmult$ on $\Sig_{0,3}$. By \eqref{eq:s1inv} the first two heat invariants are equivalent to $\keytwo(p,q,r)=(S_1,R)$ and the third adds $P_3$. A \emph{collision} is a pair of distinct hyperbolic triads with the same $\keytwo$. We count prefixes $c_1,\dots,c_k$, the order in which the coefficients appear as $t\downarrow0$; on triangle orbifolds $c_2$ alone already gives $\keytwo$, since $12c_2+2=S_1+R$ with $S_1\in\Z$ and $0<R<1$. Off this family two invariants fail earlier, for instance on $(0;5,5,5)$ and $(0;2,2,2,10)$, of cone-order sums $15$ and $16$.
+A triangle orbifold $\Orb(p,q,r)$ is the double of a hyperbolic triangle with angles $\pi/p,\pi/q,\pi/r$, determined by its signature (Proposition~\ref{prop:rigidity}), so $\Kiso=\Kmult$ on $\Sig_{0,3}$. Figure~\ref{fig:F2} draws the minimal pair of Theorem~\ref{thm:minimal} as an exact orthographic view of the hyperboloid, seen obliquely from an elevation of $58^\circ$. By \eqref{eq:s1inv} the first two heat invariants are equivalent to $\keytwo(p,q,r)=(S_1,R)$ and the third adds $P_3$. A \emph{collision} is a pair of distinct hyperbolic triads with the same $\keytwo$. We count prefixes $c_1,\dots,c_k$, the order in which the coefficients appear as $t\downarrow0$; on triangle orbifolds $c_2$ alone already gives $\keytwo$, since $12c_2+2=S_1+R$ with $S_1\in\Z$ and $0<R<1$. Off this family two invariants fail earlier, for instance on $(0;5,5,5)$ and $(0;2,2,2,10)$, of cone-order sums $15$ and $16$.
 
 \paperfigure[b]{F2}{fig:F2}
 
@@ -586,7 +596,7 @@ This is Theorem~\ref{thmA} for $n=3$; isospectral hyperbolic triangle orbifolds 
 A collision has equal sums, so injectivity of $\keytwo$ can be decided sum by sum. The hyperbolic triads $(p,q,r)$, $p\le q\le r$, with $p+q+r=S$ and least order $p$ form the \emph{$(S,p)$-stratum}; on it $R_{S,p}(q)=\frac1p+\frac1q+\frac1{S-p-q}$, $p\le q\le(S-p)/2$. For $p\ge3$ it is nonempty for $S\ge3p$ except $(S,p)=(9,3)$; for $p=2$ exactly when $S\ge11$, and it never contains $(2,2,S-4)$.
 
 \begin{lemma}[Chamber monotonicity]\label{lem:chamber}
-$R_{S,p}'(q)=-q^{-2}+(S-p-q)^{-2}\le0$, with equality only at $q=r$; so $R$ is injective on each stratum, with maximum at the spread triad $q=p$ (attained unless $p=2$ or $(S,p)=(9,3)$, whose spread triads have $R\ge1$) and minimum at the balanced triad $q=\lfloor(S-p)/2\rfloor$.
+$R_{S,p}'(q)=-q^{-2}+(S-p-q)^{-2}\le0$, with equality only at $q=r$; so $R$ is injective on each stratum, with maximum at the spread triad $q=p$ (attained unless $p=2$, where the spread triad has $R\ge1$) and minimum at the balanced triad $q=\lfloor(S-p)/2\rfloor$.
 \end{lemma}
 
 Let $R^+_{S,p}=\frac2p+\frac1{S-2p}$ and $R^-_{S,p}$ be these extreme values; $R^+_{S,p}$ is non-increasing in $p$ for $p\le S/3$, and since $\frac2{x-1}+\frac2{x+1}=\frac4x+\frac4{x(x^2-1)}$,
@@ -616,7 +626,7 @@ For $S\le17$ the strata of sum $S$ have pairwise disjoint reciprocal sums. At $S
 \end{theorem}
 
 \begin{proof}
-A collision joins two strata (Lemma~\ref{lem:chamber}), so some adjacent pair overlaps (Lemma~\ref{lem:adjacent}) and $S\ge S^*(p)\ge x^*(p)\ge18$, since $x^*(p)-18=3(p-2)(p-3)/(p-1)$. At $S=18$ only $S^*(2)\le18$, and $\gap_2(18)=0$ with $S-p$ even, so the strata $2,3$ share exactly $R^-_{18,2}=R^+_{18,3}=\frac34$; the strata $p\ge4$ lie below $R^+_{18,4}=\frac35$.
+A collision joins two strata (Lemma~\ref{lem:chamber}), so some adjacent pair overlaps (Lemma~\ref{lem:adjacent}) and $S\ge S^*(p)\ge x^*(p)\ge18$, since $x^*(p)-18=3(p-2)(p-3)/(p-1)$. At $S=18$ only $S^*(2)\le18$, and $\gap_2(18)=0$ with $S-p$ even, so the strata $2,3$ share exactly $R^-_{18,2}=R^+_{18,3}=\frac34$; the strata $p\ge4$ lie below $R^+_{18,4}=\frac35$, and $\gap_3(18)=\frac1{840}>0$ separates the strata $3$ and $4$.
 \end{proof}
 
 \begin{theorem}[Two invariants up to sum $17$]\label{thm:threshold}
@@ -635,34 +645,15 @@ $\Orb(2,8,8)$ and $\Orb(3,3,12)$ share their first two heat invariants. They for
 $\frac12+\frac18+\frac18=\frac13+\frac13+\frac1{12}$ and $2+8+8=3+3+12$; the rest is Theorem~\ref{thm:separation}.
 \end{proof}
 
-Both theorems can be checked directly on the $83$ hyperbolic triads with $10\le S_1\le18$ (listed in the supplement); the strata explain the number $17$: at $S_1=18$ the most balanced order-$2$ and the most concentrated order-$3$ orbifold first reach the same total order and area (Figure~\ref{fig:F7}).
+Both theorems can be checked directly on the $83$ hyperbolic triads with $10\le S_1\le18$ (listed in the supplement); the strata explain the number $17$: at $S_1=18$ the most balanced order-$2$ and the most concentrated order-$3$ orbifold first reach the same total order and area. Figure~\ref{fig:F7} shows the strata on logarithmic axes in $S$ and $R$; a thin dashed line joins the first overlap of two adjacent strata to their first collision, and the split disc at $(18,\frac34)$ marks the minimal pair, as in Figure~\ref{fig:F4}.
 
 \paperfigure{F7}{fig:F7}
 
-\begin{proposition}[Tangency only at $p=2$ and $p=4$]\label{prop:tangency}
-For $S\ge3p+3$, the balanced triad of stratum $p$ and the spread triad of stratum $p+1$ have equal $R$ if and only if $p\in\{2,4\}$ and $S=x^*(p)$, that is, $(2,8,8),(3,3,12)$ at $S=18$ and $(4,8,8),(5,5,10)$ at $S=20$.
-\end{proposition}
+The adjacent strata touch without overlapping only for $p=2$ and $p=4$, at $(2,8,8),(3,3,12)$ and $(4,8,8),(5,5,10)$ (Proposition~\sref{prop:tangency} of the supplement).
 
-\begin{proof}
-For $S-p$ even, equality forces $S=x^*(p)\in\Z$, so $(p-1)\mid6$, and of $p\in\{2,3,4,7\}$, with $x^*(p)-p=16,15,16,21$, only $p=2,4$ have the right parity. For $S-p$ odd, the decreasing odd-parity gap is positive at the last odd-parity sum below its zero and negative at the next (proof of Theorem~\ref{thm:Sstar}), so it vanishes at no such sum.
-\end{proof}
+Beyond the overlap a collision needs two reciprocal sums to coincide exactly, an arithmetic event (Table~\sref{tab:overlap}); collisions also join non-adjacent strata, first $(5,15,15)$ and $(7,7,21)$ at $S=35$.
 
-Overlap is necessary but not sufficient: beyond it a collision needs two reciprocal sums from different strata to coincide exactly, an arithmetic event (the supplement tabulates first overlaps against first collisions for $p\le14$), and collisions also join non-adjacent strata, first $(5,15,15)$ and $(7,7,21)$ at $S=35$.
-
-\begin{proposition}[Collision-free sums; computational]\label{prop:collisionfree}
-Among the sums $18\le S\le4800$, exactly the $38$ sums
-\[
-\begin{gathered}
-  19,\,21\text{--}25,\,27\text{--}30,\,33,\,41,\,44,\,46\text{--}51,\,59,\,65,\,67,\,81,\,99,\\
-  115,\,119,\,123,\,125,\,173,\,199,\,203,\,223,\,235,\,243,\,251,\,307,\,329,\,557
-\end{gathered}
-\]
-carry no collision. We do not know whether only finitely many sums are collision-free.
-\end{proposition}
-
-\begin{proof}[Method]
-Exact rational arithmetic. (a) At each listed sum the reciprocal sums of all hyperbolic triads are pairwise distinct ($S=557$ has $25\,575$ triads). (b) Each of the other $4745$ sums carries an exhibited collision: $3962$ by scaling one at a divisor $d\mid S$, and $783$ by explicit pairs, the first being $(2,8,8),(3,3,12)$ at $18$, $(4,8,8),(5,5,10)$ at $20$ and $(4,10,12),(5,6,15)$ at $26$, listed in the supplementary data and each checked directly.
-\end{proof}
+Computation shows that among the sums $18\le S\le4800$ exactly $38$ carry no collision, the first being $19$ and $21$--$25$ and the last $557$ (Proposition~\sref{prop:collisionfree} of the supplement); we do not know whether only finitely many sums are collision-free.
 
 \subsection{The minimal pair is isolated}\label{sec:isolation}
 
@@ -684,9 +675,7 @@ The curve $C_{27/2}$ is a nonsingular cubic, and with base point $O=(1:-1:0)$ it
 \end{align*}
 A direct substitution shows that $\psi$ maps $E:\ y^2=x(x+9)(x+384)=x^3+393x^2+3456x$ into $C_{27/2}$ and that $\varphi\circ\psi$ is the identity of $E$. The discriminant of $E$ is $2^{18}3^85^6\ne0$. The closure of $\psi(E)$ is an irreducible curve in the cubic $C_{27/2}$ birational to $E$, so of geometric genus $1$; it is not a line, a conic or a singular cubic, hence it is all of $C_{27/2}$, which is therefore a nonsingular cubic, and $\varphi,\psi$ are mutually inverse isomorphisms over $\Q$. On the three points with $Z=0$, $\varphi$ extends by $\varphi(O)=\infty$ (the origin of $E$), $\varphi(1:0:0)=(216,5400)$ and $\varphi(0:1:0)=(216,-5400)$; for example $\varphi(1:4:4)=(-24,360)$. So $C_{27/2}(\Q)\cong E(\Q)$.
 
-\emph{Rank.} We use descent via $2$-isogeny \cite[\S3.6, Method~1 and (3.6.2)]{cremona1997}. Write $E:y^2=x(x^2+cx+d)$ with $c=393$, $d=3456=2^73^3$; the isogenous curve is $E':y^2=x(x^2+c'x+d')$ with $c'=-786$, $d'=c^2-4d=3^25^6$. For squarefree $d_1\mid d$ let $n_1$ be the number of classes $d_1$ for which $v^2=d_1u^4+cu^2+d/d_1$ has a rational point, and $n_1'$ likewise for $c',d'$; then $n_1=2^{e_1}$, $n_1'=2^{e_1'}$ and $\operatorname{rank}E(\Q)=e_1+e_1'-2$. A rational point gives coprime integers $M,e$ and an integer $N$ with $N^2=d_1M^4+cM^2e^2+(d/d_1)e^4$.
-(i) On $E$, $d_1\in\{\pm1,\pm2,\pm3,\pm6\}$. For $d_1\in\{\pm2,\pm3\}$, $d_1\equiv\pm2$ is a non-residue modulo $5$, $d/d_1\equiv d_1^{-1}$ (as $d\equiv1$), $d_1+d_1^{-1}\equiv0$ and $c\equiv3$. Since $M^4,e^4\in\{0,1\}$ modulo $5$ and $5$ divides at most one of $M,e$, the right side is $\equiv d_1$ if $5\mid e$, $\equiv d_1^{-1}$ if $5\mid M$, and $\equiv d_1+d_1^{-1}+3M^2e^2\equiv3M^2e^2\equiv\pm3$ if $5\nmid Me$, each a non-residue. The classes $\pm1,\pm6$ are the images of $O,(0,0),(-9,0),(-384,0)$. So $n_1=4$, $e_1=2$.
-(ii) On $E'$, $d_1\in\{\pm1,\pm3,\pm5,\pm15\}$. If $d_1<0$ all three coefficients are negative. For $d_1=3,5,15$ write $f=d_1M^4-786M^2e^2+(d'/d_1)e^4=3^vf_0$ with $3\nmid f_0$; then $v$ is odd or $f_0\equiv2\pmod3$: for $d_1=3$, $f=3(M^4-262M^2e^2+15625e^4)$ with bracket $\equiv1\pmod3$; for $d_1=5$, $f\equiv2M^4\pmod3$, and if $M=3M_1$ then $f=9(45M_1^4-786M_1^2e^2+3125e^4)$ with bracket $\equiv2$; for $d_1=15$, $f=3g$ with $g\equiv2M^4-M^2e^2+2e^4\pmod3$, so $g\equiv2$ if $3$ divides $M$ or $e$, and otherwise $g\equiv e^4(5w^2-w+2)\equiv6e^4\pmod9$ with $w\equiv M^2/e^2\in\{1,4,7\}$, so $f=9g'$ with $g'\equiv2\pmod3$. So $n_1'=1$, $e_1'=0$, and the rank is $0$; the Selmer groups are $\{\pm1,\pm6\}$ and $\{1\}$, every class being decided by a local condition. Independently, PARI/GP's \texttt{ellrank} returns rank $0$ for $E$ (Appendix~\ref{app:reproducibility}).
+\emph{Rank.} PARI/GP's \texttt{ellrank} returns the bounds $r_1=r_2=0$ for $E$ \cite{pari2172}, the upper bound $r_2$ being computed unconditionally from the $2$-Selmer group (Section~\sref{sec:methods}); so $E(\Q)$ has rank $0$. A descent via $2$-isogeny by hand, every Selmer class decided by a local condition at $3$ or $5$ or by the sign of the coefficients, gives the same and is written out in Section~\sref{sec:descent} of the supplement.
 
 \emph{Torsion.} $E$ has good reduction at $7$ and $11$, the reduction map is injective on torsion at an odd prime of good reduction \cite[\S3.3, p.~70]{cremona1997}, and $\#E(\mathbb F_7)=\#E(\mathbb F_{11})=12$. The twelve points $\infty$, $(0,0)$, $(-9,0)$, $(-384,0)$, $(16,\pm400)$, $(-24,\pm360)$, $(-144,\pm2160)$, $(216,\pm5400)$ lie on $E$: the three points with $y=0$ have order $2$; $(16,400)$ is a flex, since the tangent $y=21x+64$ meets $E$ only there, with multiplicity $3$, so $2(16,400)=(16,-400)=-(16,400)$ and $(16,\pm400)$ have order $3$; and the remaining six have order $6$. So $E(\Q)\cong\Z/2\times\Z/6$.
 
@@ -698,13 +687,13 @@ A direct substitution shows that $\psi$ maps $E:\ y^2=x(x+9)(x+384)=x^3+393x^2+3
 We study the conditioning of the algebraic inverse problem from $(c_1,\dots,c_n)$ to the positive real orders $m$ of a sphere with $n$ cone points, $\mu=\max_im_i$; for real $m$ the $c_j$ are the rational functions of Proposition~\ref{prop:heatinput} evaluated at $m$, heat invariants of an orbifold only for integer orders. We proceed through its three layers: a triangular linear map, the system of Theorem~\ref{thmB}, and polynomial roots.
 
 \begin{remark}[What is measured]\label{rem:stabscope}
-The error model is on $c_1,\dots,c_n$, not on eigenvalues, and genus $0$ and a known $n$ are assumed. The constants are evaluated at the true orders, unknown in an application, so the logic is a-posteriori: recover a candidate, then certify it with Proposition~\sref{prop:S5} of the supplement at the candidate, with radii covering the distance from the data to its exact invariants. The certificate is as reliable as those radii; in the blind recovery of the supplement they come from a-posteriori error bars, so there it validates the recovery but does not certify it.
+Genus $0$ and a known $n$ are assumed. The constants depend on the true orders, so in practice one recovers a candidate and checks the hypotheses of Theorem~\ref{thm:S4} there, with $\delta$ covering the distance from the data to its exact invariants.
 \end{remark}
 
 The \emph{recovery map} is: (1) $\tilde\cI=\mathbf F^{-1}(\tilde c-h_0)$ (Proposition~\ref{prop:frontend}); (2) $\tilde e=M(\tilde\cI)^{-1}b(\tilde\cI)$ (Theorem~\ref{thmB}); (3) the roots of $\tilde q(z)=\sum_j(-1)^j\tilde e_jz^{n-j}$, $\tilde e_0=1$; (4) for integer orders, rounding their real parts. Hats denote scale-free quantities, $\hat m=m/\mu$, $\hat e_k=e_k/\mu^k$, $\hat\cI=(\mu R,P_1/\mu,P_3/\mu^3,\dots)$, and $\hat e$ solves $M(\hat\cI)\hat e=b(\hat\cI)$ because the system is weighted homogeneous. Distances between multisets are $\dist(m,m')=\min_\pi\max_i|m_i-m'_{\pi(i)}|$.
 
 \begin{proposition}[Front end]\label{prop:frontend}
-With $p_\nu(x)=\sum_ka_{\nu,k}x^{2k}$, $(c_1,\dots,c_n)^\top=\mathbf F\,\cI_n+h_0(n)$, where $\mathbf F$ is lower triangular, indexed from $0$, with $\mathbf F_{00}=-\frac12$, $\mathbf F_{\nu+1,0}=-\frac12\alpha_{\nu+1}+(-1)^\nu a_{\nu,0}$, $\mathbf F_{\nu+1,k}=(-1)^\nu a_{\nu,k}$ ($1\le k\le\nu+1$), and $h_0(n)=\frac{n-2}2(1,\alpha_1,\dots,\alpha_{n-1})$. $\mathbf F$ does not depend on $n$, and its diagonal entries $(-1)^\nu|B_{2\nu+2}|/(2(\nu+1)!(2\nu+1))$ are nonzero.
+With $p_\nu(x)=\sum_ka_{\nu,k}x^{2k}$, $(c_1,\dots,c_n)^\top=\mathbf F\,\cI_n+h_0(n)$, where $\mathbf F$ is lower triangular, indexed from $0$, with $\mathbf F_{00}=-\frac12$, $\mathbf F_{\nu+1,0}=-\frac12\alpha_{\nu+1}+(-1)^\nu a_{\nu,0}$, $\mathbf F_{\nu+1,k}=(-1)^\nu a_{\nu,k}$ ($1\le k\le\nu+1$), and $h_0(n)=\frac{n-2}2(1,\alpha_1,\dots,\alpha_{n-1})$. $\mathbf F$ does not depend on $n$, and its diagonal entries, $\mathbf F_{00}=-\frac12$ and $\mathbf F_{\nu+1,\nu+1}=(-1)^\nu|B_{2\nu+2}|/(2(\nu+1)!(2\nu+1))$, are nonzero.
 \end{proposition}
 
 \begin{proof}
@@ -724,14 +713,14 @@ For $f=\prod_i(1+m_iz)=E_f(z^2)+zO_f(z^2)$ and $d(z)=\sum_kd_kz^k=E_d(z^2)+zO_d(
 So inverting Theorem~\ref{thmB} is as well conditioned as the Hurwitz matrix of $\chi_m$. Let $\cond=\|M(\hat\cI)^{-1}\|_\infty$, $\mathfrak t_k(n)=[w^k]\operatorname{artanh}(w)\sec^2((n+1)\operatorname{artanh}w)$, $\zeta_n=\max\big(1,\max_j\sum_{0\le i<j,\,2\le2j-2i\le n}\mathfrak t_{2i+1}(n)\big)$ (so $\zeta_3=1$, $\zeta_4=\frac{79}3$, $\zeta_5=\frac{14048}{15}$) and $\mathfrak r_n(\hat m)=\max\big(\hat e_n,\max_{j\le n-2}\sum_{i\le j}\mathfrak t_{2i+1}(n)\hat e_{2j-2i}\big)$.
 
 \begin{theorem}[Lipschitz dependence of $e$ on $\cI_n$]\label{thm:S2}
-Let $\eta=\max\big(\mu|\tilde R-R|,\max_{1\le l\le n-1}|\tilde P_{2l-1}-P_{2l-1}|/\mu^{2l-1}\big)$ and assume $\eta\le1$. (a) $\cond\le n\binom{2n}n^{n/2}2^{n-1}/\prod_{i<j}(\hat m_i+\hat m_j)$. (b) If $\cond\,\zeta_n\eta\le\frac12$, then $M(\tilde\cI)$ is invertible and $\max_k|\tilde e_k-e_k|/\mu^k\le2\cond\,\mathfrak r_n(\hat m)\,\eta$. (c) To first order $\tilde e-e=-M^{-1}J(\tilde\cI-\cI)$, with $J$ as in the proof of Theorem~\ref{thmB}.
+Let $\eta=\max\big(\mu|\tilde R-R|,\max_{1\le l\le n-1}|\tilde P_{2l-1}-P_{2l-1}|/\mu^{2l-1}\big)$ and assume $\eta\le1$. (a) $\cond\le n\binom{2n}n^{n/2}2^{n-1}/\prod_{i<j}(\hat m_i+\hat m_j)$. (b) If $\cond\,\zeta_n\eta\le\frac12$, then $M(\tilde\cI)$ is invertible and $\max_k|\tilde e_k-e_k|/\mu^k\le2\cond\,\mathfrak r_n(\hat m)\,\eta$.
 \end{theorem}
 
 \begin{proof}
-(a) Lemma~\ref{lem:hurwitz}, Hadamard's inequality for the cofactors of $\hat{\mathbf B}$ (whose columns contain $\hat e_0=1$ or $\hat e_1\ge1$), $|\det\hat{\mathbf B}|=\prod(\hat m_i+\hat m_j)$ and $\hat e_k\le\binom nk$. (b) All $P_k>0$, so coefficientwise $\hat U\le n\operatorname{artanh}w$ and $|\delta\hat U|\le\eta\operatorname{artanh}w$; as the coefficients of $\tanh$ are those of $\tan$ up to sign, $|\tilde T_k-T_k|\le\eta\,\mathfrak t_k(n)$. Hence the residual $r=b(\tilde\cI)-M(\tilde\cI)e$ has $\|r\|_\infty\le\mathfrak r_n\eta$, $\|M(\tilde\cI)-M(\cI)\|_\infty\le\zeta_n\eta$, and $M(\tilde\cI)(\tilde e-e)=r$. (c) is the derivative computed for Theorem~\ref{thmB}.
+(a) Lemma~\ref{lem:hurwitz}, Hadamard's inequality for the cofactors of $\hat{\mathbf B}$ (whose columns contain $\hat e_0=1$ or $\hat e_1\ge1$), $|\det\hat{\mathbf B}|=\prod(\hat m_i+\hat m_j)$ and $\hat e_k\le\binom nk$. (b) All $P_k>0$, so coefficientwise $\hat U\le n\operatorname{artanh}w$ and $|\delta\hat U|\le\eta\operatorname{artanh}w$; as the coefficients of $\tanh$ are those of $\tan$ up to sign, $|\tilde T_k-T_k|\le\eta\,\mathfrak t_k(n)$. Hence the residual $r=b(\tilde\cI)-M(\tilde\cI)e$ has $\|r\|_\infty\le\mathfrak r_n\eta$, $\|M(\tilde\cI)-M(\cI)\|_\infty\le\zeta_n\eta$, and $M(\tilde\cI)(\tilde e-e)=r$.
 \end{proof}
 
-On every test multiset the exact $\cond$ is at most $3.511$; the Hadamard step behind (a) is the lossy one. Ostrowski's global root bound \cite[Th\'eor\`eme~XXX, (71,1)]{ostrowski1940} has exponent $1/n$ everywhere; Rouch\'e's theorem gives the local one.
+On every test multiset the exact $\cond$ is at most $3.511$, so (a) is lossy. Ostrowski's root bound \cite[Th\'eor\`eme~XXX, (71,1)]{ostrowski1940} has exponent $1/n$ everywhere; Rouch\'e's theorem gives the local exponent.
 
 \begin{theorem}[Heat invariants to cone orders]\label{thm:S3}
 Let $\delta=\max_j|\tilde c_j-c_j(m)|$, $\Xi_\mu=\max(\mu\amp_0,\max_{r\ge1}\amp_r\mu^{1-2r})$, and suppose $\Xi_\mu\delta\le1$ and $\cond\,\zeta_n\Xi_\mu\delta\le\frac12$. For a distinct order $a$ of multiplicity $k_a$, with $\widehat{\sepn}_a=\min_{b\ne a}|\hat a-\hat b|$ and $\hat\Pi_a=\prod_{b\ne a}|\hat a-\hat b|^{k_b}$, if
@@ -745,19 +734,23 @@ then the recovered polynomial, rescaled, has exactly $k_a$ roots within $r_a$ of
 Proposition~\ref{prop:frontend} gives $\eta\le\Xi_\mu\delta$, and Theorem~\ref{thm:S2}(b) gives $|\tilde e_k-\hat e_k|\le\varepsilon=2\cond\,\mathfrak r_n\Xi_\mu\delta$. On $|z-\hat a|=r\le\min(\widehat{\sepn}_a,1)/2$, $|q(z)|\ge r^{k_a}\hat\Pi_a2^{-(n-k_a)}$ while $|z|\le\frac32$ gives $|\tilde q-q|<2^{1-n}3^n\varepsilon$; apply Rouch\'e's theorem.
 \end{proof}
 
-So recovery is Lipschitz at simple orders and H\"older of exponent $1/k$ at a $k$-fold coincidence. The exponent $1/k$ is sharp for arbitrary data (Proposition~\ref{prop:sharpexp}(ii)); for data coming from real orders it is $\frac12$ at a double order (Proposition~\ref{prop:sharpexp}(i)) and when all the orders are equal (Remark~\ref{rem:triple}); other configurations are not settled (Figure~\ref{fig:F8}).
+So recovery is Lipschitz at simple orders and H\"older of exponent $1/k$ at a $k$-fold coincidence. The exponent $1/k$ is sharp for arbitrary data (Proposition~\ref{prop:sharpexp}(ii)); for data coming from real orders it is $\frac12$ at a double order (Proposition~\ref{prop:sharpexp}(i)) and when all the orders are equal (Proposition~\ref{rem:triple}); other configurations are not settled. Figure~\ref{fig:F8} shows both behaviours: its worst-case error is the largest recovery error over the $2^n$ sign patterns of an error $\delta$ on every heat invariant, and its dotted curve uses errors that come from real multisets near $(4,4,4)$.
 
 \begin{proposition}[Sharpness of the exponents]\label{prop:sharpexp}
 (i) \emph{Double order, realisable data.} For $m(s)=(a+s,a-s,m_3,\dots,m_n)$ the heat invariants are smooth and even in $s$, so they move by $O(s^2)$ while the orders move by $s$; for $(2,8,8)$, $\delta R=s^2/(4(64-s^2))$, $\delta P_1=0$, $\delta P_3=48s^2$. (ii) \emph{$k$-fold order, general data.} Let $q_s(z)=((z-a)^k-s^k)g(z)$, $g$ real and monic of degree $n-k$, $a\ne0$, $g(0)\ne0$, $\prod_{i<j}(z_i+z_j)\ne0$ for the roots of $q_0$. For small $s>0$ the data of $q_s$ are within $O(s^k)$ of those of $q_0$, the system of Theorem~\ref{thmB} is invertible at them and returns $q_s$, and its roots $a+se^{2\pi ij/k}$ lie at distance $s$ from $a$. For $k\ge3$ these roots are not all real, so these data are not the heat invariants of any real multiset.
 \end{proposition}
 
 \begin{proof}
-(i) Exchanging $a\pm s$ fixes the multiset. (ii) The data are smooth in the coefficients near $q_0$, as $e_n(q_0)\ne0$, and invertibility persists for small $s$; a real multiset with these data would have the elementary symmetric functions of $q_s$.
+(i) Exchanging $a\pm s$ fixes the multiset. (ii) The data are smooth in the coefficients near $q_0$, as $e_n(q_0)\ne0$, and Theorem~\ref{thm:S2}(b), with $\eta=O(s^k)$, gives invertibility for small $s$; a real multiset with these data would have the elementary symmetric functions of $q_s$.
 \end{proof}
 
-\begin{remark}[Realisable data when all orders are equal]\label{rem:triple}
-For data that are heat invariants of real orders near $(a,\dots,a)$, $n\ge3$, the exponent is $\frac12$: for real $d_i\ge-a$ (in particular $|d_i|\le a$), $(P_3-3a^2P_1)(a+d)-(P_3-3a^2P_1)(a)=\sum_id_i^2(3a+d_i)\ge2a\sum_id_i^2$, so under $|\delta c_j|\le\delta$, $\max_i|d_i|\le((498+42a^2)\delta/(2a))^{1/2}$. The family $(a+s,a-s,a,\dots,a)$, with $\delta P_1=0$, $\delta P_3=6as^2$ and all other changes $O(s^2)$, attains $\frac12$. For $n=1$ recovery is Lipschitz; mixed clusters are not settled.
-\end{remark}
+\begin{proposition}[Realisable data when all orders are equal]\label{rem:triple}
+Let $n\ge3$, $a>0$, and let $a+d=(a+d_1,\dots,a+d_n)$ be real orders, $|d_i|\le a$, whose heat invariants are within $\delta$ of those of $(a,\dots,a)$. Then $\max_i|d_i|\le((498+42a^2)\delta/(2a))^{1/2}$, and the family $(a+s,a-s,a,\dots,a)$ shows that the exponent $\frac12$ is attained.
+\end{proposition}
+
+\begin{proof}
+As $P_1(a+d)-P_1(a)=\sum_id_i$, $(P_3-3a^2P_1)(a+d)-(P_3-3a^2P_1)(a)=\sum_id_i^2(3a+d_i)\ge2a\sum_id_i^2$. Under $|\delta c_j|\le\delta$, $|\delta P_1|\le\amp_1\delta=14\delta$ and $|\delta P_3|\le\amp_2\delta=498\delta$, so the left side is at most $(498+42a^2)\delta$. The family has $\delta P_1=0$, $\delta P_3=6as^2$ and all other changes $O(s^2)$. (For $n=1$ recovery is Lipschitz; mixed clusters are not settled.)
+\end{proof}
 
 \paperfigure{F8}{fig:F8}
 
@@ -773,55 +766,33 @@ If $|\tilde c_j-c_j(m)|\le\delta_{\rm thm}(m)$ for all $j$, rounding the real pa
 The third term makes $r_a\le\frac12$ in Theorem~\ref{thm:S3}; the discs $|z-a|<\frac12$ are disjoint and contain $k_a$ roots each, hence all of them.
 \end{proof}
 
-A sharper certificate, equally rigorous for errors in the heat invariants, runs the same three layers with coefficientwise bounds in exact rational arithmetic (Proposition~\sref{prop:S5} of the supplement); it gives $\delta_{\rm cert}$ in Table~\ref{tab:thresholds}. The failure bound $\delta_{\rm up}$ minimizes $\|c(\tilde q)-c(m)\|_\infty$ over real monic $\tilde q$ with a root, or a complex pair, of real part $a\pm\frac12$, where rounding is a tie.
+Theorem~\ref{thm:S4} is far from sharp: on the eleven multisets of Table~\sref{tab:thresholdsfull} of the supplement, $\delta_{\rm thm}$ lies below a constructed failure $\delta_{\rm up}$ by factors between about $5\times10^2$ and $2\times10^8$. A threshold $\delta_{\rm cert}$ certified in exact arithmetic, within a factor $1.03$--$6.72$ of $\delta_{\rm up}$, is proved in Section~\sref{sec:certificates} of the supplement and marked in Figure~\ref{fig:F8}; no result here depends on it.
 
-% BEGIN GENERATED TABLE thresholds
-\begin{table}[t]
-\caption{Thresholds for exact recovery of integer orders under the uniform model $|\delta c_j|\le\delta$ on the heat invariants: the closed form $\delta_{\rm thm}$ of Theorem~\ref{thm:S4}, the threshold $\delta_{\rm cert}$ certified in exact arithmetic by Proposition~\sref{prop:S5} of the supplement, and a constructed failure $\delta_{\rm up}$; aeb means $a\times10^b$, $\delta_{\rm thm}$ and $\delta_{\rm cert}$ are rounded down and $\delta_{\rm up}$ up. Table~\sref{tab:thresholdsfull} adds the relative precisions.}\label{tab:thresholds}
-\centering\footnotesize
-\begin{tabular}{@{}llll@{}}
-\toprule
-$m$ & $\delta_{\rm thm}$ & $\delta_{\rm cert}$ & $\delta_{\rm up}$\\
-\midrule
-$(2,8,8)$ & $3.80\text{e}{-7}$ & $2.341\text{e}{-3}$ & $2.485\text{e}{-3}$ \\
-$(3,3,12)$ & $1.18\text{e}{-7}$ & $4.040\text{e}{-3}$ & $4.589\text{e}{-3}$ \\
-$(3,10,15,30)$ & $4.02\text{e}{-11}$ & $3.660\text{e}{-3}$ & $7.487\text{e}{-3}$ \\
-$(4,5,21,28)$ & $3.14\text{e}{-11}$ & $1.461\text{e}{-3}$ & $2.018\text{e}{-3}$ \\
-$(2,3,7)$ & $4.49\text{e}{-7}$ & $3.658\text{e}{-3}$ & $6.587\text{e}{-3}$ \\
-$(4,4,4)$ & $9.35\text{e}{-7}$ & $4.539\text{e}{-4}$ & $5.036\text{e}{-4}$ \\
-$(7,7,7)$ & $9.97\text{e}{-8}$ & $8.068\text{e}{-5}$ & $8.273\text{e}{-5}$ \\
-$(3,3,4,4)$ & $1.48\text{e}{-9}$ & $9.597\text{e}{-5}$ & $1.195\text{e}{-4}$ \\
-$(5,5,5,5)$ & $4.74\text{e}{-10}$ & $3.617\text{e}{-5}$ & $3.826\text{e}{-5}$ \\
-$(2,2,2,3)$ & $2.03\text{e}{-9}$ & $1.858\text{e}{-4}$ & $2.520\text{e}{-4}$ \\
-$(2,2,2,2,3)$ & $2.72\text{e}{-12}$ & $7.908\text{e}{-6}$ & $5.312\text{e}{-5}$ \\
-\bottomrule
-\end{tabular}
-\end{table}
-% END GENERATED TABLE thresholds
+\section{Computations}\label{sec:numerics}
 
-The certified threshold is within a factor $1.03$--$2.05$ of a constructed failure for $n\le4$ and $6.72$ for $n=5$: close to the truth, not just safe (only the exponents are claimed sharp).
-
-\section{Numerical illustration}\label{sec:numerics}
-
-Nothing here is used in a proof; the full experiments and a blind recovery are in the supplement. The spectrum of $\Orb(p,q,r)$ is the union of the Neumann and Dirichlet spectra of its triangle (the identity U\c{c}ar uses for lunes \cite[Thm~4.10, Cor.~4.18]{ucar2017}), computed with $H^1$ finite elements of order $10$ on meshes of hyperbolic size $0.05$ (NETGEN \cite{schoberl1997}, NGSolve \cite{ngsolve}) and shift-invert Lanczos iteration \cite{arpack1998}: about $2850$ eigenvalues per orbifold, up to $\lambda\approx2.17\times10^4$ (Neumann) and $2.38\times10^4$ (Dirichlet). Reflection makes the eigenfunctions smooth at the corners, and convergence is fast ($h^{13}$ to $h^{19}$ at order $10$).
+Nothing here is used in a proof. Sections~\sref{sec:listening}--\sref{sec:moduli} of the supplement give the method (high-order finite elements for the Neumann and Dirichlet spectra of the triangles, whose union is the spectrum of the orbifold \cite[Thm~4.10, Cor.~4.18]{ucar2017}), its error budget and limitations, a Bolza benchmark and a blind recovery of the cone orders. For $\Orb(2,8,8)$ and $\Orb(3,3,12)$ about $2850$ eigenvalues each were computed; the difference $D(t)=\cZ_{\Orb(2,8,8)}(t)-\cZ_{\Orb(3,3,12)}(t)$ has an a-posteriori error of at most $2.9\times10^{-11}$, absolute, on $0.0015\le t\le0.012$, and each trace agrees with $\mathrm I+\mathrm E$ to $7\times10^{-13}$ for $0.0015\le t\le0.03$, so no eigenvalue below about $1.6\times10^4$ is missing.
 
 \paperfigure{F5}{fig:F5}
 
-\emph{Error budget.} The error estimate of each eigenvalue is the difference between two independent discretisations, for the first $500$ at most $2.9\times10^{-11}$ relative. With the mean value theorem and a tail bound from the Weyl law it bounds the error of the difference of the two traces on $0.0015\le t\le0.012$ by $2.9\times10^{-11}$: an a-posteriori estimate, not a certified enclosure. Each trace agrees with $\mathrm I+\mathrm E$ to $7\times10^{-13}$ for $0.0015\le t\le0.03$, so no eigenvalue below about $1.6\times10^4$ is missing; above that the test is blind, and a double-window recomputation of the spectra has not been run. The method, a Bolza benchmark and these limitations are detailed in Section~\sref{sec:listening} of the supplement.
+\emph{Two timescales.} By Proposition~\ref{prop:heatinput}, $D(t)=\sum_{j\ge3}d_jt^{j-2}$ with $d_3=\frac{25}{12}$, $d_4=-\frac{1775}{24}$, $d_5=\frac{153025}{48}$. A fit of $D(t)/t$ on $[0.0015,0.012]$, chosen blind, recovers $d_3$ and $d_4$ to $1.3\times10^{-6}$ and $3.2\times10^{-3}$, within $0.42$ and $0.53$ of its heuristic error bars, and for $t\le0.03$ the computed $D$ agrees with the exact difference of the elliptic terms to $4\times10^{-13}$, testing every order of the cone expansion at once. The window is small because the cone series diverges, its coefficients growing like $l!\,(144/\pi^2)^l$; in Figure~\ref{fig:F5}(a) the grey curves are its truncations $d_3t$, $d_3t+d_4t^2$, $d_3t+d_4t^2+d_5t^3$. Beyond $t\approx0.1$ the closed geodesics take over (supplement, Section~\sref{sec:listening}).
 
-\emph{Two timescales.} $D(t)=\cZ_{\Orb(2,8,8)}(t)-\cZ_{\Orb(3,3,12)}(t)=\sum_{j\ge3}d_jt^{j-2}$ (a function of $t$, not the diameter) has $d_3=\frac{25}{12}$, $d_4=-\frac{1775}{24}$, $d_5=\frac{153025}{48}$ by Proposition~\ref{prop:heatinput}. An unweighted least-squares fit of $D(t)/t$ by a polynomial of degree $9$ on $[0.0015,0.012]$ (window and degree chosen blind, minimizing the larger of the data error and the change on adding a term) gives $d_3=2.0833320\pm0.0000031$ and $d_4=-73.9551\pm0.0062$, within $0.42$ and $0.53$ of these heuristic error bars of the exact values. Pointwise, for $0.0015\le t\le0.03$, $D(t)$ agrees with the exact difference of the elliptic terms to $4\times10^{-13}$, testing every order of the cone expansion at once. The window is small because the cone series diverges, its coefficients growing like $l!\,(144/\pi^2)^l$ (the poles of $\Phi_{12}$ at $\pm\pi/12$): at $t=0.02$, $d_3t,d_4t^2,d_5t^3$ are $0.042,-0.030,0.026$. At larger $t$ the closed geodesics take over; fitting $\cZ-\mathrm I-\mathrm E$ on $[0.06,0.5]$ gives leading multiplicities $1.997$ and $1.9998$ at the shortest lengths $2.2568$ and $1.8626$: one geodesic, two orientations (Figure~\ref{fig:F5}(a)).
-
-
-\emph{Changing the shape.} For the eight members of the family of Figure~\ref{fig:F6} and all $28$ pairs, the difference of traces is the difference of hyperbolic terms, computed with nothing fitted, and its ratio to the leading term of Theorem~\ref{thm:sharp} approaches $1$ (Figure~\ref{fig:F5}(b); supplement, Section~\sref{sec:moduli}).
+\emph{Changing the shape.} For the eight members of the family of Figure~\ref{fig:F6} and all $28$ pairs, the difference of traces is the difference of hyperbolic terms, computed with nothing fitted, and its ratio to the leading term of Theorem~\ref{thm:sharp} approaches $1$. Figure~\ref{fig:F5}(b) draws the seven pairs that contain the member $\vartheta=0$; its circles mark the emergence time, at which the computed difference and the predicted geodesic term first exceed ten times the error budget (shaded); the two times coincide for every pair.
 
 \section{Open problems}\label{sec:open}
 
+By Proposition~\ref{prop:Tmin} the growth questions are questions about the minimal configuration size $T(L)$.
+
 \begin{problem}[Linear growth]\label{prob:growth}
-Is $N(k)=O(k)$, that is (Theorem~\ref{thm:growth}), is $f(A)=\Theta(A)$?
+Is $T(L)=O(L)$, that is, $N(k)=O(k)$, that is, $f(A)=\Theta(A)$?
+\end{problem}
+
+\begin{problem}[Ideal configurations]\label{prob:ideal}
+Is $T(L)=2L+2$ for every $L$? It holds for $L=2,3$; the first open case is $T(4)\in[10,14]$.
 \end{problem}
 
 \begin{problem}[The first genus collision]\label{prob:T3}
-Is $T_3=8$ or $10$ (Remark~\ref{rem:T3})?\end{problem}
+Is $T_{\rm g}(3)=8$ or $10$ (Remark~\ref{rem:T3})?
+\end{problem}
 
 \begin{problem}[Integer sharpness]\label{prob:sharp}
 For $n\ge5$, do hyperbolic spheres with $n$ cone points and different orders share $n-1$ heat invariants? By Theorem~\ref{thmC}(1) this asks for an odd symmetric Prouhet--Tarry--Escott system \cite[\S3]{borweiningalls1994} of $n$ positive and $n$ negative integers with vanishing reciprocal sum; yes for $n=3,4$, and over the reals.
@@ -830,7 +801,7 @@ For $n\ge5$, do hyperbolic spheres with $n$ cone points and different orders sha
 \backmatter
 
 \bmhead{Acknowledgements}
-The colour schemes of the figures are Scientific Colour Maps \cite{crameri2023}, designed to be perceptually uniform and readable by people with colour-vision deficiencies \cite{crameri2020}.
+The colour schemes of the figures are Scientific Colour Maps \cite{crameri2023}.
 
 \section*{Statements and Declarations}
 
@@ -844,25 +815,15 @@ The authors have no competing interests to declare that are relevant to the cont
 Not applicable.
 
 \bmhead{Data and code availability}
-All code and data are in the public repository \url{https://github.com/Ali-M658/Arithmetic-verification}. One command, \texttt{bash code/run\_all.sh}, reruns every check (with \texttt{--quick} for the exact-arithmetic suite and \texttt{--full} for the long computations), and \texttt{DATA-MANIFEST.md} lists every data file with its generating script and checksum (Appendix~\ref{app:reproducibility}). An archived copy will be deposited at Zenodo: \textbf{[PLACEHOLDER: Zenodo DOI, to be minted at submission.]}
+All code and data are in the public repository \url{https://github.com/Ali-M658/Arithmetic-verification}. One command, \texttt{bash code/run\_all.sh}, reruns every check (with \texttt{--quick} for the exact-arithmetic suite and \texttt{--full} for the long computations), and \texttt{DATA-MANIFEST.md} lists every data file with its generating script and checksum (Appendix~\ref{app:reproducibility}). The electronic supplementary material, cited as ``the supplement'', is Online Resource~1. An archived copy will be deposited at Zenodo: \textbf{[PLACEHOLDER: Zenodo DOI, to be minted at submission.]}
 
 \bmhead{Author contributions}
 \textbf{[PLACEHOLDER: author contribution statement, to be supplied by the authors before submission.]}
 
+\bmhead{Use of AI tools}
+See Appendix~\ref{app:reproducibility}.
+
 \begin{appendices}
-
-\section{Admissibility of the heat function}\label{app:admissible}
-
-Dryden and Strohmaier state the trace formula of Theorem~\ref{thm:IEH} for $h=\hat g$ with $g\in C_c^\infty(\R)$ even \cite[eq.~(1)]{drydenstrohmaier2009}. Here is the standard approximation argument that extends it to the heat function, in the notation of Section~\ref{sec:trace}.
-
-\begin{lemma}[The heat function is admissible]\label{lem:admissible}
-Fix an even $\omega\in C_c^\infty(\R)$, $0\le\omega\le1$, $\omega=1$ on $[-1,1]$, and put $h_\varrho=\hat g_\varrho$ with $g_\varrho=g_t\,\omega(\cdot/\varrho)$. As $\varrho\to\infty$, every term of the trace formula for $h_\varrho$ tends to the corresponding term for $h_t$; hence Theorem~\ref{thm:IEH} holds.
-\end{lemma}
-
-\begin{proof}
-\emph{Counting eigenvalues.} Let $\lambda_j=\frac14+r_j^2$ and take $\psi\in C_c^\infty(\R)$ even, nonnegative, $\int\psi=1$, supported in $[-\epsilon,\epsilon]$ with $2\epsilon<\ell$, $\epsilon\le1$; then $|\hat\psi|\le1$ and $\hat\psi(r)\ge\cos(\epsilon r)\ge\frac12$ for $|r|\le1$. The function $h_T(r)=\hat\psi(r-T)^2+\hat\psi(r+T)^2=\hat g$ for $g=2\cos(Tu)(\psi*\psi)(u)$, supported in $[-2\epsilon,2\epsilon]$, so the hyperbolic side vanishes for it; its identity term is $O(T+1)$, each elliptic term $O(1)$, and the finitely many imaginary $r_j$ contribute $O(1)$. Since $h_T\ge\frac14$ on $|r-T|\le1$, $\#\{j:|r_j-T|\le1\}=O(T+1)$, hence $\#\{\lambda_j\le x\}=O(x)$, with no heat-kernel input (the leading term of \cite[Thm~4.8]{dggw2008} gives the same).
-\emph{Convergence.} On the hyperbolic side $0\le g_\varrho\le g_t$, with equality on $[0,\varrho]$, and Lemma~\ref{lem:counting} gives dominated convergence. With $f_\varrho=g_t(1-\omega(\cdot/\varrho))$, $h_t-h_\varrho=\hat f_\varrho$ and $\|f_\varrho^{(k)}\|_{L^1}\to0$ ($k\le3$), so $|\hat f_\varrho(r)|\le\epsilon_\varrho\min(1,|r|^{-3})$ with $\epsilon_\varrho\to0$, which handles the identity and elliptic terms and, as $\sum_j\min(1,|r_j|^{-3})<\infty$, the real $r_j$; for imaginary $r_j$, $|\hat f_\varrho(r_j)|\le\int|f_\varrho|e^{|u|/2}\to0$.
-\end{proof}
 
 \section{Proofs of the growth results}\label{app:pte}
 
@@ -882,21 +843,19 @@ Let $X\ne Y$ be disjoint $n$-multisets of integers, $n\ge1$, with equal power su
 (1) $P_j(X+c)-P_j(Y+c)$ is a combination of the $P_i(X)-P_i(Y)$, $i\le j$. (2) Count signs; the counting functions of $X\ne Y$ differ on an interval. (3) The poles are distinct and $n\ge1$.
 \end{proof}
 
-\begin{proof}[Proof of Theorem~\ref{thm:growth}]
+\begin{proof}[Proof of Theorem~\ref{thm:growth}(a)--(c)]
 (a) Lemma~\ref{lem:pigeon} and Proposition~\ref{prop:doubling} give two genus-$0$ orbifolds of different signatures and area below $2\pi(3(L-1)^2+1)$ sharing $H_L$, so with $\Kmult\ge L+1$; take the largest $L\ge2$ with $3(L-1)^2+1\le A/2\pi$. The upper bound is Corollary~\ref{cor:sigarea}.
-(b) A partner sharing $H_L$ gives $Z$ with $|Z|\le|U|+|V|\le2\lfloor A/\pi\rfloor+8$ (Corollary~\ref{cor:sigarea}), and $Z,-Z$ solve degree $2L-2$.
-(c) By Lemma~\ref{lem:pigeon} the pair in (a) can have $n\le N(2L-3)\le C(2L)^\beta$, so $f(A)\ge L+1$ once $6\pi C(2L)^\beta\le A$; take $L=\lfloor\frac12(A/6\pi C)^{1/\beta}\rfloor$ if $L\ge2$, and otherwise use $f(A)\ge3$ ($\Orb(2,8,8)$ has area $\pi/2$ and $\Kmult=3$).
-(d) ``If'' is (c). Conversely, $N$ is nondecreasing, and $L=\lceil k/2\rceil+1$, $A=((L+1)/c)^{1/\alpha}$ in (b) give $N(k)\le2A/\pi+8=O(k^{1/\alpha})$.
-(e) \emph{Genus.} Take $X,Y$ attaining $N(2L-3)$, common elements cancelled; by Proposition~\ref{prop:shift} choose rational $c$ with $\iota(Z(c))\ne0\ne\varrho(c)$ and $c'$ large with $\iota(Z(c'))=0\ne\varrho(c')$. Then $Z=Z(c)\uplus\lambda Z(c')$, $\lambda=-\varrho(c')/\varrho(c)$, is after removing pairs an $L$-configuration with $\iota(Z)\ne0$ and $|Z|\le4N(2L-3)$, realised (Section~\ref{sec:pte}) with different genera; the side $W$ with more entries has the smaller genus $g_0$, and the area is below $2\pi(|W|-2)$ if $g_0=0$ and at most $4\pi$ if $g_0=1$, so below $2\pi|Z|\le8\pi N(2L-3)$. \emph{Cone count.} With $X,Y$ translated so that $1\in X$ is least, Proposition~\ref{prop:doubling} gives cone counts $3n-\mult_X\ne3n$ and area below $2\pi(3N(2L-3)-2)$. As $N(2L-3)\le2L^2$, $f_g(A)\ge L+1$ for $A\ge16\pi L^2$ and $f_n(A)\ge L+1$ for $A\ge12\pi L^2$, giving the bounds for $A\ge64\pi$, $48\pi$; below, $f_g\ge3$ by Example~\ref{ex:siggenus}, and $f_n\ge3$ as $(0;5,5,5)$, $(0;2,2,2,10)$ (area $2\pi\cdot\frac25$) share two invariants. (d) for $f_g,f_n$ follows from these thresholds and $f_g,f_n\le f$.
+(b) By Lemma~\ref{lem:pigeon} the pair in (a) can have $n\le N(2L-3)\le C(2L)^\beta$, so $f(A)\ge L+1$ once $6\pi C(2L)^\beta\le A$; take $L=\lfloor\frac12(A/6\pi C)^{1/\beta}\rfloor$ if $L\ge2$, and otherwise use $f(A)\ge3$ ($\Orb(2,8,8)$ has area $\pi/2$ and $\Kmult=3$).
+(c) \emph{Genus.} Take $X,Y$ attaining $N(2L-3)$, common elements cancelled; by Proposition~\ref{prop:shift} choose rational $c$ with $\iota(Z(c))\ne0\ne\varrho(c)$ and $c'$ large with $\iota(Z(c'))=0\ne\varrho(c')$. Then $Z=Z(c)\uplus\lambda Z(c')$, $\lambda=-\varrho(c')/\varrho(c)$, is after removing pairs an $L$-configuration with $\iota(Z)\ne0$ and $|Z|\le4N(2L-3)$, realised (Section~\ref{sec:pte}) with different genera; the side $W$ with more entries has the smaller genus $g_0$, and the area is below $2\pi(|W|-2)$ if $g_0=0$ and at most $4\pi$ otherwise (also when every entry of $W$ is $1$ and $g_0=2$), so below $2\pi|Z|\le8\pi N(2L-3)$. \emph{Cone count.} With $X,Y$ translated so that $1\in X$ is least, Proposition~\ref{prop:doubling} gives cone counts $3n-\mult_X\ne3n$ and area below $2\pi(3N(2L-3)-2)$. As $N(2L-3)\le2L^2$, $f_g(A)\ge L+1$ for $A\ge16\pi L^2$ and $f_n(A)\ge L+1$ for $A\ge12\pi L^2$, giving the bounds for $A\ge64\pi$, $48\pi$; below, $f_g\ge3$ by Example~\ref{ex:siggenus}, and $f_n\ge3$ as $(0;5,5,5)$, $(0;2,2,2,10)$ (area $2\pi\cdot\frac25$) share two invariants.
 \end{proof}
 
 \section{Computational methods and reproducibility}\label{app:reproducibility}
 
 \bmhead{Use of AI tools}
-\textbf{[PLACEHOLDER: statement on the use of AI tools in preparing this manuscript, to be written by the authors. The journal's guidelines ask for any such use to be documented in the Methods section or, where there is none, in a suitable alternative part of the manuscript; this appendix serves as that part.]}
+\textbf{[PLACEHOLDER: statement on the use of AI tools in preparing this manuscript, to be written by the authors. Springer Nature's guidelines ask for any such use, beyond AI-assisted copy editing, to be documented in the Methods section or, where there is none, in a suitable alternative part of the manuscript; this appendix serves as that part.]}
 
 \bmhead{Computations}
-Heat invariants, certificates and search results are exact (integer or rational arithmetic) unless stated, and each is produced by a committed program of the repository named in the data statement (paths from its root). (i)~Remark~\ref{rem:witnesses}, $n=4$: all pairs of $4$-multisets of orders in $[2,440]$ with equal $(R,P_1,P_3)$, found by sorting every multiset on these exact keys ($193$ pairs, $107$ primitive; \repo{review/audit-2/pte-witnesses/check_direct4.c}); pencil splittings: \repo{review/round1-fixes/d1_pencil_counts.py}. $n=5$: all $216{,}071{,}394$ multisets of orders in $[2,120]$, grouped by $P_1$ and keyed on the exact integers $(P_3,P_5,\operatorname{lcm}(2,\dots,120)\,R)$ (\repo{theory/audibility/sharpness_search.py}). (ii)~Remark~\ref{rem:T3}: for each $5$-multiset $V$ with gcd $1$ and entries at most $220$, the other side is the root set of an explicit cubic; a C filter rejects $V$ only when floating-point inclusion disks with rigorous error bounds exclude three rational roots, and every other $V$ is decided exactly (\repo{theory/pte/search_T3.c}, \repo{search_T3_verify.py}, log \repo{theory/pte/data/T3_search_log.txt}, planted controls in \repo{search_T3_control.py}). (iii)~Proposition~\ref{prop:collisionfree}: the triads of each listed sum, and an exhibited pair at each other sum ($3962$ scaled, $783$ in \repo{theory/revision/collision_witnesses.csv}), checked by \repo{theory/revision/check_thm513.py}. (iv)~Figure~\ref{fig:F4}: \repo{figures/gen/gen_f4_area_classes.py}, recomputed independently by \repo{review/round1-fixes/a1_fig2_kmult.py}; its pairs: \repo{review/round1-fixes/d2_explicit_pairs.py}. Figure~\ref{fig:F7}: \repo{figures/gen/gen_f7_strata.py}. (v)~The rank of $C_{27/2}$: PARI/GP, \repo{theory/diophantine/data/ranks.txt}. \texttt{code/run\_all.sh} reruns all of these except the $n=4$ search of (i), whose committed output it rechecks, and the search of (ii), which is logged.
+Heat invariants, certificates and search results are exact (integer or rational arithmetic) unless stated; the one floating-point filter, in the search of Remark~\ref{rem:T3}, has rigorous error bounds. Each result is produced by a committed program of the repository named in the data statement, \texttt{code/run\_all.sh} reruns them, and Section~\sref{sec:methods} of the supplement describes each computation and its arithmetic.
 
 \end{appendices}
 

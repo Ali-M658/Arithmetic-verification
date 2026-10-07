@@ -112,6 +112,10 @@ SOURCES = {
     # added in referee round 1 (review/round1-fixes/citations/)
     "richardsonstanhope2020": ("doi", "10.1016/j.difgeo.2019.101577"),
     "philippe2010tsg": ("doi", "10.5802/tsg.280"),
+    # orientability is not a spectral invariant of surfaces with boundary (Neumann problem);
+    # the 1995 Note has no DOI, the 2022 paper gives the full proofs (fetched/berardwebb/)
+    "berardwebb1995": ("zbmath", "0841.58062"),
+    "berardwebb2022": ("doi", "10.1007/s00209-021-02758-y"),
     # the authors' companion manuscript (paper/arith/note.tex), not a third-party record
     "companion": ("local", "paper/arith/note.tex"),
 }
@@ -300,6 +304,8 @@ TITLE_SC = {
     "philippe2010gd": "Sur la rigidit{\\'e} des groupes de triangles $(r,p,q)$",
     "philippe2010tsg": "Le spectre des longueurs des surfaces hyperboliques: un exemple de rigidit{\\'e}",
     "richardsonstanhope2020": "You can hear the local orientability of an orbifold",
+    "berardwebb1995": "On ne peut pas entendre l'orientabilit{\\'e} d'une surface",
+    "berardwebb2022": "One can't hear orientability of surfaces",
     "changdeturck1989": "On hearing the shape of a triangle",
     "aby2015": "Accuracy of spike-train {Fourier} reconstruction for colliding nodes",
     "bgy2020": "Super-resolution of near-colliding point sources",
@@ -318,6 +324,9 @@ TITLE_EXTRA_SOURCE = {
     "arpack1998": "arpack1998_address_zbmath",      # the subtitle (zbMATH 0901.65021)
     "schoberl1997": "schoberl1997_zb",              # the colon after NETGEN (zbMATH 0883.68130)
     "beauville1982": None,                          # "singuli\\`eres": print, p. 657 (CITATIONS.md section 4)
+    # the French original: the record's "original" title field (checked in CHECK_EXTRA) and
+    # the printed Note, p. 533 (Gallica ALTO text, fetched/berardwebb/gallica_62036636_view29.txt)
+    "berardwebb1995": None,
 }
 JOURNAL = {
     "philippe2010tsg": "S{\\'e}minaire de Th{\\'e}orie Spectrale et G{\\'e}om{\\'e}trie",
@@ -328,6 +337,7 @@ JOURNAL = {
     "gww1992": "Bulletin of the American Mathematical Society (N.S.)",
     "steinig1971": "Rendiconti di Matematica (6)",
     "beauville1982": "Comptes Rendus de l'Acad{\\'e}mie des Sciences, S{\\'e}rie~I",
+    "berardwebb1995": "Comptes Rendus de l'Acad{\\'e}mie des Sciences, S{\\'e}rie~I",
     "mazur1977": "Publications Math{\\'e}matiques de l'IH{\\'E}S",
     "borweiningalls1994": "L'Enseignement Math{\\'e}matique (2)",
     "wooley2019": "Proceedings of the London Mathematical Society (3)",
@@ -345,6 +355,7 @@ AUTHORS = {
 EXTRA = {
     "kac1966": {"number": "4, Part 2"},                                   # journal issue as printed
     "schinzel1996": {"number": "4"},                                      # zbMATH record
+    "berardwebb1995": {"number": "5"},                                    # zbMATH record
     "steinig1971": {"year": "1971", "note": "Published 1972"},            # zbMATH: "4(1971), ... (1972)"
     "ucar2017": {"doi": "10.18452/18463"},                                # DataCite record
     "marklof2011": {"editor": "Bolte, Jens and Steiner, Frank",           # Crossref book record
@@ -369,6 +380,8 @@ CHECK_EXTRA = {   # (key, record, substring that must occur in the record) for E
     "schinzel1996": ("schinzel1996", "No. 4, 587-588"),
     "ucar2017": ("ucar2017_datacite", "10.18452/18463"),
     "cremona1997": ("cremona1997", "0-521-59820-6"),
+    "berardwebb1995": ("berardwebb1995", "320, No. 5, 533-536 (1995)",
+                       "On ne peut pas entendre l'orientabilit\u00e9 d'une surface"),
 }
 
 
@@ -554,8 +567,9 @@ def style(key, kind, f):
             norm(AUTHORS[key].split(",")[0]) == norm(f["author"].split(",")[0]), key
         f["author"] = AUTHORS[key]
     if key in CHECK_EXTRA:
-        rec, needle = CHECK_EXTRA[key]
-        assert needle in (RAW / f"{rec}.json").read_text(encoding="utf-8"), (key, needle)
+        rec, *needles = CHECK_EXTRA[key]
+        for needle in needles:
+            assert needle in (RAW / f"{rec}.json").read_text(encoding="utf-8"), (key, needle)
     f.update(EXTRA.get(key, {}))
     order = ["author", "editor", "title", "booktitle", "journal", "series", "volume", "number",
              "pages", "edition", "school", "publisher", "address", "howpublished", "year", "doi",

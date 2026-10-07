@@ -44,7 +44,7 @@ def main():
     bib_warn = re.findall(r"^Warning--.*", blg, re.M)
     info = subprocess.run(["pdfinfo", str(PDF)], capture_output=True, text=True).stdout
     lines = [
-        "# BUILD: last build of the JGA manuscript and its electronic supplement",
+        "# BUILD: last build of the manuscript (target: AGAG) and its electronic supplement",
         "",
         "Command: `cd paper/jga && latexmk && latexmk` (latexmkrc builds manuscript.tex, then supplement.tex;",
         "each reads the other's aux file in build/ through xr, so a clean build needs the second run;",
