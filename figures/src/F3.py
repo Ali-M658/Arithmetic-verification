@@ -83,7 +83,13 @@ def row(ax, pos, neg, cpos, cneg, lim):
     marks = sorted({s for z, _ in Z for s in (z, -z)} | {0})
     ax.set_xticks(marks)
     crowded = any(abs(z) == 1 for z, _ in Z)          # keep the tick at 0 but not its label next to +-1
-    ax.set_xticklabels(["" if (m == 0 and crowded) else (f"${m}$" if m >= 0 else f"$-{-m}$") for m in marks])
+    labels = ax.set_xticklabels(["" if (m == 0 and crowded) else (f"${m}$" if m >= 0 else f"$-{-m}$") for m in marks])
+    # labels of ticks one unit apart (-3, -2 and 2, 3 in (a)) would touch: align the left one to the
+    # right of its tick and the right one to the left (round-3 report, item n15)
+    for i in range(len(marks) - 1):
+        if marks[i + 1] - marks[i] <= 1 and labels[i].get_text() and labels[i + 1].get_text():
+            labels[i].set_horizontalalignment("right")
+            labels[i + 1].set_horizontalalignment("left")
     ax.tick_params(axis="x", length=0, pad=1)
 
 
