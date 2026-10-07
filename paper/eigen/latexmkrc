@@ -1,0 +1,6 @@
+# latexmk configuration for the eigen manuscript (Springer Nature template, AGAG conventions):
+# pdflatex + BibTeX, output in build/ (not committed).
+@default_files = ('manuscript.tex');
+$pdf_mode = 1;
+$out_dir = 'build';
+$bibtex_use = 2;
