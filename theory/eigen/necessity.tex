@@ -1,0 +1,54 @@
+%% theory/eigen/necessity.tex -- Task 5: which hypotheses of Theorem E can be dropped.
+%% Verification: theory/eigen/necessity.py (the two Rayleigh identities symbolically; the test-function
+%% quotients numerically; the quadrilateral construction, the Fermi rectangle and the eigenvalue
+%% bounds for k = 3, 4 and b down to 1e-8).
+
+\subsection{The hypotheses of Theorem~\ref{eig:E}}\label{sec:eig-nec}
+
+We use the min--max principle for the Laplacian of a closed orbifold, $\lambda_j=\min_V\max_{0\ne f\in V}\int|\nabla f|^2/\int f^2$ over $(j+1)$-dimensional subspaces $V$ of $H^1(\Orb)$, and, on a region where the metric is $d\rho^2+w(\rho)^2d\vartheta^2$, the following identity for $f=w^{-1/2}u(\rho)$:
+\begin{equation}\label{eig:rayleigh}
+  f'^2w=u'^2+q\,u^2+\frac d{d\rho}\Big(-\frac{w'}{2w}u^2\Big),\qquad
+  q=\begin{cases}\frac14-\frac1{4\sinh^2\rho}, & w=\sinh\rho,\\ \frac14+\frac1{4\cosh^2\rho}, & w=\cosh\rho,\end{cases}
+\end{equation}
+since $w''=w$ in both cases (checked symbolically in \texttt{necessity.py}).
+
+\begin{proposition}[Unbounded cone orders]\label{eig:N1}
+For $m\ge7$ and $j\ge1$, with $h_m=\operatorname{arccosh}\frac1{2\sin(\pi/m)}$,
+\[
+  \lambda_j\big(\Orb(2,3,m)\big)\ \le\ \frac14+\frac{\pi^2(j+1)^2}{h_m^2}.
+\]
+Hence $\limsup_{m\to\infty}\lambda_j(\Orb(2,3,m))\le\frac14$ for each $j$. Moreover, for every $N\ge1$ and $\delta>0$, among any $K+1$ distinct orders $m\ge7$, where $K=\lceil\Lambda_N/\delta\rceil^{N-1}$ and $\Lambda_N=\frac14+\pi^2N^2/h_7^2$, there are two, $m\ne m'$, with $|\lambda_j(\Orb(2,3,m))-\lambda_j(\Orb(2,3,m'))|<\delta$ for all $j<N$. These orbifolds have different signatures and lie in $\Cl(\frac\pi3,\sigma_0,\max(m,m'))$ (Proposition~\ref{eig:233}). So no $N,\delta$ depending only on an area bound and a systole bound determine the signature from $\delta$-approximations of the first $N$ eigenvalues: whatever such a rule returns on the data $\tilde\lambda_j=\lambda_j(\Orb(2,3,m))$ is wrong for one of the two.
+\end{proposition}
+
+\begin{proof}
+By Proposition~\ref{eig:233}, the ball of radius $h_m$ about the cone point of order $m$ is the cone of angle $2\pi/m$, with metric $d\rho^2+\sinh^2\rho\,d\vartheta^2$, $\vartheta\in\R/\frac{2\pi}m\Z$. For $0<a<h_m$ cut $[a,h_m]$ into $j+1$ intervals $I_i$ of length $\ell=(h_m-a)/(j+1)$, let $u_i$ be $\sin(\pi(\rho-\inf I_i)/\ell)$ on $I_i$ and $0$ elsewhere, and $f_i=(\sinh\rho)^{-1/2}u_i$, extended by $0$ to $\Orb$. These are Lipschitz with disjoint supports, and by \eqref{eig:rayleigh}, as $u_i$ vanishes at the ends of $I_i$ and the factor $2\pi/m$ cancels,
+\[
+  \frac{\int|\nabla f_i|^2}{\int f_i^2}=\frac{\int(u_i'^2+qu_i^2)\,d\rho}{\int u_i^2\,d\rho}\le\frac14+\frac{\pi^2}{\ell^2}.
+\]
+Min--max on their span gives $\lambda_j\le\frac14+\pi^2(j+1)^2/(h_m-a)^2$; let $a\to0$. As $h_m$ increases with $m$, $0\le\lambda_j\le\Lambda_N$ for $j<N$ and all $m\ge7$, and $\lambda_0=0$. Cut $[0,\Lambda_N)$ into $\lceil\Lambda_N/\delta\rceil$ half-open intervals of length less than or equal to $\delta$; by the pigeonhole principle two of $K+1$ vectors $(\lambda_1,\dots,\lambda_{N-1})$ lie in the same product of intervals.
+\end{proof}
+
+The proposition does not show that $\lambda_j(\Orb(2,3,m))$ converges as $m\to\infty$. We expect $\lambda_j\to\frac14$ for every fixed $j\ge1$, since the limit $PSL(2,\Z)\backslash\mathbb H^2$ has no eigenvalue in $(0,\frac14]$, but we do not prove the lower bound.
+
+\paragraph{Small systole.} Fix $k\in\{3,4\}$ and $b>0$, and let $a>0$ be given by $\sinh a\sinh b=\cos\frac\pi k$. In $\mathbb H^2$ take orthogonal lines $\beta,\beta'$ through $O$. Let $Q_{k,b}$ be the quadrilateral bounded by the lines perpendicular to $\beta$ at distance $b$ from $O$ and those perpendicular to $\beta'$ at distance $a$. In the hyperboloid model their unit normals $n_P=(\cosh b,0,\sinh b)$, $n_R=(0,\cosh a,\sinh a)$ satisfy $|\langle n_P,n_R\rangle|=\sinh a\sinh b<1$, so adjacent sides meet at the angle $\frac\pi k$ (checked numerically). Let $\Orb_{k,b}$ be the double of $Q_{k,b}$: a sphere with four cone points of order $k$, of area $2\pi(2-\frac4k)\le2\pi$.
+
+\begin{proposition}[Pinching]\label{eig:N2}
+In Fermi coordinates $(\rho,s)$ about $\beta$, the region $\{|\rho|<a,\ |s|\le b\}$ lies in $Q_{k,b}$, and its double is an embedded collar $C=\{|\rho|<a\}\times\R/4b\Z$ with metric $d\rho^2+\cosh^2\rho\,ds^2$ about a separating closed geodesic of length $4b$. Hence $\ell(\Orb_{k,b})\le4b$ and
+\[
+  \lambda_1(\Orb_{k,b})\le\frac{\sinh a}{(a^2+2)\sinh a-2a\cosh a},\qquad
+  \lambda_j(\Orb_{k,b})\le\frac14+\frac1{4\cosh^2(a/2)}+\frac{4\pi^2(j+1)^2}{a^2}\quad(j\ge1).
+\]
+As $b\to0$, $a\to\infty$, so $\lambda_1\to0$ and $\limsup\lambda_j\le\frac14$. In particular, for every $\delta>0$ there are $b,b'>0$ such that $\Orb_{3,b}$ and $\Orb_{4,b'}$, of different signatures and both in $\Cl(2\pi,\varepsilon,4)$ for $\varepsilon=\min(\ell(\Orb_{3,b}),\ell(\Orb_{4,b'}))$, have $|\lambda_j-\lambda'_j|<\delta$ for $j\le1$.
+\end{proposition}
+
+\begin{proof}
+The sides perpendicular to $\beta$ are $\{s=\pm b\}$. The side through $R\in\beta'$, $d(O,R)=a$, is ultraparallel to $\beta$ with common perpendicular $OR$, so its points are at distance at least $a$ from $\beta$. A point with $|\rho|<a$ and $|s|\le b$ therefore lies between the sides $s=\pm b$ and, since the perpendicular from it to $\beta$ cannot cross the far sides, on the same side of them as $O$. Fermi coordinates are a global chart, so the region embeds, and the doubles of $\{|s|\le b\}$ glue along $s=\pm b$ to the cylinder $C$. Its core is the double of the segment of $\beta$ in $Q_{k,b}$, a closed geodesic of length $4b$. It separates the double into two discs, each containing two cone points. The reflection of $Q_{k,b}$ in $\beta$ induces an isometry $\tau$ with $\rho\circ\tau=-\rho$ that exchanges the two discs.
+
+$\lambda_1$: let $f=\rho/a$ on $C$ and $f=\pm1$ on the two components of $\Orb\setminus C$. Then $f$ is Lipschitz, $f\circ\tau=-f$, so $\int f=0$, and
+\[
+  \frac{\int|\nabla f|^2}{\int f^2}\le\frac{4b\int_{-a}^a a^{-2}\cosh\rho\,d\rho}{4b\int_{-a}^a(\rho/a)^2\cosh\rho\,d\rho}=\frac{\sinh a}{(a^2+2)\sinh a-2a\cosh a}.
+\]
+$\lambda_j$: as in Proposition~\ref{eig:N1}, with $w=\cosh\rho$, $j+1$ sine bumps on disjoint intervals of length $a/(2(j+1))$ in $[\frac a2,a)$, and $q\le\frac14+\frac1{4\cosh^2(a/2)}$ there. The last statement follows from the bound for $\lambda_1$, since $\lambda_0=0$.
+\end{proof}
+
+\paragraph{What is not proved.} Proposition~\ref{eig:N2} shows only that the first two eigenvalues, at any accuracy, cannot replace a systole bound. We do not prove the full analogue of Proposition~\ref{eig:N1}: that for fixed $A$, $M$ and every $N$, $\delta$ there are orbifolds in $\Cl(A,\varepsilon,M)$, for some $\varepsilon>0$, of different signatures, whose first $N$ eigenvalues agree to within $\delta$. Since $A$ and $M$ are fixed, only finitely many signatures are available and pigeonholing over signatures is impossible. One needs two degenerating families of different signatures whose low spectra converge to the same limit. The upper bounds above give $\limsup\lambda_j\le\frac14$ for every $j$. The missing input is a matching lower bound $\lambda_j\ge\frac14-o(1)$ for $2\le j<N$ along both families, which requires the limit cusped orbifolds to have no eigenvalues in $(0,\frac14]$ and lower semicontinuity of the spectrum under degeneration. That is the content of the spectral theory of degenerating hyperbolic surfaces; we have not verified it in the generality of orbifolds and do not claim it. Equivalently: whether $N$ in Theorem~\ref{eig:E} must grow as $\varepsilon\to0$ with $A,M$ fixed is open here. The $N$ of the theorem does grow, roughly like $1/\varepsilon^2$ once $t_3=\varepsilon^2/(4y_0)$ falls below $t_1$, because the proof must take $t_*$ small enough for the hyperbolic term to be negligible.

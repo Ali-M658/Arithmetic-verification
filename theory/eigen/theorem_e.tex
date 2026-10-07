@@ -1,0 +1,103 @@
+%% theory/eigen/theorem_e.tex -- Task 4: Theorem E, finitely many approximate eigenvalues
+%% determine the signature on C(A, eps, M).
+%% Verification: theory/eigen/theorem_e.py (Lemma eig:int exactly on 11 912 equal-area pairs;
+%% Lemma eig:gap at 60 digits on whole classes; the chain of inequalities and the sizes of N, delta).
+%% Uses: diameter.tex (Theorem eig:diam), counting.tex, remainder.tex.
+
+\subsection{Finitely many eigenvalues determine the signature}\label{sec:eig-E}
+
+The heat invariants are not finite spectral data. What makes them useful for finite data is that, at the first index where two signatures differ, the difference is an integer multiple of an explicit rational number. The trace formula then turns this into an explicit gap between the heat traces at a small explicit time, which finitely many eigenvalues resolve.
+
+Let $\Sig(A,M)$ be the set of signatures of hyperbolic orbifolds in $\Sig$ with area at most $A$ and cone orders at most $M$; it is finite, as $n+4g\le A/\pi+4$ (Lemma~\ref{eig:elem}). Put
+\[
+  k_*=n_*=\Big\lfloor\frac A\pi\Big\rfloor+4,\qquad a_l=\frac{|B_{2l+2}|}{2\,(l+1)!\,(2l+1)},\qquad L_M=\operatorname{lcm}(1,2,\dots,M),
+\]
+so that $a_l$ is the leading coefficient of $p_l$ (Lemma~\ref{lem:conepoly}).
+
+\begin{lemma}[Integrality at the first difference]\label{eig:int}
+Let $\sigma\ne\sigma'$ be signatures in $\Sig$ and $k$ the least index with $c_k(\sigma)\ne c_k(\sigma')$; put $d_k=c_k(\sigma)-c_k(\sigma')$.
+\begin{enumerate}[label=(\roman*)]
+\item If the areas differ, $k=1$ and $|d_1|\ge1/(2L)$, $L$ the lcm of the cone orders of $\sigma$ and $\sigma'$.
+\item If the areas are equal, $2\le k\le\lfloor\Area/\pi\rfloor+4$ and, with the paddings $U,V$ of Lemma~\ref{lem:sigdata},
+\[
+  d_k=(-1)^k\,a_{k-2}\,\big(P_{2k-3}(U)-P_{2k-3}(V)\big),
+\]
+where $P_{2k-3}(U)-P_{2k-3}(V)$ is a nonzero integer, divisible by every prime $p$ with $(p-1)\mid2(k-2)$ when $k\ge3$. In particular $|d_k|\ge a_{k-2}$.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+(i) $c_1=\Area/4\pi=\frac12(2g-2+n-R)$ and $R\in\frac1L\Z$.
+(ii) Equal areas give $c_1(\sigma)=c_1(\sigma')$, so $k\ge2$, and $k\le\lfloor\Area/\pi\rfloor+4$ by Theorem~\ref{thm:sigsep} and Corollary~\ref{cor:sigarea}. Put $l=k-2$. Lemma~\ref{lem:sigdata}, applied with $H_{k-1}(\sigma)=H_{k-1}(\sigma')$, gives paddings $U,V$ (multisets of positive integers) with $R(U)=R(V)$ and $\Psi_j(U)=\Psi_j(V)$ for $j\le l$ (padding by $1$ changes no $\Psi_j$, as $\psi_j(1)=0$, and no $C_l$, as $p_l(1)=0$). The terms $\alpha_{k-1}\Area/4\pi$ cancel, so by Lemma~\ref{lem:triangular}
+\[
+  d_k=C_l(U)-C_l(V)=(-1)^l\sum_{j=1}^{l+1}a_{l,j}\big(\Psi_j(U)-\Psi_j(V)\big)=(-1)^la_{l,l+1}\big(P_{2l+1}(U)-P_{2l+1}(V)\big),
+\]
+using $R(U)=R(V)$ in the last step, and $a_{l,l+1}=a_l$. The difference of power sums is an integer, nonzero as $d_k\ne0$. If $(p-1)\mid2l$ and $l\ge1$, Fermat gives $x^{2l+1}\equiv x\pmod p$ for every integer $x$, so $P_{2l+1}(U)-P_{2l+1}(V)\equiv P_1(U)-P_1(V)=\Psi_1(U)-\Psi_1(V)=0\pmod p$.
+\end{proof}
+
+The bound $|d_k|\ge a_{k-2}$ is attained, for instance by $(0;4,4,4)$ and $(0;3,4,6)$ (equal area, $P_1=12$ and $13$, $d_2=-\frac1{12}$), and it does not depend on $M$. Put $\delta_1=1/(2L_M)$, $\delta_k=a_{k-2}$ for $2\le k\le k_*$, $\gamma_*=\min_{1\le k\le k_*}\delta_k$, and, with $Q_{\rm cone}$, $Q_{\rm area}$ of Propositions~\ref{eig:remcone}--\ref{eig:remarea},
+\[
+  Q(K)=\frac A{4\pi}Q_{\rm area}(K,1)+n_*\,Q_{\rm cone}(M,K,1),\qquad t_1=\min\Big\{1,\ \min_{1\le k\le k_*}\frac{\delta_k}{4\,Q(k-1)}\Big\},\qquad \Gamma(t)=\frac{\gamma_*}2\,t^{k_*-2}.
+\]
+
+\begin{lemma}[The gap]\label{eig:gap}
+For $\sigma\ne\sigma'$ in $\Sig(A,M)$ and $0<t\le t_1$, $|G_\sigma(t)-G_{\sigma'}(t)|\ge\Gamma(t)$.
+\end{lemma}
+
+\begin{proof}
+Let $k\le k_*$ be the first index of difference (Lemma~\ref{eig:int}; $\lfloor\Area/\pi\rfloor\le\lfloor A/\pi\rfloor$). By \eqref{eig:Grem} with $K=k-1$, $t_0=1$, $n\le n_*$ and $m_i\le M$, $G_\sigma(t)=\sum_{j\le k}c_j(\sigma)t^{j-2}+\varrho_\sigma(t)$ with $|\varrho_\sigma(t)|\le t^{k-1}Q(k-1)$, and likewise for $\sigma'$. Hence
+\[
+  |G_\sigma(t)-G_{\sigma'}(t)|\ge t^{k-2}\big(|d_k|-2tQ(k-1)\big)\ge\tfrac12t^{k-2}|d_k|\ge\tfrac12\delta_kt^{k-2}\ge\Gamma(t),
+\]
+since $t\le\delta_k/(4Q(k-1))\le|d_k|/(4Q(k-1))$, $|d_k|\ge\delta_k$ (Lemma~\ref{eig:int}, $L\mid L_M$), $t\le1$ and $k\le k_*$.
+\end{proof}
+
+\begin{theorem}[Theorem E: finitely many eigenvalues determine the signature]\label{eig:E}
+Let $A>0$, $\varepsilon>0$, $M\ge2$, $D=D(A,\varepsilon,M)$ (Theorem~\ref{eig:diam}), and
+\begin{gather*}
+  t_2=\frac{\varepsilon^2}{2(1+\varepsilon)},\qquad p=k_*-\tfrac32,\qquad \varpi=\frac{63\,\varepsilon e^{\varepsilon/2}}{(1-e^{-\varepsilon})\sqrt{4\pi}},\\
+  y_0=2\Big(3D+\log\frac{16\varpi}{\gamma_*}+p\log\frac4{\varepsilon^2}+p\log\frac{2p}e\Big),\qquad t_3=\frac{\varepsilon^2}{4\max(y_0,1)},\qquad t_*=\min(t_1,t_2,t_3),\\
+  \Gamma_*=\Gamma(t_*),\qquad \cZ_b(s)=\frac A{4\pi s}+n_*\frac{M^2-1}{12M}+1,\qquad \Lambda=\frac2{t_*}\log\frac{8\,\cZ_b(t_*/2)}{\Gamma_*},\\
+  N=\big\lfloor e\,\cZ_b(1/\Lambda)\big\rfloor+1,\qquad \delta=\min\Big\{\frac1{t_*},\ \frac{\Gamma_*}{8e\,N\,t_*}\Big\}.
+\end{gather*}
+Let $\Orb\in\Cl(A,\varepsilon,M)$ have eigenvalues $0=\lambda_0\le\lambda_1\le\cdots$, and let $\tilde\lambda_0,\dots,\tilde\lambda_{N-1}$ be real numbers with $|\tilde\lambda_j-\lambda_j|\le\delta$. Then $\sigma(\Orb)$ is the unique $\sigma\in\Sig(A,M)$ minimising
+\[
+  \Big|\sum_{j<N}e^{-\tilde\lambda_jt_*}-G_\sigma(t_*)\Big|.
+\]
+In particular, if $\Orb,\Orb'\in\Cl(A,\varepsilon,M)$ satisfy $|\lambda_j(\Orb)-\lambda_j(\Orb')|\le\delta$ for $j<N$, then $\sigma(\Orb)=\sigma(\Orb')$.
+\end{theorem}
+
+\begin{proof}
+Write $\tilde\cZ=\sum_{j<N}e^{-\tilde\lambda_jt_*}$ and $\sigma_0=\sigma(\Orb)\in\Sig(A,M)$. By Theorem~\ref{thm:IEH},
+\[
+  \tilde\cZ-G_{\sigma_0}(t_*)=\Hyp(t_*)-\sum_{j\ge N}e^{-\lambda_jt_*}+\sum_{j<N}\big(e^{-\tilde\lambda_jt_*}-e^{-\lambda_jt_*}\big).
+\]
+\emph{Hyperbolic term.} For $0<t\le t_2$, Lemma~\ref{lem:hypbound} with $\ell\ge\varepsilon$ (monotonicity as in Theorem~\ref{eig:count}), $\diam<D$, $\Area\ge\pi/21$ and $1+\frac{2t}{\varepsilon-t}\le3$ (as $t\le\varepsilon/2$) gives $0<\Hyp(t)\le B_*(t):=\varpi e^{3D}t^{-1/2}e^{-\varepsilon^2/4t}$, which increases on $(0,t_2]$. For $y=\varepsilon^2/4t$, $B_*(t)\le\Gamma(t)/8$ is $e^{-y}y^p\le\frac{\gamma_*}{16\varpi e^{3D}}(\varepsilon^2/4)^p$; since $e^{-y/2}y^p\le(2p/e)^p$, it holds when $y\ge y_0$, in particular at $t=t_*\le t_3$. So $\Hyp(s)\le B_*(t_*)\le\Gamma_*/8\le1$ for $s\le t_*$.
+\emph{Tail.} For $s\le t_*$, $\cZ_\Orb(s)\le\cZ_b(s)$ by Lemma~\ref{eig:elem} and the line above. As $\Lambda t_*=2\log(8\cZ_b(t_*/2)/\Gamma_*)\ge1$, $1/\Lambda\le t_*$, so $N>e\,\cZ_\Orb(1/\Lambda)$ and Proposition~\ref{eig:counttail} with $s=t_*/2$ gives $\sum_{j\ge N}e^{-\lambda_jt_*}\le e^{-\Lambda t_*/2}\cZ_b(t_*/2)=\Gamma_*/8$.
+\emph{Perturbation.} $|e^{-at}-e^{-bt}|\le t|a-b|e^{-t\min(a,b)}$ and $\min(\lambda_j,\tilde\lambda_j)\ge-\delta$, $t_*\delta\le1$, give a total of at most $eNt_*\delta\le\Gamma_*/8$.
+So $|\tilde\cZ-G_{\sigma_0}(t_*)|\le\frac38\Gamma_*$, while for $\sigma\ne\sigma_0$ in $\Sig(A,M)$, Lemma~\ref{eig:gap} ($t_*\le t_1$) gives $|\tilde\cZ-G_\sigma(t_*)|\ge\Gamma_*-\frac38\Gamma_*>\frac38\Gamma_*$. For the last statement apply this to $\Orb$ and to $\Orb'$ with the same data $\tilde\lambda_j=\lambda_j(\Orb')$.
+\end{proof}
+
+\paragraph{How large are $N$ and $\delta$.} They are explicit and finite, and enormous (Table~\ref{eig:tab:E}, from \texttt{theorem\_e.py}). In every case computed $t_*=t_1$: the binding constraint is not the geometry ($t_3$, through the diameter bound) but the divergence of the cone expansion, which forces $t\lesssim\delta_k/Q(k-1)$, the ratio of the least possible first difference to the largest possible next term. Then $N\approx\frac{eA}{2\pi t_*}\log\frac{8\cZ_b}{\Gamma_*}$ grows like $1/t_1$, and $\delta\approx\Gamma_*/(8eNt_*)$ like $t_1^{k_*-2}$ up to a logarithm; as $\log(1/t_1)$ itself grows roughly like $k_*\log(k_*M)$, $\log(1/\delta)$ grows roughly like $(A/\pi)^2\log(AM)$ (an observation on the formulas, not a proved asymptotic). The class $\Cl(\frac\pi2,1.8626,12)$ contains $\Orb(2,8,8)$ and $\Orb(3,3,12)$: there $N=6.8\times10^9$ and $\delta=4.1\times10^{-25}$, whereas the committed spectra single out each of them, among the six signatures of area $\pi/2$ with orders at most $12$, from their first $21$ (respectively $39$) eigenvalues (\texttt{practice.md}).
+
+\begin{table}[h]
+\centering\footnotesize
+\caption{Constants of Theorem~\ref{eig:E}.}\label{eig:tab:E}
+\begin{tabular}{@{}lllllllll@{}}
+\toprule
+$A$ & $\varepsilon$ & $M$ & $k_*$ & $D$ & $t_*=t_1$ & $t_3$ & $N$ & $\delta$\\
+\midrule
+$\pi/2$ & $1.8626$ & $8$ & $4$ & $402$ & $1.1\times10^{-7}$ & $3.5\times10^{-4}$ & $3.4\times10^{8}$ & $3.0\times10^{-21}$\\
+$\pi/2$ & $1.8626$ & $12$ & $4$ & $1125$ & $6.8\times10^{-9}$ & $1.3\times10^{-4}$ & $6.8\times10^{9}$ & $4.1\times10^{-25}$\\
+$4\pi/3$ & $0.694$ & $3$ & $5$ & $151$ & $5.4\times10^{-6}$ & $1.3\times10^{-4}$ & $2.0\times10^{7}$ & $3.2\times10^{-24}$\\
+$4\pi/3$ & $0.694$ & $12$ & $5$ & $3001$ & $2.7\times10^{-11}$ & $6.7\times10^{-6}$ & $7.4\times10^{12}$ & $4.0\times10^{-41}$\\
+$2\pi$ & $0.1$ & $3$ & $6$ & $960$ & $3.9\times10^{-7}$ & $4.3\times10^{-7}$ & $6.0\times10^{8}$ & $8.3\times10^{-35}$\\
+$10\pi$ & $1$ & $3$ & $14$ & $1132$ & $1.5\times10^{-15}$ & $3.6\times10^{-5}$ & $4.2\times10^{18}$ & $1.6\times10^{-189}$\\
+$10\pi$ & $1$ & $12$ & $14$ & $2.25\times10^4$ & $1.0\times10^{-31}$ & $1.8\times10^{-6}$ & $1.3\times10^{35}$ & $7.7\times10^{-384}$\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{remark}[The bound on the orders cannot be dropped]\label{eig:Mneeded}
+The class $\Cl(\frac\pi3,\sigma_0,M)$ contains $\Orb(2,3,m)$ for $7\le m\le M$ (Proposition~\ref{eig:233}), and for every $N$ and $\delta>0$ two of these orbifolds, of different signatures, have their first $N$ eigenvalues within $\delta$ (Proposition~\ref{eig:N1}). Area and systole alone do not bound the cone orders, and no $N$, $\delta$ depending on $A,\varepsilon$ alone exist.
+\end{remark}

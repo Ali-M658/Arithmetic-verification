@@ -1,0 +1,19 @@
+%% theory/eigen/locality.tex -- Task 6: Theorem 4.4 of the round-2 manuscript (now Theorem
+%% thm:quantlocality(a), Section 5 after the restructure 665125e) without the diameter.
+%% Verification: theory/eigen/locality.py (the eight members of the (0;3,3,3,3) family: committed
+%% diameter bounds <= D; the committed predicted trace differences <= the new bound on 5040
+%% (pair, t) rows of the admissible range; old and new constants).
+
+\begin{theorem}[Quantitative locality with a spectral-geometric constant]\label{eig:loc}
+Let $\Orb_1,\Orb_2\in\Sig$ have the same signature, with area $A$ and largest cone order $M$ (put $M=2$ if there are no cone points), and let $\ell$ be the smaller of their systoles. For $0<t\le\ell^2/(2(1+\ell))$,
+\[
+  |\cZ_{\Orb_1}(t)-\cZ_{\Orb_2}(t)|\ \le\ B\big(\ell,D(A,\ell,M),t\big)\ \le\ C\big(A,\ell,D(A,\ell,M)\big)\,t^{-1/2}e^{-\ell^2/4t},
+\]
+with $B$, $C$ as in Lemma~\ref{lem:hypbound} and \eqref{eq:Cconst}, and $D$ as in Theorem~\ref{eig:diam}. So the constant depends only on the area, the systole and the largest cone order, hence only on the signature and the systole.
+\end{theorem}
+
+\begin{proof}
+Each $\Orb_i$ has systole $\ell_i\ge\ell$, so $\Orb_i\in\Cl(A,\ell,M)$ and $\diam\Orb_i<D(A,\ell,M)$ by Theorem~\ref{eig:diam}. (Without cone points Lemma~\ref{eig:sep} is vacuous and the proof of Lemma~\ref{eig:balls} uses only its second case, so any $M\ge2$ may be used.) Theorem~\ref{thm:quantlocality}(a) bounds the difference by $B(\ell,\diam,t)$, with $\diam$ the larger diameter, and $B$ increases with the diameter (Lemma~\ref{lem:hypbound}).
+\end{proof}
+
+The price is in the constant. The diameter enters only through $e^{3\diam}$ (Lemma~\ref{lem:counting}), and $D$ is far larger than the true diameter. For the family of Figure~\ref{fig:F6} ($A=4\pi/3$, $M=3$, $\ell$ from $2.634$ to $0.694$, diameters at most $7.8$), $D=150.9$ for every member, and $C$ rises from $4.5\times10^6$--$8.4\times10^9$ to about $10^{197}$. The exponent $\ell^2/4$ and the factor $t^{-1/2}$, which are attained (Theorem~\ref{thm:quantlocality}(b)), are unchanged. By Proposition~\ref{eig:233}, any diameter-free constant obtained through a diameter bound must depend on $M$.
