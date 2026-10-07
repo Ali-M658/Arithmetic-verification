@@ -285,7 +285,9 @@ stage "numerics S3 re-solve (NGSolve)"   f ngsolve numerics '$PYTHON_NUMERICS re
 
 # --- figures (figures/README.md): data generators, vector figures, assertions of every figure script
 stage "figures data F4 F7 F8"            q exact . "$P figures/gen/gen_f4_area_classes.py && $P figures/gen/gen_f7_strata.py && $P figures/gen/gen_f8_recovery.py"
-stage "figures vector F2-F5 F7-F9"       q exact . "$P figures/src/build_vector.py"
+stage "figures data E2 E3 (eigen paper)"  q exact . "$P figures/gen/gen_e2_gap.py && $P figures/gen/gen_e3_practice.py"
+stage "figures data E1 (NGSolve)"        f ngsolve . '$PYTHON_NUMERICS figures/gen/gen_e1_cusp.py' "eigenvalues of O(2,3,m), 21 orders at two mesh levels, about 2 min; needs NGSolve"
+stage "figures vector F2-F5 F7-F9 E1-E3" q exact . "$P figures/src/build_vector.py"
 stage "figures Blender renders F1 F6"    q blender . "" "F1 and F6 need Blender; their data assertions run in the stage above; rebuild with python3 figures/src/F1.py and F6.py"
 
 # --- theory/revision (G7 revision): every check script, which writes its own transcript (about 30 s)
@@ -299,6 +301,8 @@ stage "pte growth"                       q exact theory/pte "same_txt growth.py 
 stage "pte witnesses"                    q exact theory/pte "same_txt witnesses.py output/witnesses.txt"
 stage "pte real_shapes"                  q exact theory/pte "same_txt real_shapes.py output/real_shapes.txt"
 stage "pte search_T3_control"            q exact theory/pte "same_txt search_T3_control.py output/search_T3_control.txt"
+stage "pte T3 modular record"            q exact theory/pte "$P search_T3_modular.py --check"
+stage "pte T3 modular search (to 220)"   q exact theory/pte "$P search_T3_modular.py 220 4" "rewrites data/T3_modular.json, which must come back byte-identical; about 3 min on 4 cores"
 stage "pte pencil_search"                q exact theory/pte "same_txt pencil_search.py output/pencil_search.txt"
 
 # --- review/audit-2 (G5-bis): every check_*.py of a group against its committed check_*.txt
@@ -316,6 +320,10 @@ stage "audit-2 pte-witnesses"            q exact review/audit-2/pte-witnesses 'f
 stage "audit-2 stability"                q exact review/audit-2/stability "$AUDIT"
 stage "audit-2 threshold-sharpness"      q exact review/audit-2/threshold-sharpness "$AUDIT"
 stage "audit-2 trace-formula"            q exact review/audit-2/trace-formula "$AUDIT"
+
+# --- theory/msep (bounded cone orders, Theorem 3.7 of the manuscript and Theorem 3.4 of the eigen paper): exact
+#     ranks, sharp pairs, complete area classes; about 4 min
+stage "msep bounded cone orders"         q exact theory/msep "$P verify.py"
 
 # --- theory/eigen (Theorem 4.13 of the paper, finitely many eigenvalues): each script raises on a failed check; together
 #     about 5 min (diameter 110 s, counting 80 s, theorem_e 35 s, practice 32 s). practice.py rewrites data/practice.csv,
