@@ -1,0 +1,15 @@
+class: A = 1/2*pi, eps = 1.86, M = 12
+  d0=0.053045428 r0=0.026522714 v0=0.00014807269 D=1125.441315 (simple bound 2880.0)
+  n*=k*=4, L_M=27720, delta_k={1: '1/55440', 2: '1/12', 3: '1/360', 4: '1/2520'}, gamma*=1/55440
+  Q(K), K=0..3: ['4.0138889', '20.814274', '406.25947', '14514.103']
+  t1=6.835169152e-9 (attained at k=4)  t2=0.6048251748  t3=0.0001273221141  y0=6793.006906
+  t*=6.835169152e-9  Gamma*=4.213522487e-22  p=2.5  varpi=99.22738866
+  Lambda=2.010569262e+10  N=6831617376  delta=4.149426211e-25
+  log B*(t*) = -126533346.485  log(Gamma*/8) = -51.2980145945  slack = 1.26533e+8
+  chain of Theorem E verified
+  |Sig(A,M)| = 48
+  t=6.8351692e-10: min pairwise |G-G'| = 1.4239935e-9 at ((0, (2, 8, 8)), (0, (3, 3, 12))); Gamma(t)=4.2135225e-24; ratio=3.3795798e+14; Grem slack factor >= 1.002
+  t=6.8351692e-9: min pairwise |G-G'| = 1.4239932e-8 at ((0, (2, 8, 8)), (0, (3, 3, 12))); Gamma(t)=4.2135225e-22; ratio=3.379579e+13; Grem slack factor >= 1.002
+  decision rule recovers every sigma in Sig(A,M) under adversarial error 3Gamma*/8
+  t=6.8351692e-8: min pairwise |G-G'| = 1.4239901e-7 at ((0, (2, 8, 8)), (0, (3, 3, 12))); Gamma(t)=4.2135225e-20; ratio=3.3795717e+12; Grem slack factor >= 1.002
+theorem_e OK

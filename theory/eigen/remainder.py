@@ -7,9 +7,12 @@ Checks (asserts; nonzero exit on failure):
  2. The moment identity sum_j m_{2k}(2 theta_j)/(2 m sin theta_j) = (2k)!/4^k phi_k(m) by quadrature.
  3. Exact: the coefficients of e^{-t/4} sum_k (-1)^k |g_k| t^k are the b_l(m) of (eq:bl), and those of
     (e^{-t/4}/t)(1 - t J(t)) are the alpha_k.
- 4. |E_m(t) - sum_{l<K} b_l(m) t^l| <= t^K Qcone(m, K, t0) and
-    |I(t) - (A/4pi) sum_{k<=K} alpha_k t^{k-1}| <= (A/4pi) t^K Qarea(K, t0), on a grid of (m, K, t),
-    against 40-digit quadrature.
+ 4. Enveloping (Propositions eig:remcone, eig:remarea): for every t > 0,
+    E_m(t) - sum_{l<K} b_l(m) t^l has the sign (-1)^K and modulus <= |b_K(m)| t^K, and
+    I(t)/(A/4pi) - sum_{k<=K} alpha_k t^{k-1} has the sign (-1)^{K+1} and modulus <= |alpha_{K+1}| t^K,
+    on a grid of (m, K, t) against 40-digit quadrature; and exactly, |b_K(m)| =
+    sum_{k<=K} |g_k(m)| 4^{k-K}/(K-k)! (all terms of the convolution have the sign (-1)^K) and the
+    same for alpha_{K+1}.
 """
 import sys
 from fractions import Fraction as Fr
@@ -17,10 +20,10 @@ from math import factorial
 
 import mpmath as mp
 
-from eigen_common import (check, mpq, phi, b_cone, alpha, mu_moment, g_abs, Qcone, Qarea, Phi_closed,
+from eigen_common import (check, mpq, Qcone_crude, phi, b_cone, alpha, mu_moment, g_abs, Qcone, Qarea, Phi_closed,
                           elliptic_term, identity_term)
 
-mp.mp.dps = 40
+mp.mp.dps = 80  # the remainders at t = 1e-4, K = 8 are ~1e-40 of the terms
 
 
 def main():
@@ -78,37 +81,49 @@ def main():
         check(s == alpha(k), f"alpha_{k} from mu")
     out.append("3. exact: b_l(m) = [t^l] e^{-t/4} sum (-1)^k |g_k(m)| t^k (m in {2,3,4,7,12,30}, l < 15); alpha_k from mu_k (k < 20)")
 
-    # 4. remainders against quadrature
+    # 4. enveloping remainders: exact sign alignment, then quadrature
+    for m in range(2, 31):
+        for K in range(0, 15):
+            terms = [g_abs(k, m) * Fr((-1) ** k) * Fr((-1) ** (K - k), 4 ** (K - k) * factorial(K - k)) for k in range(K + 1)]
+            check(all(x == 0 or (x > 0) == (K % 2 == 0) for x in terms), "cone convolution terms share the sign (-1)^K")
+            check(sum(abs(x) for x in terms) == abs(b_cone(K, m)), "|b_K| = sum |g_k| 4^(k-K)/(K-k)!")
+    for K in range(0, 18):
+        terms = [Fr((-1) ** (K + 1), 4 ** (K + 1) * factorial(K + 1))]
+        terms += [-Fr((-1) ** i, 4 ** i * factorial(i)) * Fr((-1) ** (K - i)) * mu_moment(K - i) / factorial(K - i) for i in range(K + 1)]
+        check(all(x == 0 or (x > 0) == (K % 2 == 1) for x in terms), "area convolution terms share the sign (-1)^(K+1)")
+        check(sum(abs(x) for x in terms) == abs(alpha(K + 1)), "|alpha_(K+1)| = sum of moduli")
+    out.append("4. exact: the convolutions giving b_K(m) (m <= 30, K < 15) and alpha_(K+1) (K < 18) have terms of one sign")
     worst = {}
-    t0 = 1
-    for m in (2, 3, 7, 8, 12):
-        for t in ('0.001', '0.01', '0.05', '0.2', '1'):
+    tgrid = ('0.0001', '0.001', '0.01', '0.05', '0.2', '1', '3')
+    for m in (2, 3, 7, 8, 12, 20):
+        for t in tgrid:
             tt = mpq(t)
-            E = elliptic_term(m, tt, dps=40)
-            for K in range(0, 7):
+            E = elliptic_term(m, tt, dps=80)
+            for K in range(0, 9):
                 approx = sum(mpq(b_cone(l, m)) * tt ** l for l in range(K))
-                err = abs(E - approx)
-                bound = tt ** K * Qcone(m, K, t0)
-                check(err <= bound, f"cone remainder m={m} t={t} K={K}: {err} > {bound}")
-                worst[(m, K)] = max(worst.get((m, K), 0), err / bound)
-    out.append("4a. cone remainder |E_m - sum_{l<K} b_l t^l| <= t^K Qcone(m,K,1): m in {2,3,7,8,12}, K <= 6, t in {1e-3,..,1}")
-    out.append("    largest ratio error/bound per m: " + ", ".join(f"m={m}: {mp.nstr(max(v for (mm, K), v in worst.items() if mm == m), 3)}" for m in (2, 3, 7, 8, 12)))
+                diff = E - approx
+                bound = tt ** K * Qcone(m, K)
+                check(abs(diff) <= bound, f"cone remainder m={m} t={t} K={K}")
+                check(diff == 0 or (diff > 0) == (K % 2 == 0), f"cone remainder sign m={m} t={t} K={K}")
+                check(bound <= tt ** K * Qcone_crude(m, K, max(tt, 1)), "enveloping bound <= first form")
+                worst[(m, K)] = max(worst.get((m, K), 0), abs(diff) / bound)
+    out.append("4a. cone: E_m - sum_(l<K) b_l t^l has sign (-1)^K and modulus <= |b_K(m)| t^K: m in {2,3,7,8,12,20}, K <= 8, t in {1e-4,...,3}")
+    out.append("    largest ratio error/bound per m: " + ", ".join(f"m={m}: {mp.nstr(max(v for (mm, K), v in worst.items() if mm == m), 5)}" for m in (2, 3, 7, 8, 12, 20)))
     worstA = 0
-    for t in ('0.001', '0.01', '0.05', '0.2', '1'):
+    for t in tgrid:
         tt = mpq(t)
-        area = 4 * mp.pi  # A/(4 pi) = 1
-        I = identity_term(area, tt, dps=40)
-        for K in range(0, 8):
-            approx = sum(mpq(alpha(k)) * tt ** (k - 1) for k in range(K + 1))
-            err = abs(I - approx)
-            bound = tt ** K * Qarea(K, t0)
-            check(err <= bound, f"area remainder t={t} K={K}")
-            worstA = max(worstA, err / bound)
-    out.append(f"4b. area remainder |I - (A/4pi) sum_(k<=K) alpha_k t^(k-1)| <= (A/4pi) t^K Qarea(K,1): K <= 7; largest ratio {mp.nstr(worstA, 3)}")
+        I = identity_term(4 * mp.pi, tt, dps=80)  # A/(4 pi) = 1
+        for K in range(0, 9):
+            diff = I - sum(mpq(alpha(k)) * tt ** (k - 1) for k in range(K + 1))
+            bound = tt ** K * Qarea(K)
+            check(abs(diff) <= bound, f"area remainder t={t} K={K}")
+            check(diff == 0 or (diff > 0) == (K % 2 == 1), f"area remainder sign t={t} K={K}")
+            worstA = max(worstA, abs(diff) / bound)
+    out.append(f"4b. area: I/(A/4pi) - sum_(k<=K) alpha_k t^(k-1) has sign (-1)^(K+1), modulus <= |alpha_(K+1)| t^K: K <= 8; largest ratio {mp.nstr(worstA, 5)}")
     # table of constants
-    out.append("\nQcone(m, K, 1) and Qarea(K, 1):")
+    out.append("\n|b_K(m)| and |alpha_(K+1)|:")
     for K in range(0, 7):
-        out.append(f"  K={K}: Qarea={mp.nstr(Qarea(K, 1), 5)}  " + "  ".join(f"m={m}:{mp.nstr(Qcone(m, K, 1), 5)}" for m in (2, 3, 8, 12, 100)))
+        out.append(f"  K={K}: |alpha_K+1|={mp.nstr(Qarea(K), 5)}  " + "  ".join(f"m={m}:{mp.nstr(Qcone(m, K), 5)}" for m in (2, 3, 8, 12, 100)))
     print("\n".join(out))
     return 0
 

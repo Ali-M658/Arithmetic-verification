@@ -1,12 +1,15 @@
 %% theory/eigen/remainder.tex -- Task 3: explicit remainders for the cone and area expansions.
 %% Verification: theory/eigen/remainder.py (Cauchy bounds and monotonicity for m <= 30, k <= 40;
-%% the moment identity by quadrature; the coefficient identities exactly; both remainder bounds
-%% against 40-digit quadrature of E_m(t) and I(t), m in {2,3,7,8,12}, K <= 6 (cone), K <= 7 (area),
-%% 1e-3 <= t <= 1; the bounds are attained to leading order as t -> 0).
+%% the moment identity by quadrature; the coefficient identities and the sign alignment exactly;
+%% both enveloping bounds, with their signs, against 80-digit quadrature of E_m(t) and I(t),
+%% m in {2,3,7,8,12,20}, K <= 8, 1e-4 <= t <= 3; error/bound reaches 0.9999).
+%% Revised after the blind audit (audit/group2-remainder): the first version had the weaker
+%% constants |g_K| + e^{t/4} sum_{k<K} |g_k| 4^{k-K}/(K-k)!; the reviewer observed that all pieces
+%% have one sign, which gives the sharp enveloping form below.
 
 \subsection{Explicit remainders}\label{sec:eig-rem}
 
-The expansions of Proposition~\ref{prop:heatinput} are asymptotic, not convergent: the coefficients of the cone term grow like $k!\,(m/\pi)^{2k}$, reflecting the poles of $\Phi_m$ at $\pm\pi/m$. We bound the truncation errors for every $t>0$. Put
+The expansions of Proposition~\ref{prop:heatinput} are asymptotic, not convergent: the coefficients of the cone term grow like $k!\,(m/\pi)^{2k}$, reflecting the poles of $\Phi_m$ at $\pm\pi/m$. Both expansions are nevertheless \emph{enveloping}: for every $t>0$ the error of truncation has the sign of the first omitted term and is at most its modulus. Put
 \[
   g_k(m)=(-1)^k\frac{(2k)!}{k!\,4^k}\,\phi_k(m),\qquad
   \mu_k=4\int_0^\infty\frac{r^{2k+1}\,dr}{e^{2\pi r}+1}=\big(1-2^{-2k-1}\big)\frac{|B_{2k+2}|}{k+1},
@@ -14,46 +17,43 @@ The expansions of Proposition~\ref{prop:heatinput} are asymptotic, not convergen
 so that $e^{t/4}\mathrm E_m(t)\sim\sum_kg_k(m)t^k$ and $b_l(m)=\sum_{k\le l}g_k(m)\frac{(-1/4)^{l-k}}{(l-k)!}$ (Section~\sref{sec:derivation} of the supplement, where Proposition~\ref{prop:heatinput} is derived from Theorem~\ref{thm:IEH}).
 
 \begin{proposition}[Remainder of the cone expansion]\label{eig:remcone}
-For integers $m\ge2$, $K\ge0$ and every $t>0$,
+For integers $m\ge2$, $K\ge0$ and every $t>0$, $\mathrm E_m(t)-\sum_{l<K}b_l(m)t^l$ has the sign $(-1)^K$ (or vanishes) and
 \[
-  \Big|\mathrm E_m(t)-\sum_{l<K}b_l(m)\,t^l\Big|\ \le\ t^K\,Q_{\rm cone}(m,K,t),\qquad
-  Q_{\rm cone}(m,K,t)=|g_K(m)|+e^{t/4}\sum_{k<K}\frac{|g_k(m)|\,4^{k-K}}{(K-k)!}.
+  \Big|\mathrm E_m(t)-\sum_{l<K}b_l(m)\,t^l\Big|\ \le\ |b_K(m)|\,t^K .
 \]
-Moreover $\phi_k(m)\ge0$ is increasing in $m$, so $Q_{\rm cone}(m,K,t)\le Q_{\rm cone}(M,K,t)$ for $m\le M$, and for every $0<\rho<\pi/m$
+Moreover $|b_K(m)|=p_K(m)/m$ and $\phi_k(m)$ are positive and strictly increasing in $m>1$, and for every $0<\rho<\pi/m$
 \[
   \phi_k(m)\le\Phi_m(\rho)\,\rho^{-2k};\qquad\text{in particular}\qquad
   \phi_k(m)\le\frac{\cos\frac\pi{2m}}{4m\sin^2\frac\pi{2m}}\Big(\frac{2m}\pi\Big)^{2k}\le\frac m4\Big(\frac{2m}\pi\Big)^{2k},
 \]
-so $|g_k(m)|\le\frac m4\cdot\frac{(2k)!}{k!}\big(\frac m\pi\big)^{2k}$.
+so $|g_k(m)|\le\frac m4\cdot\frac{(2k)!}{k!}\big(\frac m\pi\big)^{2k}$ and $|b_K(m)|\le\sum_{k\le K}|g_k(m)|\frac{4^{k-K}}{(K-k)!}$.
 \end{proposition}
 
 \begin{proof}
-Let $G_m(t)=e^{t/4}\mathrm E_m(t)=\sum_{j=1}^{m-1}(2m\sin\theta_j)^{-1}\int_\R F_{2\theta_j}(r)e^{-tr^2}dr$, with $F_a(r)=e^{-ar}/(1+e^{-2\pi r})>0$ as in Section~\sref{sec:derivation} of the supplement. Multiply $|e^{-x}-\sum_{k<K}(-x)^k/k!|\le x^K/K!$ ($x=tr^2\ge0$) by $(2m\sin\theta_j)^{-1}F_{2\theta_j}(r)>0$, integrate and sum; by the moment identity $\sum_j\mathfrak m_{2k}(2\theta_j)/(2m\sin\theta_j)=\frac{(2k)!}{4^k}\phi_k(m)$ there ($\mathfrak m_n(a)=\int_\R r^nF_a$), $|G_m(t)-P(t)|\le|g_K(m)|t^K$ with $P(t)=\sum_{k<K}g_k(m)t^k$. Now
+Let $G_m(t)=e^{t/4}\mathrm E_m(t)=\sum_{j=1}^{m-1}(2m\sin\theta_j)^{-1}\int_\R F_{2\theta_j}(r)e^{-tr^2}dr$, with $F_a(r)=e^{-ar}/(1+e^{-2\pi r})>0$ as in Section~\sref{sec:derivation} of the supplement. For $x\ge0$ the Taylor remainder $e^{-x}-\sum_{k<K}(-x)^k/k!$ has the sign $(-1)^K$ and modulus at most $x^K/K!$. Multiply by $(2m\sin\theta_j)^{-1}F_{2\theta_j}(r)>0$ with $x=tr^2$, integrate and sum; by the moment identity $\sum_j\mathfrak m_{2k}(2\theta_j)/(2m\sin\theta_j)=\frac{(2k)!}{4^k}\phi_k(m)$ there ($\mathfrak m_n(a)=\int_\R r^nF_a$), $R(t):=G_m(t)-P(t)$, $P(t)=\sum_{k<K}g_k(m)t^k$, has the sign $(-1)^K$ and $|R(t)|\le|g_K(m)|t^K$. The coefficients of the entire function $e^{-t/4}P(t)$ in degrees $l<K$ are the $b_l$, so
 \[
-  \mathrm E_m(t)-\sum_{l<K}b_lt^l=e^{-t/4}\big(G_m(t)-P(t)\big)+\Big(e^{-t/4}P(t)-\sum_{l<K}b_lt^l\Big).
+  \mathrm E_m(t)-\sum_{l<K}b_lt^l=e^{-t/4}R(t)+\sum_{k<K}g_k(m)\,t^k\Big(e^{-t/4}-\sum_{i<K-k}\frac{(-t/4)^i}{i!}\Big).
 \]
-The coefficients of the entire function $e^{-t/4}P(t)$ in degrees $l<K$ are the $b_l$, so the second bracket is $\sum_{k<K}g_kt^k\sum_{i\ge K-k}(-t/4)^i/i!$, of modulus at most $\sum_{k<K}|g_k|t^k(t/4)^{K-k}e^{t/4}/(K-k)!$, by $\sum_{i\ge n}x^i/i!\le x^ne^x/n!$. The first is at most $|g_K|t^K$.
+Here $g_k$ has the sign $(-1)^k$ and the bracket the sign $(-1)^{K-k}$ with modulus at most $(t/4)^{K-k}/(K-k)!$, so every term has the sign $(-1)^K$, and the modulus of the sum is at most $t^K\sum_{k\le K}|g_k|4^{k-K}/(K-k)!$. In $b_K=\sum_{k\le K}g_k(-\frac14)^{K-k}/(K-k)!$ every term also has the sign $(-1)^K$, so this sum is $|b_K(m)|$.
 
-By \eqref{eq:phik}, $\phi_k(m)=\frac14\sum_n\sigma_{k+1-n}\frac{4^n|B_{2n}|}{(2n)!}\frac{m^{2n}-1}m$ with all weights positive, and $(m^{2n}-1)/m$ increases for $m\ge1$. So $\Phi_m(\rho)=\sum_i\phi_i(m)\rho^{2i}$ ($0\le\rho<\pi/m$) is a sum of nonnegative terms, each at most the sum. At $\rho=\frac\pi{2m}$, $\cot(m\rho)=0$ and Lemma~\ref{lem:Phi} gives $\Phi_m(\rho)=\cos\rho/(4m\sin^2\rho)\le m/4$ by $\sin\rho\ge2\rho/\pi=1/m$.
+By \eqref{eq:phik}, $\phi_k(m)=\frac14\sum_n\sigma_{k+1-n}\frac{4^n|B_{2n}|}{(2n)!}\frac{m^{2n}-1}m$ with all weights positive, and $(m^{2n}-1)/m$ is positive and strictly increasing for $m>1$; the same holds for $p_K(m)/m=4^{-K}\sum_{k\le K}\frac{(2k)!}{k!(K-k)!}\phi_k(m)$. So $\Phi_m(\rho)=\sum_i\phi_i(m)\rho^{2i}$ ($0\le\rho<\pi/m$) is a sum of nonnegative terms, each at most the sum. At $\rho=\frac\pi{2m}$, $\cot(m\rho)=0$ and Lemma~\ref{lem:Phi} gives $\Phi_m(\rho)=\cos\rho/(4m\sin^2\rho)\le m/4$ by $\sin\rho\ge2\rho/\pi=1/m$.
 \end{proof}
 
-The bound is sharp to leading order: as $t\to0$ the left side is $|b_K(m)|t^K(1+O(t))$ and $Q_{\rm cone}(m,K,t)\to|g_K(m)|+\sum_{k<K}|g_k|4^{k-K}/(K-k)!\ge|b_K(m)|$; in the checks of \texttt{remainder.py} the ratio of error to bound reaches $0.995$--$1.000$ for each $m$ tested. Since $\phi_{k+1}(m)/\phi_k(m)\to(m/\pi)^2$ (for $m=12$: $14.5903$ at $k=20$), the radius $\pi/m$ cannot be improved.
+The bound is sharp: as $t\to0$ the error is $|b_K(m)|t^K(1+O(t))$; in the checks of \texttt{remainder.py} the ratio of error to bound reaches $0.9986$--$0.99995$ for each $m$ tested. Since $\phi_{k+1}(m)/\phi_k(m)\to(m/\pi)^2$ (for $m=12$: $14.5903$ at $k=20$), the coefficients grow like $k!\,(m/\pi)^{2k}$ and the radius $\pi/m$ cannot be improved; the Cauchy bound at $\rho=\pi/2m$ loses a factor of about $4^k$.
 
 \begin{proposition}[Remainder of the area expansion]\label{eig:remarea}
-For integers $K\ge0$ and every $t>0$,
+For integers $K\ge0$ and every $t>0$, $\frac{4\pi}{\Area}\mathrm I(t)-\sum_{k=0}^K\alpha_kt^{k-1}$ has the sign $(-1)^{K+1}$ (or vanishes) and
 \[
-  \Big|\mathrm I(t)-\frac{\Area}{4\pi}\sum_{k=0}^K\alpha_k\,t^{k-1}\Big|\ \le\ \frac{\Area}{4\pi}\,t^K\,Q_{\rm area}(K,t),
-\]
-\[
-  Q_{\rm area}(K,t)=\frac1{4^{K+1}(K+1)!}+\frac{\mu_K}{K!}+e^{t/4}\sum_{k<K}\frac{\mu_k\,4^{k-K}}{k!\,(K-k)!}.
+  \Big|\mathrm I(t)-\frac{\Area}{4\pi}\sum_{k=0}^K\alpha_k\,t^{k-1}\Big|\ \le\ \frac{\Area}{4\pi}\,|\alpha_{K+1}|\,t^K .
 \]
 \end{proposition}
 
 \begin{proof}
-From $r\tanh\pi r=|r|-2|r|/(e^{2\pi|r|}+1)$, $\mathrm I(t)=\frac{\Area}{4\pi}e^{-t/4}\big(\frac1t-J(t)\big)$ with $J(t)=4\int_0^\infty re^{-tr^2}(e^{2\pi r}+1)^{-1}dr$. As above, $|J(t)-\sum_{k<K}\frac{(-1)^k\mu_k}{k!}t^k|\le\frac{\mu_K}{K!}t^K$, and $|e^{-t/4}-\sum_{i\le K}\frac{(-t/4)^i}{i!}|\le\frac{(t/4)^{K+1}}{(K+1)!}$. The coefficient of $t^{k-1}$ in $e^{-t/4}(\frac1t-\sum_j\frac{(-1)^j\mu_j}{j!}t^j)$ is $\alpha_k$ (Section~\sref{sec:derivation} of the supplement; checked exactly for $k<20$), and the cross terms are bounded as in Proposition~\ref{eig:remcone}.
+From $r\tanh\pi r=|r|-2|r|/(e^{2\pi|r|}+1)$, $\frac{4\pi}{\Area}\mathrm I(t)=e^{-t/4}\big(\frac1t-J(t)\big)$ with $J(t)=4\int_0^\infty re^{-tr^2}(e^{2\pi r}+1)^{-1}dr$. As in the previous proof, $J(t)-\sum_{k<K}\frac{(-1)^k\mu_k}{k!}t^k$ has the sign $(-1)^K$ and modulus at most $\frac{\mu_K}{K!}t^K$; $\frac1t\big(e^{-t/4}-\sum_{i\le K}\frac{(-t/4)^i}{i!}\big)$ has the sign $(-1)^{K+1}$ and modulus at most $\frac{t^K}{4^{K+1}(K+1)!}$; and the cross terms $-\frac{(-1)^k\mu_k}{k!}t^k\big(e^{-t/4}-\sum_{i<K-k}\frac{(-t/4)^i}{i!}\big)$ have the sign $(-1)^{K+1}$ and modulus at most $\frac{\mu_k4^{k-K}}{k!(K-k)!}t^K$. The coefficient of $t^{k-1}$ in $e^{-t/4}(\frac1t-\sum_j\frac{(-1)^j\mu_j}{j!}t^j)$ is $\alpha_k$ (Section~\sref{sec:derivation} of the supplement; checked exactly for $k<20$), and $\alpha_{K+1}$ is the sum of the corresponding terms, all of the sign $(-1)^{K+1}$, so the sum of the moduli above is $|\alpha_{K+1}|t^K$.
 \end{proof}
 
-For a signature $\sigma=(g;m_1,\dots,m_n)$ put $G_\sigma(t)=\mathrm I(t)+\sum_i\mathrm E_{m_i}(t)$, the part of $\cZ_\Orb$ fixed by $\sigma$ (Theorem~\ref{thm:IEH}). The two propositions give, for $K\ge0$ and $0<t\le t_0$,
+For a signature $\sigma=(g;m_1,\dots,m_n)$ put $G_\sigma(t)=\mathrm I(t)+\sum_i\mathrm E_{m_i}(t)$, the part of $\cZ_\Orb$ fixed by $\sigma$ (Theorem~\ref{thm:IEH}). The two propositions give, for $K\ge0$ and every $t>0$,
 \begin{equation}\label{eig:Grem}
-  \Big|G_\sigma(t)-\sum_{j=1}^{K+1}c_j(\sigma)\,t^{j-2}\Big|\le t^K\Big(\frac{\Area}{4\pi}Q_{\rm area}(K,t_0)+\sum_iQ_{\rm cone}(m_i,K,t_0)\Big).
+  \Big|G_\sigma(t)-\sum_{j=1}^{K+1}c_j(\sigma)\,t^{j-2}\Big|\le t^K\Big(\frac{\Area}{4\pi}|\alpha_{K+1}|+\sum_i|b_K(m_i)|\Big)=t^K\,\Big|c_{K+2}(\sigma)-\frac{\Area}{4\pi}\alpha_{K+1}\Big|+t^K\frac{\Area}{4\pi}|\alpha_{K+1}|,
 \end{equation}
+the equality because all $b_K(m_i)$ have the sign $(-1)^K$.

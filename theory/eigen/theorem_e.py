@@ -120,6 +120,17 @@ def main():
         out.append(f"  {mp.nstr(A, 5)}, {mp.nstr(eps, 4)}, {M} | {c['kstar']}, {c['gamma']}, {mp.nstr(c['t1'], 3)}, {mp.nstr(c['t2'], 3)},"
                    f" {mp.nstr(c['t3'], 3)}, {mp.nstr(c['D'], 4)} | {mp.nstr(c['tstar'], 3)}, {mp.nstr(c['Gamma'], 3)},"
                    f" {mp.nstr(c['Lambda'], 3)} | {mp.nstr(mp.mpf(c['N']), 4)}, {mp.nstr(c['delta'], 3)}")
+    # growth of N as eps -> 0 (A, M fixed): roughly eps^-3 log(1/eps) once t_3 < t_1
+    out.append("\nGrowth in eps (A = pi/2, M = 7): eps, binding constraint, N, N(eps)/N(2 eps)")
+    prev = None
+    for eps in (mp.mpf('0.04'), mp.mpf('0.02'), mp.mpf('0.01'), mp.mpf('0.005'), mp.mpf('0.0025')):
+        c = theorem_E_constants(mp.pi / 2, eps, 7)
+        bind = "t_3" if c["t3"] < c["t1"] else "t_1"
+        ratio = "" if prev is None else mp.nstr(mp.mpf(c["N"]) / prev, 4)
+        if prev is not None and bind == "t_3":
+            check(6 < mp.mpf(c["N"]) / prev < 12, "N grows roughly like eps^-3 (ratio about 8 per halving)")
+        out.append(f"  {mp.nstr(eps, 3)}, {bind}, {mp.nstr(mp.mpf(c['N']), 4)}, {ratio}")
+        prev = mp.mpf(c["N"])
     print("\n".join(out))
     return 0
 

@@ -80,7 +80,7 @@ def part_a(out):
     for N in (2, 5, 10):
         LamN = mp.mpf(1) / 4 + mp.pi ** 2 * N ** 2 / mp.acosh(1 / (2 * mp.sin(mp.pi / 7))) ** 2
         for delta in (mp.mpf('0.1'), mp.mpf('0.001')):
-            boxes = mp.ceil(LamN / delta) ** (N - 1)
+            boxes = (mp.floor(LamN / delta) + 1) ** (N - 1)
             out.append(f"  N={N}, delta={mp.nstr(delta, 2)}: lambda_(N-1) <= {mp.nstr(LamN, 5)} for all m >= 7; among any "
                        f"{mp.nstr(boxes + 1, 4)} orders m >= 7 two have their first N eigenvalues within delta")
     for m in (7, 100, 10 ** 4, 10 ** 8):

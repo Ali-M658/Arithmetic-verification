@@ -226,22 +226,23 @@ def g_abs(k, m):
     return Fr(factorial(2 * k), factorial(k) * 4 ** k) * phi(k, m)
 
 
-def Qcone(m, K, tbar):
-    """Remainder constant of Proposition R1: |E_m(t) - sum_{l<K} b_l(m) t^l| <= t^K Qcone for
-    0 < t <= tbar.  Returned as an mpf (exact up to the factor e^{tbar/4})."""
+def Qcone(m, K, tbar=None):
+    """Remainder constant of Proposition eig:remcone (enveloping form, valid for every t > 0):
+    |E_m(t) - sum_{l<K} b_l(m) t^l| <= |b_K(m)| t^K.  (tbar is accepted and ignored.)"""
+    return mpq(abs(b_cone(K, m)))
+
+
+def Qarea(K, tbar=None):
+    """Remainder constant of Proposition eig:remarea (enveloping form, valid for every t > 0), per
+    unit Area/(4 pi): |I(t) - (Area/4pi) sum_{k<=K} alpha_k t^{k-1}| <= (Area/4pi) |alpha_{K+1}| t^K."""
+    return mpq(abs(alpha(K + 1)))
+
+
+def Qcone_crude(m, K, tbar):
+    """The first (audited) form: |g_K| + e^{tbar/4} sum_{k<K} |g_k| 4^{k-K}/(K-k)!  >= |b_K(m)|."""
     s = mpq(g_abs(K, m))
     tail = sum(mpq(g_abs(k, m)) * mpq(4) ** (k - K) / mp.factorial(K - k) for k in range(K))
     return s + mp.e ** (mpq(tbar) / 4) * tail
-
-
-def Qarea(K, tbar):
-    """Remainder constant of Proposition R2 (per unit Area/(4 pi)):
-    |I(t) - (Area/4pi) sum_{k<=K} alpha_k t^{k-1}| <= (Area/4pi) t^K Qarea for 0 < t <= tbar."""
-    s = mpq(1) / (mpq(4) ** (K + 1) * mp.factorial(K + 1))
-    s += mpq(mu_moment(K)) / mp.factorial(K)
-    s += mp.e ** (mpq(tbar) / 4) * sum(mpq(mu_moment(k)) / mp.factorial(k) * mpq(4) ** (k - K) / mp.factorial(K - k)
-                                          for k in range(K))
-    return s
 
 
 def hyp_bound_small(t, eps, D, area_lb=None):
