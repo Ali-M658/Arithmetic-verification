@@ -12,7 +12,7 @@ AGAG.md). Everything below was done in `paper/jga/`, `paper/arith/` and the Tabl
 | supplement.pdf | 16 | **15** | 0 | 0 / 0 | 0 |
 | paper/arith/note.pdf | 12 | **12** | 0 | 0 / 0 | 0 |
 
-The manuscript gained 15 pages: Section 4 (about 13), Appendices B and C (about 3), Remark 5.5 and
+The manuscript gained 15 pages: Section 4 (12 pages), Appendices B and C (about 3), Remark 5.5 and
 Problem 5; the supplement lost the two appendices and gained the pinching section.
 
 ## A1. Section 4, "From heat invariants to eigenvalues" (`sec:eigen`)
@@ -31,7 +31,7 @@ systole bound stated as not proved), 4.6 Theorem 4.13 on computed spectra (`prac
 | cone-order bound necessary (O(2,3,m): high-order cone points behave like cusps) | Proposition 4.4, Proposition 4.15, Remark 4.14 |
 | N and delta explicit but enormous; the content is effectivity | the opening paragraph, "How large are N and delta", Table 2 |
 | practical counts (3-98 eigenvalues observed, a-priori 21-749, against N) | Section 4.6, Table 3 |
-| systole necessity stated as open | end of 4.5 and Problem 5 (`prob:systole`, Section 6) |
+| systole necessity stated as open | end of 4.5 and Problem 5 (`prob:systole`, Section 9) |
 | abstract clause; Section 1.1 forward reference | both filled; abstract is 186 words |
 | diameter-free locality | **Remark 5.5** (`eig:loc`) after Theorem 5.4, with its constant (150.9 for the diameter bound against true diameters at most 7.8; C up to about 10^197) stated; the diameter-dependent Theorem 5.4 is unchanged |
 
@@ -118,5 +118,5 @@ figure.
 ## Not done / for the authors
 
 * The three placeholders (author contributions, AI-use statement, Zenodo DOI) are unchanged.
-* Section 4 is 13 pages; if the editor wants a shorter paper, Table 1 (the diameter bounds) and
+* Section 4 is 12 pages (pp. 17-28); if the editor wants a shorter paper, Table 1 (the diameter bounds) and
   Section 4.6 are the first to move to the supplement.
