@@ -77,7 +77,9 @@ def analyse(name, sig0, lam, err, lam_complete, ell, diam, M, cache, rows, out):
     ncomp = len(comp)
     check(all(lam[i] <= lam[i + 1] for i in range(len(lam) - 1)), "sorted")
     Ncomplete = sum(1 for x in lam if x <= lam_complete)
-    cone0 = sum(mpq(b_cone(0, m)) for m in ord0)
+    # the tail bound may not use the (unknown) true signature: bound E by b_0 summed over the cone
+    # points, maximised over the competitor set (eigen paper, Corollary cert:post)
+    cone0 = max(sum(mpq(b_cone(0, m)) for m in o) for (_, o) in comp)
     best_obs, best_apr = None, None
     for t in TGRID:
         tt = mp.mpf(t)

@@ -3,8 +3,10 @@
 Checks (asserts; nonzero exit on failure):
  1. Lemma E1 (integrality of the first difference), exhaustively and exactly: for every pair of
     distinct signatures of equal area in S(A, M) for (A/pi, M) in {(4, 10), (2, 30), (6, 6)}, the
-    first differing heat invariant has index k <= floor(Area/pi) + 4, and
-    d_k / a_{k-2,k-1} is a nonzero integer, divisible by prod_{p prime, (p-1) | 2(k-2)} p when k >= 3.
+    first differing heat invariant has index k <= min(floor(Area/pi) + 4, M) (the second bound is part
+    (i) of the theorem on bounded cone orders, theory/msep/proof.tex), and d_k / a_{k-2,k-1} is a
+    nonzero integer, divisible by prod_{p prime, (p-1) | 2(k-2)} p when k >= 3 (a divisibility the
+    eigen paper does not use).
  2. Lemma E2 (the gap), numerically at 60 digits on whole classes: for (A/pi, M) in
     {(1/2, 12), (4/3, 6), (2, 5)}, every pair sigma != sigma' in S(A, M) has
     |G_sigma(t) - G_sigma'(t)| >= Gamma(t) = gamma_* t^{k_*-2}/2 at t = t_1 and at t = t_1/10.
@@ -52,12 +54,12 @@ def lemma_E1(A_over_pi, M):
     minratio = None
     for c1, members in groups.items():
         area_over_pi = 4 * c1  # Area/pi = 4 c_1
-        kbound = floor(area_over_pi) + 4
+        kbound = min(floor(area_over_pi) + 4, M)
         for i in range(len(members)):
             for j in range(i):
                 a, b = data[members[i]], data[members[j]]
                 k = next((k for k in range(1, kmax + 1) if a[k - 1] != b[k - 1]), None)
-                check(k is not None and k <= kbound, f"first difference beyond floor(Area/pi)+4: {members[i]} {members[j]}")
+                check(k is not None and k <= kbound, f"first difference beyond min(floor(Area/pi)+4, M): {members[i]} {members[j]}")
                 d = a[k - 1] - b[k - 1]
                 l = k - 2
                 q = d / lead_coef(l)

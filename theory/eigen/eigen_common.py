@@ -269,8 +269,11 @@ def hyp_bound_all(t, eps, D, area_lb=None):
 def theorem_E_constants(A, eps, M, area_lb=None):
     """All constants of Theorem E for the class C(A, eps, M).  Returns a dict of mpf/ints."""
     A, eps = mpq(A), mpq(eps)
-    kstar = int(mp.floor(A / mp.pi)) + 4
-    nstar = kstar
+    # n_* bounds the number of cone points (Lemma eig:elem); k_* bounds the first index at which two
+    # signatures of S(A, M) differ: floor(A/pi) + 4 by the separation theorem and M by the theorem on
+    # bounded cone orders (theory/msep/proof.tex, part (i)), whichever is smaller (wave 3, item I6)
+    nstar = int(mp.floor(A / mp.pi)) + 4
+    kstar = min(nstar, int(M))
     LM = lcm_upto(M)
     dmin = {1: Fr(1, 2 * LM)}
     for k in range(2, kstar + 1):

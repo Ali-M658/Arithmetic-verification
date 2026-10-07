@@ -142,3 +142,20 @@ requires.
    unreachable headless; the statement used is quoted from a fetched secondary source.
 5. **Section 5 remark.** The sentence after `thm:quantlocality` ("the constant … depends on the
    diameter, which the signature does not determine") can now point to `eig:loc`.
+
+## Wave 3 (2026-10-08): the material is now its own paper
+
+Section 4 of the manuscript became `paper/eigen/manuscript.tex` (referee round 3, the split). Changes
+here:
+
+- `eigen_common.theorem_E_constants` uses k_* = min(floor(A/pi) + 4, M): with cone orders at most M
+  the first difference occurs by the M-th heat invariant (`theory/msep/proof.tex`, part (i)).
+  n_* = floor(A/pi) + 4 still bounds the number of cone points. The constants change where M is
+  small: for (4pi/3, 0.694, 3), N = 3.7e5 and delta = 1.7e-10 (were 2.0e7, 3.4e-24); for
+  (10pi, 1, 3), N = 1.1e7 (was 4.2e18). `theorem_e.py` asserts k <= min(floor(Area/pi) + 4, M).
+- `practice.py` bounds the cone part of the tail by the maximum over the competitor set, so that the
+  a-posteriori certificate (Theorem 7.1 of the eigen paper) does not use the unknown true signature;
+  three N_apr values change by one (222 -> 223, 353 -> 354, 749 -> 750).
+- The fragments `*.tex` and `STATEMENTS.md` are kept as the record of wave 2; the eigen paper is now
+  the authority, and its proofs of (H1)-(H3), the commutator identity and Jorgensen's inequality
+  (hyperbolic case) replace the numerical checks and the Wikipedia citation of `diameter.tex`.
