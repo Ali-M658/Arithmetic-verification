@@ -139,6 +139,8 @@ sentence-cased title is asserted equal to the fetched title up to case, braces a
 | `berardwebb1995` | https://api.zbmath.org/v1/document/_search?search_string=an:0841.58062 | `a7daa0298bfeb6aae5aa0f1e31831d1d2e85955f8648eaf8da4fa931d893bc47` |
 | `berardwebb2022` | https://doi.org/10.1007/s00209-021-02758-y | `5537e10f93864264102fee78814eac26237f80402381bbb35f1ddabb5c7abe63` |
 | `companion` | paper/arith/note.tex | `533d65cd7e6f224f566d35afa4c223937d8ee63eb5dad3b7509fb92379612276` |
+| `jorgensen1976` | https://doi.org/10.2307/2373814 (Crossref record; the registry gives only the first page, 739) | `0f38cb057fcd37e7b9341763838a57dd555cda973b943d631b8f04604577c7ba` |
+| `jorgensenwiki` (document) | https://en.wikipedia.org/wiki/J%C3%B8rgensen%27s_inequality, fetched 2026-10-07 with a desktop user agent; the statement of Jørgensen's inequality used in Section 4 is quoted from it, because the primary text (JSTOR) is not retrievable headless (theory/eigen/sources/README.md) | `fb2d20931d73ccb6cc88cfaf686547e477b8ce9d5df599fb997d503bdb592658` |
 
 Documents without a registry record: `thurston1980` (the chapter's title page: "Electronic version
 1.1 - March 2002", "electronic edition of the 1980 notes distributed by Princeton University"),

@@ -56,6 +56,9 @@ SOURCES = {
     "barihunsicker2020": ("doi", "10.4153/S0008414X19000178"),
     "griesermaronna2013": ("doi", "10.1090/noti1063"),
     "gomezserrano2021": ("doi", "10.1016/j.jde.2020.11.002"),
+    # discrete groups (Section 4)
+    "jorgensen1976": ("doi", "10.2307/2373814"),
+    "jorgensenwiki": ("document", "https://en.wikipedia.org/wiki/J%C3%B8rgensen%27s_inequality"),
     # power sums, Hurwitz determinants, root perturbation
     "holtztyaglov2012": ("doi", "10.1137/090781127"),
     "ostrowski1940": ("doi", "10.1007/bf02546330"),
@@ -128,6 +131,13 @@ SOURCES = {
 # ngsolve: the fetched swMATH software record 13154 (zbMATH Open API); the usual NGSolve report
 # has no registry record and was not fetched (review/literature-pass/GAPS.md).
 DOCUMENT_ENTRIES = {
+    "jorgensenwiki": """@misc{jorgensenwiki,
+  key          = {Wikipedia, Jorgensen's inequality},
+  title        = {{J{\\o}rgensen's} inequality},
+  howpublished = {Wikipedia, The Free Encyclopedia; page fetched 7 October 2026, source of the statement of the inequality used in Section~4; the original paper could not be retrieved},
+  year         = {2026},
+  url          = {https://en.wikipedia.org/wiki/J%C3%B8rgensen%27s_inequality}
+}""",
     "thurston1980": """@misc{thurston1980,
   author       = {Thurston, William P.},
   title        = {The geometry and topology of three-manifolds},
@@ -156,7 +166,7 @@ LOCAL_ENTRIES = {
   year         = {2026}
 }"""),
 }
-DOCUMENT_CHECK = {"pari2172": "released 05/03/2025", "ngsolve": "NGSolve"}
+DOCUMENT_CHECK = {"jorgensenwiki": "non-elementary discrete subgroup", "pari2172": "released 05/03/2025", "ngsolve": "NGSolve"}
 
 # Corrections applied to a fetched record, each justified by another fetched document.
 CORRECTIONS = {

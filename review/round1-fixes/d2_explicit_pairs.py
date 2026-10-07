@@ -106,8 +106,14 @@ def fmt_area(s):
     n = round(s)
     d = s - n
     if d != 0 and abs(d) < Fraction(1, 10 ** 9):      # within 1e-9 of an integer: show the offset
-        m, e = f"{float(abs(d)):.2e}".split("e")
-        return f"${n}{'+' if d > 0 else '-'}{m}\\times10^{{{int(e)}}}$"
+        x = abs(d)                                     # exact exponent: float(x) can underflow to 0
+        e = len(str(x.numerator)) - len(str(x.denominator))
+        if x < Fraction(10) ** e:
+            e -= 1
+        m = f"{float(x / Fraction(10) ** e):.2f}"
+        if m == "10.00":
+            m, e = "1.00", e + 1
+        return f"${n}{'+' if d > 0 else '-'}{m}\\times10^{{{e}}}$"
     return f"$\\approx{float(s):.10g}$"
 
 
@@ -168,12 +174,12 @@ def main():
         "\\caption{The explicit pairs behind Example~\\pref{ex:ptepairs} and the diamonds and squares of "
         "Figure~\\pref{fig:F4}: both signatures, the area $s=\\mathrm{Area}/2\\pi$ (exact in the data file when "
         "an approximation is shown) and the exact number $L$ of shared heat invariants. Each pair was "
-        "rechecked by \\texttt{review/round1-fixes/d2\\_explicit\\_pairs.py}, which recomputes the area and the "
+        "rechecked by a script of the public repository \\url{https://github.com/Ali-M658/Arithmetic-verification}, which recomputes the area and the "
         "shared count exactly, from the cone coefficients and again from the power sums. ``Equal count'' rows "
         "with $L=4,\\dots,7$ are Example~\\pref{ex:ptepairs}(iii). For the Prouhet squares with $L\\ge4$, "
         "$T_e=\\{0\\le i<4^{L-1}:\\ \\text{the binary digits of $i$ have sum}\\equiv e\\ (2)\\}$, "
         "$U_0=\\{2i-1:i\\in T_0,\\ i\\ne0\\}$, $V_0=\\{2i-1:i\\in T_1\\}\\cup\\{1\\}$, $A'=\\{2i+1:i\\in T_0\\}$, "
-        "$B'=\\{2i+1:i\\in T_1\\}$; their cone lists are in \\texttt{review/round1-fixes/output/d2\\_pairs.csv}.}"
+        "$B'=\\{2i+1:i\\in T_1\\}$, with $A'$ and $B'$ exchanged when $R(U_0)<R(V_0)$; their cone lists are in a data file of the same repository.}"
         "\\label{tab:pairs}\\\\\n"
         "\\toprule\n$L$ & kind & $s$ & shared\\\\\n\\midrule\n\\endfirsthead\n"
         "\\toprule\n$L$ & kind & $s$ & shared\\\\\n\\midrule\n\\endhead\n"
