@@ -32,8 +32,6 @@
 \renewcommand{\thetable}{S\arabic{table}}
 \renewcommand{\thefigure}{S\arabic{figure}}
 
-\input{../../figures/captions.tex}
-
 \raggedbottom
 \hypersetup{pdftitle={How much of a hyperbolic orbifold does heat hear? Electronic supplementary material},
   pdfauthor={Palaash Gang, Akshaj Agadi, Arjun Veluri, Jerry Wang, Jeremy Barreto, Aarin Chouthaiwale}}
@@ -55,22 +53,9 @@
 \affil[4]{\orgname{Lawrence High School}, \orgaddress{\city{Lawrenceville}, \state{New Jersey}, \country{USA}}}
 \affil[5]{\orgname{DriveChange Learning and Resource Centre}, \orgaddress{\city{Pune}, \country{India}}}
 
-\abstract{This supplement contains the material behind five sections of the paper: the admissibility of the heat function in the trace formula of Section~\pref{sec:heat} (Section~\ref{sec:admissible}), the computer searches and the explicit pairs of Section~\pref{sec:signature} (Section~\ref{sec:searches}), the triads of small sum of Section~\pref{sec:rigid} (Section~\ref{sec:enum}), the exact-arithmetic certificate of Section~\pref{sec:stability} with the full threshold table (Section~\ref{sec:certificates}), and the numerical experiments of Section~\pref{sec:numerics}: the computed spectra of $\Orb(2,8,8)$ and $\Orb(3,3,12)$, a blind recovery of their cone orders, and a family of orbifolds of signature $(0;3,3,3,3)$ that share every heat invariant while their spectra move (Sections~\ref{sec:listening}--\ref{sec:moduli}). No theorem of the paper depends on it; Proposition~\ref{prop:S5}, proved here, gives the column $\delta_{\rm cert}$ of Table~\pref{tab:thresholds}. Numbers such as ``Theorem~\pref{thm:sharp}'' refer to the paper.}
+\abstract{This supplement contains the material behind four sections of the paper: the computer searches and the explicit pairs of Section~\pref{sec:signature} (Section~\ref{sec:searches}), the triads of small sum of Section~\pref{sec:rigid} (Section~\ref{sec:enum}), the exact-arithmetic certificate of Section~\pref{sec:stability} with the full threshold table (Section~\ref{sec:certificates}), and the numerical experiments of Section~\pref{sec:numerics}: the computed spectra of $\Orb(2,8,8)$ and $\Orb(3,3,12)$, a blind recovery of their cone orders, and a family of orbifolds of signature $(0;3,3,3,3)$ that share every heat invariant while their spectra move (Sections~\ref{sec:listening}--\ref{sec:moduli}). No theorem of the paper depends on it; Proposition~\ref{prop:S5}, proved here, gives the column $\delta_{\rm cert}$ of Table~\pref{tab:thresholds}. Numbers such as ``Theorem~\pref{thm:sharp}'' refer to the paper.}
 
 \maketitle
-
-\section{Admissibility of the heat function}\label{sec:admissible}
-
-The trace formula of Theorem~\pref{thm:IEH} is stated by Dryden and Strohmaier for $h=\hat g$ with $g\in C_c^\infty(\R)$ even \cite[eq.~(1)]{drydenstrohmaier2009}; Garbin and Jorgenson state it for the heat function \cite[Rem.~2.7]{garbinjorgenson2020}. For completeness, here is the standard approximation argument, in the notation of Section~\pref{sec:trace} of the paper.
-
-\begin{lemma}[The heat function is admissible]\label{lem:admissible}
-Fix an even $\omega\in C_c^\infty(\R)$, $0\le\omega\le1$, $\omega=1$ on $[-1,1]$, and put $h_\varrho=\hat g_\varrho$ with $g_\varrho=g_t\,\omega(\cdot/\varrho)$. As $\varrho\to\infty$, every term of the trace formula for $h_\varrho$ tends to the corresponding term for $h_t$; hence Theorem~\pref{thm:IEH} holds.
-\end{lemma}
-
-\begin{proof}
-\emph{Counting eigenvalues.} Let $\lambda_j=\frac14+r_j^2$ and take $\psi\in C_c^\infty(\R)$ even, nonnegative, $\int\psi=1$, supported in $[-\epsilon,\epsilon]$ with $2\epsilon<\ell$, $\epsilon\le1$; then $|\hat\psi|\le1$ and $\hat\psi(r)\ge\cos(\epsilon r)\ge\frac12$ for $|r|\le1$. The function $h_T(r)=\hat\psi(r-T)^2+\hat\psi(r+T)^2=\hat g$ for $g=2\cos(Tu)(\psi*\psi)(u)$, supported in $[-2\epsilon,2\epsilon]$, so the hyperbolic side vanishes for it; its identity term is $O(T+1)$, each elliptic term $O(1)$, and the finitely many imaginary $r_j$ contribute $O(1)$. Since $h_T\ge\frac14$ on $|r-T|\le1$, $\#\{j:|r_j-T|\le1\}=O(T+1)$, hence $\#\{\lambda_j\le x\}=O(x)$, with no heat-kernel input (the leading term of \cite[Thm~4.8]{dggw2008} gives the same).
-\emph{Convergence.} On the hyperbolic side $0\le g_\varrho\le g_t$, with equality on $[0,\varrho]$, and Lemma~\pref{lem:counting} gives dominated convergence. With $f_\varrho=g_t(1-\omega(\cdot/\varrho))$, $h_t-h_\varrho=\hat f_\varrho$ and $\|f_\varrho^{(k)}\|_{L^1}\to0$ ($k\le3$), so $|\hat f_\varrho(r)|\le\epsilon_\varrho\min(1,|r|^{-3})$ with $\epsilon_\varrho\to0$, which handles the identity and elliptic terms and, as $\sum_j\min(1,|r_j|^{-3})<\infty$, the real $r_j$; for imaginary $r_j$, $|\hat f_\varrho(r_j)|\le\int|f_\varrho|e^{|u|/2}\to0$.
-\end{proof}
 
 \section{Searches and explicit pairs}\label{sec:searches}
 
@@ -243,13 +228,7 @@ $(2,2,2,2,3)$ & $2.72\text{e}{-12}$ & $7.908\text{e}{-6}$ & $5.312\text{e}{-5}$ 
 
 \section{Computed spectra of the minimal pair}\label{sec:listening}
 
-Figure~\ref{fig:F1} shows the two orbifolds of Theorem~\pref{thm:minimal}, which share their first two heat invariants, coloured by the diagonal of the heat kernel computed from their spectra.
-
-\begin{figure}[ht]
-\centering
-\includegraphics[width=119mm]{figures/out/F1.pdf}
-\caption{\figcapOne}\label{fig:F1}
-\end{figure}
+Figure~\pref{fig:F1} of the paper shows the two orbifolds of Theorem~\pref{thm:minimal}, which share their first two heat invariants, coloured by the diagonal of the heat kernel computed from their spectra.
 
 
 \emph{Method.} The triangle orbifold $\Orb(p,q,r)$ is the double of a hyperbolic triangle $T$ with angles $\pi/p,\pi/q,\pi/r$. The reflection exchanging the two copies splits $H^1(\Orb)$ into even and odd parts, orthogonal for the $L^2$ product and the Dirichlet form, which restrict to $H^1(T)$ and $H^1_0(T)$; so the spectrum of $\Orb$ is the union, with multiplicity, of the Neumann and Dirichlet spectra of $T$, and $\cZ_\Orb=\cZ_N+\cZ_D$. The problems $-\Delta_Eu=\lambda wu$, $w=4/(1-|z|^2)^2$, were solved in the Poincar\'e disc with $H^1$ finite elements of order $p$ on NETGEN meshes \cite{schoberl1997} of uniform hyperbolic size $h$, with NGSolve \cite{ngsolve}; the geodesic side is an exact rational quadratic spline, curved to order $p$, and the finite-element area is exact to $2\times10^{-14}$. The production level is $(h,p)=(0.05,10)$, with $h$-sweeps at $p=10$ ($h=0.1,0.07$) and $p$-sweeps at $h=0.07$ ($p=8,10,12$). Eigenvalues were computed by shift-invert Lanczos iteration (ARPACK \cite{arpack1998}) in overlapping spectral windows of $200$ eigenvalues, one sparse factorisation per window, each eigenvalue taken from one window (software versions are pinned in the repository's \texttt{requirements.txt} files): $1420$--$1440$ per triangle and boundary condition, up to $\lambda\approx21{,}700$ (Neumann) and $23{,}800$ (Dirichlet), about $2850$ per orbifold.
@@ -319,13 +298,7 @@ Three coefficients recover both multisets exactly (Table~\ref{tab:blind}), with 
 
 \emph{The family.} The signature $(0;3,3,3,3)$ is hyperbolic, with area $4\pi/3$ and a $2$-dimensional Teichm\"uller space. Each member of the family is the double of a geodesic quadrilateral with all angles $\pi/3$, symmetric under $z\mapsto\bar z$ and $z\mapsto-\bar z$; the two mirror axes cut it into four congruent Lambert quadrilaterals, and with $a,b$ the distances from the centre to two adjacent sides, $\sinh a\sinh b=\cos\frac\pi3$, leaving one parameter $\vartheta=\log(\sinh a/\sinh b)$. Eight members, $\vartheta\in\{0,0.4,\dots,2.8\}$, were computed, about $5450$ eigenvalues each up to $\lambda\approx1.6\times10^4$, with every eigenvalue covered by two independent shift-invert windows (misses counted and repaired). Their systoles are $4b(\vartheta)$, falling strictly from $2.634$ to $0.694$, so the members are pairwise non-isometric and every pair has different systoles. The worst eigenvalue error is $1.3\times10^{-10}$ relative ($8.3\times10^{-9}$ conservative). The family is a real one-parameter slice, the orbifolds with an orientation-reversing isometry fixing the four cone points; Theorem~\pref{thm:sharp} does not need genericity.
 
-\emph{Same expansion, different spectra.} Every member's heat trace equals $\mathrm I+4\mathrm E_3$ to at most $1.2\times10^{-12}$ wherever closed geodesics are negligible, against an error budget of $2.2\times10^{-11}$, and on $t\in[0.0025,0.0037]$ the eight traces are the same function to $1.3\times10^{-13}$: Proposition~\pref{prop:locality} in the data. The eigenvalues move with the shape: $\lambda_1$ falls from $4.1224$ to $0.4348$, and the first $200$ eigenvalues move by up to $89\%$ (Figure~\ref{fig:F6}).
-
-\begin{figure}[ht]
-\centering
-\includegraphics[width=119mm]{figures/out/F6.pdf}
-\caption{\figcapSix}\label{fig:F6}
-\end{figure}
+\emph{Same expansion, different spectra.} Every member's heat trace equals $\mathrm I+4\mathrm E_3$ to at most $1.2\times10^{-12}$ wherever closed geodesics are negligible, against an error budget of $2.2\times10^{-11}$, and on $t\in[0.0025,0.0037]$ the eight traces are the same function to $1.3\times10^{-13}$: Proposition~\pref{prop:locality} in the data. The eigenvalues move with the shape: $\lambda_1$ falls from $4.1224$ to $0.4348$, and the first $200$ eigenvalues move by up to $89\%$ (Figure~\pref{fig:F6} of the paper).
 
 \emph{The difference is the closed geodesics.} For all $28$ pairs, $\cZ_i-\cZ_j$ equals $\Hyp_i-\Hyp_j$, computed from the closed geodesics enumerated in floating point up to length $6.5$ (checked by the integrality of the weights $w/\ell$ and by agreement with the computed traces) with nothing fitted, to at most $1.1\times10^{-13}$ for $t\le0.33$, where the traces differ by up to $0.79$. The difference leaves the noise at a time $t^*$ set by the shorter systole alone, with $\ell^2/4t^*\approx24.5$ in every case. Once it is $10^3$ times the noise, its ratio to the leading term of Theorem~\pref{thm:sharp} is between $0.9997$ and $1.0000$. The bound of Theorem~\pref{thm:quantlocality}(b) holds for every pair, but it is loose because of its factor $e^{3\diam}$.
 

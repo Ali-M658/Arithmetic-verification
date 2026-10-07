@@ -74,13 +74,13 @@
   {\csname figcap@#1\endcsname}}
 \makeatother
 \input{../../figures/captions.tex}
-\setfigcap{F3}{\figcapThree}\setfigcap{F4}{\figcapFour}
-\setfigcap{F5}{\figcapFive}\setfigcap{F7}{\figcapSeven}\setfigcap{F8}{\figcapEight}
-\newcommand{\paperfigure}[2]{%
-  \begin{figure}[t]
+\setfigcap{F1}{\figcapOne}\setfigcap{F2}{\figcapTwo}\setfigcap{F3}{\figcapThree}\setfigcap{F4}{\figcapFour}
+\setfigcap{F5}{\figcapFive}\setfigcap{F6}{\figcapSix}\setfigcap{F7}{\figcapSeven}\setfigcap{F8}{\figcapEight}
+\newcommand{\paperfigure}[3][t]{%
+  \begin{figure}[#1]
   \centering
-  \includegraphics[width=119mm]{figures/out/#1.pdf}%
-  \caption{\figcap{#1}}\label{#2}
+  \includegraphics[width=119mm]{figures/out/#2.pdf}%
+  \caption{\figcap{#2}}\label{#3}
   \end{figure}}
 
 \raggedbottom
@@ -120,7 +120,7 @@
 
 \section{Introduction}\label{sec:intro}
 
-Put a unit of heat at a point of a closed surface and let it spread. For a short time $t$ it explores a disc of radius about $\sqrt t$ and learns only what lies in that disc. On a closed hyperbolic $2$-orbifold $\Orb$ a smooth point looks like every other smooth point, because the curvature is $-1$ everywhere, and a cone point of order $m$ looks like a disc folded $m$ times around its centre. The trace of the heat kernel adds up what all the points have learned; it has an asymptotic expansion
+Put a unit of heat at a point of a closed surface and let it spread. For a short time $t$ it explores a disc of radius about $\sqrt t$ and learns only what lies in that disc. On a closed hyperbolic $2$-orbifold $\Orb$ a smooth point looks like every other smooth point, because the curvature is $-1$ everywhere, and a cone point of order $m$ looks like a disc folded $m$ times around its centre, where heat lingers (Figure~\ref{fig:F1}).\paperfigure[b]{F1}{fig:F1} The trace of the heat kernel adds up what all the points have learned; it has an asymptotic expansion
 \begin{equation}\label{eq:heatseries}
   \cZ_\Orb(t)=\operatorname{tr}e^{-t\Delta}\ \sim\ \sum_{j\ge1}c_j(\Orb)\,t^{\,j-2}\qquad(t\downarrow0),
 \end{equation}
@@ -157,7 +157,7 @@ Let $\Orb(p,q,r)$ be a hyperbolic triangle orbifold.
 \end{enumerate}
 \end{theorem}
 
-The supplement shows the two orbifolds of part~(ii) coloured by how much heat stays at each point. Finally, a measured heat trace is never exact.
+Figure~\ref{fig:F1} shows the two orbifolds of part~(ii) coloured by how much heat stays at each point. Finally, a measured heat trace is never exact.
 
 \begin{theorem}[Stability]\label{thm:intro-stability}
 Let $m$ be the cone orders of a hyperbolic sphere (genus $0$) with a known number $n$ of cone points, and $\tilde c_1,\dots,\tilde c_n$ approximations to its heat invariants $c_1,\dots,c_n$ with error at most $\delta$. For $\delta$ below an explicit bound, the recovery map of Section~\ref{sec:stability} returns, for each distinct order $a$ of multiplicity $k_a$, exactly $k_a$ numbers within $C_a\delta^{1/k_a}$ of $a$; the bound and the $C_a$ are explicit functions of $m$. The exponent $1/k_a$ cannot be improved for arbitrary data. For data that are the heat invariants of positive real orders it is $\frac12$, and sharp, at a double order (any $n$) and when all $n\ge3$ orders are equal; other configurations are open. For integer orders and $\delta$ below an explicit $\delta_{\rm thm}(m)$, rounding returns $m$ exactly.
@@ -211,7 +211,7 @@ For every $t>0$, $\cZ_\Orb(t)=\mathrm I(t)+\mathrm E(t)+\Hyp(t)$, all series and
 \end{theorem}
 
 \begin{proof}
-This is the Selberg trace formula for cocompact Fuchsian groups with elliptic elements as stated by Dryden and Strohmaier \cite[eq.~(1)]{drydenstrohmaier2009}, who take it from \cite{hejhal1976,iwaniec2002}; a cone point of order $m$ gives the elliptic classes $\rho^j$, $1\le j\le m-1$ \cite[p.~68]{drydenstrohmaier2009}. We use it for $h=\hat g$ with $g\in C_c^\infty(\R)$ even, the class \cite{drydenstrohmaier2009} intend. Garbin and Jorgenson state it for the heat function with the same normalization \cite[Rem.~2.7, (2.8)]{garbinjorgenson2020}; for completeness Lemma~\sref{lem:admissible} of the supplement gives the standard approximation argument, using Lemma~\ref{lem:counting}.
+This is the Selberg trace formula for cocompact Fuchsian groups with elliptic elements as stated by Dryden and Strohmaier \cite[eq.~(1)]{drydenstrohmaier2009}, who take it from \cite{hejhal1976,iwaniec2002}; a cone point of order $m$ gives the elliptic classes $\rho^j$, $1\le j\le m-1$ \cite[p.~68]{drydenstrohmaier2009}. We use it for $h=\hat g$ with $g\in C_c^\infty(\R)$ even, the class \cite{drydenstrohmaier2009} intend. Garbin and Jorgenson state it for the heat function with the same normalization \cite[Rem.~2.7, (2.8)]{garbinjorgenson2020}; Lemma~\ref{lem:admissible} in Appendix~\ref{app:admissible} gives the standard approximation argument, using Lemma~\ref{lem:counting}.
 \end{proof}
 
 \begin{lemma}[Counting closed geodesics]\label{lem:counting}
@@ -295,7 +295,7 @@ The first values are $\alpha_0,\dots,\alpha_4=1,-\frac13,\frac1{15},-\frac4{315}
 At $K=-1$ the cone terms $b_0=p_0(m)/m$, $b_1=-p_1(m)/m$, $b_2=p_2(m)/m$ agree with Schueth's $a_0,a_1$ \cite[Rem.~4.2]{schueth2019} and $a_2$ \cite[Thm~4.1]{schueth2019}; she notes that the first two were already computed in \cite[\S5.6]{dggw2008} (there Prop.~5.5 and (5.10)). That $p_l(1)=0$ says that an ``order-$1$ cone point'' is a smooth point.
 
 \begin{remark}[Agreement with U\c{c}ar; independence]\label{rem:ucaragree}\label{rem:proofC}
-Putting $u=it/2$ in Lemma~\ref{lem:Phi} gives $m\Phi_m^{(2k)}(0)=2\cdot4^kk!\,m\,c^{\mathbb S}_k(\pi/m)$, with $c^{\mathbb S}_k$ the lune coefficient \cite[(4.25)]{ucar2017} (Watson's, as reproved there), so \eqref{eq:bl} is $(-1)^l$ times U\c{c}ar's cone contribution \cite[Thm~4.20(ii), with (4.33)--(4.34)]{ucar2017} at $\kappa=-1$, for every $l$; his smooth coefficients \cite[(4.35)]{ucar2017} are our $\alpha_k$ (also compared exactly for $l\le40$). The derivation is independent of the coefficient computations of \cite{dggw2008,ucar2017} and of the locality theorem of \cite{donnelly1976,dggw2008}: it uses only the trace formula for $\hat g$, $g\in C_c^\infty(\R)$ even, Lemma~\ref{lem:counting}, the approximation argument of Lemma~\sref{lem:admissible} of the supplement and classical analysis.
+Putting $u=it/2$ in Lemma~\ref{lem:Phi} gives $m\Phi_m^{(2k)}(0)=2\cdot4^kk!\,m\,c^{\mathbb S}_k(\pi/m)$, with $c^{\mathbb S}_k$ the lune coefficient \cite[(4.25)]{ucar2017} (Watson's, as reproved there), so \eqref{eq:bl} is $(-1)^l$ times U\c{c}ar's cone contribution \cite[Thm~4.20(ii), with (4.33)--(4.34)]{ucar2017} at $\kappa=-1$, for every $l$; his smooth coefficients \cite[(4.35)]{ucar2017} are our $\alpha_k$ (also compared exactly for $l\le40$). The derivation is independent of the coefficient computations of \cite{dggw2008,ucar2017} and of the locality theorem of \cite{donnelly1976,dggw2008}: it uses only the trace formula for $\hat g$, $g\in C_c^\infty(\R)$ even, Lemma~\ref{lem:counting}, the approximation argument of Lemma~\ref{lem:admissible} and classical analysis.
 \end{remark}
 
 \subsection{One odd power sum per coefficient}\label{sec:basis}
@@ -476,7 +476,7 @@ For the growth, let $f_g(A)$ and $f_n(A)$ be the maxima over orbifolds of area a
 \end{enumerate}
 \end{theorem}
 
-The proofs are in Appendix~\ref{app:pte}. With the known quadratic bounds on $N(k)$, (c) gives exactly the exponent $\frac12$ of (a), and any exponent above $\frac12$ in (d) would prove $N(k)=O(k^{2-\epsilon})$. Figure~\ref{fig:F4} compares the bounds with the exact largest $\Kmult$ on complete classes of signatures of equal area (its caption says which areas) and with the pairs below.
+The proofs are in Appendix~\ref{app:pte}. With the known quadratic bounds on $N(k)$, (c) gives exactly the exponent $\frac12$ of (a), and any exponent above $\frac12$ in (d) would prove $N(k)=O(k^{2-\epsilon})$. Figure~\ref{fig:F4} compares the bounds with the pairs below and with the exact largest $\Kmult$ on the complete classes of the $525$ areas $2\pi s$, $s\le7/5$, attained by a signature of genus at most $1$ with at most four cone points of order at most $12$ (each class enumerated with no bound on the orders; $504$ contain orders above $12$); beyond $s=7/5$ only bounds and constructed pairs are shown.
 
 \paperfigure{F4}{fig:F4}
 
@@ -515,6 +515,10 @@ If $6g-6+2n>0$, the orbifolds of signature $\sigma=(g;m_1,\dots,m_n)$ form uncou
 \begin{proof}
 Points of $\Teich(\Orb)\cong\R^{6g-6+2n}$ are classes of discrete faithful representations of $\Gamma$ in $PSL(2,\R)$, and two of them give isometric orbifolds only if they differ by an automorphism of $\Gamma$ and a conjugation in $PGL(2,\R)$; so each isometry class meets $\Teich(\Orb)$ in an orbit of the countable group $\operatorname{Out}(\Gamma)$, and a countable union of countable sets is not $\R^d$, $d>0$. Any $\Orb'$ of signature $\sigma$ not isometric to $\Orb$ has $H_k(\Orb')=H_k(\Orb)$ for every $k$ (Proposition~\ref{prop:locality}).
 \end{proof}
+
+Figure~\ref{fig:F6} shows this for a real one-parameter family of signature $(0;3,3,3,3)$: doubles of geodesic quadrilaterals with all angles $\pi/3$ and two mirror symmetries, parametrised by $\vartheta=\log(\sinh a/\sinh b)$, with $a,b$ the distances from the centre to two adjacent sides ($\sinh a\sinh b=\frac12$). The eight computed members have systoles $4b(\vartheta)$ falling strictly from $2.634$ to $0.694$, so they are pairwise non-isometric; their heat traces agree with $\mathrm I+4\mathrm E_3$ to $1.2\times10^{-12}$ wherever closed geodesics are negligible, while $\lambda_1$ falls from $4.122$ to $0.435$ (Section~\ref{sec:numerics}).
+
+\paperfigure{F6}{fig:F6}
 
 The shape is visible only beyond all orders, by the classical mechanism of Selberg, Huber and McKean \cite{huber1959,mckean1972,hejhal1976}: the heat traces of two orbifolds of one signature differ by the difference of their hyperbolic terms. We make this explicit: a bound with explicit constants and range (Theorem~\ref{thm:quantlocality}) and its sharpness: the leading term at the first length where the length spectra differ, so the factor $t^{-1/2}$ cannot be removed (Theorem~\ref{thm:sharp}, Corollary~\ref{cor:prefactor}).
 
@@ -555,7 +559,7 @@ Group $\Hyp_1-\Hyp_2$ by length, and let $L'>L_*$ be the next length in the unio
 If the weighted length spectra first differ at the shorter systole $\ell$, in particular if the systoles differ, then $\sqrt t\,e^{\ell^2/4t}|\cZ_{\Orb_1}(t)-\cZ_{\Orb_2}(t)|\to|w_1(\ell)-w_2(\ell)|/(2\sinh(\ell/2)\sqrt{4\pi})\ne0$: the exponent $\ell^2/4$ and the factor $t^{-1/2}$ of Theorem~\ref{thm:quantlocality} are attained (the constant $C$ is not claimed to be). If they first differ at $L_*>\ell$, the difference is of the smaller order $t^{-1/2}e^{-L_*^2/4t}$, and if they never differ, it vanishes identically.
 \end{corollary}
 
-The factor $t^{-1/2}$ is the one-dimensional heat kernel along the closed geodesic: heat must travel the length $\ell$ in one dimension. Pairs with $\ell_1\ne\ell_2$ exist in every signature in which the systole varies on Teichm\"uller space; Figure~\ref{fig:F5}(b) shows them in the family $(0;3,3,3,3)$.
+The factor $t^{-1/2}$ is the one-dimensional heat kernel along the closed geodesic: heat must travel the length $\ell$ in one dimension. Pairs with $\ell_1\ne\ell_2$ exist in every signature in which the systole varies on Teichm\"uller space, for instance in the family of Figure~\ref{fig:F6}, where Section~\ref{sec:numerics} compares them with Theorem~\ref{thm:sharp}(ii).
 
 \begin{remark}[The expansion is blind; the trace is not]\label{rem:blind}
 The heat trace as a function of $t$ determines the spectrum and the length spectrum \cite[Thm~1.1]{drydenstrohmaier2009}. For surfaces, length and eigenvalue spectra determine each other \cite[S\"atze~7--8]{huber1959}, the length spectrum determines a generic surface \cite{wolpert1979}, and isospectral sets are finite \cite{mckean1972}, as for hyperbolic orbisurfaces of genus at least one \cite[Thm~5.1]{dryden2004}. ``Heat does not hear the shape'' concerns the asymptotic series, not the spectrum.
@@ -563,7 +567,9 @@ The heat trace as a function of $t$ determines the spectrum and the length spect
 
 \section{The rigid case: triangle orbifolds}\label{sec:rigid}
 
-A triangle orbifold $\Orb(p,q,r)$ is the double of a hyperbolic triangle with angles $\pi/p,\pi/q,\pi/r$, determined by its signature (Proposition~\ref{prop:rigidity}), so $\Kiso=\Kmult$ on $\Sig_{0,3}$. By \eqref{eq:s1inv} the first two heat invariants are equivalent to $\keytwo(p,q,r)=(S_1,R)$ and the third adds $P_3$. A \emph{collision} is a pair of distinct hyperbolic triads with the same $\keytwo$. We count prefixes $c_1,\dots,c_k$, the order in which the coefficients appear as $t\downarrow0$; on triangle orbifolds $c_2$ alone already gives $\keytwo$, since $12c_2+2=S_1+R$ with $S_1\in\Z$ and $0<R<1$. Off this family two invariants fail earlier, for instance on $(0;5,5,5)$ and $(0;2,2,2,10)$, of cone-order sums $15$ and $16$.
+A triangle orbifold $\Orb(p,q,r)$ is the double of a hyperbolic triangle with angles $\pi/p,\pi/q,\pi/r$ (Figure~\ref{fig:F2}), determined by its signature (Proposition~\ref{prop:rigidity}), so $\Kiso=\Kmult$ on $\Sig_{0,3}$. By \eqref{eq:s1inv} the first two heat invariants are equivalent to $\keytwo(p,q,r)=(S_1,R)$ and the third adds $P_3$. A \emph{collision} is a pair of distinct hyperbolic triads with the same $\keytwo$. We count prefixes $c_1,\dots,c_k$, the order in which the coefficients appear as $t\downarrow0$; on triangle orbifolds $c_2$ alone already gives $\keytwo$, since $12c_2+2=S_1+R$ with $S_1\in\Z$ and $0<R<1$. Off this family two invariants fail earlier, for instance on $(0;5,5,5)$ and $(0;2,2,2,10)$, of cone-order sums $15$ and $16$.
+
+\paperfigure[b]{F2}{fig:F2}
 
 \begin{theorem}[Three heat invariants determine a triangle orbifold]\label{thm:three}
 $R$, $S_1$ and $P_3$ determine $\{p,q,r\}$; hence $\Kiso(\Orb;\Sig_{0,3})\le3$, with equality exactly when $\Orb$ belongs to a collision, for instance $\Orb(2,8,8)$ and $\Orb(3,3,12)$.
@@ -797,15 +803,16 @@ The certified threshold is within a factor $1.03$--$2.05$ of a constructed failu
 
 \section{Numerical illustration}\label{sec:numerics}
 
-Nothing here is used in a proof; the full experiments, a blind recovery and the moduli figure are in the supplement. The spectrum of $\Orb(p,q,r)$ is the union of the Neumann and Dirichlet spectra of its triangle (the identity U\c{c}ar uses for lunes \cite[Thm~4.10, Cor.~4.18]{ucar2017}), computed with $H^1$ finite elements of order $10$ on meshes of hyperbolic size $0.05$ (NETGEN \cite{schoberl1997}, NGSolve \cite{ngsolve}) and shift-invert Lanczos iteration \cite{arpack1998}: about $2850$ eigenvalues per orbifold, up to $\lambda\approx2.17\times10^4$ (Neumann) and $2.38\times10^4$ (Dirichlet). Reflection makes the eigenfunctions smooth at the corners, and convergence is fast ($h^{13}$ to $h^{19}$ at order $10$).
+Nothing here is used in a proof; the full experiments and a blind recovery are in the supplement. The spectrum of $\Orb(p,q,r)$ is the union of the Neumann and Dirichlet spectra of its triangle (the identity U\c{c}ar uses for lunes \cite[Thm~4.10, Cor.~4.18]{ucar2017}), computed with $H^1$ finite elements of order $10$ on meshes of hyperbolic size $0.05$ (NETGEN \cite{schoberl1997}, NGSolve \cite{ngsolve}) and shift-invert Lanczos iteration \cite{arpack1998}: about $2850$ eigenvalues per orbifold, up to $\lambda\approx2.17\times10^4$ (Neumann) and $2.38\times10^4$ (Dirichlet). Reflection makes the eigenfunctions smooth at the corners, and convergence is fast ($h^{13}$ to $h^{19}$ at order $10$).
+
+\paperfigure{F5}{fig:F5}
 
 \emph{Error budget.} The error estimate of each eigenvalue is the difference between two independent discretisations, for the first $500$ at most $2.9\times10^{-11}$ relative. With the mean value theorem and a tail bound from the Weyl law it bounds the error of the difference of the two traces on $0.0015\le t\le0.012$ by $2.9\times10^{-11}$: an a-posteriori estimate, not a certified enclosure. Each trace agrees with $\mathrm I+\mathrm E$ to $7\times10^{-13}$ for $0.0015\le t\le0.03$, so no eigenvalue below about $1.6\times10^4$ is missing; above that the test is blind, and a double-window recomputation of the spectra has not been run. The method, a Bolza benchmark and these limitations are detailed in Section~\sref{sec:listening} of the supplement.
 
 \emph{Two timescales.} $D(t)=\cZ_{\Orb(2,8,8)}(t)-\cZ_{\Orb(3,3,12)}(t)=\sum_{j\ge3}d_jt^{j-2}$ (a function of $t$, not the diameter) has $d_3=\frac{25}{12}$, $d_4=-\frac{1775}{24}$, $d_5=\frac{153025}{48}$ by Proposition~\ref{prop:heatinput}. An unweighted least-squares fit of $D(t)/t$ by a polynomial of degree $9$ on $[0.0015,0.012]$ (window and degree chosen blind, minimizing the larger of the data error and the change on adding a term) gives $d_3=2.0833320\pm0.0000031$ and $d_4=-73.9551\pm0.0062$, within $0.42$ and $0.53$ of these heuristic error bars of the exact values. Pointwise, for $0.0015\le t\le0.03$, $D(t)$ agrees with the exact difference of the elliptic terms to $4\times10^{-13}$, testing every order of the cone expansion at once. The window is small because the cone series diverges, its coefficients growing like $l!\,(144/\pi^2)^l$ (the poles of $\Phi_{12}$ at $\pm\pi/12$): at $t=0.02$, $d_3t,d_4t^2,d_5t^3$ are $0.042,-0.030,0.026$. At larger $t$ the closed geodesics take over; fitting $\cZ-\mathrm I-\mathrm E$ on $[0.06,0.5]$ gives leading multiplicities $1.997$ and $1.9998$ at the shortest lengths $2.2568$ and $1.8626$: one geodesic, two orientations (Figure~\ref{fig:F5}(a)).
 
-\paperfigure{F5}{fig:F5}
 
-\emph{Changing the shape.} Eight non-isometric members of a family of signature $(0;3,3,3,3)$ have heat traces equal to $\mathrm I+4\mathrm E_3$ to $1.2\times10^{-12}$ where geodesics are negligible, while $\lambda_1$ falls from $4.122$ to $0.435$; for all $28$ pairs the difference of traces is the difference of hyperbolic terms, computed with nothing fitted, and its ratio to the leading term of Theorem~\ref{thm:sharp} approaches $1$ (Figure~\ref{fig:F5}(b); supplement, Section~\sref{sec:moduli}).
+\emph{Changing the shape.} For the eight members of the family of Figure~\ref{fig:F6} and all $28$ pairs, the difference of traces is the difference of hyperbolic terms, computed with nothing fitted, and its ratio to the leading term of Theorem~\ref{thm:sharp} approaches $1$ (Figure~\ref{fig:F5}(b); supplement, Section~\sref{sec:moduli}).
 
 \section{Open problems}\label{sec:open}
 
@@ -843,6 +850,19 @@ All code and data are in the public repository \url{https://github.com/Ali-M658/
 \textbf{[PLACEHOLDER: author contribution statement, to be supplied by the authors before submission.]}
 
 \begin{appendices}
+
+\section{Admissibility of the heat function}\label{app:admissible}
+
+Dryden and Strohmaier state the trace formula of Theorem~\ref{thm:IEH} for $h=\hat g$ with $g\in C_c^\infty(\R)$ even \cite[eq.~(1)]{drydenstrohmaier2009}. Here is the standard approximation argument that extends it to the heat function, in the notation of Section~\ref{sec:trace}.
+
+\begin{lemma}[The heat function is admissible]\label{lem:admissible}
+Fix an even $\omega\in C_c^\infty(\R)$, $0\le\omega\le1$, $\omega=1$ on $[-1,1]$, and put $h_\varrho=\hat g_\varrho$ with $g_\varrho=g_t\,\omega(\cdot/\varrho)$. As $\varrho\to\infty$, every term of the trace formula for $h_\varrho$ tends to the corresponding term for $h_t$; hence Theorem~\ref{thm:IEH} holds.
+\end{lemma}
+
+\begin{proof}
+\emph{Counting eigenvalues.} Let $\lambda_j=\frac14+r_j^2$ and take $\psi\in C_c^\infty(\R)$ even, nonnegative, $\int\psi=1$, supported in $[-\epsilon,\epsilon]$ with $2\epsilon<\ell$, $\epsilon\le1$; then $|\hat\psi|\le1$ and $\hat\psi(r)\ge\cos(\epsilon r)\ge\frac12$ for $|r|\le1$. The function $h_T(r)=\hat\psi(r-T)^2+\hat\psi(r+T)^2=\hat g$ for $g=2\cos(Tu)(\psi*\psi)(u)$, supported in $[-2\epsilon,2\epsilon]$, so the hyperbolic side vanishes for it; its identity term is $O(T+1)$, each elliptic term $O(1)$, and the finitely many imaginary $r_j$ contribute $O(1)$. Since $h_T\ge\frac14$ on $|r-T|\le1$, $\#\{j:|r_j-T|\le1\}=O(T+1)$, hence $\#\{\lambda_j\le x\}=O(x)$, with no heat-kernel input (the leading term of \cite[Thm~4.8]{dggw2008} gives the same).
+\emph{Convergence.} On the hyperbolic side $0\le g_\varrho\le g_t$, with equality on $[0,\varrho]$, and Lemma~\ref{lem:counting} gives dominated convergence. With $f_\varrho=g_t(1-\omega(\cdot/\varrho))$, $h_t-h_\varrho=\hat f_\varrho$ and $\|f_\varrho^{(k)}\|_{L^1}\to0$ ($k\le3$), so $|\hat f_\varrho(r)|\le\epsilon_\varrho\min(1,|r|^{-3})$ with $\epsilon_\varrho\to0$, which handles the identity and elliptic terms and, as $\sum_j\min(1,|r_j|^{-3})<\infty$, the real $r_j$; for imaginary $r_j$, $|\hat f_\varrho(r_j)|\le\int|f_\varrho|e^{|u|/2}\to0$.
+\end{proof}
 
 \section{Proofs of the growth results}\label{app:pte}
 
