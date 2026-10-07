@@ -317,6 +317,13 @@ stage "audit-2 stability"                q exact review/audit-2/stability "$AUDI
 stage "audit-2 threshold-sharpness"      q exact review/audit-2/threshold-sharpness "$AUDIT"
 stage "audit-2 trace-formula"            q exact review/audit-2/trace-formula "$AUDIT"
 
+# --- theory/eigen (Theorem 4.13 of the paper, finitely many eigenvalues): each script raises on a failed check; together
+#     about 5 min (diameter 110 s, counting 80 s, theorem_e 35 s, practice 32 s). practice.py rewrites data/practice.csv,
+#     which must come back byte-identical.
+for s in diameter counting remainder theorem_e necessity locality practice; do
+    stage "eigen $s" q exact theory/eigen "$P $s.py"
+done
+
 # --- review/round1-fixes (referee round 1): each script's stdout must equal its committed transcript, and the
 #     CSV files it rewrites must come back byte-identical; D2 first checks that the supplement's pairs table is current
 R1='same_txt "$1.py" "output/$1.txt" && git diff --quiet -- output/'
