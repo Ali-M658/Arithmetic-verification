@@ -56,9 +56,6 @@ SOURCES = {
     "barihunsicker2020": ("doi", "10.4153/S0008414X19000178"),
     "griesermaronna2013": ("doi", "10.1090/noti1063"),
     "gomezserrano2021": ("doi", "10.1016/j.jde.2020.11.002"),
-    # discrete groups (Section 4)
-    "jorgensen1976": ("doi", "10.2307/2373814"),
-    "jorgensenwiki": ("document", "https://en.wikipedia.org/wiki/J%C3%B8rgensen%27s_inequality"),
     # power sums, Hurwitz determinants, root perturbation
     "holtztyaglov2012": ("doi", "10.1137/090781127"),
     "ostrowski1940": ("doi", "10.1007/bf02546330"),
@@ -111,6 +108,13 @@ SOURCES = {
     "wooley2012": ("doi", "10.4007/annals.2012.175.3.12"),
     "wooley2019": ("doi", "10.1112/plms.12204"),
     "crootmaoyip2026": ("arxiv", "2609.05061"),
+    # added in referee round 3 (item I9): classical sources for the Prouhet-Tarry-Escott problem,
+    # each a DOI record; Wright's bound is quoted as reported by Borwein-Ingalls (p. 7), whose
+    # text is fetched (theory/pte/sources/)
+    "wright1935": ("doi", "10.1093/qmath/os-6.1.261"),
+    "dorwartbrown1937": ("doi", "10.1080/00029890.1937.11988044"),
+    "hua1982": ("doi", "10.1007/978-3-642-68130-1"),
+    "borwein2002": ("doi", "10.1007/978-0-387-21652-2"),
     "cremona1997": ("zbmath", "0872.14041"),
     # added in referee round 1 (review/round1-fixes/citations/)
     "richardsonstanhope2020": ("doi", "10.1016/j.difgeo.2019.101577"),
@@ -131,13 +135,6 @@ SOURCES = {
 # ngsolve: the fetched swMATH software record 13154 (zbMATH Open API); the usual NGSolve report
 # has no registry record and was not fetched (review/literature-pass/GAPS.md).
 DOCUMENT_ENTRIES = {
-    "jorgensenwiki": """@misc{jorgensenwiki,
-  key          = {Wikipedia, Jorgensen's inequality},
-  title        = {{J{\\o}rgensen's} inequality},
-  howpublished = {Wikipedia, The Free Encyclopedia; page fetched 7 October 2026, source of the statement of the inequality used in Section~4; the original paper could not be retrieved},
-  year         = {2026},
-  url          = {https://en.wikipedia.org/wiki/J%C3%B8rgensen%27s_inequality}
-}""",
     "thurston1980": """@misc{thurston1980,
   author       = {Thurston, William P.},
   title        = {The geometry and topology of three-manifolds},
@@ -166,7 +163,7 @@ LOCAL_ENTRIES = {
   year         = {2026}
 }"""),
 }
-DOCUMENT_CHECK = {"jorgensenwiki": "non-elementary discrete subgroup", "pari2172": "released 05/03/2025", "ngsolve": "NGSolve"}
+DOCUMENT_CHECK = {"pari2172": "released 05/03/2025", "ngsolve": "NGSolve"}
 
 # Corrections applied to a fetched record, each justified by another fetched document.
 CORRECTIONS = {
@@ -259,6 +256,11 @@ PAGES_ZB = {"dggw2017erratum": ("dggw2017erratum_zb", "221-222"),
 # (case, braces, accents and punctuation ignored); the few that add text not in the primary
 # record name the second fetched record that carries it (TITLE_EXTRA_SOURCE).
 TITLE_SC = {
+    # round 3 additions: the Crossref records print these in capitals or title case
+    "wright1935": "On {T}arry's problem ({I})",
+    "dorwartbrown1937": "The {T}arry--{E}scott problem",
+    "hua1982": "Introduction to number theory",
+    "borwein2002": "Computational excursions in analysis and number theory",
     "dggw2008": "Asymptotic expansion of the heat kernel for orbifolds",
     "dggw2017erratum": "Erratum to ``{A}symptotic expansion of the heat kernel for orbifolds''",
     "donnelly1976": "Spectrum and the fixed point sets of isometries. {I}",
@@ -360,6 +362,11 @@ AUTHORS = {
     # arXiv gives the name in Chinese order ("Chen Shuwen"); the survey and the audit use Chen
     # as the surname (review/audit-2/literature/REVIEW.md, "Chen survey")
     "chen2025survey": "Chen, Shuwen",
+    # Crossref prints the name in capitals
+    "wright1935": "Wright, E. Maitland",
+    # Crossref splits the name as family "Keng", given "Hua Loo"; the zbMATH Open record of the
+    # same book (an:0483.10001, fetched by the round-3 reference check) has "Hua, Loo Keng"
+    "hua1982": "Hua, Loo Keng",
 }
 # Further fields, each from a fetched record named in the comment.
 EXTRA = {
