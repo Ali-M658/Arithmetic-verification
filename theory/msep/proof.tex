@@ -1,63 +1,82 @@
-%% theory/msep/proof.tex: bounded cone orders (round-3 item I6).
+%% theory/msep/proof.tex: bounded cone orders (round-3 item I6; round-4 item A4, the area-free bound M+1).
 %% A fragment in the macros and labels of paper/jga/manuscript.tex (Lemma lem:sigdata, Corollary
-%% cor:sigarea, Definition def:K, psi_k and Psi_k of Section 2.3). Exact verification: verify.py
-%% (ranks for 2 <= M <= 24, the Lagrange kernel, the sharp pairs, a brute force for M <= 4, and
-%% part (iii) against the complete area classes of area at most 4 pi). Blind check: BLIND-CHECK.md.
-%% Its labels start with msep:.
+%% cor:sigarea, Definition def:K, psi_k and Psi_k of Section 2.3, the leading coefficients a_l of
+%% Lemma lem:conepoly). Exact verification: verify.py (ranks for 2 <= M <= 24, the Lagrange kernel, the
+%% sharp pairs of (ii) and (iv), a brute force for M <= 4, and parts (iii)-(iv) against complete area
+%% classes with no bound on the orders). Blind checks: BLIND-CHECK.md. Its labels start with msep:.
+%%
+%% Round 4: part (iii) used to read K_mult(O; Sig) <= M + ceil(log(2 floor(A/pi) + 8)/2). Referee c of
+%% round 4 (review/referee-round-4/A-c-equal-power-sums-growth) pointed out that a sign-change argument
+%% gives the area-free bound M + 1, attained; that argument is written out below (Lemma msep:signs and
+%% part (iii)), together with the bound 2 d_O + 2 in the number of distinct orders and the general
+%% sharpness construction (part (iv)), which contains the example (0;2^10), (1;4^4) of area 6 pi.
 
-For an integer $M\ge2$ let $\Sig_{\le M}$ be the class of $\Orb\in\Sig$ whose cone orders are all at most $M$ (surfaces included).
+For an integer $M\ge1$ let $\Sig_{\le M}$ be the class of $\Orb\in\Sig$ whose cone orders are all at most $M$; $\Sig_{\le1}$ consists of the surfaces. For $\Orb\in\Sig$ let $d_\Orb$ be the number of distinct cone orders of $\Orb$.
+
+\begin{lemma}[Sign changes]\label{msep:signs}
+Let $\nu=\sum_{i=1}^rw_i\delta_{y_i}$ be a measure on $\R$ with $y_1<\dots<y_r$ and all $w_i\ne0$, $r\ge1$, and suppose $\sum_iw_iy_i^k=0$ for $0\le k\le L-1$. Then the sequence $w_1,\dots,w_r$ has at least $L$ sign changes.
+\end{lemma}
+
+\begin{proof}
+Suppose it has $S\le L-1$ sign changes, between $y_{i_1}$ and $y_{i_1+1}$, \dots, $y_{i_S}$ and $y_{i_S+1}$. The polynomial $q(y)=\pm\prod_{s=1}^S(y-\frac12(y_{i_s}+y_{i_s+1}))$ has degree $S\le L-1$ and changes sign exactly at these midpoints, so with the right choice of sign $w_iq(y_i)>0$ for every $i$. Then $\sum_iw_iq(y_i)>0$, while it vanishes because $q$ is a combination of $1,y,\dots,y^{L-1}$.
+\end{proof}
 
 \begin{theorem}[Bounded cone orders]\label{msep:thm}
 Let $M\ge2$.
 \begin{enumerate}[label=(\roman*)]
 \item If $\Orb,\Orb'\in\Sig_{\le M}$ and $H_M(\Orb)=H_M(\Orb')$, then $\sigma(\Orb)=\sigma(\Orb')$. Hence $\Kmult(\Orb;\Sig_{\le M})\le\min\big(M,\lfloor\Area(\Orb)/\pi\rfloor+4\big)$ for every $\Orb\in\Sig_{\le M}$.
-\item The number $M$ cannot be lowered. Put $w_a=\prod_{1\le b\le M,\,b\ne a}(a^2-b^2)^{-1}$, let $C$ be the least positive integer for which $\nu(a)=C\,a\,w_a$ is an integer for $2\le a\le M$ and $s=\sum_{a=2}^M\nu(a)(1-\frac1a)$ is an even integer, and let $m$ and $m'$ contain each $a\in\{2,\dots,M\}$ exactly $\max(\nu(a),0)$, respectively $\max(-\nu(a),0)$, times. For every integer $g\ge\max(0,-s/2)$ with $2g-2+\sum_{x\in m}(1-\frac1x)>0$, the signatures $(g;m)$ and $(g+\frac s2;m')$ are those of orbifolds in $\Sig_{\le M}$; they are different, the orbifolds share $c_1,\dots,c_{M-1}$, and $c_M(g;m)-c_M(g+\frac s2;m')=(-1)^MC\,a_{M-2}\ne0$, where $a_l=|B_{2l+2}|/(2(l+1)!\,(2l+1))$ is the leading coefficient of $p_l$ (Lemma~\ref{lem:conepoly}). In particular $\max_{\Orb\in\Sig_{\le M}}\Kmult(\Orb;\Sig_{\le M})=M$.
-\item Against all competitors: if $\Orb\in\Sig_{\le M}$ has area $A$ and $\Orb'\in\Sig$ shares $c_1,\dots,c_L$ with $\Orb$ for some $L\ge2$, every cone order of $\Orb'$ is at most $M\,(2\lfloor A/\pi\rfloor+8)^{1/(2L-3)}$; and
+\item Within $\Sig_{\le M}$ the number $M$ cannot be lowered. Put $w_a=\prod_{1\le b\le M,\,b\ne a}(a^2-b^2)^{-1}$, let $C$ be the least positive integer for which $\nu(a)=C\,a\,w_a$ is an integer for $2\le a\le M$ and $s=\sum_{a=2}^M\nu(a)(1-\frac1a)$ is an even integer, and let $m$ and $m'$ contain each $a\in\{2,\dots,M\}$ exactly $\max(\nu(a),0)$, respectively $\max(-\nu(a),0)$, times. For every integer $g\ge\max(0,-s/2)$ with $2g-2+\sum_{x\in m}(1-\frac1x)>0$, the signatures $(g;m)$ and $(g+\frac s2;m')$ are different signatures of orbifolds in $\Sig_{\le M}$ that share $c_1,\dots,c_{M-1}$, and $c_M(g;m)-c_M(g+\frac s2;m')=(-1)^MC\,a_{M-2}\ne0$, where $a_l=|B_{2l+2}|/(2(l+1)!\,(2l+1))$ is the leading coefficient of $p_l$ (Lemma~\ref{lem:conepoly}).
+\item Against all of $\Sig$: if $\Orb\in\Sig_{\le M}$, $\Orb'\in\Sig$, $\sigma(\Orb')\ne\sigma(\Orb)$ and $H_L(\Orb')=H_L(\Orb)$, then $L\le M$ and $L\le2\min(d_\Orb,d_{\Orb'})+1$. Hence, for every $\Orb\in\Sig_{\le M}$, uniformly in the area,
 \[
-  \Kmult(\Orb;\Sig)\ \le\ M+\Big\lceil\tfrac12\log\big(2\lfloor A/\pi\rfloor+8\big)\Big\rceil .
+  \Kmult(\Orb;\Sig)\ \le\ \min\big(M+1,\ 2d_\Orb+2,\ \lfloor\Area(\Orb)/\pi\rfloor+4\big).
 \]
+\item The bound $M+1$ is attained. Let $X>M$ be an integer, put $w_a=\prod_{b\in\{1,\dots,M,X\},\,b\ne a}(a^2-b^2)^{-1}$ for $a\in\{1,\dots,M,X\}$, let $C$ be the least positive integer for which $\nu(a)=-C\,a\,w_a$ is an integer for $a\in\{2,\dots,M,X\}$ and $s=\sum_{a\in\{2,\dots,M,X\}}\nu(a)(1-\frac1a)$ is an even integer, and define $m$, $m'$ as in~(ii) with $a$ ranging over $\{2,\dots,M,X\}$. Then $X\in m'$, $m\subset\{2,\dots,M\}$, and for every integer $g\ge\max(0,-s/2)$ with $2g-2+\sum_{x\in m}(1-\frac1x)>0$ the orbifolds of signatures $(g;m)\in\Sig_{\le M}$ and $(g+\frac s2;m')$ share exactly $c_1,\dots,c_M$: $c_{M+1}(g;m)-c_{M+1}(g+\frac s2;m')=(-1)^{M}C\,a_{M-1}\ne0$. So $\Kmult(\Orb;\Sig)=M+1$ for $\Orb$ of signature $(g;m)$. For $M=2$ and $X=4$ this is $(0;2^{10})$ against $(1;4^4)$, of area $6\pi$; for $X=M+1$ it is the pair of~(ii) with $M+1$ in place of $M$, its two sides exchanged.
 \end{enumerate}
 \end{theorem}
 
-For $M=3$, $\nu(2)=-16$, $\nu(3)=9$ and $s=-2$, and the least choice gives $(1;3,\dots,3)$, with nine cone points, against $(0;2,\dots,2)$, with sixteen, both of area $12\pi$. For $M=4$, $(\nu(2),\nu(3),\nu(4))=(28,-27,8)$ gives $(0;2^{28},4^8)$ against $(1;3^{27})$, of area $36\pi$ (exponents are multiplicities). In both cases an exhaustive search shows that no pair of smaller area with orders at most $M$ shares $c_1,\dots,c_{M-1}$. In general the least choice need not have least area: for $M=2$ it gives $(1;2,2,2,2)$ against $(2;\,)$, of area $4\pi$, while $(0;2,2,2,2,2)$ and $(1;2)$, of area $\pi$, also share $c_1$; adding a common cone point to both sides of a pair keeps the shared invariants.
+The exponents are multiplicities. For $M=3$, $\nu(2)=-16$, $\nu(3)=9$ and $s=-2$ in~(ii), and the least choice gives $(1;3^9)$ against $(0;2^{16})$, both of area $12\pi$. For $M=4$, $(\nu(2),\nu(3),\nu(4))=(28,-27,8)$ gives $(0;2^{28},4^8)$ against $(1;3^{27})$, of area $36\pi$. In both cases an exhaustive search shows that no pair of smaller area with orders at most $M$ shares $c_1,\dots,c_{M-1}$. In general the least choice need not have least area: for $M=2$ it gives $(1;2^4)$ against $(2;\,)$, of area $4\pi$, while $(0;2^5)$ and $(1;2)$, of area $\pi$, also share $c_1$; adding a common cone point to both sides of a pair keeps the shared invariants. In~(iv) with $M=2$, $X=4$: $w_1=\frac1{45}$, $w_2=-\frac1{36}$, $w_4=\frac1{180}$, so $C=180$ and $(\nu(2),\nu(4))=(10,-4)$, $s=2$; the padding $\nu(1)=-4$ is the four entries $1$ that Lemma~\ref{lem:sigdata} adds to $m'$. For surfaces ($M=1$) the argument of~(iii) gives $\Kmult\le2$, attained by $(2;\,)$ and $(0;2^8)$, of area $4\pi$.
 
 \begin{proof}
-(i) Put $\nu(a)=\mult_m(a)-\mult_{m'}(a)$ for $2\le a\le M$, where $m,m'$ are the cone-order multisets. By Lemma~\ref{lem:sigdata}, $H_M(\Orb)=H_M(\Orb')$ gives $2g+n-R(m)=2g'+n'-R(m')$ and
+Throughout, $\Orb$ and $\Orb'$ have signatures $(g;m)$ and $(g';m')$, and when they have equal area, $U,V$ are the paddings of Lemma~\ref{lem:sigdata} and $U^*,V^*$ these with their common elements removed. If $U^*=V^*=\emptyset$ then $m=m'$ (the entries $1$ aside) and $|V|-|U|=2(g-g')$ gives $g=g'$; so different signatures give $U^*\uplus V^*\ne\emptyset$.
+
+(i) Put $\nu(a)=\mult_m(a)-\mult_{m'}(a)$ for $2\le a\le M$. By Lemma~\ref{lem:sigdata}, $H_M(\Orb)=H_M(\Orb')$ gives $2g+n-R(m)=2g'+n'-R(m')$ and
 \[
   0=\Psi_k(m)-\Psi_k(m')=\sum_{a=2}^M\nu(a)\,\psi_k(a)=\sum_{a=2}^M\frac{\nu(a)}a\big(y_a^k-1\big)\qquad(1\le k\le M-1),\qquad y_a=a^2 .
 \]
-The $(M-1)\times(M-1)$ matrix $(y_a^k-1)_{1\le k\le M-1,\ 2\le a\le M}$ is invertible: in the Vandermonde matrix $(y_a^k)_{0\le k\le M-1,\ 1\le a\le M}$ with $y_1=1$, subtracting the column $a=1$ from the others turns row $k=0$ into $(1,0,\dots,0)$, so expanding along that row shows that the determinant of our matrix is the Vandermonde determinant $\prod_{1\le a<b\le M}(y_b-y_a)\ne0$. Hence $\nu=0$, that is $m=m'$, and then $n=n'$, $R(m)=R(m')$ and the first equation give $g=g'$. The second statement follows, with Corollary~\ref{cor:sigarea}, since $\Sig_{\le M}\subset\Sig$.
+The $(M-1)\times(M-1)$ matrix $(y_a^k-1)_{1\le k\le M-1,\ 2\le a\le M}$ is invertible: in the Vandermonde matrix $(y_a^k)_{0\le k\le M-1,\ 1\le a\le M}$ with $y_1=1$, subtracting the column $a=1$ from the others turns row $k=0$ into $(1,0,\dots,0)$, so the determinant of our matrix is the Vandermonde determinant $\prod_{1\le a<b\le M}(y_b-y_a)\ne0$. Hence $\nu=0$, that is $m=m'$, and then $n=n'$, $R(m)=R(m')$ and the first equation give $g=g'$. The second statement follows with Corollary~\ref{cor:sigarea}. (Part~(i) is also the case of~(iii) in which both orbifolds lie in $\Sig_{\le M}$: then all the points below lie in $[1,M]$, at most $M$ of them, with at most $M-1$ sign changes, so $L\le M-1$.)
 
-(ii) The $w_a$, $1\le a\le M$, are the weights of Lagrange interpolation at the distinct nodes $y_1,\dots,y_M$: for every polynomial $F$ of degree at most $M-2$, $\sum_{a=1}^Mw_aF(y_a)$ is the coefficient of $y^{M-1}$ in the interpolating polynomial of $F$, which is $F$ itself, so the sum vanishes. Taking $F=y^k$ and $F=1$,
+(ii) The $w_a$, $1\le a\le M$, are the weights of Lagrange interpolation at the distinct nodes $y_1,\dots,y_M$: for every polynomial $F$ of degree at most $M-1$, $\sum_{a=1}^Mw_aF(y_a)$ is the coefficient of $y^{M-1}$ in $F$. Taking $F=y^k$ and $F=1$,
 \[
   \sum_{a=2}^M\nu(a)\psi_k(a)=C\sum_{a=2}^Mw_a\big(y_a^k-1\big)=C\sum_{a=1}^Mw_ay_a^k-C\sum_{a=1}^Mw_a=0\qquad(1\le k\le M-2),
 \]
-the term $a=1$ vanishing because $y_1^k=1$. So $\Psi_k(m)=\Psi_k(m')$ for $k\le M-2$. A positive integer $C$ as in the statement exists, since the $a\,w_a$ are rational, and every $\nu(a)$ is nonzero, as $w_a\ne0$; so $m\ne m'$ and the signatures differ. With $g'=g+\frac s2$ and $n,n'$ the sizes of $m,m'$,
+the term $a=1$ vanishing because $y_1^k=1$. A positive integer $C$ as in the statement exists, since the $a\,w_a$ are rational, and every $\nu(a)$ is nonzero, as $w_a\ne0$; so $m\ne m'$ and the signatures differ. With $g'=g+\frac s2$ and $n,n'$ the sizes of $m,m'$,
 \[
   \big(2g'+n'-R(m')\big)-\big(2g+n-R(m)\big)=s-\sum_{a=2}^M\nu(a)\Big(1-\frac1a\Big)=0,
 \]
-so the two signatures have the same area $2\pi(2g-2+\sum_{x\in m}(1-\frac1x))$, which is positive by the choice of $g$; so both are hyperbolic, the second because the areas are equal, and $g'\ge0$ as $g\ge-s/2$. Lemma~\ref{lem:sigdata} gives equal $c_1,\dots,c_{M-1}$. For $c_M$, the terms $\alpha_{M-1}\Area/4\pi$ cancel and, by \eqref{eq:bl} and $p_{M-2}(1)=0$,
+so the two signatures have the same area $2\pi(2g-2+\sum_{x\in m}(1-\frac1x))$, which is positive by the choice of $g$; so both are hyperbolic, and $g'\ge0$ as $g\ge-s/2$. Lemma~\ref{lem:sigdata} gives equal $c_1,\dots,c_{M-1}$. For $c_M$, the terms $\alpha_{M-1}\Area/4\pi$ cancel and, by \eqref{eq:bl} and $p_{M-2}(1)=0$,
 \[
   c_M(g;m)-c_M(g';m')=\sum_{a=2}^M\nu(a)\,b_{M-2}(a)=(-1)^MC\sum_{a=1}^Mw_a\,p_{M-2}(a),
 \]
-and since $p_{M-2}$ is a polynomial of degree $M-1$ in $y=a^2$ with leading coefficient $a_{M-2}$ (Lemma~\ref{lem:conepoly}), the Lagrange sum is $a_{M-2}$. Finally $\Kmult\ge M$ for these orbifolds, and $\Kmult\le M$ by part~(i).
+and since $p_{M-2}$ is a polynomial of degree $M-1$ in $y=a^2$ with leading coefficient $a_{M-2}$ (Lemma~\ref{lem:conepoly}), the Lagrange sum is $a_{M-2}$.
 
-(iii) The areas are equal, so Lemma~\ref{lem:sigdata} applies: the paddings $U\supseteq m$ and $V\supseteq m'$ by $1$s satisfy $P_{2L-3}(U)=P_{2L-3}(V)$, every element of $U$ is at most $M$, and $|U|\le|U|+|V|\le2\lfloor A/\pi\rfloor+8$ (proof of Corollary~\ref{cor:sigarea}). For an order $v$ of $\Orb'$, $v^{2L-3}\le P_{2L-3}(V)=P_{2L-3}(U)\le|U|M^{2L-3}$, which is the first claim. Put $\lambda=\log(2\lfloor A/\pi\rfloor+8)$, $k=\lceil\lambda/2\rceil\ge2$ (as $\lambda\ge\log8$) and $L=M+k$. With $y=(k+1)/M$, $\log(1+y)\ge2y/(2+y)$ gives
+(iii) Equal $c_1$ means equal area, so Lemma~\ref{lem:sigdata} applies, and $U^*\uplus V^*\ne\emptyset$. Consider the measure
 \[
-  (2L-3)\log\frac{L+1}M\ \ge\ \frac{2(2M+2k-3)(k+1)}{2M+k+1}\ >\ 2k\ \ge\ \lambda,
+  \nu=\sum_{x\in U^*}\frac1x\,\delta_{x^2}-\sum_{x\in V^*}\frac1x\,\delta_{x^2}
 \]
-the middle inequality being equivalent to $2M+(k-3)(k+1)>0$. Hence $M(2\lfloor A/\pi\rfloor+8)^{1/(2L-3)}<L+1$. So if $\Orb'$ shares $c_1,\dots,c_L$ with $\Orb$, all its orders are at most $L$, both orbifolds lie in $\Sig_{\le L}$, and part~(i) with $L$ in place of $M$ gives $\sigma(\Orb')=\sigma(\Orb)$.
+(elements counted with multiplicity). As $U^*$ and $V^*$ are disjoint, each point of its support carries a nonzero weight, positive on $U^*$ and negative on $V^*$, and $x\mapsto x^2$ preserves the order of positive numbers. Its moments are $\int y^0\,d\nu=R(U^*)-R(V^*)$ and $\int y^k\,d\nu=P_{2k-1}(U^*)-P_{2k-1}(V^*)$, $k\ge1$; by \eqref{eq:red2}, which survives the removal of common elements, they vanish for $0\le k\le L-1$. So the weights, read from left to right, change sign at least $L$ times (Lemma~\ref{msep:signs}). Now $U^*\subseteq U$ consists of cone orders of $\Orb$, all at most $M$, and possibly entries $1$, while all points above $M^2$ belong to $V^*$. The points in $[1,M^2]$ are among the $M$ squares $1,4,\dots,M^2$, so they give at most $M-1$ sign changes among themselves, and the points above $M^2$, all negative, add at most one: $L\le M$. Next, the positive points take at most $d_\Orb+1$ values, the extra one being $1$, the least possible point. Each maximal run of positive points causes at most two sign changes, and a run that contains $1$ is at the left end and causes at most one; so $L\le2d_\Orb+1$, and by the symmetric argument for the negative points, $L\le2d_{\Orb'}+1$. Hence an $\Orb'$ of a different signature shares at most $\min(M,2d_\Orb+1)$ invariants with $\Orb$, which with Corollary~\ref{cor:sigarea} is the bound on $\Kmult(\Orb;\Sig)$.
+
+(iv) Now the nodes are the $M+1$ distinct numbers $y_a=a^2$, $a\in\{1,\dots,M,X\}$, and $\sum_aw_aF(y_a)$ is the coefficient of $y^M$ of a polynomial $F$ of degree at most $M$. As in~(ii), $\sum_{a\ne1}\nu(a)\psi_k(a)=0$ for $1\le k\le M-1$, every $\nu(a)$ is nonzero, and the choice of $s$ gives equal positive area; Lemma~\ref{lem:sigdata} gives equal $c_1,\dots,c_M$, and $c_{M+1}(g;m)-c_{M+1}(g';m')=(-1)^{M-1}\sum_a\nu(a)p_{M-1}(a)/a=(-1)^MC\,a_{M-1}$, since $p_{M-1}$ has degree $M$ in $y$ and leading coefficient $a_{M-1}$. All factors of $w_X$ are positive, so $\nu(X)<0$ and $X\in m'$; the orders of $m$ lie in $\{2,\dots,M\}$. So $\Kmult(\Orb;\Sig)\ge M+1$ for $\Orb$ of signature $(g;m)$, and~(iii) gives equality. For $M=2$, $X=4$ the numbers are those after the statement, and $g=0$ gives the area $2\pi(-2+10\cdot\frac12)=6\pi$. For $X=M+1$ the nodes are those of~(ii) with $M+1$ in place of $M$ and the weights there are $-1$ times these, so the pair is that of~(ii), with its two sides exchanged.
 \end{proof}
 
-\begin{corollary}[The divergence needs large cone orders]\label{msep:cor}
+\begin{corollary}[The growth needs large cone orders]\label{msep:cor}
 \leavevmode
 \begin{enumerate}[label=(\alph*)]
-\item If two orbifolds in $\Sig$ with different signatures share $c_1,\dots,c_L$, $L\ge2$, then one of them has a cone point of order at least $L+1$.
-\item If $\Orb\in\Sig$ has area $A$, largest cone order $M\ge2$ and $\Kmult(\Orb;\Sig)\ge L+1$, then $M\ge L+1-\lceil\frac12\log(2\lfloor A/\pi\rfloor+8)\rceil$.
-\item Let $f_M(A)=\max\{\Kmult(\Orb;\Sig):\Orb\in\Sig_{\le M},\ \Area(\Orb)\le A\}$. Then $M\le f_M(A)\le M+\lceil\frac12\log(2\lfloor A/\pi\rfloor+8)\rceil$ once $A$ is at least the area of the pair in~(ii), while $f(A)=\sup_Mf_M(A)$ is at least $\lfloor\sqrt{(A/2\pi-1)/3}\rfloor+2$ (Theorem~\ref{thm:growth}(a)).
+\item If two orbifolds in $\Sig$ with different signatures share $c_1,\dots,c_L$, $L\ge2$, then each of them has a cone point of order at least $L$ and at least $\frac{L-1}2$ distinct cone orders, and one of them has a cone point of order at least $L+1$.
+\item If $\Orb\in\Sig$, $L\ge2$ and $\Kmult(\Orb;\Sig)\ge L+1$, then $\Orb$ has a cone order at least $L$.
+\item Let $f_M(A)=\max\{\Kmult(\Orb;\Sig):\Orb\in\Sig_{\le M},\ \Area(\Orb)\le A\}$. Then $f_M(A)\le M+1$ for every $A$, with equality once $A$ is at least the area of a pair of~(iv), while $f(A)=\sup_Mf_M(A)$ is at least $\lfloor\sqrt{(A/2\pi-1)/3}\rfloor+2$ (Theorem~\ref{thm:growth}(a)).
 \end{enumerate}
 \end{corollary}
 
 \begin{proof}
-(a) If all orders of both were at most $L$, both would lie in $\Sig_{\le L}$, and part~(i) with $L$ in place of $M$ would give equal signatures. (b) is part~(iii). (c) The upper bound is part~(iii), and the lower bound is part~(ii), since $\Kmult(\Orb;\Sig)\ge\Kmult(\Orb;\Sig_{\le M})$.
+(a) Part~(iii), applied with $M$ the largest cone order of each orbifold (a surface lies in $\Sig_{\le1}$ and has $L\le1$ by the same argument), gives $L\le M$ and $L\le2d+1$; and if all orders of both were at most $L$, part~(i) with $L$ in place of $M$ would give equal signatures. (b) is~(a), since some $\Orb'$ of a different signature shares $c_1,\dots,c_L$ with $\Orb$, and (c) is~(iii) and~(iv).
 \end{proof}

@@ -25,7 +25,6 @@ import mpmath as mp
 from common import import_from, write_csv
 
 ec, _ = import_from("theory/eigen", "eigen_common")
-pr, _ = import_from("theory/eigen", "practice")
 mp.mp.dps = 30
 
 SIG0 = (0, (2, 8, 8))
@@ -34,28 +33,66 @@ TS = [10 ** (-3 + 3 * i / 60) for i in range(61)]
 NS = (21, 100)
 
 
+# helpers of the round-3 theory/eigen/practice.py (the Figure E2 illustration keeps them unchanged)
+def B_lemma25(ell, diam, A, t):
+    return (mp.pi * mp.e ** (3 * diam) * ell * mp.e ** (ell / 2) / (A * (1 - mp.e ** (-ell)))
+            * (1 + 2 * t / (ell - t)) * mp.e ** (-ell ** 2 / (4 * t)) / mp.sqrt(4 * mp.pi * t))
+
+
+def hypB(ell, diam, A, t):
+    if t <= ell ** 2 / (2 * (1 + ell)):
+        return B_lemma25(ell, diam, A, t)
+    return ec.hyp_bound_all(t, ell, diam, area_lb=A)
+
+
+class Gcache:
+    def __init__(self):
+        self.E = {}
+        self.I = {}
+
+    def G(self, g, orders, t):
+        key = t
+        if key not in self.I:
+            self.I[key] = ec.identity_term(4 * mp.pi, mp.mpf(t))  # per unit Area/(4 pi)
+        s = ec.area_over_2pi(g, orders)
+        tot = ec.mpq(s) / 2 * self.I[key]
+        for m in orders:
+            if (m, t) not in self.E:
+                self.E[(m, t)] = ec.elliptic_term(m, mp.mpf(t))
+            tot += self.E[(m, t)]
+        return tot
+
+
+def triangle_diam_upper(pqr):
+    A, B, C = (mp.pi / x for x in pqr)
+    sides = [mp.acosh((mp.cos(C) + mp.cos(A) * mp.cos(B)) / (mp.sin(A) * mp.sin(B))),
+             mp.acosh((mp.cos(B) + mp.cos(A) * mp.cos(C)) / (mp.sin(A) * mp.sin(C))),
+             mp.acosh((mp.cos(A) + mp.cos(B) * mp.cos(C)) / (mp.sin(B) * mp.sin(C)))]
+    return 2 * max(sides)
+
+
 def main():
     comp = [x for x in ec.signatures(Fr(1, 2), 12) if ec.area_over_2pi(*x) == Fr(1, 4)]
     assert sorted(comp) == sorted([(0, (2, 8, 8)), (0, (3, 3, 12)), (0, (2, 6, 12)), (0, (3, 4, 6)),
                                    (0, (4, 4, 4)), (0, (2, 2, 2, 4))]), comp
     others = [c for c in comp if c != SIG0]
     A = mp.pi / 2
-    diam = pr.triangle_diam_upper((2, 8, 8))
+    diam = triangle_diam_upper((2, 8, 8))
     spec, _ = ec.load_triangle_spectrum((2, 8, 8))
     lam = [x for x, _ in spec]
     err = [e for _, e in spec]
     beta = max(sum(ec.mpq(ec.b_cone(0, m)) for m in o) for _, o in comp)
-    cache = pr.Gcache()
+    cache = Gcache()
     rows, check = [], {}
     for t in TS:
         tt = mp.mpf(t)
         G0 = cache.G(SIG0[0], SIG0[1], tt)
         gaps = {o: abs(cache.G(g, o, tt) - G0) for g, o in others}
-        hyp = pr.hypB(ELL, diam, A, tt)
+        hyp = hypB(ELL, diam, A, tt)
         errs = {}
         for N in NS:
             lamN = mp.mpf(lam[N]) - err[N]
-            tail = min(mp.e ** (-lamN * (tt - s)) * (A / (4 * mp.pi * s) + beta + pr.hypB(ELL, diam, A, s))
+            tail = min(mp.e ** (-lamN * (tt - s)) * (A / (4 * mp.pi * s) + beta + hypB(ELL, diam, A, s))
                        for s in (tt * k / 20 for k in range(1, 20)))
             errs[N] = tail + tt * mp.fsum(err[:N])
         nearest = min(gaps.values())

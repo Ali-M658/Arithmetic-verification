@@ -15,6 +15,8 @@
 \usepackage{booktabs}%
 \usepackage{array}%
 \usepackage{enumitem}%
+\usepackage{xr}%
+\externaldocument[A-]{../jga/build/manuscript}% labels of the companion paper (built first)
 
 \graphicspath{{../../}}% figures are addressed relative to the repository root
 
@@ -76,7 +78,7 @@
 \presentaddresstxt{ORCID iDs}
 \presentaddress{P.~Gang 0009-0006-7448-9488; A.~Agadi 0009-0009-1378-0556; A.~Veluri 0009-0001-5940-3272; J.~Wang 0009-0004-1814-275X; J.~Barreto 0009-0006-6894-7323; A.~Chouthaiwale 0009-0008-3878-7183.}
 
-\abstract{The Laplace spectrum of a closed orientable hyperbolic $2$-orbifold determines its signature, the genus and the orders of its cone points, but a measurement or a computation yields only finitely many eigenvalues, each to some accuracy. We show that this suffices, effectively: among orbifolds of area at most $A$, systole at least $\varepsilon$ and cone orders at most $M$, the first $N$ eigenvalues, each known to within $\delta$, determine the signature, with $N$ and $\delta$ given by explicit formulas. Compactness alone yields some $N$ and $\delta$; ours can be computed and checked, and an a-posteriori version certifies the signature of a computed spectrum from $21$ to $750$ eigenvalues in our examples, where the a-priori count ranges from $4\times10^4$ to $7\times10^{12}$. The proof turns the first difference of heat invariants, an integer multiple of an explicit rational number reached by the $M$-th invariant at the latest, into a gap between heat traces. The bound on the cone orders cannot be dropped: as $m$ grows, the orbifolds $\mathcal O(2,3,m)$ acquire arbitrarily many eigenvalues near $\frac14$, like a cusp.}
+\abstract{The Laplace spectrum of a closed orientable hyperbolic $2$-orbifold determines its signature, the genus and the orders of its cone points, but a measurement or a computation yields only finitely many eigenvalues, each to some accuracy. We show that this suffices, effectively: among orbifolds of area at most $A$, systole at least $\varepsilon$ and cone orders at most $M$, the first $N$ eigenvalues, each known to within $\delta$, determine the signature, with $N$ and $\delta$ given by explicit formulas. This is an effective, signature-level counterpart of the theorem of Buser and Courtois for surfaces. The constants are very large; the criterion of an a-posteriori test, run at one time, holds on ten computed spectra with $18$ to $847$ eigenvalues, given the exact area and geometric bounds, with eigenvalue errors and completeness that are estimated, not proved. The bound on the orders cannot be dropped: the orbifolds $\mathcal O(2,3,m)$ acquire arbitrarily many eigenvalues below any level above $\frac14$.}
 
 \keywords{Hyperbolic orbifolds, Laplace eigenvalues, Inverse spectral problems, Heat trace, Selberg trace formula, Effective bounds}
 
@@ -95,66 +97,74 @@ The answer is yes, with explicit numbers, once three quantities are bounded: the
 with $\ell(\Orb)$ the systole; $\Sig(A,M)$ denotes the finite set of signatures of area at most $A$ with orders at most $M$.
 
 \begin{theorem}[Finitely many eigenvalues]\label{thm:intro}
-For $A>0$, $\varepsilon>0$ and an integer $M\ge2$, the numbers $N\ge1$ and $\delta>0$ of Theorem~\ref{thm:E}, explicit in $A$, $\varepsilon$ and $M$, have the following property. If $\Orb\in\Cl(A,\varepsilon,M)$ and $\tilde\lambda_0,\dots,\tilde\lambda_{N-1}$ satisfy $|\tilde\lambda_j-\lambda_j(\Orb)|\le\delta$, then $\sigma(\Orb)$ is the signature $\sigma\in\Sig(A,M)$ for which an explicit function $G_\sigma$ is nearest to $\sum_{j<N}e^{-\tilde\lambda_jt_*}$ at an explicit time $t_*$. In particular two orbifolds of $\Cl(A,\varepsilon,M)$ whose first $N$ eigenvalues agree to within $\delta$ have the same signature.
+For $A>0$, $\varepsilon>0$ and an integer $M\ge2$, the numbers $N\ge1$ and $\delta>0$ of Theorem~\ref{thm:E}, explicit in $A$, $\varepsilon$ and $M$, have the following property. If $\Orb\in\Cl(A,\varepsilon,M)$ and $\tilde\lambda_0,\dots,\tilde\lambda_{N-1}\ge0$ satisfy $|\tilde\lambda_j-\lambda_j(\Orb)|\le\delta$, the $\lambda_j$ counted with multiplicity in increasing order, then $\sigma(\Orb)$ is the signature $\sigma\in\Sig(A,M)$ for which an explicit function $G_\sigma$ is nearest to $\sum_{j<N}e^{-\tilde\lambda_jt_*}$ at an explicit time $t_*$. In particular two orbifolds of $\Cl(A,\varepsilon,M)$ whose first $N$ eigenvalues agree to within $\delta$ have the same signature.
 \end{theorem}
 
-\emph{What effectivity adds.} Without constants the statement follows from compactness. Fix two signatures $\sigma\ne\sigma'$ in $\Sig(A,M)$. The orbifolds of signature $\sigma$ with systole at least $\varepsilon$ form a compact subset of moduli space, by Mumford's theorem \cite[Cor.~3]{mumford1971}, which Bers extended to Fuchsian groups with elliptic elements \cite{bers1972}; each $\lambda_j$ is continuous there, and two orbifolds of different signatures have different spectra \cite{drydenstrohmaier2009}. Covering the compact product of the two sets by the open sets where some $\lambda_j$ differ gives a finite $N$, then a $\delta>0$ by compactness again, and $\Sig(A,M)$ is finite. This argument gives no value of $N$ or $\delta$, and no way to check a given spectrum. Theorem~\ref{thm:E} gives both numbers as formulas. They are enormous (Table~\ref{tab:E}), but the same mechanism, run at one moderate time on the data instead of on worst-case bounds, gives a certificate that a computed spectrum can actually pass.
+\emph{What effectivity adds.} Without constants the statement follows from compactness. Fix two signatures $\sigma\ne\sigma'$ in $\Sig(A,M)$. The orbifolds of signature $\sigma$ with systole at least $\varepsilon$ form a compact subset of moduli space, by Mumford's theorem \cite[Cor.~3]{mumford1971}, which Bers extended to Fuchsian groups with elliptic elements \cite{bers1972}; each $\lambda_j$ is continuous there, and two orbifolds of different signatures have different spectra \cite{drydenstrohmaier2009}. Covering the compact product of the two sets by the open sets where some $\lambda_j$ differ gives a finite $N$, then a $\delta>0$ by compactness again, and $\Sig(A,M)$ is finite. This argument gives no value of $N$ or $\delta$, and no way to check a given spectrum. Theorem~\ref{thm:E} gives both numbers as formulas. They are enormous (Table~\ref{tab:E}), but the same mechanism, run at one moderate time on the data instead of on worst-case bounds, gives a test that a computed spectrum can pass.
 
-\begin{theorem}[A-posteriori certificate]\label{thm:intro-post}
-Let $\Orb\in\Sig$, with systole at least $\ell$, diameter at most $\Delta$, area $A$ and signature in a finite set $\mathcal S$. Given approximations $\tilde\lambda_0\le\dots\le\tilde\lambda_N$ of its first $N+1$ eigenvalues with error bounds $\epsilon_j$, an explicit error budget $E_N(t)$ (Theorem~\ref{thm:post}) has the property: if, at some $t>0$, exactly one $\sigma\in\mathcal S$ satisfies $|\sum_{j<N}e^{-\tilde\lambda_jt}-G_\sigma(t)|\le E_N(t)$, then $\sigma(\Orb)=\sigma$.
+\begin{theorem}[A-posteriori test]\label{thm:intro-post}
+Let $\Orb\in\Sig$ have area $A$, systole at least $\ell$, diameter at most $\Delta$, and signature in a finite set $\mathcal S$ of signatures of area $A$. Given nonnegative approximations $\tilde\lambda_0\le\dots\le\tilde\lambda_N$ of its first $N+1$ eigenvalues with error bounds $\epsilon_j$, an explicit error budget $E_N(t)$ (Theorem~\ref{thm:post}) has the property: if, at some $t>0$, exactly one $\sigma\in\mathcal S$ satisfies $|\sum_{j<N}e^{-\tilde\lambda_jt}-G_\sigma(t)|\le E_N(t)$, then $\sigma(\Orb)=\sigma$.
 \end{theorem}
 
-On the computed spectra of $\Orb(2,8,8)$, $\Orb(3,3,12)$ and eight orbifolds of signature $(0;3,3,3,3)$ (Section~\ref{sec:practice}) the certificate succeeds with $21$ to $750$ eigenvalues, while Theorem~\ref{thm:E} asks for $4\times10^4$ to $7\times10^{12}$ (Table~\ref{tab:practice}).
+The test needs the exact area, a lower bound for the systole, an upper bound for the diameter of the instance, the completeness of the computed list up to $\tilde\lambda_N$, and error bounds $\epsilon_j$. On computed spectra of $\Orb(2,8,8)$, $\Orb(3,3,12)$ and eight orbifolds of signature $(0;3,3,3,3)$ (Section~\ref{sec:practice}), with bounds for the systole and the diameter from a complete enumeration and from convexity, but eigenvalue errors that are a-posteriori estimates, not enclosures, its criterion holds for all ten with $18$ to $847$ eigenvalues, while Theorem~\ref{thm:E} asks for $4\times10^4$ to $7\times10^{12}$; most of that difference is the instance's diameter bound, and with the class-level diameter bound of Theorem~\ref{thm:E} the test needs about $9\times10^2$ to $4\times10^5$ eigenvalues (Table~\ref{tab:practice}). These are demonstrations on orbifolds whose signature is known, not determinations of unknown ones.
 
-The proof runs through the heat trace. By the Selberg trace formula the heat trace of $\Orb$ is a term $G_\sigma(t)$ fixed by the signature plus a positive contribution of the closed geodesics (Theorem~\ref{thm:trace}); the small-$t$ expansion of $G_\sigma$ has coefficients, the heat invariants, that are integer combinations of explicit rationals. At the first heat invariant where two signatures differ, the difference is an integer multiple of an explicit rational number (Lemma~\ref{lem:int}), and with orders at most $M$ that invariant is the $M$-th one at the latest (Theorem~\ref{thm:bounded}). Explicit, enveloping remainders for both expansions (Propositions~\ref{prop:remcone} and~\ref{prop:remarea}) turn this into a lower bound for $|G_\sigma(t)-G_{\sigma'}(t)|$ at a small explicit time; a diameter bound in terms of $A$, $\varepsilon$, $M$ (Theorem~\ref{thm:diam}) controls the closed geodesics there, and the counting function controls the eigenvalues beyond the $N$-th.
+The proof runs through the heat trace. By the Selberg trace formula the heat trace of $\Orb$ is a term $G_\sigma(t)$ fixed by the signature plus a positive contribution of the closed geodesics (Theorem~\ref{thm:trace}); the small-$t$ expansion of $G_\sigma$ has coefficients, the heat invariants, that are integer combinations of explicit rationals. At the first heat invariant where two signatures differ, the difference is an integer multiple of an explicit rational number (Lemma~\ref{lem:int}), and with orders at most $M$ that invariant is the $M$-th one at the latest (Theorem~\ref{thm:bounded}). Explicit, enveloping remainders for both expansions (Proposition~\ref{prop:remcone}) turn this into a lower bound for $|G_\sigma(t)-G_{\sigma'}(t)|$ at a small explicit time; a diameter bound in terms of $A$, $\varepsilon$, $M$ (Theorem~\ref{thm:diam}) controls the closed geodesics there, and the counting function controls the eigenvalues beyond the $N$-th.
 
-None of the three bounds is a matter of convenience for the method, and the bound on the orders is needed for the statement itself.
+The three bounds are not all of the same kind. The method uses each of them, the area through the finiteness of $\Sig(A,M)$, the systole and the diameter through the closed geodesics; but the bound on the orders is also needed for the statement itself.
 
 \begin{theorem}[High orders behave like cusps]\label{thm:intro-cusp}
 The triangle orbifolds $\Orb(2,3,m)$, $m\ge7$, have area less than $\frac\pi3$ and systole at least $0.5620$, and $\lambda_j(\Orb(2,3,m))\le\frac14+\pi^2(j+1)^2/h_m^2$ with $h_m=\operatorname{arccosh}\frac1{2\sin(\pi/m)}\ge\log\frac m{2\pi}$. Consequently, for $A\ge\frac\pi3$ and $\varepsilon\le0.5620$, no $N$ and $\delta$ depending only on $A$ and $\varepsilon$ have the property of Theorem~\ref{thm:intro}.
 \end{theorem}
 
-The cone point of order $m$ sits at the tip of a cone of angle $2\pi/m$ and radius $h_m$, which for large $m$ looks like the end of a cusp, and the spectrum below any fixed level crowds towards $\frac14$, the bottom of the continuous spectrum of a cusp; Figure~\ref{fig:E1} shows the computed eigenvalues. Whether the systole bound is needed we do not know (Problem~\ref{prob:systole}).
+The cone point of order $m$ sits at the tip of a cone of angle $2\pi/m$ and radius $h_m$, which for large $m$ looks like the end of a cusp, and the eigenvalues below any fixed level above $\frac14$ multiply, as near the bottom $\frac14$ of the continuous spectrum of a cusp; Figure~\ref{fig:E1} shows the computed eigenvalues. Whether the systole bound is needed we do not know (Problem~\ref{prob:systole}).
 
-\emph{Context.} The coefficients of the heat expansion of an orbifold are local \cite{donnelly1976}, \cite[Thm~4.8]{dggw2008}, and at constant curvature they are known in closed form \cite[Thm~4.20]{ucar2017}; Stanhope bounds the isotropy types of isospectral orbifolds \cite{stanhope2005}, and Dryden and Strohmaier show that the spectrum determines the signature \cite{drydenstrohmaier2009}. For Euclidean triangles, the first $N$ Dirichlet eigenvalues determine the triangle among triangles with all angles at least $\epsilon$, with $N$ depending on $\epsilon$ \cite{changdeturck1989}; the angle bound plays the part of our bounds on the systole and the orders. A companion manuscript in preparation, \emph{How much of a hyperbolic orbifold does heat hear?}, by the same authors, studies how many heat invariants determine the signature; it contains a sharper and more general form of Theorem~\ref{thm:bounded} below, which we prove here in the form we use. No proof here depends on it.
+\emph{Relation to prior work.} The closest result is the theorem of Buser and Courtois \cite[(1.1)]{busercourtois1990}: among closed hyperbolic surfaces of genus $g$ with injectivity radius at least $\varepsilon$ there is an integer $m(g,\varepsilon)$ such that two surfaces with the same first $m$ eigenvalues are isospectral. Its proof uses compactness and gives no value of $m$, and the authors conjecture that $m$ can be chosen depending on $g$ alone \cite[pp.~523--524]{busercourtois1990}. Theorem~\ref{thm:intro} is an effective counterpart at the level of the signature, for orbifolds, with approximate eigenvalues; Problem~\ref{prob:systole} below is the analogue of their conjecture. Theorem~\ref{thm:intro-cusp} is an instance of elliptic degeneration, in which cone points of growing order become cusps: Garbin and Jorgenson prove that along such sequences the eigenvalues below $\frac14$ converge to those of the cusped limit, while the number of eigenvalues below a fixed level above $\frac14$ grows like the logarithm of the orders \cite[Cor.~5.5, Thm~5.3]{garbinjorgenson2018}, \cite[Thm~6.5]{garbinjorgenson2020}; the accumulation of spectral data for Hecke triangle groups as the order grows goes back to Selberg and Hejhal \cite{hejhal1983}. Our contribution there is the explicit estimate of Proposition~\ref{prop:N1}, which turns the degeneration into a counterexample to bounds independent of the orders. For pinched geodesics, small eigenvalues vary continuously and converge to those of the cusped limit \cite{hejhal1990}, \cite[p.~264]{ji1993}, and infinitely many eigenvalues accumulate at $\frac14$, indeed cluster at every point of $[\frac14,\infty)$ \cite[p.~67]{wolpert1992a}, \cite{wolpert1992b}, \cite{ji1993}; this is the background of Section~\ref{sec:systole}. Computed hyperbolic spectra have been checked against the Selberg trace formula before: Strohmaier and Uski use the heat trace to check the completeness of computed eigenvalue lists of compact surfaces \cite[\S7]{strohmaieruski2013}, and Booker, Str\"ombergsson and Venkatesh verify computed Maass forms rigorously \cite{bsv2006}. The test of Section~\ref{sec:practice} applies the same idea to decide a signature, and our completeness check is that of Strohmaier and Uski. The heat expansion of an orbifold is local \cite{donnelly1976}, \cite[Thm~4.8]{dggw2008}, at constant curvature its coefficients are known in closed form \cite[Thm~4.20]{ucar2017}, and the spectrum determines the signature \cite{drydenstrohmaier2009}; for Euclidean triangles, a triangle that shares its first $N$ Dirichlet eigenvalues with a given one, $N$ depending on the first two, is isospectral to it \cite[Thm~1]{changdeturck1989}.
 
-\emph{Organisation.} Section~\ref{sec:heat} derives the heat expansion with explicit remainders from the trace formula, and Section~\ref{sec:sig} the structure of the heat invariants of a signature. Section~\ref{sec:geom} bounds the diameter, Section~\ref{sec:count} counts eigenvalues, Section~\ref{sec:E} proves Theorem~\ref{thm:intro}, Section~\ref{sec:practice} the certificate, and Section~\ref{sec:hyp} discusses the hypotheses. Appendix~\ref{app:trace} extends the trace formula to the heat function.
+\emph{Results shared with the companion paper.} The companion manuscript \emph{How much of a hyperbolic orbifold does heat hear?} \cite{companionA}, submitted at the same time, studies how many heat invariants determine the signature. Sections~\ref{sec:heat} and~\ref{sec:sig} use some of its results, which are stated here without proof; Table~\ref{tab:shared} lists them with their place in that paper, and nothing else here is taken from it. Lemma~\ref{lem:int} and Sections~\ref{sec:geom}--\ref{sec:hyp} are not contained in \cite{companionA}.
+
+\begin{table}[h]
+\centering\footnotesize
+\caption{Results of the companion paper \cite{companionA} used here, stated without proof.}\label{tab:shared}
+\setlength{\tabcolsep}{3pt}\begin{tabular}{@{}p{50mm}p{27mm}p{40mm}@{}}
+\toprule
+result & here & in \cite{companionA}\\
+\midrule
+trace formula for the heat function & Theorem~\ref{thm:trace} & Theorem~\ref{A-thm:IEH}, Lemma~\ref{A-lem:admissible}\\
+counting closed geodesics; the hyperbolic term (first bound) & Lemma~\ref{lem:counting} & Lemmas~\ref{A-lem:counting}, \ref{A-lem:hypbound}\\
+positivity and monotonicity of $\phi_k$ & Section~\ref{sec:heat} & Lemma~\ref{A-lem:Phi}\\
+enveloping remainders of the cone and area terms & Proposition~\ref{prop:remcone} & Proposition~\ref{A-prop:envelope}\\
+cone polynomials; the triangular expansion in the $\psi_k$ & Section~\ref{sec:heat} & Lemmas~\ref{A-lem:conepoly}, \ref{A-lem:triangular}\\
+heat data of a signature & Lemma~\ref{lem:sigdata} & Lemma~\ref{A-lem:sigdata}\\
+separation; bounded orders & Theorem~\ref{thm:sep} & Corollary~\ref{A-cor:sigarea}, Theorem~\ref{A-thm:bounded}(i)\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+The computed spectra of $\Orb(2,8,8)$, $\Orb(3,3,12)$ and of the family $(0;3,3,3,3)$ are the same computations as those of the companion paper; that paper reports all the eigenvalues computed (about $2850$ and $5800$ per orbifold), and this one uses only those in the ranges where completeness is checked, about $2000$ and $4400$ (Section~\ref{sec:numerical}).
+
+\emph{Organisation.} Sections~\ref{sec:heat} and~\ref{sec:sig} state the heat expansion with explicit remainders and the structure of the heat invariants of a signature, and prove the integrality of the first difference (Lemma~\ref{lem:int}). Section~\ref{sec:geom} bounds the diameter, Section~\ref{sec:count} counts eigenvalues, Section~\ref{sec:E} proves Theorem~\ref{thm:intro}, Section~\ref{sec:practice} gives the test with its inputs and numerical methods, and Section~\ref{sec:hyp} discusses the hypotheses.
 
 \section{The heat trace and its expansion}\label{sec:heat}
 
+This section and the next state the results shared with the companion paper; their proofs are there (Table~\ref{tab:shared}), and only what is new here is proved.
+
 \subsection{Signatures and the trace formula}
 
-Let $\Orb\in\Sig$ have signature $\sigma=(g;m_1,\dots,m_n)$, $m_i\ge2$. It is hyperbolic exactly when $s(\sigma)=2g-2+\sum_i(1-\frac1{m_i})>0$, and then \cite[13.3.4--13.3.5]{thurston1980}, \cite[Thm~3.2]{drydenstrohmaier2009}
-\begin{equation}\label{eq:area}
-  \Area(\Orb)=2\pi s(\sigma)=2\pi\Big(2g-2+\sum_{i=1}^n\big(1-\tfrac1{m_i}\big)\Big).
-\end{equation}
-Write $\Orb=\Gamma\backslash\Hb$ with $\Gamma\subset PSL(2,\R)$ cocompact, so $\Gamma$ has no parabolic elements. Put $h_t(r)=e^{-t(1/4+r^2)}$ and $g_t(u)=e^{-t/4}e^{-u^2/4t}/\sqrt{4\pi t}$, so that $h_t(r)=\int g_t(u)e^{iru}du$. For hyperbolic $\gamma\in\Gamma$ let $\ell(\gamma)$ be its translation length and $\gamma=\gamma_0^k$ with $\gamma_0$ primitive; a \emph{closed geodesic} is a hyperbolic conjugacy class, and the systole $\ell(\Orb)$ is the least $\ell(\gamma)$. $\cZ_\Orb(t)=\sum_je^{-\lambda_jt}$ is the heat trace.
+Let $\Orb\in\Sig$ have signature $\sigma=(g;m_1,\dots,m_n)$, $m_i\ge2$. It is hyperbolic exactly when $s(\sigma)=2g-2+\sum_i(1-\frac1{m_i})>0$, and then $\Area(\Orb)=2\pi s(\sigma)$ \cite[13.3.4--13.3.6]{thurston1980}, \cite[Thm~3.2]{drydenstrohmaier2009}. Write $\Orb=\Gamma\backslash\Hb$ with $\Gamma\subset PSL(2,\R)$ cocompact, so $\Gamma$ has no parabolic elements. Put $\hat g_t(r)=e^{-t(1/4+r^2)}$ and $g_t(u)=e^{-t/4}e^{-u^2/4t}/\sqrt{4\pi t}$, so that $\hat g_t(r)=\int g_t(u)e^{iru}du$. For hyperbolic $\gamma\in\Gamma$ let $\ell(\gamma)$ be its translation length and $\gamma=\gamma_0^k$ with $\gamma_0$ primitive; a \emph{closed geodesic} is a hyperbolic conjugacy class, and the systole $\ell(\Orb)$ is the least $\ell(\gamma)$. $\cZ_\Orb(t)=\sum_je^{-\lambda_jt}$ is the heat trace.
 
-\begin{theorem}[Trace formula for the heat function]\label{thm:trace}
+\begin{theorem}[Trace formula for the heat function {\cite[Thm~\ref{A-thm:IEH}, Lemma~\ref{A-lem:admissible}]{companionA}}]\label{thm:trace}
 For every $t>0$, $\cZ_\Orb(t)=\mathrm I(t)+\sum_i\mathrm E_{m_i}(t)+\Hyp(t)$, all series and integrals converging absolutely, where
 \begin{align*}
-  \mathrm I(t)&=\frac{\Area(\Orb)}{4\pi}\int_\R r\tanh(\pi r)\,h_t(r)\,dr,\qquad
+  \mathrm I(t)&=\frac{\Area(\Orb)}{4\pi}\int_\R r\tanh(\pi r)\,\hat g_t(r)\,dr,\qquad
   \Hyp(t)=\sum_{[\gamma]}\frac{\ell(\gamma_0)\,g_t(\ell(\gamma))}{2\sinh(\ell(\gamma)/2)}>0,\\
-  \mathrm E_m(t)&=\sum_{j=1}^{m-1}\frac1{2m\sin(\pi j/m)}\int_\R\frac{e^{-2\pi jr/m}\,h_t(r)}{1+e^{-2\pi r}}\,dr .
+  \mathrm E_m(t)&=\sum_{j=1}^{m-1}\frac1{2m\sin(\pi j/m)}\int_\R\frac{e^{-2\pi jr/m}\,\hat g_t(r)}{1+e^{-2\pi r}}\,dr .
 \end{align*}
 \end{theorem}
 
-\begin{proof}
-For $h=\hat g$ with $g\in C_c^\infty(\R)$ even this is the Selberg trace formula for cocompact Fuchsian groups with elliptic elements as stated by Dryden and Strohmaier \cite[eq.~(1)]{drydenstrohmaier2009}, after \cite{hejhal1976,iwaniec2002}; Garbin and Jorgenson state it for the heat function \cite[Rem.~2.7, (2.8)]{garbinjorgenson2020}. Appendix~\ref{app:trace} gives the approximation argument, using Lemma~\ref{lem:counting}.
-\end{proof}
+This is the Selberg trace formula for cocompact Fuchsian groups with elliptic elements \cite[eq.~(1)]{drydenstrohmaier2009}, after \cite{hejhal1976,iwaniec2002}, extended to the heat function by a standard approximation argument; Garbin and Jorgenson state it with the same normalisation \cite[Rem.~2.7, (2.8)]{garbinjorgenson2020}. For a signature $\sigma$ put $G_\sigma(t)=\mathrm I(t)+\sum_i\mathrm E_{m_i}(t)$, the part of $\cZ_\Orb$ fixed by $\sigma$.
 
-For a signature $\sigma$ put $G_\sigma(t)=\mathrm I(t)+\sum_i\mathrm E_{m_i}(t)$, the part of $\cZ_\Orb$ fixed by $\sigma$.
-
-\begin{lemma}[Counting closed geodesics]\label{lem:counting}
-The number $n_\Orb(x)$ of closed geodesics of length at most $x$ satisfies $n_\Orb(x)\le2\pi(\cosh(x+3\diam)-1)/\Area(\Orb)\le\pi e^{x+3\diam}/\Area(\Orb)$, with $\diam$ the diameter of $\Orb$.
-\end{lemma}
-
-\begin{proof}
-Let $F$ be the Dirichlet domain at a point $x_0$ fixed by no nontrivial element of $\Gamma$; $F\subset\bar B(x_0,\diam)$. Each hyperbolic class has a representative $\gamma$ whose axis meets $F$, at $y$ say, and $d(x_0,\gamma x_0)\le2d(x_0,y)+d(y,\gamma y)\le\ell(\gamma)+2\diam$. The translates $\gamma F$ with $d(x_0,\gamma x_0)\le x+2\diam$ have disjoint interiors and area $\Area(\Orb)$ each, and lie in $B(x_0,x+3\diam)$, of area $2\pi(\cosh(x+3\diam)-1)$.
-\end{proof}
-
-\begin{lemma}[The hyperbolic term]\label{lem:hyp}
-Let $\ell$ be the systole. For $0<t\le\ell^2/(2(1+\ell))$,
+\begin{lemma}[Counting closed geodesics and the hyperbolic term]\label{lem:counting}\label{lem:hyp}
+Let $\diam$ be the diameter and $\ell$ the systole of $\Orb$. The number $n_\Orb(x)$ of closed geodesics (hyperbolic conjugacy classes, so oriented and not necessarily primitive) of length at most $x$ satisfies $n_\Orb(x)\le\pi e^{x+3\diam}/\Area(\Orb)$. For $0<t\le\ell^2/(2(1+\ell))$,
 \[
   0<\Hyp(t)\le B(\ell,\diam,t):=\frac{\pi e^{3\diam}\,\ell e^{\ell/2}}{\Area(\Orb)\,(1-e^{-\ell})}\Big(1+\frac{2t}{\ell-t}\Big)\frac{e^{-\ell^2/4t}}{\sqrt{4\pi t}},
 \]
@@ -165,131 +175,56 @@ and on this range $B$ increases with $\diam$ and decreases with $\ell$. For ever
 \end{lemma}
 
 \begin{proof}
-With $\ell(\gamma_0)\le\ell(\gamma)$, $e^{-t/4}\le1$ and $2\sinh(x/2)\ge e^{x/2}(1-e^{-\ell})$ for $x\ge\ell$, $\Hyp(t)\le((1-e^{-\ell})\sqrt{4\pi t})^{-1}\int_{[\ell,\infty)}\phi\,dn_\Orb$ with $\phi(x)=xe^{-x/2-x^2/4t}$. On the range, $(\log\phi)'=1/x-1/2-x/2t<0$ for $x\ge\ell$, so integration by parts and Lemma~\ref{lem:counting} give $\int\phi\,dn_\Orb\le\frac{\pi e^{3\diam}}{\Area}\big(e^\ell\phi(\ell)+\int_\ell^\infty xe^{x/2-x^2/4t}dx\big)$, and as $x/(x-t)\le\ell/(\ell-t)$ on $[\ell,\infty)$ the integral is at most $\frac{2t\ell}{\ell-t}e^{\ell/2-\ell^2/4t}$. The logarithmic derivative of $B$ in $\ell$ is $-\frac12-(\frac\ell{2t}-\frac{1+\ell}\ell)-\frac{e^{-\ell}}{1-e^{-\ell}}-\frac{2t}{\ell^2-t^2}<0$, the bracket being nonnegative exactly on the range. For the second bound, $xe^{-x/2-x^2/4t}=(xe^{-x^2/8t})(e^{3x/2-x^2/8t})e^{-2x}\le2\sqrt t\,e^{-1/2}e^{9t/2}e^{-2x}$ for $x\ge0$ (maxima at $x=2\sqrt t$ and $x=6t$), and $\sum_{[\gamma]}e^{-2\ell(\gamma)}=2\int_\ell^\infty n_\Orb(x)e^{-2x}dx\le2\pi e^{3\diam-\ell}/\Area$.
+The first two statements are \cite[Lemmas~\ref{A-lem:counting} and~\ref{A-lem:hypbound}]{companionA}. For the last, $xe^{-x/2-x^2/4t}=(xe^{-x^2/8t})(e^{3x/2-x^2/8t})e^{-2x}\le2\sqrt t\,e^{-1/2}e^{9t/2}e^{-2x}$ for $x\ge0$ (maxima at $x=2\sqrt t$ and $x=6t$); with $\ell(\gamma_0)\le\ell(\gamma)$, $e^{-t/4}\le1$ and $2\sinh(x/2)\ge e^{x/2}(1-e^{-\ell})$ for $x\ge\ell$, this gives $\Hyp(t)\le\frac{2\sqrt t\,e^{-1/2}e^{9t/2}e^{-t/4}}{(1-e^{-\ell})\sqrt{4\pi t}}\sum_{[\gamma]}e^{-2\ell(\gamma)}$, and $\sum_{[\gamma]}e^{-2\ell(\gamma)}=2\int_\ell^\infty n_\Orb(x)e^{-2x}dx\le2\pi e^{3\diam-\ell}/\Area$.
 \end{proof}
 
 \subsection{The cone and area terms}
 
-Write $\theta_j=\pi j/m$ and, for an integer $m\ge1$, $\Phi_m(u)=\sum_{j=1}^{m-1}(4m\sin\theta_j\sin(\theta_j-u))^{-1}$, analytic and even in $|u|<\pi/m$, $\Phi_1=0$.
-
-\begin{lemma}[Closed form]\label{lem:Phi}
-For $0<|u|<\pi/m$, $\Phi_m(u)=(\cot u-m\cot(mu))/(4m\sin u)$. With $u/\sin u=\sum_{i\ge0}\varsigma_iu^{2i}$ ($\varsigma_0=1$, $\varsigma_i>0$), $\Phi_m(u)=\sum_k\phi_k(m)u^{2k}$ with
-\begin{equation}\label{eq:phik}
-  m\,\phi_k(m)=\frac14\sum_{n=1}^{k+1}\varsigma_{k+1-n}\,\frac{4^n|B_{2n}|}{(2n)!}\,\big(m^{2n}-1\big),
-\end{equation}
-$B_{2n}$ the Bernoulli numbers. Every $\phi_k(m)$ is positive and strictly increasing in $m>1$, and $\phi_k(m)\le\Phi_m(\rho)\rho^{-2k}$ for $0<\rho<\pi/m$; at $\rho=\pi/2m$ this gives $\phi_k(m)\le\frac m4(2m/\pi)^{2k}$.
-\end{lemma}
-
-\begin{proof}
-$(\sin\theta\sin(\theta-u))^{-1}=(\cot(\theta-u)-\cot\theta)/\sin u$, and the $\cot\theta_j$ cancel in pairs $j,m-j$. The function $\sum_{j=0}^{m-1}\cot(x+\pi j/m)-m\cot(mx)$ is $\pi/m$-periodic, has no poles and tends to $0$ as $\operatorname{Im}x\to\pm\infty$, so it vanishes; at $x=-u$ this is the closed form. From $\frac x2\coth\frac x2=\sum_nB_{2n}x^{2n}/(2n)!$ at $x=2iu$ and $\operatorname{sgn}B_{2n}=(-1)^{n+1}$, $\cot u-m\cot(mu)=\sum_{n\ge1}4^n|B_{2n}|(m^{2n}-1)u^{2n-1}/(2n)!$; multiplying by $u/\sin u=\prod_n(1-u^2/n^2\pi^2)^{-1}$ and by $1/(4mu)$ gives \eqref{eq:phik}, whose terms are positive and, as $(m^{2n}-1)/m$ is, strictly increasing in $m>1$. So $\Phi_m(\rho)=\sum_i\phi_i(m)\rho^{2i}$ is a sum of positive terms, each at most the sum; at $\rho=\pi/2m$, $\cot(m\rho)=0$ and $\Phi_m(\rho)=\cos\rho/(4m\sin^2\rho)\le m/4$ by $\sin\rho\ge2\rho/\pi$.
-\end{proof}
-
-Put, for $k\ge0$,
+Write $\theta_j=\pi j/m$ and, for an integer $m\ge1$, $\Phi_m(u)=\sum_{j=1}^{m-1}(4m\sin\theta_j\sin(\theta_j-u))^{-1}=\sum_k\phi_k(m)u^{2k}$, analytic and even in $|u|<\pi/m$. Every $\phi_k(m)$ is a positive combination of the numbers $m^{2n-1}-m^{-1}$, $1\le n\le k+1$, hence positive and strictly increasing in $m>1$ \cite[Lemma~\ref{A-lem:Phi}]{companionA}. Put
 \[
-  g_k(m)=(-1)^k\frac{(2k)!}{k!\,4^k}\phi_k(m),\quad b_l(m)=\sum_{k=0}^lg_k(m)\frac{(-1/4)^{l-k}}{(l-k)!},\quad\mu_k=4\int_0^\infty\frac{r^{2k+1}dr}{e^{2\pi r}+1},
+  b_l(m)=\frac{(-1)^lp_l(m)}m,\quad p_l(m)=\frac1{4^l}\sum_{k=0}^l\frac{(2k)!}{k!\,(l-k)!}\,m\,\phi_k(m),
 \]
-and let $\alpha_k$ be the coefficient of $t^{k-1}$ in $e^{-t/4}\big(t^{-1}-\sum_{j\ge0}(-1)^j\mu_jt^j/j!\big)$:
 \[
-  \alpha_k=\frac{(-1/4)^k}{k!}-\sum_{j=0}^{k-1}\frac{(-1)^j\mu_j}{j!}\,\frac{(-1/4)^{k-1-j}}{(k-1-j)!}.
+  \alpha_k=\frac{(-1)^k}{k!\,4^k}\sum_{l=0}^k\binom kl(-4)^lB_{2l}\big(\tfrac12\big),
 \]
-Every term of $b_l(m)$ has the sign $(-1)^l$, and every term of $\alpha_k$ the sign $(-1)^k$. (One has $\alpha_0,\dots,\alpha_3=1,-\frac13,\frac1{15},-\frac4{315}$; these are U\c{c}ar's smooth coefficients at curvature $-1$ \cite[(4.35)]{ucar2017}, and $b_0,b_1,b_2$ agree with the cone terms of \cite[Ex.~5.6]{dggw2008} and \cite[Thm~4.1]{schueth2019}; neither agreement is used.)
+with $B_{2l}(x)$ the Bernoulli polynomials; $\alpha_0,\dots,\alpha_3=1,-\frac13,\frac1{15},-\frac4{315}$.
 
-\begin{lemma}[Moments]\label{lem:moments}
-For $0<a<2\pi$ let $F_a(r)=e^{-ar}/(1+e^{-2\pi r})$ and $\mathfrak m_n(a)=\int_\R r^nF_a(r)\,dr$. Then $\int_\R F_a(r)e^{sr}dr=(2\sin\frac{a-s}2)^{-1}$ for $a-2\pi<s<a$, and
-\[
-  \sum_{j=1}^{m-1}\frac{\mathfrak m_{2k}(2\theta_j)}{2m\sin\theta_j}=\frac{(2k)!}{4^k}\phi_k(m),\qquad \int_0^\infty\frac{4r^{2k+1}\,dr}{e^{2\pi r}+1}=\mu_k .
-\]
-\end{lemma}
-
-\begin{proof}
-With $u=e^{-2\pi r}$, $\int F_ae^{sr}dr=\frac1{2\pi}\int_0^\infty\frac{u^{(a-s)/2\pi-1}}{1+u}du=\frac1{2\sin((a-s)/2)}$ by Euler's beta integral. Differentiation under the integral at $s=0$ is dominated by $|r|^ne^{s_0|r|}F_a$ for $|s|\le s_0<\min(a,2\pi-a)$, so $\mathfrak m_n(a)=\partial_s^n(2\sin\frac{a-s}2)^{-1}|_{s=0}$, and the sum is $\partial_s^{2k}\Phi_m(\frac s2)|_{s=0}=\frac{(2k)!}{4^k}\phi_k(m)$. The second identity is the definition.
-\end{proof}
-
-\begin{proposition}[The cone term is enveloped]\label{prop:remcone}
-For integers $m\ge2$, $K\ge0$ and every $t>0$, $\mathrm E_m(t)-\sum_{l<K}b_l(m)t^l$ has the sign $(-1)^K$ or vanishes, and $|\mathrm E_m(t)-\sum_{l<K}b_l(m)t^l|\le|b_K(m)|\,t^K$. Moreover $|b_K(m)|$ is strictly increasing in $m$.
+\begin{proposition}[Enveloping remainders {\cite[Prop.~\ref{A-prop:envelope}]{companionA}}]\label{prop:remcone}\label{prop:remarea}
+Let $K\ge0$ and $t>0$. (a) For every integer $m\ge2$, $\mathrm E_m(t)-\sum_{l<K}b_l(m)t^l$ has the sign $(-1)^K$ or vanishes, and its modulus is at most $|b_K(m)|\,t^K$; and $|b_K(m)|$ is strictly increasing in $m$. (b) $\frac{4\pi}{\Area}\mathrm I(t)-\sum_{k=0}^K\alpha_kt^{k-1}$ has the sign $(-1)^{K+1}$ or vanishes, and its modulus is at most $|\alpha_{K+1}|\,t^K$.
 \end{proposition}
 
-\begin{proof}
-$e^{t/4}\mathrm E_m(t)=\sum_j(2m\sin\theta_j)^{-1}\int F_{2\theta_j}(r)e^{-tr^2}dr$. For $x\ge0$ the Taylor remainder $e^{-x}-\sum_{k<K}(-x)^k/k!$ has the sign $(-1)^K$ and modulus at most $x^K/K!$; with $x=tr^2$, multiplying by the positive weight, integrating and summing, Lemma~\ref{lem:moments} shows that $R(t)=e^{t/4}\mathrm E_m(t)-\sum_{k<K}g_k(m)t^k$ has the sign $(-1)^K$ and $|R(t)|\le|g_K(m)|t^K$. Since
-\[
-  \mathrm E_m(t)-\sum_{l<K}b_lt^l=e^{-t/4}R(t)+\sum_{k<K}g_k(m)\,t^k\Big(e^{-t/4}-\sum_{i<K-k}\frac{(-t/4)^i}{i!}\Big),
-\]
-with $g_k$ of the sign $(-1)^k$ and the bracket of the sign $(-1)^{K-k}$ and modulus at most $(t/4)^{K-k}/(K-k)!$, every term has the sign $(-1)^K$ and the modulus of the sum is at most $t^K\sum_{k\le K}|g_k|4^{k-K}/(K-k)!=|b_K(m)|t^K$. Monotonicity follows from Lemma~\ref{lem:Phi}.
-\end{proof}
-
-\begin{proposition}[The area term is enveloped]\label{prop:remarea}
-For integers $K\ge0$ and every $t>0$, $\frac{4\pi}{\Area}\mathrm I(t)-\sum_{k=0}^K\alpha_kt^{k-1}$ has the sign $(-1)^{K+1}$ or vanishes, and its modulus is at most $|\alpha_{K+1}|\,t^K$.
-\end{proposition}
-
-\begin{proof}
-From $r\tanh\pi r=|r|-2|r|/(e^{2\pi|r|}+1)$, $\frac{4\pi}{\Area}\mathrm I(t)=e^{-t/4}(\frac1t-J(t))$ with $J(t)=4\int_0^\infty re^{-tr^2}(e^{2\pi r}+1)^{-1}dr$. As before, $J(t)-\sum_{k<K}\frac{(-1)^k\mu_k}{k!}t^k$ has the sign $(-1)^K$ and modulus at most $\frac{\mu_K}{K!}t^K$; $\frac1t(e^{-t/4}-\sum_{i\le K}\frac{(-t/4)^i}{i!})$ has the sign $(-1)^{K+1}$ and modulus at most $\frac{t^K}{4^{K+1}(K+1)!}$; and the cross terms $-\frac{(-1)^k\mu_k}{k!}t^k(e^{-t/4}-\sum_{i<K-k}\frac{(-t/4)^i}{i!})$ have the sign $(-1)^{K+1}$ and modulus at most $\frac{\mu_k4^{k-K}}{k!(K-k)!}t^K$. These moduli are those of the terms of $\alpha_{K+1}$, all of the sign $(-1)^{K+1}$, so they sum to $|\alpha_{K+1}|t^K$.
-\end{proof}
-
-So $\cZ_\Orb(t)\sim\sum_{j\ge1}c_j(\Orb)t^{j-2}$ as $t\downarrow0$, by Theorem~\ref{thm:trace} and Lemma~\ref{lem:hyp}, with the \emph{heat invariants}
+So $\cZ_\Orb(t)\sim\sum_{j\ge1}c_j(\Orb)t^{j-2}$ as $t\downarrow0$, with the \emph{heat invariants}
 \begin{equation}\label{eq:cj}
   c_1=\frac{\Area}{4\pi},\qquad c_j=\alpha_{j-1}\frac{\Area}{4\pi}+\sum_{i=1}^nb_{j-2}(m_i)\quad(j\ge2),
 \end{equation}
-functions $c_j(\sigma)$ of the signature; and, since all $b_K(m_i)$ have the sign $(-1)^K$, for $K\ge0$ and every $t>0$
+functions $c_j(\sigma)$ of the signature, and for $K\ge0$ and every $t>0$
 \begin{equation}\label{eq:Grem}
   \Big|G_\sigma(t)-\sum_{j=1}^{K+1}c_j(\sigma)\,t^{j-2}\Big|\le t^K\Big(\frac{\Area}{4\pi}|\alpha_{K+1}|+\sum_i|b_K(m_i)|\Big).
 \end{equation}
-
-\begin{lemma}[Cone polynomials]\label{lem:conepoly}
-For $l\ge0$, $p_l(m)=(-1)^lm\,b_l(m)=4^{-l}\sum_{k=0}^l\frac{(2k)!}{k!(l-k)!}m\phi_k(m)$ is an even polynomial with rational coefficients of degree exactly $2l+2$, with $p_l(1)=0$ and leading coefficient $a_l=|B_{2l+2}|/(2(l+1)!\,(2l+1))$.
-\end{lemma}
-
-\begin{proof}
-The formula for $p_l$ is the definition of $b_l$. By \eqref{eq:phik}, $p_l$ is a combination with positive rational weights of $m^{2n}-1$, $1\le n\le l+1$; degree $2l+2$ occurs only for $k=l$, $n=l+1$, with coefficient $\frac1{4^l}\frac{(2l)!}{l!}\cdot\frac{4^l|B_{2l+2}|}{(2l+2)!}=a_l$.
-\end{proof}
+The polynomial $p_l$ is even, with rational coefficients, of degree exactly $2l+2$, with $p_l(1)=0$ and leading coefficient $a_l=|B_{2l+2}|/(2(l+1)!\,(2l+1))$ \cite[Lemma~\ref{A-lem:conepoly}]{companionA}; and $p_l(x)/x=\sum_{k=1}^{l+1}a_{l,k}\psi_k(x)$ with $\psi_k(x)=x^{2k-1}-x^{-1}$ and $a_{l,l+1}=a_l$ \cite[Lemma~\ref{A-lem:triangular}]{companionA}, which is the mechanism of U\c{c}ar's induction \cite[Thm~3.40]{ucar2017}.
 
 \section{Heat invariants of a signature}\label{sec:sig}
 
-Write $R=\sum_i1/m_i$, $P_k=\sum_im_i^k$, $\psi_k(x)=x^{2k-1}-x^{-1}$ and $\Psi_k(m)=\sum_i\psi_k(m_i)$; $H_L(\sigma)=(c_1,\dots,c_L)$.
+Write $R=\sum_i1/m_i$, $P_k=\sum_im_i^k$, $\Psi_k(m)=\sum_i\psi_k(m_i)$ and $H_L(\sigma)=(c_1,\dots,c_L)$.
 
-\begin{lemma}[Heat data of a signature]\label{lem:sigdata}
-Let $\sigma=(g;m)$, $\sigma'=(g';m')$ be hyperbolic, with $n$ and $n'$ cone points, and $L\ge1$. Then $H_L(\sigma)=H_L(\sigma')$ if and only if $2g+n-R(m)=2g'+n'-R(m')$ and $\Psi_k(m)=\Psi_k(m')$ for $1\le k\le L-1$. In that case $d=R(m')-R(m)\in\Z$, and the paddings $U=m\uplus\{1\}^{\max(d,0)}$, $V=m'\uplus\{1\}^{\max(-d,0)}$ satisfy $R(U)=R(V)$, $P_j(U)=P_j(V)$ for odd $j\le2L-3$, and $|U|+|V|=2\max(n+g-g',n'+g'-g)$.
+\begin{lemma}[Heat data of a signature {\cite[Lemma~\ref{A-lem:sigdata}]{companionA}}]\label{lem:sigdata}
+Let $\sigma=(g;m)$, $\sigma'=(g';m')$ be hyperbolic, with $n$ and $n'$ cone points, and $L\ge1$. Then $H_L(\sigma)=H_L(\sigma')$ if and only if $2g+n-R(m)=2g'+n'-R(m')$ and $\Psi_k(m)=\Psi_k(m')$ for $1\le k\le L-1$. In that case $d=R(m')-R(m)\in\Z$, and the paddings $U=m\uplus\{1\}^{\max(d,0)}$, $V=m'\uplus\{1\}^{\max(-d,0)}$ satisfy $R(U)=R(V)$ and $P_j(U)=P_j(V)$ for odd $j\le2L-3$.
 \end{lemma}
 
-\begin{proof}
-$c_1$ agrees exactly when the areas do, by \eqref{eq:area} the first equation. Write $p_l(x)/x=\sum_{k=1}^{l+1}a_{l,k}\psi_k(x)$, which holds with $a_{l,l+1}=a_l\ne0$ because $p_l$ is even with $p_l(1)=0$ (Lemma~\ref{lem:conepoly}); this triangular system shows that, at equal area, $c_2,\dots,c_L$ agree exactly when $\Psi_1,\dots,\Psi_{L-1}$ do. The rest is direct: $d=2(g'-g)+n'-n$, an entry $1$ changes neither $n-R$ nor any $\Psi_k$, and $\Psi_k=P_{2k-1}-R$.
-\end{proof}
-
-\begin{lemma}[Parity]\label{lem:parity}
-In $\Q[x_1,\dots,x_N]$, for odd $j$ the elementary symmetric function $e_j$ lies in the ideal generated by the power sums $s_1,s_3,\dots,s_j$.
-\end{lemma}
-
-\begin{proof}
-By Newton's identities $e_j$ is a rational combination of products $s_{i_1}\cdots s_{i_r}$ with $\sum i_t=j$, and for odd $j$ some $i_t$ is odd.
-\end{proof}
-
-\begin{theorem}[Separation]\label{thm:sep}
-If two hyperbolic signatures of area $A$ share $c_1,\dots,c_L$ with $L\ge\lfloor A/\pi\rfloor+4$, they are equal.
+\begin{theorem}[Separation and bounded orders {\cite[Cor.~\ref{A-cor:sigarea}, Thm~\ref{A-thm:bounded}]{companionA}}]\label{thm:sep}\label{thm:bounded}
+(i) Two hyperbolic signatures of area $A$ that share $c_1,\dots,c_L$ with $L\ge\lfloor A/\pi\rfloor+4$ are equal. (ii) Two hyperbolic signatures with all cone orders at most $M$ that share $c_1,\dots,c_M$ are equal.
 \end{theorem}
-
-\begin{proof}
-Each cone point adds at least $\frac12$ to $s(\sigma)$, so $n+4g\le A/\pi+4$, and likewise for $\sigma'$; so $\kappa_0:=|U|+|V|\le2\lfloor A/\pi\rfloor+8\le2L$ in Lemma~\ref{lem:sigdata}. Remove the elements common to $U$ and $V$, leaving disjoint $U^*,V^*$ with the same equal sums, and let $X=U^*\uplus(-V^*)$, of size $\kappa\le\kappa_0$, even. If $X\ne\emptyset$, its odd power sums vanish up to $2L-3\ge\kappa-3$, so $e_j(X)=0$ for odd $j\le\kappa-3$ (Lemma~\ref{lem:parity}), and $e_{\kappa-1}(X)=e_\kappa(X)\sum_{x\in X}x^{-1}=0$; so $\prod_{x\in X}(z-x)$ is even, and $X=-X$, contradicting disjointness. So $U=V$ and, by Lemma~\ref{lem:sigdata}, $\sigma=\sigma'$.
-\end{proof}
-
-For an integer $M\ge2$ let $\Sig_{\le M}$ be the orbifolds in $\Sig$ with all cone orders at most $M$.
-
-\begin{theorem}[Bounded cone orders]\label{thm:bounded}
-Two hyperbolic signatures with all cone orders at most $M$ that share $c_1,\dots,c_M$ are equal.
-\end{theorem}
-
-\begin{proof}
-Let $\nu(a)=\mult_m(a)-\mult_{m'}(a)$ for $2\le a\le M$ and $y_a=a^2$. By Lemma~\ref{lem:sigdata}, $2g+n-R(m)=2g'+n'-R(m')$ and $0=\Psi_k(m)-\Psi_k(m')=\sum_a\frac{\nu(a)}a(y_a^k-1)$ for $1\le k\le M-1$. Subtracting the column $a=1$ ($y_1=1$) from the others in the Vandermonde matrix $(y_a^k)_{0\le k\le M-1,\,1\le a\le M}$ shows $\det(y_a^k-1)_{1\le k\le M-1,\,2\le a\le M}=\prod_{1\le a<b\le M}(y_b-y_a)\ne0$. So $\nu=0$, and then $n=n'$, $R(m)=R(m')$ and $g=g'$.
-\end{proof}
 
 \begin{lemma}[Integrality at the first difference]\label{lem:int}
 Let $\sigma\ne\sigma'$ be hyperbolic signatures with orders at most $M$, $k$ the least index with $c_k(\sigma)\ne c_k(\sigma')$, and $d_k=c_k(\sigma)-c_k(\sigma')$.
 \begin{enumerate}[label=(\roman*)]
-\item If the areas differ, $k=1$ and $|d_1|\ge1/(2L)$, where $L$ is the least common multiple of the orders of $\sigma$ and $\sigma'$.
+\item If the areas differ, $k=1$ and $|d_1|\ge1/(2L_{\sigma\sigma'})$, where $L_{\sigma\sigma'}$ is the least common multiple of the orders of $\sigma$ and $\sigma'$.
 \item If the areas are equal, to $A$ say, then $2\le k\le\min(\lfloor A/\pi\rfloor+4,M)$ and $d_k=(-1)^ka_{k-2}(P_{2k-3}(U)-P_{2k-3}(V))$, with $U,V$ the paddings of Lemma~\ref{lem:sigdata} for $L=k-1$; the difference of power sums is a nonzero integer, so $|d_k|\ge a_{k-2}$.
 \end{enumerate}
 \end{lemma}
 
 \begin{proof}
-(i) $c_1=\frac12(2g-2+n-R)$ and $R\in\frac1L\Z$. (ii) The bound on $k$ is Theorems~\ref{thm:sep} and~\ref{thm:bounded}. Put $l=k-2$. By Lemma~\ref{lem:sigdata} with $L=k-1$, $R(U)=R(V)$ and $\Psi_j(U)=\Psi_j(V)$ for $j\le l$, padding by $1$ changing no $C_l=\sum b_l$ as $p_l(1)=0$. The terms $\alpha_{k-1}A/4\pi$ cancel, and with the triangular expansion of the proof of Lemma~\ref{lem:sigdata}, $d_k=(-1)^l\sum_{j\le l+1}a_{l,j}(\Psi_j(U)-\Psi_j(V))=(-1)^la_l(P_{2l+1}(U)-P_{2l+1}(V))$, using $R(U)=R(V)$; this is nonzero as $d_k\ne0$.
+(i) $c_1=\frac12(2g-2+n-R)$ and $R\in\frac1{L_{\sigma\sigma'}}\Z$. (ii) The bound on $k$ is Theorem~\ref{thm:sep}. Put $l=k-2$. By Lemma~\ref{lem:sigdata} with $L=k-1$, $R(U)=R(V)$ and $\Psi_j(U)=\Psi_j(V)$ for $j\le l$, padding by $1$ changing no $C_l=\sum b_l$ as $p_l(1)=0$. The terms $\alpha_{k-1}A/4\pi$ cancel, and with the triangular expansion of $p_l(x)/x$ in the $\psi_k$ (Section~\ref{sec:heat}), $d_k=(-1)^l\sum_{j\le l+1}a_{l,j}(\Psi_j(U)-\Psi_j(V))=(-1)^la_l(P_{2l+1}(U)-P_{2l+1}(V))$, using $R(U)=R(V)$; this is nonzero as $d_k\ne0$.
 \end{proof}
 
 The bound $|d_k|\ge a_{k-2}$ is attained, for instance by $(0;4,4,4)$ and $(0;3,4,6)$, of equal area, with $d_2=-\frac1{12}$.
@@ -347,11 +282,11 @@ Every $\Orb\in\Cl(A,\varepsilon,M)$ has $\diam\Orb<D(A,\varepsilon,M):=4r_0A/v_0
 Let $\diam\Orb=d(x,y)=\Delta$ and lift to $\tilde x,\tilde y$ with $d(\tilde x,\tilde y)=\Delta$. The image $c$ of the segment, by arclength, satisfies $d(c(s),c(s'))=|s-s'|$: otherwise $d(x,y)<\Delta$. The points $c(4r_0i)$, $0\le i\le\lfloor\Delta/4r_0\rfloor$, are $4r_0$ apart, so the balls of radius $2r_0$ about them are disjoint, and Lemma~\ref{lem:balls} gives $(\lfloor\Delta/4r_0\rfloor+1)v_0\le A$. For the closed form, $\cosh r-1\ge r^2/2$, $\cosh\rho_1-1\ge(\cosh r_0-1)\sin^2\frac\pi M$ and $\sin\frac\pi M\ge\frac2M$ give $v_0\ge\pi r_0^2/\max(M,M^2/4)$, and $\operatorname{arccosh}(1+x)\ge\sqrt{2x/(1+x)}$ gives $d_0\ge\min(\frac\varepsilon2,\frac{0.6}M)$.
 \end{proof}
 
-The diameter enters only through Lemma~\ref{lem:counting}, the count of closed geodesics; in no row of Table~\ref{tab:E} is it the binding constraint through $t_1$, and it binds through $t_3$ only when $M$ is small. Table~\ref{tab:D} compares $D$ with true diameters. The bound grows like $A/\varepsilon$ and like $AM^3$; by Proposition~\ref{prop:233} below some growth in $M$ is necessary.
+The diameter enters only through Lemma~\ref{lem:counting}, the count of closed geodesics, and so only through $t_3$ in Theorem~\ref{thm:E}; $t_1$ does not involve it, and $t_3$ binds in rows 4, 6 and 7 of Table~\ref{tab:E}. Table~\ref{tab:D} compares $D$ with true diameters. The bound grows like $A/\varepsilon$ and like $AM^3$; by Proposition~\ref{prop:233} below some growth in $M$ is necessary, but these orders are artefacts of the method: a thick--thin decomposition should give a diameter bound of order $A+n\log\frac1\varepsilon+\log M$, and a count of closed geodesics in terms of area and systole, as for surfaces \cite{buser1992}, might remove the diameter altogether. We have not carried this out, so every rate below in $\varepsilon$ or $M$ is a property of our constants and not of the problem.
 
 \begin{table}[h]
 \centering\footnotesize
-\caption{$D(A,\varepsilon,M)$ of Theorem~\ref{thm:diam}. The orbifolds $\Orb(2,8,8)$ and $\Orb(3,3,12)$ ($A=\pi/2$) have diameter below $4.9$ and $4.4$, the eight of signature $(0;3,3,3,3)$ of Section~\ref{sec:practice} ($A=4\pi/3$) at most $7.8$.}\label{tab:D}
+\caption{$D(A,\varepsilon,M)$ of Theorem~\ref{thm:diam}, against true diameters: $\Orb(2,8,8)$ and $\Orb(3,3,12)$ ($A=\pi/2$) have diameter $2.448$ and $2.158$, and the eight of signature $(0;3,3,3,3)$ of Section~\ref{sec:practice} ($A=4\pi/3$) diameters from $2.29$ to $3.88$ (Table~\ref{tab:inputs}).}\label{tab:D}
 \begin{tabular}{@{}lllll@{}}
 \toprule
 $A$ & $\varepsilon$ & $M=3$ & $M=12$ & $M=100$\\
@@ -371,7 +306,7 @@ $10\pi$ & $1$ & $1132$ & $2.25\times10^4$ & $1.27\times10^7$\\
 \end{lemma}
 
 \begin{proof}
-(i) With $s=\Area/2\pi$: $g\ge2$ gives $s\ge2$; $g=1$ needs $n\ge1$, $s\ge\frac12$; $g=0$, $n\ge5$ gives $s\ge\frac12$; $g=0$, $n=4$ has an order at least $3$, $s\ge\frac16$; and for $g=0$, $n=3$, $p\le q\le r$: $p\ge3$ forces $r\ge4$, $s\ge\frac1{12}$; $p=2$, $q=3$ forces $r\ge7$, $s\ge\frac1{42}$; $p=2$, $q=4$ forces $r\ge5$, $s\ge\frac1{20}$; $p=2$, $q\ge5$ gives $s\ge\frac1{10}$. The second statement holds as each cone point adds at least $\frac12$ to $s$. (ii) $0<h_t\le1$, and by Lemma~\ref{lem:moments} at $s=0$, $\mathrm E_m(t)\le\sum_j(4m\sin^2\theta_j)^{-1}=\Phi_m(0)=b_0(m)$; and $0\le r\tanh\pi r\le|r|$.
+(i) With $s=\Area/2\pi$: $g\ge2$ gives $s\ge2$; $g=1$ needs $n\ge1$, $s\ge\frac12$; $g=0$, $n\ge5$ gives $s\ge\frac12$; $g=0$, $n=4$ has an order at least $3$, $s\ge\frac16$; and for $g=0$, $n=3$, $p\le q\le r$: $p\ge3$ forces $r\ge4$, $s\ge\frac1{12}$; $p=2$, $q=3$ forces $r\ge7$, $s\ge\frac1{42}$; $p=2$, $q=4$ forces $r\ge5$, $s\ge\frac1{20}$; $p=2$, $q\ge5$ gives $s\ge\frac1{10}$. The second statement holds as each cone point adds at least $\frac12$ to $s$. (ii) Proposition~\ref{prop:remcone}(a) with $K=0$ gives $0<\mathrm E_m(t)\le b_0(m)$, and $0<\hat g_t\le e^{-t/4}$ and $0\le r\tanh\pi r\le|r|$ give the bound on $\mathrm I$.
 \end{proof}
 
 \begin{proposition}[Counting and tails]\label{prop:counttail}
@@ -410,7 +345,7 @@ With $D=D(A,\varepsilon,M)$ of Theorem~\ref{thm:diam}, put
   t_2=\frac{\varepsilon^2}{2(1+\varepsilon)},\qquad p=k_*-\tfrac32,\qquad\varpi=\frac{63\,\varepsilon e^{\varepsilon/2}}{(1-e^{-\varepsilon})\sqrt{4\pi}},\\
   y_0=2\Big(3D+\log\frac{16\varpi}{\gamma_*}+p\log\frac4{\varepsilon^2}+p\log\frac{2p}e\Big),\qquad t_3=\frac{\varepsilon^2}{4\max(y_0,1)},\qquad t_*=\min(t_1,t_2,t_3),\\
   \Gamma_*=\Gamma(t_*),\qquad\cZ^\sharp(s)=\frac A{4\pi s}+n_*\frac{M^2-1}{12M}+1,\qquad\Lambda=\frac2{t_*}\log\frac{8\cZ^\sharp(t_*/2)}{\Gamma_*},\\
-  N=\big\lfloor e\,\cZ^\sharp(1/\Lambda)\big\rfloor+1,\qquad\delta=\min\Big\{\frac1{t_*},\frac{\Gamma_*}{8eNt_*}\Big\}.
+  N=\big\lfloor e\,\cZ^\sharp(1/\Lambda)\big\rfloor+1,\qquad\delta=\frac{\Gamma_*}{8eNt_*}.
 \end{gather*}
 Let $\Orb\in\Cl(A,\varepsilon,M)$ have eigenvalues $0=\lambda_0<\lambda_1\le\cdots$, counted with multiplicity and in increasing order, and let $\tilde\lambda_0,\dots,\tilde\lambda_{N-1}\ge0$ satisfy $|\tilde\lambda_j-\lambda_j|\le\delta$. Then $\sigma(\Orb)$ is the unique $\sigma\in\Sig(A,M)$ minimising $|\sum_{j<N}e^{-\tilde\lambda_jt_*}-G_\sigma(t_*)|$.
 \end{theorem}
@@ -424,6 +359,10 @@ $\tilde\cZ-G_{\sigma_0}(t_*)=\Hyp(t_*)-\sum_{j\ge N}e^{-\lambda_jt_*}+\sum_{j<N}
 So $|\tilde\cZ-G_{\sigma_0}(t_*)|<\frac38\Gamma_*$, while for $\sigma\ne\sigma_0$ Lemma~\ref{lem:gap} gives $|\tilde\cZ-G_\sigma(t_*)|>\Gamma_*-\frac38\Gamma_*$.
 \end{proof}
 
+The decision rule needs $G_\sigma(t_*)$ only to within a fraction of $\Gamma_*$, say $\Gamma_*/16$, which leaves the margin of the proof intact; by \eqref{eq:Grem} this is achieved by the truncated expansion $\sum_{j\le K+1}c_j(\sigma)t_*^{j-2}$ for any $K$ with $t_*^K\,Q(K)\le\Gamma_*/16$, so the rule is computable in exact rational arithmetic.
+
+The decision rule needs $G_\sigma(t_*)$ only to within a fraction of $\Gamma_*$, say $\Gamma_*/16$, which leaves the margin of the proof intact; by \eqref{eq:Grem} this is achieved by the truncated expansion $\sum_{j\le K+1}c_j(\sigma)t_*^{j-2}$ for any $K$ with $t_*^K\,Q(K)\le\Gamma_*/16$, so the rule is computable in exact rational arithmetic.
+
 Taking $\tilde\lambda_j=\lambda_j(\Orb')$ gives the last statement of Theorem~\ref{thm:intro}: orbifolds of $\Cl(A,\varepsilon,M)$ whose first $N$ eigenvalues agree to within $\delta$ have the same signature. The data must be the first $N$ eigenvalues, in order and with multiplicity; an approximation that misses one eigenvalue shifts every later index, and the theorem says nothing about it.
 
 \begin{table}[h]
@@ -434,10 +373,10 @@ Taking $\tilde\lambda_j=\lambda_j(\Orb')$ gives the last statement of Theorem~\r
 $A$ & $\varepsilon$ & $M$ & $k_*$ & $D$ & $t_1$ & $t_3$ & $N$ & $\delta$ & binds\\
 \midrule
 $\pi/2$ & $1.8626$ & $8$ & $4$ & $402$ & $1.1\times10^{-7}$ & $3.5\times10^{-4}$ & $3.4\times10^{8}$ & $3.1\times10^{-21}$ & $t_1$\\
-$\pi/2$ & $1.8626$ & $12$ & $4$ & $1125$ & $6.9\times10^{-9}$ & $1.3\times10^{-4}$ & $6.8\times10^{9}$ & $4.2\times10^{-25}$ & $t_1$\\
-$4\pi/3$ & $2.634$ & $3$ & $3$ & $151$ & $9.3\times10^{-4}$ & $1.9\times10^{-3}$ & $4.3\times10^{4}$ & $1.5\times10^{-9}$ & $t_1$\\
-$4\pi/3$ & $0.694$ & $3$ & $3$ & $151$ & $9.3\times10^{-4}$ & $1.3\times10^{-4}$ & $3.7\times10^{5}$ & $1.7\times10^{-10}$ & $t_3$\\
-$4\pi/3$ & $0.694$ & $12$ & $5$ & $3001$ & $2.7\times10^{-11}$ & $6.7\times10^{-6}$ & $7.4\times10^{12}$ & $4.1\times10^{-41}$ & $t_1$\\
+$\pi/2$ & $1.8626$ & $12$ & $4$ & $1125$ & $6.8\times10^{-9}$ & $1.3\times10^{-4}$ & $6.8\times10^{9}$ & $4.2\times10^{-25}$ & $t_1$\\
+$4\pi/3$ & $2.6339$ & $3$ & $3$ & $151$ & $9.3\times10^{-4}$ & $1.9\times10^{-3}$ & $4.3\times10^{4}$ & $1.5\times10^{-9}$ & $t_1$\\
+$4\pi/3$ & $0.6939$ & $3$ & $3$ & $151$ & $9.3\times10^{-4}$ & $1.3\times10^{-4}$ & $3.7\times10^{5}$ & $1.7\times10^{-10}$ & $t_3$\\
+$4\pi/3$ & $0.6939$ & $12$ & $5$ & $3001$ & $2.7\times10^{-11}$ & $6.7\times10^{-6}$ & $7.4\times10^{12}$ & $4.1\times10^{-41}$ & $t_1$\\
 $2\pi$ & $0.1$ & $3$ & $3$ & $960$ & $7.8\times10^{-4}$ & $4.3\times10^{-7}$ & $2.4\times10^{8}$ & $2.7\times10^{-13}$ & $t_3$\\
 $10\pi$ & $1$ & $3$ & $3$ & $1132$ & $3.3\times10^{-4}$ & $3.7\times10^{-5}$ & $1.1\times10^{7}$ & $5.6\times10^{-12}$ & $t_3$\\
 $10\pi$ & $1$ & $12$ & $12$ & $2.25\times10^4$ & $2.5\times10^{-27}$ & $1.8\times10^{-6}$ & $3.8\times10^{30}$ & $8.7\times10^{-278}$ & $t_1$\\
@@ -445,44 +384,150 @@ $10\pi$ & $1$ & $12$ & $12$ & $2.25\times10^4$ & $2.5\times10^{-27}$ & $1.8\time
 \end{tabular}
 \end{table}
 
-\emph{How large are $N$ and $\delta$.} Table~\ref{tab:E} gives them. Two constraints compete for $t_*$. One is the divergence of the cone expansion, through $t_1\approx\delta_k/Q(k-1)$, the least possible first difference against the largest possible next term; $|b_K(M)|$ grows roughly like $K!\,(M/\pi)^{2K}$, since $\Phi_M$ is singular at $\pm\pi/M$. The other is the geometry, through $t_3\approx\varepsilon^2/(24D)$, which keeps the closed geodesics below the gap. The bound $k_*\le M$ of Theorem~\ref{thm:bounded} matters: for $M=3$ it lowers $k_*$ from $\lfloor A/\pi\rfloor+4$ to $3$, and at $A=10\pi$ it changes $N$ from about $4\times10^{18}$ to $1.1\times10^7$. Once $t_*$ is fixed, $N\approx\frac{eA}{2\pi t_*}\log\frac{8\cZ^\sharp}{\Gamma_*}$ grows like $1/t_*$ and $\delta$ like $t_*^{k_*-2}$, up to logarithms; as $\varepsilon\to0$ with $A$, $M$ fixed, $t_3$ binds and $N$ grows by a factor near $8$ per halving of $\varepsilon$, roughly like $\varepsilon^{-3}\log\frac1\varepsilon$ (observations on the formulas, not proved asymptotics). We do not know the true order of the least admissible $N$.
+\emph{How large are $N$ and $\delta$.} Table~\ref{tab:E} gives them. Two constraints compete for $t_*$. One is the divergence of the cone expansion, through $t_1\approx\delta_k/Q(k-1)$, the least possible first difference against the largest possible next term; $|b_K(M)|$ grows roughly like $K!\,(M/\pi)^{2K}$, since $\Phi_M$ is singular at $\pm\pi/M$. The other is the geometry, through $t_3\approx\varepsilon^2/(24D)$, which keeps the closed geodesics below the gap. The bound $k_*\le M$ of Theorem~\ref{thm:bounded} matters: for $M=3$ it lowers $k_*$ from $\lfloor A/\pi\rfloor+4$ to $3$, and at $A=10\pi$ it changes $N$ from about $4\times10^{18}$ to $1.1\times10^7$. Once $t_*$ is fixed, $N\approx\frac{eA}{2\pi t_*}\log\frac{8\cZ^\sharp}{\Gamma_*}$ grows like $1/t_*$ and $\delta$ like $t_*^{k_*-2}$, up to logarithms; as $\varepsilon\to0$ with $A$, $M$ fixed, $t_3$ binds and $N$ grows by a factor of about $9$ per halving of $\varepsilon$ in the range of the table, tending to $8$, roughly like $\varepsilon^{-3}\log\frac1\varepsilon$ (observations on our formulas, not proved asymptotics, and not properties of the problem). We do not know the true order of the least admissible $N$.
 
 Figure~\ref{fig:E2} shows the mechanism on the six signatures of area $\frac\pi2$ with orders at most $12$, for $\sigma_0=(0;2,8,8)$. The grey curves are $|G_{\sigma_0}(t)-G_\sigma(t)|$ for the five competitors, the darkest being $(0;3,3,12)$, whose difference starts at $d_3t=\frac{25}{12}t$; the dashed curve is the bound of Lemma~\ref{lem:hyp} on the closed geodesics, with the true systole and a diameter bound; and the dotted curves are the errors made by keeping $N=21$ and $N=100$ eigenvalues, the tail and perturbation terms of Theorem~\ref{thm:post}. Finitely many eigenvalues resolve the signatures at times where half the nearest gap exceeds the sum of both errors, the shaded window for $N=21$.
 
 \paperfigure{E2}{\figcapETwo}{fig:E2}
 
-\section{An a-posteriori certificate}\label{sec:practice}
+\section{An a-posteriori test}\label{sec:practice}
 
-\begin{theorem}[A-posteriori certificate]\label{thm:post}
-Let $\Orb\in\Sig$ have area $A$, systole at least $\ell$, diameter at most $\Delta$, and signature in a finite set $\mathcal S$ of hyperbolic signatures of area $A$; put $\beta=\max_{\sigma\in\mathcal S}\sum_ib_0(m_i)$ and let $\mathcal H(s)$ be the bound of Lemma~\ref{lem:hyp} for $\Hyp(s)$, with $\ell$, $\Delta$ and the area $A$: the first bound $B(\ell,\Delta,s)$ for $s\le\ell^2/(2(1+\ell))$, where it is proved, and the bound for every $t>0$ otherwise. Let $\tilde\lambda_0\le\dots\le\tilde\lambda_N$ be nonnegative and $\epsilon_j\ge0$ with $|\tilde\lambda_j-\lambda_j(\Orb)|\le\epsilon_j$ for $j\le N$, the $\lambda_j$ counted with multiplicity in increasing order. For $t>0$ put
+The constants of Theorem~\ref{thm:E} are worst cases over a class. Run on given data at one moderate time, the same mechanism gives a test.
+
+\begin{theorem}[A-posteriori test]\label{thm:post}
+Let $\Orb\in\Sig$ have area $A$, systole at least $\ell$, diameter at most $\Delta$, and signature in a finite set $\mathcal S$ of hyperbolic signatures of area $A$; put $\beta=\max_{\sigma\in\mathcal S}\sum_ib_0(m_i)$ and let $\mathcal H(s)$ be the bound of Lemma~\ref{lem:hyp} for $\Hyp(s)$ with $\ell$, $\Delta$ and $A$: the first bound for $s\le\ell^2/(2(1+\ell))$ and the bound for every $t>0$ otherwise. Let $\tilde\lambda_0\le\dots\le\tilde\lambda_N$ be nonnegative and $\epsilon_j\ge0$ with $|\tilde\lambda_j-\lambda_j(\Orb)|\le\epsilon_j$ for $j\le N$, the $\lambda_j$ counted with multiplicity in increasing order. For $t>0$ put
 \[
-  E_N(t)=\mathcal H(t)+\min_{0<s\le t}e^{-(\tilde\lambda_N-\epsilon_N)(t-s)}\Big(\frac A{4\pi s}+\beta+\mathcal H(s)\Big)+t\sum_{j<N}\epsilon_j .
+  E_N(t)=\mathcal H(t)+\inf_{0<s<t}e^{-(\tilde\lambda_N-\epsilon_N)(t-s)}\Big(\frac A{4\pi s}+\beta+\mathcal H(s)\Big)+t\sum_{j<N}\epsilon_j .
 \]
-Then $|\sum_{j<N}e^{-\tilde\lambda_jt}-G_{\sigma(\Orb)}(t)|\le E_N(t)$ for every $t>0$. Hence if, at some $t$, exactly one $\sigma\in\mathcal S$ has $|\sum_{j<N}e^{-\tilde\lambda_jt}-G_\sigma(t)|\le E_N(t)$, in particular if $\sigma$ satisfies it and $E_N(t)$ is less than half the distance from $G_\sigma(t)$ to the nearest $G_{\sigma'}(t)$, $\sigma'\in\mathcal S\setminus\{\sigma\}$, then $\sigma(\Orb)=\sigma$.
+Then $|\sum_{j<N}e^{-\tilde\lambda_jt}-G_{\sigma(\Orb)}(t)|\le E_N(t)$ for every $t>0$. Hence $\sigma(\Orb)=\sigma$ if, at some $t$, either
+\begin{enumerate}[label=(C\arabic*)]
+\item $\sigma$ is the only element of $\mathcal S$ with $|\sum_{j<N}e^{-\tilde\lambda_jt}-G_\sigma(t)|\le E_N(t)$, or
+\item $\sigma$ satisfies this inequality and $E_N(t)$ is less than half the distance from $G_\sigma(t)$ to the nearest $G_{\sigma'}(t)$, $\sigma'\in\mathcal S\setminus\{\sigma\}$.
+\end{enumerate}
 \end{theorem}
 
 \begin{proof}
-As in the proof of Theorem~\ref{thm:E}: the hyperbolic term is at most $\mathcal H(t)$; the tail $\sum_{j\ge N}e^{-\lambda_jt}$ is at most $e^{-\lambda_N(t-s)}\cZ_\Orb(s)$, with $\lambda_N\ge\tilde\lambda_N-\epsilon_N$ and $\cZ_\Orb(s)\le\frac A{4\pi s}+\beta+\mathcal H(s)$ (Lemma~\ref{lem:elem}); and the perturbation is at most $t\sum\epsilon_j$. If $E_N(t)$ is less than half the nearest gap at $\sigma$ and $\sigma$ passes, every other $\sigma'$ is at distance more than $E_N(t)$.
+As in the proof of Theorem~\ref{thm:E}: the hyperbolic term is at most $\mathcal H(t)$; for $0<s<t$ the tail $\sum_{j\ge N}e^{-\lambda_jt}$ is at most $e^{-\lambda_N(t-s)}\cZ_\Orb(s)$, with $\lambda_N\ge\tilde\lambda_N-\epsilon_N$ and $\cZ_\Orb(s)\le\frac A{4\pi s}+\beta+\mathcal H(s)$ (Lemma~\ref{lem:elem}); and the perturbation is at most $t\sum\epsilon_j$. Under (C1) the true signature passes, so it is $\sigma$; (C2) implies (C1).
 \end{proof}
 
-The hypotheses are a lower bound for the systole, an upper bound for the diameter, error bounds for the computed eigenvalues and the completeness of the computed list up to $\tilde\lambda_N$; for the triangle orbifolds below, twice the longest side bounds the diameter. We applied the certificate to the computed spectra of $\Orb(2,8,8)$ and $\Orb(3,3,12)$, about $2000$ eigenvalues each, complete below $1.6\times10^4$, and of eight orbifolds $\Orb_\vartheta$ of signature $(0;3,3,3,3)$, doubles of quadrilaterals with all angles $\frac\pi3$ and two mirror symmetries, with systoles from $2.634$ ($\vartheta=0$) down to $0.694$ ($\vartheta=2.8$) and $815$--$856$ eigenvalues each, complete up to $\lambda\approx2440$--$2560$. The spectra were computed with high-order finite elements and error estimates, and are in the public repository named in the data statement. The set $\mathcal S$ is all signatures of the same area with orders at most $M$. $N_{\rm apr}$ is the least $N$ for which the certificate succeeds at the best time on a grid from $0.002$ to $1$; $N_{\rm obs}$ is the least $N$ from which on, up to the end of the complete range, the data lie within half the nearest gap, the margin the certificate needs, judged against the data instead of against $E_N$.
+Criterion (C2) is the margin used in Theorem~\ref{thm:E}; (C1) is weaker and is the theorem's own conclusion. The test has five inputs, and its conclusion is only as good as they are.
+\begin{enumerate}[label=(\roman*)]
+\item The exact area $A$. The test decides among signatures of a known area; finitely many eigenvalues do not determine the area, and in our examples the signature is known by construction, so they are demonstrations of the test, not determinations of unknown orbifolds.
+\item A lower bound $\ell$ for the systole. Ours come from a complete enumeration of the short closed geodesics in high-precision floating point, rounded down (Section~\ref{sec:numerical}).
+\item An upper bound $\Delta$ for the diameter of the instance. Ours, $2\diam P$ for the double of a convex polygon $P$, are proved bounds; the class-level bound $D(A,\ell,M)$ of Theorem~\ref{thm:diam} can be used instead, at a large cost (Table~\ref{tab:practice}).
+\item Completeness: the computed list contains every eigenvalue up to $\tilde\lambda_N$, with multiplicity. This is not a technicality: deleting or inserting one eigenvalue shifts every later index, and can make the test pass for a wrong signature. Our completeness argument (Section~\ref{sec:numerical}) is conditional on the error estimates.
+\item The errors $\epsilon_j$. Ours are a-posteriori estimates, the difference between two discretisations, and not enclosures.
+\end{enumerate}
+So what the computations below establish is that the criterion of Theorem~\ref{thm:post} holds with the estimated errors; with guaranteed eigenvalue enclosures and a proved completeness, the same computation would decide the signature rigorously.
 
-\begin{table}[h]
+% BEGIN GENERATED TABLE inputs
+\begin{table}[t]
 \centering\footnotesize
-\caption{Eigenvalues needed on computed spectra, against $N$ of Theorem~\ref{thm:E} for the same class; ranges are over the family members, and the $N_{\rm apr}$ range over the seven of systole at least $0.846$.}\label{tab:practice}
-\begin{tabular}{@{}llllll@{}}
+\caption{Inputs of the test for the ten examples: exact area, the lower bound $\ell$ for the systole, the proved diameter bound $2\diam P$ and the computed diameter, the class-level bound $D(A,\ell,M)$ of Theorem~\ref{thm:diam}, and the complete range: the eigenvalues $\lambda\le\lambda_c$, $N_c$ of them, of the $n$ computed; for the family the trace test alone covers $\lambda<9.8\times10^3$, and the range above rests on the agreement of the eigenvalue counts of three discretisations.}\label{tab:inputs}
+\setlength{\tabcolsep}{4pt}\begin{tabular}{@{}lllllllll@{}}
 \toprule
-orbifold & $M$ & $|\mathcal S|$ & $N_{\rm obs}$ & $N_{\rm apr}$ & $N$ of Theorem~\ref{thm:E}\\
+orbifold & area & $\ell$ & $2\diam P$ & $\diam$ & $D$, $M=3$ & $D$, $M=12$ & $\lambda_c$ & $N_c$ of $n$\\
 \midrule
-$\Orb(2,8,8)$ & $12$ & $6$ & $3$ & $21$ & $6.8\times10^9$\\
-$\Orb(3,3,12)$ & $12$ & $6$ & $4$ & $39$ & $6.8\times10^9$\\
-$\Orb_\vartheta$, $(0;3,3,3,3)$ & $3$ & $3$ & $3$--$50$ & $33$--$694$ & $4.3\times10^4$--$3.7\times10^5$\\
-$\Orb_\vartheta$, $(0;3,3,3,3)$ & $12$ & $10$ & $5$--$98$ & $38$--$750$ & $7.4\times10^{12}$\\
+$\Orb(2,8,8)$ & $\pi/2$ & $2.256767$ & $4.897$ & $2.448$ & -- & $1125.4$ & $16000$ & $2002$ of $2845$\\
+$\Orb(3,3,12)$ & $\pi/2$ & $1.862604$ & $4.316$ & $2.158$ & -- & $1125.4$ & $16000$ & $2001$ of $2854$\\
+$\Orb_\vartheta$, $\vartheta=0.0$ & $4\pi/3$ & $2.633915$ & $4.585$ & $2.292$ & $150.9$ & $3001.2$ & $13360$ & $4451$ of $5815$\\
+$\Orb_\vartheta$, $\vartheta=0.4$ & $4\pi/3$ & $2.202695$ & $4.671$ & $2.336$ & $150.9$ & $3001.2$ & $13341$ & $4448$ of $5807$\\
+$\Orb_\vartheta$, $\vartheta=0.8$ & $4\pi/3$ & $1.831302$ & $4.922$ & $2.461$ & $150.9$ & $3001.2$ & $13315$ & $4437$ of $5809$\\
+$\Orb_\vartheta$, $\vartheta=1.2$ & $4\pi/3$ & $1.515737$ & $5.314$ & $2.657$ & $150.9$ & $3001.2$ & $13274$ & $4424$ of $5810$\\
+$\Orb_\vartheta$, $\vartheta=1.6$ & $4\pi/3$ & $1.250428$ & $5.820$ & $2.910$ & $150.9$ & $3001.2$ & $13266$ & $4424$ of $5806$\\
+$\Orb_\vartheta$, $\vartheta=2.0$ & $4\pi/3$ & $1.029128$ & $6.413$ & $3.206$ & $150.9$ & $3001.2$ & $13199$ & $4400$ of $5807$\\
+$\Orb_\vartheta$, $\vartheta=2.4$ & $4\pi/3$ & $0.845593$ & $7.069$ & $3.534$ & $150.9$ & $3001.2$ & $13155$ & $4387$ of $5811$\\
+$\Orb_\vartheta$, $\vartheta=2.8$ & $4\pi/3$ & $0.693994$ & $7.770$ & $3.885$ & $150.9$ & $3001.2$ & $13076$ & $4357$ of $5805$\\
 \bottomrule
 \end{tabular}
 \end{table}
+% END GENERATED TABLE inputs
 
-For the member of systole $0.694$ the certificate would need $t\le0.003$, where it needs more than the $815$ eigenvalues computed; this is a limit of the data, not of the method. Figure~\ref{fig:E3} plots the three counts against the systole of the member, for $M=3$ (open markers) and $M=12$ (filled), with the two triangle orbifolds at their own systoles in their colours: $N_{\rm obs}$ (circles), $N_{\rm apr}$ (diamonds) and the $N$ of Theorem~\ref{thm:E} (squares). The certificate needs between $10^2$ and $10^{11}$ times fewer eigenvalues than the a-priori count, and both practical counts grow as the systole falls, since closed geodesics then enter the heat trace earlier.
+\subsection{Numerical methods}\label{sec:numerical}
+
+\emph{Examples.} $\Orb(2,8,8)$ and $\Orb(3,3,12)$ are doubles of hyperbolic triangles; the eight orbifolds $\Orb_\vartheta$ of signature $(0;3,3,3,3)$, $\vartheta=0,0.4,\dots,2.8$, are doubles of geodesic quadrilaterals $P$ with all angles $\frac\pi3$ and two mirror symmetries, with $a,b$ the distances from the centre to two adjacent sides, $\sinh a\sinh b=\frac12$ and $\vartheta=\log(\sinh a/\sinh b)$.
+
+\emph{Discretisation and solver.} The spectrum of the double of $P$ is the union of the Neumann and Dirichlet spectra of $P$ (the reflection exchanging the copies splits $H^1$ into even and odd parts); for $\Orb_\vartheta$ the two mirror symmetries split each further into four sectors. Each problem $-\Delta_Eu=\lambda wu$, $w=4/(1-|z|^2)^2$, is solved in the Poincar\'e disc with $H^1$-conforming finite elements of order $p$ on meshes of uniform hyperbolic size $h$, the geodesic sides represented exactly as rational quadratic splines and the elements curved to order $p$, with NGSolve \cite{ngsolve,schoberl1997}; the mass quadrature is raised by $2p$. No grading is used: at a corner of angle $\pi/k$ the eigenfunctions extend by reflection to smooth functions, so there is no corner singularity, and the observed convergence is $h^{13}$ to $h^{19}$ at $p=10$ and geometric in $p$. Eigenvalues are computed by shift-invert Lanczos iteration (ARPACK \cite{arpack1998}) in overlapping spectral windows of $200$, one sparse factorisation per window; for $\Orb_\vartheta$ every eigenvalue is covered by two windows and clusters are resolved at relative $10^{-9}$.
+
+\emph{Error estimates.} The production level is $(h,p)=(0.05,10)$, and $\epsilon_j=\max(|\lambda_j(0.05,10)-\lambda_j(0.07,12)|,\ 10^{-14}\max(\lambda_j,1))$, the difference between two independent discretisations ($\epsilon_0=0$); in the complete ranges below it is at most $7.4\times10^{-8}$ relative. These are estimates, not bounds: conforming elements give upper bounds for the $\lambda_j$, but no lower bounds are computed. Table~\ref{tab:spectra} lists $\tilde\lambda_j$ and $\epsilon_j$ for $j\le40$ for the two triangle orbifolds.
+
+\emph{Completeness.} For the triangle orbifolds about $2850$ eigenvalues were computed (Neumann and Dirichlet together, up to $\lambda\approx2.2\times10^4$); the computed heat trace agrees with $\mathrm I+\mathrm E$ to $4.7\times10^{-13}$ at $t=0.0015$, within the error budget of $1.5\times10^{-11}$ formed by the $\epsilon_j$ and a tail bound from Weyl's law. A missing eigenvalue $\lambda$ would lower the trace by $e^{-0.0015\lambda}$, more than the budget when $\lambda<1.66\times10^4$; so, given the budget, no eigenvalue below $1.6\times10^4$ is missing or spurious, and we use the about $2000$ eigenvalues below $1.6\times10^4$ (Table~\ref{tab:inputs}). For $\Orb_\vartheta$ about $5800$ eigenvalues were computed per member; we use those below $0.8$ times the least sector maximum, where the eigenvalue counts of three discretisations agree exactly, $4357$ to $4451$ of them, and the trace test covers $\lambda<9.8\times10^3$, which contains every $\tilde\lambda_N$ that the test uses.
+
+\emph{Systoles and diameters.} Every closed geodesic of length at most $L$ has a representative $\gamma$ with $d(x_0,\gamma x_0)\le L+2r$, where $r=\max_{y\in P}d(x_0,y)$ (move a point of the axis into $P$ by the reflection group, in which $\Gamma$ is normal). Enumerating all tiles of the reflection tiling within distance $L+3r$ of $x_0$ by breadth-first search, with $L=4$, at $40$ and $50$ digits, gives the systole and the next length, computed in $40$- and $50$-digit floating-point arithmetic (agreeing to $10^{-30}$; not interval arithmetic); $\ell$ in Table~\ref{tab:inputs} is the systole rounded down at the sixth decimal, a margin of at least $5\times10^{-8}$. For the family the systole is $4b$, to $10^{-30}$. A point of the double is within $\diam P$ of a vertex, which lies in both copies, so $\diam\Orb\le2\diam P$, and for a convex geodesic polygon $\diam P$ is the largest distance between two vertices, in closed form; the computed diameter (by a grid and local optimisation over pairs of points in the same and in opposite copies) equals $\diam P$ in all ten cases.
+
+\emph{The test.} $G_\sigma(t)$ is evaluated by Gauss--Legendre quadrature of the integrals of Theorem~\ref{thm:trace} and checked against $30$-digit quadrature (worst difference $2.1\times10^{-15}$), and $\mathcal S$ is the set of all signatures of the same area with orders at most $M$. The time runs over $400$ log-spaced points in $[0.002,1]$ and $300$ in $[10^{-5},0.002)$, refined by $61$ points around each minimiser. The infimum over $s$ is taken on $240$ log-spaced values of $s/t$, which gives an upper bound for it and hence a valid $E_N$, and every reported count is confirmed with the infimum computed by Brent's method. Where the criterion fails within the complete range, Table~\ref{tab:practice} gives an estimate of the count, obtained by replacing $\tilde\lambda_N$ by the Weyl value $4\pi N/A$ and the data by $G_{\sigma(\Orb)}$; where both are available, the estimate is within $8\%$ of the count for $N<100$ and within $0.6\%$ for $N\ge400$.
+
+% BEGIN GENERATED TABLE spectra
+\begin{table}[t]
+\centering\scriptsize
+\caption{The computed eigenvalues $\tilde\lambda_j$, $1\le j\le40$, of $\Orb(2,8,8)$ and $\Orb(3,3,12)$, with the a-posteriori error estimates $\epsilon_j$ (Section~\ref{sec:numerical}); N or D marks the boundary condition on the triangle. aeb means $a\times10^b$.}\label{tab:spectra}
+\setlength{\tabcolsep}{2pt}\begin{tabular}{@{}rllllll|rllllll@{}}
+\toprule
+$j$ & \multicolumn{3}{l}{$\Orb(2,8,8)$} & \multicolumn{3}{l|}{$\Orb(3,3,12)$} & $j$ & \multicolumn{3}{l}{$\Orb(2,8,8)$} & \multicolumn{3}{l}{$\Orb(3,3,12)$}\\
+\midrule
+1 & 3.838887 & 6e-13 & N & 3.499847 & 6e-13 & N & 21 & 167.998617 & 2e-11 & N & 161.538503 & 3e-11 & D\\
+2 & 8.249555 & 1e-12 & N & 11.569825 & 2e-12 & N & 22 & 169.204494 & 3e-11 & N & 166.719455 & 2e-11 & N\\
+3 & 18.658820 & 3e-12 & N & 14.938686 & 2e-12 & N & 23 & 175.228988 & 3e-11 & D & 173.608760 & 3e-11 & N\\
+4 & 23.078558 & 4e-12 & N & 24.118238 & 4e-12 & N & 24 & 185.202025 & 3e-11 & N & 181.698972 & 3e-11 & D\\
+5 & 36.238392 & 6e-12 & N & 37.822226 & 7e-12 & D & 25 & 189.533915 & 3e-11 & D & 202.559888 & 3e-11 & N\\
+6 & 40.115892 & 7e-12 & D & 40.423926 & 7e-12 & N & 26 & 200.566930 & 3e-11 & N & 202.958052 & 3e-11 & N\\
+7 & 44.017133 & 7e-12 & N & 48.211168 & 7e-12 & N & 27 & 211.425387 & 4e-11 & D & 204.771871 & 4e-11 & D\\
+8 & 61.026311 & 9e-12 & N & 53.207062 & 8e-12 & N & 28 & 222.371124 & 4e-11 & D & 206.682902 & 3e-11 & N\\
+9 & 67.610532 & 1e-11 & N & 66.279527 & 1e-11 & N & 29 & 223.648572 & 3e-11 & N & 227.273217 & 4e-11 & D\\
+10 & 73.663812 & 1e-11 & D & 72.365158 & 1e-11 & D & 30 & 223.920845 & 4e-11 & N & 229.760869 & 3e-11 & N\\
+11 & 74.926708 & 1e-11 & N & 81.277984 & 1e-11 & N & 31 & 237.665383 & 3e-11 & N & 239.440313 & 4e-11 & N\\
+12 & 86.709305 & 1e-11 & N & 90.636501 & 1e-11 & N & 32 & 256.692805 & 4e-11 & N & 255.788123 & 5e-11 & D\\
+13 & 97.877714 & 2e-11 & D & 97.998737 & 2e-11 & D & 33 & 257.309064 & 5e-11 & D & 261.196467 & 4e-11 & N\\
+14 & 111.003768 & 2e-11 & N & 109.570347 & 2e-11 & N & 34 & 265.479333 & 4e-11 & N & 262.875886 & 4e-11 & N\\
+15 & 115.206443 & 2e-11 & N & 111.368138 & 2e-11 & D & 35 & 276.783858 & 5e-11 & D & 277.315470 & 5e-11 & D\\
+16 & 116.602518 & 2e-11 & N & 114.215670 & 2e-11 & N & 36 & 281.540794 & 4e-11 & N & 283.912357 & 5e-11 & D\\
+17 & 126.537514 & 2e-11 & D & 128.705567 & 2e-11 & N & 37 & 284.499496 & 5e-11 & D & 286.879856 & 4e-11 & N\\
+18 & 135.941291 & 3e-11 & D & 130.442088 & 2e-11 & N & 38 & 290.071390 & 4e-11 & N & 290.870001 & 4e-11 & N\\
+19 & 146.339627 & 2e-11 & N & 154.694898 & 3e-11 & D & 39 & 306.680233 & 5e-11 & N & 304.639892 & 5e-11 & D\\
+20 & 148.439073 & 2e-11 & N & 156.359556 & 3e-11 & N & 40 & 318.921828 & 4e-11 & N & 310.173077 & 5e-11 & N\\
+\bottomrule
+\end{tabular}
+\end{table}
+% END GENERATED TABLE spectra
+
+\subsection{Results}
+
+% BEGIN GENERATED TABLE practice
+\begin{table}[t]
+\centering\footnotesize
+\caption{The a-posteriori test on computed spectra, with the instance inputs of Table~\ref{tab:inputs} (diameter bound $\Delta=2\diam P$) and with the class-level diameter bound $D(A,\ell,M)$ of Theorem~\ref{thm:diam}: the least $N$ for which criterion (C1) or (C2) of Theorem~\ref{thm:post} holds, with the time $t$ at which it holds; $>N_c$ means that the criterion fails for every $N$ up to the $N_c$ eigenvalues of the complete range, followed by the estimate of Section~\ref{sec:numerical} when it exceeds $N_c$; and the $N$ of Theorem~\ref{thm:E} for the class $\Cl(A,\ell,M)$.}\label{tab:practice}
+\setlength{\tabcolsep}{3.5pt}\begin{tabular}{@{}llllllll@{}}
+\toprule
+orbifold & $\ell$ & $M$ & $|\mathcal S|$ & (C1), $\Delta$ & (C2), $\Delta$ & (C1), $D(A,\ell,M)$ & $N$, Thm~\ref{thm:E}\\
+\midrule
+$\Orb(2,8,8)$ & $2.256767$ & $12$ & $6$ & $18$ ($0.0565$) & $20$ ($0.0556$) & $>2002$; $5611$ & $6.8\times10^{9}$\\
+$\Orb(3,3,12)$ & $1.862604$ & $12$ & $6$ & $25$ ($0.0412$) & $29$ ($0.0402$) & $>2001$; $8619$ & $6.8\times10^{9}$\\
+$\Orb_\vartheta$, $\vartheta=0.0$ & $2.633915$ & $3$ & $3$ & $24$ ($0.0897$) & $28$ ($0.0858$) & $855$ ($0.00375$) & $4.3\times10^{4}$\\
+$\Orb_\vartheta$, $\vartheta=0.0$ & $2.633915$ & $12$ & $10$ & $28$ ($0.0856$) & $33$ ($0.084$) & $>4451$; $23498$ & $7.4\times10^{12}$\\
+$\Orb_\vartheta$, $\vartheta=0.4$ & $2.202695$ & $3$ & $3$ & $36$ ($0.0626$) & $43$ ($0.0609$) & $1269$ ($0.00263$) & $4.3\times10^{4}$\\
+$\Orb_\vartheta$, $\vartheta=0.4$ & $2.202695$ & $12$ & $10$ & $43$ ($0.0607$) & $48$ ($0.0592$) & $>4448$; $34551$ & $7.4\times10^{12}$\\
+$\Orb_\vartheta$, $\vartheta=0.8$ & $1.831302$ & $3$ & $3$ & $58$ ($0.0424$) & $67$ ($0.0407$) & $1911$ ($0.00182$) & $4.5\times10^{4}$\\
+$\Orb_\vartheta$, $\vartheta=0.8$ & $1.831302$ & $12$ & $10$ & $67$ ($0.0407$) & $77$ ($0.0396$) & $>4437$; $51398$ & $7.4\times10^{12}$\\
+$\Orb_\vartheta$, $\vartheta=1.2$ & $1.515737$ & $3$ & $3$ & $94$ ($0.0277$) & $106$ ($0.0268$) & $2900$ ($0.00124$) & $6.8\times10^{4}$\\
+$\Orb_\vartheta$, $\vartheta=1.2$ & $1.515737$ & $12$ & $10$ & $106$ ($0.0268$) & $122$ ($0.026$) & $>4424$; $77150$ & $7.4\times10^{12}$\\
+$\Orb_\vartheta$, $\vartheta=1.6$ & $1.250428$ & $3$ & $3$ & $156$ ($0.0176$) & $177$ ($0.0171$) & $>4424$ & $1.0\times10^{5}$\\
+$\Orb_\vartheta$, $\vartheta=1.6$ & $1.250428$ & $12$ & $10$ & $177$ ($0.017$) & $201$ ($0.0165$) & $>4424$; $116576$ & $7.4\times10^{12}$\\
+$\Orb_\vartheta$, $\vartheta=2.0$ & $1.029128$ & $3$ & $3$ & $265$ ($0.011$) & $296$ ($0.0107$) & $>4400$; $6761$ & $1.6\times10^{5}$\\
+$\Orb_\vartheta$, $\vartheta=2.0$ & $1.029128$ & $12$ & $10$ & $295$ ($0.0107$) & $332$ ($0.0104$) & $>4400$; $176883$ & $7.4\times10^{12}$\\
+$\Orb_\vartheta$, $\vartheta=2.4$ & $0.845593$ & $3$ & $3$ & $451$ ($0.00685$) & $500$ ($0.00668$) & $>4387$; $10384$ & $2.4\times10^{5}$\\
+$\Orb_\vartheta$, $\vartheta=2.4$ & $0.845593$ & $12$ & $10$ & $499$ ($0.00667$) & $557$ ($0.00651$) & $>4387$; $268845$ & $7.4\times10^{12}$\\
+$\Orb_\vartheta$, $\vartheta=2.8$ & $0.693994$ & $3$ & $3$ & $767$ ($0.00425$) & $848$ ($0.00415$) & $>4357$; $15967$ & $3.7\times10^{5}$\\
+$\Orb_\vartheta$, $\vartheta=2.8$ & $0.693994$ & $12$ & $10$ & $847$ ($0.00415$) & $933$ ($0.00406$) & $>4357$; $409805$ & $7.4\times10^{12}$\\
+\bottomrule
+\end{tabular}
+\end{table}
+% END GENERATED TABLE practice
+
+Table~\ref{tab:practice} gives the counts. With the instance inputs the test succeeds on all ten examples: criterion (C1) holds with $18$ and $25$ eigenvalues for $\Orb(2,8,8)$ and $\Orb(3,3,12)$, and with $24$ to $767$ ($M=3$) and $28$ to $847$ ($M=12$) for the family, against $6.8\times10^9$, $4.3\times10^4$--$3.7\times10^5$ and $7.4\times10^{12}$ for Theorem~\ref{thm:E}. The count grows as the systole falls: the bound $\mathcal H$ carries $e^{-\ell^2/4t}$ and the factor $e^{3\Delta}$, so the usable times shrink, and the tail then needs $(\tilde\lambda_N-\epsilon_N)t$ of about $11$, so $\tilde\lambda_N$ and with it $N$ grow like $1/t$. For the member of systole $0.694$ the test needs $t\approx0.004$ and about $800$ eigenvalues, below $\lambda\approx2800$.
+
+The comparison with Theorem~\ref{thm:E} mixes two effects, and the last two columns separate them. Theorem~\ref{thm:E} knows only the class, through $\varepsilon$ and $D(A,\varepsilon,M)$; the test uses the data and a diameter bound for the instance. With the class-level diameter bound in place of $2\diam P$ the test fails within the computed ranges for the triangle orbifolds and for most of the family, and the estimates are $5.6\times10^3$ and $8.6\times10^3$ eigenvalues for the triangle orbifolds, $8.6\times10^2$ to $1.6\times10^4$ for the family with $M=3$ and $2.3\times10^4$ to $4.1\times10^5$ with $M=12$. So most of the gap between the test and Theorem~\ref{thm:E} is knowledge of the geometry, through $e^{3\Delta}$; the use of the data saves a further factor of about $20$--$50$ at $M=3$, $10^6$ for the triangle orbifolds and $10^7$--$3\times10^8$ for the family at $M=12$, where the worst case of Theorem~\ref{thm:E} is governed by the divergence of the cone expansion. An orbifold whose diameter is known is in practice one whose geometry is known; what the instance-level test checks in our examples is that the computed spectra are consistent with the trace formula of the stated signature and with no other.
+
+Figure~\ref{fig:E3} plots the counts against the systole, for $M=3$ (open markers) and $M=12$ (filled), with the two triangle orbifolds at their own systoles: the test with the instance inputs (diamonds), the $N$ of Theorem~\ref{thm:E} (squares) and, as a reference, the least $N_{\rm obs}$ from which on the data lie within half the nearest gap, judged against the true signature (circles); $N_{\rm obs}$ uses the unknown geodesic term implicitly and is not a decision rule.
 
 \paperfigure{E3}{\figcapEThree}{fig:E3}
 
@@ -490,7 +535,7 @@ For the member of systole $0.694$ the certificate would need $t\le0.003$, where 
 
 \subsection{The orders: high orders behave like cusps}
 
-We need the case of J{\o}rgensen's inequality \cite{jorgensen1976} in which one element is hyperbolic, with his argument; we could not obtain the text of \cite{jorgensen1976} and prove what we use.
+We use J{\o}rgensen's inequality \cite{jorgensen1976} (see \cite[Ch.~5]{beardon1983} for an exposition) in the case in which one element is hyperbolic and the group has no parabolic elements, and include a short proof of that case, by J{\o}rgensen's argument, for completeness.
 
 \begin{lemma}[J{\o}rgensen's inequality, hyperbolic case]\label{lem:jorgensen}
 Let $\Gamma\subset PSL(2,\R)$ be discrete with no parabolic elements, $A\in\Gamma$ hyperbolic and $B\in\Gamma$ an element that fixes neither fixed point of $A$ in $\partial\Hb$ and does not interchange them. Then, for any lifts to $SL(2,\R)$, $|\tr^2A-4|+|\tr[A,B]-2|\ge1$.
@@ -511,7 +556,7 @@ For $m\ge7$ put $s_\infty=\operatorname{arccosh}\frac2{\sqrt3}$, $h_m=\operatorn
 \end{proposition}
 
 \begin{proof}
-$\Orb=\Orb(2,3,m)$ is the double of the triangle $T$ with vertices $v_2,v_3,v_m$ and angles $\frac\pi2,\frac\pi3,\frac\pi m$; its group $\Gamma_m$ is the orientation-preserving subgroup of the group $\Gamma^*$ generated by the reflections in the sides of $T$, of which $T$ is a fundamental domain \cite{beardon1983}, and the folding $f:\Hb\to T$ is $1$-Lipschitz with $d(z,\Gamma^*v)=d(f(z),v)$ for each vertex $v$. By (H3), $\cosh d(v_2,v_3)=2\cos(\pi/m)/\sqrt3$, so $s_m=d(v_2,v_3)<s_\infty$, and $\cosh d(v_2,v_m)=1/(2\sin(\pi/m))$, so $d(v_2,v_m)=h_m$; the folding of $\Orb$ onto $T$ is $1$-Lipschitz and the identity on $T$, so the cone points of orders $2$ and $m$ are at distance $h_m$ in $\Orb$, and $h_m\ge\log\frac1{2\sin(\pi/m)}\ge\log\frac m{2\pi}$.
+$\Orb=\Orb(2,3,m)$ is the double of the triangle $T$ with vertices $v_2,v_3,v_m$ and angles $\frac\pi2,\frac\pi3,\frac\pi m$; its group $\Gamma_m$ is the orientation-preserving subgroup of the group $\Gamma^*$ generated by the reflections in the sides of $T$, of which $T$ is a fundamental domain \cite{beardon1983}, and the folding $f:\Hb\to T$, which sends each point to the unique point of $T$ in its $\Gamma^*$-orbit, is $1$-Lipschitz with $d(z,\Gamma^*v)=d(f(z),v)$ for each vertex $v$, since $T$ meets each orbit once and each tile is isometric to $T$. By (H3), $\cosh d(v_2,v_3)=2\cos(\pi/m)/\sqrt3$, so $s_m=d(v_2,v_3)<s_\infty$, and $\cosh d(v_2,v_m)=1/(2\sin(\pi/m))$, so $d(v_2,v_m)=h_m$; the folding of $\Orb$ onto $T$ is $1$-Lipschitz and the identity on $T$, so the cone points of orders $2$ and $m$ are at distance $h_m$ in $\Orb$, and $h_m\ge\log\frac1{2\sin(\pi/m)}\ge\log\frac m{2\pi}$.
 \emph{The cone ball.} Let $P$ be the union of the $2m$ tiles $gT$, $g\in\Gamma^*$, with vertex $v_m$, the translates under the stabiliser of $v_m$ in $\Gamma_m$ of the fundamental domain $T\cup s(T)$, $s$ the reflection in $[v_m,v_2]$. For $\gamma\in\Gamma_m$ outside that stabiliser, $\gamma P$ and $P$ have disjoint interiors. $P$ is star-shaped about $v_m$, and its boundary consists of images of $[v_2,v_3]$, at distance $h_m$ from $v_m$ because the angle of $T$ at $v_2$ is $\frac\pi2$. So $B(v_m,h_m)\subset\operatorname{int}P$, its translates are equal or disjoint, and its image is the cone of angle $2\pi/m$ and radius $h_m$.
 \emph{The systole.} Let $\gamma\in\Gamma_m$ be hyperbolic with axis $\alpha$ and $L=\ell(\gamma)$. As $\alpha$ is connected and unbounded, it is not covered by the disjoint open balls $gB(v_m,h_m)$; take $\tilde x\in\alpha$ outside them and $x=f(\tilde x)$, so $d(x,v_m)\ge h_m$. Write $x\in[v_m,q]$ with $q\in[v_2,v_3]$; as $d(v_m,\cdot)$ is convex on $[v_2,v_3]$ with minimum $h_m$ at $v_2$, $d(x,q)\le d(v_m,v_3)-h_m\le s_m$, so $d(x,v_3)\le2s_m$. So some elliptic point $\tilde w\in\Gamma^*v_3$, fixed by a rotation $\beta\in\Gamma_m$ by $\frac{2\pi}3$, lies at distance $r\le2s_m<2s_\infty$ from $\alpha$. The rotation $\beta$ fixes no point of $\partial\Hb$ and cannot interchange the endpoints of $\alpha$ (then $\beta^2$, a rotation of order $3$, would fix them), so Lemma~\ref{lem:jorgensen} and the trace identities give $4\sinh^2\frac L2(1+\frac34\cosh^2r)\ge1$, hence $L\ge\sigma_*$.
 \end{proof}
@@ -531,14 +576,14 @@ On the cone ball of Proposition~\ref{prop:233}, with metric $d\rho^2+\sinh^2\rho
 \end{proof}
 
 \begin{remark}[The order bound cannot be dropped]\label{rem:Mneeded}
-Let $A\ge\frac\pi3$ and $\varepsilon\le\sigma_*$. For every $N$ and $\delta$ there is $M$, for instance $M=(\lfloor\Lambda_N/\delta\rfloor+1)^{N-1}+7$, such that $\Cl(A,\varepsilon,M)$ contains $\Orb(2,3,m)$ and $\Orb(2,3,m')$, of different signatures, whose first $N$ eigenvalues agree to within $\delta$; whatever rule decides the signature from such data is wrong for one of them. So $N$ and $\delta$ in Theorem~\ref{thm:E} cannot depend on $A$ and $\varepsilon$ alone; an area bound and a systole bound do not bound the orders. For $A<\frac\pi3$ the question does not arise, since then $g=0$, $n=3$ and, by the case analysis of Lemma~\ref{lem:elem}, only finitely many triples occur.
+Let $A\ge\frac\pi3$ and $\varepsilon\le\sigma_*$. For every $N$ and $\delta$ there is $M$, for instance $M=(\lfloor\Lambda_N/\delta\rfloor+1)^{N-1}+7$, such that $\Cl(A,\varepsilon,M)$ contains $\Orb(2,3,m)$ and $\Orb(2,3,m')$, of different signatures, whose first $N$ eigenvalues agree to within $\delta$; whatever rule decides the signature from such data is wrong for one of them. So $N$ and $\delta$ in Theorem~\ref{thm:E} cannot depend on $A$ and $\varepsilon$ alone; an area bound and a systole bound do not bound the orders. For $A<\frac\pi3$ the question does not arise: then $g=0$ and $n=3$ by the case analysis of Lemma~\ref{lem:elem}, and a hyperbolic triad $p\le q\le r$ has $\frac1p+\frac1q\le\frac56$, so $\frac1r\ge1-\frac{\Area}{2\pi}-\frac56\ge\frac16-\frac A{2\pi}>0$ bounds $r$, and only finitely many triples occur.
 \end{remark}
 
-Figure~\ref{fig:E1} shows the computed eigenvalues $\lambda_1,\dots,\lambda_6$ of $\Orb(2,3,m)$ for $21$ orders from $7$ to $4096$, on logarithmic axes, with the bounds of Proposition~\ref{prop:N1} (thin dashed, one for each $j$) and the line $\frac14$. The spectrum of $\Orb(2,3,m)$ is the union of the Neumann and Dirichlet spectra of the triangle; we computed both by high-order finite elements at two mesh levels, which agree to at least $2.3\times10^{-10}$ relative. Every eigenvalue lies below its bound and decreases in $m$, and $\lambda_1$ falls from $44.89$ at $m=7$ to $0.473$ at $m=4096$; the computed values suggest $\lambda_j\to\frac14$, which Proposition~\ref{prop:N1} does not prove, and the plotted quantity $h_m^2(\lambda_j-\frac14)/\pi^2$ in panel (b) approaches $j^2$ slowly, the behaviour of an interval of length $h_m$, an observation and not a result.
+Figure~\ref{fig:E1} shows the computed eigenvalues $\lambda_1,\dots,\lambda_6$ of $\Orb(2,3,m)$ for $21$ orders from $7$ to $4096$, on logarithmic axes, with the bounds of Proposition~\ref{prop:N1} (thin dashed, one for each $j$) and the line $\frac14$. The spectrum of $\Orb(2,3,m)$ is the union of the Neumann and Dirichlet spectra of the triangle; we computed both by high-order finite elements at two mesh levels, which agree to at least $2.3\times10^{-10}$ relative. Every computed eigenvalue lies below its bound and decreases in $m$ (an observation, not proved here), and $\lambda_1$ falls from $44.89$ at $m=7$ to $0.473$ at $m=4096$; the computed values suggest $\lambda_j\to\frac14$, which Proposition~\ref{prop:N1} does not prove (it gives only the upper bounds), and the plotted quantity $h_m^2(\lambda_j-\frac14)/\pi^2$ in panel (b) is still between $6\%$ and $16\%$ above $j^2$, the value for an interval of length $h_m$, at $m=4096$: an observation and not a result.
 
 \paperfigure{E1}{\figcapEOne}{fig:E1}
 
-\subsection{The systole: an open question}
+\subsection{The systole: an open question}\label{sec:systole}
 
 Pinching a closed geodesic produces small eigenvalues, but this does not show that the systole bound is needed. Fix $k\in\{3,4\}$, $b>0$ and $a$ with $\sinh a\sinh b=\cos\frac\pi k$; in $\Hb$ take orthogonal lines $\beta,\beta'$ through $O$, and let $Q_{k,b}$ be the quadrilateral bounded by the two lines perpendicular to $\beta$ at distance $b$ from $O$ and the two perpendicular to $\beta'$ at distance $a$. In the hyperboloid, with $O=(1,0,0)$ and $\beta,\beta'$ in the planes $x_2=0$, $x_1=0$, the unit normals $(\sinh b,\cosh b,0)$ and $(\sinh a,0,\cosh a)$ of adjacent sides have inner product $-\sinh a\sinh b$, of modulus less than $1$, so these sides meet at an angle with cosine $\sinh a\sinh b$ or its negative (Lemma~\ref{lem:H}, proof of (H3)); the quarter of $Q_{k,b}$ cut out by $\beta,\beta'$ has three right angles and angle sum less than $2\pi$, so its fourth angle is acute, equal to $\frac\pi k$. Let $\Orb_{k,b}$ be the double of $Q_{k,b}$, a sphere with four cone points of order $k$.
 
@@ -550,13 +595,13 @@ $\Orb_{k,b}$ contains an embedded collar $\{|\rho|<a\}\times\R/4b\Z$, with metri
 In Fermi coordinates $(\rho,s)$ about $\beta$ the sides perpendicular to $\beta$ are $s=\pm b$, and the other two sides are at distance at least $a$ from $\beta$, their common perpendiculars with $\beta$ having length $a$; so $\{|\rho|<a,|s|\le b\}$ lies in $Q_{k,b}$, and its double is the collar, whose core, the double of $\beta\cap Q_{k,b}$, separates the two pairs of cone points. The reflection in $\beta$ induces an isometry exchanging the two sides. For $\lambda_1$ take $f=\rho/a$ on the collar and $\pm1$ outside, odd under that isometry, so $\int f=0$, and compute the Rayleigh quotient; for $\lambda_j$ use \eqref{eq:rayleigh} with $w=\cosh\rho$ and $j+1$ sine arches on disjoint intervals of length $a/(2(j+1))$ in $[\frac a2,a)$, where $q\le\frac14+\frac1{4\cosh^2(a/2)}$.
 \end{proof}
 
-Since $Q_{k,b}$ is symmetric under $a\leftrightarrow b$, $\lambda_1(\Orb_{k,b})\to0$ also as $b\to\infty$, and the intermediate value theorem gives $b,b'$ in a compact interval with $\lambda_1(\Orb_{3,b})=\lambda_1(\Orb_{4,b'})$: two eigenvalues fail to decide the signature already at a fixed systole, which only says that $N=2$ is too small.
+Since $Q_{k,b}$ is symmetric under $a\leftrightarrow b$, $\lambda_1(\Orb_{k,b})\to0$ also as $b\to\infty$, and the intermediate value theorem gives $b,b'$ in a compact interval with $\lambda_1(\Orb_{3,b})=\lambda_1(\Orb_{4,b'})$: two orbifolds of different signatures, with systoles in a compact range, share $\lambda_1$, which only says that $N=2$ is too small.
 
 \begin{problem}[Is a systole bound needed?]\label{prob:systole}
-Fix $A$ and $M$. Can $N$ and $\delta$ in Theorem~\ref{thm:E} be chosen independently of $\varepsilon$?
+Fix $A$ and $M$. (a) Is there an $N$, independent of $\varepsilon$, such that orbifolds in $\Cl(A,0^+,M)=\bigcup_{\varepsilon>0}\Cl(A,\varepsilon,M)$ with the same first $N$ eigenvalues have the same signature? (b) Can $N$ and $\delta>0$ in Theorem~\ref{thm:E} both be chosen independently of $\varepsilon$?
 \end{problem}
 
-With $A$ and $M$ fixed only finitely many signatures occur, so the pigeonhole argument of Proposition~\ref{prop:N1} is not available, and the number of eigenvalues that pinching drives to $0$ is bounded in terms of $A$. A negative answer needs two degenerating families of different signatures whose low spectra converge to the same limit: the upper bounds above give $\limsup\lambda_j\le\frac14$, and the missing input is a matching lower bound $\lambda_j\ge\frac14-o(1)$ for $2\le j<N$ along both families. Such a bound might come from finite manifold covers of bounded degree, whose spectra contain those of the orbifolds, together with the spectral theory of degenerating hyperbolic surfaces; we have not carried this out. The $N$ of Theorem~\ref{thm:E} grows like $\varepsilon^{-3}\log\frac1\varepsilon$ as $\varepsilon\to0$ once $t_3$ binds.
+Part (a) is the signature-level analogue of the conjecture of Buser and Courtois \cite[pp.~523--524]{busercourtois1990}. With $A$ and $M$ fixed only finitely many signatures occur, so the pigeonhole argument of Proposition~\ref{prop:N1} is not available. Under pinching the small eigenvalues converge to those of the cusped limit \cite{hejhal1990}, \cite[p.~264]{ji1993}, and infinitely many eigenvalues accumulate at $\frac14$ \cite[p.~67]{wolpert1992a}. So a negative answer to (b) would follow from two degenerating families of different signatures whose cusped limits have the same eigenvalues below $\frac14$, while (a) asks for exact equality and is not settled by such limits. In our setting: the upper bounds above give $\limsup\lambda_j\le\frac14$, and the missing input is a matching lower bound $\lambda_j\ge\frac14-o(1)$ for $2\le j<N$ along both families. Such a bound might come from finite manifold covers of bounded degree, whose spectra contain those of the orbifolds, together with the spectral theory of degenerating hyperbolic surfaces; we have not carried this out. Our formulas give an $N$ of Theorem~\ref{thm:E} that grows roughly like $\varepsilon^{-3}\log\frac1\varepsilon$ as $\varepsilon\to0$ once $t_3$ binds; this is an observation on the formulas, not a statement about the least admissible $N$.
 
 \backmatter
 
@@ -575,7 +620,7 @@ The authors have no competing interests to declare that are relevant to the cont
 Not applicable.
 
 \bmhead{Data and code availability}
-All code and data are in the public repository \url{https://github.com/Ali-M658/Arithmetic-verification}. One command, \texttt{bash code/run\_all.sh}, reruns every check (with \texttt{--quick} for the exact-arithmetic suite and \texttt{--full} for the long computations, including the eigenvalue computations of Figure~\ref{fig:E1}), and \texttt{DATA-MANIFEST.md} lists every data file with its generating script and checksum. Every constant of Tables~\ref{tab:D}--\ref{tab:practice} is recomputed there at $40$ digits. An archived copy will be deposited at Zenodo: \textbf{[PLACEHOLDER: Zenodo DOI, to be minted at submission.]}
+The code and data are archived at Zenodo, with all six authors as creators: \textbf{[PLACEHOLDER: Zenodo DOI, to be minted at submission.]} That deposit is the primary record and the version to cite. The development repository, maintained by A.~Agadi, is \url{https://github.com/Ali-M658/Arithmetic-verification}. One command, \texttt{bash code/run\_all.sh}, reruns every check (\texttt{--quick} for the exact-arithmetic suite, \texttt{--full} for the long computations, including the eigenvalue computations of Figure~\ref{fig:E1}), and \texttt{DATA-MANIFEST.md} lists every data file with its generating script and checksum. Table~\ref{tab:D} is produced by \texttt{theory/eigen/diameter.py}, Table~\ref{tab:E} by \texttt{theory/eigen/theorem\_e.py}, and Tables~\ref{tab:inputs}, \ref{tab:spectra} and~\ref{tab:practice} by \texttt{paper/eigen/tools/make\_tables.py} from the data written by \texttt{theory/eigen/instances.py} (systoles, diameters) and \texttt{theory/eigen/practice.py} (the test); the eigenvalues are those of \texttt{numerics/data/} and \texttt{numerics/moduli/data/}, computed by \texttt{numerics/solve.py} and \texttt{numerics/moduli/solve\_moduli.py}, and \texttt{theory/eigen/METHODS.md} documents the numerical methods with references to the code. Every constant of Tables~\ref{tab:D} and~\ref{tab:E} is recomputed at $40$ digits.
 
 \bmhead{Author contributions}
 \textbf{[PLACEHOLDER: author contribution statement, to be supplied by the authors before submission.]}
@@ -583,22 +628,7 @@ All code and data are in the public repository \url{https://github.com/Ali-M658/
 \bmhead{Use of AI tools}
 \textbf{[PLACEHOLDER: statement on the use of AI tools in preparing this manuscript, to be written by the authors. Springer Nature's guidelines ask for any such use, beyond AI-assisted copy editing, to be documented in the Methods section or, where there is none, in a suitable alternative part of the manuscript.]}
 
-\begin{appendices}
 
-\section{The trace formula for the heat function}\label{app:trace}
-
-Dryden and Strohmaier state Theorem~\ref{thm:trace} for $h=\hat g$ with $g\in C_c^\infty(\R)$ even \cite[eq.~(1)]{drydenstrohmaier2009}. The following standard approximation extends it to the heat function.
-
-\begin{lemma}[The heat function is admissible]\label{lem:admissible}
-Fix an even $\omega\in C_c^\infty(\R)$, $0\le\omega\le1$, $\omega=1$ on $[-1,1]$, and put $h_\varrho=\hat g_\varrho$ with $g_\varrho=g_t\,\omega(\cdot/\varrho)$. As $\varrho\to\infty$, every term of the trace formula for $h_\varrho$ tends to the corresponding term for $h_t$; hence Theorem~\ref{thm:trace} holds.
-\end{lemma}
-
-\begin{proof}
-\emph{Counting eigenvalues.} Let $\lambda_j=\frac14+r_j^2$ and take $\psi\in C_c^\infty(\R)$ even, nonnegative, $\int\psi=1$, supported in $[-\epsilon,\epsilon]$ with $2\epsilon<\ell(\Orb)$, $\epsilon\le1$; then $|\hat\psi|\le1$ and $\hat\psi(r)\ge\cos(\epsilon r)\ge\frac12$ for $|r|\le1$. The function $\hat\psi(r-T)^2+\hat\psi(r+T)^2$ is $\hat g$ for $g=2\cos(Tu)(\psi*\psi)(u)$, supported in $[-2\epsilon,2\epsilon]$, so the hyperbolic side vanishes for it; its identity term is $O(T+1)$, each elliptic term $O(1)$, and the finitely many imaginary $r_j$ contribute $O(1)$. As it is at least $\frac14$ on $|r-T|\le1$, $\#\{j:|r_j-T|\le1\}=O(T+1)$, so $\#\{\lambda_j\le x\}=O(x)$.
-\emph{Convergence.} On the hyperbolic side $0\le g_\varrho\le g_t$, with equality on $[0,\varrho]$, and Lemma~\ref{lem:counting} gives dominated convergence. With $f_\varrho=g_t(1-\omega(\cdot/\varrho))$, $h_t-h_\varrho=\hat f_\varrho$ and $\|f_\varrho^{(k)}\|_{L^1}\to0$ for $k\le3$, so $|\hat f_\varrho(r)|\le\epsilon_\varrho\min(1,|r|^{-3})$ with $\epsilon_\varrho\to0$; this handles the identity and elliptic terms and, as $\sum_j\min(1,|r_j|^{-3})<\infty$, the real $r_j$; for imaginary $r_j$, $|\hat f_\varrho(r_j)|\le\int|f_\varrho|e^{|u|/2}\to0$.
-\end{proof}
-
-\end{appendices}
 
 \bibliography{references}
 

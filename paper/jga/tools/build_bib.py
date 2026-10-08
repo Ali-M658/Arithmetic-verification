@@ -95,7 +95,9 @@ SOURCES = {
     "watson2005": ("zbmath", "1076.35042"),
     "philippe2008": ("doi", "10.5802/aif.2424"),
     "philippe2010gd": ("doi", "10.1007/s10711-010-9473-z"),
-    "changdeturck1989": ("zbmath", "0721.58053"),
+    # round 4: the publisher DOI; the JSTOR DOI 10.2307/2047071 of zbMATH 0721.58053 resolves to a
+    # Crossref record whose DOI field is this one (content negotiation, 2026-10-08)
+    "changdeturck1989": ("doi", "10.1090/S0002-9939-1989-0953738-7"),
     "strohmaieruski2018": ("doi", "10.1007/s00220-018-3094-z"),
     "ngsolve": ("document", "https://api.zbmath.org/v1/software/_search?search_string=NGSolve"),
     "aby2015": ("doi", "10.1109/sampta.2015.7148965"),
@@ -125,6 +127,21 @@ SOURCES = {
     "berardwebb2022": ("doi", "10.1007/s00209-021-02758-y"),
     # the authors' companion manuscript (paper/arith/note.tex), not a third-party record
     "companion": ("local", "paper/arith/note.tex"),
+    # the authors' companion manuscript submitted at the same time (paper/eigen/manuscript.tex)
+    "companionB": ("local", "paper/eigen/manuscript.tex"),
+    # added in referee round 4 (citation repairs; texts read are logged in SOURCES.md, round 4)
+    "doylerossetti2008": ("zbmath", "1146.58026"),          # arXiv:math/0605765, New York J. Math. 14
+    "proctorstanhope2010": ("doi", "10.1016/j.difgeo.2009.03.015"),
+    "gittins2024": ("doi", "10.1307/mmj/20216126"),
+    "nrs2019": ("doi", "10.1007/978-3-030-04161-8_18"),
+    "nrs2025": ("doi", "10.1007/s40316-024-00237-4"),
+    "akr2026": ("doi", "10.1007/s40316-025-00263-w"),
+    "cheeger1983": ("doi", "10.4310/jdg/1214438175"),
+    "bruningseeley1987": ("doi", "10.1016/0022-1236(87)90073-5"),
+    "dowker1977": ("doi", "10.1088/0305-4470/10/1/023"),
+    "dowker1989": ("doi", "10.1063/1.528395"),
+    "bkd1996": ("doi", "10.1007/bf02517895"),
+    "ostrowski1940a": ("doi", "10.1007/bf02546329"),        # first part, pp. 99-155
 }
 
 # Documents with no registry record: fields read off the fetched document (SOURCES.md).
@@ -162,6 +179,18 @@ LOCAL_ENTRIES = {
   note         = {Companion manuscript, in preparation},
   year         = {2026}
 }"""),
+    "companionB": ("\\title[Finitely many eigenvalues determine the signature]{Finitely many eigenvalues determine the signature of a hyperbolic orbifold}", """@unpublished{companionB,
+  author       = {Gang, Palaash and Agadi, Akshaj and Veluri, Arjun and Wang, Jerry and Barreto, Jeremy and Chouthaiwale, Aarin},
+  title        = {Finitely many eigenvalues determine the signature of a hyperbolic orbifold},
+  note         = {Companion manuscript, submitted},
+  year         = {2026}
+}"""),
+    "companionA": ("\\title[How much of a hyperbolic orbifold does heat hear?]{How much of a hyperbolic orbifold does heat hear?}", """@unpublished{companionA,
+  author       = {Gang, Palaash and Agadi, Akshaj and Veluri, Arjun and Wang, Jerry and Barreto, Jeremy and Chouthaiwale, Aarin},
+  title        = {How much of a hyperbolic orbifold does heat hear?},
+  note         = {Companion manuscript, submitted},
+  year         = {2026}
+}"""),
 }
 DOCUMENT_CHECK = {"pari2172": "released 05/03/2025", "ngsolve": "NGSolve"}
 
@@ -191,9 +220,14 @@ EVIDENCE = {"ostrowski1940_reprint": "10.1007/978-3-0348-9355-8_50", "ucar2017_d
             # book records: editors of the two incollection entries; the next chapter of the
             # Bolte-Steiner volume (it starts on p. 121, so Marklof's chapter is pp. 83-120)
             "marklof2011_book": "10.1017/cbo9781139108782", "marklof2011_next": "10.1017/cbo9781139108782.004",
-            "alloucheshallit1999_book": "10.1007/978-1-4471-0551-0"}
+            "alloucheshallit1999_book": "10.1007/978-1-4471-0551-0",
+            # round 4: the book record of the 2017 MATRIX Annals (editors of nrs2019)
+            "nrs2019_book": "10.1007/978-3-030-04161-8"}
 # zbMATH records used as evidence for one field each (series, pages, title punctuation)
 EVIDENCE_ZB = {"alloucheshallit1999_zb": "1005.11005", "dggw2017erratum_zb": "1404.58043",
+               # round 4: pages missing from Crossref (JDG records; PAMS record gives "1033-1033"),
+               # and the series volume of the MATRIX Annals
+               "cheeger1983_zb": "0529.58034", "changdeturck1989_zb": "0721.58053", "nrs2019_zb": "1447.35230",
                "garbinjorgenson2020_zb": "1446.58010", "schoberl1997_zb": "0883.68130"}
 # Publisher locations missing from the Crossref record, read from zbMATH Open (the record is
 # fetched as evidence and must contain the location string).
@@ -247,7 +281,10 @@ LEGACY_FILL = {"dggw2008": ["pages"], "mckeansinger1967": ["pages"],
                "sunada1985": ["pages"], "griesermaronna2013": ["pages"]}
 # Pages missing from the Crossref record, read from a fetched zbMATH record (EVIDENCE_ZB).
 PAGES_ZB = {"dggw2017erratum": ("dggw2017erratum_zb", "221-222"),
-            "garbinjorgenson2020": ("garbinjorgenson2020_zb", "84-128")}
+            "garbinjorgenson2020": ("garbinjorgenson2020_zb", "84-128"),
+            "cheeger1983": ("cheeger1983_zb", "575-657"),
+            # the AMS PDF (Internet Archive copy, SOURCES.md round 4) runs from p. 1033 to p. 1038
+            "changdeturck1989": ("changdeturck1989_zb", "1033-1038")}
 
 # ---------------------------------------------------------------------------------------
 # Style layer (review/literature-pass/CITATIONS.md section 4): sentence-case titles with
@@ -330,6 +367,19 @@ TITLE_SC = {
     "wooley2019": "Nested efficient congruencing and relatives of {Vinogradov}'s mean value theorem",
     "crootmaoyip2026": "The {Prouhet}--{Tarry}--{Escott} problem for subsets with small doubling in integral domains",
     "cremona1997": "Algorithms for modular elliptic curves",
+    # round 4 additions
+    "doylerossetti2008": "Isospectral hyperbolic surfaces have matching geodesics",
+    "proctorstanhope2010": "Spectral and geometric bounds on 2-orbifold diffeomorphism type",
+    "gittins2024": "Do the {Hodge} spectra distinguish orbifolds from manifolds? {P}art 1",
+    "nrs2019": "How to hear the corners of a drum",
+    "nrs2025": "The heat kernel on curvilinear polygonal domains in surfaces",
+    "akr2026": "Polyakov formulas for conical singularities in two dimensions",
+    "cheeger1983": "Spectral geometry of singular {Riemannian} spaces",
+    "bruningseeley1987": "The resolvent expansion for second order regular singular operators",
+    "dowker1977": "Quantum field theory on a cone",
+    "dowker1989": "Heat kernel expansion on a generalized cone",
+    "bkd1996": "Heat-kernels and functional determinants on the generalized cone",
+    "ostrowski1940a": "Recherches sur la m{\\'e}thode de {Graeffe} et les z{\\'e}ros des polynomes et des s{\\'e}ries de {Laurent}",
 }
 # Titles whose text (not only its case) comes from a second fetched record.
 TITLE_EXTRA_SOURCE = {
@@ -353,6 +403,8 @@ JOURNAL = {
     "mazur1977": "Publications Math{\\'e}matiques de l'IH{\\'E}S",
     "borweiningalls1994": "L'Enseignement Math{\\'e}matique (2)",
     "wooley2019": "Proceedings of the London Mathematical Society (3)",
+    "nrs2025": "Annales Math{\\'e}matiques du Qu{\\'e}bec",
+    "akr2026": "Annales Math{\\'e}matiques du Qu{\\'e}bec",
 }
 AUTHORS = {
     # initials as on the AMS article page (review/literature-pass/CITATIONS.md section 4)
@@ -367,6 +419,8 @@ AUTHORS = {
     # Crossref splits the name as family "Keng", given "Hua Loo"; the zbMATH Open record of the
     # same book (an:0483.10001, fetched by the round-3 reference check) has "Hua, Loo Keng"
     "hua1982": "Hua, Loo Keng",
+    # Crossref gives the initials without points
+    "dowker1977": "Dowker, J. S.",
 }
 # Further fields, each from a fetched record named in the comment.
 EXTRA = {
@@ -388,6 +442,10 @@ EXTRA = {
     # the 1997 printing is the second edition (ISBN 0-521-59820-6 in the zbMATH record)
     "cremona1997": {"edition": "2nd"},
     # the eigenvalue data are the ancillary files of arXiv:1110.2150v4, cited in the text
+    # round 4: the chapter's book (Crossref book record nrs2019_book; series volume, zbMATH 1447.35230)
+    "nrs2019": {"booktitle": "2017 {MATRIX} Annals", "editor": "Wood, David R. and de Gier, Jan and Praeger, Cheryl E. and Tao, Terence",
+                "series": "MATRIX Book Series", "volume": "2"},
+    "doylerossetti2008": {"note": "Zbl 1146.58026; arXiv:math/0605765"},
 }
 CHECK_EXTRA = {   # (key, record, substring that must occur in the record) for EXTRA and JOURNAL
     "marklof2011": ("marklof2011_address_zbmath", "Lecture Note Series 397"),
@@ -397,6 +455,8 @@ CHECK_EXTRA = {   # (key, record, substring that must occur in the record) for E
     "schinzel1996": ("schinzel1996", "No. 4, 587-588"),
     "ucar2017": ("ucar2017_datacite", "10.18452/18463"),
     "cremona1997": ("cremona1997", "0-521-59820-6"),
+    "nrs2019": ("nrs2019_zb", "2017 MATRIX annals", "MATRIX Book Ser. 2"),
+    "doylerossetti2008": ("doylerossetti2008", "New York J. Math. 14, 193-204 (2008)"),
     "berardwebb1995": ("berardwebb1995", "320, No. 5, 533-536 (1995)",
                        "On ne peut pas entendre l'orientabilit\u00e9 d'une surface"),
 }

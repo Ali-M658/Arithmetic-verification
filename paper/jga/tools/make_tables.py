@@ -136,7 +136,7 @@ def table_thresholds_full():
         "\\begin{table}[ht]\n"
         "\\caption{Thresholds for exact recovery of integer orders under the uniform model "
         "$|\\delta c_j|\\le\\delta$ on the heat invariants: the closed form $\\delta_{\\rm thm}$ of "
-        "Theorem~\\ref{P-thm:S4} of the paper, the threshold $\\delta_{\\rm cert}$ certified in exact arithmetic "
+        "Theorem~\\ref{thm:S4}, the threshold $\\delta_{\\rm cert}$ certified in exact arithmetic "
         "by Proposition~\\ref{prop:S5}, a constructed failure $\\delta_{\\rm up}$, which minimizes "
         "$\\|c(\\tilde q)-c(m)\\|_\\infty$ over real monic $\\tilde q$ with a root, or a complex pair, of real "
         "part $a\\pm\\frac12$, where rounding is a tie; then the ratio "

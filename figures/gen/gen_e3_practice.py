@@ -1,56 +1,51 @@
-"""E3 data (eigen paper, Section 7): eigenvalues needed in practice against the a-priori count.
+"""E3 data (eigen paper, Section 7): eigenvalues needed by the a-posteriori test against the a-priori count.
 
-    python3 figures/gen/gen_e3_practice.py        (a few seconds)
+    python3 figures/gen/gen_e3_practice.py        (a second)
 
-From theory/eigen/data/practice.csv (written by theory/eigen/practice.py): for each computed
-orbifold and M, the least N_obs and the least N_apr over the time grid; and N of Theorem thm:E for
-the class (Area, systole, M), recomputed by eigen_common.theorem_E_constants. Systoles: the
-triangle orbifolds as in practice.py, the family members from numerics/moduli/data/geometries.json.
-Writes figures/data/e3_practice.csv. Asserted: the minima reproduce Table tab:practice of the eigen
-paper (O(2,8,8): 3, 21; O(3,3,12): 4, 39; family M = 3: 3-50 and 33-694; M = 12: 5-98 and 38-750,
-the member of systole 0.694 having no N_apr); N_apr < N everywhere, by a factor of at least 100.
+From theory/eigen/data/practice.csv (written by theory/eigen/practice.py) and
+theory/eigen/data/instances.csv (theory/eigen/instances.py): for each computed orbifold and M (the two
+triangle orbifolds at M = 12, the eight members of the family (0;3,3,3,3) at M = 3 and 12), with the
+instance inputs (systole lower bound from the complete enumeration, diameter bound 2 diam P) and the
+full committed spectra:
+  N_obs     the least N over the t-grid from which on the data lie within half the nearest gap of
+            G_sigma_0 (the manuscript's N_obs, on the fine grid);
+  N_apr     the test's count N_test for criterion (C1) of Theorem 7.1 (column kept under its old name,
+            which figures/src/E3.py reads); N_test_C2 for criterion (C2) alongside;
+  N_theory  N of Theorem 6.2 for Cl(Area, systole lower bound, M).
+The x-coordinate is the systole (computed value).  Writes figures/data/e3_practice.csv.
+Asserted: the values of the revised Table 3 (O(2,8,8): N_obs 3, N_test 18 (C1), 20 (C2); O(3,3,12): 3,
+25, 29; family M = 3: N_obs 3-43, N_test(C1) 24-767; M = 12: 4-63, 28-847; all ten succeed);
+N_obs <= N_test(C1) <= N_test(C2) and 100 N_test(C2) < N_theory everywhere.
 """
-import json
-from collections import defaultdict
+from common import read_csv, write_csv
 
-import mpmath as mp
-
-from common import ROOT, import_from, read_csv, write_csv
-
-ec, _ = import_from("theory/eigen", "eigen_common")
-mp.mp.dps = 30
+NAMES = {"O(2,8,8)": "O(2, 8, 8)", "O(3,3,12)": "O(3, 3, 12)"}   # the labels figures/src/E3.py expects
 
 
 def main():
     rows = read_csv("theory/eigen/data/practice.csv")
-    best = defaultdict(lambda: [None, None])
-    for r in rows:
-        key = (r["orbifold"], int(r["M"]))
-        for i, col in enumerate(("N_obs", "N_apr")):
-            if r[col]:
-                v = int(r[col])
-                best[key][i] = v if best[key][i] is None else min(best[key][i], v)
-    geo = json.loads((ROOT / "numerics/moduli/data/geometries.json").read_text())["members"]
-    sysl = {"O(2, 8, 8)": ("2.256768", "1/4"), "O(3, 3, 12)": ("1.862604", "1/4")}
-    for tau, mem in geo.items():
-        sysl[f"(0;3,3,3,3) theta={tau}"] = (str(mem["systole"]), "2/3")
+    inst = {r["orbifold"]: r for r in read_csv("theory/eigen/data/instances.csv")}
     out = []
-    for (name, M), (nobs, napr) in sorted(best.items()):
-        ell, s = sysl[name]
-        num, den = (int(x) for x in s.split("/"))
-        A = 2 * mp.pi * num / den
-        N = ec.theorem_E_constants(A, mp.mpf(ell), M)["N"]
-        if napr is not None:
-            assert napr * 100 < N, (name, M, napr, N)
-        out.append([name, M, ell, nobs, napr if napr is not None else "", N])
-    d = {(r[0], r[1]): r for r in out}
-    assert d[("O(2, 8, 8)", 12)][3:5] == [3, 21] and d[("O(3, 3, 12)", 12)][3:5] == [4, 39]
-    for M, lo, hi in ((3, (3, 33), (50, 694)), (12, (5, 38), (98, 750))):
-        fam = [r for r in out if r[0].startswith("(0;3") and r[1] == M]
-        assert min(r[3] for r in fam) == lo[0] and max(r[3] for r in fam) == hi[0]
-        apr = [r[4] for r in fam if r[4] != ""]
-        assert len(apr) == 7 and min(apr) == lo[1] and max(apr) == hi[1]
-    write_csv("e3_practice.csv", ["orbifold", "M", "systole", "N_obs", "N_apr", "N_theory"], out)
+    for r in rows:
+        if (r["diameter_input"], r["eps_j"], r["data"]) != ("B1", "eps", "full"):
+            continue
+        name = r["orbifold"]
+        label = NAMES.get(name, "(0;3,3,3,3) theta=" + name.split("=")[1] if name.startswith("O_tau") else name)
+        n1, n2, nobs, nth = int(r["N_C1"]), int(r["N_C2"]), int(r["N_obs"]), int(r["N_thm62"])
+        assert nobs <= n1 <= n2 and 100 * n2 < nth, (name, r["M"], nobs, n1, n2, nth)
+        out.append([label, int(r["M"]), inst[name]["systole_computed"], nobs, n1, nth, n2,
+                    inst[name]["systole_lower_bound"]])
+    out.sort(key=lambda x: (x[0], x[1]))
+    d = {(o[0], o[1]): o for o in out}
+    assert [d[("O(2, 8, 8)", 12)][i] for i in (3, 4, 6)] == [3, 18, 20]
+    assert [d[("O(3, 3, 12)", 12)][i] for i in (3, 4, 6)] == [3, 25, 29]
+    for M, nobs, n1 in ((3, (3, 43), (24, 767)), (12, (4, 63), (28, 847))):
+        fam = [o for o in out if o[0].startswith("(0;3") and o[1] == M]
+        assert len(fam) == 8
+        assert (min(o[3] for o in fam), max(o[3] for o in fam)) == nobs, (M, [o[3] for o in fam])
+        assert (min(o[4] for o in fam), max(o[4] for o in fam)) == n1, (M, [o[4] for o in fam])
+    write_csv("e3_practice.csv", ["orbifold", "M", "systole", "N_obs", "N_apr", "N_theory", "N_test_C2",
+                                  "systole_lower_bound"], out)
     print(f"E3 data: {len(out)} rows, assertions passed")
 
 

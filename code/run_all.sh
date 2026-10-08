@@ -278,6 +278,7 @@ stage "diophantine ranks (PARI)"         q pari  theory/diophantine '$PYTHON_PAR
 # --- numerics (committed CSV/JSON/NPZ only; no NGSolve)
 stage "numerics validate (committed)"    q exact numerics "$P validate_committed.py --quick"
 stage "numerics moduli validate"         q exact numerics/moduli "$P validate_committed.py --quick"
+stage "numerics locality ratios (round 4)" q exact numerics/moduli "$P locality_ratio.py"
 stage "numerics S3 rerun record"         q record numerics "$P rerun_double_window.py --verify-record"
 stage "numerics validate (full)"         f exact numerics "$P validate_committed.py" "heat traces and fits, a few minutes"
 stage "numerics moduli validate (full)"  f exact numerics/moduli "$P validate_committed.py" "trace formula for 8 members, about 5 min"
@@ -322,13 +323,13 @@ stage "audit-2 threshold-sharpness"      q exact review/audit-2/threshold-sharpn
 stage "audit-2 trace-formula"            q exact review/audit-2/trace-formula "$AUDIT"
 
 # --- theory/msep (bounded cone orders, Theorem 3.7 of the manuscript and Theorem 3.4 of the eigen paper): exact
-#     ranks, sharp pairs, complete area classes; about 4 min
+#     ranks, sharp pairs, the area-free bound M+1 and its attainment on complete area classes; about 3 min
 stage "msep bounded cone orders"         q exact theory/msep "$P verify.py"
 
 # --- theory/eigen (Theorem 4.13 of the paper, finitely many eigenvalues): each script raises on a failed check; together
-#     about 5 min (diameter 110 s, counting 80 s, theorem_e 35 s, practice 32 s). practice.py rewrites data/practice.csv,
-#     which must come back byte-identical.
-for s in diameter counting remainder theorem_e necessity locality practice; do
+#     about 8 min (diameter 110 s, counting 80 s, theorem_e 55 s, instances 90 s, practice 90-170 s; needs scipy).
+#     instances.py and practice.py rewrite their CSVs in data/, which must come back byte-identical.
+for s in diameter counting remainder theorem_e necessity locality instances practice; do
     stage "eigen $s" q exact theory/eigen "$P $s.py"
 done
 
@@ -340,6 +341,7 @@ stage "round1 D1 pencil counts"          q exact review/round1-fixes 'set -- d1_
 stage "round1 D2 explicit pairs"         q exact review/round1-fixes '"$PYTHON" d2_explicit_pairs.py --check > /dev/null && set -- d2_explicit_pairs && '"$R1"
 
 stage "round1 paper tables current"     q exact . "$P paper/jga/tools/make_tables.py --check"
+stage "eigen paper tables current"       q exact . "$P paper/eigen/tools/make_tables.py --check"
 
 # --- paper/arith: the exact checks of the arithmetic note, including the S <= 6000 enumeration (about 1 min);
 #     the script rewrites check_note.txt, which must come back byte-identical

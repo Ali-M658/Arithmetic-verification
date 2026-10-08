@@ -70,3 +70,32 @@ K_mult(O; Sig) <= M + ceil((1/2) log(2 floor(A/pi) + 8)), with the proof in `pro
 (Theorem 1.1(iii), Theorem thm:bounded(iii), Corollary cor:bounded, the remark after
 Theorem thm:growth) were changed accordingly. `verify.py` checks the new bound on the complete
 classes (section 7) and the integer inequality (L+1)^(2L-3) > N M^(2L-3) (section 8).
+
+# Round 4: blind check of the upgraded theorem (parts (i)-(iv) and the corollary)
+
+A subagent was given only the definitions of the heat invariants and the statement of the round-4 theorem
+(parts (i)-(iv), the example (0;2^10), (1;4^4), and the corollary); it was told not to open this directory,
+paper/jga, paper/eigen or review/referee-round-4, and wrote its own implementation (scripts kept in the
+session scratch directory, not committed). Date: 2026-10-08.
+
+## Verdict: TRUE (all parts and the corollary); no counterexample
+
+- Its proof of (iii): after the reduction to the weights mu(t) = nu(x)(x^2 - 1)/x at t = x^2, orthogonal to the
+  polynomials of degree <= L - 2, a nonzero mu has at least L - 1 sign changes; positive weights sit only at
+  orders of O, so L <= M, and alternating sign blocks give L <= 2 min(d_O, d_O') + 1. (Our proof uses the
+  measure with the moment of degree 0 included and L sign changes; the two arguments are equivalent.)
+- (ii) and (iv) by divided differences; the example checked by hand (C = 180, nu(2) = 10, nu(4) = -4, s = 2).
+- Computations (exact): (ii) pairs for M = 2..6, (iv) pairs for 19 cases (M, X); complete equal-area classes
+  with no bound on the orders for 19 values of s up to 10/3 (largest classes 203,724 and 226,395 signatures,
+  orders up to about 1.07e13): 0 violations of L <= M, L <= 2 min(d) + 1, K_mult <= min(M + 1, 2 d_O + 2) or
+  the corollary; largest shared L = 3, largest K_mult = 4.
+
+## Wording points, and what was done
+
+1. floor(A/pi) + 4 does not follow from the statement itself: it is imported from the area corollary.
+   **Already so**: the proofs cite Corollary cor:sigarea for that term.
+2. "At every area" reads like a hypothesis. **Done**: "uniformly in the area" in Theorem 3.7(iii) and proof.tex.
+3. Say why the node a = 1 is harmless. **Done**: one sentence in the proof of (ii) in the manuscript
+   (psi_k(1) = 0, p_l(1) = 0; the padding of Lemma sigdata).
+4. Surface edge cases consistent; no change.
+5. Corollary (a) needs L >= 2 (it is stated); (c) "the area of a pair": both members have the same area; no change.

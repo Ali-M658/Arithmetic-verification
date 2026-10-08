@@ -109,8 +109,8 @@ def main():
     out.append("\nTheorem E constants (eps = lower bound on the systole):")
     out.append("  A, eps, M | k_*, gamma_*, t_1, t_2, t_3, D | t*, Gamma, Lambda | N, delta")
     for A, eps, M in ((mp.pi / 2, mp.mpf('1.8626'), 12), (mp.pi / 2, mp.mpf('1.8626'), 8),
-                      (4 * mp.pi / 3, mp.mpf('0.694'), 3), (4 * mp.pi / 3, mp.mpf('2.634'), 3),
-                      (4 * mp.pi / 3, mp.mpf('0.694'), 12), (2 * mp.pi, 1, 3), (2 * mp.pi, mp.mpf('0.1'), 3),
+                      (4 * mp.pi / 3, mp.mpf('0.693994'), 3), (4 * mp.pi / 3, mp.mpf('2.633915'), 3),
+                      (4 * mp.pi / 3, mp.mpf('0.693994'), 12), (2 * mp.pi, 1, 3), (2 * mp.pi, mp.mpf('0.1'), 3),
                       (10 * mp.pi, 1, 3), (10 * mp.pi, 1, 12)):
         c = theorem_E_constants(A, eps, M)
         # the chain: B_*(t*) <= Gamma/8 is asserted inside; tail: e^{-Lam t*/2} Zb(t*/2) = Gamma/8

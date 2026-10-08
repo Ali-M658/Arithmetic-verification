@@ -1,8 +1,10 @@
 """Exact verification for theory/msep/proof.tex (bounded cone orders: M heat invariants suffice).
 
-Statement checked (proof.tex, Theorem msep): for M >= 2, two closed orientable hyperbolic 2-orbifolds
-whose cone orders are all at most M and which share c_1, ..., c_M have the same signature; and M is
-optimal: an explicit pair with orders at most M and different signatures shares c_1, ..., c_{M-1}.
+Statement checked (proof.tex, Theorem msep): for M >= 2, (i) two closed orientable hyperbolic 2-orbifolds
+whose cone orders are all at most M and which share c_1, ..., c_M have the same signature; (ii) M is
+optimal there: an explicit pair with orders at most M and different signatures shares c_1, ..., c_{M-1};
+(iii) against all orbifolds, K_mult(O; Sig) <= min(M + 1, 2 d_O + 2) for O with orders <= M and d_O
+distinct orders, at every area (sign changes of the measure sum +-delta_{x^2}/x); (iv) M + 1 is attained.
 
 Checks, all in exact rational arithmetic (fractions.Fraction; sympy only for an independent rank):
   1. rank of A_L(M) = (psi_k(a))_{1<=k<=L-1, 2<=a<=M}, psi_k(x) = x^(2k-1) - 1/x, equals
@@ -21,7 +23,13 @@ Checks, all in exact rational arithmetic (fractions.Fraction; sympy only for an 
      bound; no two distinct signatures share c_1..c_M, and the largest number of shared coefficients
      among distinct signatures is M - 1 once the bound reaches the sharp pair's area (and the minimal
      area of such a pair is reported).
-Run: python3 verify.py [MMAX]   (default MMAX = 24; about a minute). Exit status 0 iff all checks pass.
+  7. parts (iii)-(iv) on complete equal-area classes with no bound on the orders: for every pair sharing
+     c_1..c_L the measure of the proof has at least L sign changes, L <= M and L <= 2 min(d_O, d_O') + 1;
+     the exact K_mult(O; Sig) <= min(M + 1, 2 d_O + 2) for every O;
+  8. part (iv): for 1 <= M <= 12 and M < X <= M + 4 the pair built on the nodes 1^2..M^2, X^2 has O with
+     orders <= M sharing exactly c_1..c_M with O', Delta c_(M+1) = (-1)^M C a_(M-1); X = M + 1 is part (ii)
+     at M + 1; the example (0;2^10), (1;4^4) of area 6 pi with K_mult = 3, from its complete area class.
+Run: python3 verify.py [MMAX]   (default MMAX = 24; a few minutes). Exit status 0 iff all checks pass.
 """
 import itertools
 import os
@@ -235,7 +243,7 @@ for M, smax in ((2, Fr(6)), (3, Fr(9)), (4, SHARP_AREA[4])):
         check(clash and smin <= SHARP_AREA[4], "M = 4: a pair sharing c_1..c_3 exists by the sharp pair's area")
 
 
-# ---------------------------------------------------------------- 7. part (iii): arbitrary competitors
+# ---------------------------------------------------------------- 7. parts (iii)-(iv): arbitrary competitors
 def multisets_with_sum(sigma, lo=2):
     """All sorted tuples m_1 <= ... <= m_n, m_i >= lo, with sum(1 - 1/m_i) = sigma (complete)."""
     out = []
@@ -268,46 +276,138 @@ def area_class(s):
     return cls
 
 
+def sign_changes(sig, oth):
+    """Sign changes of the measure nu of the proof of part (iii) for the pair (sig, oth) of equal area:
+    paddings by 1s (Lemma sigdata), common elements removed, weight +-1/x at x^2."""
+    (g, m), (gp, mp_) = sig, oth
+    d = sum(Fr(1, a) for a in mp_) - sum(Fr(1, a) for a in m)
+    check(d.denominator == 1, "d = R(m') - R(m) is an integer at equal area")
+    d = int(d)
+    U = list(m) + [1] * max(d, 0)
+    V = list(mp_) + [1] * max(-d, 0)
+    cnt = {}
+    for x in U:
+        cnt[x] = cnt.get(x, 0) + 1
+    for x in V:
+        cnt[x] = cnt.get(x, 0) - 1
+    signs = [1 if cnt[x] > 0 else -1 for x in sorted(cnt) if cnt[x] != 0]
+    return sum(1 for a, b in zip(signs, signs[1:]) if a != b), len(signs)
+
+
 import math  # noqa: E402
 
 KCAP = 9
+# complete equal-area classes: every Area/2pi = s <= 2 attained with genus <= 1, at most 5 cone points of order
+# <= 4 (as in round 3), and s = 3, the class of the example (0;2^10), (1;4^4); no bound on the orders inside a class
 svals = sorted({Fr(2 * g - 2) + sum(1 - Fr(1, a) for a in o)
                 for g in range(0, 2) for n in range(0, 6) for o in itertools.combinations_with_replacement(range(2, 5), n)
-                if 0 < Fr(2 * g - 2) + sum(1 - Fr(1, a) for a in o) <= 2})
-n_or, worst, nsig = 0, {}, 0
+                if 0 < Fr(2 * g - 2) + sum(1 - Fr(1, a) for a in o) <= 2} | {Fr(3)})
+nsig, npair, worst, worst_d, attained = 0, 0, {}, {}, {}
 for sv in svals:
     cls = area_class(sv)
     nsig += len(cls)
     keys = {sig: heat_key(sig[0], sig[1], KCAP) for sig in cls}
-    A_over_pi = 2 * sv
+    # K_mult(O; Sig) = least k with key[:k] unique in the class (all of the class has the same area, so c_1 agrees)
+    count = {}
     for sig in cls:
-        M = max(sig[1], default=2)
-        if M > 4:
-            continue
-        others = [o for o in cls if o != sig]
-        K = next(k for k in range(1, KCAP + 1) if all(keys[o][:k] != keys[sig][:k] for o in others))
-        bound = M + math.ceil(math.log(2 * math.floor(A_over_pi) + 8) / 2)
-        check(K <= bound, f"(iii) at {sig}: K = {K} > {bound}")
+        for k in range(1, KCAP + 1):
+            count[keys[sig][:k]] = count.get(keys[sig][:k], 0) + 1
+    groups = {}
+    for sig in cls:
+        groups.setdefault(keys[sig][:2], []).append(sig)
+    for sig in cls:
+        M = max(sig[1], default=1)
+        dO = len(set(sig[1]))
+        K = next(k for k in range(1, KCAP + 1) if count[keys[sig][:k]] == 1)
+        check(K <= M + 1, f"(iii) K_mult({sig}) = {K} > M + 1 = {M + 1}")
+        check(K <= 2 * dO + 2, f"(iii) K_mult({sig}) = {K} > 2 d_O + 2 = {2 * dO + 2}")
         worst[M] = max(worst.get(M, 0), K)
-        # the order bound: a competitor sharing c_1..c_L, L >= 2, has orders <= M (2 floor(A/pi) + 8)^(1/(2L-3))
-        for o in others:
+        worst_d[dO] = max(worst_d.get(dO, 0), K)
+        if K == M + 1:
+            attained.setdefault(M, (sv, sig))
+        # pairs sharing at least c_1, c_2 (L <= 1 satisfies every bound trivially): the measure of the proof
+        for o in groups[keys[sig][:2]]:
+            if o == sig:
+                continue
             L = next(k for k in range(1, KCAP + 1) if keys[o][:k] != keys[sig][:k]) - 1
-            if L >= 2:
-                check(max(o[1], default=1) <= M * (2 * math.floor(A_over_pi) + 8) ** (1 / (2 * L - 3)) + 1e-9,
-                      f"order bound fails for {sig} against {o}")
-                n_or += 1
-print(f"7. part (iii): {len(svals)} complete area classes (Area/2pi <= 2, {nsig} signatures, no bound on the "
-      f"orders); for every O with orders <= M (M = 2, 3, 4) the exact K_mult(O; Sig) is at most "
-      f"M + ceil(log(2 floor(A/pi) + 8)/2); largest observed {worst}; order bound checked on {n_or} pairs "
-      f"sharing at least two invariants")
-# the arithmetic of part (iii): with k = ceil(lambda/2) and L = M + k, every order of a competitor sharing
-# c_1..c_L is <= L, i.e. (L+1)^(2L-3) > N M^(2L-3) for N = 2 floor(A/pi) + 8, checked in integers
-n_ar = 0
-for N in list(range(8, 400, 2)) + [2 * q + 8 for q in (10 ** 3, 10 ** 6, 10 ** 12, 10 ** 30)]:
-    k = math.ceil(math.log(N) / 2)
-    for M in range(2, 200):
-        L = M + k
-        check((L + 1) ** (2 * L - 3) > N * M ** (2 * L - 3), f"(iii) arithmetic at N={N}, M={M}")
-        n_ar += 1
-print(f"8. part (iii) arithmetic: (L+1)^(2L-3) > N M^(2L-3) for L = M + ceil(log(N)/2) in {n_ar} cases")
+            ch, npts = sign_changes(sig, o)
+            check(npts > 0, "different signatures give a nonzero measure")
+            check(ch >= L, f"Lemma signs: {ch} sign changes < L = {L} for {sig}, {o}")
+            check(L <= M and L <= 2 * min(dO, len(set(o[1]))) + 1, f"(iii) L = {L} for {sig}, {o}")
+            npair += 1
+print(f"7. part (iii): {len(svals)} complete area classes (Area/2pi <= 2 and = 3; {nsig} signatures, no bound on the "
+      f"orders), {npair} ordered pairs sharing at least c_1, c_2: every such pair sharing c_1..c_L has at least L sign changes, L <= M and "
+      f"L <= 2 min(d_O, d_O') + 1; K_mult(O; Sig) <= min(M + 1, 2 d_O + 2) for every O")
+print(f"   largest K_mult by largest order M <= 12: {dict(sorted((k, v) for k, v in worst.items() if k <= 12))}; "
+      f"largest K_mult - M over all M: {max(v - k for k, v in worst.items())}")
+print(f"   largest K_mult by number of distinct orders d_O: {dict(sorted(worst_d.items()))}")
+for M, (sv, sig) in sorted(attained.items()):
+    print(f"   M + 1 attained at M = {M}: {sig}, Area/2pi = {sv}")
+
+
+# ---------------------------------------------------------------- 8. part (iv): the bound M + 1 is attained
+def lagrange_w_nodes(nodes):
+    return {a: Fr(1, prod(a * a - b * b for b in nodes if b != a)) for a in nodes}
+
+
+def sharp_pair_X(M, X):
+    """proof.tex, part (iv): nodes {1..M, X}, nu(a) = -C a w_a with the least positive integer C making nu
+    integral on {2..M, X} and s = sum nu(a)(1 - 1/a) even; least admissible genera."""
+    nodes = list(range(1, M + 1)) + [X]
+    w = lagrange_w_nodes(nodes)
+    nu0 = {a: -a * w[a] for a in nodes if a != 1}
+    # least C: the lcm of the denominators makes nu integral; then the least multiple making s even
+    C = 1
+    for v in nu0.values():
+        C = C * v.denominator // gcd(C, v.denominator)
+    s1 = sum(C * v * (1 - Fr(1, a)) for a, v in nu0.items())
+    k = 1
+    while not ((s1 * k).denominator == 1 and (s1 * k).numerator % 2 == 0):
+        k += 1
+    C *= k
+    nu = {a: int(C * v) for a, v in nu0.items()}
+    s = int(sum(Fr(v) * (1 - Fr(1, a)) for a, v in nu.items()))
+    m = {a: v for a, v in nu.items() if v > 0}
+    mp_ = {a: -v for a, v in nu.items() if v < 0}
+    g = max(0, -s // 2)
+    while Fr(2 * g - 2) + sum(c * (1 - Fr(1, a)) for a, c in m.items()) <= 0:
+        g += 1
+    return C, nu, s, (g, m), (g + s // 2, mp_), w
+
+
+n4 = 0
+for M in range(1, 13):
+    for X in range(M + 1, M + 5):
+        C, nu, s, (g, m), (gp, mp_), w = sharp_pair_X(M, X)
+        check(all(v != 0 for v in nu.values()), "every nu(a) nonzero")
+        check(X in mp_ and all(2 <= a <= M for a in m), f"(iv) X on the side of O', O in Sig_<=M (M={M}, X={X})")
+        H1, s1 = heat_mult(g, m, M + 1)
+        H2, s2 = heat_mult(gp, mp_, M + 1)
+        check(s1 == s2 and s1 > 0 and gp >= 0, f"(iv) equal positive area, M={M}, X={X}")
+        check(H1[:M] == H2[:M], f"(iv) c_1..c_M agree, M={M}, X={X}")
+        check(H1[M] - H2[M] == (-1) ** M * C * lead_coef(M - 1), f"(iv) Delta c_(M+1) = (-1)^M C a_(M-1), M={M}, X={X}")
+        if X == M + 1 and M >= 1:
+            # the pair of part (ii) at M + 1, with its two sides exchanged
+            C2, nu2, s2_, _, _ = sharp_pair(M + 1)
+            check(C2 == C and all(nu2[a] == -nu[a] for a in nu), f"(iv) at X = M + 1 is (ii) at M + 1, M={M}")
+        n4 += 1
+C, nu, s, (g, m), (gp, mp_), w = sharp_pair_X(2, 4)
+check((w[1], w[2], w[4]) == (Fr(1, 45), Fr(-1, 36), Fr(1, 180)) and C == 180 and nu == {2: 10, 4: -4} and s == 2,
+      "(iv) the numbers of the example M = 2, X = 4")
+check((g, m) == (0, {2: 10}) and (gp, mp_) == (1, {4: 4}), "(iv) the example is (0;2^10) against (1;4^4)")
+H1, s1 = heat_mult(0, {2: 10}, 4)
+H2, s2 = heat_mult(1, {4: 4}, 4)
+check(s1 == s2 == 3, "(iv) the example has area 6 pi")
+check(H1[:2] == H2[:2] and H1[2] != H2[2], "(iv) the example shares exactly c_1, c_2")
+cls3 = area_class(Fr(3))  # 3667 signatures
+k3 = {sig: heat_key(sig[0], sig[1], 4) for sig in cls3}
+K = next(k for k in range(1, 5) if all(k3[o][:k] != k3[(0, (2,) * 10)][:k] for o in cls3 if o != (0, (2,) * 10)))
+check(K == 3, "(iv) K_mult((0;2^10); Sig) = 3 = M + 1, from its complete area class")
+# surfaces (M = 1): K_mult <= 2, attained by (2;) and (0;2^8)
+Hs, ss = heat_mult(2, {}, 3)
+Ho, so = heat_mult(0, {2: 8}, 3)
+check(ss == so == 2 and Hs[0] == Ho[0] and Hs[1] != Ho[1], "surfaces: (2;) and (0;2^8) share exactly c_1")
+print(f"8. part (iv): {n4} pairs (1 <= M <= 12, M < X <= M + 4) with O in Sig_<=M and O' containing X share exactly "
+      f"c_1..c_M, Delta c_(M+1) = (-1)^M C a_(M-1); X = M + 1 is part (ii) at M + 1 with the sides exchanged; "
+      f"(0;2^10) and (1;4^4), area 6 pi, share exactly c_1, c_2, and K_mult((0;2^10); Sig) = 3 exactly")
 print("all checks passed")
