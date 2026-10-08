@@ -1,0 +1,17 @@
+Pi_i(m) = sum_{k<=i} c_{ik} (m^{2k-1} - 1/m), c_ii = |B_2i|/(2i)! != 0, i=1..6
+VC5: a_0 = chi^orb/6 + sum Pi_1(m_i) = (2-2gamma)/6 + sum (m_i-1)^2/(12 m_i)  [DGGW (5.7) + Gauss-Bonnet]: OK
+VC5 example: a_0(S^2(2^8)) = a_0(S^2(3,3,3)) = 2/3: OK
+VC4: at constant curvature, a_l(p) = sum_{k<=l+1} e_{lk} kappa^l psi_k(m), e_{l,l+1} = (2l)!/l! |B_{2l+2}|/(2l+2)! != 0 (l=0..5)
+VC4 brute force over 495 genus-0 signatures
+VC4 iff (kappa=1): verified for L=2..7 on 1224 (pair, L) instances
+VC4 iff (kappa=-1): verified for L=2..7 on 1224 (pair, L) instances
+VC4 J-version: iff verified for L=2..5 with a generic common jet J
+flat germ: b_l = 0 for l = 1..5 (so flat cone points contribute only at t^0)
+VC6 examples satisfy the hypotheses (family symbolically in k) and have different Psi_2 (so VC4 fails at kappa=0, L=3)
+VC6: at infinity the metric is |w|^{alpha_0 - 1}|h(w) dw|, h(0)=1, alpha_0 = sum(1-alpha_i) - 1 (cone angle 2 pi alpha_0): OK
+   alpha_0(2, 8, 8) = 5/4
+   alpha_0(3, 3, 12) = 5/4
+   alpha_0(5, 5, 5) = 7/5
+   alpha_0(2, 2, 2, 10) = 7/5
+VC6: number of distinct (chi, Psi_1) classes with >=2 multisets (n<=5, m<=30): 10974; e.g. [[(2, 8, 8), (3, 3, 12)], [(2, 15, 20), (3, 4, 30)], [(3, 14, 21), (4, 6, 28)]]
+ALL ASSERTS PASSED

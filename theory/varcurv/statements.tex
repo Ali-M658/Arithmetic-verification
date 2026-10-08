@@ -1,0 +1,87 @@
+% theory/varcurv/statements.tex -- statements only (no proofs), for the adversarial check.
+% Conventions. (O,g): closed orientable Riemannian 2-orbifold whose singular points are cone points
+% p_1,...,p_n of orders m_i >= 2; underlying surface |O| of genus gamma; chi^orb = 2-2gamma-sum(1-1/m_i).
+% K Gauss curvature, Delta_g = -div grad (so Delta_g K(p) = -(trace of Hess K)(p)).
+% Heat trace: tr e^{-t Delta_g} ~ sum_{l >= -1} a_l t^l,  a_l = S_l + sum_i a_l(p_i), where
+%   S_l = (4 pi)^{-1} int_O u_{l+1}(x,x) dA (u_0 = 1, u_1 = K/3, u_2 = K^2/15 - Delta_g K/15),
+%   a_l(p) = (1/m) sum_{j=1}^{m-1} b_l(Phi^j)  (cone contribution; Phi rotation of order m in a chart),
+%   b_l(Phi) = Donnelly's coefficient for the isolated fixed point of the isometry Phi.
+% Paper A's c_j is a_{j-2}.  C_phi^2 = 2 - 2 cos(phi) = 4 sin^2(phi/2).
+% Pi_i(m) = (1/m) sum_{j=1}^{m-1} (4 sin^2(pi j/m))^{-i}.
+% For a cone point, the "radial part" of the jet of K is its rotation average in normal coordinates.
+
+\begin{theorem}[VC1: structure of a cone contribution]
+For each l >= 0 there are universal polynomials beta_{l,1},...,beta_{l,l+1} in K and its covariant
+derivatives of order <= 2l-2 at a point, rotation invariant and weighted homogeneous of weight 2l
+(nabla^j K has weight j+2), such that for every cone point p of order m >= max(2, l-1) of every
+Riemannian orbisurface
+     a_l(p) = sum_{i=1}^{l+1} beta_{l,i}(p) Pi_i(m),
+evaluated on the radial part of the jet at p. m*Pi_i(m) is an even polynomial in m of degree 2i,
+vanishing at m=1, with leading coefficient |B_{2i}|/(2i)!. Explicitly
+   m Pi_1 = (m^2-1)/12,  m Pi_2 = (m^2-1)(m^2+11)/720,  m Pi_3 = (m^2-1)(2m^4+23m^2+191)/60480,
+   m Pi_4 = (m^2-1)(m^2+11)(3m^4+10m^2+227)/3628800.
+For a rotationally symmetric metric germ, b_l(phi) = sum_{i=1}^{l+1} beta_{l,i} C_phi^{-2i} for all
+phi in (0, 2 pi) (no C^0 or positive powers).
+\end{theorem}
+
+\begin{theorem}[VC2: the coefficient of the new power sum]
+beta_{l,l+1}(p) = 4^l l! (1/2pi) int_{|u|=1} [v^{2l}] (rho_u)'(v) du, where rho_u is the inverse function
+of l_u(r) = |J_u(r)|, J_u the Jacobi field along r -> exp_p(ru) with J(0)=0, |J'(0)|=1, J'(0) perp u.
+For a rotationally symmetric germ g = dr^2 + f(r)^2 dtheta^2 this is 4^l l! [v^{2l}] (f^{-1})'(v). Hence:
+ (i) beta_{l,l+1} = 2 (-Delta_g)^{l-1}K(p)/(l-1)! + (terms of degree >= 2 in K and its derivatives),
+     for every l >= 1;
+ (ii) at constant curvature kappa, beta_{l,l+1} = (2l)! kappa^l / l!;
+ (iii) beta_{1,2} = 2K, beta_{2,3} = 12K^2 - 2 Delta_g K, beta_{3,4} = 120 K^3 - 42 K Delta_g K + Delta_g^2 K,
+     beta_{4,5} = 1680K^4 - 904K^2 Delta_g K + (98/3) K Delta_g^2 K + (124/3)(Delta_g K)^2 - (1/3) Delta_g^3 K
+     (radial jets);
+ (iv) the coefficient of m^{2l+1} in a_l(p) (as a function of m, jets fixed, m >= l-1) is
+     |B_{2l+2}|/(2l+2)! * beta_{l,l+1}(p).
+In particular for every l >= 2 the coefficient of the top power m^{2l+1} involves Delta_g^{l-1} K(p) with
+nonzero coefficient; it is not a multiple of K(p)^l.
+\end{theorem}
+
+\begin{theorem}[VC3: the t^3 cone coefficient]
+For a rotationally symmetric germ,
+ b_3(phi) = (120 C^{-8} - 32 C^{-6} + (4/3) C^{-4}) K^3 + (-42 C^{-8} + 8 C^{-6}) K Delta_g K + C^{-8} Delta_g^2 K
+(C = C_phi; K, Delta_g K, Delta_g^2 K at p). For every cone point of order m >= 2 of every Riemannian
+orbisurface,
+ a_3(p) = A(m) K^3 + B(m) K Delta_g K + D(m) Delta_g^2 K,
+ A(m) =  (m^2-1)(m^2+3)(3m^4+2m^2+19)/(30240 m),
+ B(m) = -(m^2-1)(7m^6+47m^4+173m^2+733)/(201600 m),
+ D(m) =  (m^2-1)(m^2+11)(3m^4+10m^2+227)/(3628800 m)  (= Pi_4(m)).
+\end{theorem}
+
+\begin{theorem}[VC4: extension]
+Fix kappa != 0 and L >= 2. Let (O,g), (O',g') be as above, with signatures (gamma; m), (gamma'; m'),
+such that at every cone point all covariant derivatives of K - kappa of order <= 2L-6 vanish
+(for L = 2 no condition; for L = 3, K(p) = kappa). Assume S_l(g) = S_l(g') for -1 <= l <= L-2.
+Then a_l(g) = a_l(g') for all -1 <= l <= L-2 if and only if chi^orb(O) = chi^orb(O') and
+Psi_k(m) = Psi_k(m') for 1 <= k <= L-1, where Psi_k(m) = sum_i (m_i^{2k-1} - 1/m_i).
+(The same holds for L <= 5 if instead all cone points of O and O' share the same values
+J = (K, Delta_g K, Delta_g^2 K)(p) and beta_{l,l+1}(J) != 0 for 1 <= l <= L-2.)
+If kappa = 0 the conclusion fails for every L >= 3.
+\end{theorem}
+
+\begin{theorem}[VC5: finite-order obstruction]
+Let sigma = (gamma; m_1..m_n), sigma' = (gamma'; m'_1..m'_{n'}) be signatures of closed orientable
+2-orbifolds with cone points only, kappa real, L >= 0. There are orbifold metrics g on O_sigma and g' on
+O_sigma', each of constant curvature kappa on a neighbourhood of every cone point, with
+a_l(g) = a_l(g') for all -1 <= l <= L, if and only if
+   (2-2gamma)/6 + sum_i (m_i-1)^2/(12 m_i) = (2-2gamma')/6 + sum_j (m'_j-1)^2/(12 m'_j).
+Example: S^2(2,2,2,2,2,2,2,2) and S^2(3,3,3).
+\end{theorem}
+
+\begin{theorem}[VC6: all-order obstruction]
+Let m = (m_1..m_n), m' = (m'_1..m'_{n'}) be multisets of integers >= 2 with
+   sum(1 - 1/m_i) = sum(1 - 1/m'_j) > 1   and   sum(m_i - 1/m_i) = sum(m'_j - 1/m'_j).
+For every gamma >= 0 there are orbifold metrics on O_(gamma;m) and O_(gamma;m'), flat on a
+neighbourhood of every cone point, with a_l equal for every l >= -1. Examples: (2,8,8) and (3,3,12),
+more generally (2k,8k,8k) and (3k,3k,12k); (5,5,5) and (2,2,2,10).
+\end{theorem}
+
+\begin{lemma}[VC5a: quadratic part of the smooth invariants of a conformal bump]
+For psi in C_c^infty(R^2) and g_lambda = e^{2 lambda psi}|dx|^2, the t^l coefficient (l >= 1) of the heat
+trace relative to flat space is (4pi)^{-1} int u_{l+1}(g_lambda) dA = lambda^2 (1/2pi) F_{l+1}
+int psi Delta_0^{l+1} psi dx + O(lambda^3)  [Delta_0 = -(d_1^2+d_2^2) >= 0;
+% corrected after the attack: earlier text read (-Delta_0)^{l+1}, wrong sign for even l], F_n = (-1)^n n (n-1) n!/(2n+1)!  (F_2 = 1/30, F_3 = -1/140).
+\end{lemma}

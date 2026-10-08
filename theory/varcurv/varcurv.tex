@@ -1,0 +1,354 @@
+% theory/varcurv/varcurv.tex -- variable curvature: what survives of the power-sum structure.
+% LaTeX fragment (amsthm environments theorem/lemma/proposition/corollary/remark assumed).
+% Scripts: twisted_mp.py, top_coefficient.py, quadratic_form.py, obstruction_check.py (all asserting).
+
+\section*{Cone points in variable curvature}
+
+\paragraph{Setting.}
+$(\Orb,g)$ is a closed orientable Riemannian $2$-orbifold whose singular points are cone points
+$p_1,\dots,p_n$ of orders $m_i\ge2$, on an underlying surface $|\Orb|$ of genus $\gamma$, and
+$\chi^{\rm orb}=2-2\gamma-\sum_i(1-1/m_i)$. $K$ is the Gauss curvature and $\Delta_g=-\operatorname{div}\operatorname{grad}$.
+By Donnelly and Dryden--Gordon--Greenwald--Webb \cite[4.1, Thm~4.8, Prop.~4.11]{dggw2008},
+\begin{equation}\label{vc:exp}
+\operatorname{tr}e^{-t\Delta_g}\sim\sum_{l\ge-1}a_l\,t^l,\qquad
+a_l=S_l+\sum_{i=1}^na_l(p_i),\qquad S_l=\frac1{4\pi}\int_\Orb u_{l+1}(x,x)\,dA,
+\end{equation}
+with the Minakshisundaram--Pleijel coefficients $u_0=1$, $u_1=K/3$, $u_2=K^2/15-\Delta_gK/15$
+\cite[(7)]{schueth2019}, and $a_l(p)=\frac1m\sum_{j=1}^{m-1}b_l(\Phi^j)$ \cite[(17)]{schueth2019},
+$\Phi$ a rotation of order $m$ in an orbifold chart and $b_l$ Donnelly's coefficient of the isolated
+fixed point. Paper~A's $c_j$ is $a_{j-2}$. Write $C_\phi^2=2-2\cos\phi=4\sin^2(\phi/2)$ and
+\[
+\Pi_i(m)=\frac1m\sum_{j=1}^{m-1}\bigl(4\sin^2(\pi j/m)\bigr)^{-i}.
+\]
+$S_{-1}=\Area/4\pi$ and $S_0=\chi^{\rm orb}/6$ (Gauss--Bonnet); for $l\ge1$, $S_l$ is the integral of a
+universal polynomial in $K$ and its covariant derivatives, each monomial of degree $\ge1$, so $S_l$
+vanishes on flat regions. Weights: $\nabla^jK$ has weight $j+2$; $a_l(p)$ and $u_{l+1}$ have weight $2l$
+and $2l+2$; a monomial of weight $2l$ involves $\nabla^jK$ only for $j\le2l-2$.
+
+\subsection*{1. What is known in closed form}
+
+\begin{center}\small
+\begin{tabular}{llll}
+order & cone point & jets entering & source\\\hline
+$t^0$ & orbifold, order $m$, any metric & none: $\frac1{12}(m-\frac1m)$ & \cite[Prop.~5.5]{dggw2008}\\
+$t^1$ & orbifold, any metric & $K(p)$: $[\frac1{360}(m^3-\frac1m)+\frac1{36}(m-\frac1m)]K$ & \cite[5.6]{dggw2008}, \cite[Rem.~4.2]{schueth2019}\\
+$t^2$ & orbifold, any metric & $K^2$, $\Delta_gK$ (Theorem 4.1 of \cite{schueth2019}) & \cite[Thm~4.1]{schueth2019}\\
+all $t^l$ & orbifold, constant curvature $\kappa$ & $\kappa^l$: $\kappa^lp_l(m)/m$ & \cite{ucar2017}, Paper A (bl)\\
+$t^{1/2}$, $t\log t$ & non-orbifold cone, $f''(0)\ne0$ & $f''(0)$, irrational in $f'(0)$ & \cite[(3), Thm~4.1]{schueth2025}\\
+$t^0$ & any cone $dr^2+f^2d\theta^2$ & $\frac1{12}(\frac1{f'(0)}-f'(0))$ & \cite[(2)]{schueth2025}
+\end{tabular}
+\end{center}
+Schueth's $t^2$ formula is
+$a_2(p)=[\frac{m^5-\frac1m}{2520}+\frac{m^3-\frac1m}{720}+\frac{m-\frac1m}{180}]K^2
+-[\frac{m^5-\frac1m}{15120}+\frac{m^3-\frac1m}{1440}+\frac{m-\frac1m}{180}]\Delta_gK$; in it the
+\emph{derivative term already carries the top power $m^5$}. For rotationally symmetric cones with
+$f''(0)=0$ Schueth notes, without proof, that $b_1,b_2$ extend rationally to non-integer $m=1/f'(0)$
+\cite[p.~2]{schueth2025}; for $f''(0)\ne0$ half powers and logarithms appear and $b_{1/2}$ is an
+irrational function of the cone angle \cite[Abstract, Thm~4.1]{schueth2025}. Orbifold cone points always
+have $f''(0)=0$ \cite[p.~2]{schueth2025}.
+
+\subsection*{2. Structure}
+
+\begin{lemma}[Pole order]\label{vc:pole}
+Let $\Phi$ be an isometry of a neighbourhood of $p$ with $\Phi(p)=p$, $d\Phi_p$ the rotation by
+$\phi\in(0,2\pi)$, $C=C_\phi$. Then $b_l(\Phi)=\sum_{j=0}^{l}C^{-2-2j}T_{l,j}(\phi)$, where the $T_{l,j}$ are
+trigonometric polynomials in $\phi$ whose coefficients are universal polynomials in the jet of the
+metric at $p$, and
+\begin{equation}\label{vc:top}
+T_{l,l}(0)=\frac{4^l\,l!}{2\pi}\int_{|u|=1}\bigl[v^{2l}\bigr]\,\rho_u'(v)\,du ,
+\end{equation}
+$\rho_u$ the inverse function of $\ell_u(r)=|J_u(r)|$, $J_u$ the Jacobi field along $r\mapsto\exp_p(ru)$ with
+$J_u(0)=0$, $J_u'(0)$ a unit vector orthogonal to $u$.
+\end{lemma}
+
+\begin{proof}
+We follow Schueth's proof of \cite[Thm~3.7]{schueth2019}, keeping all orders. With
+$d_u(r)=\operatorname{dist}(\exp_p ru,\exp_p rD_\phi u)$ and the substitution $z=d_u(r)/\sqrt t$, $b_l(\Phi)$ is the
+$t^l$ coefficient of
+\[
+\int_{S^1}\int_0^\infty\frac{e^{-z^2/4}}{4\pi t}\Bigl(\sum_iu_i(\exp_p ru,\exp_p rD_\phi u)\,t^i\Bigr)
+\sqrt t\,\ell_u(r)\,(d_u^{-1})'(z\sqrt t)\,dz\,du,\qquad r=d_u^{-1}(z\sqrt t)
+\]
+\cite[(15),(16)]{schueth2019}, the integrand expanded in powers of $\sqrt t$.
+(a) The Taylor coefficients of $\operatorname{dist}^2(\exp_px,\exp_py)$ at $(0,0)$ are universal polynomials
+in $(x,y)$ and the jet, so $d_u(r)^2=\sum_{n\ge2}\delta_{u,n}(\phi)r^n$ with trigonometric polynomials
+$\delta_{u,n}$ and $\delta_{u,2}=C^2$. Each $\delta_{u,n}$ vanishes to second order at $\phi=0$, since
+$\operatorname{dist}(\exp_pru,\exp_prD_\phi u)=O(\phi)$; a trigonometric polynomial
+$A(\cos\phi)+\sin\phi\,B(\cos\phi)$ with a double zero at $0$ has $A(1)=B(1)=0$, so it is divisible by
+$1-\cos\phi=C^2/2$. Hence $d_u(r)=Cr\,W_u(r)^{1/2}$, $W_u=1+\sum_{n\ge1}w_{u,n}(\phi)r^n$, $w_{u,n}$
+trigonometric polynomials. (b) Inverting $s=d_u(r)$ formally gives $r=(s/C)V_u(s/C)$ with
+$V_u=1+\sum_nv_{u,n}(\phi)(s/C)^n$, so
+$\sqrt t\,\ell_u(r)(d_u^{-1})'(s)=\frac{zt}{C^2}\sum_{n\ge0}\gamma_{u,n}(\phi)\bigl(\frac{z\sqrt t}{C}\bigr)^n$,
+$\gamma_{u,0}=1$, all $\gamma_{u,n}$ trigonometric polynomials. (c) Likewise
+$u_i(\exp_pru,\exp_prD_\phi u)=\sum_n\mu_{i,u,n}(\phi)(z\sqrt t/C)^n$, and since
+$u_0(q,q')-1=O(\operatorname{dist}(q,q')^2)$ \cite[(6)]{schueth2019}, every $\mu_{0,u,n}$ with $n\ge1$ is divisible by
+$C^2$. (d) A term of order $t^l$ is $t^i(z\sqrt t/C)^N$ with $i+N/2=l$ times $zt/C^2\cdot(4\pi t)^{-1}$ and a
+trigonometric polynomial; its pole order in $C$ is $\le2+N\le2+2l$, with equality only if $i=0$ and the
+factor from $u_0$ is $1$. Integrating $\int_0^\infty e^{-z^2/4}z^{N+1}dz=2^{N+1}\Gamma(\frac N2+1)$ gives the
+first claim (half-integer powers of $t$ cancel, the expansion of $b_l$ having integer powers
+\cite[Prop.~4.11]{dggw2008}). (e) The $C^{-2-2l}$ coefficient is
+$\frac{1}{4\pi}2^{2l+1}l!\int_{S^1}\gamma_{u,2l}(\phi)du$. As $\phi\to0$, $\delta_{u,n}(\phi)/C^2$ tends to the
+$r^n$ coefficient of $\ell_u(r)^2$, because $\partial_\phi\exp_p(rD_\phi u)|_{\phi=0}$ is the Jacobi field of
+length $\ell_u(r)$ and $C/\phi\to1$; so $W_u(r)r^2\to\ell_u(r)^2$, $V_u(v)v\to\rho_u(v)$ and
+$\gamma_{u,2l}(0)=[v^{2l}]\rho_u'(v)$, which is \eqref{vc:top}.
+\end{proof}
+
+\begin{lemma}[Radial reduction]\label{vc:radial}
+Let $P$ be a rotation-invariant polynomial of weight $2l$ in the jet of $K$ at $p$ (equivalently in the
+Taylor coefficients of $K$ in normal coordinates). If $p$ is a cone point of order $m\ge l-1$, then $P$
+takes at $p$ the value it takes on the radial part of the jet (its rotation average), which is the jet of a
+rotationally symmetric metric $dr^2+f(r)^2d\theta^2$.
+\end{lemma}
+
+\begin{proof}
+The jet is $\mathbb Z_m$-invariant, so its non-radial Fourier modes have frequencies $n\equiv0\pmod m$,
+$n\ne0$, and occur in Taylor degree $\ge|n|\ge m$, i.e.\ at weight $\ge m+2$. Write $J=J_0+J_{\ne}$. The
+part of $P(J)$ linear in $J_{\ne}$ is a rotation-invariant linear form on non-zero frequencies, hence $0$;
+the part of degree $\ge2$ in $J_\ne$ has weight $\ge2m+4>2l$, hence is absent. A radial jet of $K$ is the
+jet of the rotationally symmetric metric with $f''=-Kf$, $f(0)=0$, $f'(0)=1$.
+\end{proof}
+
+\begin{theorem}[Structure of a cone contribution]\label{vc:VC1}
+For each $l\ge0$ there are universal rotation-invariant polynomials $\beta_{l,1},\dots,\beta_{l,l+1}$ of
+weight $2l$ in $K$ and its covariant derivatives (of order $\le2l-2$) such that:
+\begin{enumerate}[label=(\roman*)]
+\item for a rotationally symmetric germ, $b_l(\phi)=\sum_{i=1}^{l+1}\beta_{l,i}\,C_\phi^{-2i}$ for every $\phi\in(0,2\pi)$;
+\item for every cone point $p$ of order $m\ge\max(2,l-1)$ of every Riemannian orbisurface,
+$a_l(p)=\sum_{i=1}^{l+1}\beta_{l,i}(p)\,\Pi_i(m)$ (values on the radial part of the jet);
+\item $m\,\Pi_i(m)$ is an even polynomial of degree $2i$ with $m\Pi_i(1)=0$ and leading coefficient
+$|B_{2i}|/(2i)!$; $m\Pi_1=\frac{m^2-1}{12}$, $m\Pi_2=\frac{(m^2-1)(m^2+11)}{720}$,
+$m\Pi_3=\frac{(m^2-1)(2m^4+23m^2+191)}{60480}$, $m\Pi_4=\frac{(m^2-1)(m^2+11)(3m^4+10m^2+227)}{3628800}$.
+\end{enumerate}
+So, as at constant curvature, the order-$t^l$ term is a combination of $m^{2l+1},m^{2l-1},\dots,m,1/m$,
+one new odd power per order; what changes is the coefficient of each power.
+\end{theorem}
+
+\begin{proof}
+(i) Every rotation is an isometry of the germ, and so is a reflection, which conjugates $\Phi_\phi$ to
+$\Phi_{-\phi}$; so $b_l$ is even in $\phi$. Donnelly's form \cite[4.2]{dggw2008} gives
+$b_l=|\det B|\,\tilde b_l(B,\text{jet})$ with $B=(I-D_\phi)^{-1}=\frac12(I+\cot\frac\phi2\,J)$, $J$ the rotation by
+$\pi/2$ (the matrix in \cite[5.6]{dggw2008}), $|\det B|=C^{-2}$; hence $b_l=C^{-2}P(\cot\frac\phi2)$ with $P$
+a polynomial. By Lemma~\ref{vc:pole}, $C^{2l+2}b_l$ is bounded as $\phi\to0$, so $\deg P\le2l$; $P$ is even,
+and $\cot^2\frac\phi2=4C^{-2}-1$. (ii) By Lemma~\ref{vc:radial} applied to the coefficients of $\tilde b_l$
+(rotation invariant for fixed $B$, since $B$ commutes with rotations), $b_l(\Phi^j)$ equals (i) at
+$\phi=2\pi j/m$ for the radial part of the jet; average over $j$. (iii) Differentiating
+$\sum_{j=0}^{m-1}\cot(x+\pi j/m)=m\cot(mx)$ (proof of Paper~A, Lemma~\ref{lem:Phi}) gives
+$\sum_{j=1}^{m-1}\csc^2(x+\pi j/m)=m^2\csc^2(mx)-\csc^2x$, whose Taylor coefficients at $x=0$ are
+polynomials in $m^2$ vanishing at $m=1$: with $\csc^2y=\sum_nc_ny^{2n-2}$ the $x^{2k}$ coefficient is
+$c_{k+1}(m^{2k+2}-1)$. The odd derivatives cancel between $j$ and $m-j$, and
+$(d/dx)^{2k}\csc^2x$ is a polynomial in $\csc^2x$ of degree $k+1$ with leading coefficient $(2k+1)!$, so
+$\sum_j\csc^{2i}(\pi j/m)$ is obtained triangularly, a polynomial in $m^2$ of degree $i$ vanishing at $m=1$. Its leading coefficient is $2\zeta(2i)/\pi^{2i}=4^i|B_{2i}|/(2i)!$ (the terms $j$ and $m-j$
+near the ends dominate). The explicit forms are computed exactly in \texttt{twisted\_mp.py} (reciprocal
+power sums of the roots of $T_m(1-S/2)-1$, Newton's identities) and checked numerically.
+\end{proof}
+
+\begin{theorem}[The coefficient of the new power]\label{vc:VC2}
+$\beta_{l,l+1}$ is given by \eqref{vc:top}; for a rotationally symmetric germ
+$\beta_{l,l+1}=4^l\,l!\,[v^{2l}](f^{-1})'(v)$. Hence:
+\begin{enumerate}[label=(\roman*)]
+\item $\beta_{l,l+1}=\dfrac{2}{(l-1)!}(-\Delta_g)^{l-1}K(p)+N_l$, $N_l$ a polynomial each of whose monomials
+has degree $\ge2$ in $K$ and its derivatives ($l\ge1$);
+\item at constant curvature $\kappa$, $\beta_{l,l+1}=\frac{(2l)!}{l!}\kappa^l$;
+\item $\beta_{1,2}=2K$, $\beta_{2,3}=12K^2-2\Delta_gK$, $\beta_{3,4}=120K^3-42K\Delta_gK+\Delta_g^2K$,
+$\beta_{4,5}=1680K^4-904K^2\Delta_gK+\frac{98}3K\Delta_g^2K+\frac{124}3(\Delta_gK)^2-\frac13\Delta_g^3K$
+(radial jets; for $l=4$ this is the value at cone points of order $m\ge3$);
+\item for $m\ge\max(2,l-1)$ the coefficient of $m^{2l+1}$ in $a_l(p)$ is
+$\dfrac{|B_{2l+2}|}{(2l+2)!}\,\beta_{l,l+1}(p)$.
+\end{enumerate}
+\end{theorem}
+
+\begin{proof}
+The first sentence is \eqref{vc:top}, with $\ell_u=f$ in the symmetric case. (ii) $f=\sin(\sqrt\kappa
+r)/\sqrt\kappa$, $(f^{-1})'(v)=(1-\kappa v^2)^{-1/2}=\sum_a\binom{2a}a(\kappa v^2/4)^a$. (i) To first order in
+$K=\sum_jk_jr^{2j}$, $f=r-\int_0^r(r-s)K(s)s\,ds$, so $f\ni-k_{l-1}r^{2l+1}/(2l(2l+1))$,
+$\rho\ni k_{l-1}v^{2l+1}/(2l(2l+1))$, $\rho'\ni k_{l-1}v^{2l}/(2l)$, and
+$(-\Delta_g)^{l-1}K(p)=4^{l-1}((l-1)!)^2k_{l-1}+(\text{degree}\ge2)$ since
+$(\partial_1^2+\partial_2^2)^{n}r^{2n}=4^n(n!)^2$. In general (non-radial) the linear part of the
+$u$-average of the order-$(2l-2)$ Taylor coefficient of $K$ is the same trace. (iii) Exact computation,
+\texttt{top\_coefficient.py} ($l\le7$), with $l=1,2$ equal to Donnelly's $b_1=2K/C^4$
+\cite[Rem.~3.2]{schueth2019} and the $C^{-6}$ part of \cite[Thm~3.7]{schueth2019}, and $l=3$ equal to the
+$C^{-8}$ part of $b_3$ computed independently in Theorem~\ref{vc:VC3}. (iv) Theorem~\ref{vc:VC1}(iii) with
+$i=l+1$.
+\end{proof}
+
+\begin{corollary}[What fails]\label{vc:fail}
+For every $l\ge2$ the top power $m^{2l+1}$ of the order-$t^l$ cone term has coefficient
+$\frac{|B_{2l+2}|}{(2l+2)!}\bigl(\frac{(2l)!}{l!}K^l+\cdots+\frac{2}{(l-1)!}(-\Delta_g)^{l-1}K\bigr)$, which involves
+$\Delta_g^{l-1}K(p)$ with non-zero coefficient. The ansatz ``leading $m$-dependence $K(p)^lp_l(m)/m$, derivative
+terms with lower powers of $m$'' therefore holds for $l=0,1$ only. At $l=2$ this is visible in
+\cite[Thm~4.1]{schueth2019}: $-\frac1{15120}m^5\Delta_gK$.
+\end{corollary}
+
+\begin{theorem}[The $t^3$ cone coefficient]\label{vc:VC3}
+For a rotationally symmetric germ,
+$b_3(\phi)=\bigl(\frac{120}{C^8}-\frac{32}{C^6}+\frac4{3C^4}\bigr)K^3+\bigl(-\frac{42}{C^8}+\frac8{C^6}\bigr)K\Delta_gK+\frac1{C^8}\Delta_g^2K$.
+For every cone point of order $m\ge2$ of every Riemannian orbisurface,
+\[
+a_3(p)=\tfrac{(m^2-1)(m^2+3)(3m^4+2m^2+19)}{30240\,m}K^3
+-\tfrac{(m^2-1)(7m^6+47m^4+173m^2+733)}{201600\,m}K\Delta_gK
++\tfrac{(m^2-1)(m^2+11)(3m^4+10m^2+227)}{3628800\,m}\Delta_g^2K .
+\]
+\end{theorem}
+
+\begin{proof}
+\texttt{twisted\_mp.py}: for $K=k_0+k_1r^2+k_2r^4$ it solves the Hamilton--Jacobi equation for
+$\sigma=\operatorname{dist}^2/2$ and the transport equations
+$\sigma^a\nabla_aU_i+(i+\frac12(\nabla^2\sigma-2))U_i=\nabla^2U_{i-1}$, $U_0(x,x)=1$, exactly as power series in
+normal coordinates (residuals asserted zero), and evaluates
+$\int_0^\infty2\pi f(r)\,(4\pi t)^{-1}e^{-\sigma/2t}\sum_iU_it^i\,dr$ at the points $(r,0)$, $R_\phi(r,0)$ by
+Laplace's method term by term (this is Schueth's computation in the variable $r$ instead of $z$).
+Checks, all asserted: $U_1(p,p)=K/3$, $U_2(p,p)=K^2/15-\Delta_gK/15$, $U_0$ and $U_1$ along a ray agree with
+\cite[(6),(8)]{schueth2019}; $b_0=C^{-2}$, $b_1=2KC^{-4}$, $b_2$ equals \cite[Thm~3.7]{schueth2019}; after
+averaging, $a_0,a_1,a_2$ equal \cite[Rem.~4.2, Thm~4.1]{schueth2019}; the $K^3$ part of $a_3$ equals
+U\c{c}ar's $p_3(m)/m$; the $C^{-8}$ part equals Theorem~\ref{vc:VC2}(iii). For general cone points: the
+rotation-invariant weight-$6$ polynomials are spanned by $K^3$, $K\Delta_gK$, $|\nabla K|^2$, $\Delta_g^2K$
+(other contractions of $\nabla^4K$ differ from $\Delta_g^2K$ by these), $\nabla K(p)=0$ at a cone point, and
+Lemma~\ref{vc:radial} applies for $m\ge2=l-1$; the radial family realises all values of
+$(K,\Delta_gK,\Delta_g^2K)=(k_0,-4k_1,64k_2-\frac83k_0k_1)$.
+\end{proof}
+
+\subsection*{3. An extension}
+
+\begin{theorem}[Curvature flat to finite order at the cone points]\label{vc:VC4}
+Fix $\kappa\ne0$ and $L\ge2$. Let $(\Orb,g)$, $(\Orb',g')$ have signatures $(\gamma;m)$, $(\gamma';m')$,
+and suppose that at every cone point of both, $K(p)=\kappa$ and $\nabla^jK(p)=0$ for $1\le j\le2L-6$.
+Suppose $S_l(g)=S_l(g')$ for $-1\le l\le L-2$. Then $\chi^{\rm orb}(\Orb)=\chi^{\rm orb}(\Orb')$, and
+$a_l(g)=a_l(g')$ for $-1\le l\le L-2$ (that is, $c_1,\dots,c_L$ agree) if and only if
+$\Psi_k(m)=\Psi_k(m')$ for $1\le k\le L-1$. Hence the reduction of Paper~A, Lemma~\ref{lem:sigdata}, holds
+verbatim in this class, and with it every conclusion Paper~A draws from that lemma, with $\Area$ replaced
+by $-2\pi\chi^{\rm orb}$.
+The same holds for $L\le5$ if instead all cone points of $\Orb$ and $\Orb'$ have the same
+$J=(K,\Delta_gK,\Delta_g^2K)(p)$ and $\beta_{l,l+1}(J)\ne0$ for $1\le l\le L-2$. For $\kappa=0$ and $L\ge3$
+the ``only if'' fails.
+\end{theorem}
+
+\begin{proof}
+For $l\le L-2$, $a_l(p)$ is a polynomial of weight $2l$ in the jet, so it involves $\nabla^jK(p)$ only for
+$j\le2l-2\le2L-6$; these coincide with the constant-curvature values, and locality
+\cite[4.1]{dggw2008} gives $a_l(p)=\kappa^lp_l(m)/m$ (U\c{c}ar; Paper~A, \eqref{eq:bl} with $\kappa^l$ for
+$(-1)^l$). $S_0=\chi^{\rm orb}/6$ gives the first claim. For $0\le l\le L-2$,
+$a_l(g)-a_l(g')=\kappa^l(C_l(m)-C_l(m'))$ in Paper~A's notation, and $\kappa\ne0$; Paper~A,
+Lemma~\ref{lem:triangular}, turns this into $\Psi_k$, $k\le L-1$; $a_{-1}=S_{-1}$. For a common $J$,
+$\sum_ia_l(p_i)=\sum_{d\le l+1}\beta_{l,d}(J)\sum_i\Pi_d(m_i)$ (Theorems~\ref{vc:VC1}, \ref{vc:VC3}; explicit for
+$l\le3$) is triangular with diagonal $\beta_{l,l+1}(J)$, and $m\Pi_d(m)$, $d\le n$, span the same space as
+$m^{2d}-1$, $d\le n$ (Theorem~\ref{vc:VC1}(iii)). For $\kappa=0$, $a_l(p)=0$ for $1\le l\le L-2$, and
+Theorem~\ref{vc:VC6} gives pairs with all $a_l$ and all $S_l$ equal but $\Psi_2(m)\ne\Psi_2(m')$.
+\end{proof}
+
+The smooth parts $S_l$ are not spectral data, and Theorems~\ref{vc:VC5}--\ref{vc:VC6} show that this
+hypothesis cannot be dropped.
+
+\subsection*{4. Obstructions}
+
+\begin{lemma}[Second variation of the smooth invariants]\label{vc:quad}
+Let $\psi\in C_c^\infty(\mathbb R^2)$ and $g_\lambda=e^{2\lambda\psi}|dx|^2$. For $l\ge1$,
+\[
+G_l(\lambda\psi):=\frac1{4\pi}\int u_{l+1}(g_\lambda)\,dA_\lambda
+=\lambda^2\,\frac{F_{l+1}}{2\pi}\int\psi\,\Delta_0^{\,l+1}\psi\,dx+O(\lambda^3),\qquad
+F_n=\frac{(-1)^n\,n(n-1)\,n!}{(2n+1)!}\ne0\ (n\ge2).
+\]
+\end{lemma}
+
+\begin{proof}
+Here $\Delta_0=-(\partial_1^2+\partial_2^2)\ge0$. Put $\psi$ in a large flat torus; $\Delta_{g_\lambda}=e^{-2\lambda\psi}\Delta_0=\Delta_0+w\Delta_0$,
+$w=e^{-2\lambda\psi}-1$. The heat expansion and its remainder depend smoothly on $\lambda$, so the
+$\lambda^2$ coefficient of $G_l$ is the $t^l$ coefficient of the $\lambda^2$ part of
+$\operatorname{tr}e^{-t\Delta_{g_\lambda}}$. By Duhamel, that part is
+$-t\operatorname{tr}(w_2\Delta_0e^{-t\Delta_0})+\frac{t^2}2\int_0^1\operatorname{tr}(w_1\Delta_0e^{-(1-\alpha)t\Delta_0}w_1\Delta_0e^{-\alpha t\Delta_0})d\alpha$,
+$w_1=-2\lambda\psi$, $w_2=2\lambda^2\psi^2$. The first term is $-(4\pi t)^{-1}\int w_2$ up to $O(t^\infty)$. In
+Fourier variables (lattice sums equal the integrals up to $O(t^\infty)$), completing the square
+$(1-\alpha)|\eta|^2+\alpha|\eta+\zeta|^2=|\eta+\alpha\zeta|^2+\alpha(1-\alpha)|\zeta|^2$ and using the Gaussian
+moment $\mathbb E|\mu+A|^2|\mu+B|^2=2t^{-2}+(|A|^2+|B|^2+2A\cdot B)t^{-1}+|A|^2|B|^2$, the second term is
+$\frac{1}{2\pi t}\cdot\frac1{(2\pi)^2}\int|\hat\psi(\zeta)|^2F(t|\zeta|^2)\,d\zeta\cdot\lambda^2$ with
+$F(x)=\int_0^1[2+(1-2\alpha)^2x+\alpha^2(1-\alpha)^2x^2]e^{-\alpha(1-\alpha)x}d\alpha=\sum_nF_nx^n$; the
+integral $\int_0^1(\alpha(1-\alpha))^nd\alpha=(n!)^2/(2n+1)!$ gives $F_n$. Plancherel gives the claim.
+Checks (\texttt{quadratic\_form.py}): $F_1=0$ (no $t^0$ term: $\int K\,dA=0$ for a bump); at $l=1$ the
+formula is $\frac1{60\pi}\int(\Delta_0\psi)^2\lambda^2=\frac1{4\pi}\int\frac{K^2}{15}$, Berger's $u_2$
+\cite[(7)]{schueth2019}; at $t^{-1}$ the two terms add to the $\lambda^2$ part of $\Area/4\pi$.
+\end{proof}
+
+\begin{lemma}[Generalised Vandermonde]\label{vc:vdm}
+For distinct reals $e_1,\dots,e_N$ and distinct $\varepsilon_1,\dots,\varepsilon_N>0$,
+$\det(\varepsilon_k^{e_i})\ne0$.
+\end{lemma}
+
+\begin{proof}
+A non-zero $\sum_ic_i\varepsilon^{e_i}$ has at most $N-1$ positive zeros: divide by the smallest power and
+differentiate (Rolle, induction on $N$).
+\end{proof}
+
+\begin{theorem}[Finite order: only $c_2$ survives]\label{vc:VC5}
+Let $\sigma=(\gamma;m_1,\dots,m_n)$ and $\sigma'=(\gamma';m'_1,\dots,m'_{n'})$ be signatures of closed
+orientable cone-point orbifolds, $\kappa\in\mathbb R$ and $L\ge0$. There are orbifold metrics $g$ on
+$\Orb_\sigma$ and $g'$ on $\Orb_{\sigma'}$, each of constant curvature $\kappa$ near every cone point, with
+$a_l(g)=a_l(g')$ for all $-1\le l\le L$, if and only if
+\begin{equation}\label{vc:a0}
+\frac{2-2\gamma}6+\sum_i\frac{(m_i-1)^2}{12m_i}=\frac{2-2\gamma'}6+\sum_j\frac{(m'_j-1)^2}{12m'_j}.
+\end{equation}
+For example $S^2(2,2,2,2,2,2,2,2)$ and $S^2(3,3,3)$ (both sides $2/3$).
+\end{theorem}
+
+\begin{proof}
+Only if: $a_0=\chi^{\rm orb}/6+\sum_i\frac{m_i^2-1}{12m_i}$ for every metric \cite[(5.7)]{dggw2008}, and this is
+the left side of \eqref{vc:a0}.
+If: (1) Choose $g_0$ on $\Orb_\sigma$ of constant curvature $\kappa$ on disjoint discs $U_i$ about the cone
+points (quotients of small geodesic discs of the space form by rotations of order $m_i$), flat on two
+further disjoint discs $\Delta_1,\Delta_2$ (convex combination of metrics). Inside $\Delta_2$ replace the flat
+metric by a rotationally symmetric ``finger'' containing a flat cylinder $S^1_\rho\times[0,T]$, all of the
+finger except the cylinder independent of $T$: the area grows by $2\pi\rho T$ and no $S_l$ changes.
+Do the same on $\Orb_{\sigma'}$. By locality, every metric that agrees with $g_0$ on $\bigcup U_i$ has
+cone parts $C_l=\sum_i\kappa^lp_l(m_i)/m_i$. (2) Fix $\psi\in C_c^\infty(B_1)$, $\psi\ne0$, and by
+Lemma~\ref{vc:quad} $\lambda\ne0$ with $G_l:=G_l(\lambda\psi)\ne0$ for $1\le l\le L$. The
+$\varepsilon$-gadget is the metric $e^{2\lambda\psi((x-x_0)/\varepsilon)}|dx|^2$ in a disc of radius $\varepsilon$
+inside $\Delta_1$; it changes $S_l$ by $\varepsilon^{-2l}G_l$ (weights: $S_l(c^2h)=c^{-2l}S_l(h)$) and nothing
+else but the area. Gadgets in disjoint discs add. (3) The map
+$V(\varepsilon_1,\dots,\varepsilon_L)=\sum_k(\varepsilon_k^{-2}G_1,\dots,\varepsilon_k^{-2L}G_L)$ has Jacobian
+$\prod_l(-2lG_l)\cdot\det(\varepsilon_k^{-2l-1})\ne0$ at distinct scales (Lemma~\ref{vc:vdm}), so its image
+contains a ball $B(w_0,\rho_0)$. (4) Let $E_l=S_l(g'_0)+C'_l-S_l(g_0)-C_l$ and
+$\Sigma_s=\operatorname{diag}(s^{-2},\dots,s^{-2L})$. For $s\in(0,1]$ small,
+$\Sigma_s^{-1}E\in B(0,\rho_0)$; take gadget scales $X$ on $\Orb_\sigma$ with $V(X)=w_0+\Sigma_s^{-1}E$ and $Y$ on
+$\Orb_{\sigma'}$ with $V(Y)=w_0$, and shrink all gadgets by $s$ about their centres: the changes become
+$\Sigma_sV(X)$ and $\Sigma_sV(Y)$, whose difference is $E$. Now $S_l(g)+C_l=S_l(g')+C'_l$ for
+$1\le l\le L$. (5) Lengthen one finger to equalise the areas ($a_{-1}$); $a_0$ agree by \eqref{vc:a0}.
+\end{proof}
+
+\begin{theorem}[All orders: explicit metrics, flat at the cone points]\label{vc:VC6}
+Let $m=(m_1,\dots,m_n)$, $m'=(m'_1,\dots,m'_{n'})$ be multisets of integers $\ge2$ with
+\begin{equation}\label{vc:vc6}
+\sum_i\Bigl(1-\frac1{m_i}\Bigr)=\sum_j\Bigl(1-\frac1{m'_j}\Bigr)>1,\qquad
+\sum_i\Bigl(m_i-\frac1{m_i}\Bigr)=\sum_j\Bigl(m'_j-\frac1{m'_j}\Bigr).
+\end{equation}
+For every $\gamma\ge0$ there are orbifold metrics on $\Orb_{(\gamma;m)}$ and $\Orb_{(\gamma;m')}$, flat near every
+cone point, whose heat traces have the same asymptotic expansion to all orders. This applies to
+$\Orb(2,8,8)$ and $\Orb(3,3,12)$ (Paper~A, Theorem~\ref{thm:intro-rigid}(ii)), to $(2k,8k,8k)$ and
+$(3k,3k,12k)$, and to $(5,5,5)$ and $(2,2,2,10)$.
+\end{theorem}
+
+\begin{proof}
+Let $\alpha_i=1/m_i$ and $\alpha_0=\sum_i(1-\alpha_i)-1>0$, so $\sum_{i=0}^n(\alpha_i-1)=-2$. On $\hat{\mathbb C}$ with
+distinct $z_0,\dots,z_n\in\mathbb C$, the metric $|\omega|$, $\omega=\prod_{i=0}^n(z-z_i)^{\alpha_i-1}dz$, is flat; at
+$\infty$, in $w=1/z$, $|\omega|=|w|^{-\sum(\alpha_i-1)-2}\prod_i|1-z_iw|^{\alpha_i-1}|dw|$ is smooth. Near $z_i$ there
+is a holomorphic coordinate $\zeta$ with $\omega=\zeta^{\alpha_i-1}d\zeta$; for $\alpha_i=1/m_i$ the chart
+$\zeta=\xi^{m_i}$ turns $|\zeta|^{1/m_i-1}|d\zeta|$ into $m_i|d\xi|$, a flat orbifold cone point of order $m_i$; near
+$z_0$, with $\varrho=|\zeta|^{\alpha_0}/\alpha_0$, the metric is the exact flat cone $d\varrho^2+\alpha_0^2\varrho^2d\theta^2$.
+Do the same for $m'$ with the same $\alpha_0$, scale both so that the cone neighbourhoods have radius
+$>\varrho_1$, remove $\{\varrho<\varrho_1\}$ from both, and glue in the same smooth surface $P_T$ with one
+boundary circle: genus $\gamma$, a collar isometric to $\{\varrho_1-\delta<\varrho\le\varrho_1\}$ of that cone, and a flat
+cylinder of length $T$ (e.g.\ a surface of revolution $d\varrho^2+F(\varrho)^2d\theta^2$, $F'(0)=1$,
+$F=\alpha_0\varrho$ near the collar, with $\gamma$ handles attached in a flat part). The result is a smooth
+Riemannian orbifold of signature $(\gamma;m)$, resp.\ $(\gamma;m')$. For $l\ge1$: $u_{l+1}=0$ on flat regions, so
+$S_l=\frac1{4\pi}\int_{P_T}u_{l+1}$, the same for both and independent of $T$; and a flat cone point
+contributes $a_l(p)=0$ (each monomial of $b_l$ contains a curvature factor). For $l=0$, $\chi^{\rm orb}$ and
+$\sum_i\frac{m_i^2-1}{12m_i}=\frac1{12}\sum_i(m_i-\frac1{m_i})$ agree by \eqref{vc:vc6}. For $l=-1$, choose $T,T'$.
+\end{proof}
+
+\begin{remark}[What is open]
+(a) The lower coefficients $\beta_{l,i}$, $i\le l$, for $l\ge4$ (Theorem~\ref{vc:VC1} gives their existence and
+Theorem~\ref{vc:VC2} the top one), and, for $m\le l-2$, the terms quadratic in non-radial jets; these do
+occur: at $l=4$, $m=2$ the adversarial check (\texttt{attack-log.md}) finds
+$b_4(\pi)=\frac7{480}|\nabla^2K-\frac12\operatorname{tr}\nabla^2K\,g|^2+(\text{radial part})$.
+(b) Whether \eqref{vc:a0} alone suffices for agreement to all orders (Theorem~\ref{vc:VC6} needs both
+conditions of \eqref{vc:vc6}, i.e.\ equal $\chi^{\rm orb}$ as well). (c) Whether any of these pairs can be
+made isospectral. (d) Schueth's conjecture for corners of arbitrary angle \cite[Conj.~5.5]{schueth2019} is
+not addressed.
+\end{remark}

@@ -1,0 +1,17 @@
+Duhamel operator for t^1: 7 monomials
+Duhamel operator for t^2: 43 monomials
+Duhamel operator for t^3: 146 monomials
+Duhamel operator for t^4: 370 monomials
+K = k0  Delta_g K(p) = -4*k1  Delta_g^2 K(p) = -8*k0*k1/3 + 64*k2
+m=2: a_3(p) - VC3 claim = 0
+VC3 at m=2 with non-radial Z_2-symmetric jet (h2,g2,g4 != 0): CONFIRMED
+VC3 at m=4 with frequency-4 jet (g4 != 0): CONFIRMED
+b_1(pi) depends on non-radial params: []
+b_2(pi) depends on non-radial params: []
+b_3(pi) depends on non-radial params: []
+b_4(pi) depends on non-radial params: ['h2']
+b_4(pi) = 7*h2**2/480 + 13*k0**4/192 + 161*k0**2*k1/720 + k0*k2/3 + 23*k1**2/240 + 3*k3/4
+=> at m=2, l=4 the traceless Hessian (h2) enters quadratically: m >= l-1 in VC1 is necessary
+DONE
+python -u nonradial_test.py 4  78.12s user 0.43s system 99% cpu 1:19.17 total
+radial b_4(pi) [twisted_duhamel] - (nonradial run at h2=0) = 0

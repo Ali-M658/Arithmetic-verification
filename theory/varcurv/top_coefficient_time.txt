@@ -1,0 +1,1 @@
+python3 -u top_coefficient.py > top_coefficient_output.txt 2>&1  43.26s user 0.80s system 93% cpu 46.953 total

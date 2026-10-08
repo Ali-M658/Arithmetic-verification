@@ -1,0 +1,17 @@
+t^{-1} part of the 2nd-order Duhamel term (coefficient of lambda^2 int psi^2): 1/pi
+t^{-1}: lambda^2 coefficient = 2/(4pi) int psi^2 = area term: OK
+t^0: quadratic part 0 (Gauss-Bonnet): OK
+n=2: G_n = 1/(60*pi) ;  2 pi G_n = 1/30 ; F_n = 1/30 ; matches F_n with (-Delta_0)=P(>=0): True ; with (-Delta_0)=-P: True
+n=3: G_n = -1/(280*pi) ;  2 pi G_n = -1/140 ; F_n = -1/140 ; matches F_n with (-Delta_0)=P(>=0): True ; with (-Delta_0)=-P: False
+n=4: G_n = 1/(2520*pi) ;  2 pi G_n = 1/1260 ; F_n = 1/1260 ; matches F_n with (-Delta_0)=P(>=0): True ; with (-Delta_0)=-P: True
+n=5: G_n = -1/(33264*pi) ;  2 pi G_n = -1/16632 ; F_n = -1/16632 ; matches F_n with (-Delta_0)=P(>=0): True ; with (-Delta_0)=-P: False
+n=6: G_n = 1/(576576*pi) ;  2 pi G_n = 1/288288 ; F_n = 1/288288 ; matches F_n with (-Delta_0)=P(>=0): True ; with (-Delta_0)=-P: True
+n=7: G_n = -1/(12355200*pi) ;  2 pi G_n = -1/6177600 ; F_n = -1/6177600 ; matches F_n with (-Delta_0)=P(>=0): True ; with (-Delta_0)=-P: False
+n=8: G_n = 1/(315057600*pi) ;  2 pi G_n = 1/157528800 ; F_n = 1/157528800 ; matches F_n with (-Delta_0)=P(>=0): True ; with (-Delta_0)=-P: True
+n=9: G_n = -1/(9311702400*pi) ;  2 pi G_n = -1/4655851200 ; F_n = -1/4655851200 ; matches F_n with (-Delta_0)=P(>=0): True ; with (-Delta_0)=-P: False
+n=2 agrees with Berger u_2 = K^2/15 - Delta K/15: OK
+n=3 agrees with Gilkey a_6 (Vassilevich (4.29)): quadratic part of int u_3 dA = -(1/70) int |grad K|^2: OK
+CONCLUSION: Lemma VC5a holds iff (-Delta_0) denotes the NONNEGATIVE flat Laplacian -(d1^2+d2^2),
+i.e. iff Delta_0 = +(d1^2+d2^2) (analyst sign). With Delta_0 = -div grad (the file's convention for Delta_g)
+the sign is wrong for every odd n (even l): e.g. n=3 the true value is -1/(280 pi) int psi P^3 psi < 0.
+ALL ASSERTS PASSED
