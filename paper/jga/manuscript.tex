@@ -110,7 +110,7 @@
 \presentaddresstxt{ORCID iDs}
 \presentaddress{P.~Gang 0009-0006-7448-9488; A.~Agadi 0009-0009-1378-0556; A.~Veluri 0009-0001-5940-3272; J.~Wang 0009-0004-1814-275X; J.~Barreto 0009-0006-6894-7323; A.~Chouthaiwale 0009-0008-3878-7183.}
 
-\abstract{Heat released on a surface explores, in a short time $t$, a disc of radius about $\sqrt t$, and the heat invariants $c_1,c_2,\dots$ of the small-time expansion of the heat trace record what it learns. For closed orientable $2$-orbifolds of curvature $-1$ with cone points we ask how many heat invariants determine the genus and the cone orders. If every cone order is at most $M$, the first $M+1$ suffice against all such orbifolds, whatever the area, and $M+1$ is attained; so the number needed can grow only through large cone orders. Without that bound it grows at least like the square root of the area and at most linearly, and it grows like a power $A^\alpha$ of the area exactly when the Prouhet--Tarry--Escott function satisfies $N(k)=O(k^{1/\alpha})$: linear growth is equivalent to the open problem $N(k)=O(k)$. Among triangle orbifolds three invariants always suffice, and two first fail on $\mathcal O(2,8,8)$ and $\mathcal O(3,3,12)$, a pair isolated by an elliptic curve of rank~$0$.}
+\abstract{Heat released on a surface explores, in a short time $t$, a disc of radius about $\sqrt t$; the heat invariants $c_1,c_2,\dots$ of the heat trace record what it learns. For closed orientable $2$-orbifolds of curvature $-1$ with cone points we ask how many heat invariants determine the genus and the cone orders. If every cone order is at most $M$, the first $M+1$ suffice, whatever the area, and $M+1$ is attained: the number can grow only through large cone orders. Without that bound it grows at least like the square root of the area and at most linearly, and like a power $A^\alpha$ of the area exactly when the Prouhet--Tarry--Escott function satisfies $N(k)=O(k^{1/\alpha})$; linear growth is equivalent to the open problem $N(k)=O(k)$. Among triangle orbifolds three invariants always suffice, and two first fail on $\mathcal O(2,8,8)$ and $\mathcal O(3,3,12)$, a pair isolated by an elliptic curve of rank~$0$.}
 
 \keywords{Heat invariants, Hyperbolic orbifolds, Inverse spectral problems, Cone singularities, Power sums, Prouhet--Tarry--Escott problem}
 
@@ -139,7 +139,7 @@ and let $N(k)$ be the least size of a nontrivial solution of degree $k$ of the P
 \begin{theorem}[Growth and the Prouhet--Tarry--Escott problem]\label{thm:intro-growth}
 \leavevmode
 \begin{enumerate}[label=(\roman*)]
-\item For $A\ge8\pi$, $\lfloor\sqrt{\frac13(\frac A{2\pi}-1)}\rfloor+2\le f(A)\le\lfloor A/\pi\rfloor+4$.
+\item For $A\ge8\pi$, $f(A)\ge\lfloor\sqrt{\frac13(\frac A{2\pi}-1)}\rfloor+2$; the elementary upper bound $f(A)\le\lfloor A/\pi\rfloor+4$ is Corollary~\ref{cor:intro-area}.
 \item For $0<\alpha\le1$, $f(A)\ge cA^\alpha$ for all large $A$ and some $c>0$ if and only if $N(k)\le Ck^{1/\alpha}$ for all $k\ge1$ and some $C$; and $N(k)\ge ck^{1/\alpha}$ for all $k$ implies $f(A)=O(A^\alpha)$. In particular $f$ grows linearly if and only if $N(k)=O(k)$, an open problem, and $f(A)=o(A)$ if and only if $N(k)/k\to\infty$.
 \end{enumerate}
 \end{theorem}
@@ -821,7 +821,7 @@ The adjacent strata touch without overlapping only for $p=2$ and $p=4$, at $(2,8
 
 Beyond the overlap a collision needs two reciprocal sums to coincide exactly, an arithmetic event (Table~\sref{tab:overlap}); collisions also join non-adjacent strata, first $(5,15,15)$ and $(7,7,21)$ at $S=35$.
 
-Computation shows that among the sums $18\le S\le4800$ exactly $38$ carry no collision, the first being $19$ and $21$--$25$ and the last $557$ (Proposition~\sref{prop:collisionfree} of the supplement); we do not know whether only finitely many sums are collision-free.
+Computation shows that among the sums $18\le S\le4800$ exactly $38$ carry no collision, the first being $19$ and $21$--$25$ and the last $557$ (Proposition~\sref{prop:collisionfree} of the supplement; the underlying enumeration of all admissible triples with $S\le4800$ is also that of the companion note \cite{companion}, which extends it to $S\le6000$); we do not know whether only finitely many sums are collision-free.
 
 \subsection{The minimal pair is isolated}\label{sec:isolation}
 
