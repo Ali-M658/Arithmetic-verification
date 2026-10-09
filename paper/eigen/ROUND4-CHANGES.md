@@ -95,3 +95,4 @@ maximum), and says so in §1 and §7.1.
 | n19 colours | the E3 citing sentence keys the colours: O(2,8,8) dark blue-green, O(3,3,12) orange |
 | n16 notation | partial, unchanged: Γ (function and group), L (length and order count), K (truncation and curvature) have local second meanings, each defined where used. Recorded |
 | n20 | the Zenodo DOI is the placeholder the brief specifies |
+| PDF-only check 2 | confirmed every close-out fix; its wording findings fixed: "the smaller systole of the two triangle orbifolds"; §8.2 no longer repeats the pinching sentences of §1 (refers back) or the ε^{-3} log(1/ε) remark of §5 |
