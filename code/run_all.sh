@@ -25,7 +25,7 @@
 #                     theory/diophantine/requirements-pari.txt
 #   RUN_ALL_LOGDIR    where each stage's output is kept (default: a fresh temporary directory)
 #
-# Appendix A of the manuscript refers to this script as the single command that reproduces the checks.
+# The data statement of the manuscript refers to this script as the single command that reproduces the checks.
 #
 set -u -o pipefail
 
