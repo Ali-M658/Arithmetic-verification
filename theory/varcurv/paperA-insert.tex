@@ -23,8 +23,9 @@ $\frac{|B_{2l+2}|}{(2l+2)!}\beta_{l,l+1}(p)$, where
 =\tfrac{(2l)!}{l!}K^l+\dots+\tfrac{2}{(l-1)!}(-\Delta)^{l-1}K ,
 \]
 $f(r)$ the length of the distance circle of radius $r$ divided by $2\pi$ (for a rotationally symmetric germ;
-in general averaged over directions). Thus $\beta_{2,3}=12K^2-2\Delta K$, $\beta_{3,4}=120K^3-42K\Delta K+\Delta^2K$,
-and
+in general averaged over directions). Thus $\beta_{2,3}=12K^2-2\Delta K$, $\beta_{3,4}=120K^3-42K\Delta K+\Delta^2K$.
+For every $m\ge2$ the part of $a_l(p)$ linear in the curvature jet is
+$\frac{2}{(l-1)!}\Pi_{l+1}(m)\,(-\Delta)^{l-1}K(p)$, and
 \[
 a_3(p)=\tfrac{(m^2-1)(m^2+3)(3m^4+2m^2+19)}{30240\,m}K^3
 -\tfrac{(m^2-1)(7m^6+47m^4+173m^2+733)}{201600\,m}K\Delta K
@@ -34,9 +35,13 @@ a_3(p)=\tfrac{(m^2-1)(m^2+3)(3m^4+2m^2+19)}{30240\,m}K^3
 
 So one new odd power of the order still enters per order in $t$, but from order $t^2$ on its coefficient
 is not a multiple of $K(p)^l$: it contains $\Delta^{l-1}K(p)$, already visible as the term
-$-\frac1{15120}m^5\Delta K$ in Schueth's $t^2$ coefficient \cite[Thm~4.1]{schueth2019}. The top coefficient comes
-from following the substitution in Schueth's proof of \cite[Thm~3.7]{schueth2019} to all orders: only the
-leading Gaussian and the area element reach the highest pole in $C_\phi$. The $t^3$ formula is our own
+$-\frac1{15120}m^5\Delta K$ in Schueth's $t^2$ coefficient \cite[Thm~4.1]{schueth2019}. To first order in the
+curvature the highest derivative is in fact the coefficient of the whole of $\Pi_{l+1}(m)$, so the cone term at
+order $t^l$ sums to $\frac2{(l-1)!}\sum_i(-\Delta)^{l-1}K(p_i)\Pi_{l+1}(m_i)$ plus non-linear terms: a power sum with an
+independent weight at each cone point, which no longer defines a Prouhet--Tarry--Escott condition. The top coefficient
+comes from following the substitution in Schueth's proof of \cite[Thm~3.7]{schueth2019} to all orders: only the
+leading Gaussian and the area element reach the highest pole in $C_\phi$. The linear part comes from a first-order
+Duhamel expansion about the flat rotation, in which only the top pole survives. The $t^3$ formula is our own
 computation, checked against \cite[Thm~3.7, Thm~4.1]{schueth2019} at lower order and against \eqref{eq:bl}
 at constant curvature.
 

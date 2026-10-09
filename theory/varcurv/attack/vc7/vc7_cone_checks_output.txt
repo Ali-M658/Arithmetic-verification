@@ -1,0 +1,26 @@
+earlier-attacker b_1: linear part = 2*X**2*k0   == VC7(a): OK
+earlier-attacker b_2: linear part = 8*X**3*k1   == VC7(a): OK
+earlier-attacker b_3: linear part = 64*X**4*k2   == VC7(a): OK
+earlier-attacker b_4: linear part = 768*X**5*k3   == VC7(a): OK
+earlier-attacker b_5: linear part = 12288*X**6*k4   == VC7(a): OK
+Schueth Thm 3.7 linear part -2 C^-6 Delta K == VC7(a) l=2: OK
+Pi_i(m) exact (cycle-Laplacian trace) == 50-digit trig sums, i=1..7, m=2..20: OK
+Pi_1(m) = (m - 1)*(m + 1)/(12*m);  leading coeff |B_2|/(2)! = 1/12: OK (interpolated on 3 pts, verified m=2..20)
+Pi_2(m) = (m - 1)*(m + 1)*(m**2 + 11)/(720*m);  leading coeff |B_4|/(4)! = 1/720: OK (interpolated on 5 pts, verified m=2..20)
+Pi_3(m) = (m - 1)*(m + 1)*(2*m**4 + 23*m**2 + 191)/(60480*m);  leading coeff |B_6|/(6)! = 1/30240: OK (interpolated on 7 pts, verified m=2..20)
+Pi_4(m) = (m - 1)*(m + 1)*(m**2 + 11)*(3*m**4 + 10*m**2 + 227)/(3628800*m);  leading coeff |B_8|/(8)! = 1/1209600: OK (interpolated on 9 pts, verified m=2..20)
+Pi_5(m) = (m - 1)*(m + 1)*(2*m**8 + 35*m**6 + 321*m**4 + 2125*m**2 + 14797)/(95800320*m);  leading coeff |B_10|/(10)! = 1/47900160: OK (interpolated on 11 pts, verified m=2..20)
+Pi_6(m) = (m - 1)*(m + 1)*(1382*m**10 + 28682*m**8 + 307961*m**6 + 2295661*m**4 + 13803157*m**2 + 92427157)/(2615348736000*m);  leading coeff |B_12|/(12)! = 691/1307674368000: OK (interpolated on 13 pts, verified m=2..20)
+Pi_7(m) = (m - 1)*(m + 1)*(60*m**12 + 1442*m**10 + 17822*m**8 + 151241*m**6 + 997801*m**4 + 5636617*m**2 + 36740617)/(4483454976000*m);  leading coeff |B_14|/(14)! = 1/74724249600: OK (interpolated on 15 pts, verified m=2..20)
+(b) l=2: Schueth Thm 4.1 coefficient of Delta_g K == -2 Pi_3(m) as rational functions: OK
+(b) l=1: Schueth Rem 4.2 / Donnelly a_1 coefficient of K == 2 Pi_2(m): OK
+    (sanity) a_0 = Pi_1(m) = (m - 1/m)/12: OK
+(b) l=2: direct average of Thm 3.7 over j, m=2..20: coefficient of Delta K = -2 Pi_3(m): OK
+(b) l=1..6, m=2..20: (1/m) sum_j (2/(l-1)!) C_j^{-2l-2} == (2/(l-1)!) Pi_{l+1}(m): OK
+(c) l=1: (2/(l-1)!) Pi_2 (-Delta)^0 K == stated example; top power m^3: OK
+(c) l=2: (2/(l-1)!) Pi_3 (-Delta)^1 K == stated example; top power m^5: OK
+(c) l=3: (2/(l-1)!) Pi_4 (-Delta)^2 K == stated example; top power m^7: OK
+(c) l=4: (2/(l-1)!) Pi_5 (-Delta)^3 K == stated example; top power m^9: OK
+(c) leading term of Pi_{l+1}(m) is |B_{2l+2}|/(2l+2)! m^{2l+1}, l=1..6: OK
+(c) note: K^2 in Schueth a_2 also carries m^5 (coefficient 1/2520): the top power is shared, not exclusive
+DONE

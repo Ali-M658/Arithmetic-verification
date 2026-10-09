@@ -1,0 +1,43 @@
+== radial psi = r^(2l), all angles ==
+phi=pi (m=2), psi=r^2                                   L = -t/2                                pred = -t/2                           OK
+phi=pi (m=2), psi=r^4                                   L = -2*t**2                             pred = -2*t**2                        OK
+phi=pi (m=2), psi=r^6                                   L = -9*t**3                             pred = -9*t**3                        OK
+phi=pi (m=2), psi=r^8                                   L = -48*t**4                            pred = -48*t**4                       OK
+phi=2pi/3 (m=3), psi=r^2                                L = -8*t/9                              pred = -8*t/9                         OK
+phi=2pi/3 (m=3), psi=r^4                                L = -128*t**2/27                        pred = -128*t**2/27                   OK
+phi=2pi/3 (m=3), psi=r^6                                L = -256*t**3/9                         pred = -256*t**3/9                    OK
+phi=2pi/3 (m=3), psi=r^8                                L = -16384*t**4/81                      pred = -16384*t**4/81                 OK
+phi=pi/2 (m=4), psi=r^2                                 L = -2*t                                pred = -2*t                           OK
+phi=pi/2 (m=4), psi=r^4                                 L = -16*t**2                            pred = -16*t**2                       OK
+phi=pi/2 (m=4), psi=r^6                                 L = -144*t**3                           pred = -144*t**3                      OK
+phi=pi/2 (m=4), psi=r^8                                 L = -1536*t**4                          pred = -1536*t**4                     OK
+phi=pi/3 (m=6), psi=r^2                                 L = -8*t                                pred = -8*t                           OK
+phi=pi/3 (m=6), psi=r^4                                 L = -128*t**2                           pred = -128*t**2                      OK
+phi=pi/3 (m=6), psi=r^6                                 L = -2304*t**3                          pred = -2304*t**3                     OK
+phi=pi/3 (m=6), psi=r^8                                 L = -49152*t**4                         pred = -49152*t**4                    OK
+phi=4pi/3 (m=3,j=2), psi=r^2                            L = -8*t/9                              pred = -8*t/9                         OK
+phi=4pi/3 (m=3,j=2), psi=r^4                            L = -128*t**2/27                        pred = -128*t**2/27                   OK
+phi=4pi/3 (m=3,j=2), psi=r^6                            L = -256*t**3/9                         pred = -256*t**3/9                    OK
+phi=4pi/3 (m=3,j=2), psi=r^8                            L = -16384*t**4/81                      pred = -16384*t**4/81                 OK
+== mixed radial jet psi = 3 r^2 - 5 r^4 + 7 r^6/2 at phi = 2pi/3 ==
+phi=2pi/3, mixed radial                                 L = 8*t*(-336*t**2 + 80*t - 9)/27       pred = 8*t*(-336*t**2 + 80*t - 9)/27  OK
+== non-radial, Phi-invariant psi (must give 0) ==
+phi=pi (m=2), psi=Re z^2                                L = 0                                   pred = 0                              OK
+phi=pi (m=2), psi=r^2 Im z^2                            L = 0                                   pred = 0                              OK
+phi=pi (m=2), psi=Re z^4                                L = 0                                   pred = 0                              OK
+phi=pi (m=2), psi=r^2 Re z^4                            L = 0                                   pred = 0                              OK
+phi=pi (m=2), psi=r^4 Re z^2 (weight of l=3)            L = 0                                   pred = 0                              OK
+phi=pi (m=2), psi=r^6 Re z^2 (weight of l=4)            L = 0                                   pred = 0                              OK
+phi=2pi/3 (m=3), psi=Re z^3 (odd degree 3)              L = 0                                   pred = 0                              OK
+phi=2pi/3 (m=3), psi=r^2 Im z^3 (odd degree 5)          L = 0                                   pred = 0                              OK
+phi=2pi/3 (m=3), psi=Re z^6                             L = 0                                   pred = 0                              OK
+phi=2pi/3 (m=3), psi=r^2 Re z^6 (weight of l=4)         L = 0                                   pred = 0                              OK
+phi=4pi/3 (m=3,j=2), psi=Re z^3 + r^2 Re z^3            L = 0                                   pred = 0                              OK
+phi=pi/2 (m=4), psi=Re z^4 + r^2 Im z^4                 L = 0                                   pred = 0                              OK
+phi=pi/3 (m=6), psi=Re z^6                              L = 0                                   pred = 0                              OK
+== non-radial + radial combined (only radial part may survive) ==
+phi=pi, r^4 + 11 Re z^4 - 3 r^2 Re z^2                  L = -2*t**2                             pred = -2*t**2                        OK
+== generic symbolic angle, Re z^4 and r^4 ==
+generic phi (u-param), psi=r^4                          L = -2*t**2*(u**6 + 3*u**4 + 3*u**2 + 1)/u**6 pred = -2*t**2*(u**2 + 1)**3/u**6     OK
+generic phi (u-param), psi=Re z^4 [not Phi-inv.]        L = 0                                   pred = 0                              OK
+DONE

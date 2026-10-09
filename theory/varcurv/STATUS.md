@@ -1,4 +1,4 @@
-# STATUS: variable curvature (theory/varcurv), 2026-10-08
+# STATUS: variable curvature (theory/varcurv), 2026-10-08, updated 2026-10-09
 
 ## Verdict
 
@@ -9,6 +9,11 @@
   beta_{l,l+1} = 4^l l! [v^{2l}](f^{-1})' = (2l)!K^l/l! + ... + 2(-Delta)^{l-1}K/(l-1)!.
   So from t^2 on it contains Delta^{l-1}K(p) with nonzero coefficient (VC2). This is already visible as
   -m^5 Delta K/15120 in Schueth's Thm 4.1.
+- **Linear part, every order and every m >= 2 (VC7, added 2026-10-09).** The part of a_l(p) that is linear
+  in the curvature jet is exactly (2/(l-1)!) Pi_{l+1}(m) (-Delta_g)^{l-1}K(p). The highest derivative
+  therefore multiplies the whole new power sum, and summed over cone points the order-t^l term is, to first
+  order, sum_i w_i Pi_{l+1}(m_i) with an independent weight w_i at each point. That is the exact sense in
+  which the PTE structure is lost.
 - **The suggested ansatz fails.** "K^l p_l(m)/m with derivative terms at lower powers of m" holds only for
   l = 0, 1.
 - **A new closed form at t^3:** a_3(p) = A(m)K^3 + B(m)K Delta K + D(m)Delta^2 K for all m >= 2 (VC3).
@@ -43,6 +48,7 @@ The statements are in `statements.tex` (corrected after the attack), with proofs
 | VC4 | extension in the class K = kappa != 0 to order 2L-6 (and the common-J version for L <= 5); fails for kappa = 0 | proved |
 | VC5 | finite-order iff c_2 | proved |
 | VC6 | all-order pairs, under sum(1-1/m) and sum(m-1/m) equal and > 1 | proved, explicit |
+| VC7 | linear part of b_l = (2/(l-1)!) C^{-2l-2} (-Delta)^{l-1}K for any isometry germ; linear part of a_l(p) = (2/(l-1)!) Pi_{l+1}(m) (-Delta)^{l-1}K for all m >= 2 | proved (first-order Duhamel), `linear_part.py`; attacked in round 2, confirmed |
 | VC5a | second variation, F_n = (-1)^n n(n-1)n!/(2n+1)! | proved (Duhamel); sign convention fixed after the attack |
 
 **Computed by one method only, not a theorem.** The full radial b_4 from `attack/ATTACK-REPORT.md`; its
@@ -66,7 +72,14 @@ top part agrees with VC2(iii).
 | `twisted_mp.py` | MP-recursion computation of b_0..b_3 and a_0..a_3 | ~4.5 min |
 | `top_coefficient.py` | beta_{l,l+1} for l <= 7, its checks, Paper A leading coefficients | ~50 s |
 | `quadratic_form.py` | F_n and its normalisation checks | ~10 s |
+| `linear_part.py` | VC7: 833 monomial cases (l <= 7), cross-checks against Donnelly, Schueth, VC3 and b_4 | ~1 min |
 | `obstruction_check.py` | VC4-VC6 arithmetic: 383 VC6 pairs, D_l, Vandermonde | ~3 min |
 | `attack-log.md`, `attack/` | adversarial check | |
+
+Re-verification on 2026-10-09:
+- All four original scripts were rerun and reproduce their `*_output.txt` byte for byte.
+- The three arXiv PDFs were re-fetched and match the SHA-256 values in SOURCES.md.
+- Every Paper A label and cite key used in `paperA-insert.tex` exists in `paper/jga`.
+- The insert compiles to 2 pages in article class.
 
 Every script uses exact arithmetic with asserts, and every `*_output.txt` ends in "ALL ASSERTS PASSED".

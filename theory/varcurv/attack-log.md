@@ -32,3 +32,25 @@ recorded in STATUS.md as such, not as a theorem.
 
 **Not tested.** VC2's averaged formula on general non-radial jets beyond Z_2/Z_4 at l <= 3; a non-radial
 jet at l = 4, m = 3 (safe by the weight count).
+
+## Round 2 (2026-10-09): VC7, the linear part
+
+**Attacker.** A fresh subagent was given only the statement of VC7. It was barred from reading
+`linear_part.py`, `varcurv.tex`, `statements.tex` and STATUS.md, and allowed to reuse the round-1 code.
+Its files are in `attack/vc7/`, and its report is `attack/vc7/VC7-ATTACK-REPORT.md`.
+
+**Its method.** First-order conformal perturbation e^{2 eps psi}|dx|^2 of the flat rotation, by three routes.
+- (A) A generating function. With psi = e^{a.z}, a symbolic, the linear part of sum_l b_l t^l is exactly
+  -(2/C^2) x e^x, where x = (a.a)t/C^2. This was asserted coefficient by coefficient for l <= 8.
+- (B) Explicit polynomial psi and Gaussian moments at six angles: 37 exact asserts, 13 of them on
+  non-radial invariant jets, which give 0.
+- (C) The degree-1 part of the round-1 b_1..b_5, which was computed in normal coordinates by a different method.
+
+| Part | Verdict | Disposition |
+|---|---|---|
+| (i) linear part of b_l, any phi | CONFIRMED for all l (route A), radial and non-radial (A, B), and against round-1 b_1..b_5 (C) | none |
+| (ii) linear part of a_l, every m >= 2 | CONFIRMED. Pi_i exact for i <= 7 and m = 2..20; Schueth Thm 4.1 Delta K coefficient = -2 Pi_3 and Donnelly a_1 = 2 Pi_2, both identically; m = 2 is not special | none |
+| consequence (top power) | CONFIRMED as stated. Caveat: m^{2l+1} is shared with non-linear terms (e.g. K^2 m^5/2520 in a_2), so "only the derivative carries the top power" would be false | Wording in varcurv.tex and paperA-insert.tex already says "to first order" and "non-linear monomials appear in the coefficients of Pi_1..Pi_{l+1}"; no change |
+
+**Not tested.** No analytic remainder estimate was written out for the formal first-order step; it relies on
+locality, which costs only O(t^infinity). Dihedral (reflector) corners were not tested; they are outside the hypothesis.

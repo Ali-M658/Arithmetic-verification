@@ -1,0 +1,23 @@
+det M = 4*lam**2*mu**2*(c - 1)**2
+exponent J^T M^-1 J/4 = -(a1**2 + a2**2)*(lam + mu)/(8*lam*mu*(c - 1))
+exponent / (a.a) = (-lam - mu)/(8*lam*mu*(c - 1))
+s-integrand / (-2) = -(a1**2 + a2**2)*exp(-t*(a1**2 + a2**2)/(2*(c - 1)))/(4*(c - 1)*Abs(c - 1))
+exponent/(a.a) at mu,lam = -t/(2*(c - 1))
+s-integrand (C form) = (a1**2 + a2**2)*exp(t*(a1**2 + a2**2)/C**2)/C**4
+L(t) = -2*t*(a1**2 + a2**2)*exp(t*(a1**2 + a2**2)/C**2)/C**4
+CHECK closed form L(t) = -(2/C^2) x e^x, x=(a.a)t/C^2 : OK
+l=0: [t^l] L = 0   == VC7(a) prediction: OK
+l=1: [t^l] L = -2*(a1**2 + a2**2)/C**4   == VC7(a) prediction: OK
+l=2: [t^l] L = -2*(a1**2 + a2**2)**2/C**6   == VC7(a) prediction: OK
+l=3: [t^l] L = -(a1**2 + a2**2)**3/C**8   == VC7(a) prediction: OK
+l=4: [t^l] L = -(a1**2 + a2**2)**4/(3*C**10)   == VC7(a) prediction: OK
+l=5: [t^l] L = -(a1**2 + a2**2)**5/(12*C**12)   == VC7(a) prediction: OK
+l=6: [t^l] L = -(a1**2 + a2**2)**6/(60*C**14)   == VC7(a) prediction: OK
+l=7: [t^l] L = -(a1**2 + a2**2)**7/(360*C**16)   == VC7(a) prediction: OK
+l=8: [t^l] L = -(a1**2 + a2**2)**8/(2520*C**18)   == VC7(a) prediction: OK
+Odd degrees of psi (half-integer powers t^(n/2)): the generating function depends on a only
+through a.a, so all odd-degree Taylor coefficients in a vanish identically: OK
+Non-radial parts: dependence only through a.a  => by polarisation L(P) = c_n lap^{n/2} P(0) for every
+homogeneous P of degree n, so only Delta_0^l psi(0) enters: OK
+phi = pi (m=2, C^2=4) is not special: the formula is a single analytic expression on 0<C<=2.
+DONE

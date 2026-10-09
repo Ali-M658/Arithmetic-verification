@@ -179,6 +179,70 @@ terms with lower powers of $m$'' therefore holds for $l=0,1$ only. At $l=2$ this
 \cite[Thm~4.1]{schueth2019}: $-\frac1{15120}m^5\Delta_gK$.
 \end{corollary}
 
+The failure is not confined to the top coefficient. To first order in the curvature, the derivative of
+$K$ enters the order-$t^l$ cone term \emph{only} through the new power sum, for every order $m\ge2$:
+
+\begin{theorem}[The linear part of a cone contribution]\label{vc:VC7}
+Let $l\ge1$.
+\begin{enumerate}[label=(\roman*)]
+\item Let $\Phi$ be an isometry of a neighbourhood of $p$ with $\Phi(p)=p$, $d\Phi_p$ the rotation by
+$\phi\in(0,2\pi)$, $C=C_\phi$. Then
+$b_l(\Phi)=\dfrac{2}{(l-1)!}\,C^{-2l-2}\,(-\Delta_g)^{l-1}K(p)+N_l$, where $N_l$ is a polynomial in the jet of $K$
+at $p$ (coefficients depending on $\phi$) each of whose monomials has degree $\ge2$.
+\item For every cone point $p$ of order $m\ge2$ of every Riemannian orbisurface,
+\[
+a_l(p)=\frac{2}{(l-1)!}\,\Pi_{l+1}(m)\,(-\Delta_g)^{l-1}K(p)+Q_{l,m}(p),
+\]
+$Q_{l,m}$ a polynomial in the jet of $K$ at $p$ each of whose monomials has degree $\ge2$.
+\end{enumerate}
+\end{theorem}
+
+\begin{proof}
+(i) By Donnelly's form \cite[4.2]{dggw2008}, $b_l(\Phi)=C^{-2}\tilde b_l$ with $\tilde b_l$ a polynomial in $B$ and
+in $K$ and its covariant derivatives at $p$, invariant under the rotations (which commute with $B$). The
+monomials of weight $2l\ge2$ that are linear in the jet are contractions of $\nabla^{2l-2}K(p)$ with tensors
+built from $B$, $g$ and the area form; as $\nabla^{2l-2}K$ is symmetric up to terms quadratic in the jet, and
+the rotation-invariant linear forms on $\operatorname{Sym}^{2l-2}\mathbb R^2$ are the multiples of the full
+trace, the linear part of $b_l$ is $\lambda_l(\phi)(-\Delta_g)^{l-1}K(p)$ for a function $\lambda_l$ alone. To
+find $\lambda_l$ it suffices to evaluate one family with a non-zero linear part: the
+germ $g_\varepsilon=e^{2\varepsilon\psi}|dx|^2$, $\psi=|x|^{2l}$, for which $R_\phi$ is an isometry. Since $g_0$ is
+flat and $b_l$ is a polynomial in the jet vanishing on the flat jet, $\frac{d}{d\varepsilon}|_0b_l$ is the linear part
+evaluated on $\frac{d}{d\varepsilon}|_0(\text{jet})$. (In general isothermal coordinates make $\Phi$ linear: the Riemann
+map of a $\Phi$-invariant geodesic disc onto the unit disc, $p\mapsto0$, conjugates $\Phi$ to a conformal
+automorphism fixing $0$, hence to $R_\phi$ by Schwarz's lemma; this is how \texttt{linear\_part.py} tests arbitrary
+$\psi$.) As
+$\Delta_g=e^{-2\varepsilon\psi}\Delta_0$, $\Delta_0=-(\partial_1^2+\partial_2^2)$, and $R_\phi^*$ commutes with $\Delta_0$, Duhamel's formula
+gives, up to $O(t^\infty)$ from a cut-off,
+\[
+\frac{d}{d\varepsilon}\Big|_0\operatorname{tr}\bigl(R_\phi^*e^{-t\Delta_g}\bigr)
+=2t\operatorname{tr}\bigl(R_\phi^*\psi\Delta_0e^{-t\Delta_0}\bigr)
+=2t\int\psi(x)\,h_t(Cx)\Bigl(\frac1t-\frac{C^2|x|^2}{4t^2}\Bigr)dx,
+\]
+$h_t(z)=e^{-|z|^2/4t}/4\pi t$, because $|R_\phi x-x|=C|x|$. The integrand depends on $x$ only through
+$\psi$ times a radial function, so only the radial part of $\psi$ contributes; for $\psi=r^{2k}$ the
+substitution $s=C^2r^2/4t$ gives $-2k\,k!\,4^kt^kC^{-2k-2}$, a single power of $t$ and of $C$; put $k=l$. On the other hand the linear part of
+$(-\Delta_g)^{l-1}K(0)$ is $(-1)^{l-1}\Delta_0^l\psi(0)$ (since $K=e^{-2\varepsilon\psi}\Delta_0(\varepsilon\psi)$), and
+$\Delta_0^lr^{2k}(0)=-\delta_{kl}(-1)^{l-1}4^l(l!)^2$. Comparing at $k=l$: $\lambda_l=-2l\,l!\,4^lC^{-2l-2}/(-4^l(l!)^2)
+=\frac2{(l-1)!}C^{-2l-2}$. (Any $\varepsilon$-linear jet is realised by some $\psi$, and the linear part does
+not depend on the coordinates in which the jet is written, the change of coordinates being the identity
+to first order in the curvature.)
+(ii) Average (i) over $\Phi^j$, $j=1,\dots,m-1$; no restriction on $m$ is needed, because the linear part
+sees no non-radial jet.
+\texttt{linear\_part.py} asserts the computation monomial by monomial ($\psi=x^ay^b$, $a+b\le14$,
+$l\le7$, radial and non-radial alike), and checks it against Donnelly's $b_1$, the $\Delta_gK$ term of
+\cite[Thm~3.7]{schueth2019}, Theorem~\ref{vc:VC3}, and the attacker's $b_4$; after averaging, against the
+$K$ term of \cite[Rem.~4.2]{schueth2019} ($2\Pi_2$), the $\Delta_gK$ term of \cite[Thm~4.1]{schueth2019}
+($-2\Pi_3$), and $D(m)=\Pi_4(m)$.
+\end{proof}
+
+So the ansatz of the question is inverted, not merely perturbed: at linear order the highest derivative
+$(-\Delta_g)^{l-1}K(p)$ is the coefficient of the full polynomial $\Pi_{l+1}(m)$, which carries the new top power
+$m^{2l+1}$, while $K(p)^l$ and every other non-linear monomial appear in the coefficients of
+$\Pi_1,\dots,\Pi_{l+1}$. Summed over cone points, the order-$t^l$ cone term is, to first order,
+$\frac{2}{(l-1)!}\sum_i(-\Delta_g)^{l-1}K(p_i)\,\Pi_{l+1}(m_i)$: a power sum \emph{weighted by an independent
+real number at each cone point}, which is the precise sense in which the Prouhet--Tarry--Escott structure is
+lost.
+
 \begin{theorem}[The $t^3$ cone coefficient]\label{vc:VC3}
 For a rotationally symmetric germ,
 $b_3(\phi)=\bigl(\frac{120}{C^8}-\frac{32}{C^6}+\frac4{3C^4}\bigr)K^3+\bigl(-\frac{42}{C^8}+\frac8{C^6}\bigr)K\Delta_gK+\frac1{C^8}\Delta_g^2K$.
