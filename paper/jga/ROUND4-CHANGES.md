@@ -76,3 +76,9 @@ Every figure is kept in the paper (F1-F8). Captions stay at two short sentences;
 
 See BUILD.md for the page counts of this build. Every proof of the paper's results is in the paper or the
 supplement, and all eight figures are in the paper.
+
+## Close-out (2026-10-09)
+
+| item | disposition |
+|---|---|
+| variable curvature | New §2.4 "Variable curvature" after §2.3, from `theory/varcurv/` (statements and proofs as audited in `attack-log.md`, rounds 1-2): Prop. 2.11 "Cone terms in variable curvature" (VC1 structure, VC2 top coefficient, VC7 linear part, the t^3 formula VC3), with a proof sketch; Prop. 2.12 "Extension and obstruction" (VC4, VC5, VC6), with a proof sketch; closing paragraph on why constant curvature is the setting. Notation adapted to Paper A: the cone term is b_l(p) (reducing to b_l(m) of (5) at K = -1), the smooth part Ω_l (S_1 is the order sum), the fixed-point term ϑ_l(Φ), the Jacobi length J (f is the growth function), the second-variation constants ω_n, the constant curvature K_0. One sentence in the introduction's motivation paragraph and one in "Organisation" point to it; the four open items (β_{l,i} for l >= 4, non-radial terms for m <= l-2, whether equal c_2 always allows all-order agreement, isospectrality) are Problem 5. No new references: Donnelly, DGGW, Schueth 2019 and Uçar are already cited. |
