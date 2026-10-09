@@ -3,11 +3,14 @@
 From figures/data/e3_practice.csv (figures/gen/gen_e3_practice.py), against the systole: for the
 eight members of the family (0;3,3,3,3), N_obs (circles), N_apr (diamonds) and N of Theorem thm:E
 (squares), open for M = 3 and filled for M = 12, members joined by thin lines; for O(2,8,8) and
-O(3,3,12) (M = 12) the same markers in their pillow hues (dark, light).
+O(3,3,12) (M = 12) the same markers in their pillow hues (dark, light). The two family series are
+drawn 2.5 pt to either side of their systole (open to the left, filled to the right; a display-space
+shift, the data are unchanged), so that counts differing by a few per cent stay distinguishable.
 Asserted: N_obs <= N_apr < N wherever N_apr exists; within the family at fixed M, N_apr decreases
 as the systole grows.
 """
 import numpy as np
+from matplotlib.transforms import ScaledTranslation
 
 from figlib import check_only, finish, fs, rows
 
@@ -32,14 +35,17 @@ def draw(recs):
     fig = fs.figure(78)
     ax = fig.add_axes([0.12, 0.15, 0.85, 0.81])
     marks = {3: "o", 4: "D", 5: "s"}           # column index -> marker
-    for M, filled in ((3, False), (12, True)):
+    shift_pt = 2.5                             # horizontal display shift of the two family series
+    for M, filled, sign in ((3, False, -1), (12, True, 1)):
+        tr = ax.transData + ScaledTranslation(sign * shift_pt / 72, 0, fig.dpi_scale_trans)
         fam = sorted([o for o in recs if o[0].startswith("(0;") and o[1] == M], key=lambda o: o[2])
         x = np.array([o[2] for o in fam])
         for col, mk in marks.items():
             y = np.array([np.nan if o[col] is None else o[col] for o in fam], float)
-            ax.plot(x, y, color=fs.GREY["mid"], lw=fs.LW["hair"], zorder=1)
+            ax.plot(x, y, color=fs.GREY["mid"], lw=fs.LW["hair"], zorder=1, transform=tr)
             ax.plot(x, y, ls="none", marker=mk, ms=fs.MARKER_PT["small"],
-                    mfc=fs.GREY["ink"] if filled else "white", mec=fs.GREY["ink"], mew=fs.LW["thin"], zorder=3)
+                    mfc=fs.GREY["ink"] if filled else "white", mec=fs.GREY["ink"], mew=fs.LW["thin"],
+                    zorder=3 if filled else 2, transform=tr)
     for name, hue in (("O(2, 8, 8)", fs.PILLOW["2,8,8"]), ("O(3, 3, 12)", fs.PILLOW["3,3,12"])):
         o = next(o for o in recs if o[0] == name and o[1] == 12)
         for col, mk in marks.items():

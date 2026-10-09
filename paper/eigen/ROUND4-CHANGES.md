@@ -69,7 +69,7 @@ The computations behind Section 7 were redone (`theory/eigen/instances.py`, `the
 | n16 notation | h_t renamed \hat g_t; ϑ defined |
 | n17 optional improvements | not done (recorded) |
 | n18 "factor near 8" | "about 9 per halving in the range of the table, tending to 8" |
-| n19 figures | Fig. E2 caption: "the sum of the two errors"; Fig. E3 regenerated from the new counts, caption rewritten. Not done: the open diamonds of E3 still overlap the filled ones at some systoles (styling in figures/src/E3.py) |
+| n19 figures | Fig. E2 caption: "the sum of the two errors"; Fig. E3 regenerated from the new counts, caption rewritten. Close-out: the two family series of E3 are drawn 2.5 pt to either side of their systole (open M = 3 left, filled M = 12 right, open markers beneath), by a display-space shift in `figures/src/E3.py` only (data and assertions unchanged); the citing sentence in §7.2 says so; no legend or in-figure text |
 | n20 data statement | Zenodo deposit (all six authors) primary [placeholder DOI]; development repository maintained by A. Agadi; scripts for every table named |
 | n21 wording | "none of the three bounds is a matter of convenience" reworded; abstract last sentence rewritten |
 
