@@ -46,7 +46,7 @@ def count(n, t, weyl, ncomp):
     if n and not n.startswith(">"):
         return f"${n}$ (${float(t):.3g}$)" if t else f"${n}$"
     est = int(float(weyl.split()[0])) if weyl else None
-    w = f"; ${est}$" if est and est > int(ncomp) else ""
+    w = f"; ${est}$" if est else ""                  # round 4 close-out: printed also when est <= N_c
     return f"$>{ncomp}${w}"
 
 
@@ -64,7 +64,7 @@ def table_practice():
            "(diameter bound $\\Delta=2\\diam P$) and with the class-level diameter bound $D(A,\\ell,M)$ of "
            "Theorem~\\ref{thm:diam}: the least $N$ for which criterion (C1) or (C2) of Theorem~\\ref{thm:post} holds, "
            "with the time $t$ at which it holds; $>N_c$ means that the criterion fails for every $N$ up to the "
-           "$N_c$ eigenvalues of the complete range, followed by the estimate of Section~\\ref{sec:numerical} when it exceeds $N_c$; and "
+           "$N_c$ eigenvalues of the complete range, followed by the estimate of Section~\\ref{sec:numerical}; and "
            "the $N$ of Theorem~\\ref{thm:E} for the class $\\Cl(A,\\ell,M)$.}\\label{tab:practice}",
            "\\setlength{\\tabcolsep}{3.5pt}\\begin{tabular}{@{}llllllll@{}}", "\\toprule",
            "orbifold & $\\ell$ & $M$ & $|\\mathcal S|$ & (C1), $\\Delta$ & (C2), $\\Delta$ & (C1), $D(A,\\ell,M)$ & $N$, Thm~\\ref{thm:E}\\\\",

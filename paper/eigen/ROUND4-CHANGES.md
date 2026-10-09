@@ -79,3 +79,19 @@ Both papers now describe the same computations: about 2850 eigenvalues per trian
 5800 per family member were computed (Paper A, supplement S4 and S6); Paper B uses only those in the ranges
 where completeness is checked, about 2000 (λ < 1.6×10⁴) and 4357-4451 (below 0.8 × the least sector
 maximum), and says so in §1 and §7.1.
+
+## Close-out (2026-10-09)
+
+| item | disposition |
+|---|---|
+| PDF-only check 1 | `review/referee-round-4/PDF-CHECK-1.md`: Paper B 23 resolved, 6 partial, 1 unresolved (n17, optional); no mathematical error. Responses below. |
+| duplicated paragraph | §6: the paragraph "The decision rule needs G_σ(t_*) only to within a fraction of Γ_*..." was printed twice; one copy removed |
+| B7/B1 systole qualifier | abstract: "with a systole bound computed in high-precision floating point"; §1: "a systole bound from a complete enumeration of short group elements in 40- and 50-digit floating point (not interval arithmetic)" |
+| B4 Buser's book | the "Relation to prior work" paragraph now states Buser's count of closed geodesics in terms of the genus alone, (g-1)e^{L+6} for geodesics that are not iterates of very short ones, [Lemma 6.6.4] (statement from the fetched snippets in SOURCES.md), and contrasts it with Lemma 2.2's diameter-based count; the citation in §4 now carries the lemma number |
+| Table 6, ϑ = 1.6, M = 3 | the Weyl estimate (4412) is now printed in every row where the criterion fails within the complete range, also when it lies below N_c; §7.1 says that for this row the estimate is low by at least 0.3% (the criterion still fails at N = 4423). Generator `tools/make_tables.py`; caption adjusted |
+| n5 | Table 3 has Γ_* and Λ columns (from `theory/eigen/theorem_e.py`, whose output prints them), compact aeb notation (caption); the caption says t_2 >= 0.0045 never binds; §5 explains the ε values: 1.8626 is the systole bound of O(3,3,12), the smaller of the two triangle orbifolds, so one class contains both; 2.6339, 0.6939 are those of ϑ = 0 and 2.8 |
+| n12 σ_* | remark after the proof of Prop. 8.2: σ_* is far from sharp; a word search (all words of length <= 24) finds no closed geodesic shorter than 0.98399 on O(2,3,7), increasing with m to 1.9213 at m = 100, below 2 arccosh(3/2) = 1.9248; new script `theory/eigen/systole_233.py` (asserts the m = 7 value, monotonicity and the two bounds; floating point), a run_all stage |
+| n14 | §1: a clause for the continuity of λ_j on moduli space (quasi-isometries with constants near 1 and min-max) and the δ step written out (max_{j<N} |λ_j - λ'_j| continuous and positive on a compact set); §8.2: the continuity of λ_1(O_{k,b}) in b, needed for the intermediate value theorem, stated with the same reason. No new references |
+| n19 colours | the E3 citing sentence keys the colours: O(2,8,8) dark blue-green, O(3,3,12) orange |
+| n16 notation | partial, unchanged: Γ (function and group), L (length and order count), K (truncation and curvature) have local second meanings, each defined where used. Recorded |
+| n20 | the Zenodo DOI is the placeholder the brief specifies |
