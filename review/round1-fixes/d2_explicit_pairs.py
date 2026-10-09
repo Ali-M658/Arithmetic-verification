@@ -117,6 +117,14 @@ def fmt_area(s):
     return f"$\\approx{float(s):.10g}$"
 
 
+def fmt_exact(s):
+    """The exact s = N/D as text with a break point after every ten digits (round 4, n28: rows L <= 5)."""
+    def brk(n):
+        d = str(n)
+        return "\\allowbreak ".join(d[i:i + 10] for i in range(0, len(d), 10))
+    return f"exact $s=$ {brk(s.numerator)}\\allowbreak /\\allowbreak {brk(s.denominator)}"
+
+
 def main():
     rows, tex = [], []
     # -------------------------------------------------------------- diamonds
@@ -166,14 +174,15 @@ def main():
 
     body = []
     for L, kind, s, k, x, y in tex:
+        exact = f"\\newline {fmt_exact(s)}" if L <= 5 and "/" not in fmt_area(s) else ""
         body.append(f"{L} & {kind} & {fmt_area(s)} & {k}\\\\*\n"
-                    f"\\multicolumn{{4}}{{@{{}}p{{\\linewidth}}@{{}}}}{{\\raggedright $\\sigma_1=$ {x}\\newline $\\sigma_2=$ {y}}}\\\\[2pt]")
+                    f"\\multicolumn{{4}}{{@{{}}p{{\\linewidth}}@{{}}}}{{\\raggedright $\\sigma_1=$ {x}\\newline $\\sigma_2=$ {y}{exact}}}\\\\[2pt]")
     table = (
         "{\\scriptsize\\setlength{\\LTcapwidth}{\\textwidth}\n"
         "\\begin{longtable}{@{}rlll@{}}\n"
         "\\caption{The explicit pairs behind Example~\\pref{ex:ptepairs} and the diamonds and squares of "
-        "Figure~\\pref{fig:F4}: both signatures, the area $s=\\mathrm{Area}/2\\pi$ (exact in the data file when "
-        "an approximation is shown) and the exact number $L$ of shared heat invariants. Each pair was "
+        "Figure~\\pref{fig:F4}: both signatures, the area $s=\\mathrm{Area}/2\\pi$ (when an approximation is shown, "
+        "the exact value is printed below the signatures for $L\\le5$ and is in the data file for $L\\ge6$) and the exact number $L$ of shared heat invariants. Each pair was "
         "rechecked by \\texttt{review/round1-fixes/d2\\_explicit\\_pairs.py} of the code and data deposit named in the data statement of the paper, which recomputes the area and the "
         "shared count exactly, from the cone coefficients and again from the power sums. ``Equal count'' rows "
         "with $L=4,\\dots,7$ are Example~\\pref{ex:ptepairs}(iii). For the Prouhet squares with $L\\ge4$, "

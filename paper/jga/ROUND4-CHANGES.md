@@ -68,7 +68,7 @@ Every figure is kept in the paper (F1-F8). Captions stay at two short sentences;
 | n25 data statement | Zenodo deposit (all six authors) is the primary citation [placeholder DOI]; the GitHub repository is the development repository maintained by A. Agadi; the scripts producing each table are named; S5 no longer anchors to a commit hash |
 | n26 spectra ranges | see paper/eigen/ROUND4-CHANGES.md "shared spectra": both papers describe the same computations with the same counts |
 | n27 enumerations | supplement S1: the 525 complete classes (33,946 signatures) have maximum K_mult 1 (17 classes), 2 (311), 3 (197), with the data file and script named |
-| n28 local edits | Ex. 3.16(ii) reworded; range of g in Thm 3.12 explained; Cor. 3.5's last sentence replaced; f_g, f_n maximisation classes stated; T(L) heuristic deleted; §4 states that the errors are not enclosures. Not done: exact areas for Table S1 rows L <= 5 (the exact values are in the data file d2_pairs.csv) |
+| n28 local edits | Ex. 3.16(ii) reworded; range of g in Thm 3.12 explained; Cor. 3.5's last sentence replaced; f_g, f_n maximisation classes stated; T(L) heuristic deleted; §4 states that the errors are not enclosures. Close-out: Table S1 prints the exact area under every row with L <= 5 that shows an approximation (genus L = 5, equal count L = 4, 5, Prouhet L = 3, 4, 5), written by its generator `review/round1-fixes/d2_explicit_pairs.py` from the same exact values as d2_pairs.csv; the caption says where the exact values are |
 | n29 δ_thm and App. D | δ_thm and its derivation in supplement S3; App. D keeps only the list of computer-search statements and a pointer to S7 |
 | n30 arithmetic note | the note now cites Theorem 5.8 for the isolation |
 
