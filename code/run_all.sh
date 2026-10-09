@@ -326,6 +326,15 @@ stage "audit-2 trace-formula"            q exact review/audit-2/trace-formula "$
 #     ranks, sharp pairs, the area-free bound M+1 and its attainment on complete area classes; about 3 min
 stage "msep bounded cone orders"         q exact theory/msep "$P verify.py"
 
+# --- theory/varcurv (Section 2.4 of the manuscript, variable curvature): exact sympy computations of the cone terms
+#     (twisted_mp: b_0..b_3 and the t^3 formula; top_coefficient: beta_{l,l+1}; linear_part: the linear part, VC7),
+#     the second variation (quadratic_form) and the extension/obstruction arithmetic (obstruction_check). Each script
+#     asserts its checks and prints a transcript, which must equal the committed *_output.txt byte for byte;
+#     together about 2.5 min (twisted_mp about 90 s).
+for s in quadratic_form top_coefficient linear_part obstruction_check twisted_mp; do
+    stage "varcurv $s" q exact theory/varcurv "$P $s.py > \"\$LOGDIR/varcurv_$s.out\" && cmp \"\$LOGDIR/varcurv_$s.out\" ${s}_output.txt"
+done
+
 # --- theory/eigen (Theorem 4.13 of the paper, finitely many eigenvalues): each script raises on a failed check; together
 #     about 8 min (diameter 110 s, counting 80 s, theorem_e 55 s, instances 90 s, practice 90-170 s; needs scipy).
 #     instances.py and practice.py rewrite their CSVs in data/, which must come back byte-identical.
