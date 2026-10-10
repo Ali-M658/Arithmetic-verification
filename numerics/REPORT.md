@@ -243,8 +243,9 @@ with NGSolve H¹ elements of order p on a netgen mesh:
   `numerics/`: `solve.py:eigenvalues_robust` (every eigenvalue covered by two independent windows,
   ARPACK misses counted and repaired) is the only eigensolver, and the old routine is kept, unused,
   in `legacy/single_window.py`. The committed `data/eigenvalues_*.csv` were produced with the old
-  routine; the four production problems were rerun with the new one, and the comparison is in
-  `data/rerun_double_window_comparison.json` (see `CONSOLIDATION.md`).
+  routine; the four production problems were rerun with the new one on 2026-10-10 (eigenvalues in
+  `data/double_window/`), and the comparison is in `data/rerun_double_window_comparison.json`: same counts
+  below the common cut, largest relative difference 1.4e-14, no ARPACK miss repaired.
 - About 1420–1440 eigenvalues are computed per triangle and boundary
   condition, up to λ ≈ 21 700 (Neumann) and 23 800 (Dirichlet). The pillows
   therefore have about 2850 eigenvalues each, to λ ≈ 21 700.

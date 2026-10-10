@@ -42,12 +42,12 @@ def tex_name(orb):
 
 
 def count(n, t, weyl, ncomp):
-    """A count with its time, or '>N_c; estimate' when the criterion fails in the complete range."""
+    """A count with its time, or '>=N_c; est. estimate' when the criterion fails in the complete range."""
     if n and not n.startswith(">"):
         return f"${n}$ (${float(t):.3g}$)" if t else f"${n}$"
     est = int(float(weyl.split()[0])) if weyl else None
-    w = f"; ${est}$" if est else ""                  # round 4 close-out: printed also when est <= N_c
-    return f"$>{ncomp}${w}"
+    w = f"; est.~${est}$" if est else ""             # round 4 close-out: printed also when est <= N_c
+    return f"$\\ge{ncomp}${w}"
 
 
 def table_practice():
@@ -63,8 +63,9 @@ def table_practice():
            "\\caption{The a-posteriori test on computed spectra, with the instance inputs of Table~\\ref{tab:inputs} "
            "(diameter bound $\\Delta=2\\diam P$) and with the class-level diameter bound $D(A,\\ell,M)$ of "
            "Theorem~\\ref{thm:diam}: the least $N$ for which criterion (C1) or (C2) of Theorem~\\ref{thm:post} holds, "
-           "with the time $t$ at which it holds; $>N_c$ means that the criterion fails for every $N$ up to the "
-           "$N_c$ eigenvalues of the complete range, followed by the estimate of Section~\\ref{sec:numerical}; and "
+           "with the time $t$ in the middle of the window of times at which that least $N$ holds; $\\ge N_c$ means that the criterion fails for "
+           "every $N\\le N_c-1$, the largest $N$ that the $N_c$ eigenvalues $\\tilde\\lambda_0,\\dots,\\tilde\\lambda_{N_c-1}$ of the complete range allow "
+           "(the test with $N$ uses $\\tilde\\lambda_N$), followed by the estimate (est.) of Section~\\ref{sec:numerical}; and "
            "the $N$ of Theorem~\\ref{thm:E} for the class $\\Cl(A,\\ell,M)$.}\\label{tab:practice}",
            "\\setlength{\\tabcolsep}{3.5pt}\\begin{tabular}{@{}llllllll@{}}", "\\toprule",
            "orbifold & $\\ell$ & $M$ & $|\\mathcal S|$ & (C1), $\\Delta$ & (C2), $\\Delta$ & (C1), $D(A,\\ell,M)$ & $N$, Thm~\\ref{thm:E}\\\\",
@@ -86,8 +87,8 @@ def table_inputs():
                  if r["data"] == "full"}.values())[::-1]
     out = ["\\begin{table}[t]", "\\centering\\footnotesize",
            "\\caption{Inputs of the test for the ten examples: exact area, the lower bound $\\ell$ for the "
-           "systole, the proved diameter bound $2\\diam P$ and the computed diameter, the class-level bound "
-           "$D(A,\\ell,M)$ of Theorem~\\ref{thm:diam}, and the complete range: the eigenvalues $\\lambda\\le\\lambda_c$, "
+           "systole (computed in floating point, not certified), the proved diameter bound $2\\diam P$ and the computed diameter, the class-level bound "
+           "$D(A,\\ell,M)$ of Theorem~\\ref{thm:diam} (-- where an order exceeds $M$), and the complete range: the eigenvalues $\\lambda\\le\\lambda_c$, "
            "$N_c$ of them, of the $n$ computed; for the family the trace test alone covers $\\lambda<9.8\\times10^3$, and the range above rests on the agreement of the eigenvalue counts of three discretisations.}\\label{tab:inputs}",
            "\\setlength{\\tabcolsep}{4pt}\\begin{tabular}{@{}lllllllll@{}}", "\\toprule",
            "orbifold & area & $\\ell$ & $2\\diam P$ & $\\diam$ & $D$, $M=3$ & $D$, $M=12$ & $\\lambda_c$ & $N_c$ of $n$\\\\",

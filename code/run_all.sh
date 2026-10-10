@@ -338,7 +338,7 @@ done
 # --- theory/eigen (Theorem 4.13 of the paper, finitely many eigenvalues): each script raises on a failed check; together
 #     about 9 min (diameter 110 s, counting 80 s, theorem_e 55 s, instances 90 s, practice 90-170 s, systole_233 30 s; needs scipy).
 #     instances.py and practice.py rewrite their CSVs in data/, which must come back byte-identical.
-for s in diameter counting remainder theorem_e necessity locality instances practice systole_233; do
+for s in diameter counting remainder theorem_e necessity locality instances practice practice_double_window systole_233; do
     stage "eigen $s" q exact theory/eigen "$P $s.py"
 done
 

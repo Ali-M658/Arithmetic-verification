@@ -183,7 +183,7 @@ def main():
         "\\caption{The explicit pairs behind Example~\\pref{ex:ptepairs} and the diamonds and squares of "
         "Figure~\\pref{fig:F4}: both signatures, the area $s=\\mathrm{Area}/2\\pi$ (when an approximation is shown, "
         "the exact value is printed below the signatures for $L\\le5$ and is in the data file for $L\\ge6$) and the exact number $L$ of shared heat invariants. Each pair was "
-        "rechecked by \\texttt{review/round1-fixes/d2\\_explicit\\_pairs.py} of the code and data deposit named in the data statement of the paper, which recomputes the area and the "
+        "rechecked by a program of the code and data deposit (Section~\\ref{sec:methods}), which recomputes the area and the "
         "shared count exactly, from the cone coefficients and again from the power sums. ``Equal count'' rows "
         "with $L=4,\\dots,7$ are Example~\\pref{ex:ptepairs}(iii). For the Prouhet squares with $L\\ge4$, "
         "$T_e=\\{0\\le i<4^{L-1}:\\ \\text{the binary digits of $i$ have sum}\\equiv e\\ (2)\\}$, "

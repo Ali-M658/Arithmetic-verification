@@ -111,9 +111,9 @@ was read in this session. Consequences, as the brief prescribes for this case:
 
 ## 4. Unresolved G7 items (details in G7-CHANGES.md)
 
-- **G7-5.** The double-window recomputation of the four spectra has not been run (NGSolve is not
-  installed here; `numerics/rerun_double_window.py` exists). The paper says so and restricts
-  "no eigenvalue missing" to lambda below about 1.6e4.
+- **G7-5 (closed 2026-10-10).** The double-window recomputation of the four spectra was run
+  (`numerics/data/double_window/`, `numerics/data/rerun_double_window_comparison.json`): counts agree,
+  largest relative difference 1.4e-14. Both papers say so; completeness is still supported, not proved.
 - **G7-14.** The repository is `github.com/Ali-M658/Arithmetic-verification`, an account that
   matches none of the six authors. Declarations are unchanged by instruction; the authors must move
   the repository or state the account holder's relation, add a licence, and mint the Zenodo DOI.

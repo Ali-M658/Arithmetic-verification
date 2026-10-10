@@ -147,7 +147,7 @@ def table_thresholds_full():
         "box of radius $\\min_j\\delta_{\\rm cert}/|c_j|$ lies inside the uniform box of radius $\\delta_{\\rm cert}$ "
         "and the certificate is monotone in the radii, so $\\epsilon_{\\rm cert}\\ge\\min_j\\delta_{\\rm cert}/|c_j|$; "
         "it is larger when the box of the relative model is not the binding one. aeb means $a\\times10^b$; "
-        "$\\delta_{\\rm up}$ is rounded up, every other entry down.}\\label{tab:thresholdsfull}\n"
+        "$\\delta_{\\rm up}$ is rounded up, the ratio $\\delta_{\\rm up}/\\delta_{\\rm cert}$ to the nearest unit of its last digit, and every other entry down.}\\label{tab:thresholdsfull}\n"
         "\\centering\\footnotesize\\setlength{\\tabcolsep}{4pt}\n"
         "\\begin{tabular}{@{}llllrl>{\\raggedright\\arraybackslash}p{30mm}@{}}\n\\toprule\n"
         "$m$ & $\\delta_{\\rm thm}$ & $\\delta_{\\rm cert}$ & $\\delta_{\\rm up}$ & ratio & $\\epsilon_{\\rm cert}$ & "

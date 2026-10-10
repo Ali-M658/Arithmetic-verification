@@ -72,9 +72,13 @@ summarised in `practice.md`.
   overlap; each eigenvalue from one window), now kept unused in `numerics/legacy/single_window.py`
   (`numerics/REPORT.md:232-247`; Paper A's supplement says the same, `paper/jga/supplement.tex:258, 295`).
   NEV = 1300 per triangle and condition (`solve.py:189`). The double-window rerun of the four problems
-  (`numerics/rerun_double_window.py`) has **not** been run: the record
-  `numerics/data/rerun_double_window_comparison.json` does not exist, although `numerics/REPORT.md:245-247`
-  says the comparison is there (stale sentence; `paper/jga/supplement.tex:295` is correct).
+  (`numerics/rerun_double_window.py`, pinned NGSolve 6.2.2607, one problem at a time) was run on
+  2026-10-10: eigenvalues in `numerics/data/double_window/`, record
+  `numerics/data/rerun_double_window_comparison.json`. Counts below the common cut agree in all four
+  problems, the largest relative difference is 1.4e-14, every value is within err_conservative, and no
+  ARPACK miss was repaired. `theory/eigen/practice_double_window.py` reruns the test on the recomputed
+  lists (same counts: 18/20 and 25/29) and records what one deleted or duplicated eigenvalue does
+  (`data/practice_missing.csv`: (C1) concludes a wrong signature in 19 of 24 cases).
 - **Multiplicities.** Counted with multiplicity by the clustering above (family, E1). In the family,
   τ = 0 has the extra rotation symmetry; e.g. λ_1 = 4.122413 is degenerate between the sectors NND and NDN
   (`moduli/REPORT.md:341-344`); being in different sectors, the two copies are computed in different

@@ -240,7 +240,7 @@ for M, smax in ((2, Fr(6)), (3, Fr(9)), (4, SHARP_AREA[4])):
         ex = [v for v in clash if any(x[0] == 1 and x[1] == (3,) * 9 for x in v)]
         check(ex and any(x[0] == 0 and x[1] == (2,) * 16 for x in ex[0]), "M = 3 example")
     if M == 4:
-        check(clash and smin <= SHARP_AREA[4], "M = 4: a pair sharing c_1..c_3 exists by the sharp pair's area")
+        check(clash and smin == SHARP_AREA[4], "M = 4: least area of a pair sharing c_1..c_3 is that of the sharp pair, 36 pi")
 
 
 # ---------------------------------------------------------------- 7. parts (iii)-(iv): arbitrary competitors
