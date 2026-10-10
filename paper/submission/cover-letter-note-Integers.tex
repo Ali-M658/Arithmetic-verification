@@ -1,0 +1,56 @@
+%% Cover letter (draft, for the authors to edit and sign): the arithmetic note to Integers.
+%% Integers takes submissions by e-mail to the address on its "Submission Info" page, with the PDF
+%% attached; the message must give (i) the MSC codes, (ii) the keywords and (iii) the authors'
+%% confirmation concerning the journal's "Use of AI" guideline. This letter is that message.
+%% Build: pdflatex cover-letter-note-Integers.tex
+\documentclass[11pt]{article}
+\usepackage[a4paper,top=16mm,bottom=16mm,left=20mm,right=20mm]{geometry}
+\usepackage{amsmath,amssymb}
+\usepackage[hidelinks]{hyperref}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{5pt}
+\sloppy
+\pagestyle{empty}
+
+\begin{document}
+
+\begin{flushright}
+Palaash Gang\\
+Indus International School, Pune, India\\
+\texttt{palaash.gang@indusschoolpune.com}\\[6pt]
+\today
+\end{flushright}
+
+The Editors\\
+\emph{Integers: Electronic Journal of Combinatorial Number Theory}
+
+Dear Editors,
+
+On behalf of all six authors (Palaash Gang, Akshaj Agadi, Arjun Veluri, Jerry Wang, Jeremy Barreto and Aarin Chouthaiwale), I submit the attached manuscript \emph{Triples with equal sum and equal reciprocal sum} for consideration in \emph{Integers}. It is prepared with the journal's article template and is posted as arXiv:[PLACEHOLDER: arXiv number of the arithmetic note].
+
+\textbf{What the note does.} It studies unordered triples of positive integers $\{a,b,c\}$ with $1/a+1/b+1/c<1$ that share both their sum and their reciprocal sum with another such triple. Following Bremner, Guy and Nowakowski, two such triples correspond to rational points on one curve of the cubic pencil $(x+y+z)(xy+yz+zx)=\Lambda xyz$, here for rational $\Lambda$, and reciprocation is translation by a point of order two. From this the note proves that the number $\mathcal N(X)$ of coincident pairs with sum at most $X$ satisfies $(\tfrac{3}{128\pi^4}+o(1))X(\log X)^2\le\mathcal N(X)\ll_\varepsilon X^{3+\varepsilon}$, and that the number of classes is at least $(\tfrac{3\log2}{2\pi^2}+o(1))X\log X$. Schinzel's method for the equal-sum, equal-product problem gives classes of every size; the note claims no novelty for that method. An exact enumeration of all admissible triples with sum at most $4800$, extended to $6000$, gives the counts, and the note conjectures $\mathcal N(X)=X^{1+o(1)}$.
+
+\textbf{Companion manuscripts.} The question comes from spectral geometry: these coincidences are exactly the pairs of hyperbolic triangle orbifolds that the first two heat invariants cannot tell apart. Two companion manuscripts by the same authors are being submitted at the same time to the \emph{Annals of Global Analysis and Geometry}:
+\begin{itemize}\setlength{\itemsep}{2pt}
+\item \emph{How much of a hyperbolic orbifold does heat hear?} (arXiv:[PLACEHOLDER: arXiv number of Paper A]), which the note cites for the spectral motivation and for the smallest coincidence;
+\item \emph{Finitely many eigenvalues determine the signature of a hyperbolic orbifold} (arXiv:[PLACEHOLDER: arXiv number of Paper B]).
+\end{itemize}
+No proof in the note depends on either companion.
+
+\textbf{Code and data.} The enumeration code and data are publicly archived at Zenodo, with all six authors as creators: [PLACEHOLDER: Zenodo DOI, to be minted at submission]. One command reruns every check.
+
+\textbf{Information requested by the journal.}
+\begin{enumerate}\setlength{\itemsep}{2pt}
+\item[(i)] MSC 2020: Primary 11D25; Secondary 11G05, 11D45, 14J27.
+\item[(ii)] Keywords: equal sums of reciprocals, elliptic curves, rational points, Diophantine counting.
+\item[(iii)] Use of AI: [PLACEHOLDER: AI-use statement; the journal asks for the authors' confirmation that the article complies with its ``Use of AI'' guideline.]
+\end{enumerate}
+
+The manuscript is not under consideration elsewhere, and all authors have approved its submission. We would be grateful if you would consider it for publication.
+
+Yours sincerely,
+
+\vspace{10mm}
+Palaash Gang (corresponding author), on behalf of all authors
+
+\end{document}

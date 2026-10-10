@@ -1,0 +1,33 @@
+{
+  "title": "Code and data for: How much of a hyperbolic orbifold does heat hear?; Finitely many eigenvalues determine the signature of a hyperbolic orbifold; Triples with equal sum and equal reciprocal sum",
+  "upload_type": "software",
+  "description": "<p>Code, data and manuscript sources for three papers by the same authors: <em>How much of a hyperbolic orbifold does heat hear?</em> (heat invariants of closed hyperbolic 2-orbifolds and how many of them determine the signature), <em>Finitely many eigenvalues determine the signature of a hyperbolic orbifold</em> (an effective inverse spectral result with an a-posteriori test on computed spectra), and <em>Triples with equal sum and equal reciprocal sum</em> (the arithmetic of the triples of cone orders that two heat invariants do not distinguish).</p><p>The deposit contains the exact-arithmetic verification suite, the proofs' checking scripts and their outputs, the exhaustive enumeration data, the finite-element eigenvalue data of the triangle orbifolds and of a moduli family, the figure sources, and the LaTeX sources of the three manuscripts. One command, <code>code/run_all.sh</code>, reruns every check from the committed data and reports PASS, FAIL or SKIP for each stage; <code>DATA-MANIFEST.md</code> lists every data file with its size, SHA-256 checksum and generating program. The pinned Python requirements are in <code>requirements.txt</code>; re-solving the eigenvalue problems needs <code>numerics/requirements.txt</code> (NGSolve), and the rank certification needs <code>theory/diophantine/requirements-pari.txt</code> (cypari2, PARI/GP).</p>",
+  "creators": [
+    {"name": "Gang, Palaash", "orcid": "0009-0006-7448-9488", "affiliation": "Indus International School, Pune, India"},
+    {"name": "Agadi, Akshaj", "orcid": "0009-0009-1378-0556", "affiliation": "Texas A&M University, College Station, Texas, USA"},
+    {"name": "Veluri, Arjun", "orcid": "0009-0001-5940-3272", "affiliation": "Indus International School, Pune, India"},
+    {"name": "Wang, Jerry", "orcid": "0009-0004-1814-275X", "affiliation": "University of California, Irvine, Irvine, California, USA"},
+    {"name": "Barreto, Jeremy", "orcid": "0009-0006-6894-7323", "affiliation": "Lawrence High School, Lawrenceville, New Jersey, USA"},
+    {"name": "Chouthaiwale, Aarin", "orcid": "0009-0008-3878-7183", "affiliation": "DriveChange Learning and Resource Centre, Pune, India"}
+  ],
+  "keywords": [
+    "heat invariants",
+    "hyperbolic orbifolds",
+    "inverse spectral problems",
+    "cone singularities",
+    "Laplace eigenvalues",
+    "Selberg trace formula",
+    "Prouhet-Tarry-Escott problem",
+    "equal sums of reciprocals",
+    "elliptic curves",
+    "rational points"
+  ],
+  "access_right": "open",
+  "license": "[PLACEHOLDER: licence chosen by the authors]",
+  "language": "eng",
+  "related_identifiers": [
+    {"identifier": "arXiv:[PLACEHOLDER: arXiv number of Paper A]", "relation": "isSupplementTo", "resource_type": "publication-preprint"},
+    {"identifier": "arXiv:[PLACEHOLDER: arXiv number of Paper B]", "relation": "isSupplementTo", "resource_type": "publication-preprint"},
+    {"identifier": "arXiv:[PLACEHOLDER: arXiv number of the arithmetic note]", "relation": "isSupplementTo", "resource_type": "publication-preprint"}
+  ]
+}

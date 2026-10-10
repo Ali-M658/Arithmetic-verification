@@ -1,0 +1,5 @@
+# latexmk configuration for the cover letters: pdflatex; each PDF is written next to its .tex and
+# auxiliary files go to build/ (not committed).
+$pdf_mode = 1;
+$out_dir = '.';
+$aux_dir = 'build';

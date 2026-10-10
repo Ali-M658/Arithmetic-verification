@@ -1,0 +1,185 @@
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{integers}[2026/08/21 Integers Journal Style Template]
+
+%% =========================================================================
+%% FILE INFO: This style file (.sty) was created with the help of AI to 
+%%   automate and modularize the formatting rules for the INTEGERS Journal
+%% EDITED: 2026/08/21 First version. B.C. Kellner (bk@bernoulli.org)
+%% =========================================================================
+
+%% =========================================================================
+%% 0. Package Options Processing
+%% =========================================================================
+\RequirePackage{kvoptions}
+\SetupKeyvalOptions{family=integers,prefix=integers@}
+
+% Options for Document State and Font Engine Handling
+\DeclareBoolOption[false]{final}  % true = Production mode, false = Draft mode
+\DeclareBoolOption[false]{legacy} % true = Plain TeX Primitives, false = Modern NFSS
+\ProcessKeyvalOptions*
+
+%% =========================================================================
+%% 1. Page Layout Dimensions
+%% =========================================================================
+\textwidth=5.00in
+\textheight=7.4in
+\topmargin=30pt
+\evensidemargin=0pt
+\oddsidemargin=55pt
+\headsep=17pt
+\parskip=.5pt
+\parindent=12pt
+
+%% =========================================================================
+%% 2. Package Dependencies (Strict Ordering Kept Safely)
+%% =========================================================================
+% Core mathematical engines must be loaded in this exact sequence
+\RequirePackage{amssymb,latexsym,amsmath,amsthm}
+
+% Graphical layouts and package patching utilities follow
+\RequirePackage{epsfig,fancyhdr,etoolbox}
+
+%% =========================================================================
+%% 3. Font Engine Routing (Legacy Primitives vs. Modern NFSS)
+%% =========================================================================
+\ifintegers@legacy
+  % LEGACY MODE: Uses the exact original 1990s Plain TeX primitive definitions
+  \font\smallit=cmti10
+  \font\smalltt=cmtt10
+  \font\smallrm=cmr9
+\else
+  % MODERN MODE (Default): Uses clean, standard, non-deprecated LaTeX2e NFSS commands
+  \newcommand{\smallit}{\normalfont\itshape\normalsize}
+  \newcommand{\smalltt}{\normalfont\ttfamily\normalsize}
+  \newcommand{\smallrm}{\normalfont\rmfamily\fontsize{9}{11}\selectfont}
+\fi
+
+%% =========================================================================
+%% 4. Section & Heading Formatting
+%% =========================================================================
+\renewcommand\section{\@startsection {section}{1}{\z@}
+{-30pt \@plus -1ex \@minus -.2ex}
+{2.3ex \@plus.2ex}
+{\normalfont\normalsize\bfseries\boldmath}}
+
+\renewcommand\subsection{\@startsection{subsection}{2}{\z@}
+{-3.25ex\@plus -1ex \@minus -.2ex}
+{1.5ex \@plus .2ex}
+{\normalfont\normalsize\bfseries\boldmath}}
+
+\renewcommand{\@seccntformat}[1]{\csname the#1\endcsname. }
+
+%% =========================================================================
+%% 5. Custom Document Utilities & Footnotes
+%% =========================================================================
+\newcommand\blfootnote[1]{%
+  \begingroup
+  \renewcommand\thefootnote{}%
+  \footnote{#1}%
+  \addtocounter{footnote}{-1}%
+  \endgroup
+}
+
+%% =========================================================================
+%% 6. Automated Title & Header Block Setup (Centering Fix)
+%% =========================================================================
+\newcommand{\paperid}[1]{\def\@paperid{#1}}
+\newcommand{\journalyear}[1]{\def\@journalyear{#1}}
+\newcommand{\dates}[1]{\def\@dates{#1}}
+\newcommand{\doi}[1]{\def\@doi{#1}}
+
+% Global fallbacks / default placeholders
+\paperid{\#A1}
+\journalyear{26 (2026)}
+\dates{Received: , Revised: , Accepted: , Published: }
+\doi{}
+
+\renewcommand{\maketitle}{%
+  \begin{figure}[h]
+    \vspace*{-62pt}
+    \rightline{\epsfig{file=erdos1.pdf, height=.75in}}
+  \end{figure}
+  \vspace*{-28pt}
+  \noindent{\smalltt\@paperid} \par
+  \vspace{-12.5pt}
+  \centerline{\smalltt INTEGERS \@journalyear}
+  \vspace{3pt} \hrule
+  \begin{center}
+    {\bfseries\boldmath \MakeUppercase{\@title}}\blfootnote{DOI: \@doi}
+    \vspace{20pt}\par
+    \@author
+  \end{center}
+  \vspace{20pt}
+  \centerline{\smallit \@dates}
+  \vspace{30pt}
+}
+
+%% =========================================================================
+%% 7. Abstract Environment & Dynamic Page Headings Handling
+%% =========================================================================
+% Define our custom running headers (restored to full \normalsize)
+\fancypagestyle{integers}{
+  \fancyhf{} % Clear all headers and footers completely
+  \fancyhead[L]{\normalfont\ttfamily\normalsize INTEGERS: \@journalyear} 
+  \fancyhead[R]{\normalfont\ttfamily\normalsize\thepage} 
+  \renewcommand{\headrulewidth}{0pt}
+  \renewcommand{\footrulewidth}{0pt}
+}
+
+% Overwrite the internal 'plain' style to prevent LaTeX from forcing bottom page numbers
+\fancypagestyle{plain}{
+  \fancyhf{}
+  \fancyhead[L]{\normalfont\ttfamily\normalsize INTEGERS: \@journalyear} 
+  \fancyhead[R]{\normalfont\ttfamily\normalsize\thepage} 
+  \renewcommand{\headrulewidth}{0pt}
+  \renewcommand{\footrulewidth}{0pt}
+}
+
+% Set our custom style globally for the entire document context
+\pagestyle{integers}
+
+\renewenvironment{abstract}{%
+  \centerline{\bfseries Abstract}%
+  \vspace{0pt}% Eliminates any line-break space leaks safely
+  \noindent\ignorespaces
+}{%
+  \par
+  \thispagestyle{empty} % Enforce an absolute blank state ONLY on the title/abstract page
+  \baselineskip=12.875pt % Lock the required baseline skip spacing layout rule
+}
+
+%% =========================================================================
+%% 8. Inline Acknowledgements Layout Environment
+%% =========================================================================
+\newcommand{\acknowledgements}[1]{%
+  \vskip 20pt
+  \noindent{\bfseries Acknowledgements.} #1\par
+}
+
+%% =========================================================================
+%% 9. Robust Environment Patching via etoolbox
+%% =========================================================================
+% Changes font style strictly inside the references section safely after argument processing
+\AtBeginEnvironment{thebibliography}{\footnotesize}
+
+%% =========================================================================
+%% 10. Theorem Environments & Manual Spacing Fix
+%% =========================================================================
+% Re-injects proper elastic vertical padding when raw baselineskip shifts occur
+\def\thm@space@setup{%
+  \thm@preskip=12pt plus 3pt minus 2pt   % Standard vertical space before theorems
+  \thm@postskip=12pt plus 3pt minus 2pt  % Standard vertical space after theorems
+}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}{Lemma}
+\newtheorem{proposition}{Proposition}
+\newtheorem{corollary}{Corollary}
+
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}
+\newtheorem{conjecture}{Conjecture}
+\newtheorem{remark}{Remark}
+\newtheorem{example}{Example}
+
+\endinput

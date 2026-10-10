@@ -1,5 +1,6 @@
-"""Build the arXiv source packages of Paper A (paper/jga) and Paper B (paper/eigen) in paper/arxiv/
-(git-ignored), from the built papers (run latexmk in both first, Paper A before Paper B).
+"""Build the arXiv source packages of Paper A (paper/jga), Paper B (paper/eigen) and the arithmetic note
+(paper/arith) in paper/arxiv/ (git-ignored), from the built papers (run latexmk in all three first,
+Paper A before Paper B).
 
     python3 paper/tools/make_arxiv.py
 
@@ -11,7 +12,8 @@ of the built document: in Paper A the references to its supplement, in Paper B t
 Paper A's supplement goes in as an ancillary file, anc/supplement.pdf. Each package is compiled in a
 temporary copy (pdflatex twice, no BibTeX) and checked: no undefined references, the same page count
 as the build, and no forbidden strings (repository paths, review history, the earlier target
-journal). Writes paper/arxiv/paperA/, paper/arxiv/paperB/ and the two .tar.gz files.
+journal). The note is the amsart version paper/arith/note.tex (standard class, no cross-document
+references). Writes paper/arxiv/paperA/, paperB/, note/ and their .tar.gz files.
 """
 import os
 import re
@@ -53,19 +55,22 @@ def labels(aux):
 
 def inline_captions(tex):
     cap = strip_comments(open(os.path.join(ROOT, "figures", "captions.tex"), encoding="utf-8").read())
-    return tex.replace("\\input{../../figures/captions.tex}", cap)
+    tex = tex.replace("\\input{../../figures/captions.tex}", cap)
+    return tex.replace(" in figures/captions.tex}", "}")  # the error text of \figcap names a repository file
 
 
 def figures_used(tex, prefix):
-    return sorted(set(re.findall(r"\\paperfigure(?:\[[^\]]*\])?\{(" + prefix + r"\d)\}", tex)))
+    found = re.findall(r"\\paperfigure(?:\[[^\]]*\])?\{(" + prefix + r"\d)\}", tex)
+    found += re.findall(r"\\includegraphics(?:\[[^\]]*\])?\{figures/out/(" + prefix + r"\d)\.pdf\}", tex)
+    return sorted(set(found))
 
 
-def package(name, src_dir, main, xr_prefix, xr_aux, figprefix, anc=None):
+def package(name, src_dir, main, xr_prefix, xr_aux, figprefix, anc=None, cls="sn-jnl.cls", built_pdf=None):
     src = os.path.join(ROOT, "paper", src_dir)
     tex = open(os.path.join(src, main), encoding="utf-8").read()
     tex = inline_captions(tex)
     tex = strip_comments(tex)
-    lab = labels(xr_aux)
+    lab = labels(xr_aux) if xr_aux else {}
     tex = re.sub(r"\\usepackage\{xr\}%?\n", "", tex)
     tex = re.sub(r"\\externaldocument\[[^\]]*\]\{[^}]*\}%?\n", "", tex)
     tex = tex.replace("\\graphicspath{{../../}}", "\\graphicspath{{./}}")
@@ -75,7 +80,9 @@ def package(name, src_dir, main, xr_prefix, xr_aux, figprefix, anc=None):
         if key not in lab:
             sys.exit(f"{name}: label {key} not found in {xr_aux}")
         return lab[key]
-    if xr_prefix == "S-":
+    if xr_prefix is None:
+        pass
+    elif xr_prefix == "S-":
         tex = re.sub(r"\\newcommand\{\\sref\}\[1\]\{\\ref\*?\{S-#1\}\}%?\n", "", tex)
         tex = re.sub(r"\\(sref)\{([^}]*)\}", num, tex)
     else:
@@ -87,7 +94,8 @@ def package(name, src_dir, main, xr_prefix, xr_aux, figprefix, anc=None):
     shutil.rmtree(d, ignore_errors=True)
     os.makedirs(os.path.join(d, "figures", "out"))
     open(os.path.join(d, main), "w", encoding="utf-8").write(tex)
-    shutil.copy(os.path.join(src, "sn-jnl.cls"), d)
+    if cls:
+        shutil.copy(os.path.join(src, cls), d)
     shutil.copy(os.path.join(src, "build", main.replace(".tex", ".bbl")), d)
     for f in figures_used(tex, figprefix):
         shutil.copy(os.path.join(ROOT, "figures", "out", f + ".pdf"), os.path.join(d, "figures", "out"))
@@ -114,7 +122,8 @@ def package(name, src_dir, main, xr_prefix, xr_aux, figprefix, anc=None):
             sys.exit(f"{name}: package build problems: {bad[:5]}")
         pages = subprocess.run(["pdfinfo", main.replace(".tex", ".pdf")], cwd=t, capture_output=True, text=True).stdout
         npk = int(re.search(r"Pages:\s+(\d+)", pages).group(1))
-        ref = subprocess.run(["pdfinfo", os.path.join(src, "build", main.replace(".tex", ".pdf"))], capture_output=True, text=True).stdout
+        built = built_pdf or os.path.join(src, "build", main.replace(".tex", ".pdf"))
+        ref = subprocess.run(["pdfinfo", built], capture_output=True, text=True).stdout
         nref = int(re.search(r"Pages:\s+(\d+)", ref).group(1))
         if npk != nref:
             sys.exit(f"{name}: package has {npk} pages, the build {nref}")
@@ -132,6 +141,8 @@ def main():
     package("paperA", "jga", "manuscript.tex", "S-", os.path.join(ROOT, "paper", "jga", "build", "supplement.aux"), "F",
             anc=os.path.join(ROOT, "paper", "jga", "build", "supplement.pdf"))
     package("paperB", "eigen", "manuscript.tex", "A-", os.path.join(ROOT, "paper", "jga", "build", "manuscript.aux"), "E")
+    package("note", "arith", "note.tex", None, None, "F", cls=None,
+            built_pdf=os.path.join(ROOT, "paper", "arith", "note.pdf"))
     return 0
 
 

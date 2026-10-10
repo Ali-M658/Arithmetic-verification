@@ -72,7 +72,13 @@ review/referee-sim/*/scratch/
 
 # Compiled manuscripts (build outputs only; figures/out/ is tracked)
 paper/arith/*.pdf
+paper/arith/integers/note.pdf
 paper/jga/*.pdf
+paper/submission/*.pdf
+paper/submission/build/
+
+# Zenodo deposit archive built by git archive (paper/SUBMISSION-CHECKLIST.md, section 5)
+paper/submission/deposit/
 
 # arXiv source packages built by paper/tools/make_arxiv.py (regenerated from the built papers)
 paper/arxiv/

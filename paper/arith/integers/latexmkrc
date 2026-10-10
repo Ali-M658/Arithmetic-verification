@@ -1,0 +1,6 @@
+# latexmk configuration for the Integers version of the arithmetic note: pdflatex + no BibTeX (inline bibliography); note.pdf is written next to
+# note.tex and every auxiliary file goes to build/ (not committed).
+$pdf_mode = 1;
+$out_dir = '.';
+$aux_dir = 'build';
+$bibtex_use = 0;
