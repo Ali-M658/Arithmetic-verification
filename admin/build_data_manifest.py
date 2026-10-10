@@ -312,7 +312,7 @@ def is_data(f):
     if f in {e for e, _ in ENV_FILES} or name.startswith("requirements") or name in ("environment.yml",) \
             or name.endswith((".server.txt",)):
         return False
-    if name in ("README.md",) or name == ".gitkeep":
+    if name in ("README.md", ".zenodo.json") or name == ".gitkeep":
         return False
     return f.endswith((".csv", ".json", ".npz", ".txt")) or f.endswith("_output.md") \
         or f == "theory/stability/blind/RESULT.md" or (f.startswith("paper/tables/") and f.endswith(".tex"))

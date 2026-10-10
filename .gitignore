@@ -82,3 +82,36 @@ paper/submission/deposit/
 
 # arXiv source packages built by paper/tools/make_arxiv.py (regenerated from the built papers)
 paper/arxiv/
+
+# Third-party texts (full texts of papers, books and theses fetched for study). Kept locally only,
+# never committed: the authors hold no right to redistribute them. See paper/submission/OLD-REPO.md.
+research/notes/11034372-doyle-rossetti-fulltext.md
+research/notes/151004637-on-the-arithmetic-dimension-of-triangle-groups-2.md
+research/notes/170101874-heat-trace-expansion-on-manifolds-with-conic-singularities-2.md
+research/notes/171100577-spectral-geometry-of-surfaces-with-curved-conic-singularities-2.md
+research/notes/181206119-schueth-corner-contributions-ar5iv-fulltext.md
+research/notes/190500259-the-heat-kernel-on-curvilinear-polygonal-domains-in-surfaces-2.md
+research/notes/220613013-continuity-of-the-roots-of-a-polynomial-2.md
+research/notes/251122255-heat-coefficients-of-surfaces-with-curved-conical-singularities.md
+research/notes/any-three-eigenvalues-do-not-determine-a-triangle-full-text-arxiv191106758v2.md
+research/notes/asymptotic-expansion-of-the-heat-kernel-for-orbifolds-full-text-arxiv08053148-pd.md
+research/notes/do-the-hodge-spectra-distinguish-orbifolds-from-manifolds-part-2.md
+research/notes/heat-coefficients-of-surfaces-with-curved-conical-singularities-annals-of-global.md
+research/notes/heat-coefficients-of-surfaces-with-curved-conical-singularities.md
+research/notes/inverse-spectral-problems-for-collapsing-manifolds-i-uniqueness-and-stability-fu.md
+research/notes/inverse-spectral-problems-for-collapsing-manifolds-ii-quantitative-stability-of.md
+research/notes/isospectrality-for-orbifold-lens-spaces-full-text-arxiv170501412v2.md
+research/notes/spectral-invariants-for-polygons-and.md
+research/notes/the-heat-kernel-on-curvilinear-polygonal-domains-in-surfaces-annales-mathmatique.md
+research/notes/the-heat-trace-for-domains-with-curved-corners.md
+research/notes/the-spectral-geometry-of-hyperbolic-and-spherical-manifolds-analogies-and-open-p.md
+research/notes/the-steklov-spectrum-of-convex-polygonal-domains-i-spectral-finiteness-the-journ.md
+research/notes/unsolved-problems-in-number-theory-pdf-1o9si23bb6dg.md
+review/audit/stability/holtz_tyaglov_0912.4703.txt
+review/round1-fixes/citations/crootmaoyip2026_arxiv_html.md
+theory/eigen/sources/arxiv_1809.07309.txt
+research/notes/proceedings-of-the-american-mathematical-society.md
+research/notes/the-prouhettarryescott-problem-for-subsets-with-small-doubling-in-integral-domai.md
+research/notes/*full-text*
+research/notes/*fulltext*
+research/notes/*-pdf-*

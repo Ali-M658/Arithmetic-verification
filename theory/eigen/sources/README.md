@@ -10,7 +10,8 @@ numerically, in diameter.py and necessity.py.
 
 Files:
 - `wiki_jorgensen.txt`: the statement, verbatim from the fetched page.
-- `arxiv_1809.07309.txt`: full text of arXiv:1809.07309, which recalls the inequality and gives the
+- `arxiv_1809.07309.txt` (kept locally, not committed, because it is a third-party full text; re-fetch
+  from https://arxiv.org/pdf/1809.07309): full text of arXiv:1809.07309, which recalls the inequality and gives the
   reference.
 
 Attempted and unreachable (bot walls): JSTOR stable/2373814; Project Euclid and Springer PDFs of

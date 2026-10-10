@@ -78,6 +78,8 @@ That licence is granted to arXiv only. It gives third parties no right to redist
 
 ## (c) Third-party text in the tracked research notes (affects the deposit)
 
+**Done (2026-10-10):** option 1. The 22 notes and three other full texts were removed from the tree and git-ignored in the commit "Stop tracking third-party texts". The list and what remains in the history are in `OLD-REPO.md`. The papers are now deposited from three new repositories, so the deposit plan below is superseded.
+
 The deposit is to be a clean export of the current commit, excluding nothing tracked. It will therefore include `research/notes/`. Twenty-two tracked notes there are larger than 40 kB, and several hold the extracted full text of third-party works, for example:
 
 | file | size | content (from its header) |
