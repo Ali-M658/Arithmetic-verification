@@ -252,7 +252,7 @@ git archive --format=zip --prefix=hyperbolic-pillow-$(git rev-parse --short HEAD
 shasum -a 256 paper/submission/deposit/*.zip
 ```
 
-`paper/submission/deposit/` is git-ignored. ARCHIVE-RECORD Before any deposit, settle Section 3, item 2 (third-party text in `research/notes/`).
+`paper/submission/deposit/` is git-ignored. Built on 2026-10-10 from commit `b35f0bc` (the commit before the one adding this sentence): `hyperbolic-pillow-b35f0bc.zip`, 21,512,405 bytes, SHA-256 `6e10a9d70e649c51a2e7cae3e3ab807547151e2649f5fc9aef861973ddf1704d`. It holds the 1,354 tracked files of that commit, and its unpacked contents are byte-identical to them (checked file by file with SHA-256); `git archive` produced the same bytes twice. Rebuild it from the commit actually released, after the placeholders are filled. Before any deposit, settle Section 3, item 2 (third-party text in `research/notes/`).
 
 **Way 1: GitHub–Zenodo release.** This needs the repository owner, A. Agadi, because the repository is `github.com/Ali-M658/Arithmetic-verification`.
 1. The owner links a GitHub account to Zenodo. Then, from the profile menu, choose "GitHub" and "Sync now", and switch the repository on.
