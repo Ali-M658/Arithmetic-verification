@@ -8,6 +8,7 @@ release changelog. The companion paper is the authors' own submitted manuscript 
 external record. Corrections to a fetched record are listed in CORRECTIONS with their evidence.
 
     python3 paper/arith/tools/build_bib.py --fetch   # download raw records into paper/arith/fetched/
+    python3 paper/arith/tools/build_bib.py --fetch-missing   # download only records not yet in fetched/
     python3 paper/arith/tools/build_bib.py           # assemble references.bib and SOURCES.md
 
 The raw records are not committed (paper/arith/fetched/ is git-ignored); SOURCES.md lists the
@@ -44,6 +45,8 @@ SOURCES = {
     "dggw2008": ("doi", "10.1307/mmj/1213972406"),
     "crameri2020": ("doi", "10.1038/s41467-020-19160-7"),
     "crameri2023": ("doi", "10.5281/zenodo.8409685"),
+    "tho2021": ("doi", "10.33039/ami.2021.04.005"),
+    "bremnertho2018": ("doi", "10.1142/s1793042118500768"),
     "pari2172": ("document", "https://pari.math.u-bordeaux.fr/pub/pari/OLD/2.17/pari-2.17.2.changelog"),
 }
 # Records fetched only as evidence for a correction.
@@ -56,6 +59,22 @@ CORRECTIONS = {
     ("schinzel1996", "title"): "Triples of positive integers with the same sum and the same product",
     # zbMATH drops the accent; the printed title (Gallica scan, review/literature-pass/_fetched/pdf/
     # beauville1982.pdf, p. 657) has it.
+    # Crossref deposits tho2021 as an "Accepted manuscript" without volume or pages; the published
+    # paper (http://publikacio.uni-eszterhazy.hu/6965/1/AMI_54_from141to146.pdf, fetched 2026-10-10,
+    # SHA-256 6fc4ced80a662ff343a1a09f3743ed5948db6b0408ed01b5e2fa01a3fc6f5f89) prints
+    # "Annales Mathematicae et Informaticae 54 (2021) pp. 141-146".
+    # Both titles are printed with the formula in mathematics (title pages of the fetched papers;
+    # bremnertho2018 from https://mathpost.asu.edu/~tnguyenx/paper1.pdf, fetched 2026-10-10, SHA-256
+    # 69449f487bb7d3f72344164c66703803e34e67c66d3d7f1689d7ec98fba5303f).
+    ("tho2021", "title"): "What positive integers $n$ can be presented in the form $n=(x+y+z)(1/x+1/y+1/z)$?",
+    ("bremnertho2018", "title"): "The equation $(w+x+y+z)(1/w+1/x+1/y+1/z)=n$",
+    ("tho2021", "volume"): "54",
+    ("tho2021", "pages"): "141--146",
+    # Crossref splits the Vietnamese name as given "Nguyen Xuan" / family "Tho" (tho2021) and given
+    # "Tho Nguyen" / family "Xuan" (bremnertho2018). The author signs "Nguyen Xuan Tho" (byline of
+    # tho2021, fetched as above); the name is kept whole so that BibTeX does not reorder it.
+    ("tho2021", "author"): "{Nguyen Xuan Tho}",
+    ("bremnertho2018", "author"): "Bremner, Andrew and {Nguyen Xuan Tho}",
     ("beauville1982", "title"): "Les familles stables de courbes elliptiques sur $\\mathbf{P}^1$ admettant quatre fibres singuli{\\`e}res",
 }
 
@@ -95,9 +114,11 @@ def urls():
     return out
 
 
-def fetch_all():
+def fetch_all(missing_only=False):
     RAW.mkdir(parents=True, exist_ok=True)
     for name, (url, hdr) in urls().items():
+        if missing_only and (RAW / name).exists():
+            continue
         (RAW / name).write_bytes(get(url, hdr))
         time.sleep(1)
 
@@ -140,6 +161,7 @@ def from_csl(key):
         r = json.loads((RAW / "dggw2008_pages.json").read_text())["result"][0]
         assert any(l.get("identifier", "").lower() == SOURCES[key][1] for l in r.get("links", []) if l.get("type") == "doi"), "zbMATH record is not DGGW"
         f["pages"] = r["source"]["pages"].replace("-", "--")
+    f.update({fld: v for (k, fld), v in CORRECTIONS.items() if k == key and fld != "title"})
     f = {k: v for k, v in f.items() if v}
     body = ",\n".join(f"  {k:<7} = {{{v}}}" for k, v in f.items())
     return f"@article{{{key},\n{body}\n}}"
@@ -227,6 +249,6 @@ def build():
 
 
 if __name__ == "__main__":
-    if "--fetch" in sys.argv:
-        fetch_all()
+    if "--fetch" in sys.argv or "--fetch-missing" in sys.argv:
+        fetch_all(missing_only="--fetch-missing" in sys.argv)
     build()

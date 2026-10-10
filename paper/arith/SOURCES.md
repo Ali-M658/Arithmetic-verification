@@ -20,10 +20,18 @@ number once posted; it has no external record.
 | `dggw2008.json` | https://doi.org/10.1307/mmj/1213972406 | `5fe93eb00faa26cade2e29b5d387d261ec3e81372bbddbadbffb156c384831ef` |
 | `crameri2020.json` | https://doi.org/10.1038/s41467-020-19160-7 | `71fb62f03cb4573e33fa1fbf49795e1136a3d6f46abd998c08eb1e26d6ebc061` |
 | `crameri2023.json` | https://doi.org/10.5281/zenodo.8409685 | `ac503ef9808315cae7ddf700d01edbf2b9905c04709071c6e47c30e68be09adb` |
+| `tho2021.json` | https://doi.org/10.33039/ami.2021.04.005 | `a4c26ff30703e6274011f0fce0667eb051f6063cabc0ca2ea98d4ec6a1c795cb` |
+| `bremnertho2018.json` | https://doi.org/10.1142/s1793042118500768 | `5cb774b09ee200bb8ab929598841206f590fbc27b1a09f74681c17d7bda0b019` |
 | `pari2172.document` | https://pari.math.u-bordeaux.fr/pub/pari/OLD/2.17/pari-2.17.2.changelog | `cc7ed9f76db9b4906fdc5afb4c28a16081bf1aa194c77d0807ac17d8b617fc5b` |
 | `dggw2008_pages.json` | https://api.zbmath.org/v1/document/_search?search_string=doi%3A10.1307/mmj/1213972406&page=0&results_per_page=1 | `78c5dc19d637784f95004fe9f7c0466f88574f64dfb0b4f8fee373808a1eac0b` |
 
 ## Corrections to fetched records
 
 - `schinzel1996` title: Triples of positive integers with the same sum and the same product
+- `tho2021` title: What positive integers $n$ can be presented in the form $n=(x+y+z)(1/x+1/y+1/z)$?
+- `bremnertho2018` title: The equation $(w+x+y+z)(1/w+1/x+1/y+1/z)=n$
+- `tho2021` volume: 54
+- `tho2021` pages: 141--146
+- `tho2021` author: {Nguyen Xuan Tho}
+- `bremnertho2018` author: Bremner, Andrew and {Nguyen Xuan Tho}
 - `beauville1982` title: Les familles stables de courbes elliptiques sur $\mathbf{P}^1$ admettant quatre fibres singuli{\`e}res

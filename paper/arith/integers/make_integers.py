@@ -91,6 +91,17 @@ for old, new in [
 # A sentence does not begin with notation (template guideline): figure caption, part (b)
 body = sub("(b) $\\N(S)/S$ (heavy)", "(b) The ratio $\\N(S)/S$ (heavy)", 1, body)
 
+# Related literature: the two papers on (x+y+z)(1/x+1/y+1/z) = n and its four-variable analogue
+# (../CITATIONS-NXT.md states what each proves)
+body = sub("As far as we know, the counting function",
+           "For integer $\\Lambda=n$, Nguyen Xuan Tho proved, by Hilbert symbols on the curve $E_n$ of Section~\\ref{sec:curves}, "
+           "that no triple of positive integers has $e_1e_2/e_3=n$ when $4\\mid n$ \\cite[Theorem~1.1]{tho2021}; for these $n$ "
+           "the curve $C_n$ has no positive points and carries no class. Earlier, by the same method, Bremner and Nguyen Xuan Tho had shown "
+           "that $(w+x+y+z)(1/w+1/x+1/y+1/z)=n$ has no solution in positive rationals when $n=4m^2$ or $n=4m^2+4$ with "
+           "$m\\not\\equiv2\\pmod 4$ \\cite[Theorems~8, 9, and~14]{bremnertho2018}, contrary to the expectation of Bremner, "
+           "Guy, and Nowakowski that every $n\\ge16$ is so represented. Both papers concern which $n$ are represented, "
+           "not how often. As far as we know, the counting function", 1, body)
+
 # Captions beneath tables (template guideline): move each \caption{...}\label{...} below its tabular
 def move_caption(m):
     block = m.group(0)
@@ -117,6 +128,9 @@ A. Bremner and R. K. Guy, Two more representation problems, \textit{Proc. Edinb.
 \bibitem{bgn1993}
 A. Bremner, R. K. Guy, and R. J. Nowakowski, Which integers are representable as the product of the sum of three integers with the sum of their reciprocals?, \textit{Math. Comp.} \textbf{61}(203) (1993), 117--130.
 
+\bibitem{bremnertho2018}
+A. Bremner and Nguyen Xuan Tho, The equation $(w+x+y+z)(1/w+1/x+1/y+1/z)=n$, \textit{Int. J. Number Theory} \textbf{14}(5) (2018), 1229--1246.
+
 \bibitem{crameri2023}
 F. Crameri, Scientific colour maps, version 8.0.1, Zenodo, 2023, \url{https://doi.org/10.5281/zenodo.8409685}.
 
@@ -134,6 +148,9 @@ J. B. Kelly, Partitions with equal products. II, \textit{Proc. Amer. Math. Soc.}
 
 \bibitem{mazur1977}
 B. Mazur, Modular curves and the Eisenstein ideal, \textit{Publ. Math. Inst. Hautes \'Etudes Sci.} \textbf{47} (1977), 33--186.
+
+\bibitem{tho2021}
+Nguyen Xuan Tho, What positive integers $n$ can be presented in the form $n=(x+y+z)(1/x+1/y+1/z)$?, \textit{Ann. Math. Inform.} \textbf{54} (2021), 141--146.
 
 \bibitem{pari2172}
 The PARI Group, PARI/GP version 2.17.2, Univ. Bordeaux, 2025, \url{https://pari.math.u-bordeaux.fr/}.
