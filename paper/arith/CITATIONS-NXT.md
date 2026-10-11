@@ -65,8 +65,7 @@ The abstract calls this a partial answer to the question of Melvyn Knight report
 ## What was changed
 
 1. `tools/build_bib.py`: two new records (`tho2021`, `bremnertho2018`), the corrections above, and a `--fetch-missing` option, so that only the new records were downloaded. `references.bib` and `SOURCES.md` were regenerated; the existing entries are unchanged.
-2. `integers/make_integers.py` (and the regenerated `integers/note.tex`): one passage in "Relation to the Literature", placed before "As far as we know". It gives Theorem 1.1 of `tho2021`, its consequence for $C_n$, and Theorems 8, 9 and 14 of `bremnertho2018`, and notes that both papers concern existence, not counting. Two references were added. The Integers note grows from 15 to 16 pages.
-3. **Not changed:** the amsart version `note.tex` (the arXiv version). For both versions to cite the papers, move the passage into `note.tex` and delete the corresponding substitution in `make_integers.py`, which then fails loudly if left in.
+2. One passage in "Relation to the Literature", placed before "As far as we know", first in the Integers version only and since 2026-10-11 in `note.tex` (the amsart and arXiv version), from which `integers/make_integers.py` carries it into the Integers version unchanged. It gives Theorem 1.1 of `tho2021`, its consequence for $C_n$, and Theorems 8, 9 and 14 of `bremnertho2018`, and notes that both papers concern existence, not counting. Two references were added: from `references.bib` in the amsart version, as bibitems in the Integers version. The Integers note grows from 15 to 16 pages; the amsart note stays at 12.
 
 **For the authors to decide:**
 - Whether the consistency check above should become a committed check (for example in `checks/`), so that the note could state it.

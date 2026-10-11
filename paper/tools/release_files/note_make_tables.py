@@ -10,20 +10,21 @@ C_{27/2}, whose rank 0 is treated in the companion paper; the note cites it ther
 
 Table 2 (cumulative counts): pairs and classes from the S <= 6000 enumeration
 (checks/enumeration6000/check_enum.txt, written by check_enum.py), cross-checked against
-theory/diophantine/data/per_S.csv for S <= 4800; the local exponent as printed: the transcript's
-four-decimal value rounded half up, checked against the exact log(N(S)/N(S/2))/log 2; the primitive classes and the largest class from
+theory/diophantine/data/per_S.csv for S <= 4800; the local exponent log(N(S)/N(S/2))/log 2 from the
+exact counts, rounded once (and checked against the transcript); the primitive classes and the largest class from
 per_S.csv, and at S = 6000 from checks/note/check_note.txt (check_note.py --enum).
 """
 import csv
 import math
 import re
-from decimal import ROUND_HALF_UP, Decimal
 import sys
 from fractions import Fraction
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 DATA = ROOT / "theory" / "diophantine" / "data"
+ENUM6000 = ROOT / "checks" / "enumeration6000" / "check_enum.txt"
+NOTECHECK = ROOT / "checks" / "note" / "check_note.txt"
 OUT = ROOT / "tables"
 
 
@@ -69,7 +70,7 @@ def table_fibres():
 
 def table_density():
     per = {int(r["S"]): r for r in csv.DictReader(open(DATA / "per_S.csv", encoding="utf-8"))}
-    txt = (ROOT / "checks" / "enumeration6000" / "check_enum.txt").read_text(encoding="utf-8")
+    txt = ENUM6000.read_text(encoding="utf-8")
     sec = txt.split("test to S=6000", 1)[1]
     enum = {}
     for line in sec.splitlines()[2:]:
@@ -77,7 +78,7 @@ def table_density():
         if len(f) != 7 or not f[0].isdigit():
             break
         enum[int(f[0])] = (int(f[1]), int(f[3]), f[5])
-    note = (ROOT / "checks" / "note" / "check_note.txt").read_text(encoding="utf-8")
+    note = NOTECHECK.read_text(encoding="utf-8")
     prim6000 = int(re.search(r"primitive classes with S <= 6000: (\d+)", note).group(1))
     largest6000 = int(re.search(r"no class of size 7 with S <= 6000: largest (\d+)", note).group(1))
 
@@ -90,12 +91,11 @@ def table_density():
     cum = {S: int(r["cum_pairs"]) for S, r in per.items()}
     for S in (100, 200, 300, 400, 500, 600, 1000, 2000, 3000, 4000, 4800, 6000):
         pairs, classes, loc4 = enum[S]
-        # As printed in the paper: the transcript's four-decimal value rounded half up to three decimals.
-        # The exact value log(N(S)/N(S/2))/log 2 from the counts must agree with it to within 1e-3
-        # (at S = 500 the exact 1.99349 is printed as 1.994: rounded twice).
-        loc = Decimal(loc4).quantize(Decimal("0.001"), rounding=ROUND_HALF_UP)
+        # The local exponent log(N(S)/N(S/2))/log 2 from the exact counts, rounded once to three decimals
+        # (rounding the transcript's four-decimal value again would round twice). The transcript must agree.
         exact = math.log(pairs / cum[S // 2]) / math.log(2)
-        assert abs(exact - float(loc4)) <= 5e-5 and abs(exact - float(loc)) <= 1e-3, (S, exact, loc4, loc)
+        assert abs(exact - float(loc4)) <= 5e-5, (S, exact, loc4)
+        loc = f"{exact:.3f}"
         if S in per:
             assert (int(per[S]["cum_pairs"]), int(per[S]["cum_classes"])) == (pairs, classes), S
             prim, mf = per[S]["cum_prim_classes"], maxfib[S]

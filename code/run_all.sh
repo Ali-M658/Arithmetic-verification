@@ -355,6 +355,7 @@ stage "eigen paper tables current"       q exact . "$P paper/eigen/tools/make_ta
 # --- paper/arith: the exact checks of the arithmetic note, including the S <= 6000 enumeration (about 1 min);
 #     the script rewrites check_note.txt, which must come back byte-identical
 stage "arith check_note"                 q exact . "$P paper/arith/checks/check_note.py --enum"
+stage "arith tables current"             q exact . "$P paper/arith/tools/make_tables.py --check"
 
 # --------------------------------------------------------------------------
 # Summary
