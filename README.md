@@ -1,8 +1,16 @@
 # How much of a hyperbolic orbifold does heat hear?
 
+> **The code and data of the three papers are released in their own repositories**, each archived at
+> Zenodo; cite those, not this one:
+> - *How much of a hyperbolic orbifold does heat hear?*: https://github.com/pa1aash/heat-invariants-orbifolds
+> - *Finitely many eigenvalues determine the signature of a hyperbolic orbifold*: https://github.com/pa1aash/eigenvalues-orbifold-signature
+> - *Triples with equal sum and equal reciprocal sum*: https://github.com/pa1aash/equal-sum-reciprocal-triples
+>
+> This repository is the development history; `paper/tools/make_release.py` builds the three releases from it.
+
 Manuscript, proofs, exact-arithmetic verification and numerical data for the paper on how many
 leading heat-trace coefficients of a closed hyperbolic 2-orbifold determine its cone orders (and,
-at three cone points, the orbifold itself). Target journal: *The Journal of Geometric Analysis*.
+at three cone points, the orbifold itself).
 
 ## Reproduce everything with one command
 
