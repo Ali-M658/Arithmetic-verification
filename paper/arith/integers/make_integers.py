@@ -34,13 +34,13 @@ def sub(old, new, count, s):
 for old, new in [
     ("\\subsection{Relation to the literature}", "\\subsection{Relation to the Literature}"),
     ("\\section{The curves \\texorpdfstring{$C_\\Lambda$}{C\\_Lambda}}", "\\section{The Curves \\texorpdfstring{$C_\\Lambda$}{C\\_Lambda}}"),
-    ("\\section{Reciprocation and the dual family}", "\\section{Reciprocation and the Dual Family}"),
+    ("\\section{Reciprocation, permutations and torsion}", "\\section{Reciprocation, Permutations, and Torsion}"),
     ("\\section{Lower bounds}", "\\section{Lower Bounds}"),
     ("\\section{Classes of every size}", "\\section{Classes of Every Size}"),
     ("\\section{Enumeration and growth}", "\\section{Enumeration and Growth}"),
     ("\\subsection{The enumeration}", "\\subsection{The Enumeration}"),
     ("\\subsection{An upper bound}", "\\subsection{An Upper Bound}"),
-    ("\\subsection{What Conjecture~\\ref{conj:intro} would require}", "\\subsection{What Conjecture~\\ref{conj:intro} Would Require}"),
+    ("\\subsection{What Question~\\ref{q:intro} would require}", "\\subsection{What Question~\\ref{q:intro} Would Require}"),
 ]:
     body = sub(old, new, 1, body)
 
@@ -49,8 +49,6 @@ body = sub("Bremner, Guy and Nowakowski", "Bremner, Guy, and Nowakowski", body.c
 abstract = sub("Bremner, Guy and Nowakowski", "Bremner, Guy, and Nowakowski", 1, abstract)
 for old, new in [
     ("of two, three and four triples", "of two, three, and four triples"),
-    ("$[1200,4800]$, $[600,2400]$ and $[2400,4800]$ all pairs give $4.43$, $4.63$ and $4.37$",
-     "$[1200,4800]$, $[600,2400]$, and $[2400,4800]$ all pairs give $4.43$, $4.63$, and $4.37$"),
     ("$\\Z/3$, $\\Z/6$ or $\\Z/2\\times\\Z/6$", "$\\Z/3$, $\\Z/6$, or $\\Z/2\\times\\Z/6$"),
     ("under permutations, reciprocation and translation", "under permutations, reciprocation, and translation"),
     ("$11$ of size $5$ and one of size $6$", "$11$ of size $5$, and one of size $6$"),
@@ -59,12 +57,16 @@ for old, new in [
 
 # Numbered results, equations and cited items are written out in full (template guideline)
 for old, new, n in [
-    ("\\cite[Prop.~2.5, Thm~2.8]{sadekelsissi2015}", "\\cite[Proposition~2.5 and Theorem~2.8]{sadekelsissi2015}", 2),
+    ("\\cite[Prop.~2.5]{sadekelsissi2015}", "\\cite[Proposition~2.5]{sadekelsissi2015}", 1),
+    ("\\cite[Prop.~2.7, Thm~2.8]{sadekelsissi2015}", "\\cite[Proposition~2.7 and Theorem~2.8]{sadekelsissi2015}", 1),
+    ("\\cite[Prop.~2.7]{sadekelsissi2015}", "\\cite[Proposition~2.7]{sadekelsissi2015}", 1),
+    ("\\cite[Thm~2.8]{sadekelsissi2015}", "\\cite[Theorem~2.8]{sadekelsissi2015}", 1),
     ("\\cite[Chap.~III, Cor.~(5.2), p.~156]{mazur1977}", "\\cite[Chapter~III, Corollary~(5.2), p.~156]{mazur1977}", 2),
     ("\\cite[Prop.~7.1]{schoen1988}", "\\cite[Proposition~7.1]{schoen1988}", 1),
-    ("By \\eqref{eq:copies} and partial summation", "By Equation~\\eqref{eq:copies} and partial summation", 1),
-    ("In \\eqref{eq:copies}, restrict", "In Equation~\\eqref{eq:copies}, restrict", 1),
-    ("both conventions of \\eqref{eq:counts}", "both conventions of Equation~\\eqref{eq:counts}", 1),
+    ("\\cite[Chap.~III]{silvermantate2015}", "\\cite[Chapter~III]{silvermantate2015}", 1),
+    ("By \\eqref{eq:copies}, ", "By Equation~\\eqref{eq:copies}, ", 1),
+    ("In \\eqref{eq:copies}, keep", "In Equation~\\eqref{eq:copies}, keep", 1),
+    ("as defined in \\eqref{eq:counts}", "as defined in Equation~\\eqref{eq:counts}", 1),
 ]:
     body = sub(old, new, n, body)
 
@@ -81,15 +83,14 @@ body = sub("\\[\n  \\N(X)\\ \\ge\\ \\Ncl(X)\\ \\ge\\ \\Big(\\frac{3\\log2}{2\\pi
 
 # A comma after a sentence-initial "Hence" (template guideline)
 for old, new in [
-    ("Hence $P+T_2=\\iota(P)$", "Hence, $P+T_2=\\iota(P)$"),
+    ("Hence $\\iota(P)=-R", "Hence, $\\iota(P)=-R"),
+    ("Hence $2Q=2A=-Q$", "Hence, $2Q=2A=-Q$"),
     ("Hence $nP$ lies on it", "Hence, $nP$ lies on it"),
     ("Hence $\\delta=p-p'\\ne0$.", "Hence, $\\delta=p-p'\\ne0$."),
     ("Hence $\\N(X)\\ge\\frac X2", "Hence, $\\N(X)\\ge\\frac X2"),
 ]:
     body = sub(old, new, 1, body)
 
-# A sentence does not begin with notation (template guideline): figure caption, part (b)
-body = sub("(b) $\\N(S)/S$ (heavy)", "(b) The ratio $\\N(S)/S$ (heavy)", 1, body)
 
 # Captions beneath tables (template guideline): move each \caption{...}\label{...} below its tabular
 def move_caption(m):
@@ -120,6 +121,9 @@ A. Bremner, R. K. Guy, and R. J. Nowakowski, Which integers are representable as
 \bibitem{bremnertho2018}
 A. Bremner and Nguyen Xuan Tho, The equation $(w+x+y+z)(1/w+1/x+1/y+1/z)=n$, \textit{Int. J. Number Theory} \textbf{14}(5) (2018), 1229--1246.
 
+\bibitem{cha2019}
+B. Cha, A. Claman, J. Harrington, Z. Liu, B. Maldonado, A. Miller, A. Palma, T. W. H. Wong, and H. Yi, An investigation on partitions with equal products, \textit{Int. J. Number Theory} \textbf{15}(8) (2019), 1731--1744.
+
 \bibitem{crameri2023}
 F. Crameri, Scientific colour maps, version 8.0.1, Zenodo, 2023, \url{https://doi.org/10.5281/zenodo.8409685}.
 
@@ -130,13 +134,19 @@ F. Crameri, G. E. Shephard, and P. J. Heron, The misuse of colour in science com
 E. B. Dryden, C. S. Gordon, S. J. Greenwald, and D. L. Webb, Asymptotic expansion of the heat kernel for orbifolds, \textit{Michigan Math. J.} \textbf{56}(1) (2008), 205--238.
 
 \bibitem{gangetal-heat}
-P. Gang, A. Agadi, A. Veluri, J. Wang, J. Barreto, and A. Chouthaiwale, How much of a hyperbolic orbifold does heat hear?, preprint, arXiv:\textbf{[PLACEHOLDER: arXiv number of Paper A]}.
+P. Gang, A. Agadi, A. Veluri, J. Wang, J. Barreto, and A. Chouthaiwale, How much of a hyperbolic orbifold does heat hear?, preprint, \textbf{[PLACEHOLDER: preprint identifier]}.
 
 \bibitem{kelly1989}
 J. B. Kelly, Partitions with equal products. II, \textit{Proc. Amer. Math. Soc.} \textbf{107}(4) (1989), 887--893.
 
+\bibitem{macleod2005}
+A. J. MacLeod, Integer triangles with $R/r=N$, preprint, arXiv:math/0502475, 2005.
+
 \bibitem{mazur1977}
 B. Mazur, Modular curves and the Eisenstein ideal, \textit{Publ. Math. Inst. Hautes \'Etudes Sci.} \textbf{47} (1977), 33--186.
+
+\bibitem{morelandzieve2013}
+G. Moreland and M. E. Zieve, Some Diophantine equations related to positive-rank elliptic curves, preprint, arXiv:1304.1442, 2013.
 
 \bibitem{tho2021}
 Nguyen Xuan Tho, What positive integers $n$ can be presented in the form $n=(x+y+z)(1/x+1/y+1/z)$?, \textit{Ann. Math. Inform.} \textbf{54} (2021), 141--146.
@@ -152,6 +162,12 @@ A. Schinzel, Triples of positive integers with the same sum and the same product
 
 \bibitem{schoen1988}
 C. Schoen, On fiber products of rational elliptic surfaces with section, \textit{Math. Z.} \textbf{197}(2) (1988), 177--199.
+
+\bibitem{silvermantate2015}
+J. H. Silverman and J. T. Tate, \textit{Rational Points on Elliptic Curves}, Undergraduate Texts in Mathematics, Springer International Publishing, 2015.
+
+\bibitem{ulas2013}
+M. Ulas, A note on Diophantine systems involving three symmetric polynomials, \textit{J. Number Theory} \textbf{133}(10) (2013), 3283--3295.
 
 \bibitem{ysv2024}
 A. E. A. Youmbai, A. S. Zargar, and M. Voznyy, Partitions into triples with equal products and families of elliptic curves, \textit{Glas. Mat. Ser. III} \textbf{60}(1) (2025), 59--72.
@@ -201,6 +217,10 @@ PRE = r"""%% Triples with equal sum and equal reciprocal sum: the version format
 \newcommand{\Ncl}{\mathcal{N}_{\mathrm{cl}}}
 \newcommand{\ciso}{c_{\mathrm{iso}}}
 \newcommand{\Orb}{\mathcal{O}}
+\newtheorem{introthm}{Theorem}
+\renewcommand{\theintrothm}{\Alph{introthm}}
+\newtheorem{introprop}[introthm]{Proposition}
+\newtheorem{introquestion}[introthm]{Question}
 
 \title{Triples with Equal Sum and Equal Reciprocal Sum}
 
@@ -231,7 +251,7 @@ BACK = r"""\section*{Statements and Declarations}
 
 \noindent\textit{Competing interests.} The authors have no competing interests to declare that are relevant to the content of this article.
 
-\noindent\textit{Data and code availability.} {\sloppy The code and data are at \url{https://github.com/pa1aash/equal-sum-reciprocal-triples}, archived at Zenodo \textbf{[PLACEHOLDER: Zenodo DOI]}, with all six authors as creators; the Zenodo record is the version to cite. One command reruns every check. Table~\ref{tab:fibres} is produced by \texttt{make\_tables.py} from \texttt{groups.csv}, written by \texttt{enumerate\_fast.py}, and from the ranks of \texttt{ranks.py}; Table~\ref{tab:density} is produced by the same tool from \texttt{check\_enum.py} (to $S=6000$), cross-checked against \texttt{per\_S.csv}; the fits are those of \texttt{exponent\_fits.py} and \texttt{growth\_fits.py}, and Figure~\ref{fig:F9} is drawn by \texttt{F9.py}.\par}
+\noindent\textit{Data and code availability.} {\sloppy The code and data are at \url{https://github.com/pa1aash/equal-sum-reciprocal-triples}, archived at Zenodo \textbf{[PLACEHOLDER: Zenodo DOI]}, with all six authors as creators; the Zenodo record is the version to cite. One command reruns every check; the enumerations from scratch are rerun only on request. Table~\ref{tab:fibres} is produced by \texttt{make\_tables.py} from \texttt{groups.csv}, written by \texttt{enumerate\_fast.py}, and from the ranks of \texttt{ranks.py}; Table~\ref{tab:density} is produced by the same tool from \texttt{check\_enum.py} (to $S=6000$), cross-checked against \texttt{per\_S.csv}; the fits are those of \texttt{exponent\_fits.py} and \texttt{growth\_fits.py}, and Figure~\ref{fig:F9} is drawn by \texttt{F9.py}.\par}
 
 \noindent\textit{Author contributions.} \textbf{[PLACEHOLDER: author contribution statement, to be supplied by the authors before submission.]}
 

@@ -220,6 +220,13 @@ def diam_bound(A, eps, M):
     return 4 * r0 * mp.mpf(A) / v0
 
 
+def count_constant(A, eps, M):
+    """K(A, eps, M) of the lemma on counting closed geodesics without the diameter: every orbifold of
+    C(A, eps, M) has n_O(x) <= K e^x, with K = A M e^{10 r_0 + rho_1} / (2 v_0 (cosh rho_1 - 1))."""
+    r0, rho1, v0 = ball_constants(eps, M)
+    return mp.mpf(A) * M * mp.e ** (10 * r0 + rho1) / (2 * v0 * (mp.cosh(rho1) - 1))
+
+
 # ------------------------------------------------------------------ Tasks 2-4 constants
 def g_abs(k, m):
     """|g_k(m)| = (2k)!/(k! 4^k) phi_k(m): the k-th Taylor coefficient of e^{t/4} E_m(t), unsigned."""
@@ -283,14 +290,16 @@ def theorem_E_constants(A, eps, M, area_lb=None):
     t1 = min([mp.mpf(1)] + [mpq(dmin[k]) / (4 * Q[k - 1]) for k in range(1, kstar + 1)])
     t2 = eps ** 2 / (2 * (1 + eps))
     D = diam_bound(A, eps, M)
+    Kc = count_constant(A, eps, M)
     if area_lb is None:
         area_lb = mp.pi / 21
     p = kstar - mp.mpf(3) / 2
-    # B_*(t) = (pi/area_lb) e^{3D} eps e^{eps/2} / (1 - e^{-eps}) * 3 * e^{-eps^2/4t} / sqrt(4 pi t)
-    pref = (mp.pi / area_lb) * 3 * eps * mp.e ** (eps / 2) / ((1 - mp.e ** (-eps)) * mp.sqrt(4 * mp.pi))
-    # need pref e^{3D} t^{-1/2} e^{-y} <= gamma t^{kstar-2}/16, y = eps^2/(4t):
-    # e^{-y} <= c1 t^p, c1 = gamma/(16 pref e^{3D});  log c1 kept in log form (e^{3D} overflows nothing in mp)
-    log_c1 = mp.log(mpq(gamma)) - mp.log(16 * pref) - 3 * D
+    # The count n_O(x) <= K e^x (no diameter) in Lemma 2.2's integration by parts gives, for t <= t_2,
+    # Hyp(t) <= B_*(t) = K eps e^{eps/2} / (1 - e^{-eps}) * 3 * e^{-eps^2/4t} / sqrt(4 pi t)
+    # (1 + 2t/(eps - t) <= 3 on t <= t_2).  area_lb is no longer used.
+    pref = Kc * 3 * eps * mp.e ** (eps / 2) / ((1 - mp.e ** (-eps)) * mp.sqrt(4 * mp.pi))
+    # need pref t^{-1/2} e^{-y} <= gamma t^{kstar-2}/16, y = eps^2/(4t): e^{-y} <= c1 t^p, c1 = gamma/(16 pref)
+    log_c1 = mp.log(mpq(gamma)) - mp.log(16 * pref)
     y0 = 2 * (p * mp.log(2 * p / mp.e) - log_c1 - p * mp.log(eps ** 2 / 4))
     check(y0 > 0, "y0 > 0")
     t3 = eps ** 2 / (4 * y0)
@@ -298,7 +307,7 @@ def theorem_E_constants(A, eps, M, area_lb=None):
     Gam = mpq(gamma) * tstar ** (kstar - 2) / 2
 
     def Bstar(t):
-        return pref * mp.e ** (3 * D) * mp.e ** (-eps ** 2 / (4 * t)) / mp.sqrt(t)
+        return pref * mp.e ** (-eps ** 2 / (4 * t)) / mp.sqrt(t)
 
     check(Bstar(tstar) <= Gam / 8, "B_*(t*) <= Gamma/8")
     cone0 = nstar * mpq(Fr(M * M - 1, 12 * M))
@@ -312,7 +321,7 @@ def theorem_E_constants(A, eps, M, area_lb=None):
     N = int(mp.floor(mp.e * Zb(1 / Lam))) + 1
     delta = min(1 / tstar, Gam / (8 * mp.e * N * tstar))
     return dict(A=A, eps=eps, M=M, kstar=kstar, nstar=nstar, LM=LM, gamma=gamma, Q=Q, t1=t1, t2=t2,
-                D=D, y0=y0, t3=t3, tstar=tstar, Gamma=Gam, Bstar_tstar=Bstar(tstar), Lambda=Lam, N=N,
+                D=D, K=Kc, y0=y0, t3=t3, tstar=tstar, Gamma=Gam, Bstar_tstar=Bstar(tstar), Lambda=Lam, N=N,
                 delta=delta, Zb_half=Zb(tstar / 2))
 
 

@@ -483,8 +483,8 @@ def write_metadata(cfg, dest):
     for a in C.AUTHORS:
         cff += [f"    - family-names: \"{a['family']}\"", f"      given-names: \"{a['given']}\"",
                 f"      orcid: \"https://orcid.org/{a['orcid']}\""]
-    cff += ["  identifiers:", "    - type: other", f"      value: \"arXiv:[PLACEHOLDER: arXiv number of {cfg['short']}]\"",
-            "      description: \"arXiv preprint\""]
+    cff += ["  identifiers:", "    - type: other", "      value: \"[PLACEHOLDER: preprint identifier]\"",
+            "      description: \"preprint of the paper\""]
     (dest / "CITATION.cff").write_text("\n".join(cff) + "\n", encoding="utf-8")
     z = {
         "title": f"Code and data for: {cfg['paper']}",
@@ -498,7 +498,7 @@ def write_metadata(cfg, dest):
         "notes": "Code: MIT licence (LICENSE). Data, figures and text: CC-BY-4.0 (LICENSE-DATA).",
         "language": "eng",
         "related_identifiers": [
-            {"identifier": f"arXiv:[PLACEHOLDER: arXiv number of {cfg['short']}]", "relation": "isSupplementTo",
+            {"identifier": "[PLACEHOLDER: preprint identifier]", "relation": "isSupplementTo",
              "resource_type": "publication-preprint"},
         ],
     }

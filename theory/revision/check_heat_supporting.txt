@@ -1,0 +1,24 @@
+1. no bracketing: (2;(2,)) t=0.05 K=1: R=0.00107754, next term 0.00104167
+1. no bracketing: (4;(2,)) t=0.05 K=2: R=-2.68431e-5, next term -2.50496e-5
+1. no bracketing: (3;(2,)) t=0.2 K=2: R=-7.08155e-6, next term 0.000107143
+1. sharper (6): |R| <= max(area bound, cone bound) and the signs of Proposition B.2 hold in 5664 cases
+2. Lemma B.3 (2, 8, 8) t_n=0.002: max |c~ - c| = 0.09279 <= 1.321
+2. Lemma B.3 (2, 8, 8) t_n=0.01: max |c~ - c| = 0.4054 <= 6.604
+2. Lemma B.3 (3, 3, 12) t_n=0.002: max |c~ - c| = 0.3267 <= 9.716
+2. Lemma B.3 (3, 3, 12) t_n=0.01: max |c~ - c| = 1.256 <= 48.58
+2. Lemma B.3 (2, 3, 7) t_n=0.002: max |c~ - c| = 0.02504 <= 0.6896
+2. Lemma B.3 (2, 3, 7) t_n=0.01: max |c~ - c| = 0.1128 <= 3.448
+2. Lemma B.3 (3, 3, 3, 3) t_n=0.002: max |c~ - c| = 0.004406 <= 0.2167
+2. Lemma B.3 (3, 3, 3, 3) t_n=0.01: max |c~ - c| = 0.02136 <= 1.084
+2. remark: times t_3, t_3/2, t_3/4: delta_1 = 4858.0 t_3 + 1.6e-10*1e22 eta at t_3 = 1e-11;
+   delta_1 <= delta_thm(2,8,8) = 3.80e-7 needs t_3 <= 7.8e-11, and at t_3 = 1e-11 eta <= 2.07e-19
+3. collisions with S <= 600: largest R = 3/4 only at ((2, 8, 8), (3, 3, 12)); next 37/60 at ((2, 15, 20), (3, 4, 30))
+4. wave-trace kernel: Fourier formula verified; nearest singularities at u = +-2 pi i/m (m = 3, 8, 12)
+4. E_m(t) = int g_t(u) k_m(u) du verified for m = 3, 8, 12 and t = 0.01, 0.05, 0.3
+5. m=12, t=0.02, r=0.14 (= 0.256 sqrt(t)/sin(pi/m)): 4 pi t h = 7.799
+5. m=12, t=0.02, r=0.546 (= 1.0 sqrt(t)/sin(pi/m)): 4 pi t h = 1.785
+5. m=12, t=0.02, r=1.09 (= 2.0 sqrt(t)/sin(pi/m)): 4 pi t h = 1.037
+5. m=12, t=0.02, r=1.64 (= 3.0 sqrt(t)/sin(pi/m)): 4 pi t h = 1.0
+5. m=12, t=0.02, r=2.19 (= 4.0 sqrt(t)/sin(pi/m)): 4 pi t h = 1.0
+6. m Phi_m^(2k)(0) = 2 4^k k! m c^S_k(pi/m) exactly, m in {2,3,5,7,12}, k <= 7
+7. Theorem B: Hur_{n-1}(chi_m) = prod(m_i+m_j) for the Hurwitz matrix (a_{2j-i}), and det M = (-1)^{n(n+1)/2} prod(m_i+m_j)/e_n, n = 2..5

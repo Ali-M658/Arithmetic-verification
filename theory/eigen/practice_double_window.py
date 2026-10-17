@@ -56,11 +56,11 @@ def first_C1(case, G):
     best = None
     for t in P.TGRID:
         Gv = case.Gs(G, t)
-        lh = float(P.logH(case.ell, case.Delta, case.A, t))
+        lh = float(P.logH(case.ell, case.logC, case.A, t))
         Ht = math.exp(min(lh, 700.0))
         if Ht > 10 * (case.Nc + float(np.max(np.abs(Gv)))):
             continue
-        tb = P.TailBound(case.ell, case.Delta, case.A, case.beta, t)
+        tb = P.TailBound(case.ell, case.logC, case.A, case.beta, t)
         Ns = np.arange(1, case.Nc)
         mu = case.lam[Ns] - case.eps[Ns]
         E = Ht + np.exp(np.minimum(tb.log_tail(mu), 700.0)) + t * case.cumeps[Ns]

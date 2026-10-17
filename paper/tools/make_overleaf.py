@@ -83,7 +83,7 @@ README_A = """# Overleaf package: How much of a hyperbolic orbifold does heat he
   `figures/` (every figure, PDF), `sn-jnl.cls`, `sn-mathphys-num.bst`, `latexmkrc`.
 - Code and data: https://github.com/pa1aash/heat-invariants-orbifolds
 - Before submission, fill the placeholders: author contributions, the AI-use statement, the Zenodo DOI,
-  and the arXiv numbers of the companion papers.
+  and the preprint identifiers of the companion papers.
 """
 README_B = """# Overleaf package: Finitely many eigenvalues determine the signature of a hyperbolic orbifold
 
@@ -98,7 +98,7 @@ README_B = """# Overleaf package: Finitely many eigenvalues determine the signat
   PDF), `sn-jnl.cls`, `sn-mathphys-num.bst`, `latexmkrc`.
 - Code and data: https://github.com/pa1aash/eigenvalues-orbifold-signature
 - Before submission, fill the placeholders: author contributions, the AI-use statement, the Zenodo DOI,
-  and the arXiv number of the companion paper.
+  and the preprint identifiers of the companion papers.
 """
 README_N = """# Overleaf package: Triples with Equal Sum and Equal Reciprocal Sum (Integers version)
 
@@ -112,7 +112,7 @@ README_N = """# Overleaf package: Triples with Equal Sum and Equal Reciprocal Su
 - Files: `note.tex`, `references.bib`, `figures/F9.pdf`, `integers.sty`, `erdos1.pdf`, `latexmkrc`.
 - Code and data: https://github.com/pa1aash/equal-sum-reciprocal-triples
 - Before submission, fill the placeholders: author contributions, the AI-use statement, the Zenodo DOI,
-  and the arXiv number of the companion paper.
+  and the preprint identifier of the companion paper.
 """
 
 

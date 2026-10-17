@@ -5,8 +5,7 @@
     python3 tools/make_tables.py --check   # exit 1 unless both files are current
 
 Table 1 (the first class of each size k): theory/diophantine/data/groups.csv (written by
-enumerate_fast.py) and the ranks of theory/diophantine/data/ranks.txt (ranks.py). The row k = 2 lies on
-C_{27/2}, whose rank 0 is treated in the companion paper; the note cites it there instead of printing it.
+enumerate_fast.py) and the ranks and torsion groups of theory/diophantine/data/ranks.txt (ranks.py).
 
 Table 2 (cumulative counts): pairs and classes from the S <= 6000 enumeration
 (checks/enumeration6000/check_enum.txt, written by check_enum.py), cross-checked against
@@ -33,13 +32,18 @@ def tex_triple(t):
 
 
 def ranks():
+    """lambda -> (proven rank, torsion group in TeX) from ranks.txt."""
     out = {}
     txt = (DATA / "ranks.txt").read_text(encoding="utf-8")
     for blk in txt.split("\nlambda = ")[1:]:
         lam = blk.split()[0]
         rk = re.search(r"rank:\s+(\d+) <= rank <= (\d+)\s+-> PROVEN", blk)
         assert rk and rk.group(1) == rk.group(2), lam
-        out[Fraction(lam)] = int(rk.group(1))
+        tors = re.search(r"elltors:\s+\[(\d+), \[([\d, ]+)\]", blk)
+        inv = [int(x) for x in tors.group(2).split(",")]
+        assert math.prod(inv) == int(tors.group(1)), lam
+        group = "\\times".join(f"\\Z/{n}" for n in sorted(inv))
+        out[Fraction(lam)] = (int(rk.group(1)), f"${group}$")
     return out
 
 
@@ -55,16 +59,12 @@ def table_fibres():
         S = int(r["S"])
         lam = S * Fraction(int(r["R_num"]), int(r["R_den"]))
         lam_t = str(lam.numerator) if lam.denominator == 1 else f"{lam.numerator}/{lam.denominator}"
-        if lam == Fraction(27, 2):
-            assert rk[lam] == 0
-            rank = "\\cite{gangetal-heat}"
-        else:
-            rank = str(rk[lam])
+        rank, tors = str(rk[lam][0]), rk[lam][1]
         triples = [tuple(int(x) for x in t.strip().strip("()").split(",")) for t in r["triples"].split(";")]
         mem = "; ".join("$" + tex_triple(t) + "$" for t in triples)
-        rows.append(f"{k} & {S} & ${lam_t}$ & {rank} & {mem} \\\\")
-    return ("\\begin{tabular}{@{}rrrr>{\\raggedright\\arraybackslash}p{0.6\\textwidth}@{}}\n\\toprule\n"
-            "$k$ & $S$ & $\\Lambda$ & rank & members\\\\\n\\midrule\n"
+        rows.append(f"{k} & {S} & ${lam_t}$ & {rank} & {tors} & {mem} \\\\")
+    return ("\\begin{tabular}{@{}rrrrl>{\\raggedright\\arraybackslash}p{0.44\\textwidth}@{}}\n\\toprule\n"
+            "$k$ & $S$ & $\\Lambda$ & rank & torsion & members\\\\\n\\midrule\n"
             + "\n".join(rows) + "\n\\bottomrule\n\\end{tabular}\n")
 
 
@@ -103,7 +103,7 @@ def table_density():
             prim, mf = prim6000, largest6000
         rows.append(f"{S} & {pairs} & {classes} & {prim} & {mf} & {loc} \\\\")
     return ("\\begin{tabular}{@{}rrrrrr@{}}\n\\toprule\n"
-            "$S$ & pairs $\\N(S)$ & classes $\\Ncl(S)$ & primitive classes & largest class & local exponent\\\\\n\\midrule\n"
+            "$X$ & pairs $\\N(X)$ & classes $\\Ncl(X)$ & primitive classes & largest class & local exponent\\\\\n\\midrule\n"
             + "\n".join(rows) + "\n\\bottomrule\n\\end{tabular}\n")
 
 

@@ -245,7 +245,8 @@ def check_free_symbols():
     skip_dirs = {".git", ".venv", "research", "refs", "__pycache__", "runs", "refs_cache", "sources_cache", "env", "jga",
                  "revision", "audit-2", "literature-pass", "referee-sim",
                  "eigen", "varcurv", "arxiv"}   # varcurv/: variable-curvature work of its own session, with its own notation (d_j); session work areas: reports, fetched papers, check transcripts; eigen/ holds the fragments of manuscript Section 4, which use the manuscript's notation (d_k, varpi)
-    skip_files = {"CONVENTIONS.md", "conventions_check.py"}
+    skip_files = {"CONVENTIONS.md", "conventions_check.py",
+                  "eigen_METHODS.md"}   # the eigen release's METHODS, in the manuscript's notation (vartheta), like eigen/
     texts = {}
     # review/ is not walked: review rounds, audits and literature notes are prose or fetched text, not paper notation
     for top in ("theory", "numerics", "code", "paper", "."):

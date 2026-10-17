@@ -58,16 +58,17 @@ Statements are referred to by their numbers in the built PDF.
 | 1753 / 423 / 1330; none has P′∓P of order ≤ 12 | AD check_enum.txt ll. 23–25; TD families.txt §4 |
 | Mazur Cor. (5.2), Chap. III, p. 156 | TD novelty.md (quote "m ≤ 10 or m = 12"); CITATIONS.md pinpoint |
 | test covers larger torsion (NT m9) | the test is an exact order ≤ 12 check, independent of the torsion subgroup (AD check_enum.py) |
-| Remark 3.3: (u:v:v) has order 6 | AD DI.7 (two-line proof; 358 points order 6, check_groups.txt l. 71–73) |
+| Theorem 3.3 (torsion: Z/6, Z/12, Z/2×Z/6; (1:1:t) and (1:r:r²) criteria; positive torsion points; orders 6, 6, 2 of the isosceles orientations and 4/12 of geometric progressions) | proof in the note (round 6, after N-b M1–M2); CN checks 7d (exact orders, 2G = Q₃+T₂, positive torsion points with S ≤ 60); blind check review/referee-round-6/blind-check-N |
 | Sadek–El-Sissi analogue | as in §1 |
-| 40,305 primitive positive triples with sum ≤ 120: torsion ones are isosceles or GP | AD check_groups.txt ll. 108–109 |
+| (removed in round 6: now Theorem 3.3(iv)) | — |
 | Remark 3.4 (no linear families) with proportional exception | TD variety.md §5 (Prop. 2); AD DI.4 (counterexample ℓ·(2,8,8), ℓ·(3,3,12); hypothesis "not all proportional" added) |
 
 ## §4 Lower bounds
 
 | statement | source |
 |---|---|
-| Lemma 4.1 (R ≤ 3 for every triple, copies k ≥ 4, injectivity) | AD DI.8 (general justification adopted) |
+| Lemma 2.1 (every coincidence is admissible) | proof in the note (round 6, after N-e M2); CN check 7a (brute force to S = 240 and the discriminants) |
+| Lemma 4.1 (every pair is kD for a unique primitive D; N(X) = Σ_D ⌊X/S_D⌋) | Lemma 2.1; CN check 7b (identity against per_S.csv for every X ≤ 4800) |
 | Thm 4.2 identity, g ∈ {1,3}, g=3 ⇔ u≡v≢0 (mod 3), primitivity, D_{1,4} | TD variety.md §7 Thm 4; families.txt §1; AD DI.9 |
 | area of Ω = log2/6 (u<v) | AD DI.9 (corrects the old "Y log2/3", which was the full quadrant) |
 | densities 6/π², 1/4; c_iso = 3 log2/(2π²) | AD DI.9; TD variety.md §7 |
@@ -75,9 +76,10 @@ Statements are referred to by their numbers in the built PDF.
 | partial summation, c_iso X log X + O(X) | AD DI.9 |
 | classes: distinct Λ for distinct D_{u,v}; ≤ 1 isosceles pair per class | AD DI.9 (isosceles points on C_Λ are roots of 2r²+(5−Λ)r+2); (Λ−1)/(Λ−9) determines u/v by CN check 2 |
 | 506 vs 505.7 | TD families.txt §2–3; AD check_isosceles.txt; CN check 5 |
-| secondary term −0.479X for 10⁴ ≤ X ≤ 4·10⁷ | AD check_isosceles.txt ll. 12–17 |
+| copies k ≥ 1: c_iso X log X − 0.286X for 10⁴ ≤ X ≤ 4·10⁷; 0.608X at 4800 | CN check 7c (to 10⁶); review/referee-round-6 computation to 4·10⁷ (−0.28628); the old −0.479X was the k ≥ 4 count (AD check_isosceles.txt) |
+| Theorem 4.4 beats Theorem 4.2 only for log X > 128π⁴c_iso/3 = 437.8 | CN check 7c |
 | 1.9 log X factor over ⌊X/18⌋ | 18·c_iso = 1.896 |
-| Lemma 4.3 (conic bundle pairs, multiplicity ≤ 6, GP ≤ 3 ratios) | TD variety.md §7 Thm 5; families.txt §1 (conic bundle identity PASS); AD check_theorem5_family.txt; statement made self-contained per AD DI.10 |
+| Lemma 4.3 (conic bundle pairs, covers every primitive triple, multiplicity ≤ 6, GP ratios √(qr), q²/r, r²/q (CN check 7f)) | TD variety.md §7 Thm 5; families.txt §1 (conic bundle identity PASS); AD check_theorem5_family.txt; statement made self-contained per AD DI.10 |
 | Thm 4.4 and proof, c_A = 3/(32π⁴), 3/(128π⁴) | TD variety.md §7 Thm 5; old manuscript App. A (8a9ebf0); verified step by step by the NT simulated referee (REPORT.md §3 row "Theorem 8.8 / Appendix A") and AD check_theorem5.txt; the audit's multiplicity concern (12 vs 6) is resolved by the "2 ways to choose the member" count |
 
 ## §5 Classes of every size
@@ -86,13 +88,13 @@ Statements are referred to by their numbers in the built PDF.
 |---|---|
 | Schinzel's method: point of infinite order, rescaling by least common denominator d to Σ a_ij = 6d, primitive sets, pp. 587–588 | schinzel1996.txt (verbatim); CITATIONS.md correction 20; NOVELTY.md §5 |
 | no novelty claimed for the method; Kelly 1989, Zhang–Cai credited | binding attribution (task brief), NOVELTY.md §5 |
-| Thm 5.1 and proof (P=(4:9:18), nP ≠ O for n ≤ 12, Mazur, odd multiples) | TD variety.md §6 Thm 3; AD DI.5 (independent proof); Lemma 2.3 for positivity |
+| Thm 5.1 and proof (P=(4:9:18) of infinite order by Theorem 3.3(iv); odd multiples) | Theorem 3.3; TD variety.md §6 Thm 3; AD DI.5 (nP ≠ O for n ≤ 12, independent); Lemma 2.4 for positivity |
 | rank C_{155/12} = 2 (PARI r1=r2=2; independent 2-isogeny descent) | TD data/ranks.txt; AD check_ranks.txt, check_descent.txt (Sel 8, 2) |
 | 3P = (162833463:723926268:287876366) ordered | P3 (check_point3P.txt, 10/10 PASS); AD check_groups.py now compares ordered points (G7-15) |
-| first classes 136, 408, 1849, 4600; ranks 2,2,3,3; Selmer groups filled | TD data/ranks.txt; AD DI.6/DI.11 table; CN check 5 (members, sums, Λ, first occurrences) |
+| first classes 136, 408, 1849, 4600; ranks 2,2,3,3; Selmer orders (4,1), (4,4), (8,4), (16,2), (8,2), filled; 2^{r+2} = |Sel^φ||Sel^φ̂| (Silverman–Tate Chap. III); root numbers | TD data/ranks.txt (rootno); AD check_descent.txt; AD DI.6/DI.11 table; CN check 5 (members, sums, Λ, first occurrences) |
 | no GRH in r2 for curves with a rational 2-torsion point | AD REVIEW.md "P5 verdict" item 3 (ellrank.c, makevbnf) |
 | no class of size 7 up to 6000 | AD DI.11 (to 4800); CN check 6 (4801–6000) |
-| Table 1 rank 0 for C_{27/2} (ellrank r1 = r2 = 0, as for every row) | TD data/ranks.txt; AD DI.7. Only the rank is quoted; the isolation consequence and its descent stay in the companion paper (SELF-REVIEW M2) |
+| Table 1 rank 0 and torsion for every row; C_{27/2}(Q) = 12 points, so the S = 18 class and its multiples are the only coincidences with Λ = 27/2 | TD data/ranks.txt (ellrank, elltors; ranks.py asserts the 12 points); AD check_descent.txt (rank 0 by descent); Theorem 3.3(ii) |
 | S=408 class = 3×(S=136) ∪ {(65,70,273)} | AD DI.1, DI.6 |
 
 ## §6 Enumeration and growth
@@ -112,17 +114,17 @@ Statements are referred to by their numbers in the built PDF.
 | 669 non-dual primitive pairs ≤ 400 not ±mP+T, m ∈ {2,3} | TD families.txt §6 (l. 53); variety.md §5 |
 | Prop. 6.1 (upper bound) and proof | new in this note (G7-9; NT M2(a) sketch). Identity: CN check 4 (symbolic); recount of n(S) through the identity for S ≤ 160 equals per_S.csv: CN check 4 |
 | trivial bound n(S) ≪ S³ | elementary (O(S²) triples; ≤ 1 partner per least entry: A′ fixed, R fixes B′) |
-| local exponents 2.5 → 1.58; N/S² 0.0094 (400) → 0.0040 (6000) | AT check_enum.txt (0.00935, 0.00405) |
+| local exponents 1.99 (500) → 1.58 (6000); N/X² 0.0094 (400) → 0.0040 (6000) | AT check_enum.txt (0.00935, 0.00405) |
 | quadratic law not supported | TD RECOMMENDATION §1.2 (out-of-sample errors) |
-| fit protocol (Poisson ML per sum; LS on log cumulative against exact partial sums; 400 block-bootstrap resamples, blocks of 50) | TD exponent_fits.py docstring and code |
-| q = 4.48±0.44 / 4.56±0.71 (all), 3.54±0.37 / 3.63±0.57 (primitive), dual 2.56±0.34 / 3.33±0.35, non-dual 4.79±0.47 | TD data/exponent_fits.txt (window 600–4800) |
+| fit protocol (exact Poisson ML per sum on the whole window; LS on log(N(S) − N(599)) against exact partial sums; residual block bootstrap, 400 resamples, blocks of 50) | TD exponent_fits.py docstring and code (round 6) |
+| q = 4.49±0.06 / 4.56±0.08 (all), 3.53±0.08 / 3.63±0.11 (primitive), dual 2.56±0.20 / 3.33±0.17, non-dual 3.73±0.09 (primitive) / 4.80±0.06 (all); power law β = 0.587, likelihood difference 9.48, dispersion 6.76, scaled 1.40 | TD data/exponent_fits.txt (window 600–4800) |
 | scaling adds one log (NT m11) | Lemma 4.1 + partial summation; TD RECOMMENDATION §1.2 "Scalings add one power of the logarithm" |
 | Figure 1 (F9) | figures/out/F9.pdf (read only); caption rewritten from figures/captions.tex \figcapNine, 3 sentences, without the isolation claim; colours batlow (figures/SPEC.md §3–4) |
-| method spread ≤ 0.1; windows 1200–4800, 600–2400, 2400–4800 give 4.43, 4.63, 4.37 | TD data/exponent_fits.txt |
+| windows 1200–4800, 600–2400, 2400–4800 give 4.44, 4.64, 4.39 | TD data/exponent_fits.txt |
 | line search: lines in P² of triples, Möbius pairing, 189 lines, |coeff| ≤ 7, only the dual conics (Vieta involution on lines through a vertex) | TD variety.md §5 ("Degree-2 families, searched"), families.py §5 |
 | Remark 3.4 mismatched case (a+b)² = ab | AD DI.4 (c₁²+c₁c₂+c₂² = 0, equivalent) |
-| Lemma 4.1 for non-admissible primitive sets | AD DI.8 (R ≤ 3 for every positive triple) |
-| §6.4: exponent between 1 and 3; data cannot exclude a limit in (1, 1.58) | Thm 4.4, Prop. 6.1, Table 2; G7-9 (review/referee-sim/G7-VERDICT.md) |
+| (removed in round 6: by Lemma 2.1 there are no non-admissible coincidences) | — |
+| §6.4: exponent between 1 and 3; a finite range bounds the limit from neither side; Question E | Thm 4.4, Prop. 6.1, Table 2; review/referee-round-6/VERDICT-N.md N7 |
 | heuristic corrected (G7-9): linear excluded; isosceles is a rational curve (d=2, m=2); dual family a rational surface (d=3, m=3); quadratic surface would give X^{3/2}; conjecture implies no such surface; not searched | G7-9 and NT M2(b); TD variety.md §4 (dual surface given by six cubics on P²) and §5 (degree-2 search covers pairs of lines only, 189 lines, |coeff| ≤ 7, 18 conics) |
 | 84% non-dual | TD families.txt §4 (38628/46254 = 83.5%) |
 | (P,P′) ↦ (e1(P′)P, e1(P)P′), fibre square of the blown-up pencil; all fibres I_n | TD variety.md §4 (map asserted in variety_checks.py §7) |
@@ -137,6 +139,14 @@ acknowledgement of the colour maps is copied from the JGA paper because F9 uses 
 
 ## Not in this note, by design
 
-- The isolation of the minimal pair (its 2-descent, torsion list and the consequence that no third
-  triple joins it): companion paper only. Table 1 quotes only the PARI-certified rank.
 - The threshold S ≤ 17 and the collision-free sums: companion paper.
+
+## Round 6 additions
+
+| statement | source |
+|---|---|
+| Proposition 2.3 proof of the base-point orders by five lines through the flex O | CN check 7d (tangent at O, line intersections) |
+| Proposition 3.1 (ι = translation by T₂, collinearity, extension) | proof in the note; blind check |
+| permutation paragraph (transpositions P ↦ π(O) − P, cyclic permutations translations) | proof in the note (fixed points); blind check |
+| literature: Ulas (JNT 2013), Moreland–Zieve (arXiv:1304.1442), Cha et al. (IJNT 2019; arXiv:1811.07451 read), MacLeod (arXiv:math/0502475; Ravi identity CN check 7e), Sadek–El-Sissi pinpoints from the published PDF | records fetched by tools/build_bib.py (SOURCES.md); review/referee-round-6/VERDICT-N.md N10 |
+| quintic description; twelve graph surfaces | elementary (degree of e₂(x)e₃(x′)); orbit description of §3 |

@@ -20,7 +20,10 @@
 \newtheorem{proposition}[theorem]{Proposition}
 \newtheorem{lemma}[theorem]{Lemma}
 \newtheorem{corollary}[theorem]{Corollary}
-\newtheorem{conjecture}[theorem]{Conjecture}
+\newtheorem{introthm}{Theorem}
+\renewcommand{\theintrothm}{\Alph{introthm}}
+\newtheorem{introprop}[introthm]{Proposition}
+\newtheorem{introquestion}[introthm]{Question}
 \theoremstyle{definition}
 \newtheorem{definition}[theorem]{Definition}
 \theoremstyle{remark}
@@ -72,8 +75,9 @@
 \subjclass[2020]{Primary 11D25; Secondary 11G05, 11D45, 14J27}
 \keywords{Equal sums of reciprocals, elliptic curves, rational points, Diophantine counting}
 
+
 \begin{abstract}
-We study unordered triples of positive integers $\{a,b,c\}$ with $1/a+1/b+1/c<1$ that share both their sum and their reciprocal sum with another such triple. The question comes from spectral geometry: these are exactly the pairs of hyperbolic triangle orbifolds that the first two heat invariants cannot tell apart. Following Bremner, Guy and Nowakowski, two such triples correspond to rational points on one curve of the cubic pencil $(x+y+z)(xy+yz+zx)=\Lambda xyz$, here for rational $\Lambda$; reciprocation is translation by a point of order two. From this we prove that the number $\N(X)$ of coincident pairs with sum at most $X$ satisfies $(\tfrac{3}{128\pi^4}+o(1))X(\log X)^2\le\N(X)\ll_\varepsilon X^{3+\varepsilon}$, and that the number of classes is at least $(\tfrac{3\log2}{2\pi^2}+o(1))X\log X$. Schinzel's method for the equal-sum, equal-product problem gives classes of every size. An exact enumeration of all $3.07\times10^9$ admissible triples with sum at most $4800$, extended to $6000$, gives the counts in both conventions. It shows a local growth exponent falling from $2.5$ to $1.58$. We conjecture $\N(X)=X^{1+o(1)}$.
+We study triples of positive integers $\{a,b,c\}$ that share both their sum and their reciprocal sum with another triple; every such triple has $1/a+1/b+1/c<1$. These are exactly the pairs of hyperbolic triangle orbifolds that the first two heat invariants cannot tell apart. Following Bremner, Guy and Nowakowski, such triples are positive rational points on one curve of the cubic pencil $(x+y+z)(xy+yz+zx)=\Lambda xyz$, and reciprocation is translation by a point of order two. We determine the torsion of these curves and the positive torsion points. We prove that the number $\N(X)$ of coincident pairs with sum at most $X$, and already the number of classes, is at least $(\tfrac{3\log2}{2\pi^2}+o(1))X\log X$, that $\N(X)\ge(\tfrac{3}{128\pi^4}+o(1))X(\log X)^2$, and, by Schinzel's method, that classes of every size exist. An exact enumeration of all coincidences with sum at most $6000$ shows a local growth exponent falling from $2.0$ at $500$ to $1.58$ at $6000$; the limiting exponent is open.
 \end{abstract}
 
 \maketitle
@@ -86,12 +90,12 @@ For a triple $x=(a,b,c)$ of positive integers write $e_1,e_2,e_3$ for its elemen
 \]
 We call $x$ \emph{admissible} if $R(x)<1$; then every entry is at least $2$. This note is about the coincidences
 \[
-  S(x)=S(x'),\qquad R(x)=R(x'),\qquad x\ne x'\ \text{as unordered triples}.
+  S(x)=S(x'),\qquad R(x)=R(x'),\qquad x\ne x'\ \text{as unordered triples},
 \]
-The smallest is $\{(2,8,8),(3,3,12)\}$, with $S=18$ and $R=\frac34$.
+and the smallest is $\{(2,8,8),(3,3,12)\}$, with $S=18$ and $R=\frac34$. Both triples of a coincidence are admissible (Lemma~\ref{lem:admissible}).
 
 \subsection{Motivation}
-A closed hyperbolic $2$-orbifold with underlying sphere and three cone points of orders $a,b,c$ exists exactly when $R<1$, and it is then the rigid triangle orbifold $\Orb(a,b,c)$ of area $2\pi(1-R)$. The constant term of its heat-trace expansion is $\chi/6+\sum_i(m_i^2-1)/(12m_i)=(S+R-2)/12$ \cite[(5.7)]{dggw2008}, where $\chi=R-1$ is the orbifold Euler characteristic. So the first two heat invariants of $\Orb(a,b,c)$ determine, and are determined by, the pair $(S,R)$. Coincidences of $(S,R)$ are therefore exactly the pairs of non-isometric triangle orbifolds that two heat invariants do not distinguish. The spectral consequences, including what happens at $S=18$, are treated in the companion manuscript \emph{How much of a hyperbolic orbifold does heat hear?} \cite{gangetal-heat}, which also proves that the smallest coincidence is isolated \cite[Theorem~5.8]{gangetal-heat}; this note does not restate that result. A second companion manuscript, \emph{Finitely many eigenvalues determine the signature of a hyperbolic orbifold}, by the same authors, treats finitely many eigenvalues; nothing here depends on it. This note is about the arithmetic of the coincidences themselves.
+A closed hyperbolic $2$-orbifold with underlying sphere and three cone points of orders $a,b,c$ exists exactly when $R<1$, and it is then the rigid triangle orbifold $\Orb(a,b,c)$ of area $2\pi(1-R)$. The constant term of its heat-trace expansion is $\chi/6+\sum_i(m_i^2-1)/(12m_i)=(S+R-2)/12$ \cite[(5.7)]{dggw2008}, where $\chi=R-1$ is the orbifold Euler characteristic. So the first two heat invariants of $\Orb(a,b,c)$ determine, and are determined by, the pair $(S,R)$. Coincidences of $(S,R)$ are therefore exactly the pairs of non-isometric triangle orbifolds that two heat invariants do not distinguish. The spectral consequences are treated in the companion manuscript \emph{How much of a hyperbolic orbifold does heat hear?} \cite{gangetal-heat}; nothing here depends on it. This note is about the arithmetic of the coincidences themselves.
 
 \subsection{Conventions}\label{sec:conventions}
 A \emph{class} at sum $S$ is a set of at least two distinct admissible triples with sum $S$ and a common $R$, maximal with this property. A class of size $k$ contains $\binom k2$ \emph{pairs}. Let $n(S)$ be the number of unordered pairs at sum exactly $S$, and put
@@ -105,43 +109,57 @@ Section~\ref{sec:curves} recalls that a class is a finite set of positive ration
 \[
   C_\Lambda:\ (x+y+z)(xy+yz+zx)=\Lambda\,xyz,\qquad \Lambda=SR=\frac{e_1e_2}{e_3},
 \]
-the curve of Bremner, Guy and Nowakowski \cite{bgn1993}. They studied it for integer $\Lambda$; coincidences need rational $\Lambda$ ($\Lambda=\frac{27}2$ for the smallest one), so we work with the whole pencil. In Beauville's classification it is the pencil of the row $\Gamma^0_0(6)$ of his table \cite[Th\'eor\`eme and Tableau, p.~658]{beauville1982}. Reciprocation $(a,b,c)\mapsto(1/a,1/b,1/c)$, under which Bremner, Guy and Nowakowski note that solutions occur in pairs \cite[p.~117]{bgn1993}, is translation by a point of order $2$ (Proposition~\ref{prop:dual}). After rescaling to a common sum, every triple that is not a geometric progression thereby has a partner (Corollary~\ref{cor:dual}). Our results are as follows.
+the curve of Bremner, Guy and Nowakowski \cite{bgn1993}. They studied it for integer $\Lambda$; coincidences need rational $\Lambda$ ($\Lambda=\frac{27}2$ for the smallest one), so we work with the whole pencil, which is the pencil of Beauville's table with singular fibres of types $I_6,I_3,I_2,I_1$ \cite[Th\'eor\`eme and Tableau, p.~658]{beauville1982}. Reciprocation $(a,b,c)\mapsto(1/a,1/b,1/c)$, under which Bremner, Guy and Nowakowski note that solutions occur in pairs \cite[p.~117]{bgn1993}, is translation by a point of order $2$ (Proposition~\ref{prop:dual}). After rescaling to a common sum, every triple that is not a geometric progression thereby has a partner (Corollary~\ref{cor:dual}). Our results are as follows.
 
-\begin{theorem}[Lower bounds, Theorems~\ref{thm:iso} and~\ref{thm:loglog}]\label{thm:A}
+\begin{introthm}[Torsion, Theorem~\ref{thm:torsion}]\label{thm:T}
+For rational $\Lambda\notin\{0,1,9\}$ the torsion subgroup of $C_\Lambda(\Q)$ is $\Z/6$, $\Z/12$, or $\Z/2\times\Z/6$; it is $\Z/2\times\Z/6$ exactly when $C_\Lambda$ has a rational point $(1:1:t)$, and $\Z/12$ exactly when it has a rational point $(1:r:r^2)$ with $r\ne0$. For $\Lambda>9$, a positive rational point is a torsion point exactly when two of its coordinates are equal or its coordinates, in some order, form a geometric progression.
+\end{introthm}
+
+\begin{introthm}[Lower bounds, Theorems~\ref{thm:iso} and~\ref{thm:loglog}]\label{thm:A}
 As $X\to\infty$,
 \[
   \N(X)\ \ge\ \Ncl(X)\ \ge\ \Big(\frac{3\log2}{2\pi^2}+o(1)\Big)X\log X,\qquad
   \N(X)\ \ge\ \Big(\frac{3}{128\pi^4}+o(1)\Big)X(\log X)^2 .
 \]
-\end{theorem}
+\end{introthm}
 
-\begin{theorem}[Classes of every size, Theorem~\ref{thm:largefibres}]\label{thm:B}
+The second bound exceeds the first only when $\log X>438$; its point is the extra logarithm, which comes from the dual family of Corollary~\ref{cor:dual}.
+
+\begin{introthm}[Classes of every size, Theorem~\ref{thm:largefibres}]\label{thm:B}
 For every $k$ there are infinitely many primitive classes of size at least $k$.
-\end{theorem}
+\end{introthm}
 
 The proof of Theorem~\ref{thm:B} is Schinzel's argument for triples with equal sum and equal product \cite[p.~588]{schinzel1996}, applied to $C_{155/12}$; we claim no novelty for the method (Section~\ref{sec:fibres}).
 
-\begin{proposition}[Upper bound, Proposition~\ref{prop:upper}]\label{prop:C}
+\begin{introprop}[Upper bound, Proposition~\ref{prop:upper}]\label{prop:C}
 $n(S)\ll_\varepsilon S^{2+\varepsilon}$, and hence $\N(X)\ll_\varepsilon X^{3+\varepsilon}$.
-\end{proposition}
+\end{introprop}
 
-Section~\ref{sec:growth} reports an exact enumeration of all admissible triples with $S\le4800$, extended to $S\le6000$, in both counting conventions. The local exponent $d\log\N/d\log X$ falls from $2.5$ near $X=100$ to $1.58$ near $X=6000$. The upper and lower bounds above are far apart, and the data cannot locate the exponent. We nevertheless make the following conjecture and explain what it would require (Section~\ref{sec:heuristic}).
+This bound is at the scale of the number of triples, about $S^2/12$ at sum $S$, so it does not show that coincidences are rare; we do not know a bound $n(S)=o(S^2)$. Section~\ref{sec:growth} reports an exact enumeration of all admissible triples with $S\le4800$, extended to $S\le6000$, counting both pairs and classes. The local exponent $d\log\N/d\log X$ is $2.0$ near $X=500$ and falls to $1.58$ near $X=6000$. The bounds above leave the exponent anywhere between $1$ and $3$, and the data cannot locate it. We record the question and explain what a positive answer would require (Section~\ref{sec:heuristic}).
 
-\begin{conjecture}\label{conj:intro}
-$\N(X)=X^{1+o(1)}$.
-\end{conjecture}
+\begin{introquestion}\label{q:intro}
+Is $\N(X)=X^{1+o(1)}$?
+\end{introquestion}
 
 \subsection{Relation to the literature}
-The problem is the reciprocal-sum analogue of Guy's problem D16, triples with the same sum and the same product. Schinzel solved that problem through infinitely many positive rational points on the cubic $x_1+x_2+x_3=x_1x_2x_3=6$ \cite{schinzel1996}. Classes of every size for equal sums and equal products had been obtained earlier by Kelly \cite{kelly1989}, and Zhang and Cai extended Schinzel's theorem to $n$-tuples \cite{zhangcai2013}. Schinzel's curve is the fibre over $36$ of the invariant $(x+y+z)^3/xyz$ studied by Bremner and Guy \cite{bremnerguy1997}, just as $C_\Lambda$ is the fibre over $\Lambda$ of $e_1e_2/e_3$. On the equal-sum, equal-product curves, Sadek and El-Sissi determined the torsion: isosceles triples give points of order $6$, and triples with distinct entries give points of infinite order under a mild condition \cite[Prop.~2.5, Thm~2.8]{sadekelsissi2015}. Remark~\ref{rem:isosceles} is the analogue here. Parametric families of two, three and four triples with equal sum and equal product, and the elliptic curves of high rank they give, are constructed in \cite{ysv2024}. For integer $\Lambda=n$, Nguyen Xuan Tho proved, by Hilbert symbols on the curve $E_n$ of Section~\ref{sec:curves}, that no triple of positive integers has $e_1e_2/e_3=n$ when $4\mid n$ \cite[Theorem~1.1]{tho2021}; for these $n$ the curve $C_n$ has no positive points and carries no class. Earlier, by the same method, Bremner and Nguyen Xuan Tho had shown that $(w+x+y+z)(1/w+1/x+1/y+1/z)=n$ has no solution in positive rationals when $n=4m^2$ or $n=4m^2+4$ with $m\not\equiv2\pmod 4$ \cite[Theorems~8, 9, and~14]{bremnertho2018}, contrary to the expectation of Bremner, Guy and Nowakowski that every $n\ge16$ is so represented. Both papers concern which $n$ are represented, not how often. As far as we know, the counting function $\N(X)$, the bounds of Theorem~\ref{thm:A} and Proposition~\ref{prop:C}, and the enumeration are new; the geometry of Sections~\ref{sec:curves}--\ref{sec:dual} is largely in \cite{bgn1993} and \cite{beauville1982}, and we credit it there.
+The problem is the reciprocal-sum analogue of Guy's problem D16, triples with the same sum and the same product. Schinzel solved that problem through infinitely many positive rational points on the cubic $x_1+x_2+x_3=x_1x_2x_3=6$ \cite{schinzel1996}. Classes of every size for equal sums and equal products had been obtained earlier by Kelly \cite{kelly1989}, and Zhang and Cai extended Schinzel's theorem to $n$-tuples \cite{zhangcai2013}. Schinzel's curve is the fibre over $36$ of the invariant $(x+y+z)^3/xyz$ studied by Bremner and Guy \cite{bremnerguy1997}, just as $C_\Lambda$ is the fibre over $\Lambda$ of $e_1e_2/e_3$. On the equal-sum, equal-product curves, Sadek and El-Sissi showed that isosceles triples give points of order $6$ \cite[Prop.~2.5]{sadekelsissi2015}; and when the sum is that of three distinct positive rationals $u_1>u_2>u_3$ with $u_1(u_2-u_3)^3\ne u_3(u_1-u_2)^3$, they showed that the rank is positive and that the torsion group is $\Z/3$, $\Z/6$ or $\Z/2\times\Z/6$ according to the number of isosceles triples on the curve \cite[Prop.~2.7, Thm~2.8]{sadekelsissi2015}. Theorem~\ref{thm:T} is the analogue here; it differs in that geometric progressions are positive torsion points, of order $4$ or $12$. Moreland and Zieve gave conditions on rational $a,b,c$ under which $x+y+z=a+b+c$, $xyz=abc$ has infinitely many rational solutions, through families of elliptic curves of positive rank \cite{morelandzieve2013}, and Cha and coauthors studied, for a fixed sum, the sizes $n$ for which two different $n$-tuples of positive integers share the sum and the product \cite{cha2019}. Parametric families of two, three and four triples with equal sum and equal product, and the elliptic curves of high rank they give, are constructed in \cite{ysv2024}. On the reciprocal side, Ulas proved that for every $n\ge4$ and every $k$ there are $k$ $n$-tuples of integers with equal sums of $i$th powers for $i=-1,1,2$ \cite{ulas2013}; that concerns longer tuples, three equations and no positivity. For integer $\Lambda=n$, Nguyen Xuan Tho proved, by Hilbert symbols on the curve $E_n$ of Section~\ref{sec:curves}, that no triple of positive integers has $e_1e_2/e_3=n$ when $4\mid n$ \cite[Theorem~1.1]{tho2021}; for these $n$ the curve $C_n$ has no positive points and carries no class. Earlier, by the same method, Bremner and Nguyen Xuan Tho had shown that $(w+x+y+z)(1/w+1/x+1/y+1/z)=n$ has no solution in positive rationals when $n=4m^2$ or $n=4m^2+4$ with $m\not\equiv2\pmod 4$ \cite[Theorems~8, 9, and~14]{bremnertho2018}, contrary to the expectation of Bremner, Guy and Nowakowski that every $n\ge16$ is so represented. Both papers concern which $n$ are represented, not how often. The same pencil appears in triangle geometry: MacLeod studied integer triangles whose circumradius and inradius have integer ratio $R/r=N$ \cite{macleod2005}, and under the substitution $(a,b,c)=(y+z,z+x,x+y)$ one has $R/r=2abc/((a+b-c)(b+c-a)(c+a-b))=(\Lambda-1)/4$, so such triangles are positive rational points of $C_{4N+1}$. As far as we know, the counting function $\N(X)$, the bounds of Theorem~\ref{thm:A} and Proposition~\ref{prop:C}, and the enumeration are new; the geometry of Sections~\ref{sec:curves}--\ref{sec:dual} is largely in \cite{bgn1993} and \cite{beauville1982}, and we credit it there.
 
 \section{The curves \texorpdfstring{$C_\Lambda$}{C\_Lambda}}\label{sec:curves}
 
+\begin{lemma}[Coincidences are admissible]\label{lem:admissible}
+If two distinct triples of positive integers have the same sum and the same reciprocal sum, both are admissible.
+\end{lemma}
+
+\begin{proof}
+Let $x=(a,b,c)$ with $a\le b\le c$ and $R(x)\ge1$, and let $x'$ be a triple with $S(x')=S(x)$ and $R(x')=R(x)$; we show $x'=x$. If $a\ge4$ then $R\le\frac34$; if $a=3$ then $R\ge1$ forces $b=c=3$; if $a=2$ then $\frac1b+\frac1c\ge\frac12$ forces $b=2$, or $b=3$ and $c\le6$, or $b=c=4$. So the triples with $R\ge1$ are those with $a=1$ (where $R>1$), the triples $(2,2,c)$ (where $R>1$), the triples $(2,3,c)$ with $3\le c\le6$, and $(2,4,4)$ and $(3,3,3)$; among the last three kinds $R=1$ exactly for $(2,3,6)$, $(2,4,4)$, and $(3,3,3)$. As $R(x')\ge1$, the triple $x'$ is in this list. If $x$ and $x'$ have the same least entry $a$, their other two entries have the same sum $S-a$ and the same reciprocal sum $R-1/a$, hence the same product, so $x'=x$. Otherwise one of them, say $x$, has least entry $1$, or the two have sum $9$ and one is $(3,3,3)$. In the second case the other is $(2,2,5)$ or $(2,3,4)$, with $R=\frac65$ or $\frac{13}{12}$, not $1$. In the first case $R>1$, so $x'$ is $(2,2,c')$ or $(2,3,c')$ with $c'\le5$. If $x'=(2,2,c')$, then $b+c=c'+3$ and $(b+c)/bc=1/c'$, so $b$ and $c$ are the roots of $w^2-(c'+3)w+c'(c'+3)$, whose discriminant $3(c'+3)(1-c')$ is negative. If $x'=(2,3,c')$, then $b+c=c'+4$ and $(b+c)/bc=1/c'-\frac16$, so $bc=6c'(c'+4)/(6-c')$, and the discriminant $(c'+4)(24-22c'-c'^2)/(6-c')$ is negative.
+\end{proof}
+
 \begin{proposition}[Classes are points on a cubic]\label{prop:reformulation}
-Two triples with the same sum have the same $R$ if and only if they have the same $\Lambda=e_1e_2/e_3$. Conversely, let $x_1,\dots,x_k$ be pairwise non-proportional primitive triples of positive integers with a common $\Lambda$, let $s_i$ be the sum of $x_i$, and let $L=\operatorname{lcm}(s_1,\dots,s_k)$. Then the triples $(L/s_i)x_i$ lie in one primitive class at sum $L$, which may contain further triples. Any sum at which multiples of all the $x_i$ occur is a multiple $mL$ of $L$, and the triples there are admissible as soon as $mL>\Lambda$.
+Two triples with the same sum have the same $R$ if and only if they have the same $\Lambda=e_1e_2/e_3$. Conversely, let $k\ge2$, let $x_1,\dots,x_k$ be pairwise non-proportional primitive triples of positive integers with a common $\Lambda$, let $s_i$ be the sum of $x_i$, and let $L=\operatorname{lcm}(s_1,\dots,s_k)$. Then the triples $(L/s_i)x_i$ lie in one primitive class at sum $L$, which may contain further triples, and any sum at which multiples of all the $x_i$ occur is a multiple of $L$.
 \end{proposition}
 
 \begin{proof}
-The first statement is immediate from $\Lambda=SR$. The rescaled triples have sum $L$ and $R=\Lambda/L$, and they are distinct because the $x_i$ are not proportional. If $d$ divides every entry of every $(L/s_i)x_i$ then, each $x_i$ being primitive, $d\mid L/s_i$ for all $i$, so every $s_i$ divides $L/d$; hence $L\mid L/d$ and $d=1$. An integer triple proportional to the primitive triple $x_i$ is $c\,x_i$ with $c\in\Z$, so a common sum $S$ for all of them forces $s_i\mid S$ for every $i$, that is $L\mid S$. Finally $R=\Lambda/(mL)<1$ when $mL>\Lambda$.
+The first statement is immediate from $\Lambda=SR$. The rescaled triples have sum $L$ and $R=\Lambda/L$, they are distinct because the $x_i$ are not proportional, and they are admissible by Lemma~\ref{lem:admissible}. If $d$ divides every entry of every $(L/s_i)x_i$ then, each $x_i$ being primitive, $d\mid L/s_i$ for all $i$, so every $s_i$ divides $L/d$; hence $L\mid L/d$ and $d=1$. An integer triple proportional to the primitive triple $x_i$ is $c\,x_i$ with $c\in\Z$, so a common sum $S$ for all of them forces $s_i\mid S$ for every $i$, that is $L\mid S$.
 \end{proof}
 
 So a class is a finite set of positive rational points on $C_\Lambda$, and scaling a class does not move its points. Bremner, Guy and Nowakowski observed the scale invariance for integer $\Lambda$ \cite[p.~117]{bgn1993}. By the arithmetic--harmonic mean inequality $\Lambda=e_1\cdot R\ge9$ at positive points, with equality only at $(1:1:1)$.
@@ -151,7 +169,7 @@ Since $(x+y)(y+z)(z+x)=e_1e_2-e_3$, the curve $C_\Lambda$ is the member $t=1-\La
 \[
   (X+Y)(Y+Z)(Z+X)+t\,XYZ=0
 \]
-of the row $\Gamma^0_0(6)$ of Beauville's table \cite[Th\'eor\`eme and Tableau, p.~658]{beauville1982}. Its singular members are at $\Lambda=\infty,1,0,9$, with fibres of types $I_6,I_3,I_2,I_1$. For every other $\Lambda$ the curve $C_\Lambda$ is smooth of genus one, and the maps
+of Beauville's table with singular fibres of types $I_6,I_3,I_2,I_1$ \cite[Th\'eor\`eme and Tableau, p.~658]{beauville1982}. Its singular members are at $\Lambda=\infty,1,0,9$, with fibres of these types. For every other $\Lambda$ the curve $C_\Lambda$ is smooth of genus one, and the maps
 \[
   s=-\frac{4e_2}{z^2},\qquad \eta=\frac{4\Lambda(\Lambda-1)(x-y)}{x+y-(\Lambda-1)z},\qquad
   \frac{x+y}{z}=\frac{s(\Lambda-1)}{s-4\Lambda},
@@ -161,41 +179,37 @@ together with $(x-y)/z=\eta\,\big((x+y)/z-\Lambda+1\big)/(4\Lambda(\Lambda-1))$,
   E_\Lambda:\ \eta^2=s\big(s^2+(\Lambda^2-6\Lambda-3)s+16\Lambda\big),\qquad
   \Delta=2^{12}\Lambda^2(\Lambda-1)^3(\Lambda-9),
 \end{equation}
-which is the model (6) of \cite[p.~118]{bgn1993} with $n=\Lambda$. For example, at $\Lambda=\frac{27}2$ the point $(1:4:4)$ maps to $(s,\eta)=(-6,45)$. With base point $O=(1:-1:0)$, the six base points of the pencil are torsion points: $(0:0:1)$ has order $2$, $(0:1:-1)$ and $(1:0:-1)$ have order $3$, and $(1:0:0)$ and $(0:1:0)$ have order $6$. Together with $O$ they form a cyclic group of order $6$.
+which is the model (6) of \cite[p.~118]{bgn1993} with $n=\Lambda$. For example, at $\Lambda=\frac{27}2$ the point $(1:4:4)$ maps to $(s,\eta)=(-6,45)$. The pencil has six distinct base points, $O=(1:-1:0)$, $T_2=(0:0:1)$, $(1:0:0)$, $(0:1:0)$, $(0:1:-1)$, and $(1:0:-1)$; the three coordinate points $T_2$, $(1:0:0)$, and $(0:1:0)$ have intersection multiplicity $2$, so there are nine counted with multiplicity. With $O$ as origin they form a cyclic group of order $6$: $T_2$ has order $2$, $(0:1:-1)$ and $(1:0:-1)$ have order $3$, and $(1:0:0)$ and $(0:1:0)$ have order $6$.
 \end{proposition}
 
 \begin{proof}
-The identity for $(x+y)(y+z)(z+x)$ gives the pencil, and comparison with the row of the table gives the identification. The maps and both compositions are verified symbolically, as is the discriminant. Because $c_4\ne0$ at $\Lambda=0,1,9$, the fibres there are of multiplicative type, with $\operatorname{ord}\Delta=2,3,1$. At $\Lambda=\infty$ the model is regular with $\operatorname{ord}_\infty\Delta=12-6=6$ and $\operatorname{ord}_\infty c_4=0$, which gives $I_6$. The orders of the base points follow from the chord-and-tangent law, computed exactly.
+The identity for $(x+y)(y+z)(z+x)$ gives the pencil, and comparison with the row of the table gives the identification. The maps and both compositions are verified symbolically, as is the discriminant. Because $c_4\ne0$ at $\Lambda=0,1,9$, the fibres there are of multiplicative type, with $\operatorname{ord}\Delta=2,3,1$. At $\Lambda=\infty$ the model is regular with $\operatorname{ord}_\infty\Delta=12-6=6$ and $\operatorname{ord}_\infty c_4=0$, which gives $I_6$.
+
+For the group structure, the tangent to $C_\Lambda$ at $O$ is $x+y=(\Lambda-1)z$, on which the equation of $C_\Lambda$ reduces to $\Lambda(\Lambda-1)z^3=0$. So $O$ is a flex, and three points of $C_\Lambda$ add to $O$ exactly when they are its intersection with a line, counted with multiplicity. The lines $z=0$, $x+y+z=0$, $y=0$, $y+z=0$, and $x+y=0$ meet $C_\Lambda$ in $\{O,(1:0:0),(0:1:0)\}$, $\{O,(0:1:-1),(1:0:-1)\}$, $\{T_2,(1:0:0),(1:0:-1)\}$, $\{(1:0:0),(1:0:0),(0:1:-1)\}$, and $\{T_2,T_2,O\}$. With $A=(1:0:0)$ and $Q=(0:1:-1)$ these say $(0:1:0)=-A$, $(1:0:-1)=-Q$, $A=T_2+Q$, $2A=-Q$, and $2T_2=O$. Hence $2Q=2A=-Q$, so $Q$ and $-Q$ have order $3$, and $A=T_2+Q$ and $-A$ have order $6$.
 \end{proof}
 
-The real picture is as follows. Bremner, Guy and Nowakowski call the bounded real component of their model the egg \cite[p.~118]{bgn1993}, and they observe that ``if $P$ is on the egg, then just the odd multiples of $P$ give positive solutions'' \cite[p.~119]{bgn1993}. They work with integer $n$. Since we need rational $\Lambda$, we give the argument.
+The real picture is as follows. Bremner, Guy and Nowakowski call the bounded real component of their model the egg \cite[p.~118]{bgn1993}, and they observe that ``if $P$ is on the egg, then just the odd multiples of $P$ give positive solutions'' \cite[p.~119]{bgn1993}. They work with integer $n$; the argument is the same for every real $\Lambda>9$, and we give it.
 
 \begin{lemma}[The egg]\label{lem:egg}
-Let $\Lambda>9$ be rational. The positive real points of $C_\Lambda$ form one connected component of $C_\Lambda(\R)$, and it does not contain $O$. Consequently, if $P\in C_\Lambda(\Q)$ is positive then $nP$ is positive for every odd $n$ and not positive for every even $n$.
+Let $\Lambda>9$. The positive real points of $C_\Lambda$ form one connected component of $C_\Lambda(\R)$, and it does not contain $O$. Consequently, if $P\in C_\Lambda(\Q)$ is positive then $nP$ is positive for every odd $n$ and not positive for every even $n$.
 \end{lemma}
 
 \begin{proof}
-Let $\Delta^\circ$ be the open positive triangle in $\PP^2(\R)$. On $\Delta^\circ$ the function $e_1e_2/e_3$ is continuous and tends to $+\infty$ at the boundary. Near a point of an edge with one coordinate zero, $e_3\to0$ while $e_1e_2$ stays positive. Near the vertex $(1:0:0)$, at $(1:\epsilon:\delta)$, it is $(1+\epsilon+\delta)(\epsilon+\delta+\epsilon\delta)/(\epsilon\delta)\to\infty$, and likewise at the other vertices. So the positive locus $\{e_1e_2=\Lambda e_3\}\cap\Delta^\circ$ is compact. It is open in $C_\Lambda(\R)$, so it is a union of connected components. Since $\Delta>0$ for $\Lambda>9$, the group $C_\Lambda(\R)$ is isomorphic to $S^1\times\Z/2$ and has two components. The point $O$ is not positive, so the positive locus is the non-identity component, a coset of the identity component. Hence $nP$ lies on it exactly when $n$ is odd.
+Let $\Pi$ be the open positive triangle in $\PP^2(\R)$. On $\Pi$ the function $e_1e_2/e_3$ is continuous and tends to $+\infty$ at the boundary. Near a point of an edge with one coordinate zero, $e_3\to0$ while $e_1e_2$ stays positive. Near the vertex $(1:0:0)$, at $(1:\epsilon:\delta)$, it is $(1+\epsilon+\delta)(\epsilon+\delta+\epsilon\delta)/(\epsilon\delta)\to\infty$, and likewise at the other vertices. So the positive locus $\{e_1e_2=\Lambda e_3\}\cap\Pi$ is compact. It is open in $C_\Lambda(\R)$, so it is a union of connected components. It is not empty: the points $(1:1:t)$ with $2t^2+(5-\Lambda)t+2=0$ lie on $C_\Lambda$, and for $\Lambda>9$ both roots $t$ are real and positive. Since $\Delta>0$ for $\Lambda>9$, the group $C_\Lambda(\R)$ is isomorphic to $S^1\times\Z/2$ and has two components. The point $O$ is not positive, so the positive locus is the non-identity component, a coset of the identity component. Hence $nP$ lies on it exactly when $n$ is odd.
 \end{proof}
 
-\begin{remark}[Torsion]\label{rem:torsion}
-For integer $n\notin\{0,1,9\}$ Bremner, Guy and Nowakowski show that ``in all cases except $n=10$, therefore, the torsion group is $\Z/6\Z$'' \cite[\S4, p.~120]{bgn1993}. For rational $\Lambda$ there is more. Since $(\Lambda^2-6\Lambda-3)^2-64\Lambda=(\Lambda-1)^3(\Lambda-9)$, the curve $E_\Lambda$ has full rational $2$-torsion exactly when $(\Lambda-1)(\Lambda-9)$ is a square in $\Q$. Then its torsion group contains $\Z/2\times\Z/6$. This happens on an infinite family that contains every curve through an isosceles point $(u:v:v)$, for which
-\[
-  \Lambda-1=\frac{2(u+v)^2}{uv},\qquad \Lambda-9=\frac{2(u-v)^2}{uv},
-\]
-and in particular $\Lambda=\frac{27}2$.
-\end{remark}
+For integer $n\notin\{0,1,9\}$ Bremner, Guy and Nowakowski show that ``in all cases except $n=10$, therefore, the torsion group is $\Z/6\Z$'' \cite[\S4, p.~120]{bgn1993}. For rational $\Lambda$ there is more; Theorem~\ref{thm:torsion} below gives the complete answer.
 
-\section{Reciprocation and the dual family}\label{sec:dual}
+\section{Reciprocation, permutations and torsion}\label{sec:dual}
 
-Bremner, Guy and Nowakowski note that solutions occur in reciprocal pairs \cite[p.~117]{bgn1993}. In the table of \cite[\S4, p.~120]{bgn1993} they record the reciprocal of a solution as its translate by the point $(0,0)$, and its permutations as translates of $\pm P$ by torsion points. We use the same structure in the plane model.
+Bremner, Guy and Nowakowski note that solutions occur in reciprocal pairs \cite[p.~117]{bgn1993}. In the table of \cite[\S4, p.~120]{bgn1993} they record the reciprocal of a solution as its translate by the point $(0,0)$, and its permutations as translates of $\pm P$ by torsion points. We use the same structure in the plane model, with origin $O$.
 
 \begin{proposition}[Reciprocation is a $2$-torsion translation]\label{prop:dual}
-Let $T_2=(0:0:1)$ and $\iota(x:y:z)=(yz:xz:xy)$. On every smooth $C_\Lambda$, with base point $O=(1:-1:0)$, we have $P+T_2=\iota(P)$ for every point $P$, and $2T_2=O$.
+Let $\iota(x:y:z)=(yz:xz:xy)$. On every smooth $C_\Lambda$, $\iota(P)=P+T_2$ for every point $P$ other than $(1:0:0)$, $(0:1:0)$, and $T_2$, at which $\iota$ is not defined; so $\iota$ extends to the automorphism $P\mapsto P+T_2$ of $C_\Lambda$.
 \end{proposition}
 
 \begin{proof}
-The line through $P=(p_0:p_1:p_2)$ and $T_2$ consists of the points $(p_0:p_1:w)$. The equation of $C_\Lambda$ restricted to it is quadratic in $w$ with root product $p_0p_1$, so the third intersection is $(p_0p_2:p_1p_2:p_0p_1)$. The line through $O$ and that point meets $C_\Lambda$ again at $(p_1p_2:p_0p_2:p_0p_1)=\iota(P)$, since the equation evaluated there equals $p_0p_1p_2$ times its value at $P$. Hence $P+T_2=\iota(P)$, and $2T_2=O$ because $\iota$ is an involution.
+Both sides are morphisms of the smooth curve $C_\Lambda$ to itself, so it suffices to prove the identity for $P=(p_0:p_1:p_2)$ with $p_0p_1p_2(p_0-p_1)\ne0$. The line through $P$ and $T_2$ consists of the points $(p_0:p_1:w)$. The equation of $C_\Lambda$ restricted to it is quadratic in $w$ with leading coefficient $p_0+p_1\ne0$ (the line $x+y=0$ meets $C_\Lambda$ only in $T_2$ and $O$) and root product $p_0p_1$, so the third intersection is $R=(p_0p_2:p_1p_2:p_0p_1)$, and $P+T_2+R=O$. The point $\iota(P)=(p_1p_2:p_0p_2:p_0p_1)$ lies on $C_\Lambda$, since the equation evaluated there equals $p_0p_1p_2$ times its value at $P$. The vectors of $R$ and $\iota(P)$ differ by $(p_0-p_1)p_2(1,-1,0)$, so $O$, $R$, and $\iota(P)$ are distinct collinear points, and $R+\iota(P)=O$ as $O$ is a flex. Hence $\iota(P)=-R=P+T_2$.
 \end{proof}
 
 \begin{corollary}[The dual family]\label{cor:dual}
@@ -203,35 +217,51 @@ For every triple $x=(a,b,c)$ of positive integers that is not a geometric progre
 \[
   \big\{\,e_2(x)\,(a,b,c),\ e_1(x)\,(bc,ca,ab)\,\big\},
 \]
-divided by the greatest common divisor of its six entries, is a primitive set of two distinct triples with a common sum and a common reciprocal sum. It need not be admissible, but its copies by every $k\ge4$ are admissible pairs (Lemma~\ref{lem:copies}). Before the division these are $S=e_1e_2$ and $R=1/e_3$. For $x=(1,4,4)$ the pair is $\{(2,8,8),(3,3,12)\}$.
+divided by the greatest common divisor of its six entries, is a primitive pair: two distinct triples with a common sum and a common reciprocal sum, admissible by Lemma~\ref{lem:admissible}. Before the division these are $S=e_1e_2$ and $R=1/e_3$. For $x=(1,4,4)$ the pair is $\{(2,8,8),(3,3,12)\}$.
 \end{corollary}
 
 \begin{proof}
 The sums are $e_2(a+b+c)=e_1(bc+ca+ab)=e_1e_2$, and the reciprocal sums are $e_2^{-1}\cdot e_2/e_3$ and $e_1^{-1}\cdot e_1/e_3$. The two triples are proportional only if $(bc,ca,ab)$ is proportional to a permutation of $(a,b,c)$; for $a\le b\le c$ that means $b^2=ac$. For $x=(1,4,4)$ the pair is $\{24(1,4,4),9(16,4,4)\}$, which divided by $12$ is $\{(2,8,8),(12,3,3)\}$.
 \end{proof}
 
-Each transposition of two coordinates acts on $C_\Lambda$ as $P\mapsto Q-P$ for a base point $Q$ of order $1$ or $3$, and the cyclic permutations act as translations by the points of order $3$. So, for a point $P$ of infinite order, the orbit of $P$ under permutations, reciprocation and translation by the base points is $\{\pm P+T\}$, twelve points: the triple $x$, its dual, and their permutations. Two positive points of a class that are neither permutations of each other nor dual therefore differ, up to sign, by a point outside the base group. We checked how they differ for small sums. Among the $1753$ primitive pairs with $S\le600$, $423$ are dual pairs. For each of the other $1330$, exact computation shows that neither $P'-P$ nor $P'+P$ has order at most $12$. By Mazur's theorem \cite[Chap.~III, Cor.~(5.2), p.~156]{mazur1977} they differ by points of infinite order. The test does not assume that the torsion is the base group, so it also covers curves with larger torsion (Remark~\ref{rem:torsion}).
+Every permutation $\pi$ of the coordinates is an automorphism of $C_\Lambda$, so it has the form $P\mapsto\alpha(P)+\pi(O)$ with $\alpha$ an automorphism of the group. A transposition is an involution with a fixed point on $C_\Lambda$ (the point $T_2$, $(1:0:0)$, or $(0:1:0)$), and a non-trivial translation has none; so $\alpha=-1$, and the transposition acts as $P\mapsto\pi(O)-P$, where $\pi(O)$ is $O$, $(1:0:-1)$, or $(0:1:-1)$ for the transposition of $x$ and $y$, of $y$ and $z$, or of $x$ and $z$. A cyclic permutation has no fixed point on $C_\Lambda$: its fixed points in $\PP^2$ are $(1:1:1)$, which lies on $C_\Lambda$ only for $\Lambda=9$, and $(1:\omega:\omega^2)$, $(1:\omega^2:\omega)$ with $\omega^3=1\ne\omega$, at which $e_1=0$ and the equation equals $-\Lambda$. Since $P\mapsto\alpha(P)+c$ has a fixed point whenever $\alpha\ne1$, a cyclic permutation is the translation by $\pi(O)$, a point of order $3$. So, for a point $P$ of infinite order, the orbit of $P$ under permutations, reciprocation and translation by the base points is $\{\pm P+T\}$, with $T$ in the group of base points: twelve points, the six orderings of the triple $x$ and the six orderings of its dual. Two positive points of a class that are neither permutations of each other nor dual therefore differ, up to sign, by a point outside the group of base points. We checked how they differ for small sums. Among the $1753$ primitive pairs with $S\le600$, $423$ are dual pairs. For each of the other $1330$, exact computation shows that neither $P'-P$ nor $P'+P$ has order at most $12$. By Mazur's theorem \cite[Chap.~III, Cor.~(5.2), p.~156]{mazur1977} they differ by points of infinite order.
 
-\begin{remark}[Isosceles points are torsion]\label{rem:isosceles}
-A point $(u:v:v)$ is fixed by the transposition of the last two coordinates, which acts as $P\mapsto(1:0:-1)-P$. So $2P=(1:0:-1)$, a point of order $3$. A positive isosceles point therefore has order $6$; order $3$ would make it a base point. The isosceles pairs of Theorem~\ref{thm:iso}, including the smallest pair, are therefore a torsion phenomenon, while the classes of Theorem~\ref{thm:largefibres} come from curves of positive rank. On the equal-sum, equal-product curves the same holds: isosceles triples give points of order $6$, and the torsion group is $\Z/3$, $\Z/6$ or $\Z/2\times\Z/6$ according to the number of isosceles triples \cite[Prop.~2.5, Thm~2.8]{sadekelsissi2015}. Among the $40\,305$ primitive positive triples other than $(1,1,1)$ with sum at most $120$, every one that is a torsion point of its curve is isosceles or a geometric progression.
-\end{remark}
+\begin{theorem}[Torsion]\label{thm:torsion}
+Let $\Lambda\notin\{0,1,9\}$ be rational.
+\textup{(i)} The torsion subgroup of $C_\Lambda(\Q)$ is the group of base points $\Z/6$, or $\Z/12$, or $\Z/2\times\Z/6$.
+\textup{(ii)} It is $\Z/2\times\Z/6$ exactly when $C_\Lambda$ has a rational point $(1:1:t)$, that is, when $(\Lambda-1)(\Lambda-9)$ is a square in $\Q$. These points have order $2$.
+\textup{(iii)} It is $\Z/12$ exactly when $C_\Lambda$ has a rational point $G=(1:r:r^2)$, that is, when $\Lambda=(r+1+1/r)^2$ for some $r\in\Q^\times$. Then $2G=(0:1:-1)+T_2$, and $G$ has order $12$.
+\textup{(iv)} Let $\Lambda>9$. A positive rational point of $C_\Lambda$ is a torsion point exactly when two of its coordinates are equal or its coordinates, in some order, form a geometric progression. For $u\ne v$ the points $(u:v:v)$ and $(v:u:v)$ have order $6$ and $(v:v:u)$ has order $2$; a point whose coordinates form a geometric progression has order $4$ if the middle term is its last coordinate, and order $12$ otherwise.
+\end{theorem}
 
-\begin{remark}[No linear families]\label{rem:nolinear}
-Let $(x(u,v),x'(u,v))$ be a family in which every entry is a linear form, the triples are positive on an open cone, the entries of $x$ are not all proportional, and $S$ and $R$ agree identically. Then $x'$ is a permutation of $x$. The same holds for a family affine in one parameter along a line not through the origin. Indeed, matching the partial fractions of $\sum_i1/L_i=\sum_i1/L'_i$ pole by pole forces the same poles with the same charges, and the arithmetic--harmonic mean inequality excludes the only mismatched case: two proportional entries $a\ell,b\ell$ on one side against a single entry $c\ell$ on the other would need $a+b=c$ and $1/a+1/b=1/c$, that is $(a+b)^2=ab$, which is impossible for $a,b>0$. So scaling is the only linear phenomenon, and every other polynomial family has degree at least $2$. The proportional case must be excluded: $\ell(u,v)\cdot(2,8,8)$ and $\ell(u,v)\cdot(3,3,12)$ satisfy the other hypotheses.
+\begin{proof}
+(i) The torsion subgroup contains the cyclic group of base points of order $6$ (Proposition~\ref{prop:pencil}), and by Mazur's theorem \cite[Chap.~III, Cor.~(5.2), p.~156]{mazur1977} the only groups of rational torsion that contain $\Z/6$ are $\Z/6$, $\Z/12$ and $\Z/2\times\Z/6$.
+
+(ii) The points of order dividing $2$ are the fixed points of $P\mapsto-P$, the transposition of $x$ and $y$. Its fixed points in $\PP^2$ are $O$ and the line $x=y$, which meets $C_\Lambda$ in $T_2$ and the points $(1:1:t)$ with $(2+t)(1+2t)=\Lambda t$, that is $2t^2+(5-\Lambda)t+2=0$, whose discriminant is $(\Lambda-1)(\Lambda-9)$. So $C_\Lambda(\Q)$ has full $2$-torsion exactly when this is a square, and then by (i) the torsion is $\Z/2\times\Z/6$.
+
+(iii) Points with a zero coordinate are base points, since each coordinate line meets $C_\Lambda$ only in base points. If $G=(1:r:r^2)$ lies on $C_\Lambda$ with $r\ne0$, the transposition of $x$ and $z$ sends it to $(r^2:r:1)=\iota(G)$, so $(0:1:-1)-G=G+T_2$ by Proposition~\ref{prop:dual}, and $2G=(0:1:-1)-T_2=(0:1:-1)+T_2$, a point of order $6$; hence $G$ has order $12$. Conversely, if the torsion is $\Z/12$ with generator $G$, then $2G$ is one of the two points of order $6$, $\pm((0:1:-1)+T_2)$; replacing $G$ by $-G$ we may take the sign $+$. Then $(0:1:-1)-G=G+T_2=\iota(G)$, so the transposition of $x$ and $z$ sends $G=(g_0:g_1:g_2)$ to $\iota(G)$, and comparing $(g_2:g_1:g_0)$ with $(g_1g_2:g_0g_2:g_0g_1)$ gives $g_1^2=g_0g_2$, with $g_0g_1g_2\ne0$ because $G$ is not a base point. So $G=(1:r:r^2)$ with $r=g_1/g_0$. Finally $\Lambda(1:r:r^2)=(1+r+r^2)\,r(1+r+r^2)/r^3=(r+1+1/r)^2$.
+
+(iv) Let $P$ be a positive torsion point of order $m$. If $m$ were odd, $mP=O$ would be positive by Lemma~\ref{lem:egg}, which it is not; so $m$ is even, and $P$ is not a base point, as no base point is positive. By (i)--(iii), the torsion points outside the group of base points form the coset $P_0+\Z/6$ of a point $P_0=(1:1:t)$ in case (ii), or of $G=(1:r:r^2)$ in case (iii). By the description of the permutations and of $\iota$ above, the points $\pm P_0+T$ are the orderings of $(1,1,t)$ and of its dual $(t,t,1)$, and the points $\pm G+T$ are the orderings of $(1,r,r^2)$ and of its dual $(r^2,r,1)$. So $P$ has two equal coordinates or is a geometric progression in some order; conversely such points are torsion by (ii) and (iii). For the orders: $(v:v:u)$ is fixed by the transposition of $x$ and $y$, so $P=-P$ and $P$ has order $2$. The point $(u:v:v)$ is fixed by the transposition of $y$ and $z$, so $2P=(1:0:-1)$, of order $3$; $P$ has order $6$, since a point of order $3$ is a base point. Likewise $(v:u:v)$ is fixed by the transposition of $x$ and $z$, and $2P=(0:1:-1)$. For a geometric progression, write the generator as $G=(1:r:r^2)$ with $2G=(0:1:-1)+T_2$; then $4G=-(0:1:-1)=(1:0:-1)$, $6G=T_2$ and $8G=(0:1:-1)$. The orderings of $(1,r,r^2)$ are $G$, $-G$ (transposition of $x$ and $y$), $(0:1:-1)-G=7G$ (of $x$ and $z$), $(1:0:-1)-G=3G$ (of $y$ and $z$), $G+(0:1:-1)=9G$, and $G+(1:0:-1)=5G$ (the cyclic permutations). Of these, $3G=(1:r^2:r)$ and $9G=(r^2:1:r)$ have order $4$ and the others order $12$.
+\end{proof}
+
+In particular, the isosceles pairs of Theorem~\ref{thm:iso}, including the smallest pair, are a torsion phenomenon, while the classes of Theorem~\ref{thm:largefibres} come from curves of positive rank. On the equal-sum, equal-product curves, triples with distinct entries give points of infinite order under the condition of \cite[Prop.~2.7]{sadekelsissi2015}, and, under the hypotheses of \cite[Thm~2.8]{sadekelsissi2015}, $\Z/12$ does not occur; here the geometric progressions give positive torsion points with distinct entries, and $\Z/12$ occurs, for instance on $C_{49/4}$, through $(1:2:4)$.
+
+\begin{remark}[No linear families; a sketch]\label{rem:nolinear}
+Let $(x(u,v),x'(u,v))$ be a family in which every entry is a linear form, the triples are positive on an open cone, the entries of $x$ are not all proportional, and $S$ and $R$ agree identically. Then $x'$ is a permutation of $x$. The same holds for a family affine in one parameter along a line not through the origin. The argument matches the partial fractions of $\sum_i1/L_i=\sum_i1/L'_i$ pole by pole, which forces the same poles with the same charges (in the affine case constant entries, which have no pole, are matched in the same way), and the arithmetic--harmonic mean inequality excludes the only mismatched case: two proportional entries $a\ell,b\ell$ on one side against a single entry $c\ell$ on the other would need $a+b=c$ and $1/a+1/b=1/c$, that is $(a+b)^2=ab$, which is impossible for $a,b>0$. So scaling is the only linear phenomenon, and every other polynomial family has degree at least $2$. The proportional case must be excluded: $\ell(u,v)\cdot(2,8,8)$ and $\ell(u,v)\cdot(3,3,12)$ satisfy the other hypotheses.
 \end{remark}
 
 \section{Lower bounds}\label{sec:lower}
 
 \begin{lemma}[Scaled copies]\label{lem:copies}
-Let $D$ be a primitive set of two distinct triples with a common sum $S_D$ and a common reciprocal sum, admissible or not. Its copies $kD$ with $k\ge4$ are admissible pairs, and distinct $(k,D)$ give distinct pairs. Hence
+Every pair is $kD$ for a unique integer $k\ge1$ and a unique primitive pair $D$, and for every primitive pair $D$ and every $k\ge1$ the set $kD$ is a pair. Hence, with $S_D$ the common sum of $D$,
 \begin{equation}\label{eq:copies}
-  \N(X)\ \ge\ \sum_D\#\{k\ge4:\ kS_D\le X\},
+  \N(X)\ =\ \sum_D\Big\lfloor\frac X{S_D}\Big\rfloor,
 \end{equation}
-the sum running over all such $D$.
+the sum running over all primitive pairs $D$.
 \end{lemma}
 
 \begin{proof}
-Every triple of positive integers has $R\le3$, so $R(kx)\le3/k<1$ for $k\ge4$. The integer $k$ is the greatest common divisor of the entries of $kD$, so $kD$ determines $k$ and $D$.
+The integer $k$ is the greatest common divisor of the six entries, and $D$ is the pair divided by $k$. Conversely $kD$ consists of two distinct triples with sum $kS_D$ and a common reciprocal sum, and they are admissible by Lemma~\ref{lem:admissible}.
 \end{proof}
 
 \begin{theorem}[The isosceles family]\label{thm:iso}
@@ -248,30 +278,31 @@ This is a primitive pair with $S=(2u+v)(u+2v)/g$ and $R=g/(uv)$, the dual pair o
 \begin{proof}
 Both triples have sum $(2u+v)(u+2v)/g$. Their reciprocal sums are $\frac g{2u+v}(\frac1u+\frac2v)=\frac g{uv}$ and $\frac g{u+2v}(\frac1v+\frac2u)=\frac g{uv}$. The greatest common divisor of $2u+v$ and $u+2v$ divides $3u$ and $3v$, hence $3$, and $g=3$ exactly when $u\equiv v\not\equiv0\pmod 3$. The entries of the two members have greatest common divisors $(2u+v)/g$ and $(u+2v)/g$, which are coprime, so the pair is primitive. For $(u,v)=(1,4)$ we get $g=3$ and the pair $\{(2,8,8),(12,3,3)\}$.
 
-\emph{Counting.} Let $\Omega=\{(u,v):0<u<v,\ (2u+v)(u+2v)\le1\}$. With $a=2u+v$ and $b=u+2v$, the map $(u,v)\mapsto(a,b)$ has determinant $3$ and sends the open quadrant onto $\{a/2<b<2a\}$. The hyperbolic sector $\{ab\le1,\ a/2<b<2a\}$ has area $\frac12\log4$, so the quadrant part has area $\frac13\log2$, and by the symmetry $u\leftrightarrow v$ the area of $\Omega$ is $|\Omega|=\frac16\log2$. The region $\Omega$ is bounded by two segments and one monotone arc. Therefore, for every residue class $\rho$ modulo $3$, the number of lattice points of $t\Omega$ in $\rho$ is $t^2|\Omega|/9+O(t)$, uniformly in $\rho$. M\"obius inversion over $d\le t$ then counts the coprime points of $t\Omega$ in a union of residue classes with error $\sum_{d\le t}O(t/d)=O(t\log t)$. Coprime pairs are equidistributed among the $8$ classes $(u,v)\not\equiv(0,0)\pmod 3$, and the two classes $u\equiv v\not\equiv0$ have $g=3$. Since $S\le y$ means $(2u+v)(u+2v)\le gy$,
+\emph{Counting.} Let $\Omega=\{(u,v):0<u<v,\ (2u+v)(u+2v)\le1\}$. With $a=2u+v$ and $b=u+2v$, the map $(u,v)\mapsto(a,b)$ has determinant $3$ and sends the open quadrant onto $\{a/2<b<2a\}$. The hyperbolic sector $\{ab\le1,\ a/2<b<2a\}$ has area $\frac12\log4$, so the quadrant part has area $\frac13\log2$, and by the symmetry $u\leftrightarrow v$ the area of $\Omega$ is $|\Omega|=\frac16\log2$. The region $\Omega$ is bounded by two segments and one monotone arc. Therefore, for every residue class $\rho$ modulo $3$, the number of lattice points of $t\Omega$ in $\rho$ is $t^2|\Omega|/9+O(t)$, uniformly in $\rho$. Let $U_3$ be the union of the two classes $u\equiv v\not\equiv0\pmod3$ and $U_1$ the union of the six other classes with $(u,v)\not\equiv(0,0)$. M\"obius inversion, $\#\{\text{coprime }(u,v)\in t\Omega\cap U\}=\sum_{d\le t}\mu(d)\,\#\{(u',v')\in(t/d)\Omega:\ d(u',v')\in U\}$, applies to $U=U_1$ and $U=U_3$: the terms with $3\mid d$ vanish, and for $3\nmid d$ multiplication by $d$ permutes the classes modulo $3$ and preserves $U_1$ and $U_3$. With the count above for each class, this gives $(6/\pi^2)\,t^2|\Omega|\cdot\frac{\#U}8+O(t\log t)$ coprime points in $U$, where $\#U$ is the number of classes in $U$. Since $S\le y$ means $(2u+v)(u+2v)\le gy$,
 \[
-  A_{\rm iso}(y)=\frac6{\pi^2}\cdot\frac{\log2}{6}\Big(\frac34\,y+\frac14\cdot3y\Big)+O(\sqrt y\log y)=\ciso\,y+O(\sqrt y\log y).
+  A_{\rm iso}(y)=\frac6{\pi^2}\,|\Omega|\Big(\frac34\,y+\frac14\cdot3y\Big)+O(\sqrt y\log y)=\ciso\,y+O(\sqrt y\log y).
 \]
-By \eqref{eq:copies} and partial summation,
+By \eqref{eq:copies}, $\N(X)\ge\sum_{u,v}\lfloor X/S(\mathcal D_{u,v})\rfloor$, and by partial summation
 \[
-  \sum_{S_D\le X/4}\Big(\Big\lfloor\frac X{S_D}\Big\rfloor-3\Big)=X\int_{18}^{X/4}\frac{dA_{\rm iso}(y)}{y}+O(X)=\ciso\,X\log X+O(X).
+  \sum_{S_D\le X}\Big\lfloor\frac X{S_D}\Big\rfloor=X\int_{18^-}^{X}\frac{dA_{\rm iso}(y)}{y}+O(A_{\rm iso}(X))=\ciso\,X\log X+O(X),
 \]
+the sum over the pairs $\mathcal D_{u,v}$.
 
-\emph{Classes.} The copies $k\mathcal D_{u,v}$ lie in pairwise distinct classes. Distinct $\mathcal D_{u,v}$ have distinct $\Lambda$, since $\Lambda$ determines $\{u/v,v/u\}$ through the identities of Remark~\ref{rem:torsion}, and distinct $k$ give distinct sums. So the bound holds for $\Ncl$ as well.
+\emph{Classes.} The copies $k\mathcal D_{u,v}$ lie in pairwise distinct classes. Distinct $\mathcal D_{u,v}$ have distinct $\Lambda$, since $\Lambda=(2u+v)(u+2v)/(uv)=5+2(u/v+v/u)$ determines $\{u/v,v/u\}$, and distinct $k$ give distinct sums. So the bound holds for $\Ncl$ as well.
 \end{proof}
 
-There are $506$ primitive isosceles pairs with $S\le4800$, against $\ciso\cdot4800=505.7$. The secondary term in Theorem~\ref{thm:iso} is large: the count of the copies $k\mathcal D_{u,v}$ with $k\ge4$ equals $\ciso X\log X-0.479X$ to three digits for $10^4\le X\le4\times10^7$. The bound already exceeds the count $\lfloor X/18\rfloor$ of the copies of the smallest pair by a factor of about $18\ciso\log X\approx1.9\log X$. A two-parameter subfamily of the dual family gives one more logarithm.
+There are $506$ pairs $\mathcal D_{u,v}$ with $S\le4800$, against $\ciso\cdot4800=505.7$; in the enumeration, $27$ of them lie in classes of size at least $3$. The secondary term in Theorem~\ref{thm:iso} is large: the count of the copies $k\mathcal D_{u,v}$, $k\ge1$, equals $\ciso X\log X-0.286X$ to three digits for $10^4\le X\le4\times10^7$, and the count is $0.608X$ at $X=4800$. The bound already exceeds the count $\lfloor X/18\rfloor$ of the copies of the smallest pair by a factor of about $18\ciso\log X\approx1.9\log X$. The dual family of Corollary~\ref{cor:dual} gives one more logarithm. Every primitive triple can be written as $(u,vq,vr)$ with $v=\gcd$ of its last two entries, so the following parametrisation covers the whole dual family.
 
-\begin{lemma}[A conic bundle of dual pairs]\label{lem:conic}
+\begin{lemma}[The dual family as a conic bundle]\label{lem:conic}
 Let $q\le r$ be coprime positive integers, $\alpha=q+r$, $\beta=qr$, and let $u,v\ge1$ be coprime. The triple $x=(u,vq,vr)$ is primitive, and its dual pair (Corollary~\ref{cor:dual}) divided by $v$ is
 \[
   \big\{(\alpha u+\beta v)(u,vq,vr),\ (u+\alpha v)(\beta v,ur,uq)\big\},
 \]
-with common sum $Q(u,v)=(\alpha u+\beta v)(u+\alpha v)$. The reduced pair $D(x)$ therefore has $S_{D(x)}\le Q(u,v)$. It is a pair unless $x$ is a geometric progression, which happens for at most $3$ ratios $u:v$ for each $(q,r)$. Each such $D$ equals $D(x)$ for at most $6$ tuples $(q,r,u,v)$. These sets need not be admissible; only their copies with $k\ge4$ are counted below.
+with common sum $W(u,v)=(\alpha u+\beta v)(u+\alpha v)$. The reduced pair $D(x)$ therefore has $S_{D(x)}\le W(u,v)$. It is a pair unless $x$ is a geometric progression, that is, unless $u/v$ is $\sqrt{qr}$, $q^2/r$, or $r^2/q$. Each such $D$ equals $D(x)$ for at most $6$ tuples $(q,r,u,v)$. For fixed $(q:r)$ the triples $(u:vq:vr)$ form the line through the vertex $(1:0:0)$, and their dual pairs form a conic of pairs.
 \end{lemma}
 
 \begin{proof}
-Here $e_1(x)=u+\alpha v$, $e_2(x)=v(\alpha u+\beta v)$, $bc=v^2\beta$, $ca=uvr$ and $ab=uvq$, which gives the displayed pair. For the multiplicity, choose the member of $D$ proportional to $x$ ($2$ ways) and the entry that plays $u$ ($3$ ways). The remaining two entries, ordered by $q\le r$, determine $(q,r,v)$.
+Here $e_1(x)=u+\alpha v$, $e_2(x)=v(\alpha u+\beta v)$, $bc=v^2\beta$, $ca=uvr$ and $ab=uvq$, which gives the displayed pair. The triple is a geometric progression when one entry squared is the product of the other two: $u^2=v^2qr$, $v^2q^2=uvr$, or $v^2r^2=uvq$. For the multiplicity, choose the member of $D$ proportional to $x$ ($2$ ways) and the entry that plays $u$ ($3$ ways). The remaining two entries, ordered by $q\le r$, determine $(q,r,v)$.
 \end{proof}
 
 \begin{theorem}[One more logarithm]\label{thm:loglog}
@@ -279,7 +310,7 @@ $\N(X)\ge\big(\frac3{128\pi^4}+o(1)\big)X(\log X)^2$.
 \end{theorem}
 
 \begin{proof}
-Fix $y$, let $M=y^{1/8}$, and for coprime $q\le r\le M$ put $V=\sqrt{y/(4\alpha\beta)}$ and $U=\beta V/\alpha$. Since $\beta/\alpha\le\alpha$, every $(u,v)\in[1,U]\times[1,V]$ has $Q(u,v)\le(\alpha U+\beta V)(U+\alpha V)\le(2\beta V)(2\alpha V)=y$. The box contains
+Fix $y$, let $M=y^{1/8}$, and for coprime $q\le r\le M$ put $V=\sqrt{y/(4\alpha\beta)}$ and $U=\beta V/\alpha$; then $U\ge V/2\ge1$ for large $y$, since $\beta/\alpha\ge\frac12$. Since $\beta/\alpha\le\alpha$, every $(u,v)\in[1,U]\times[1,V]$ has $W(u,v)\le(\alpha U+\beta V)(U+\alpha V)\le(2\beta V)(2\alpha V)=y$. The box contains
 \[
   \frac6{\pi^2}UV+O\big((U+V)\log y\big)=\frac3{2\pi^2}\cdot\frac y{\alpha^2}+O(M\sqrt y\log y)
 \]
@@ -287,41 +318,41 @@ coprime pairs, uniformly in $(q,r)$, because $U+V\le(\alpha+1)V\le(2M+1)\sqrt y$
 \[
   \sum_{\substack{q\le r\le M\\ \gcd(q,r)=1}}\frac1{\alpha^2}\ \ge\ \sum_{3\le n\le M}\frac{\varphi(n)}{2n^2}=\Big(\frac3{\pi^2}+o(1)\Big)\log M .
 \]
-The error terms total $O(M^3\sqrt y\log y)=o(y)$, and the geometric progressions number $O(M^2)=o(y)$. By Lemma~\ref{lem:conic}, the number $A(y)$ of sets $D$ as in Lemma~\ref{lem:copies} with $S_D\le y$ satisfies
+The error terms total $O(M^3\sqrt y\log y)=o(y)$, and the geometric progressions number $O(M^2)=o(y)$. By Lemma~\ref{lem:conic}, the number $A(y)$ of primitive pairs $D$ with $S_D\le y$ satisfies
 \[
   A(y)\ \ge\ \frac16\cdot\frac3{2\pi^2}\cdot\frac3{\pi^2}\cdot y\log M\,(1+o(1))=c_A\,y\log y\,(1+o(1)),\qquad c_A=\frac3{32\pi^4}.
 \]
-In \eqref{eq:copies}, restrict to $S_D\le X/8$, where $\#\{k\ge4:kS_D\le X\}\ge X/S_D-4\ge X/(2S_D)$. By partial summation, $\sum_{S_D\le Y}1/S_D\ge\int_2^YA(y)y^{-2}\,dy\ge\frac{c_A}2(\log Y)^2(1+o(1))$. Hence $\N(X)\ge\frac X2\cdot\frac{c_A}2(\log X)^2(1+o(1))=\big(\frac3{128\pi^4}+o(1)\big)X(\log X)^2$.
+In \eqref{eq:copies}, keep the $D$ with $S_D\le X$, for which $\lfloor X/S_D\rfloor\ge X/(2S_D)$. By partial summation, $\sum_{S_D\le X}1/S_D\ge\int_2^XA(y)y^{-2}\,dy\ge\frac{c_A}2(\log X)^2(1+o(1))$, the range of $y$ where the bound for $A(y)$ does not yet hold contributing $O(1)$. Hence $\N(X)\ge\frac X2\cdot\frac{c_A}2(\log X)^2(1+o(1))=\big(\frac3{128\pi^4}+o(1)\big)X(\log X)^2$.
 \end{proof}
 
-The constant is not optimal for the method; the order of growth is the point. Neither theorem gives a power $X^a$ with $a>1$ (Section~\ref{sec:heuristic}).
+Theorem~\ref{thm:loglog} is a lower bound for the dual family, not its order of growth. The proof keeps only small $q,r$ and boxes, and it ignores the cancellation of a common factor in the reduced pair, which can make $S_{D(x)}$ much smaller than $W(u,v)$; the counts of Section~\ref{sec:growth} suggest that the dual family alone grows faster than $X(\log X)^2$. Its bound exceeds that of Theorem~\ref{thm:iso} only when $\log X>128\pi^4\ciso/3\approx438$. Neither theorem gives a power $X^a$ with $a>1$ (Section~\ref{sec:heuristic}).
 
 \section{Classes of every size}\label{sec:fibres}
 
-The argument of this section is Schinzel's. To solve problem D16, he took infinitely many positive rational solutions of $x_1+x_2+x_3=x_1x_2x_3=6$, coming from a point of infinite order on a cubic. He then rescaled $k$ of them by their least common denominator $d$ to integer triples with the common sum $6d$, and he defined a primitive set as one whose entries have greatest common divisor $1$ \cite[pp.~587--588]{schinzel1996}. Because $\Lambda$ is invariant under scaling, the same steps apply verbatim to $C_\Lambda$: the rescaling to a common sum is Proposition~\ref{prop:reformulation}. Classes of every size for equal sums and products had been obtained earlier by Kelly \cite{kelly1989}, and for $n$-tuples by Zhang and Cai \cite{zhangcai2013}.
+The argument of this section is Schinzel's. To solve problem D16, he took infinitely many positive rational solutions of $x_1+x_2+x_3=x_1x_2x_3=6$, coming from a point of infinite order on a cubic. He then rescaled $k$ of them by their least common denominator $d$ to integer triples with the common sum $6d$, and he defined a primitive set as one whose entries have greatest common divisor $1$ \cite[pp.~587--588]{schinzel1996}. Because $\Lambda$ is invariant under scaling, the rescaling to a common sum is Proposition~\ref{prop:reformulation}. The new input is a curve $C_\Lambda$ with a positive point of infinite order, whose odd multiples are positive by Lemma~\ref{lem:egg}. Classes of every size for equal sums and products had been obtained earlier by Kelly \cite{kelly1989}, and for $n$-tuples by Zhang and Cai \cite{zhangcai2013}.
 
 \begin{theorem}[Classes of every size]\label{thm:largefibres}
 For every $k$ there are infinitely many primitive classes of size at least $k$: $k$ pairwise distinct admissible triples with a common sum and a common reciprocal sum.
 \end{theorem}
 
 \begin{proof}
-On $C_{155/12}$ the positive point $P=(4:9:18)$ satisfies $nP\ne O$ for $1\le n\le12$, by exact chord-and-tangent computation. By Mazur's theorem \cite[Chap.~III, Cor.~(5.2), p.~156]{mazur1977}, which bounds the order of a rational torsion point by $12$, $P$ has infinite order. By Lemma~\ref{lem:egg} its odd multiples $(2j+1)P$ are positive, and they are pairwise distinct. Each unordered triple accounts for at most six points, so $C_{155/12}$ carries infinitely many distinct positive primitive triples. By Proposition~\ref{prop:reformulation}, any $k$ of them lie in one primitive class at the least common multiple $L$ of their sums, admissible once $L>155/12$. Only finitely many of the triples have sum below a given bound, so $L$ is unbounded over the choices of $k$ triples, and distinct values of $L$ give distinct classes.
+On $C_{155/12}$ the point $P=(4:9:18)$ is positive, its entries are distinct, and they form no geometric progression in any order ($9^2\ne4\cdot18$); so $P$ has infinite order by Theorem~\ref{thm:torsion}(iv). By Lemma~\ref{lem:egg} its odd multiples $(2j+1)P$ are positive, and they are pairwise distinct. Each unordered triple accounts for at most six points, so $C_{155/12}$ carries infinitely many distinct positive primitive triples. By Proposition~\ref{prop:reformulation}, any $k\ge2$ of them lie in one primitive class at the least common multiple $L$ of their sums. Only finitely many of the triples have sum below a given bound, so $L$ is unbounded over the choices of $k$ triples, and distinct values of $L$ give distinct classes.
 \end{proof}
 
-Only the infinite order of $P$ is used, but the curve $C_{155/12}$ has rank exactly $2$. The lower and upper bounds returned by PARI/GP's \texttt{ellrank} coincide, $r_1=r_2=2$ \cite{pari2172}, and an independent $2$-isogeny descent gives the same rank. Classes generated by one point are far out: with $O=(1:-1:0)$, the next positive point is $3P=(162833463:723926268:287876366)$. The enumeration of Section~\ref{sec:growth} finds much smaller classes (Table~\ref{tab:fibres}). The first classes of sizes $3,4,5,6$ occur at $S=136,408,1849,4600$, on curves of ranks $2,2,3,3$. For each of these curves the bounds $r_1=r_2$ of \texttt{ellrank} coincide, and an independent $2$-isogeny descent, whose Selmer groups are filled by the images of explicit points, gives the same rank. PARI documents $r_1\le\operatorname{rank}\le r_2$ with $r_2$ computed unconditionally from the $2$-Selmer group, and the descents above confirm each rank independently of PARI. No class of size $7$ occurs up to $S=6000$.
+Only the infinite order of $P$ is used. Classes generated by one point are far out: with $O=(1:-1:0)$, the next positive multiple of $P$ is $3P=(162833463:723926268:287876366)$, although translates such as $P+T_2=\iota(P)=(9:4:2)$ are small. The enumeration of Section~\ref{sec:growth} finds much smaller classes (Table~\ref{tab:fibres}). The first classes of sizes $3,4,5,6$ occur at $S=136,408,1849,4600$, on curves of ranks $2,2,3,3$, and $C_{155/12}$ has rank $2$. PARI/GP's \texttt{ellrank} \cite{pari2172} gives these ranks with coinciding bounds $r_1\le\operatorname{rank}\le r_2$: $r_2$ is computed unconditionally from the $2$-Selmer group, and $r_1$ is the number of independent points the program returns, their independence resting on a regulator computed in floating point. An independent $2$-isogeny descent, in exact arithmetic, confirms them. On the integral model of $E_\Lambda$, the isogeny with kernel $(0,0)$ and its dual have Selmer groups of orders $4$ and $1$ for $C_{27/2}$, $4$ and $4$ for $C_{68/5}$, $8$ and $4$ for $C_{1849/120}$, $16$ and $2$ for $C_{230/21}$, and $8$ and $2$ for $C_{155/12}$; in each case the images of explicit rational points fill both groups, so the rank $r$ satisfies $2^{r+2}=|\mathrm{Sel}^{\varphi}|\cdot|\mathrm{Sel}^{\hat\varphi}|$ \cite[Chap.~III]{silvermantate2015}, which gives $0$, $2$, $3$, $3$, and $2$. The root numbers, $+1$ for $C_{155/12}$ and $C_{68/5}$ and $-1$ for $C_{1849/120}$ and $C_{230/21}$, agree with the parities of the ranks. So $C_{27/2}$ has rank $0$ and, by Theorem~\ref{thm:torsion}(ii), torsion $\Z/2\times\Z/6$: $C_{27/2}(\Q)$ consists of the six base points and the six orderings of $(1,4,4)$ and $(1,1,4)$. So $\{(2,8,8),(3,3,12)\}$ and its multiples are the only coincidences with $\Lambda=\frac{27}2$; this is also \cite[Theorem~5.8]{gangetal-heat}, proved there by a $2$-isogeny descent by hand. No class of size $7$ occurs up to $S=6000$.
 
 \begin{table}[t]
-\caption{The first class of each size $k$ in the enumeration of all admissible triples with $S\le6000$: its sum, $\Lambda=SR$, the Mordell--Weil rank of $C_\Lambda$ (in every row with $k\ge3$ the bounds $r_1=r_2$ of \texttt{ellrank} coincide; the curve $C_{27/2}$ of the row $k=2$ is treated in \cite[Theorem~5.8]{gangetal-heat}), and its members. The class of size $4$ lies on the same curve as that of size $3$: it is three times it, together with $(65,70,273)$. No class has size $7$.}\label{tab:fibres}
+\caption{The first class of each size $k$ in the enumeration of all admissible triples with $S\le6000$: its sum, $\Lambda=SR$, the Mordell--Weil rank and the torsion group of $C_\Lambda$ (from \texttt{ellrank} and \texttt{elltors}; Section~\ref{sec:fibres}), and its members. The class of size $4$ lies on the same curve as that of size $3$: it is three times it, together with $(65,70,273)$. No class has size $7$.}\label{tab:fibres}
 \centering\small
-\begin{tabular}{@{}rrrr>{\raggedright\arraybackslash}p{0.6\textwidth}@{}}
+\begin{tabular}{@{}rrrrl>{\raggedright\arraybackslash}p{0.44\textwidth}@{}}
 \toprule
-$k$ & $S$ & $\Lambda$ & rank & members\\
+$k$ & $S$ & $\Lambda$ & rank & torsion & members\\
 \midrule
-2 & 18 & $27/2$ & \cite{gangetal-heat} & $(2,8,8)$; $(3,3,12)$ \\
-3 & 136 & $68/5$ & 2 & $(15,55,66)$; $(16,40,80)$; $(17,34,85)$ \\
-4 & 408 & $68/5$ & 2 & $(45,165,198)$; $(48,120,240)$; $(51,102,255)$; $(65,70,273)$ \\
-5 & 1849 & $1849/120$ & 3 & $(168,820,861)$; $(172,645,1032)$; $(185,480,1184)$; $(215,344,1290)$; $(253,276,1320)$ \\
-6 & 4600 & $230/21$ & 3 & $(750,1750,2100)$; $(756,1674,2170)$; $(800,1400,2400)$; $(805,1380,2415)$; $(882,1170,2548)$; $(920,1104,2576)$ \\
+2 & 18 & $27/2$ & 0 & $\Z/2\times\Z/6$ & $(2,8,8)$; $(3,3,12)$ \\
+3 & 136 & $68/5$ & 2 & $\Z/6$ & $(15,55,66)$; $(16,40,80)$; $(17,34,85)$ \\
+4 & 408 & $68/5$ & 2 & $\Z/6$ & $(45,165,198)$; $(48,120,240)$; $(51,102,255)$; $(65,70,273)$ \\
+5 & 1849 & $1849/120$ & 3 & $\Z/6$ & $(168,820,861)$; $(172,645,1032)$; $(185,480,1184)$; $(215,344,1290)$; $(253,276,1320)$ \\
+6 & 4600 & $230/21$ & 3 & $\Z/6$ & $(750,1750,2100)$; $(756,1674,2170)$; $(800,1400,2400)$; $(805,1380,2415)$; $(882,1170,2548)$; $(920,1104,2576)$ \\
 \bottomrule
 \end{tabular}
 \end{table}
@@ -329,14 +360,14 @@ $k$ & $S$ & $\Lambda$ & rank & members\\
 \section{Enumeration and growth}\label{sec:growth}
 
 \subsection{The enumeration}
-For every $S\le4800$ we listed all admissible triples $2\le a\le b\le c$ with $a+b+c=S$, $3\,067\,197\,199$ in all, and grouped them by the exact rational $R=e_2/e_3$. The grouping hashes the correctly rounded double of $e_2/e_3$, which is the same for equal rationals since $e_2,e_3<2^{53}$. Every candidate match is then confirmed by exact $128$-bit cross-multiplication. Two independent programs, one of them checked class by class against a rational-arithmetic enumeration for $S\le300$, agree on every count up to $S=4800$. A third enumeration gives the cumulative counts up to $S=6000$. We reran the second program on $4801\le S\le6000$ with all classes listed. It reproduces those counts at $S=5400$ and $S=6000$ and supplies the primitive classes there. Table~\ref{tab:density} gives the counts in both conventions of \eqref{eq:counts}.
+For every $S\le4800$ we listed all admissible triples $2\le a\le b\le c$ with $a+b+c=S$, $3\,067\,197\,199$ in all, and grouped them by the exact rational $R=e_2/e_3$. The grouping hashes the correctly rounded double of $e_2/e_3$, which is the same for equal rationals since $e_2,e_3<2^{53}$. Every candidate match is then confirmed by exact $128$-bit cross-multiplication. Two independent programs, one of them checked class by class against a rational-arithmetic enumeration for $S\le300$, agree on every count up to $S=4800$: all columns of Table~\ref{tab:density} up to $4800$ are confirmed by both. A third enumeration gives the cumulative counts of pairs and classes up to $S=6000$, from $5\,992\,496\,499$ admissible triples. We reran the second program on $4801\le S\le6000$ with all classes listed. It reproduces those cumulative counts at $S=5400$ and $S=6000$, and it supplies the primitive classes and the class sizes there. Table~\ref{tab:density} gives the counts of pairs and of classes, as defined in \eqref{eq:counts}.
 
 \begin{table}[t]
-\caption{Cumulative counts of coincidences with sum at most $S$, from the exhaustive enumeration: pairs $\N(S)$, classes $\Ncl(S)$, primitive classes, the largest class size so far, and the local exponent $\log(\N(S)/\N(S/2))/\log2$ of $\N$ on $[S/2,S]$.}\label{tab:density}
+\caption{Cumulative counts of coincidences with sum at most $X$, from the exhaustive enumeration: pairs $\N(X)$, classes $\Ncl(X)$, primitive classes, the largest class size up to $X$, and the local exponent $\log(\N(X)/\N(X/2))/\log2$ of $\N$ on $[X/2,X]$.}\label{tab:density}
 \centering\small
 \begin{tabular}{@{}rrrrrr@{}}
 \toprule
-$S$ & pairs $\N(S)$ & classes $\Ncl(S)$ & primitive classes & largest class & local exponent\\
+$X$ & pairs $\N(X)$ & classes $\Ncl(X)$ & primitive classes & largest class & local exponent\\
 \midrule
 18 & 1 & 1 & 1 & 2 & -- \\
 100 & 92 & 92 & 69 & 2 & 2.524 \\
@@ -364,34 +395,34 @@ For every $\varepsilon>0$, $n(S)\ll_\varepsilon S^{2+\varepsilon}$ and $\N(X)\ll
 \end{proposition}
 
 \begin{proof}
-Let $x=(p,q,r)$ and $x'=(p',q',r')$ be distinct admissible triples with sum $S$ and a common $R$, each with its least entry first. Put $A=q+r=S-p$, $B=qr$, and similarly $A'$, $B'$, so that $R=1/p+A/B$. If $p=p'$, then $A=A'$ and $B=B'$, so $x=x'$. Hence $\delta=p-p'\ne0$. Clearing denominators in $1/p+A/B=1/p'+A'/B'$ gives the identity
+Let $x=(p,b,c)$ and $x'=(p',b',c')$ be distinct admissible triples with sum $S$ and a common $R$, each with its least entry first. Put $A=b+c=S-p$, $B=bc$, and similarly $A'$, $B'$, so that $R=1/p+A/B$. If $p=p'$, then $A=A'$ and $B=B'$, so $x=x'$. Hence $\delta=p-p'\ne0$. Clearing denominators in $1/p+A/B=1/p'+A'/B'$ gives the identity
 \[
   (\delta B-pp'A)(\delta B'+pp'A')=-p^2p'^2AA' .
 \]
-The right side is a nonzero integer of absolute value at most $S^6$, so it has $\ll_\varepsilon S^{\varepsilon}$ factorizations into two integer factors. Each factorization determines $B$ and $B'$, because $\delta\ne0$, and then $\{q,r\}$ and $\{q',r'\}$ as the roots of $t^2-At+B$ and $t^2-A't+B'$. There are $O(S^2)$ choices of $(p,p')$, so $n(S)\ll_\varepsilon S^{2+\varepsilon}$, and summing over $S\le X$ gives the second bound.
+The right side is a nonzero integer of absolute value at most $S^6$, so it has $\ll_\varepsilon S^{\varepsilon}$ factorizations into two integer factors. Each factorization determines $B$ and $B'$, because $\delta\ne0$, and then $\{b,c\}$ and $\{b',c'\}$ as the roots of $w^2-Aw+B$ and $w^2-A'w+B'$. There are $O(S^2)$ choices of $(p,p')$, so $n(S)\ll_\varepsilon S^{2+\varepsilon}$, and summing over $S\le X$ gives the second bound.
 \end{proof}
 
-As a check of the identity, recounting $n(S)$ through it for every $S\le160$ reproduces the enumeration exactly. The trivial bound is $n(S)\ll S^3$: there are $O(S^2)$ triples, and a triple has at most one partner with a given least entry, since that entry fixes $A'$ and then $R$ fixes $B'$.
+As a check of the identity, recounting $n(S)$ through it for every $S\le160$ reproduces the enumeration exactly. The trivial bound is $n(S)\ll S^3$: there are $O(S^2)$ triples, and a triple has at most one partner with a given least entry, since that entry fixes $A'$ and then $R$ fixes $B'$. Proposition~\ref{prop:upper} gains only a factor $S^{1-\varepsilon}$ on this, and it remains at the scale of the number of triples.
 
 \subsection{Growth}
 
-The local exponent in Table~\ref{tab:density} falls overall, from $2.5$ near $S=100$ to $1.58$ near $S=6000$, and $\N(S)/S^2$ falls from $0.0094$ at $S=400$ to $0.0040$ at $S=6000$. A quadratic law is not supported by the data. On $600\le s\le4800$ the per-sum counts are well described by $n(s)=c(\log s)^{\mathfrak q}$. We fit the two parameters $(c,\mathfrak q)$ in two ways on the same window: by Poisson maximum likelihood for the counts $n(s)$, and by least squares for $\log$ of the cumulative counts against the exact partial sums of the model. The uncertainty is the standard deviation over $400$ block-bootstrap resamples, with blocks of $50$ consecutive sums. All pairs give $\mathfrak q=4.48\pm0.44$ per sum and $4.56\pm0.71$ cumulatively. Primitive pairs give $3.54\pm0.37$ and $3.63\pm0.57$.
+The local exponent in Table~\ref{tab:density} is $1.99$ at $X=500$ and falls to $1.58$ at $X=6000$; its larger values below $X=500$ rest on few pairs. The ratio $\N(X)/X^2$ falls from $0.0094$ at $X=400$ to $0.0040$ at $X=6000$, so a quadratic law is not supported by the data. On $600\le s\le4800$ the per-sum counts are well described by $n(s)=c(\log s)^{q}$, and also by a power law. We fit the two parameters $(c,q)$ in two ways on the same window: by Poisson maximum likelihood for the counts $n(s)$ (``per sum''), and by least squares for $\log(\N(S)-\N(599))$ against $\log\sum_{s=600}^{S}c(\log s)^{q}$, $600\le S\le4800$ (``cumulative''). The uncertainty is a residual block bootstrap: the per-sum model is fitted, the ratios of the counts to the fitted values are resampled in blocks of $50$ consecutive sums and multiplied back onto the fitted trend, both fits are repeated, and we report the standard deviation over $400$ resamples. All pairs give $q=4.49\pm0.06$ per sum and $4.56\pm0.08$ cumulatively; primitive pairs give $3.53\pm0.08$ and $3.63\pm0.11$.
 
-Scaling accounts for the difference of one. Every pair is $kD$ for a unique primitive pair $D$, so $\N(X)=\sum_{k\ge1}\#\{D:\ kS_D\le X,\ kD\text{ admissible}\}$, and for $k\ge4$ every $D$ counts (Lemma~\ref{lem:copies}). If the primitive pairs with sum at most $y$ number about $y(\log y)^{a}$, this sum is about $X(\log X)^{a+1}/(a+1)$. The dual pairs alone fit $\mathfrak q=2.56\pm0.34$ (primitive) and $3.33\pm0.35$ (all), and the non-dual pairs $4.79\pm0.47$. The bootstrap measures sampling noise only. The model uncertainty is larger: the two fitting methods differ by up to $0.1$, and on the windows $[1200,4800]$, $[600,2400]$ and $[2400,4800]$ all pairs give $4.43$, $4.63$ and $4.37$ per sum. These are measured exponents on a finite range, not predictions. Figure~\ref{fig:F9}(b) shows $\N(S)/S$ with the fit and with the isosceles lower bound of Theorem~\ref{thm:iso}.
+Scaling accounts for the difference of about one. By Lemma~\ref{lem:copies}, $\N(X)=\sum_D\lfloor X/S_D\rfloor$, and if the primitive pairs with sum at most $y$ number about $y(\log y)^{a}$, this sum is about $X(\log X)^{a+1}/(a+1)$. Per sum, the dual pairs fit $q=2.56\pm0.20$ (primitive) and $3.33\pm0.17$ (all), and the non-dual pairs $3.73\pm0.09$ (primitive) and $4.80\pm0.06$ (all). The bootstrap measures sampling noise only; the model uncertainty is larger. On the windows $[1200,4800]$, $[600,2400]$, and $[2400,4800]$ all pairs give $4.44$, $4.64$, and $4.39$ per sum. A pure power law $n(s)=cs^{\beta}$, fitted by Poisson maximum likelihood on the same window, gives $\beta=0.587$ for all pairs, that is $\N(X)$ growing like $X^{1.59}$; its log-likelihood is lower by $9.5$, but the counts are overdispersed (Pearson dispersion $6.8$), and the scaled difference, $1.4$, does not separate the two laws. These are measured exponents on a finite range, not predictions. Figure~\ref{fig:F9}(b) shows $\N(S)/S$, the law $\N(599)+c\sum_{s=600}^{S}(\log s)^{q}$ with $q=4.5$ fitted on $[600,4800]$, and the count of all copies $k\mathcal D_{u,v}$ of the isosceles pairs, which is the lower bound of Theorem~\ref{thm:iso} before the asymptotics; the split marker at $S=18$ is the smallest pair. In Figure~\ref{fig:F9}(a) the positive triangle is outlined, and the permutations of $(1,4,4)$ and of $(1,1,4)$ are marked in two colours.
 
 \begin{figure}[t]
 \centering
 \includegraphics[width=119mm]{figures/out/F9.pdf}
-\caption{(a) The real locus of $C_{27/2}$ in the chart $x+y+z=1$, with the permutations of $(1,4,4)$ and $(1,1,4)$, that is, $(2,8,8)$ and $(3,3,12)$ up to scale. (b) $\N(S)/S$ (heavy) and its fit (dashed), far above the isosceles lower bound of Theorem~\ref{thm:iso}, which grows like $(\ciso+o(1))\log S$ (thin).}\label{fig:F9}
+\caption{(a) The real locus of $C_{27/2}$ in the chart $x+y+z=1$, with the permutations of $(1,4,4)$ and $(1,1,4)$. (b) The ratio $\N(S)/S$ for $S\le4800$ (heavy), a log-power fit (dashed), and the isosceles copies $k\mathcal D_{u,v}$ (thin).}\label{fig:F9}
 \end{figure}
 
-\subsection{What Conjecture~\ref{conj:intro} would require}\label{sec:heuristic}
+\subsection{What Question~\ref{q:intro} would require}\label{sec:heuristic}
 
-By Theorem~\ref{thm:loglog} and Proposition~\ref{prop:upper}, the exponent of growth of $\N$ lies between $1$ and $3$. The data place the local exponent at $1.58$ near $X=6000$, still falling. That is consistent with $\N(X)=X^{1+o(1)}$, but it does not exclude a limiting exponent anywhere between $1$ and about $1.58$. Conjecture~\ref{conj:intro} is an extrapolation, and we state what it says about the geometry.
+By Theorem~\ref{thm:loglog} and Proposition~\ref{prop:upper}, the exponent of growth of $\N$ lies between $1$ and $3$. The local exponent is $1.58$ near $X=6000$ and still falling. The data are consistent with $\N(X)=X^{1+o(1)}$, and equally with $\N(X)$ growing like $X^{1.59}$; a finite range bounds the limiting exponent from neither side. The rest of this section is heuristic: we state what a positive answer to Question~\ref{q:intro} would say about the geometry.
 
-Parametric families are the natural source of many coincidences. Consider a family in which the entries of both triples are forms of degree $d$ in $m$ variables. It contributes about $X^{m/d}$ pairs with sum at most $X$, up to logarithms and local densities. Remark~\ref{rem:nolinear} rules out $d=1$ apart from scaling. The isosceles family has $d=2$ and $m=2$: it is a rational \emph{curve} in the space of pairs up to scaling, and it gives $X\log X$ once the copies are counted. The dual family of Corollary~\ref{cor:dual} is a rational surface given by cubic forms in three variables ($d=3$, $m=3$), and its conic-bundle part gives $X(\log X)^2$ (Theorem~\ref{thm:loglog}). A rational surface parametrized by quadratic forms in three variables ($d=2$, $m=3$) would give about $X^{3/2}$, more than the conjecture allows. Conjecture~\ref{conj:intro} therefore implies in particular that the variety of pairs contains no such surface with a positive real point. We have not searched for one. We searched for one-parameter families only: a line in $\PP^2$ of triples $(x:y:z)$ is a family linear in its parameter, and two lines (possibly equal) give a family of coincidences when $\Lambda$ agrees on them after a M\"obius change of parameter. Among the $189$ lines meeting the positive triangle with coefficients of absolute value at most $7$, the only such families are the conics of the dual family, one Vieta involution on each line through a vertex. Since $84\%$ of the primitive pairs up to $4800$ are not dual pairs, the data do not show which subvarieties carry most of the coincidences.
+\emph{Heuristic.} Parametric families are the natural source of many coincidences. Consider a family in which the entries of both triples are forms of degree $d$ in $m$ variables, with a generically finite parametrisation whose generic member is a pair of distinct triples. It contributes about $X^{m/d}$ pairs with sum at most $X$, up to logarithms and local densities. Remark~\ref{rem:nolinear} rules out $d=1$ apart from scaling. The isosceles family has $d=2$ and $m=2$: it is a rational \emph{curve} in the space of pairs up to scaling, and it gives $X\log X$ once the copies are counted. The dual family of Corollary~\ref{cor:dual} is a rational surface given by cubic forms in three variables ($d=3$, $m=3$); it gives at least $X(\log X)^2$ (Theorem~\ref{thm:loglog}), and its exact order is not known. A rational surface parametrised by quadratic forms in three variables ($d=2$, $m=3$) would give about $X^{3/2}$. A positive answer to Question~\ref{q:intro} therefore implies that the variety of pairs contains no such surface with a positive real point. We have not searched for one. We searched for one-parameter families only: a line in $\PP^2$ of triples $(x:y:z)$ is a family linear in its parameter, and two lines (possibly equal) give a family of coincidences when $\Lambda$ agrees on them after a M\"obius change of parameter. We grouped the lines by the discriminant of the branch values of $\Lambda$ restricted to them and tested each candidate pair exactly. Among the $189$ lines meeting the positive triangle with coefficients of absolute value at most $7$, counted up to permutation of the coordinates and sign, the only such families are the conics of the dual family, one Vieta involution on each line through a vertex. Since $84\%$ of the primitive pairs up to $4800$ are not dual pairs, the data do not show which subvarieties carry most of the coincidences.
 
-The variety in question has a classical description. The map $(P,P')\mapsto(e_1(P')P,\,e_1(P)P')$ identifies pairs of points on a common $C_\Lambda$ with pairs of triples with equal sum and equal reciprocal sum. So the variety of pairs is birational to the fibre square $\mathcal E\times_{\PP^1}\mathcal E$ of the rational elliptic surface $\mathcal E\to\PP^1_\Lambda$ obtained by blowing up the nine base points of the pencil. All singular fibres of $\mathcal E$ are of type $I_n$. Fibre products of this kind were studied by Schoen \cite{schoen1988}, who showed that suitable resolutions are Calabi--Yau threefolds \cite[Prop.~7.1]{schoen1988}. Conjecture~\ref{conj:intro} is a statement about the positive rational points of bounded height on this threefold. Our counts come from rational curves and surfaces inside it, and from positive-rank fibres over individual values of $\Lambda$.
+The variety in question has a classical description. In coordinates, the pairs $(x,x')$ with $e_1(x)=e_1(x')$ and $e_2(x)e_3(x')=e_2(x')e_3(x)$ form a quintic hypersurface in the hyperplane $e_1(x)=e_1(x')$ of $\PP^5$. The map $(P,P')\mapsto(e_1(P')P,\,e_1(P)P')$ identifies pairs of points on a common $C_\Lambda$ with pairs of triples with equal sum and equal reciprocal sum. So the variety of pairs is birational to the fibre square $\mathcal E\times_{\PP^1}\mathcal E$ of the rational elliptic surface $\mathcal E\to\PP^1_\Lambda$ obtained by blowing up the base points of the pencil, nine counted with multiplicity. All singular fibres of $\mathcal E$ are of type $I_n$. Fibre products of this kind were studied by Schoen \cite{schoen1988}, who showed that suitable resolutions are Calabi--Yau threefolds \cite[Prop.~7.1]{schoen1988}. The twelve surfaces $\{(P,\pm P+T)\}$, with $T$ in the group of base points, are graphs of automorphisms of the fibres; six of them consist of the orderings of $P$ itself, and the other six are the dual family in its six orderings, so Theorems~\ref{thm:iso} and~\ref{thm:loglog} both count points on one such surface. Question~\ref{q:intro} concerns the positive rational points of this threefold off these surfaces as well, which come from positive-rank fibres over individual values of $\Lambda$.
 
 \section*{Acknowledgements}
 The colours of Figure~\ref{fig:F9} are from the Scientific Colour Maps \cite{crameri2023}, which are designed to be perceptually uniform and readable by people with colour-vision deficiencies \cite{crameri2020}.
@@ -408,7 +439,7 @@ The authors have no competing interests to declare that are relevant to the cont
 Not applicable.
 
 \subsection*{Data and code availability}
-{\sloppy The code and data are at \url{https://github.com/pa1aash/equal-sum-reciprocal-triples}, archived at Zenodo \textbf{[PLACEHOLDER: Zenodo DOI]}, with all six authors as creators; the Zenodo record is the version to cite. One command reruns every check. Table~\ref{tab:fibres} is produced by \texttt{make\_tables.py} from \texttt{groups.csv}, written by \texttt{enumerate\_fast.py}, and from the ranks of \texttt{ranks.py}; Table~\ref{tab:density} is produced by the same tool from \texttt{check\_enum.py} (to $S=6000$), cross-checked against \texttt{per\_S.csv}; the fits are those of \texttt{exponent\_fits.py} and \texttt{growth\_fits.py}, and Figure~\ref{fig:F9} is drawn by \texttt{F9.py}.\par}
+{\sloppy The code and data are at \url{https://github.com/pa1aash/equal-sum-reciprocal-triples}, archived at Zenodo \textbf{[PLACEHOLDER: Zenodo DOI]}, with all six authors as creators; the Zenodo record is the version to cite. One command reruns every check; the enumerations from scratch are rerun only on request. Table~\ref{tab:fibres} is produced by \texttt{make\_tables.py} from \texttt{groups.csv}, written by \texttt{enumerate\_fast.py}, and from the ranks of \texttt{ranks.py}; Table~\ref{tab:density} is produced by the same tool from \texttt{check\_enum.py} (to $S=6000$), cross-checked against \texttt{per\_S.csv}; the fits are those of \texttt{exponent\_fits.py} and \texttt{growth\_fits.py}, and Figure~\ref{fig:F9} is drawn by \texttt{F9.py}.\par}
 
 \subsection*{Author contributions}
 \textbf{[PLACEHOLDER: author contribution statement, to be supplied by the authors before submission.]}

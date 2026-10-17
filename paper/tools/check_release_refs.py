@@ -8,7 +8,7 @@ Run after make_overleaf.py and make_release.py. Checks:
   2. each paper's data statement, Overleaf copy, cover letter, README, CITATION.cff and .zenodo.json name
      https://github.com/pa1aash/<its repository> and no other paper's repository as its own;
   3. every [PLACEHOLDER: ...] is one of: author contribution statement, AI-use statement, Zenodo DOI,
-     arXiv number. Prints each placeholder kind with the files it occurs in; exits 1 on any failure.
+     preprint identifier. Prints each placeholder kind with the files it occurs in; exits 1 on any failure.
 """
 import json
 import re
@@ -21,7 +21,7 @@ REL = Path("~/Desktop/release").expanduser()
 REPO = {"A": "heat-invariants-orbifolds", "B": "eigenvalues-orbifold-signature", "N": "equal-sum-reciprocal-triples"}
 URL = "https://github.com/pa1aash/"
 KINDS = [("author contributions", r"author contribution"), ("AI-use statement", r"AI-use statement|use of AI tools"),
-         ("Zenodo DOI", r"Zenodo DOI"), ("arXiv number", r"arXiv number")]
+         ("Zenodo DOI", r"Zenodo DOI"), ("preprint identifier", r"preprint identifier")]
 fail = []
 seen = {}
 

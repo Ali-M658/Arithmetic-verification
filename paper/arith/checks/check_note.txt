@@ -17,5 +17,21 @@ PASS 6 cumulative pairs and classes at S = 5400 agree with the G5 enumeration: (
 PASS 6 cumulative pairs and classes at S = 6000 agree with the G5 enumeration: (145679, 140005)
 PASS 6 primitive classes with S <= 6000: 62401
 PASS 6 no class of size 7 with S <= 6000: largest 6; sizes 4801..6000 {2: 40539, 3: 660, 4: 51, 5: 12, 6: 1}
+PASS 7a every coincidence of positive triples with S <= 240 is admissible (R < 1): []
+PASS 7a the triples with R >= 1 and a >= 2 other than (2,2,c) are (2,3,3..6), (2,4,4), (3,3,3): [(2, 3, 3), (2, 3, 4), (2, 3, 5), (2, 3, 6), (2, 4, 4), (3, 3, 3)]
+PASS 7a (1,b,c) against (2,2,c'): discriminant (c'+3)^2 - 4c'(c'+3) = 3(c'+3)(1-c')
+PASS 7b N(X) = sum over primitive pairs D of floor(X/S_D), 10 <= X <= 4800: []
+PASS 7c isosceles copies k >= 1 at X = 4800: count/X = 0.608
+PASS 7c isosceles copies k >= 1: count - c_iso X log X = -0.286 X to three digits, X = 1e4, 1e5, 1e6: {4800: -0.28524, 10000: -0.28597, 100000: -0.28621, 1000000: -0.28628}
+PASS 7c Theorem 4 exceeds Theorem 3 only for log X > 128 pi^4 c_iso/3 = 437.8: 437.830
+PASS 7d the tangent x + y = (Lambda-1)z at O meets C_Lambda only at O (O is a flex): Lambda*z**3*(Lambda - 1)
+PASS 7d line intersections: z=0, x+y+z=0, y=0, y+z=0, x+y=0: {'z=0': x*y*(x + y), 'x+y+z=0': Lambda*x*y*(x + y), 'y=0': x*z*(x + z), 'y+z=0': x*y**2*(Lambda - 1), 'x+y=0': x**2*z*(Lambda - 1)}
+PASS 7d Lambda(1:r:r^2) = (r + 1 + 1/r)^2
+PASS 7d geometric progressions (1:r:r^2) have order 12 and 2G = Q3 - T2
+PASS 7d orderings of a geometric progression: order 4 when the middle term is last, else 12
+PASS 7d isosceles orientations: (u:v:v), (v:u:v) of order 6, (v:v:u) of order 2
+PASS 7d a positive primitive triple with S <= 60 is torsion iff isosceles or a geometric progression
+PASS 7e R/r = (Lambda - 1)/4 under the Ravi substitution
+PASS 7f (u, vq, vr) is a geometric progression iff u/v in {sqrt(qr), q^2/r, r^2/q}
 
-19 checks, 0 failures
+35 checks, 0 failures

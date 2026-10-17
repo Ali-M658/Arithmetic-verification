@@ -23,12 +23,15 @@ Method.
     the grid value is a valid (conservative) E_N.  At each reported count N* the criterion is re-checked
     for N*-1, N*-2, ... with the infimum computed by bounded Brent minimisation in log s (scipy), over the
     refined t-window; the count is lowered while that succeeds.
+  Every N in the complete range and every t of the grid is checked: no criterion ever singles out a wrong
+  signature (an assertion, for every case run).
   t: 400 log-spaced t in [0.002, 1] and 300 in [1e-5, 0.002) (relative steps 1.6% and 1.8%); then 61
     log-spaced points in the bracket of every grid point attaining the minimum.
-  Everything is in logarithms where H carries e^{3 Delta}.
+  Everything is in logarithms where H carries the count constant C (e^{3 Delta} or K).
 Inputs (data/instances.csv, written by instances.py): ell = the systole lower bound (complete
   enumeration, rounded down at 6 decimals); Delta = B1 = 2 diam P (rigorous), B2 (rigorous, sharper),
-  the computed true diameter (numerical), or D(A, ell, M) of Theorem 4.4 (class level).
+  the computed true diameter (numerical); or, at class level, the count constant K(A, ell, M) of the lemma
+  on counting closed geodesics without the diameter (variant "K"), in place of pi e^{3 Delta}/A.
 Spectra (complete ranges as stated in METHODS.md):
   triangles: union of numerics/data/eigenvalues_<pqr>_{N,D}.csv, eps_j = err_estimate, complete for
     lambda <= 16000 (a missing eigenvalue below ~1.66e4 would violate the trace test at t = 0.0015);
@@ -63,7 +66,7 @@ import numpy as np
 from scipy.optimize import minimize_scalar
 
 from eigen_common import (check, signatures, area_over_2pi, b_cone, mpq, theorem_E_constants,
-                          elliptic_term, diam_bound)
+                          elliptic_term, diam_bound, count_constant)
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 ROOT = os.path.join(HERE, "..", "..")
@@ -146,11 +149,17 @@ class Gfun:
 
 
 # ------------------------------------------------------------------ the bound H of Lemma 2.3 (logs)
-def logH(ell, Delta, A, t):
+def logC_diam(Delta, A):
+    """log of the count constant C of n_O(x) <= C e^x from a diameter bound: C = pi e^{3 Delta}/A."""
+    return math.log(math.pi / A) + 3 * Delta
+
+
+def logH(ell, logC, A, t):
+    """log of the bound H(t) of Lemma 2.2 for a count n_O(x) <= C e^x, C = e^{logC}."""
     t = np.asarray(t, float)
-    first = (math.log(math.pi * ell * math.exp(ell / 2) / (A * (1 - math.exp(-ell)))) + 3 * Delta
+    first = (logC + math.log(ell * math.exp(ell / 2) / (1 - math.exp(-ell)))
              + np.log1p(2 * t / np.where(ell - t > 0, ell - t, 1.0)) - ell ** 2 / (4 * t) - 0.5 * np.log(4 * math.pi * t))
-    allt = math.log(2 * math.sqrt(math.pi) / (A * (1 - math.exp(-ell)))) + 3 * Delta + 17 * t / 4 - 0.5 - ell
+    allt = logC + math.log(2 / (math.sqrt(math.pi) * (1 - math.exp(-ell)))) + 17 * t / 4 - 0.5 - ell
     return np.where(t <= ell ** 2 / (2 * (1 + ell)), first, allt)
 
 
@@ -172,14 +181,14 @@ def lower_hull(x, y):
 class TailBound:
     """min over the s-grid of mu (s - t) + b(s), b(s) = log(A/(4 pi s) + beta + H(s)), for many mu."""
 
-    def __init__(self, ell, Delta, A, beta, t):
+    def __init__(self, ell, logC, A, beta, t):
         s = t * UGRID
-        lh = logH(ell, Delta, A, s)
+        lh = logH(ell, logC, A, s)
         b = np.logaddexp(np.log(A / (4 * math.pi * s) + beta), lh)
         h = lower_hull(s, b)
         self.s, self.b, self.t = s[h], b[h], t
         self.slopes = np.diff(self.b) / np.diff(self.s)
-        self.args = (ell, Delta, A, beta)
+        self.args = (ell, logC, A, beta)
 
     def log_tail(self, mu):
         k = np.searchsorted(self.slopes, -np.asarray(mu), side="left")
@@ -187,12 +196,12 @@ class TailBound:
 
     def log_tail_exact(self, mu):
         """inf over 0 < s <= t by bounded Brent in log s, started from the grid optimum."""
-        ell, Delta, A, beta = self.args
+        ell, logC, A, beta = self.args
         t = self.t
 
         def f(x):
             s = math.exp(x)
-            return mu * (s - t) + float(np.logaddexp(math.log(A / (4 * math.pi * s) + beta), logH(ell, Delta, A, s)))
+            return mu * (s - t) + float(np.logaddexp(math.log(A / (4 * math.pi * s) + beta), logH(ell, logC, A, s)))
         k = int(np.searchsorted(self.slopes, -mu, side="left"))
         x0 = math.log(self.s[k])
         lo = math.log(self.s[max(k - 1, 0)] if k > 0 else t * 1e-9)
@@ -266,7 +275,7 @@ def family_spectra():
 
 # ------------------------------------------------------------------ the scan
 class Case:
-    def __init__(self, name, sig0, A_over_pi, ell, M, spec, Delta, variant, data, epskey="eps", do_obs=True):
+    def __init__(self, name, sig0, A_over_pi, ell, M, spec, Delta, variant, data, epskey="eps", do_obs=True, logC=None):
         self.do_obs = do_obs
         self.name, self.sig0, self.M = name, sig0, M
         s = area_over_2pi(*sig0)
@@ -276,6 +285,8 @@ class Case:
         check(sig0 in self.S, "true signature in S")
         self.beta = max(float(sum(mpq(b_cone(0, m)) for m in o)) for _, o in self.S)
         self.ell, self.Delta, self.variant, self.data, self.epskey = ell, Delta, variant, data, epskey
+        # count constant of n_O(x) <= C e^x: from the diameter bound Delta, or given (class level, K(A, ell, M))
+        self.logC = logC if logC is not None else logC_diam(Delta, self.A)
         self.lam = spec["lam"]
         self.eps = spec[epskey]
         self.Nc = len(self.lam)
@@ -294,7 +305,7 @@ class Case:
         Gv = self.Gs(G, t)
         diffs = np.abs(Gv[:, None] - Gv[None, :]) + np.diag(np.full(len(Gv), np.inf))
         gaps = diffs.min(axis=1)
-        lh = float(logH(self.ell, self.Delta, self.A, t))
+        lh = float(logH(self.ell, self.logC, self.A, t))
         Ht = math.exp(min(lh, 700.0))
         part = np.cumsum(np.exp(-self.lam * t))                   # part[N-1] = Z~_N
         if exact_N is None and Ht > 10 * (self.Nc + float(np.max(np.abs(Gv)))):
@@ -304,7 +315,7 @@ class Case:
             res.update(gap0=float(gaps[self.i0]), H=lh, nearest=self._nearest(Gv))
             self.memo[float(t)] = res
             return res
-        tb = TailBound(self.ell, self.Delta, self.A, self.beta, t)
+        tb = TailBound(self.ell, self.logC, self.A, self.beta, t)
         if exact_N is not None:
             N = exact_N
             mu = self.lam[N] - self.eps[N]
@@ -325,6 +336,12 @@ class Case:
         c1 = npass == 1
         c2 = ps & (E[:, None] < gaps[None, :] / 2)
         res = {}
+        # no N in the complete range, at this t, lets (C1) or (C2) single out a wrong signature
+        wrong1 = c1 & ~ps[:, self.i0]
+        check(not wrong1.any(), f"{self.name} M={self.M} {self.variant}: (C1) concludes a wrong signature at N={Ns[np.argmax(wrong1)] if wrong1.any() else 0}, t={t}")
+        others = np.ones(len(Gv), bool)
+        others[self.i0] = False
+        check(not c2[:, others].any(), f"{self.name} M={self.M} {self.variant}: (C2) concludes a wrong signature, t={t}")
         if c1.any():
             k = int(np.argmax(c1))
             who = int(np.argmax(ps[k]))
@@ -371,11 +388,11 @@ class Case:
             Gv = self.Gs(G, t)
             gap = float(np.min(np.abs(np.delete(Gv, self.i0) - Gv[self.i0])))
             target = gap / 2 if crit == "C2" else gap
-            Ht = math.exp(min(float(logH(self.ell, self.Delta, self.A, t)), 700.0))
+            Ht = math.exp(min(float(logH(self.ell, self.logC, self.A, t)), 700.0))
             room = target - Ht - t * pert_all
             if room <= 0:
                 return None
-            tb = TailBound(self.ell, self.Delta, self.A, self.beta, t)
+            tb = TailBound(self.ell, self.logC, self.A, self.beta, t)
             sel = tb.s < t
             mu = float(np.min((tb.b[sel] - math.log(room)) / (t - tb.s[sel])))
             return max(1, math.ceil(mu * self.A / (4 * math.pi)))
@@ -458,16 +475,18 @@ def main():
                   "true": float(I["diam_true_numerical"])}
         for M in Ms:
             Dcls = float(I[f"D_M{M}"])
+            Kcls = count_constant(2 * mp.pi * mpq(area_over_2pi(*sig)), mp.mpf(I["systole_lower_bound"]), M)
             th = theorem_E_constants(2 * mp.pi * mpq(area_over_2pi(*sig)), mp.mpf(I["systole_lower_bound"]), M)
-            plan = [("B1", "eps", "full"), ("B2", "eps", "full"), ("true", "eps", "full"), ("D", "eps", "full")]
+            plan = [("B1", "eps", "full"), ("B2", "eps", "full"), ("true", "eps", "full"), ("K", "eps", "full")]
             if name.startswith("O("):
                 plan.append(("B1", "epsc", "full"))
             if "s120" in specs:
                 plan.append(("B1", "eps", "s120"))
             for dv, ek, dk in plan:
                 spec = specs[dk]
-                Delta = Dcls if dv == "D" else deltas[dv]
-                c = Case(name, sig, None, ell, M, spec, Delta, dv, dk, ek, do_obs=(dv == "B1" and ek == "eps"))
+                Delta = float(Kcls) if dv == "K" else deltas[dv]
+                logC = float(mp.log(Kcls)) if dv == "K" else None
+                c = Case(name, sig, None, ell, M, spec, Delta, dv, dk, ek, do_obs=(dv == "B1" and ek == "eps"), logC=logC)
                 keep = dv == "B1" and ek == "eps" and dk == "full"
                 o = c.run(G, keep_t=keep)
                 if keep:
@@ -475,7 +494,7 @@ def main():
                         trow.append([name, M, f"{t:.6e}", f"{r['gap0']:.6e}", str(r["nearest"]), f"{r['H'] / math.log(10):.3f}",
                                      r.get("C1", ""), r.get("C2", ""), r.get("obs", ""), r.get("rule", "")])
                     irows.append([name, str(sig), I["area_over_pi"] + "*pi", I["systole_lower_bound"], I["diam_upper_B1_2diamP"],
-                                  I["diam_upper_B2"], I["diam_true_numerical"], f"{Dcls:.6g}", M, len(c.S), f"{c.beta:.6f}",
+                                  I["diam_upper_B2"], I["diam_true_numerical"], f"{Dcls:.6g}", mp.nstr(Kcls, 6), M, len(c.S), f"{c.beta:.6f}",
                                   f"{spec['lam_complete']:.1f}", c.Nc, spec["n_total"], dk, spec["basis"]])
                 row = [name, M, len(c.S), dv, f"{Delta:.6g}", ek, dk, c.Nc, f"{spec['lam_complete']:.1f}"]
                 for key in ("C1", "C2"):
@@ -500,7 +519,7 @@ def main():
                                                   "N_obs", "N_rule"], trow)
     write(os.path.join(DATA, "practice_inputs.csv"),
           ["orbifold", "signature", "area", "systole_lower_bound", "diam_B1_2diamP", "diam_B2", "diam_true_numerical",
-           "D_A_eps_M", "M", "S_size", "beta", "lambda_complete", "N_complete", "n_computed", "data", "completeness_basis"], irows)
+           "D_A_eps_M", "K_A_eps_M", "M", "S_size", "beta", "lambda_complete", "N_complete", "n_computed", "data", "completeness_basis"], irows)
     # lambda~_j and eps_j, j <= 40, for the triangle orbifolds
     rows41 = []
     for name, sp in tri.items():
@@ -516,9 +535,9 @@ def main():
                             (10 * mp.pi, "10pi", "1", 3), (10 * mp.pi, "10pi", "1", 12)):
         c = theorem_E_constants(A, mp.mpf(eps), M)
         bind = min((("t_1", c["t1"]), ("t_2", c["t2"]), ("t_3", c["t3"])), key=lambda x: x[1])[0]
-        t2.append([Atxt, eps, M, c["kstar"], mp.nstr(c["D"], 5), mp.nstr(c["t1"], 5), mp.nstr(c["t2"], 4), mp.nstr(c["t3"], 4),
+        t2.append([Atxt, eps, M, c["kstar"], mp.nstr(c["D"], 5), mp.nstr(c["K"], 5), mp.nstr(c["t1"], 5), mp.nstr(c["t2"], 4), mp.nstr(c["t3"], 4),
                    mp.nstr(c["tstar"], 5), mp.nstr(c["Gamma"], 4), mp.nstr(c["Lambda"], 4), c["N"], mp.nstr(c["delta"], 4), bind])
-    write(os.path.join(DATA, "table2.csv"), ["A", "eps", "M", "kstar", "D", "t1", "t2", "t3", "tstar", "Gamma_star", "Lambda",
+    write(os.path.join(DATA, "table2.csv"), ["A", "eps", "M", "kstar", "D", "K", "t1", "t2", "t3", "tstar", "Gamma_star", "Lambda",
                                              "N", "delta", "binds"], t2)
     t1row2 = theorem_E_constants(mp.pi / 2, mp.mpf("1.8626"), 12)["t1"]
     check(abs(t1row2 - mp.mpf("6.8486487e-9")) < mp.mpf("1e-15"), "Table 2 row 2: t_1 = 6.8486e-9")

@@ -9,6 +9,7 @@ Each table is written between the markers
     python3 paper/eigen/tools/make_tables.py --check   # exit 1 if any table is out of date
 
 Sources (all committed, written by theory/eigen/practice.py and theory/eigen/instances.py):
+  E          theory/eigen/data/table2.csv (the constants of Theorem 6.2)
   practice   theory/eigen/data/practice.csv (diameter inputs B1 and D, estimated eps_j, full spectra)
   spectra    theory/eigen/data/triangle_spectra_first41.csv
 """
@@ -60,19 +61,16 @@ def table_practice():
     order = [k for k in dict.fromkeys((r["orbifold"], r["M"]) for r in rows if r["diameter_input"] == "B1"
                                       and r["data"] == "full" and r["eps_j"] == "eps")]
     out = ["\\begin{table}[t]", "\\centering\\footnotesize",
-           "\\caption{The a-posteriori test on computed spectra, with the instance inputs of Table~\\ref{tab:inputs} "
-           "(diameter bound $\\Delta=2\\diam P$) and with the class-level diameter bound $D(A,\\ell,M)$ of "
-           "Theorem~\\ref{thm:diam}: the least $N$ for which criterion (C1) or (C2) of Theorem~\\ref{thm:post} holds, "
-           "with the time $t$ in the middle of the window of times at which that least $N$ holds; $\\ge N_c$ means that the criterion fails for "
-           "every $N\\le N_c-1$, the largest $N$ that the $N_c$ eigenvalues $\\tilde\\lambda_0,\\dots,\\tilde\\lambda_{N_c-1}$ of the complete range allow "
-           "(the test with $N$ uses $\\tilde\\lambda_N$), followed by the estimate (est.) of Section~\\ref{sec:numerical}; and "
-           "the $N$ of Theorem~\\ref{thm:E} for the class $\\Cl(A,\\ell,M)$.}\\label{tab:practice}",
+           "\\caption{The criterion of Theorem~\\ref{thm:post} on the computed spectra, with estimated errors and lists assumed complete: "
+           "the least $N$ for which (C1) or (C2) holds with the instance's diameter bound $\\Delta=2\\diam P$, and for which (C1) holds with "
+           "the class-level count of Lemma~\\ref{lem:countK}, with the geometric middle of the window of times at which that $N$ holds; "
+           "and the $N$ of Theorem~\\ref{thm:E} for the class $\\Cl(A,\\ell,M)$.}\\label{tab:practice}",
            "\\setlength{\\tabcolsep}{3.5pt}\\begin{tabular}{@{}llllllll@{}}", "\\toprule",
-           "orbifold & $\\ell$ & $M$ & $|\\mathcal S|$ & (C1), $\\Delta$ & (C2), $\\Delta$ & (C1), $D(A,\\ell,M)$ & $N$, Thm~\\ref{thm:E}\\\\",
+           "orbifold & $\\ell$ & $M$ & $|\\mathcal S|$ & (C1), $\\Delta$ & (C2), $\\Delta$ & (C1), $C_*(A,\\ell,M)$ & $N$, Thm~\\ref{thm:E}\\\\",
            "\\midrule"]
     for orb, M in order:
         b = key[(orb, M, "B1")]
-        d = key[(orb, M, "D")]
+        d = key[(orb, M, "K")]
         name = tex_name(orb)
         ell = inp[orb]["systole_lower_bound"]
         out.append(f"{name} & ${ell}$ & ${M}$ & ${b['S_size']}$ & {count(b['N_C1'], b['t_C1'], b['weyl_C1'], b['N_complete'])} & "
@@ -87,21 +85,21 @@ def table_inputs():
                  if r["data"] == "full"}.values())[::-1]
     out = ["\\begin{table}[t]", "\\centering\\footnotesize",
            "\\caption{Inputs of the test for the ten examples: exact area, the lower bound $\\ell$ for the "
-           "systole (computed in floating point, not certified), the proved diameter bound $2\\diam P$ and the computed diameter, the class-level bound "
-           "$D(A,\\ell,M)$ of Theorem~\\ref{thm:diam} (-- where an order exceeds $M$), and the complete range: the eigenvalues $\\lambda\\le\\lambda_c$, "
+           "systole (computed in floating point, not certified), the proved diameter bound $2\\diam P$ and the computed diameter, the class-level count constant "
+           "$C_*(A,\\ell,M)$ of Lemma~\\ref{lem:countK} (-- where an order exceeds $M$), and the complete range: the eigenvalues $\\lambda\\le\\lambda_c$, "
            "$N_c$ of them, of the $n$ computed; for the family the trace test alone covers $\\lambda<9.8\\times10^3$, and the range above rests on the agreement of the eigenvalue counts of three discretisations.}\\label{tab:inputs}",
            "\\setlength{\\tabcolsep}{4pt}\\begin{tabular}{@{}lllllllll@{}}", "\\toprule",
-           "orbifold & area & $\\ell$ & $2\\diam P$ & $\\diam$ & $D$, $M=3$ & $D$, $M=12$ & $\\lambda_c$ & $N_c$ of $n$\\\\",
+           "orbifold & area & $\\ell$ & $2\\diam P$ & $\\diam$ & $C_*$, $M=3$ & $C_*$, $M=12$ & $\\lambda_c$ & $N_c$ of $n$\\\\",
            "\\midrule"]
-    inst = {r["orbifold"]: r for r in csv.DictReader(open(DATA / "instances.csv"))}
+    Kv = {(r["orbifold"], r["M"]): r["K_A_eps_M"] for r in csv.DictReader(open(DATA / "practice_inputs.csv")) if r["data"] == "full"}
     for r in rows:
         orb = r["orbifold"]
         name = tex_name(orb)
         area = "$\\pi/2$" if r["area"].startswith("0.5") else "$4\\pi/3$"
-        i = inst[orb]
-        d3 = f"${float(i['D_M3']):.1f}$" if "tau" in orb else "--"
+        k3 = f"${sci(float(Kv[(orb, '3')]))}$" if (orb, "3") in Kv else "--"
+        k12 = f"${sci(float(Kv[(orb, '12')]))}$"
         out.append(f"{name} & {area} & ${r['systole_lower_bound']}$ & ${float(r['diam_B1_2diamP']):.3f}$ & "
-                   f"${float(r['diam_true_numerical']):.3f}$ & {d3} & ${float(i['D_M12']):.1f}$ & "
+                   f"${float(r['diam_true_numerical']):.3f}$ & {k3} & {k12} & "
                    f"${float(r['lambda_complete']):.0f}$ & ${r['N_complete']}$ of ${r['n_computed']}$\\\\")
     out += ["\\bottomrule", "\\end{tabular}", "\\end{table}"]
     return "\n".join(out)
@@ -130,7 +128,29 @@ def table_spectra():
     return "\n".join(out)
 
 
-TABLES = {"inputs": table_inputs, "practice": table_practice, "spectra": table_spectra}
+def table_E():
+    rows = list(csv.DictReader(open(DATA / "table2.csv")))
+    out = ["\\begin{table}[t]", "\\centering\\footnotesize",
+           "\\caption{The constants of Theorem~\\ref{thm:E}, with $t_*=\\min(t_1,t_2,t_3)$; the last column names the binding "
+           "constraint. aeb means $a\\times10^b$.}\\label{tab:E}",
+           "\\setlength{\\tabcolsep}{3pt}\\begin{tabular}{@{}llllllllllll@{}}", "\\toprule",
+           "$A$ & $\\varepsilon$ & $M$ & $k_*$ & $C_*$ & $t_1$ & $t_3$ & $\\Theta_*$ & $\\Lambda$ & $N$ & $\\delta$ & binds\\\\",
+           "\\midrule"]
+    area = {"pi/2": "$\\pi/2$", "4pi/3": "$4\\pi/3$", "2pi": "$2\\pi$", "10pi": "$10\\pi$"}
+
+    def e(x):
+        m, ex = f"{float(x):.1e}".split("e")
+        return f"${m}$e${int(ex)}$"
+    for r in rows:
+        whole, _, frac = r["eps"].partition(".")
+        eps = (whole + "." + frac[:4]).rstrip("0").rstrip(".") if frac else whole   # truncated: a lower bound
+        out.append(f"{area[r['A']]} & ${eps}$ & ${r['M']}$ & ${r['kstar']}$ & {e(r['K'])} & {e(r['t1'])} & {e(r['t3'])} & "
+                   f"{e(r['Gamma_star'])} & {e(r['Lambda'])} & {e(r['N'])} & {e(r['delta'])} & ${r['binds']}$\\\\")
+    out += ["\\bottomrule", "\\end{tabular}", "\\end{table}"]
+    return "\n".join(out)
+
+
+TABLES = {"inputs": table_inputs, "practice": table_practice, "spectra": table_spectra, "E": table_E}
 
 
 def main():

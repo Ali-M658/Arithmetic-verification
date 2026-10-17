@@ -1,29 +1,38 @@
 k in n(s) = c (log s)^k; same model, same window, both series; +- block-bootstrap sd
 series                window        per-S k   cumulative k
-all                600-4800     4.48 +- 0.44    4.56 +- 0.71
-all               1200-4800     4.43 +- 0.48    4.51 +- 0.84
-all                600-2400     4.63 +- 0.71    4.59 +- 1.25
-all               2400-4800     4.37 +- 0.64    4.15 +- 1.13
+all                600-4800     4.49 +- 0.06    4.56 +- 0.08
+all               1200-4800     4.44 +- 0.08    4.51 +- 0.14
+all                600-2400     4.64 +- 0.11    4.59 +- 0.16
+all               2400-4800     4.39 +- 0.22    4.15 +- 0.36
 
-primitive          600-4800     3.54 +- 0.37    3.63 +- 0.57
-primitive         1200-4800     3.43 +- 0.40    3.66 +- 0.66
-primitive          600-2400     3.84 +- 0.59    3.60 +- 0.97
-primitive         2400-4800     3.33 +- 0.53    3.08 +- 1.11
+primitive          600-4800     3.53 +- 0.08    3.63 +- 0.11
+primitive         1200-4800     3.42 +- 0.13    3.66 +- 0.21
+primitive          600-2400     3.83 +- 0.13    3.60 +- 0.20
+primitive         2400-4800     3.31 +- 0.33    3.08 +- 0.59
 
-dual               600-4800     3.33 +- 0.35    3.33 +- 0.60
-dual              1200-4800     3.32 +- 0.48    3.52 +- 0.76
-dual               600-2400     3.29 +- 0.60    3.27 +- 0.99
-dual              2400-4800     3.05 +- 0.74    2.43 +- 1.46
+dual               600-4800     3.33 +- 0.17    3.33 +- 0.23
+dual              1200-4800     3.32 +- 0.26    3.52 +- 0.38
+dual               600-2400     3.30 +- 0.31    3.27 +- 0.44
+dual              2400-4800     3.06 +- 0.60    2.43 +- 1.13
 
-primitive dual     600-4800     2.56 +- 0.34    2.52 +- 0.53
-primitive dual    1200-4800     2.52 +- 0.43    2.98 +- 0.72
-primitive dual     600-2400     2.57 +- 0.56    2.16 +- 0.89
-primitive dual    2400-4800     1.81 +- 0.84    0.45 +- 1.60
+primitive dual     600-4800     2.56 +- 0.20    2.52 +- 0.31
+primitive dual    1200-4800     2.51 +- 0.33    2.98 +- 0.54
+primitive dual     600-2400     2.57 +- 0.39    2.16 +- 0.58
+primitive dual    2400-4800     1.80 +- 0.80    0.45 +- 1.49
 
-non-dual           600-4800     4.79 +- 0.47    4.91 +- 0.77
-non-dual          1200-4800     4.71 +- 0.54    4.77 +- 0.91
-non-dual           600-2400     5.02 +- 0.79    5.01 +- 1.35
-non-dual          2400-4800     4.69 +- 0.71    4.59 +- 1.30
+non-dual           600-4800     4.80 +- 0.06    4.91 +- 0.08
+non-dual          1200-4800     4.72 +- 0.09    4.77 +- 0.14
+non-dual           600-2400     5.03 +- 0.13    5.01 +- 0.18
+non-dual          2400-4800     4.71 +- 0.21    4.59 +- 0.37
+
+primitive non-dual   600-4800     3.73 +- 0.09    3.86 +- 0.13
+primitive non-dual  1200-4800     3.60 +- 0.15    3.80 +- 0.23
+primitive non-dual   600-2400     4.10 +- 0.16    3.91 +- 0.25
+primitive non-dual  2400-4800     3.59 +- 0.36    3.62 +- 0.60
+
+pure power law n(s) = c s^beta, Poisson MLE, window 600-4800 (for comparison with the log-power model)
+all              beta = 0.587 (cumulative exponent about 1.59); log-power k = 4.489; NLL(power) - NLL(log-power) = 9.48; Pearson dispersion 6.76; scaled difference 1.40
+primitive        beta = 0.463 (cumulative exponent about 1.46); log-power k = 3.532; NLL(power) - NLL(log-power) = 4.75; Pearson dispersion 2.12; scaled difference 2.24
 
 closed form c S (log S)^K fitted on 100..4800 (the earlier cumulative fit): K = 5.16
-secondary-term prediction from per-S k = 4.48: K ~ k (1 + 1/log S) = 5.04 at S ~ 3000
+secondary-term prediction from per-S k = 4.49: K ~ k (1 + 1/log S) = 5.05 at S ~ 3000

@@ -10,6 +10,7 @@ are logged in paper/jga/SOURCES.md.
 
     python3 paper/jga/tools/build_bib.py --fetch   # download raw records into fetched/bib/
     python3 paper/jga/tools/build_bib.py           # assemble references.bib from them
+    python3 paper/jga/tools/build_bib.py --fetch-missing   # fetch only records not yet present, then assemble
 
 The raw records are not committed (paper/jga/fetched/ is git-ignored); --fetch recreates
 them, and SOURCES.md lists the SHA-256 of each one as fetched for this build.
@@ -142,6 +143,13 @@ SOURCES = {
     "dowker1989": ("doi", "10.1063/1.528395"),
     "bkd1996": ("doi", "10.1007/bf02517895"),
     "ostrowski1940a": ("doi", "10.1007/bf02546329"),        # first part, pp. 99-155
+    # added in referee round 6 (review/referee-round-6/VERDICT-A.md, items A2, A5, a35): cone
+    # coefficients for arbitrary angle in the physics literature; the wave trace
+    "fursaev1994": ("doi", "10.1016/0370-2693(94)90590-8"),
+    "dowker1994": ("doi", "10.1088/0264-9381/11/11/003"),
+    "duistermaatguillemin1975": ("doi", "10.1007/bf01405172"),
+    "hillairet2005": ("doi", "10.1016/j.jfa.2005.04.013"),
+    "fordwunsch2017": ("doi", "10.1016/j.aim.2016.09.013"),
 }
 
 # Documents with no registry record: fields read off the fetched document (SOURCES.md).
@@ -176,13 +184,13 @@ LOCAL_ENTRIES = {
     "companion": ("\\title{Triples with equal sum and equal reciprocal sum}", """@unpublished{companion,
   author       = {Gang, Palaash and Agadi, Akshaj and Veluri, Arjun and Wang, Jerry and Barreto, Jeremy and Chouthaiwale, Aarin},
   title        = {Triples with equal sum and equal reciprocal sum},
-  note         = {Companion manuscript, in preparation},
+  note         = {Preprint, \\textbf{[PLACEHOLDER: preprint identifier]}},
   year         = {2026}
 }"""),
     "companionB": ("\\title[Finitely many eigenvalues determine the signature]{Finitely many eigenvalues determine the signature of a hyperbolic orbifold}", """@unpublished{companionB,
   author       = {Gang, Palaash and Agadi, Akshaj and Veluri, Arjun and Wang, Jerry and Barreto, Jeremy and Chouthaiwale, Aarin},
   title        = {Finitely many eigenvalues determine the signature of a hyperbolic orbifold},
-  note         = {Companion manuscript, submitted},
+  note         = {Preprint, \\textbf{[PLACEHOLDER: preprint identifier]}},
   year         = {2026}
 }"""),
     "companionA": ("\\title[How much of a hyperbolic orbifold does heat hear?]{How much of a hyperbolic orbifold does heat hear?}", """@unpublished{companionA,
@@ -695,7 +703,29 @@ def build():
     print(f"wrote {OUT} with {len(entries)} entries")
 
 
+def fetch_missing():
+    """Fetch the records of DOI, zbMATH and arXiv sources that have no raw file yet (new entries),
+    leaving every existing record untouched."""
+    RAW.mkdir(parents=True, exist_ok=True)
+    for key, (kind, ident) in SOURCES.items():
+        if kind == "doi" and not (RAW / f"{key}.json").exists():
+            try:
+                data = get("https://doi.org/" + ident, {"Accept": "application/vnd.citationstyles.csl+json"})
+            except Exception:  # noqa: BLE001  (some publishers refuse content negotiation; same record from Crossref)
+                data = get("https://api.crossref.org/works/" + urllib.parse.quote(ident) + "/transform/application/vnd.citationstyles.csl+json")
+            (RAW / f"{key}.json").write_bytes(data)
+            print("fetched", key)
+            time.sleep(0.5)
+        elif kind == "zbmath" and not (RAW / f"{key}.json").exists():
+            q = urllib.parse.quote("an:" + ident)
+            (RAW / f"{key}.json").write_bytes(
+                get(f"https://api.zbmath.org/v1/document/_search?search_string={q}&page=0&results_per_page=1"))
+            print("fetched", key)
+
+
 if __name__ == "__main__":
     if "--fetch" in sys.argv:
         fetch_all()
+    elif "--fetch-missing" in sys.argv:
+        fetch_missing()
     build()

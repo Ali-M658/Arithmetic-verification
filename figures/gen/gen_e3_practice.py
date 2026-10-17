@@ -15,7 +15,8 @@ full committed spectra:
 The x-coordinate is the systole (computed value).  Writes figures/data/e3_practice.csv.
 Asserted: the values of the revised Table 3 (O(2,8,8): N_obs 3, N_test 18 (C1), 20 (C2); O(3,3,12): 3,
 25, 29; family M = 3: N_obs 3-43, N_test(C1) 24-767; M = 12: 4-63, 28-847; all ten succeed);
-N_obs <= N_test(C1) <= N_test(C2) and 100 N_test(C2) < N_theory everywhere.
+N_obs <= N_test(C1) <= N_test(C2) and 50 N_test(C2) < N_theory everywhere (Theorem 6.2 with the count of
+Lemma 4.5).
 """
 from common import read_csv, write_csv
 
@@ -32,7 +33,7 @@ def main():
         name = r["orbifold"]
         label = NAMES.get(name, "(0;3,3,3,3) theta=" + name.split("=")[1] if name.startswith("O_tau") else name)
         n1, n2, nobs, nth = int(r["N_C1"]), int(r["N_C2"]), int(r["N_obs"]), int(r["N_thm62"])
-        assert nobs <= n1 <= n2 and 100 * n2 < nth, (name, r["M"], nobs, n1, n2, nth)
+        assert nobs <= n1 <= n2 and 50 * n2 < nth and 50 * n1 < nth, (name, r["M"], nobs, n1, n2, nth)
         out.append([label, int(r["M"]), inst[name]["systole_computed"], nobs, n1, nth, n2,
                     inst[name]["systole_lower_bound"]])
     out.sort(key=lambda x: (x[0], x[1]))
