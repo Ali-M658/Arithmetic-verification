@@ -37,6 +37,10 @@ with its identifier to be filled; it has no external record.
 | `graham1963.json` | https://doi.org/10.1017/s1446788700039045 | `46da6abcef1d07543861e86b25a20bff904d50ca02ef3e9920de3971ff915d5a` |
 | `vandoorn2025.xml` | https://export.arxiv.org/api/query?id_list=2502.02200 | `b0a877aded4c8f83ae1b2dd2f2f682261c88419bb1448c6e581206ea093c89de` |
 | `dggw2017.json` | https://doi.org/10.1307/mmj/1488510034 | `1be58f6d09d48eb89220fdc0b827f63b402e4cea54b957698383bb5a09151f0e` |
+| `bremnermacleod2014.json` | https://api.zbmath.org/v1/document/_search?search_string=an%3A1319.11019&page=0&results_per_page=1 | `b949a4a696138f4f1f564ee0587647bfa251628dc2bc7635a28fffd96a382854` |
+| `bremnermacleod2025.json` | https://doi.org/10.33039/ami.2025.10.022 | `7a35b6b86f33c7d702d823a33fd45b7d7bdef68b741ac05ad364a71c55578f2c` |
+| `elsholtztao2013.json` | https://doi.org/10.1017/s1446788712000468 | `1bd42f61e9a7b84c73c85d044e5969eab2f1b4535a66a040a5c2086014a2ce12` |
+| `browningelsholtz2011.json` | https://doi.org/10.1215/ijm/1359762408 | `d4fbfa59f2c11fe91c80e31188630ba50c13bb7bb7a533cb94c8cc27f1aed403` |
 | `dggw2008_pages.json` | https://api.zbmath.org/v1/document/_search?search_string=doi%3A10.1307/mmj/1213972406&page=0&results_per_page=1 | `78c5dc19d637784f95004fe9f7c0466f88574f64dfb0b4f8fee373808a1eac0b` |
 
 ## Corrections to fetched records
@@ -45,6 +49,11 @@ with its identifier to be filled; it has no external record.
 - `tho2021` title: What positive integers $n$ can be presented in the form $n=(x+y+z)(1/x+1/y+1/z)$?
 - `bremnertho2018` title: The equation $(w+x+y+z)(1/w+1/x+1/y+1/z)=n$
 - `tho2021` volume: 54
+- `bremnermacleod2025` volume: 62
+- `bremnermacleod2025` pages: 26--27
+- `bremnermacleod2025` author: Bremner, Andrew and Macleod, Allan
+- `elsholtztao2013` author: Elsholtz, Christian and Tao, Terence
+- `elsholtztao2013` title: Counting the number of solutions to the {E}rd{\H{o}}s--{S}traus equation on unit fractions
 - `tho2021` pages: 141--146
 - `tho2021` author: {Nguyen Xuan Tho}
 - `bremnertho2018` author: Bremner, Andrew and {Nguyen Xuan Tho}

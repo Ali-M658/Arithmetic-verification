@@ -185,6 +185,25 @@ def main() -> int:
         f"{abs(pred_p - act) / np.sqrt(disp * act):.1f}")
     say()
 
+    # round 8: how much the per-sum exponent depends on the arithmetic of s (Lemma 5: n(s) is a divisor sum), and
+    # where the two laws are tangent: the log-slope k/log s of c (log s)^k equals beta at s = exp(k/beta).
+    s = s_all[600:4801]
+    y = n["all"][600:4801]
+    si = s.astype(int)
+    classes = {"gcd(s,6)=1": np.gcd(si, 6) == 1, "s odd": si % 2 == 1, "s even": si % 2 == 0, "6 | s": si % 6 == 0}
+    kres = {}
+    for lab, mask in classes.items():
+        kres[lab] = fit_per_s(s[mask], y[mask])
+    say("per-sum k for all pairs on 600-4800, by residue class of s: "
+        + "; ".join(f"{lab}: {v:.2f}" for lab, v in kres.items()))
+    assert 4.0 < kres["gcd(s,6)=1"] < 4.1 and 4.25 < kres["s odd"] < 4.35 and 4.55 < kres["s even"] < 4.65 \
+        and 4.9 < kres["6 | s"] < 5.0, kres
+    s_tan = float(np.exp(k / beta))
+    say(f"tangency of the two fitted laws: k/log s = beta at s = {s_tan:.0f}")
+    assert 2000 < s_tan < 2200, s_tan
+    assert abs(100 * (pred_l / act - 1) - 0.25) < 0.01 and abs(100 * (pred_p / act - 1) - 2.33) < 0.01
+    say()
+
     N_all = np.cumsum(n["all"])
     K = closed_form_K(s_all[10:], N_all[10:])
     kp = table[("all", 600, 4800)][0]

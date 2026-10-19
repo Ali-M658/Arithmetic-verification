@@ -3,3 +3,4 @@
 2. Lemma 4.5: the counting bound is at most K e^x; d_0 = 2 r_0 <= eps/2 and rho_1 <= r_0
 3. Theorem 3.2(ii): det(y_a^k - 1) = prod (y_b - y_a), M <= 12
 4. Appendix A: mu_k in closed form, and alpha_k from the moments equals the Bernoulli formula, k <= 8
+5. Jorgensen for elliptic pairs: tr[f,g]-2 = 4 sin^2(pi/p) sin^2(pi/q) sinh^2 d; bound attained in (2,3,7): d(7,2) = 0.5452748, d(7,3) = 0.6206717

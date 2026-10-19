@@ -173,3 +173,21 @@ acknowledgement of the colour maps is copied from the JGA paper because F9 uses 
 | Ulas, Theorem 3.1 and Corollary 3.4 | arXiv 1305.6241 (fetched by the N-e referee, round-7 scratch) |
 | Graham 1963, van Doorn 2025 (partitions with prescribed reciprocal sum) | Crossref record; arXiv abstract (round-7 `lit/`) |
 | DGGW erratum (Michigan Math. J. 66 (2017) 221–222) | Crossref record; text not obtained, no statement about its content |
+
+## Round 8 additions
+
+| statement | source |
+|---|---|
+| "arbitrarily large classes" (Theorem C) | Theorem thm:largefibres (size at least k) |
+| Bremner–MacLeod: E_N = E_{2N+6} under (b+c, c+a, a+b); Lemma 2.1, §4, Thm 5.1, Cor 5.2; corrigendum (Table 2) | fetched text (referee N-a, review/referee-round-8/N-a-editor-additive-combinatorics/scratch/lit/bm.txt), zbMATH 1319.11019 and the corrigendum record; `checks/check_note.py` 9c |
+| integer Λ > 9: positive torsion only at Λ = 10, orderings of (1:1:2) and (1:2:2) | `check_note.py` 9b |
+| the classical dual identity λ/x, λ = e_1 e_n/e_{n−1} | `check_note.py` 9d (n = 3); the general case by the same two lines |
+| Sadek–El-Sissi Prop. 2.7, Thm 2.8 (published numbering, rationals); the first preprint's statements false (Moreland–Zieve, (3,10,24)) | `review/literature-pass/_fetched/txt/sadekelsissi2015.txt`; Moreland–Zieve arXiv:1304.1442 introduction |
+| Proposition prop:delpezzo (with proof) | proof in the text; `theory/diophantine/dual_delpezzo.py`; Browning–Sofos Thm 1.1 (arXiv:1609.09057) |
+| Remark rem:nolinear (with proof) | proof in the text |
+| Proposition prop:pencil: smoothness, the model at Λ = ∞ | proof in the text |
+| Table tab:selmer (Selmer groups, integral models, ranks) | `review/audit/diophantine/check_descent.txt` (released as checks/classes4800/) |
+| torsion column of Table tab:fibres from Theorem 1: 6721, 1449, 1329601, 8569 | `check_note.py` 9a |
+| Section 6.3: residue-class exponents 4.06, 4.29, 4.61, 4.97; tangency s ≈ 2100; holdout +0.25%, +2.33% of the exact count | `theory/diophantine/exponent_fits.py` (round-8 block) |
+| crossover log X > 438 | `check_note.py` 7c |
+| Browning–Elsholtz 2011, Elsholtz–Tao 2013 | fetched records (tools/build_bib.py) |

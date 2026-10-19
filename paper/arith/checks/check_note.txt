@@ -37,5 +37,9 @@ PASS 8a' the explicit change of variables x = c^2 s/4 + c, y = c^3 eta/8 + c^2 (
 PASS 8a E_Lambda at Lambda = -1/c is Kubert's E(c+c^2, c) over Q(c) (u = c/2)
 PASS 8b Lemma 1 discriminants negative on the stated ranges
 PASS 8c the four torsion-type pairs: equal S and R, Lambda = 169/16 = (r+1+1/r)^2 at r = -4, primitive
+PASS 9a Table 1 torsion Z/6: Lambda not a square, (Lambda-1)(Lambda-9) den^2 = 6721, 1449, 1329601, 8569 not squares
+PASS 9b integer Lambda > 9: only Lambda = 10 has positive torsion points, the orderings of (1:1:2) and (1:2:2); no integer (r+1+1/r)^2 > 9
+PASS 9c Bremner-MacLeod: N = Lambda/2 - 3 under (b+c, c+a, a+b), and their E_N is E_{2N+6}
+PASS 9d dual pair: lambda/x with lambda = e1 e3/e2 keeps the sum and the reciprocal sum, and e2 (lambda/x) = e1 (bc, ca, ab)
 
-39 checks, 0 failures
+43 checks, 0 failures

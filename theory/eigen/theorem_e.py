@@ -141,6 +141,38 @@ def main():
             check(4 < mp.mpf(c["N"]) / prev < 6, "N grows roughly like eps^-2 log(1/eps)^2 (ratio about 5 per halving, towards 4)")
         out.append(f"  {mp.nstr(eps, 3)}, {bind}, {mp.nstr(mp.mpf(c['N']), 4)}, {ratio}")
         prev, prev_bind = mp.mpf(c["N"]), bind
+    # round 8: the class of the text (A = 4 pi/3, M = 3): t_3 binds from eps = 0.44 down (not at 0.45), and from
+    # eps = 0.42 the factor per halving of eps falls from 5.24 to below 4.7; and pi e^{3D}/A over the rows of Table 3
+    from eigen_common import diam_bound
+    c45 = theorem_E_constants(4 * mp.pi / 3, mp.mpf('0.45'), 3)
+    c44 = theorem_E_constants(4 * mp.pi / 3, mp.mpf('0.44'), 3)
+    check(c45["t3"] >= c45["t1"] and c44["t3"] < c44["t1"], "t_3 binds from eps = 0.44")
+    prev, ratios = None, []
+    for k in range(8):
+        c = theorem_E_constants(4 * mp.pi / 3, mp.mpf('0.42') / 2 ** k, 3)
+        check(c["t3"] < c["t1"], "t_3 binds")
+        if prev is not None:
+            ratios.append(mp.mpf(c["N"]) / prev)
+        prev = mp.mpf(c["N"])
+    check(all(a > b for a, b in zip(ratios, ratios[1:])) and 5.2 < ratios[0] < 5.3 and 4.6 < ratios[-1] < 4.7,
+          "factor per halving decreasing from 5.24")
+    out.append("\nA = 4pi/3, M = 3: t_3 binds from eps = 0.44; factors per halving from 0.42: "
+               + ", ".join(mp.nstr(r, 3) for r in ratios))
+    exps = []
+    for (A, eps, M) in ((mp.pi / 2, '1.8626', 8), (mp.pi / 2, '1.8626', 12), (4 * mp.pi / 3, '2.633915', 3),
+                        (4 * mp.pi / 3, '0.693994', 3), (4 * mp.pi / 3, '0.693994', 12), (2 * mp.pi, '0.1', 3),
+                        (10 * mp.pi, '1', 3), (10 * mp.pi, '1', 12)):
+        D = diam_bound(A, mp.mpf(eps), M)
+        exps.append(mp.log10(mp.pi) + 3 * D * mp.log10(mp.e) - mp.log10(A))
+    check(196.5 < min(exps) < 196.6 and 29325.3 < max(exps) < 29325.4, "pi e^{3D}/A between 3e196 and 2e29325")
+    out.append(f"pi e^(3D)/A between 10^{mp.nstr(min(exps), 6)} and 10^{mp.nstr(max(exps), 8)}")
+    # Remark 6.5(a): first differences beyond k = 3 at area 12 pi, (0;2^4,7^7) and (0;4^6,8^4) share c_1, c_2, c_3
+    from eigen_common import heat_coeffs, area_over_2pi
+    sa, sb = (0, (2,) * 4 + (7,) * 7), (0, (4,) * 6 + (8,) * 4)
+    ca, cb = heat_coeffs(*sa, 4), heat_coeffs(*sb, 4)
+    check(area_over_2pi(*sa) == area_over_2pi(*sb) == 6 and ca[:3] == cb[:3] and ca[3] != cb[3],
+          "(0;2^4,7^7) and (0;4^6,8^4): area 12 pi, share c_1..c_3, differ at c_4")
+    out.append("(0;2^4,7^7), (0;4^6,8^4): area 12 pi, first difference at c_4")
     print("\n".join(out))
     return 0
 

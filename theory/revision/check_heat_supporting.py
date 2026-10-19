@@ -31,7 +31,7 @@ import mpmath as mp
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, os.path.join(HERE, "..", "eigen"))
-from eigen_common import alpha, b_cone, heat_coeffs, elliptic_term, identity_term, area_over_2pi  # noqa: E402
+from eigen_common import alpha, b_cone, heat_coeffs, elliptic_term, identity_term, area_over_2pi, Phi_closed  # noqa: E402
 
 out = []
 
@@ -366,6 +366,196 @@ say("8. Realisation lemma: the configurations of (0;2,8,8)/(0;3,3,12) and (1;15)
 # K = -1 against the area series alpha_k of the hyperbolic plane, so Omega_1 = (1/60 pi) int K^2 dA
 assert alpha(1) == Fr(-1, 3) and alpha(2) == Fr(1, 15), (alpha(1), alpha(2))
 say("8. u_1 = K/3, u_2 = K^2/15 at K = -1 (alpha_1 = -1/3, alpha_2 = 1/15): Omega_1 = int K^2 dA / (60 pi)")
+
+# ---------------------------------------------------------------- 9. round 8
+# (a) Lemma B.3 with N >= n times and the weighted row bounds
+#     |c~_j - c_j| <= sum_k |(V^-1)_{jk}| t_k (eta + B0(t_k) + Q_N t_k^{N-1}),  Q_N = max((n-2)|alpha_N|/2, n|b_{N-1}(mu0)|),
+#     rows j <= n = 3, for O(2,8,8) with the geometric times t, t/2, ..., t/2^{N-1} (Remark B.4), against
+#     delta_thm = 3.80e-7 and delta_cert = 2.341e-3 (Table S4); and the scans over times confined to [a, T].
+def rows_bound(ts, eta=0, n=3):
+    N = len(ts)
+    V = mp.matrix([[tk ** j for j in range(N)] for tk in ts])
+    W = V ** -1
+    q = F(Qn_gen(N, n, 12))
+    d = max(sum(abs(W[i, k]) * ts[k] * (eta + Bhyp(ts[k]) + q * ts[k] ** (N - 1)) for k in range(N)) for i in range(n))
+    a = max(sum(abs(W[i, k]) * ts[k] for k in range(N)) for i in range(n))
+    return d, a, W
+
+
+def Qn_gen(N, n, mu0):
+    return max(Fr(n - 2, 2) * abs(alpha(N)), n * abs(b_cone(N - 1, mu0)))
+
+
+def geom(T, N):
+    return [T * mp.mpf(2) ** -(N - 1 - k) for k in range(N)]
+
+
+def tmax_for(N, target):
+    lo, hi = mp.mpf("1e-6"), mp.mpf("0.7")
+    for _ in range(50):
+        mid = mp.sqrt(lo * hi)
+        lo, hi = (mid, hi) if rows_bound(geom(mid, N))[0] <= target else (lo, mid)
+    return lo
+
+
+dcert = mp.mpf("2.341e-3")
+with mp.workdps(80):
+    assert Qn_gen(3, 3, 12) == Qn(3, 12)
+    # the weighted bound is never worse than ||V^-1||_inf max_k (...) of the lemma as stated before
+    for e in (-10, -6, -3):
+        ts = geom(mp.mpf(10) ** e, 3)
+        W, nv = vinv_norm(ts)
+        assert rows_bound(ts)[0] <= nv * max(tk * (Bhyp(tk) + F(Qn(3, 12)) * tk ** 2) for tk in ts) * (1 + mp.mpf("1e-30"))
+    # the bound holds on exact values of I + sum E_m (no geodesic term) at N = 8 times
+    orders = (2, 8, 8)
+    c = heat_coeffs(0, orders, 8)
+    for T in (mp.mpf("0.002"), mp.mpf("0.0036")):
+        ts = geom(T, 8)
+        _, _, W = rows_bound(ts)
+        z = [tk * (identity_term(2 * mp.pi * F(area_over_2pi(0, orders)), tk, 80)
+                   + sum(elliptic_term(m, tk, 80) for m in orders)) for tk in ts]
+        ct = W * mp.matrix(z)
+        for j in range(3):
+            bj = sum(abs(W[j, k]) * ts[k] * F(Qn_gen(8, 3, 12)) * ts[k] ** 7 for k in range(8))
+            assert abs(ct[j] - F(c[j])) <= bj, (T, j)
+    T_thm, T_cert = tmax_for(8, dthm), tmax_for(8, dcert)
+    assert mp.mpf("3.5e-3") < T_thm < mp.mpf("3.7e-3") and mp.mpf("1.5e-2") < T_cert < mp.mpf("1.6e-2"), (T_thm, T_cert)
+    d0, amp, _ = rows_bound(geom(T_thm / 2, 8))
+    eta_thm = (dthm - d0) / amp
+    d0, amp, _ = rows_bound(geom(T_cert / 2, 8))
+    eta_cert = (dcert - d0) / amp
+    assert mp.mpf("4.9e-13") < eta_thm < mp.mpf("5.1e-13") and mp.mpf("1.3e-8") < eta_cert < mp.mpf("1.4e-8"), (eta_thm, eta_cert)
+    assert T_cert / 2 * mp.mpf(2) ** -7 < mp.mpf("1e-4")       # its smallest time
+
+    def scan(a, target):
+        """largest eta over N = 3..16 times, geometric or Chebyshev on [a, T], T in a*{2,...,150}; None if none fits"""
+        best = None
+        for N in range(3, 17):
+            for T in [a * r for r in (2, 3, 5, 8, 12, 20, 40, 80, 150)]:
+                for kind in ("cheb", "geom"):
+                    ts = ([(a + T) / 2 - (T - a) / 2 * mp.cos(mp.pi * (2 * k + 1) / (2 * N)) for k in range(N)]
+                          if kind == "cheb" else [a * (T / a) ** (mp.mpf(k) / (N - 1)) for k in range(N)])
+                    d, amp, _ = rows_bound(ts)
+                    if d < target:
+                        best = max(best or 0, (target - d) / amp)
+        return best
+    assert scan(mp.mpf("1e-3"), dcert) is None and scan(mp.mpf("3e-4"), dthm) is None
+    assert scan(mp.mpf("5e-4"), dcert) is not None and scan(mp.mpf("2e-4"), dthm) is not None
+say(f"9. Lemma B.3 with N = 8 times t, ..., t/128 (rows c_1..c_3): delta_thm for t <= {mp.nstr(T_thm, 2)}, eta <= {mp.nstr(eta_thm, 2)} at t/2;"
+    f" delta_cert for t <= {mp.nstr(T_cert, 2)}, eta <= {mp.nstr(eta_cert, 2)} at t/2")
+say("9. times confined to [a, T], N <= 16, geometric or Chebyshev: none meets delta_cert with a = 1e-3, none delta_thm with a = 3e-4;"
+    " some do with a = 5e-4 and 2e-4")
+
+# (b) Lemma (growth of the cone coefficients): Phi_m has simple poles at +-pi/m with principal part
+#     A_m sum (m u/pi)^{2k}, A_m = 1/(2 pi sin(pi/m)), and is analytic in |u| < 2 pi/m otherwise; so
+#     phi_k(m) = A_m (m/pi)^{2k} (1 + O(rho^{-2k}) ) for every rho < 2, and |b_l(m)| ~ A_m (pi l)^{-1/2} l! (m/pi)^{2l}.
+with mp.workdps(50):
+    for m in (2, 3, 5, 8, 12):
+        A = 1 / (2 * mp.pi * mp.sin(mp.pi / m))
+        u0 = mp.pi / m
+        res = -mp.mpf("1e-25") * Phi_closed(m, u0 - mp.mpf("1e-25"))   # residue at pi/m: -1/(4m sin(pi/m)) = -A_m pi/(2m)
+        assert abs(res + A * mp.pi / (2 * m)) < mp.mpf("1e-20"), (m, res)
+        for k in (10, 20, 30):
+            assert abs(F(phi(k, m)) * (mp.pi / m) ** (2 * k) / A - 1) < 4 * mp.mpf(4) ** -k, (m, k)
+        rat = [abs(F(b_cone(l, m))) / (A / mp.sqrt(mp.pi) * mp.mpf(l) ** -0.5 * mp.factorial(l) * (m / mp.pi) ** (2 * l))
+               for l in (10, 20, 40)]
+        assert abs(rat[2] - 1) < abs(rat[1] - 1) < abs(rat[0] - 1) < mp.mpf("0.06"), (m, rat)
+        assert abs(rat[2] - 1) < mp.mpf("0.013")
+say("9. growth: phi_k(m) (pi/m)^{2k} -> 1/(2 pi sin(pi/m)) within 4^{1-k}, and |b_l(m)| / (A_m (pi l)^{-1/2} l! (m/pi)^{2l}) -> 1"
+    " (error < 1.3% at l = 40), m = 2, 3, 5, 8, 12")
+
+# (c) Proposition 2.15(ii): the theta^2 part of the t^l coefficient from the Fourier computation, with
+#     I_n = int_0^1 (a(1-a))^n da = (n!)^2/(2n+1)! and the Gaussian moment
+#     int |u + a z|^2 |u - (1-a) z|^2 e^{-t|u|^2} du = (pi/t) (2/t^2 + (2a-1)^2 |z|^2/t + a^2 (1-a)^2 |z|^4),
+#     equals omega_{l+1} / (2 pi) int psi Delta_0^{l+1} psi, omega_n = (-1)^n n(n-1) n!/(2n+1)!
+import sympy as sp  # noqa: E402
+u1, u2, z, a_, t_ = sp.symbols("u1 u2 z a t", positive=True)
+integrand = sp.expand(((u1 + a_ * z) ** 2 + u2 ** 2) * ((u1 - (1 - a_) * z) ** 2 + u2 ** 2)) * sp.exp(-t_ * (u1 ** 2 + u2 ** 2))
+mom = sp.integrate(sp.integrate(integrand, (u1, -sp.oo, sp.oo)), (u2, -sp.oo, sp.oo))
+assert sp.simplify(sp.expand(mom - sp.pi / t_ * (2 / t_ ** 2 + (2 * a_ - 1) ** 2 * z ** 2 / t_ + a_ ** 2 * (1 - a_) ** 2 * z ** 4))) == 0
+I_ = lambda n: Fr(_fact(n) ** 2, _fact(2 * n + 1))
+for l in range(1, 11):
+    kappa = (2 * (-1) ** (l + 1) * I_(l + 1) / _fact(l + 1) + (-1) ** l * (I_(l) - 4 * I_(l + 1)) / _fact(l)
+             + (-1) ** (l - 1) * I_(l + 1) / _fact(l - 1))
+    n_ = l + 1
+    assert kappa == Fr((-1) ** n_ * n_ * (n_ - 1) * _fact(n_), _fact(2 * n_ + 1)), l
+say("9. Proposition 2.15(ii): Gaussian moment and the a-integrals give omega_{l+1} exactly, l = 1..10")
+
+# (d) least area: the signatures in Sig of area at most pi/2 other than triangle orbifolds are (0;2,2,2,3) (area
+#     pi/3) and (0;2,2,2,4) (area pi/2), and neither shares c_1, c_2 with a triangle orbifold or another signature:
+#     with the padding of Lemma 3.6, a triad of sum S and reciprocal sum R would need S = P_1 - 1 < 9/R.
+others = set()
+for g_ in range(0, 3):
+    for n_ in range(0, 9):
+        for ms in itertools.combinations_with_replacement(range(2, 40), n_):
+            if (g_, n_) == (0, 3):
+                continue
+            A2 = area_over_2pi(g_, ms)
+            if 0 < A2 <= Fr(1, 4):
+                others.add((g_, ms))
+            if n_ >= 6:
+                break
+assert others == {(0, (2, 2, 2, 3)), (0, (2, 2, 2, 4))}, others
+for (g_, ms) in others:
+    Rt = sum(Fr(1, m) for m in ms) - 1                       # reciprocal sum of a triad of the same area
+    S = sum(ms) - 1                                         # its order sum, if c_2 agreed (padding by one 1)
+    assert S * Rt < 9                                       # AM-HM excludes it
+say("9. least area in Sig: only (0;2,2,2,3), (0;2,2,2,4) besides triangles have area <= pi/2, and AM-HM excludes both")
+
+# (e) triangle orbifolds against all of Sig with c_1, c_2, c_3: by area the rival is (0;3 orders), (0;4 orders),
+#     (0;5 orders) or (1;m); (1;m) needs m = p+q+r and m^3 = p^3+q^3+r^3; five orders need R(V) > 2, i.e.
+#     V in {2,2,2,2,m}, {2,2,2,3,3..5}, and AM-HM excludes them; four orders {a,b,c,d}, a in {2,3}, need a triad
+#     {p,q,r} with {1,p,q,r} and {a,b,c,d} of equal R, P_1, P_3.  Search: none with {2,2,c,d}, d <= 1000, or with
+#     b >= 3 and d <= 20000.
+for g_, n_ in itertools.product(range(0, 3), range(0, 9)):
+    for ms in itertools.combinations_with_replacement(range(2, 30), n_):
+        if area_over_2pi(g_, ms) < 1 and area_over_2pi(g_, ms) > 0:
+            assert (g_, n_) in ((0, 3), (0, 4), (0, 5), (1, 1)), (g_, ms)
+            if (g_, n_) == (0, 5):
+                assert ms[:4] == (2, 2, 2, 2) or ms in ((2, 2, 2, 3, 3), (2, 2, 2, 3, 4), (2, 2, 2, 3, 5)), ms
+                assert (sum(ms) - 2) * (sum(Fr(1, m) for m in ms) - 2) < 9
+        if n_ >= 6:
+            break
+
+
+def triad_from(S, Rt, T):
+    """the triad {p,q,r} with sum S, reciprocal sum Rt and cube sum T, if it consists of integers >= 2"""
+    e3 = Fr(T - S ** 3) / (3 - 3 * S * Rt)
+    e2 = Rt * e3
+    if e3 <= 0 or e3.denominator != 1 or e2.denominator != 1:
+        return None
+    e2, e3 = int(e2), int(e3)
+    for p in range(2, S):
+        if p ** 3 - S * p * p + e2 * p - e3 == 0:
+            s, pr = S - p, e3 // p
+            disc = s * s - 4 * pr
+            if disc >= 0 and math.isqrt(disc) ** 2 == disc and (s - math.isqrt(disc)) // 2 >= 2:
+                return (p, (s - math.isqrt(disc)) // 2, (s + math.isqrt(disc)) // 2)
+    return None
+
+
+import math  # noqa: E402
+assert triad_from(18, Fr(3, 4), 1032) == (2, 8, 8)
+hits = []
+fam = [(2, 2)] + [(2, 3, c) for c in range(3, 12)] + [(2, 4, c) for c in range(4, 8)] + [(2, 5, c) for c in (5, 6)] \
+      + [(3, 3, c) for c in (3, 4, 5)] + [(3, 4, 4)]
+for head in fam:
+    cs = range(2, 1001) if len(head) == 2 else [head[2]]
+    for c_ in cs:
+        dmax = 1000 if len(head) == 2 else 20000
+        for d_ in range(c_, dmax + 1):
+            V = (head[0], head[1], c_, d_)
+            RV = sum(Fr(1, x) for x in V)
+            if RV <= 1:
+                break
+            S, Rt = sum(V) - 1, RV - 1
+            if S * Rt >= 9:
+                h = triad_from(S, Rt, sum(x ** 3 for x in V) - 1)
+                if h:
+                    hits.append((V, h))
+assert hits == [], hits
+say("9. triangle orbifolds against Sig with c_1..c_3: only (0;a,b,c,d) rivals remain; none with {2,2,c,d}, d <= 1000,"
+    " or with three orders at most 11 and d <= 20000")
 
 open(os.path.join(HERE, "check_heat_supporting.txt"), "w").write("\n".join(out) + "\n")
 print("ALL CHECKS PASSED")

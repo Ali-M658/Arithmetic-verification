@@ -147,3 +147,19 @@ Prouhet pairs remain as data in F4.
 | Remark rem:nodiam (count with C_* of the companion) and the factor ranges 4.4e6–1.0e10, 4.0e3–8.8e4, 4.1e5–1.9e6 | `numerics/moduli/locality_ratio.py` block (1′) |
 | the companion note's bounds as quoted (classes ≥ (3 log 2/2π² + o(1)) X log X; pairs ≫ X(log X)²) | the note, Theorem B |
 | D(t) changes sign near t = 0.36 (between 0.341 and 0.360) | supplement Section S4; blind check A recomputed 0.3592 |
+
+## Round 8 additions
+
+| statement | source |
+|---|---|
+| Lemma lem:growth (growth of the cone coefficients, A_m = 1/(2π sin(π/m))) | proof in the text; `theory/revision/check_heat_supporting.py` §9(b) |
+| Lemma lem:fromtrace with N ≥ n times and row bounds δ_{1,j}; Remark rem:fromtrace: N = 3 thresholds, N = 8 thresholds for δ_thm (t ≤ 3.6e-3, η ≤ 5.0e-13) and δ_cert (t ≤ 1.5e-2, η ≤ 1.3e-8), the scan (no a ≥ 1e-3 for δ_cert, no a ≥ 3e-4 for δ_thm) | `check_heat_supporting.py` §9(a) |
+| abstract and introduction: proved recoveries use times shorter than computed spectra resolve (t ≳ 1e-3, budget about 3e-11) | Remark rem:fromtrace; supplement Section S4 error budget |
+| Conjecture conj:varcone (outline) and Proposition prop:varcone (linear part, complete proof) | proof in the text; supplement S7 (machine checks of the linear part, l ≤ 7) |
+| Proposition prop:varcurv(ii): the ω_n from the Fourier computation | `check_heat_supporting.py` §9(c); `quadratic_form.py` |
+| Proposition prop:rivals, its search, Problem prob:rivals | `check_heat_supporting.py` §9(e) |
+| Theorem thm:minimal: least area among all pairs in Sig | `check_heat_supporting.py` §9(d) |
+| Theorem thm:S4 remark (Table S4 uses the exact cond) | `theory/stability/threshold.py` |
+| classical attributions: Karlin–Studden (zbMATH 0153.38902), de Boor (arXiv math/0502036 record), Pólya–Szegő vol. II Part V (Crossref chapter 10.1007/978-3-642-61905-2_2) | fetched records (round 8, review/referee-round-8/main/scratch/lit) |
+| Schueth equation numbers of the published version: (2.3), (2.4), (3.2), (3.4), (3.5) | the Ann. Inst. Fourier text fetched by referee A-e |
+| sinh(d/2) = sinh r sin(πj/m) at curvature −1 | hyperbolic law of cosines (checked numerically, round 8) |

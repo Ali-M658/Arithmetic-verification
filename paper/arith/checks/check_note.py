@@ -355,6 +355,41 @@ for x_, y_ in pairs8:
     ok8 &= gcd(*x_, *y_) == 1
 check("8c the four torsion-type pairs: equal S and R, Lambda = 169/16 = (r+1+1/r)^2 at r = -4, primitive", ok8)
 
+# 9. round 8 ---------------------------------------------------------------------------------------
+# 9a. the torsion column of Table 1 from Theorem 1: Lambda is not a rational square (no Z/12) and
+#     (Lambda-1)(Lambda-9) times the square of the denominator is not a square (no Z/2 x Z/6)
+def _is_sq(n):
+    return n >= 0 and isqrt(n) ** 2 == n
+tor = {F(155, 12): 6721, F(68, 5): 1449, F(1849, 120): 1329601, F(230, 21): 8569}
+ok9a = True
+for L_, v in tor.items():
+    p_, q_ = L_.numerator, L_.denominator
+    ok9a &= (p_ - q_) * (p_ - 9 * q_) == v and not _is_sq(v) and not (_is_sq(p_) and _is_sq(q_))
+check("9a Table 1 torsion Z/6: Lambda not a square, (Lambda-1)(Lambda-9) den^2 = 6721, 1449, 1329601, 8569 not squares", ok9a)
+# 9b. integer Lambda > 9: a positive torsion point only at Lambda = 10, the point (1:1:2)
+ok9b = all(not _is_sq((L_ - 1) * (L_ - 9)) for L_ in range(11, 20001)) and _is_sq(9 * 1)
+ok9b &= all(not _is_sq((m - 1) ** 2 - 4) or m in (3, -1) for m in range(-2000, 2001))
+ok9b &= 2 * 4 + (5 - 10) * 2 + 2 == 0          # t = 2 is a root of 2t^2 + (5 - Lambda)t + 2 at Lambda = 10
+ok9b &= 2 * F(1, 4) + (5 - 10) * F(1, 2) + 2 == 0   # and t = 1/2: the dual (1:1:1/2) = (2:2:1), the orderings of (1,2,2)
+check("9b integer Lambda > 9: only Lambda = 10 has positive torsion points, the orderings of (1:1:2) and (1:2:2); no integer (r+1+1/r)^2 > 9", ok9b)
+# 9c. Bremner-MacLeod: a/(b+c) + b/(c+a) + c/(a+b) = N becomes C_{2N+6} under (x,y,z) = (b+c, c+a, a+b), and their
+#     y^2 = x^3 + (4N^2+12N-3)x^2 + 32(N+3)x is E_Lambda at Lambda = 2N + 6
+a_, b_, c_, Nn = sp.symbols("a b c N")
+x_, y_, z_ = b_ + c_, c_ + a_, a_ + b_
+lhs = a_ / (b_ + c_) + b_ / (c_ + a_) + c_ / (a_ + b_)
+Lam = (x_ + y_ + z_) * (x_ * y_ + y_ * z_ + z_ * x_) / (x_ * y_ * z_)
+check("9c Bremner-MacLeod: N = Lambda/2 - 3 under (b+c, c+a, a+b), and their E_N is E_{2N+6}",
+      sp.simplify(lhs - (Lam / 2 - 3)) == 0
+      and sp.expand((2*Nn + 6)**2 - 6*(2*Nn + 6) - 3 - (4*Nn**2 + 12*Nn - 3)) == 0 and sp.expand(16*(2*Nn + 6) - 32*(Nn + 3)) == 0)
+# 9d. the dual pair is the classical identity: y = lambda (1/a, 1/b, 1/c) with lambda = e1 e3/e2 has the same sum and
+#     reciprocal sum as (a, b, c), and e2 y = e1 (bc, ca, ab)
+e1_, e2_, e3_ = a_ + b_ + c_, a_*b_ + b_*c_ + c_*a_, a_*b_*c_
+lam = e1_ * e3_ / e2_
+yy = [lam / a_, lam / b_, lam / c_]
+check("9d dual pair: lambda/x with lambda = e1 e3/e2 keeps the sum and the reciprocal sum, and e2 (lambda/x) = e1 (bc, ca, ab)",
+      sp.simplify(sum(yy) - e1_) == 0 and sp.simplify(sum(1 / t for t in yy) - e2_ / e3_) == 0
+      and all(sp.simplify(e2_ * yy[i] - e1_ * w) == 0 for i, w in enumerate([b_*c_, c_*a_, a_*b_])))
+
 (HERE/"check_note.txt").write_text("\n".join(OUT) + f"\n\n{len(OUT)} checks, {FAIL} failures\n")
 print(f"\n{len(OUT)} checks, {FAIL} failures")
 sys.exit(1 if FAIL else 0)

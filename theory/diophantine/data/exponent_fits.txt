@@ -36,5 +36,8 @@ primitive        beta = 0.463 (cumulative exponent about 1.46); log-power k = 3.
 
 holdout 4801-6000 (all pairs): exact N(6000) - N(4800) = 42960; log-power law predicts 43066 (+0.2%), power law 43961 (+2.3%); misses in dispersion-scaled Poisson sd: 0.2 and 1.9
 
+per-sum k for all pairs on 600-4800, by residue class of s: gcd(s,6)=1: 4.06; s odd: 4.29; s even: 4.61; 6 | s: 4.97
+tangency of the two fitted laws: k/log s = beta at s = 2098
+
 closed form c S (log S)^K fitted on 100..4800 (the earlier cumulative fit): K = 5.16
 secondary-term prediction from per-S k = 4.49: K ~ k (1 + 1/log S) = 5.05 at S ~ 3000

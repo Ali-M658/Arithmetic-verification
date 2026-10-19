@@ -36,7 +36,7 @@ for old, new in [
     ("\\section{The curves \\texorpdfstring{$C_\\Lambda$}{C\\_Lambda}}", "\\section{The Curves \\texorpdfstring{$C_\\Lambda$}{C\\_Lambda}}"),
     ("\\section{Reciprocation, permutations and torsion}", "\\section{Reciprocation, Permutations, and Torsion}"),
     ("\\section{Lower bounds}", "\\section{Lower Bounds}"),
-    ("\\section{Classes of every size}", "\\section{Classes of Every Size}"),
+    ("\\section{Arbitrarily large classes}", "\\section{Arbitrarily Large Classes}"),
     ("\\section{Enumeration and growth}", "\\section{Enumeration and Growth}"),
     ("\\subsection{The enumeration}", "\\subsection{The Enumeration}"),
     ("\\subsection{An upper bound}", "\\subsection{An Upper Bound}"),
@@ -62,10 +62,12 @@ for old, new, n in [
     ("\\cite[Prop.~2.7]{sadekelsissi2015}", "\\cite[Proposition~2.7]{sadekelsissi2015}", 1),
     ("\\cite[Thm~2.8]{sadekelsissi2015}", "\\cite[Theorem~2.8]{sadekelsissi2015}", 1),
     ("\\cite[Chap.~III, Thm~(5.1), p.~156]{mazur1977}", "\\cite[Chapter~III, Theorem~(5.1), p.~156]{mazur1977}", 1),
-    ("\\cite[Prop.~7.1]{schoen1988}", "\\cite[Proposition~7.1]{schoen1988}", 1),
     ("\\cite[Chap.~III, \\S6]{silvermantate2015}", "\\cite[Chapter~III, Section~6]{silvermantate2015}", 1),
     ("\\cite[Thm~3.1, Cor.~3.4]{ulas2013}", "\\cite[Theorem~3.1 and Corollary~3.4]{ulas2013}", 1),
-    ("\\cite[Thm~1.1]{browningsofos2019}", "\\cite[Theorem~1.1]{browningsofos2019}", 1),
+    ("\\cite[Thm~1.1]{browningsofos2019}", "\\cite[Theorem~1.1]{browningsofos2019}", 2),
+    ("\\cite[Lemma~2.1]{bremnermacleod2014}", "\\cite[Lemma~2.1]{bremnermacleod2014}", 1),
+    ("\\cite[\\S4]{bremnermacleod2014}", "\\cite[Section~4]{bremnermacleod2014}", 1),
+    ("\\cite[Thm~5.1, Cor.~5.2]{bremnermacleod2014}", "\\cite[Theorem~5.1 and Corollary~5.2]{bremnermacleod2014}", 1),
     ("By \\eqref{eq:copies}, ", "By Equation~\\eqref{eq:copies}, ", 1),
     ("In \\eqref{eq:copies}, keep", "In Equation~\\eqref{eq:copies}, keep", 1),
     ("as defined in \\eqref{eq:counts}", "as defined in Equation~\\eqref{eq:counts}", 1),
@@ -101,8 +103,8 @@ def move_caption(m):
     block = block.replace(cap, "")
     return block.replace("\\end{tabular}\n", "\\end{tabular}\n" + cap)
 body, k = re.subn(r"\\begin\{table\}\[t\].*?\\end\{table\}", move_caption, body, flags=re.S)
-if k != 2:
-    sys.exit(f"expected 2 tables, found {k}")
+if k != 3:
+    sys.exit(f"expected 3 tables, found {k}")
 
 # The companion paper is cited by its arXiv number (bibliography entry below)
 if "\\cite{gangetal-heat}" not in body:
@@ -120,8 +122,17 @@ A. Bremner and R. K. Guy, Two more representation problems, \textit{Proc. Edinb.
 \bibitem{bgn1993}
 A. Bremner, R. K. Guy, and R. J. Nowakowski, Which integers are representable as the product of the sum of three integers with the sum of their reciprocals?, \textit{Math. Comp.} \textbf{61}(203) (1993), 117--130.
 
+\bibitem{bremnermacleod2014}
+A. Bremner and A. Macleod, An unusual cubic representation problem, \textit{Ann. Math. Inform.} \textbf{43} (2014), 29--41.
+
+\bibitem{bremnermacleod2025}
+A. Bremner and A. Macleod, Corrigendum: An unusual cubic representation problem, \textit{Ann. Math. Inform.} \textbf{62} (2025), 26--27.
+
 \bibitem{bremnertho2018}
 A. Bremner and Nguyen Xuan Tho, The equation $(w+x+y+z)(1/w+1/x+1/y+1/z)=n$, \textit{Int. J. Number Theory} \textbf{14}(5) (2018), 1229--1246.
+
+\bibitem{browningelsholtz2011}
+T. D. Browning and C. Elsholtz, The number of representations of rationals as a sum of unit fractions, \textit{Illinois J. Math.} \textbf{55}(2) (2011), 685--696.
 
 \bibitem{browningsofos2019}
 T. D. Browning and E. Sofos, Counting rational points on quartic del Pezzo surfaces with a rational conic, \textit{Math. Ann.} \textbf{373}(3--4) (2019), 977--1016.
@@ -146,6 +157,9 @@ E. B. Dryden, C. S. Gordon, S. J. Greenwald, and D. L. Webb, Asymptotic expansio
 
 \bibitem{dggw2017}
 E. B. Dryden, C. S. Gordon, S. J. Greenwald, and D. L. Webb, Erratum to ``Asymptotic expansion of the heat kernel for orbifolds'', \textit{Michigan Math. J.} \textbf{66}(1) (2017), 221--222.
+
+\bibitem{elsholtztao2013}
+C. Elsholtz and T. Tao, Counting the number of solutions to the Erd\H{o}s--Straus equation on unit fractions, \textit{J. Aust. Math. Soc.} \textbf{94}(1) (2013), 50--105.
 
 \bibitem{gangetal-heat}
 P. Gang, A. Agadi, A. Veluri, J. Wang, J. Barreto, and A. Chouthaiwale, How much of a hyperbolic orbifold does heat hear?, preprint, \textbf{[PLACEHOLDER: preprint identifier]}.

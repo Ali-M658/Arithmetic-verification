@@ -26,3 +26,9 @@
 8. Theorem 3.8(ii): a w_a = (-1)^{M-a} 2a^3/((M-a)!(M+a)!), M <= 12
 8. Realisation lemma: the configurations of (0;2,8,8)/(0;3,3,12) and (1;15)/(0;3,3,5,5) give back the pairs, exactly 2 shared
 8. u_1 = K/3, u_2 = K^2/15 at K = -1 (alpha_1 = -1/3, alpha_2 = 1/15): Omega_1 = int K^2 dA / (60 pi)
+9. Lemma B.3 with N = 8 times t, ..., t/128 (rows c_1..c_3): delta_thm for t <= 0.0036, eta <= 5.0e-13 at t/2; delta_cert for t <= 0.015, eta <= 1.3e-8 at t/2
+9. times confined to [a, T], N <= 16, geometric or Chebyshev: none meets delta_cert with a = 1e-3, none delta_thm with a = 3e-4; some do with a = 5e-4 and 2e-4
+9. growth: phi_k(m) (pi/m)^{2k} -> 1/(2 pi sin(pi/m)) within 4^{1-k}, and |b_l(m)| / (A_m (pi l)^{-1/2} l! (m/pi)^{2l}) -> 1 (error < 1.3% at l = 40), m = 2, 3, 5, 8, 12
+9. Proposition 2.15(ii): Gaussian moment and the a-integrals give omega_{l+1} exactly, l = 1..10
+9. least area in Sig: only (0;2,2,2,3), (0;2,2,2,4) besides triangles have area <= pi/2, and AM-HM excludes both
+9. triangle orbifolds against Sig with c_1..c_3: only (0;a,b,c,d) rivals remain; none with {2,2,c,d}, d <= 1000, or with three orders at most 11 and d <= 20000

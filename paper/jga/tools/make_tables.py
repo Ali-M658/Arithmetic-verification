@@ -113,7 +113,7 @@ def table_thresholds():
     return (
         "\\begin{table}[t]\n"
         "\\caption{Thresholds for exact recovery of integer orders under the uniform model $|\\delta c_j|\\le\\delta$ "
-        "on the heat invariants: the closed form $\\delta_{\\rm thm}$ of Theorem~\\pref{thm:S4}, the threshold "
+        "on the heat invariants: the threshold $\\delta_{\\rm thm}$ of Theorem~\\pref{thm:S4}, evaluated with the exact matrix norm, the threshold "
         "$\\delta_{\\rm cert}$ certified in exact arithmetic by Proposition~\\sref{prop:S5} of the supplement, and "
         "a constructed failure $\\delta_{\\rm up}$; aeb means $a\\times10^b$, $\\delta_{\\rm thm}$ and "
         "$\\delta_{\\rm cert}$ are rounded down and $\\delta_{\\rm up}$ up. Table~\\sref{tab:thresholdsfull} "
@@ -135,7 +135,7 @@ def table_thresholds_full():
     return (
         "\\begin{table}[ht]\n"
         "\\caption{Thresholds for exact recovery of integer orders under the uniform model "
-        "$|\\delta c_j|\\le\\delta$ on the heat invariants: the closed form $\\delta_{\\rm thm}$ of "
+        "$|\\delta c_j|\\le\\delta$ on the heat invariants: the threshold $\\delta_{\\rm thm}$, evaluated with the exact matrix norm, of "
         "Theorem~\\pref{thm:S4}, the threshold $\\delta_{\\rm cert}$ certified in exact arithmetic "
         "by Proposition~\\ref{prop:S5}, a constructed failure $\\delta_{\\rm up}$, which minimizes "
         "$\\|c(\\tilde q)-c(m)\\|_\\infty$ over real monic $\\tilde q$ with a real root, or a non-real complex pair, of real "

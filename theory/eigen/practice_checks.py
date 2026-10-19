@@ -66,6 +66,18 @@ def main():
         check(true_dev <= BUDGET, f"{name}: true signature outside the budget")
         check(other > 1e6 * BUDGET, f"{name}: another signature within 10^6 budgets")
         rows.append([name, "completeness", f"{true_dev:.2e}", f"{other:.2e}"])
+    # how crude the closed-geodesic bound is (Section 7.2): for O(2,8,8) at t = 0.0562 the bound of Lemma 2.2(ii) with
+    # the instance's diameter bound 2 diam P, against the hyperbolic term of the two classes at the systole
+    # 2 arccosh(1 + cos(pi/4)) (the next length, 2.8816, adds less than 1e-14 there)
+    from eigen_common import hyp_bound_small
+    with mp.workdps(30):
+        t = mp.mpf("0.0562")
+        H = hyp_bound_small(t, mp.mpf("2.256767"), mp.mpf("4.897"), mp.pi / 2)
+        L0 = 2 * mp.acosh(1 + mp.cos(mp.pi / 4))
+        term = 2 * L0 / (2 * mp.sinh(L0 / 2)) * mp.e ** (-t / 4) * mp.e ** (-L0 ** 2 / (4 * t)) / mp.sqrt(4 * mp.pi * t)
+        check(mp.mpf("6.7e-3") < H < mp.mpf("6.9e-3") and mp.mpf("2.7e-10") < term < mp.mpf("2.9e-10"), "bound vs term")
+        check(mp.mpf("2e7") < H / term < mp.mpf("3e7"), "ratio of the closed-geodesic bound to the term")
+        print(f"O(2,8,8), t = 0.0562: closed-geodesic bound {mp.nstr(H, 3)}, systole term {mp.nstr(term, 3)}, ratio {mp.nstr(H / term, 3)}")
     with open(os.path.join(P.DATA, "practice_checks.csv"), "w", newline="") as f:
         w = csv.writer(f)
         w.writerow(["orbifold", "relative_error_or_check", "N_C1_or_true_deviation", "committed_N_or_nearest_other"])

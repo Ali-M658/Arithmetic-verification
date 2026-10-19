@@ -12,6 +12,7 @@ Sources (all committed, written by theory/eigen/practice.py and theory/eigen/ins
   E          theory/eigen/data/table2.csv (the constants of Theorem 6.2)
   practice   theory/eigen/data/practice.csv (diameter inputs B1 and D, estimated eps_j, full spectra)
   spectra    theory/eigen/data/triangle_spectra_first41.csv
+  certgap    theory/eigen/data/certified_gap.csv (theory/eigen/certified_gap.py) with computed_gap.csv
 """
 import csv
 import math
@@ -30,7 +31,7 @@ def sci(x, digits=2):
         return "0"
     e = int(math.floor(math.log10(abs(x))))
     m = x / 10 ** e
-    m = float(f"{m:.{digits - 1}f}")
+    m = math.ceil(m * 10 ** (digits - 1) - 1e-9) / 10 ** (digits - 1)   # rounded up: N and the count constants are upper bounds
     if m >= 10:
         m, e = m / 10, e + 1
     return f"{m:.{digits - 1}f}\\times10^{{{e}}}"
@@ -137,25 +138,55 @@ def table_E():
     rows = list(csv.DictReader(open(DATA / "table2.csv")))
     out = ["\\begin{table}[t]", "\\centering\\footnotesize",
            "\\caption{The constants of Theorem~\\ref{thm:E}, with $t_*=\\min(t_1,t_2,t_3)$; the last column names the binding "
-           "constraint. aeb means $a\\times10^b$.}\\label{tab:E}",
+           "constraint. aeb means $a\\times10^b$; $N$ is rounded up and $\\Theta_*$ and $\\delta$ down.}\\label{tab:E}",
            "\\setlength{\\tabcolsep}{3pt}\\begin{tabular}{@{}llllllllllll@{}}", "\\toprule",
            "$A$ & $\\varepsilon$ & $M$ & $k_*$ & $C_*$ & $t_1$ & $t_3$ & $\\Theta_*$ & $\\Lambda$ & $N$ & $\\delta$ & binds\\\\",
            "\\midrule"]
     area = {"pi/2": "$\\pi/2$", "4pi/3": "$4\\pi/3$", "2pi": "$2\\pi$", "10pi": "$10\\pi$"}
 
-    def e(x):
-        m, ex = f"{float(x):.1e}".split("e")
-        return f"${m}$e${int(ex)}$"
+    def e(x, mode="near"):
+        """two significant digits; mode "up" for N and "down" for delta, so that the printed values remain valid"""
+        x = float(x)
+        ex = math.floor(math.log10(x))
+        m = x / 10 ** ex
+        m = math.ceil(m * 10 - 1e-9) / 10 if mode == "up" else math.floor(m * 10 + 1e-9) / 10 if mode == "down" else round(m, 1)
+        if m >= 10:
+            m, ex = m / 10, ex + 1
+        return f"${m:.1f}$e${ex}$"
     for r in rows:
         whole, _, frac = r["eps"].partition(".")
         eps = (whole + "." + frac[:4]).rstrip("0").rstrip(".") if frac else whole   # truncated: a lower bound
         out.append(f"{area[r['A']]} & ${eps}$ & ${r['M']}$ & ${r['kstar']}$ & {e(r['K'])} & {e(r['t1'])} & {e(r['t3'])} & "
-                   f"{e(r['Gamma_star'])} & {e(r['Lambda'])} & {e(r['N'])} & {e(r['delta'])} & ${r['binds']}$\\\\")
+                   f"{e(r['Gamma_star'], "down")} & {e(r['Lambda'])} & {e(r['N'], "up")} & {e(r['delta'], "down")} & ${r['binds']}$\\\\")
     out += ["\\bottomrule", "\\end{tabular}", "\\end{table}"]
     return "\n".join(out)
 
 
-TABLES = {"inputs": table_inputs, "practice": table_practice, "spectra": table_spectra, "E": table_E}
+def table_certgap():
+    rows = list(csv.DictReader(open(DATA / "certified_gap.csv")))
+    thm = {(r["A"], r["eps"], r["M"]): r for r in csv.DictReader(open(DATA / "computed_gap.csv"))}
+    out = ["\\begin{table}[t]", "\\centering\\footnotesize",
+           "\\caption{Proposition~\\ref{prop:certgap}: at the time $t$, every gap $|G_\\sigma(t)-G_{\\sigma'}(t)|$ over "
+           "$\\Sig(A,M)$ is at least $\\Theta$, certified in ball arithmetic, and the first $N$ eigenvalues, each known to "
+           "within $\\delta$, determine the signature in $\\Cl(A,\\varepsilon,M)$; the last column is the $N$ of "
+           "Theorem~\\ref{thm:E} for the same class. aeb means $a\\times10^b$.}\\label{tab:certgap}",
+           "\\setlength{\\tabcolsep}{4pt}\\begin{tabular}{@{}lllllllll@{}}", "\\toprule",
+           "$A$ & $\\varepsilon$ & $M$ & $|\\Sig(A,M)|$ & $t$ & $\\Theta$ & $N$ & $\\delta$ & $N$, Thm~\\ref{thm:E}\\\\",
+           "\\midrule"]
+    area = {"pi/2": "$\\pi/2$", "4pi/3": "$4\\pi/3$", "2pi": "$2\\pi$", "10pi": "$10\\pi$"}
+
+    def e(x):
+        m, ex = f"{float(x):.2e}".split("e")
+        return f"${m}$e${int(ex)}$"
+    for r in rows:
+        n62 = thm[(r["A"], r["eps"], r["M"])]["N_thm62"]
+        out.append(f"{area[r['A']]} & ${r['eps']}$ & ${r['M']}$ & ${r['Sig_size']}$ & ${r['t']}$ & ${r['certified_gap_lower']}$ & "
+                   f"${r['N']}$ & {e(r['delta'])} & ${sci(float(n62))}$\\\\")
+    out += ["\\bottomrule", "\\end{tabular}", "\\end{table}"]
+    return "\n".join(out)
+
+
+TABLES = {"inputs": table_inputs, "practice": table_practice, "spectra": table_spectra, "E": table_E, "certgap": table_certgap}
 
 
 def main():

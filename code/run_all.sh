@@ -89,7 +89,7 @@ for line in open(sys.argv[1]):
     if m:
         pins[m.group(1).lower()] = m.group(2)
 missing, warn, ok = [], [], []
-IMPORT_NAME = {"pillow": "PIL"}          # distribution name -> module name, where they differ
+IMPORT_NAME = {"pillow": "PIL", "python-flint": "flint"}   # distribution name -> module name, where they differ
 for name, want in pins.items():
     try:
         mod = importlib.import_module(IMPORT_NAME.get(name, name))
@@ -341,8 +341,8 @@ done
 #     about 15 min (diameter 110 s, counting 80 s, theorem_e 110 s, instances 90 s, practice 90-370 s, systole_233 30 s,
 #     certify_systoles 140 s, computed_gap 60 s; needs scipy). The scripts that rewrite CSVs in data/ must write them
 #     back byte-identical. Round 7 added practice_checks (robustness), certify_systoles (interval arithmetic) and
-#     computed_gap (Corollary 6.3).
-for s in diameter counting remainder theorem_e necessity locality instances practice practice_checks practice_double_window systole_233 certify_systoles computed_gap; do
+#     computed_gap (Corollary 6.3). Round 8 added certified_gap (Proposition 6.4; ball arithmetic, needs python-flint).
+for s in diameter counting remainder theorem_e necessity locality instances practice practice_checks practice_double_window systole_233 certify_systoles computed_gap certified_gap; do
     stage "eigen $s" q exact theory/eigen "$P $s.py"
 done
 

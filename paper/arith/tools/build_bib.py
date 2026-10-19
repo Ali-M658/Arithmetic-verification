@@ -63,6 +63,11 @@ SOURCES = {
     "graham1963": ("doi", "10.1017/s1446788700039045"),
     "vandoorn2025": ("arxiv", "2502.02200"),
     "dggw2017": ("doi", "10.1307/mmj/1488510034"),
+    # round 8 (VERDICT-N N2, N4, n m3)
+    "bremnermacleod2014": ("zbmath", "1319.11019"),
+    "bremnermacleod2025": ("doi", "10.33039/ami.2025.10.022"),
+    "elsholtztao2013": ("doi", "10.1017/s1446788712000468"),
+    "browningelsholtz2011": ("doi", "10.1215/ijm/1359762408"),
 }
 # Records fetched only as evidence for a correction.
 EVIDENCE_ZB = {"dggw2008_pages": "doi:10.1307/mmj/1213972406"}
@@ -84,6 +89,16 @@ CORRECTIONS = {
     ("tho2021", "title"): "What positive integers $n$ can be presented in the form $n=(x+y+z)(1/x+1/y+1/z)$?",
     ("bremnertho2018", "title"): "The equation $(w+x+y+z)(1/w+1/x+1/y+1/z)=n$",
     ("tho2021", "volume"): "54",
+    # Crossref deposits the corrigendum as an "Accepted manuscript" without volume or pages; its zbMATH record
+    # (api.zbmath.org search "Corrigendum unusual cubic", fetched 2026-10-19) gives Ann. Math. Inform. 62, 26-27 (2025).
+    ("bremnermacleod2025", "volume"): "62",
+    ("bremnermacleod2025", "pages"): "26--27",
+    # Crossref misspells the second author ("Macload"); the zbMATH record of the corrigendum and of the paper
+    # (Zbl 1319.11019) give "Macleod, Allan".
+    ("bremnermacleod2025", "author"): "Bremner, Andrew and Macleod, Allan",
+    # Crossref deposits names and title in capitals; zbMATH (Zbl 1304.11018, fetched 2026-10-19) gives them so.
+    ("elsholtztao2013", "author"): "Elsholtz, Christian and Tao, Terence",
+    ("elsholtztao2013", "title"): "Counting the number of solutions to the {E}rd{\\H{o}}s--{S}traus equation on unit fractions",
     ("tho2021", "pages"): "141--146",
     # Crossref splits the Vietnamese name as given "Nguyen Xuan" / family "Tho" (tho2021) and given
     # "Tho Nguyen" / family "Xuan" (bremnertho2018). The author signs "Nguyen Xuan Tho" (byline of

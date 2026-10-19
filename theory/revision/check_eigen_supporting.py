@@ -92,5 +92,41 @@ for k in range(0, 9):
     assert ak == alpha(k), (k, ak, alpha(k))
 say("4. Appendix A: mu_k in closed form, and alpha_k from the moments equals the Bernoulli formula, k <= 8")
 
+# 5. (round 8, the remark after Theorem 4.4) Jorgensen's inequality for two elliptic elements: rotations f, g by
+#    2 pi/p and 2 pi/q about points at distance d have tr[f,g] - 2 = 4 sin^2(pi/p) sin^2(pi/q) sinh^2 d, so
+#    |tr^2 f - 4| + |tr[f,g] - 2| >= 1 reads 4 sin^2(pi/p) (1 + sin^2(pi/q) sinh^2 d) >= 1; in the (2,3,7) triangle group
+#    the bound is attained by the cone points of orders 7 and 2 and of orders 7 and 3.
+def rot(theta, d):
+    """rotation by 2 theta about the point e^d i of the upper half-plane"""
+    R = mp.matrix([[mp.cos(theta), mp.sin(theta)], [-mp.sin(theta), mp.cos(theta)]])
+    S = mp.matrix([[mp.e ** (d / 2), 0], [0, mp.e ** (-d / 2)]])
+    return S * R * S ** -1
+
+
+def comm_trace(p, q, d):
+    f, g = rot(mp.pi / p, 0), rot(mp.pi / q, d)
+    C = f * g * f ** -1 * g ** -1
+    return C[0, 0] + C[1, 1]
+
+
+for p, q, d in ((7, 2, mp.mpf("0.3")), (5, 3, mp.mpf("1.1")), (12, 8, mp.mpf("0.05")), (3, 3, mp.mpf("2.0"))):
+    lhs = comm_trace(p, q, d) - 2
+    rhs = 4 * mp.sin(mp.pi / p) ** 2 * mp.sin(mp.pi / q) ** 2 * mp.sinh(d) ** 2
+    assert abs(lhs - rhs) < mp.mpf(10) ** -25, (p, q, lhs, rhs)
+
+
+def jorgensen_d(p, q):
+    s = 1 - 4 * mp.sin(mp.pi / p) ** 2
+    return mp.asinh(mp.sqrt(s / (4 * mp.sin(mp.pi / p) ** 2 * mp.sin(mp.pi / q) ** 2)))
+
+
+# (2,3,7): cosh of the side opposite the angle pi/r is (cos(pi/p)cos(pi/q) + cos(pi/r))/(sin(pi/p) sin(pi/q))
+side = lambda a, b, c: mp.acosh((mp.cos(mp.pi / a) * mp.cos(mp.pi / b) + mp.cos(mp.pi / c)) / (mp.sin(mp.pi / a) * mp.sin(mp.pi / b)))
+assert abs(jorgensen_d(7, 2) - side(7, 2, 3)) < mp.mpf(10) ** -25
+assert abs(jorgensen_d(7, 3) - side(7, 3, 2)) < mp.mpf(10) ** -25
+assert abs(jorgensen_d(7, 2) - mp.acosh(1 / (2 * mp.sin(mp.pi / 7)))) < mp.mpf(10) ** -25
+say(f"5. Jorgensen for elliptic pairs: tr[f,g]-2 = 4 sin^2(pi/p) sin^2(pi/q) sinh^2 d; bound attained in (2,3,7): "
+    f"d(7,2) = {mp.nstr(jorgensen_d(7, 2), 7)}, d(7,3) = {mp.nstr(jorgensen_d(7, 3), 7)}")
+
 open(os.path.join(HERE, "check_eigen_supporting.txt"), "w").write("\n".join(out) + "\n")
 print("ALL CHECKS PASSED")
