@@ -134,3 +134,16 @@ two-coefficient degeneracies: register rows 19, 21-26, 92-97, 99-102; audit-2 E7
 `paper/arith/note.tex`, cited as `companion`. Old Remark 2.12 (rows 87-91) is dropped: its peeling and Borel claims as `theory/revision/remark212.tex` recommends, and the short remark itself for the page limit. Old Proposition 3.9 (Prouhet)
 and the Thue-Morse proof of Theorem 3.10(a) are replaced by the audited constructions; the
 Prouhet pairs remain as data in F4.
+
+## Round 7 additions
+
+| statement | source |
+|---|---|
+| Proposition prop:unknownK (unknown constant curvature: c_j(K) = \|K\|^{j−2} c_j(−1), I_j scale invariant, the criterion) | proof in the text; `theory/revision/check_heat_supporting.py` §8(a) |
+| instability paragraph: c₂ topological, Ω₁ = (1/60π)∫K² dA, Cauchy–Schwarz | proof in the text; u₁ = K/3, u₂ = K²/15 at K = −1 against α₁ = −1/3, α₂ = 1/15: `check_heat_supporting.py` §8(d) |
+| Lemma lem:realise (configurations and pairs, (a)–(c)) | proof in the text; `check_heat_supporting.py` §8(c) |
+| closed form a·w_a = (−1)^{M−a} 2a³/((M−a)!(M+a)!) | `check_heat_supporting.py` §8(b) (M ≤ 12) |
+| Remark B.4: D = 4.897, ℓ₀ = 2.2567 (certified, companion §7.1), δ₁ ≈ 4.9×10³ t₃, t₃ ≤ 7.8×10⁻¹¹, η ≤ 2.07×10⁻¹⁹ at t₃ = 10⁻¹¹, same δ₁ for ℓ₀ ≥ 0.01 | `check_heat_supporting.py` (assertions on D, l0, eta_max) and `theory/eigen/certify_systoles.py` |
+| Remark rem:nodiam (count with C_* of the companion) and the factor ranges 4.4e6–1.0e10, 4.0e3–8.8e4, 4.1e5–1.9e6 | `numerics/moduli/locality_ratio.py` block (1′) |
+| the companion note's bounds as quoted (classes ≥ (3 log 2/2π² + o(1)) X log X; pairs ≫ X(log X)²) | the note, Theorem B |
+| D(t) changes sign near t = 0.36 (between 0.341 and 0.360) | supplement Section S4; blind check A recomputed 0.3592 |

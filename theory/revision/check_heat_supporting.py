@@ -131,9 +131,15 @@ for orders in [(2, 8, 8), (3, 3, 12), (2, 3, 7), (3, 3, 3, 3)]:
         assert err <= bound, (orders, tn, err, bound)
         say(f"2. Lemma B.3 {orders} t_n={tn}: max |c~ - c| = {mp.nstr(err, 4)} <= {mp.nstr(bound, 4)}")
 
-# Remark: O(2,8,8) and O(3,3,12) with a-priori mu0 = 12, systole >= 1.8626, diam <= 2.448, area >= pi/2,
-# exact trace values (eta = 0): best delta_1 over geometric time grids, against delta_thm(2,8,8) = 3.80e-7.
-l0, D, A0 = mp.mpf("1.8626"), mp.mpf("2.448"), mp.pi / 2
+# Remark: O(2,8,8) with a-priori mu0 = 12, systole >= l0 = 2.2567 (complete enumeration, floating point),
+# diam <= D = 4.897 (twice the longest side arccosh(cot^2(pi/8)) of the triangle: a point of the double is
+# within diam P of a vertex, which lies in both copies), area >= pi/2; exact trace values (eta = 0):
+# delta_1 over geometric time grids, against delta_thm(2,8,8) = 3.80e-7.  (Round 7: D = 2.448 used before is
+# below the diameter, which is at least the side 2.448452 between the two cone points of order 8.)
+side = mp.acosh(mp.cot(mp.pi / 8) ** 2)
+assert abs(side - mp.mpf("2.448452447")) < 1e-8
+l0, D, A0 = mp.mpf("2.2567"), mp.mpf("4.897"), mp.pi / 2
+assert D >= 2 * side and l0 <= 2 * mp.acosh(1 + mp.cos(mp.pi / 4))
 
 
 def Bhyp(t):
@@ -158,10 +164,25 @@ dthm = mp.mpf("3.80e-7")
 assert d_a < dthm < d_b
 assert delta1(mp.mpf("7.8e-11"), 0.5)[0] < dthm < delta1(mp.mpf("7.9e-11"), 0.5)[0]   # threshold t_3 = 7.8e-11
 eta_max = (dthm - d_a) / amp_a
-assert mp.mpf("1e-19") < eta_max < mp.mpf("3e-19")
+assert mp.mpf("2.065e-19") < eta_max < mp.mpf("2.075e-19")   # stated as 2.07e-19 in Remark B.4
 for e in (-13, -12, -11, -10, -6, -3):
     d, _ = delta1(mp.mpf(10) ** e, 0.5)
     assert abs(d / mp.mpf(10) ** e / 4860 - 1) < 0.01      # delta_1 = 4.86e3 t_3 for eta = 0
+# the systole bound does not matter in practice: with l0 = 0.01 the same delta_1 to 1e-12 relative, t_3 <= 1e-9
+for l0_alt in (mp.mpf("0.01"),):
+    l0_keep = l0
+    l0 = l0_alt
+    tmax = l0 ** 2 / (2 * (1 + l0))
+    for e in (-13, -12, -11):
+        d_alt, _ = delta1(mp.mpf(10) ** e, 0.5)
+        l0 = l0_keep
+        tmax = l0 ** 2 / (2 * (1 + l0))
+        d_ref, _ = delta1(mp.mpf(10) ** e, 0.5)
+        assert abs(d_alt / d_ref - 1) < mp.mpf("1e-12"), (e, d_alt, d_ref)
+        l0 = l0_alt
+        tmax = l0 ** 2 / (2 * (1 + l0))
+    l0 = l0_keep
+    tmax = l0 ** 2 / (2 * (1 + l0))
 say(f"2. remark: times t_3, t_3/2, t_3/4: delta_1 = {mp.nstr(d_a / mp.mpf('1e-11'), 4)} t_3 + {mp.nstr(amp_a * mp.mpf('1e-22'), 3)}*1e22 eta at t_3 = 1e-11;")
 say(f"   delta_1 <= delta_thm(2,8,8) = 3.80e-7 needs t_3 <= 7.8e-11, and at t_3 = 1e-11 eta <= {mp.nstr(eta_max, 3)}")
 
@@ -279,6 +300,72 @@ for n in range(2, 6):
         sign = (-1) ** (n * (n + 1) // 2)
         assert sp.simplify(M.det() - sign * prod_plus / e[n]) == 0, (n, m)
 say("7. Theorem B: Hur_{n-1}(chi_m) = prod(m_i+m_j) for the Hurwitz matrix (a_{2j-i}), and det M = (-1)^{n(n+1)/2} prod(m_i+m_j)/e_n, n = 2..5")
+
+# ---------------------------------------------------------------- 8. round 7
+# (a) unknown constant curvature K < 0: c_j(K) = |K|^{j-2} c_j(-1), with the curvature-K expansion
+#     (cone terms K^l p_l(m)/m, smooth terms alpha_k (-K)^k Area_K/(4 pi), Area_K = Area_{-1}/|K|),
+#     and I_j = c_j c_1^{j-2} is scale-invariant with c_1(-1) = -chi/2.
+from fractions import Fraction as _F  # noqa: E402
+for g_, orders in ((0, (2, 8, 8)), (1, (15,)), (0, (3, 3, 5, 5)), (2, ())):
+    cm1 = heat_coeffs(g_, orders, 6)
+    chi = -area_over_2pi(g_, orders)                           # orbifold Euler characteristic: Area = -2 pi chi
+    assert cm1[0] == -chi / 2
+    for Kabs in (_F(1, 3), _F(2), _F(7, 5)):
+        A_K = 4 * cm1[0] / Kabs                                 # Area_K / pi = 4 c_1(-1)/|K|
+        K = -Kabs
+        cK = [A_K / 4]
+        for l in range(0, 5):                                   # c_{l+2}
+            smooth = alpha(l + 1) * (-K) ** (l + 1) * A_K / 4
+            cone = sum(K ** l * b_cone(l, m) * (-1) ** l for m in orders)
+            cK.append(smooth + cone)
+        for j in range(1, 7):
+            assert cK[j - 1] == Kabs ** (j - 2) * cm1[j - 1], (g_, orders, Kabs, j)
+            assert cK[j - 1] * cK[0] ** (j - 2) == cm1[j - 1] * cm1[0] ** (j - 2)
+say("8. unknown curvature: c_j(K) = |K|^{j-2} c_j(-1) and I_j = c_j c_1^{j-2} scale-invariant, j <= 6, four signatures")
+
+# (b) Theorem 3.8(ii): a w_a = (-1)^{M-a} 2 a^3 / ((M-a)! (M+a)!), M <= 12
+from math import factorial as _fact  # noqa: E402
+for M in range(2, 13):
+    for a in range(1, M + 1):
+        w = _F(1)
+        for b in range(1, M + 1):
+            if b != a:
+                w /= (a * a - b * b)
+        assert a * w == _F((-1) ** (M - a) * 2 * a ** 3, _fact(M - a) * _fact(M + a)), (M, a)
+say("8. Theorem 3.8(ii): a w_a = (-1)^{M-a} 2a^3/((M-a)!(M+a)!), M <= 12")
+
+# (c) Realisation lemma on (0;2,8,8) / (0;3,3,12) and (1;15) / (0;3,3,5,5): the configuration Z of the pair,
+#     scaled, gives back the two signatures with equal area and exactly L = 2 shared invariants.
+def realise(Z, L):
+    Z = [_F(z) for z in Z]
+    assert len(Z) % 2 == 0 and not any(-z in Z for z in Z)
+    for j in range(1, 2 * L - 2, 2):
+        assert sum(z ** j for z in Z) == 0
+    assert sum(1 / z for z in Z) == 0
+    U = sorted(int(z) for z in Z if z > 0)
+    V = sorted(int(-z) for z in Z if z < 0)
+    iota = len(U) - len(V)
+    g = 0
+    while True:
+        gp = g + iota // 2
+        if gp >= 0 and area_over_2pi(g, [u for u in U if u != 1]) > 0 and area_over_2pi(gp, [v for v in V if v != 1]) > 0:
+            break
+        g += 1
+    s1, s2 = (g, tuple(u for u in U if u != 1)), (gp, tuple(v for v in V if v != 1))
+    assert s1 != s2 and area_over_2pi(*s1) == area_over_2pi(*s2)
+    h1, h2 = heat_coeffs(*s1, L + 1), heat_coeffs(*s2, L + 1)
+    shared = next((k for k in range(L + 1) if h1[k] != h2[k]), L + 1)
+    assert shared == L and (sum(z ** (2 * L - 1) for z in Z) != 0)
+    return s1, s2
+assert realise([2, 8, 8, -3, -3, -12], 2) == ((0, (2, 8, 8)), (0, (3, 3, 12)))
+r = realise([1, 15, -3, -3, -5, -5], 2)
+assert r == ((1, (15,)), (0, (3, 3, 5, 5))), r
+say("8. Realisation lemma: the configurations of (0;2,8,8)/(0;3,3,12) and (1;15)/(0;3,3,5,5) give back the pairs, exactly 2 shared")
+
+# (d) the instability paragraph after Proposition 2.12: u_1 = K/3 and u_2 = K^2/15 (up to a divergence), checked at
+# K = -1 against the area series alpha_k of the hyperbolic plane, so Omega_1 = (1/60 pi) int K^2 dA
+assert alpha(1) == Fr(-1, 3) and alpha(2) == Fr(1, 15), (alpha(1), alpha(2))
+say("8. u_1 = K/3, u_2 = K^2/15 at K = -1 (alpha_1 = -1/3, alpha_2 = 1/15): Omega_1 = int K^2 dA / (60 pi)")
 
 open(os.path.join(HERE, "check_heat_supporting.txt"), "w").write("\n".join(out) + "\n")
 print("ALL CHECKS PASSED")

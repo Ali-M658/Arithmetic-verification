@@ -165,6 +165,26 @@ def main() -> int:
             f"NLL(power) - NLL(log-power) = {d:.2f}; Pearson dispersion {disp:.2f}; scaled difference {d / disp:.2f}")
     say()
 
+    # round 7: the sums 4801..6000 as a holdout. Both laws are fitted per sum on 600..4800 (above); their
+    # predictions of N(6000) - N(4800) are compared with the exact count, 145679 - 102719 (Table 2 of the note;
+    # N(6000) from the third enumeration, N(4800) from per_S.csv).
+    N6000, N4800 = 145679, int(np.cumsum(n["all"])[4800])
+    assert N4800 == 102719, N4800
+    s = s_all[600:4801]
+    y = n["all"][600:4801]
+    a_p, beta, mu_p = poisson_fit(np.log(s), y)
+    a_l, k, mu_l = poisson_fit(np.log(np.log(s)), y)
+    disp = float(np.sum((y - mu_l) ** 2 / mu_l) / (len(y) - 2))
+    sh = np.arange(4801, 6001, dtype=float)
+    pred_l = float(np.sum(np.exp(a_l + k * np.log(np.log(sh)))))
+    pred_p = float(np.sum(np.exp(a_p + beta * np.log(sh))))
+    act = N6000 - N4800
+    say(f"holdout 4801-6000 (all pairs): exact N(6000) - N(4800) = {act}; log-power law predicts {pred_l:.0f} "
+        f"({100 * (pred_l / act - 1):+.1f}%), power law {pred_p:.0f} ({100 * (pred_p / act - 1):+.1f}%); "
+        f"misses in dispersion-scaled Poisson sd: {abs(pred_l - act) / np.sqrt(disp * act):.1f} and "
+        f"{abs(pred_p - act) / np.sqrt(disp * act):.1f}")
+    say()
+
     N_all = np.cumsum(n["all"])
     K = closed_form_K(s_all[10:], N_all[10:])
     kp = table[("all", 600, 4800)][0]

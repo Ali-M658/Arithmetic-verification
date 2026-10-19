@@ -100,6 +100,9 @@ def main():
     out = []
     for A_over_pi, M in ((4, 10), (2, 30), (6, 6)):
         n, npairs, kdist, minratio = lemma_E1(A_over_pi, M)
+        # Remark 6.3(a) (round 7): in these classes no two signatures first differ beyond k = 3 (different areas
+        # differ at k = 1)
+        check(max(kdist) <= 3, f"A/pi<={A_over_pi}, M={M}: a first difference beyond k = 3")
         out.append(f"E1: A/pi<={A_over_pi}, M={M}: {n} signatures, {npairs} equal-area pairs; first differing index k: {kdist};"
                    f" least |d_k|/a_(k-2) = {minratio}")
     for A_over_pi, M in ((Fr(1, 2), 12), (Fr(4, 3), 6), (2, 5)):
@@ -113,6 +116,11 @@ def main():
                       (4 * mp.pi / 3, mp.mpf('0.693994'), 12), (2 * mp.pi, 1, 3), (2 * mp.pi, mp.mpf('0.1'), 3),
                       (10 * mp.pi, 1, 3), (10 * mp.pi, 1, 12)):
         c = theorem_E_constants(A, eps, M)
+        # Remark 6.3(a) (round 7): the minimum defining t_1 is attained at k = k_*
+        dm = {1: Fr(1, 2 * c["LM"])}
+        dm.update({k: lead_coef(k - 2) for k in range(2, c["kstar"] + 1)})
+        terms = {k: mpq(dm[k]) / (4 * c["Q"][k - 1]) for k in dm}
+        check(min(terms, key=lambda k: terms[k]) == c["kstar"] and terms[c["kstar"]] < 1, "t_1 attained at k = k_*")
         # the chain: B_*(t*) <= Gamma/8 is asserted inside; tail: e^{-Lam t*/2} Zb(t*/2) = Gamma/8
         tail = mp.e ** (-c["Lambda"] * c["tstar"] / 2) * c["Zb_half"]
         check(tail <= c["Gamma"] / 8 * (1 + mp.mpf(10) ** -20), "tail <= Gamma/8")

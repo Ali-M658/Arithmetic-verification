@@ -94,7 +94,8 @@ def main():
             lamN = mp.mpf(lam[N]) - err[N]
             tail = min(mp.e ** (-lamN * (tt - s)) * (A / (4 * mp.pi * s) + beta + hypB(ELL, diam, A, s))
                        for s in (tt * k / 20 for k in range(1, 20)))
-            errs[N] = tail + tt * mp.fsum(err[:N])
+            # round 7: the sharp perturbation term of Theorem thm:post
+            errs[N] = tail + tt * mp.fsum(e * mp.e ** (-tt * max(mp.mpf(l) - e, 0)) for l, e in zip(lam[:N], err[:N]))
         nearest = min(gaps.values())
         rows.append([f"{t:.6g}"] + [mp.nstr(gaps[o], 8) for _, o in others] + [mp.nstr(hyp, 8)]
                     + [mp.nstr(errs[N], 8) for N in NS] + [mp.nstr(nearest, 8)])

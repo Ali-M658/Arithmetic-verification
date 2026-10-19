@@ -64,18 +64,22 @@ def table_practice():
            "\\caption{The criterion of Theorem~\\ref{thm:post} on the computed spectra, with estimated errors and lists assumed complete: "
            "the least $N$ for which (C1) or (C2) holds with the instance's diameter bound $\\Delta=2\\diam P$, and for which (C1) holds with "
            "the class-level count of Lemma~\\ref{lem:countK}, with the geometric middle of the window of times at which that $N$ holds; "
-           "and the $N$ of Theorem~\\ref{thm:E} for the class $\\Cl(A,\\ell,M)$.}\\label{tab:practice}",
-           "\\setlength{\\tabcolsep}{3.5pt}\\begin{tabular}{@{}llllllll@{}}", "\\toprule",
-           "orbifold & $\\ell$ & $M$ & $|\\mathcal S|$ & (C1), $\\Delta$ & (C2), $\\Delta$ & (C1), $C_*(A,\\ell,M)$ & $N$, Thm~\\ref{thm:E}\\\\",
+           "the least $N$ for which (C1) holds against all of $\\Sig(A,M)$, with the area bound $A$ and $C_*(A,\\ell,M)$ only; "
+           "and the $N$ of Theorem~\\ref{thm:E} for the class $\\Cl(A,\\ell,M)$. Here, as in Theorem~\\ref{thm:post}, the test with $N$ uses "
+           "$\\tilde\\lambda_0,\\dots,\\tilde\\lambda_N$; Theorem~\\ref{thm:E} uses $N$ eigenvalues.}\\label{tab:practice}",
+           "\\setlength{\\tabcolsep}{2.4pt}\\begin{tabular}{@{}lllllllll@{}}", "\\toprule",
+           "orbifold & $\\ell$ & $M$ & $|\\mathcal S|$ & (C1), $\\Delta$ & (C2), $\\Delta$ & (C1), $C_*$ & (C1), $\\Sig(A,M)$ & $N$, Thm~\\ref{thm:E}\\\\",
            "\\midrule"]
     for orb, M in order:
         b = key[(orb, M, "B1")]
         d = key[(orb, M, "K")]
+        e = key[(orb, M, "Kall")]
         name = tex_name(orb)
         ell = inp[orb]["systole_lower_bound"]
         out.append(f"{name} & ${ell}$ & ${M}$ & ${b['S_size']}$ & {count(b['N_C1'], b['t_C1'], b['weyl_C1'], b['N_complete'])} & "
                    f"{count(b['N_C2'], b['t_C2'], b['weyl_C2'], b['N_complete'])} & "
-                   f"{count(d['N_C1'], d['t_C1'], d['weyl_C1'], d['N_complete'])} & ${sci(float(b['N_thm62']))}$\\\\")
+                   f"{count(d['N_C1'], d['t_C1'], d['weyl_C1'], d['N_complete'])} & "
+                   f"{count(e['N_C1'], None, e['weyl_C1'], e['N_complete'])} & ${sci(float(b['N_thm62']))}$\\\\")
     out += ["\\bottomrule", "\\end{tabular}", "\\end{table}"]
     return "\n".join(out)
 
@@ -85,7 +89,7 @@ def table_inputs():
                  if r["data"] == "full"}.values())[::-1]
     out = ["\\begin{table}[t]", "\\centering\\footnotesize",
            "\\caption{Inputs of the test for the ten examples: exact area, the lower bound $\\ell$ for the "
-           "systole (computed in floating point, not certified), the proved diameter bound $2\\diam P$ and the computed diameter, the class-level count constant "
+           "systole (certified in interval arithmetic), the proved diameter bound $2\\diam P$ (rounded up) and the computed diameter, the class-level count constant "
            "$C_*(A,\\ell,M)$ of Lemma~\\ref{lem:countK} (-- where an order exceeds $M$), and the complete range: the eigenvalues $\\lambda\\le\\lambda_c$, "
            "$N_c$ of them, of the $n$ computed; for the family the trace test alone covers $\\lambda<9.8\\times10^3$, and the range above rests on the agreement of the eigenvalue counts of three discretisations.}\\label{tab:inputs}",
            "\\setlength{\\tabcolsep}{4pt}\\begin{tabular}{@{}lllllllll@{}}", "\\toprule",
@@ -98,7 +102,7 @@ def table_inputs():
         area = "$\\pi/2$" if r["area"].startswith("0.5") else "$4\\pi/3$"
         k3 = f"${sci(float(Kv[(orb, '3')]))}$" if (orb, "3") in Kv else "--"
         k12 = f"${sci(float(Kv[(orb, '12')]))}$"
-        out.append(f"{name} & {area} & ${r['systole_lower_bound']}$ & ${float(r['diam_B1_2diamP']):.3f}$ & "
+        out.append(f"{name} & {area} & ${r['systole_lower_bound']}$ & ${math.ceil(float(r['diam_B1_2diamP']) * 1000) / 1000:.3f}$ & "
                    f"${float(r['diam_true_numerical']):.3f}$ & {k3} & {k12} & "
                    f"${float(r['lambda_complete']):.0f}$ & ${r['N_complete']}$ of ${r['n_computed']}$\\\\")
     out += ["\\bottomrule", "\\end{tabular}", "\\end{table}"]
@@ -113,7 +117,8 @@ def table_spectra():
     out = ["\\begin{table}[t]", "\\centering\\scriptsize",
            "\\caption{The computed eigenvalues $\\tilde\\lambda_j$, $1\\le j\\le40$, of $\\Orb(2,8,8)$ and "
            "$\\Orb(3,3,12)$, with the a-posteriori error estimates $\\epsilon_j$ (Section~\\ref{sec:numerical}); "
-           "N or D marks the boundary condition on the triangle. aeb means $a\\times10^b$.}\\label{tab:spectra}",
+           "N or D marks the boundary condition on the triangle. aeb means $a\\times10^b$. These are the spectra of the companion paper, whose supplement "
+           "gives their convergence data \\cite{companionA}.}\\label{tab:spectra}",
            "\\setlength{\\tabcolsep}{2pt}\\begin{tabular}{@{}rllllll|rllllll@{}}", "\\toprule",
            "$j$ & \\multicolumn{3}{l}{$\\Orb(2,8,8)$} & \\multicolumn{3}{l|}{$\\Orb(3,3,12)$} & "
            "$j$ & \\multicolumn{3}{l}{$\\Orb(2,8,8)$} & \\multicolumn{3}{l}{$\\Orb(3,3,12)$}\\\\", "\\midrule"]

@@ -50,6 +50,8 @@ SOURCES.update({
     "hejhal1983": ("doi", "10.1007/bfb0061302"),
     "hejhal1990": ("doi", "10.1090/memo/0437"),
     "bsv2006": ("doi", "10.1155/imrn/2006/71281"),
+    # round 7 (B7): cone points degenerating to cusps; Crossref record fetched 2026-10-18
+    "judge1995": ("doi", "10.1090/s0894-0347-1995-1273415-6"),
 })
 bb.SOURCES = SOURCES
 bb.HERE = HERE
@@ -60,6 +62,7 @@ bb.TITLE_SC["jorgensen1976"] = "On discrete groups of {M}{\\\"o}bius transformat
 bb.TITLE_SC["bers1972"] = "A remark on {M}umford's compactness theorem"
 bb.TITLE_SC["mumford1971"] = "A remark on {M}ahler's compactness theorem"
 bb.TITLE_SC["beardon1983"] = "The geometry of discrete groups"
+bb.TITLE_SC["judge1995"] = "On the existence of {Maass} cusp forms on hyperbolic surfaces with cone points"
 # round 4: record fixes, each checked against a fetched zbMATH Open record (fetched by --fetch)
 bb.EVIDENCE_ZB.update({"busercourtois1990_zb": "0711.58033", "garbinjorgenson2018_zb": "1444.58012",
                        "ji1993_zb": "0793.53051", "hejhal1983_zb": "0543.10020", "bsv2006_zb": "1154.11018"})

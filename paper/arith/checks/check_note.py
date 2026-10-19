@@ -319,6 +319,42 @@ for q_ in range(1, 9):
                 okgp &= gp == cand
 check("7f (u, vq, vr) is a geometric progression iff u/v in {sqrt(qr), q^2/r, r^2/q}", okgp)
 
+# 8. round 7 ---------------------------------------------------------------------------------------
+# 8a. Kubert's Tate normal form E(b, c): y^2 + (1-c)xy - by = x^3 - bx^2, b = c + c^2 (a point of order 6), is
+#     isomorphic over Q(c) to E_Lambda at Lambda = -1/c: equal j, and c4, c6 in the ratios u^4, u^6 with u = c/2.
+Ls, cs = sp.symbols("L c")
+def _c46(a1, a2, a3, a4, a6):
+    b2, b4, b6 = a1**2 + 4*a2, 2*a4 + a1*a3, a3**2 + 4*a6
+    return b2**2 - 24*b4, -b2**3 + 36*b2*b4 - 216*b6
+cL4, cL6 = _c46(0, Ls**2 - 6*Ls - 3, 0, 16*Ls, 0)
+bb = cs + cs**2
+cT4, cT6 = _c46(1 - cs, -bb, -bb, 0, 0)
+u = cs / 2
+Xs, Ys = sp.symbols("Xs Ys")
+_x = cs**2 / 4 * Xs + cs
+_y = cs**3 / 8 * Ys + cs**2 * (cs - 1) / 8 * Xs + cs**2
+_FT = _y**2 + (1 - cs) * _x * _y - bb * _y - (_x**3 - bb * _x**2)
+_FL = Ys**2 - Xs**3 - ((1/cs)**2 + 6/cs - 3) * Xs**2 + 16 / cs * Xs
+check("8a' the explicit change of variables x = c^2 s/4 + c, y = c^3 eta/8 + c^2 (c-1) s/8 + c^2 maps E_{-1/c} onto E(c+c^2, c)",
+      sp.simplify(sp.expand(_FT - u**6 * _FL)) == 0)
+check("8a E_Lambda at Lambda = -1/c is Kubert's E(c+c^2, c) over Q(c) (u = c/2)",
+      sp.simplify(cT4 - u**4 * cL4.subs(Ls, -1/cs)) == 0 and sp.simplify(cT6 - u**6 * cL6.subs(Ls, -1/cs)) == 0)
+# 8b. Lemma 1: the discriminant (c'+4)(24-22c'-c'^2)/(6-c') is negative for 3 <= c' <= 5, and
+#     3(c'+3)(1-c') for c' >= 2
+check("8b Lemma 1 discriminants negative on the stated ranges",
+      all((cp + 4) * (24 - 22*cp - cp*cp) < 0 for cp in (3, 4, 5)) and all(3*(cp + 3)*(1 - cp) < 0 for cp in range(2, 200)))
+# 8c. translation by G = (1 : r : r^2), r = -4, on C_{169/16}: G has mixed signs, and the four pairs of torsion
+#     type (theory/diophantine/torsion_pairs.py) lie on C_{169/16} with equal S and R
+pairs8 = [((182, 208, 455), (165, 240, 440)), ((231, 336, 616), (208, 455, 520)),
+          ((462, 528, 1155), (390, 715, 1040)), ((546, 1001, 1456), (528, 1155, 1320))]
+ok8 = F(-4) + 1 + F(1, -4) == F(-13, 4) and F(-13, 4)**2 == F(169, 16)
+for x_, y_ in pairs8:
+    e = lambda t: (sum(t), t[0]*t[1] + t[1]*t[2] + t[2]*t[0], t[0]*t[1]*t[2])
+    ex, ey = e(x_), e(y_)
+    ok8 &= ex[0] == ey[0] and F(ex[1], ex[2]) == F(ey[1], ey[2]) and F(ex[0]*ex[1], ex[2]) == F(169, 16)
+    ok8 &= gcd(*x_, *y_) == 1
+check("8c the four torsion-type pairs: equal S and R, Lambda = 169/16 = (r+1+1/r)^2 at r = -4, primitive", ok8)
+
 (HERE/"check_note.txt").write_text("\n".join(OUT) + f"\n\n{len(OUT)} checks, {FAIL} failures\n")
 print(f"\n{len(OUT)} checks, {FAIL} failures")
 sys.exit(1 if FAIL else 0)

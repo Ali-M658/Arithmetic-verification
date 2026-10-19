@@ -65,7 +65,7 @@ def table_overlap():
         "\\begin{table}[t]\n"
         "\\caption{First overlap and first collision of the adjacent strata $p$ and $p+1$, for $2\\le p\\le14$, "
         "from the exhaustive enumeration of all hyperbolic triads with $S\\le600$. The gap is the first collision sum "
-        "minus $S^*(p)$; it vanishes only for $p=2$ and $p=4$ (Proposition~\\pref{prop:tangency}).}\\label{tab:overlap}\n"
+        "minus $S^*(p)$; in this table it vanishes only for $p=2$ and $p=4$ (compare Proposition~\\pref{prop:tangency}).}\\label{tab:overlap}\n"
         "\\centering\\small\n"
         "\\begin{tabular}{@{}rrrrrl@{}}\n\\toprule\n"
         "$p$ & $x^*(p)$ & $S^*(p)$ & first collision & gap & colliding pair\\\\\n\\midrule\n"

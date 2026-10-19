@@ -275,13 +275,17 @@ def family_spectra():
 
 # ------------------------------------------------------------------ the scan
 class Case:
-    def __init__(self, name, sig0, A_over_pi, ell, M, spec, Delta, variant, data, epskey="eps", do_obs=True, logC=None):
+    def __init__(self, name, sig0, A_over_pi, ell, M, spec, Delta, variant, data, epskey="eps", do_obs=True, logC=None,
+                 allareas=False):
         self.do_obs = do_obs
         self.name, self.sig0, self.M = name, sig0, M
         s = area_over_2pi(*sig0)
         self.A = float(2 * mp.pi * mpq(s))
         self.Aq = float(mpq(s)) / 2                               # A/(4 pi)
-        self.S = [x for x in signatures(2 * s, M) if area_over_2pi(*x) == s]
+        # S: the signatures of the instance's exact area, or (allareas, round 7) every signature of Sig(A, M), i.e. of
+        # area at most the instance's area, each with its own area in G_sigma
+        self.S = [x for x in signatures(2 * s, M) if allareas or area_over_2pi(*x) == s]
+        self.Aqs = [float(mpq(area_over_2pi(*x))) / 2 for x in self.S]
         check(sig0 in self.S, "true signature in S")
         self.beta = max(float(sum(mpq(b_cone(0, m)) for m in o)) for _, o in self.S)
         self.ell, self.Delta, self.variant, self.data, self.epskey = ell, Delta, variant, data, epskey
@@ -295,7 +299,13 @@ class Case:
         self.memo = {}
 
     def Gs(self, G, t):
-        return np.array([G.G(sig, self.Aq, t) for sig in self.S])
+        return np.array([G.G(sig, aq, t) for sig, aq in zip(self.S, self.Aqs)])
+
+    def pert_cum(self, t):
+        """Perturbation term of Theorem 7.1 (round 7, sharp form): pc[N] = sum_{j<N} eps_j e^{-max(lam~_j - eps_j, 0) t},
+        valid since |e^{-at} - e^{-bt}| <= t |a - b| e^{-t min(a,b)} and min(lambda_j, lambda~_j) >= max(lam~_j - eps_j, 0)."""
+        w = self.eps * np.exp(-np.maximum(self.lam - self.eps, 0.0) * t)
+        return np.concatenate([[0.0], np.cumsum(w)])
 
     def evaluate(self, G, t, exact_N=None):
         """At time t: (N_C1, sigma_C1, N_C2, sigma_C2, N_obs, N_rule, gap0, H) with N the least count, or
@@ -316,10 +326,11 @@ class Case:
             self.memo[float(t)] = res
             return res
         tb = TailBound(self.ell, self.logC, self.A, self.beta, t)
+        pc = self.pert_cum(t)
         if exact_N is not None:
             N = exact_N
             mu = self.lam[N] - self.eps[N]
-            E = Ht + math.exp(min(tb.log_tail_exact(mu), 700.0)) + t * self.cumeps[N]
+            E = Ht + math.exp(min(tb.log_tail_exact(mu), 700.0)) + t * pc[N]
             dev = np.abs(part[N - 1] - Gv)
             ps = dev <= E
             c1 = ps.sum() == 1 and bool(ps[self.i0])
@@ -328,7 +339,7 @@ class Case:
             return c1, c2
         Ns = np.arange(1, self.Nc)                                # N with lambda~_N available
         mu = self.lam[Ns] - self.eps[Ns]
-        E = Ht + np.exp(np.minimum(tb.log_tail(mu), 700.0)) + t * self.cumeps[Ns]
+        E = Ht + np.exp(np.minimum(tb.log_tail(mu), 700.0)) + t * pc[Ns]
         Z = part[Ns - 1]
         dev = np.abs(Z[:, None] - Gv[None, :])                    # (N, sigma)
         ps = dev <= E[:, None]
@@ -382,9 +393,8 @@ class Case:
     def weyl_estimate(self, G, crit):
         """Least N over t of the Weyl model (see the module docstring); (N, t) or (None, None).
         600 log-spaced t in [1e-9, 1], then 61 points in the bracket of the best."""
-        pert_all = self.cumeps[-1]
-
         def at(t):
+            pert_all = self.pert_cum(t)[-1]
             Gv = self.Gs(G, t)
             gap = float(np.min(np.abs(np.delete(Gv, self.i0) - Gv[self.i0])))
             target = gap / 2 if crit == "C2" else gap
@@ -477,16 +487,18 @@ def main():
             Dcls = float(I[f"D_M{M}"])
             Kcls = count_constant(2 * mp.pi * mpq(area_over_2pi(*sig)), mp.mpf(I["systole_lower_bound"]), M)
             th = theorem_E_constants(2 * mp.pi * mpq(area_over_2pi(*sig)), mp.mpf(I["systole_lower_bound"]), M)
-            plan = [("B1", "eps", "full"), ("B2", "eps", "full"), ("true", "eps", "full"), ("K", "eps", "full")]
+            plan = [("B1", "eps", "full"), ("B2", "eps", "full"), ("true", "eps", "full"), ("K", "eps", "full"),
+                    ("Kall", "eps", "full")]
             if name.startswith("O("):
                 plan.append(("B1", "epsc", "full"))
             if "s120" in specs:
                 plan.append(("B1", "eps", "s120"))
             for dv, ek, dk in plan:
                 spec = specs[dk]
-                Delta = float(Kcls) if dv == "K" else deltas[dv]
-                logC = float(mp.log(Kcls)) if dv == "K" else None
-                c = Case(name, sig, None, ell, M, spec, Delta, dv, dk, ek, do_obs=(dv == "B1" and ek == "eps"), logC=logC)
+                Delta = float(Kcls) if dv in ("K", "Kall") else deltas[dv]
+                logC = float(mp.log(Kcls)) if dv in ("K", "Kall") else None
+                c = Case(name, sig, None, ell, M, spec, Delta, dv, dk, ek, do_obs=(dv == "B1" and ek == "eps"), logC=logC,
+                         allareas=(dv == "Kall"))
                 keep = dv == "B1" and ek == "eps" and dk == "full"
                 o = c.run(G, keep_t=keep)
                 if keep:

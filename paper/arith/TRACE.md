@@ -150,3 +150,26 @@ acknowledgement of the colour maps is copied from the JGA paper because F9 uses 
 | permutation paragraph (transpositions P ↦ π(O) − P, cyclic permutations translations) | proof in the note (fixed points); blind check |
 | literature: Ulas (JNT 2013), Moreland–Zieve (arXiv:1304.1442), Cha et al. (IJNT 2019; arXiv:1811.07451 read), MacLeod (arXiv:math/0502475; Ravi identity CN check 7e), Sadek–El-Sissi pinpoints from the published PDF | records fetched by tools/build_bib.py (SOURCES.md); review/referee-round-6/VERDICT-N.md N10 |
 | quintic description; twelve graph surfaces | elementary (degree of e₂(x)e₃(x′)); orbit description of §3 |
+
+## Round 7 additions
+
+| statement | source |
+|---|---|
+| C_Λ is the universal curve with a point of order 6: E_Λ at Λ = −1/c is isomorphic over Q to the Tate normal form E(c+c², c) by x = c²s/4 + c, y = c³η/8 + c²(c−1)s/8 + c² | CN checks 8a, 8a′ (sympy); (0,0) of order 6 checked with PARI `ellorder` at four values of c (round-7 scratch); Kubert's table as recorded by Mazur, p. 156 (fetched, `review/referee-round-7/main/scratch/lit/`) |
+| Beauville's pencil is the modular surface of Γ0(6) | Top–Yui, arXiv math/0307230, Table 2 (fetched) |
+| Mazur Theorem (5.1), p. 156: the fifteen torsion groups | Numdam scan (fetched, round-7 `lit/`) |
+| Lemma lem:perm (α² = 1 ⇒ α = ±1; cyclic permutations are translations of order 3) | proof in the text; numerical consequences checked in CN 7d and by `theory/diophantine/torsion_pairs.py` (no difference in the order-3 subgroup) |
+| Lemma lem:postrans and the C_{169/16} example; the four torsion-type pairs at S = 845, 1183, 2145, 3003; 7626 dual and 38624 other primitive pairs up to 4800 | TD `torsion_pairs.py` → `data/torsion_pairs.txt` (asserts); CN 8c; rank 1 and Z/12 of C_{169/16}: TD `ranks.py` → `data/ranks.txt` |
+| Lemma 1 ranges 3 ≤ c′ ≤ 5, c′ ≥ 2 | CN 8b |
+| dual family = quartic del Pezzo surface (five points, rank-5 linear system, no three collinear, Picard rank 5 over Q, conic bundle with section; positive points avoid the 16 lines; S_D within a factor 3 of the height) | TD `dual_delpezzo.py` (sympy asserts) |
+| Browning–Sofos, Theorem 1.1 (both bounds B(log B)^{ρ−1} for a quartic del Pezzo surface over Q with a rational point and a conic over Q; U = complement of the 16 lines; standard height) | arXiv 1609.09057v4, fetched (round-7 `lit/`) |
+| O(y(log y)⁴) primitive dual pairs, O(X(log X)⁵) contribution | the two rows above and Lemma 3 (partial summation) |
+| Question E ⇔ A(y) = y^{1+o(1)} | Lemma 3: A(X) ≤ N(X) ≤ X ∫ dA(y)/y |
+| holdout 4801–6000: exact 42960; log-power +0.2 %, power law +2.3 %; 0.2 and 1.9 scaled sd | TD `exponent_fits.py` → `data/exponent_fits.txt` |
+| conductors 90, 6250530, 82110, 1715185290, 41388270; root number +1 for C_{27/2} | TD `ranks.py` → `data/ranks.txt` |
+| Silverman–Tate α(Γ), ᾱ(Γ̄); orders (4,1), (4,4), (8,4), (16,2), (8,2) filled by images of points | AD `check_descent.txt` (its "Sel^phi(E)" is the bound for α on E, cf. its self-test against Silverman–Tate III.6) |
+| Chen survey, Appendix A.5.1, p. 276: the (−1, 1) solutions and Choudhry's three-parameter solution | arXiv 2506.11429v1, fetched (round-7 `lit/`); Choudhry 2011 not obtained (bot wall), stated as such |
+| BGN p. 130: four-variable expectation n ≥ 16 | `review/literature-pass/_fetched/txt/bgn1993.txt` l. 590–591; Zhang arXiv 1608.03382 p. 2 quotes it |
+| Ulas, Theorem 3.1 and Corollary 3.4 | arXiv 1305.6241 (fetched by the N-e referee, round-7 scratch) |
+| Graham 1963, van Doorn 2025 (partitions with prescribed reciprocal sum) | Crossref record; arXiv abstract (round-7 `lit/`) |
+| DGGW erratum (Michigan Math. J. 66 (2017) 221–222) | Crossref record; text not obtained, no statement about its content |

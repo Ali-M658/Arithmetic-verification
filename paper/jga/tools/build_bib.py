@@ -232,7 +232,7 @@ EVIDENCE = {"ostrowski1940_reprint": "10.1007/978-3-0348-9355-8_50", "ucar2017_d
             # round 4: the book record of the 2017 MATRIX Annals (editors of nrs2019)
             "nrs2019_book": "10.1007/978-3-030-04161-8"}
 # zbMATH records used as evidence for one field each (series, pages, title punctuation)
-EVIDENCE_ZB = {"alloucheshallit1999_zb": "1005.11005", "dggw2017erratum_zb": "1404.58043",
+EVIDENCE_ZB = {"bkd1996_zb": "0872.58065", "alloucheshallit1999_zb": "1005.11005", "dggw2017erratum_zb": "1404.58043",
                # round 4: pages missing from Crossref (JDG records; PAMS record gives "1033-1033"),
                # and the series volume of the MATRIX Annals
                "cheeger1983_zb": "0529.58034", "changdeturck1989_zb": "0721.58053", "nrs2019_zb": "1447.35230",
@@ -415,6 +415,8 @@ JOURNAL = {
     "akr2026": "Annales Math{\\'e}matiques du Qu{\\'e}bec",
 }
 AUTHORS = {
+    # Crossref gives "Stuart Dowker"; zbMATH 0872.58065 (fetched as bkd1996_zb) gives "Dowker, J. Stuart" (round 7)
+    "bkd1996": "Bordag, Michael and Kirsten, Klaus and Dowker, J. S.",
     # initials as on the AMS article page (review/literature-pass/CITATIONS.md section 4)
     "korobovbugaevskaya2016": "Korobov, V. I. and Bugaevskaya, A. N.",
     "melzak1961": "Melzak, Z. A.",

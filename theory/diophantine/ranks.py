@@ -47,6 +47,7 @@ CURVES = [
     (Fraction(68, 5), "first fibre of size 3 (S = 136) and of size 4 (S = 408)"),
     (Fraction(1849, 120), "first fibre of size 5 (S = 1849)"),
     (Fraction(230, 21), "first fibre of size 6 (S = 4600)"),
+    (Fraction(169, 16), "torsion Z/12 with r = -4: the pairs of torsion type (torsion_pairs.py; round 7)"),
 ]
 
 
@@ -81,6 +82,7 @@ def main() -> int:
         r = pari.ellrank(E)
         tors = pari.elltors(E)
         root = pari.ellrootno(E)
+        cond = pari.ellglobalred(E)[0]          # the conductor (round 7, for comparison with the LMFDB)
         r1, r2, s = int(r[0]), int(r[1]), int(r[2])
         pts = list(r[3])
         for P in pts:
@@ -95,9 +97,12 @@ def main() -> int:
             f"  ellrank:  {r}",
             f"  elltors:  {tors}",
             f"  rootno:   {root}",
+            f"  conductor: {cond}",
             f"  rank:     {r1} <= rank <= {r2}   -> {status}",
             f"  points:   {len(pts)} returned, all on the model; height-matrix det = {det}",
         ]
+    r1, r2, st = proven[Fraction(169, 16)]
+    assert (r1, r2, st) == (1, 1, "PROVEN"), "rank(C_{169/16}) = 1 is not proven"
     # the isolation theorem needs an unconditional upper bound of 0
     r1, r2, st = proven[Fraction(27, 2)]
     assert r2 == 0 and st == "PROVEN", "rank(C_{27/2}) = 0 is not proven"

@@ -28,6 +28,15 @@ with its identifier to be filled; it has no external record.
 | `morelandzieve2013.xml` | https://export.arxiv.org/api/query?id_list=1304.1442 | `6fd5ab72da69c388f3891f75832301654db25b52c342d0f818aceef270a2e12e` |
 | `macleod2005.xml` | https://export.arxiv.org/api/query?id_list=math/0502475 | `c27d89228ce4ee27ef8a246aadcddc6dd8099fe265133ad8b9871aeb1994a5f1` |
 | `silvermantate2015.json` | https://doi.org/10.1007/978-3-319-18588-0 | `47c4aec2fcb6edbc09a9ae35bf7f65581100dfe479dbd11b02a2bd299bb88c46` |
+| `kubert1976.json` | https://doi.org/10.1112/plms/s3-33.2.193 | `a79199e88fbf3c05e69996f5c803862ea24221e08ce09834afc3cc946912d18c` |
+| `topyui2007.json` | https://doi.org/10.1216/rmjm/1181068772 | `fd5d1ee053e032bada8251fe2fbafa3fb46fb609bac38197c498409768c6e430` |
+| `browningsofos2019.json` | https://doi.org/10.1007/s00208-018-1716-6 | `577ea885dff4ad9c6af59425ba6bca691acdaaea8a6a0dac1327b647e274e72d` |
+| `choudhry2011.json` | https://doi.org/10.1216/rmj-2011-41-3-737 | `d0b3f5b6a3b774ad391f4cf2dfb7b659782542c89a8fdf996ecfd390e44b15a6` |
+| `chen2025.xml` | https://export.arxiv.org/api/query?id_list=2506.11429 | `eeb92f9aef50144f8bed0763a95a4934fd1a1bfdef2fe14771bcb9e9ded766ad` |
+| `zhang2016.xml` | https://export.arxiv.org/api/query?id_list=1608.03382 | `ac39f59fe5ec9200309ba9d35c4bee7327b36fc0486ffe21b0cd1fed4ab02ce3` |
+| `graham1963.json` | https://doi.org/10.1017/s1446788700039045 | `46da6abcef1d07543861e86b25a20bff904d50ca02ef3e9920de3971ff915d5a` |
+| `vandoorn2025.xml` | https://export.arxiv.org/api/query?id_list=2502.02200 | `b0a877aded4c8f83ae1b2dd2f2f682261c88419bb1448c6e581206ea093c89de` |
+| `dggw2017.json` | https://doi.org/10.1307/mmj/1488510034 | `1be58f6d09d48eb89220fdc0b827f63b402e4cea54b957698383bb5a09151f0e` |
 | `dggw2008_pages.json` | https://api.zbmath.org/v1/document/_search?search_string=doi%3A10.1307/mmj/1213972406&page=0&results_per_page=1 | `78c5dc19d637784f95004fe9f7c0466f88574f64dfb0b4f8fee373808a1eac0b` |
 
 ## Corrections to fetched records

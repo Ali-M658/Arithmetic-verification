@@ -33,5 +33,9 @@ PASS 7d isosceles orientations: (u:v:v), (v:u:v) of order 6, (v:v:u) of order 2
 PASS 7d a positive primitive triple with S <= 60 is torsion iff isosceles or a geometric progression
 PASS 7e R/r = (Lambda - 1)/4 under the Ravi substitution
 PASS 7f (u, vq, vr) is a geometric progression iff u/v in {sqrt(qr), q^2/r, r^2/q}
+PASS 8a' the explicit change of variables x = c^2 s/4 + c, y = c^3 eta/8 + c^2 (c-1) s/8 + c^2 maps E_{-1/c} onto E(c+c^2, c)
+PASS 8a E_Lambda at Lambda = -1/c is Kubert's E(c+c^2, c) over Q(c) (u = c/2)
+PASS 8b Lemma 1 discriminants negative on the stated ranges
+PASS 8c the four torsion-type pairs: equal S and R, Lambda = 169/16 = (r+1+1/r)^2 at r = -4, primitive
 
-35 checks, 0 failures
+39 checks, 0 failures

@@ -274,6 +274,8 @@ stage "diophantine growth_fits"          q exact theory/diophantine "$P growth_f
 stage "diophantine exponent_fits"        q exact theory/diophantine "$P exponent_fits.py"
 stage "diophantine families"             q exact theory/diophantine "$P families.py 4800 7"
 stage "diophantine ranks (PARI)"         q pari  theory/diophantine '$PYTHON_PARI ranks.py'
+stage "diophantine torsion_pairs"        q exact theory/diophantine "$P torsion_pairs.py"
+stage "diophantine dual_delpezzo"        q exact theory/diophantine "$P dual_delpezzo.py"
 
 # --- numerics (committed CSV/JSON/NPZ only; no NGSolve)
 stage "numerics validate (committed)"    q exact numerics "$P validate_committed.py --quick"
@@ -336,9 +338,11 @@ for s in quadratic_form top_coefficient linear_part obstruction_check twisted_mp
 done
 
 # --- theory/eigen (Theorem 4.13 of the paper, finitely many eigenvalues): each script raises on a failed check; together
-#     about 9 min (diameter 110 s, counting 80 s, theorem_e 55 s, instances 90 s, practice 90-170 s, systole_233 30 s; needs scipy).
-#     instances.py and practice.py rewrite their CSVs in data/, which must come back byte-identical.
-for s in diameter counting remainder theorem_e necessity locality instances practice practice_double_window systole_233; do
+#     about 15 min (diameter 110 s, counting 80 s, theorem_e 110 s, instances 90 s, practice 90-370 s, systole_233 30 s,
+#     certify_systoles 140 s, computed_gap 60 s; needs scipy). The scripts that rewrite CSVs in data/ must write them
+#     back byte-identical. Round 7 added practice_checks (robustness), certify_systoles (interval arithmetic) and
+#     computed_gap (Corollary 6.3).
+for s in diameter counting remainder theorem_e necessity locality instances practice practice_checks practice_double_window systole_233 certify_systoles computed_gap; do
     stage "eigen $s" q exact theory/eigen "$P $s.py"
 done
 

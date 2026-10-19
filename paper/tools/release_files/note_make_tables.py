@@ -103,7 +103,7 @@ def table_density():
             prim, mf = prim6000, largest6000
         rows.append(f"{S} & {pairs} & {classes} & {prim} & {mf} & {loc} \\\\")
     return ("\\begin{tabular}{@{}rrrrrr@{}}\n\\toprule\n"
-            "$X$ & pairs $\\N(X)$ & classes $\\Ncl(X)$ & primitive classes & largest class & local exponent\\\\\n\\midrule\n"
+            "$X$ & pairs $\\N(X)$ & classes $\\Ncl(X)$ & primitive classes & largest size & local exponent\\\\\n\\midrule\n"
             + "\n".join(rows) + "\n\\bottomrule\n\\end{tabular}\n")
 
 

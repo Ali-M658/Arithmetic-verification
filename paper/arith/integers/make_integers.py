@@ -61,9 +61,11 @@ for old, new, n in [
     ("\\cite[Prop.~2.7, Thm~2.8]{sadekelsissi2015}", "\\cite[Proposition~2.7 and Theorem~2.8]{sadekelsissi2015}", 1),
     ("\\cite[Prop.~2.7]{sadekelsissi2015}", "\\cite[Proposition~2.7]{sadekelsissi2015}", 1),
     ("\\cite[Thm~2.8]{sadekelsissi2015}", "\\cite[Theorem~2.8]{sadekelsissi2015}", 1),
-    ("\\cite[Chap.~III, Cor.~(5.2), p.~156]{mazur1977}", "\\cite[Chapter~III, Corollary~(5.2), p.~156]{mazur1977}", 2),
+    ("\\cite[Chap.~III, Thm~(5.1), p.~156]{mazur1977}", "\\cite[Chapter~III, Theorem~(5.1), p.~156]{mazur1977}", 1),
     ("\\cite[Prop.~7.1]{schoen1988}", "\\cite[Proposition~7.1]{schoen1988}", 1),
-    ("\\cite[Chap.~III]{silvermantate2015}", "\\cite[Chapter~III]{silvermantate2015}", 1),
+    ("\\cite[Chap.~III, \\S6]{silvermantate2015}", "\\cite[Chapter~III, Section~6]{silvermantate2015}", 1),
+    ("\\cite[Thm~3.1, Cor.~3.4]{ulas2013}", "\\cite[Theorem~3.1 and Corollary~3.4]{ulas2013}", 1),
+    ("\\cite[Thm~1.1]{browningsofos2019}", "\\cite[Theorem~1.1]{browningsofos2019}", 1),
     ("By \\eqref{eq:copies}, ", "By Equation~\\eqref{eq:copies}, ", 1),
     ("In \\eqref{eq:copies}, keep", "In Equation~\\eqref{eq:copies}, keep", 1),
     ("as defined in \\eqref{eq:counts}", "as defined in Equation~\\eqref{eq:counts}", 1),
@@ -77,13 +79,13 @@ body = sub("  \\Delta=2^{12}\\Lambda^2(\\Lambda-1)^3(\\Lambda-9),\n\\end{equatio
 
 # Everything within the margins (template guideline): the two bounds of Theorem A on two lines
 body = sub("\\[\n  \\N(X)\\ \\ge\\ \\Ncl(X)\\ \\ge\\ \\Big(\\frac{3\\log2}{2\\pi^2}+o(1)\\Big)X\\log X,\\qquad\n"
-           "  \\N(X)\\ \\ge\\ \\Big(\\frac{3}{128\\pi^4}+o(1)\\Big)X(\\log X)^2 .\n\\]",
+           "  \\N(X)\\ \\gg\\ X(\\log X)^2 .\n\\]",
            "\\begin{gather*}\n  \\N(X)\\ \\ge\\ \\Ncl(X)\\ \\ge\\ \\Big(\\frac{3\\log2}{2\\pi^2}+o(1)\\Big)X\\log X,\\\\\n"
-           "  \\N(X)\\ \\ge\\ \\Big(\\frac{3}{128\\pi^4}+o(1)\\Big)X(\\log X)^2 .\n\\end{gather*}", 1, body)
+           "  \\N(X)\\ \\gg\\ X(\\log X)^2 .\n\\end{gather*}", 1, body)
 
 # A comma after a sentence-initial "Hence" (template guideline)
 for old, new in [
-    ("Hence $\\iota(P)=-R", "Hence, $\\iota(P)=-R"),
+    ("Hence $\\iota(P)=-V", "Hence, $\\iota(P)=-V"),
     ("Hence $2Q=2A=-Q$", "Hence, $2Q=2A=-Q$"),
     ("Hence $nP$ lies on it", "Hence, $nP$ lies on it"),
     ("Hence $\\delta=p-p'\\ne0$.", "Hence, $\\delta=p-p'\\ne0$."),
@@ -121,8 +123,17 @@ A. Bremner, R. K. Guy, and R. J. Nowakowski, Which integers are representable as
 \bibitem{bremnertho2018}
 A. Bremner and Nguyen Xuan Tho, The equation $(w+x+y+z)(1/w+1/x+1/y+1/z)=n$, \textit{Int. J. Number Theory} \textbf{14}(5) (2018), 1229--1246.
 
+\bibitem{browningsofos2019}
+T. D. Browning and E. Sofos, Counting rational points on quartic del Pezzo surfaces with a rational conic, \textit{Math. Ann.} \textbf{373}(3--4) (2019), 977--1016.
+
 \bibitem{cha2019}
 B. Cha, A. Claman, J. Harrington, Z. Liu, B. Maldonado, A. Miller, A. Palma, T. W. H. Wong, and H. Yi, An investigation on partitions with equal products, \textit{Int. J. Number Theory} \textbf{15}(8) (2019), 1731--1744.
+
+\bibitem{chen2025}
+Chen Shuwen, A survey of the Prouhet--Tarry--Escott problem and its generalizations, preprint, arXiv:2506.11429, 2025.
+
+\bibitem{choudhry2011}
+A. Choudhry, Equal sums of like powers, both positive and negative, \textit{Rocky Mountain J. Math.} \textbf{41}(3) (2011), 737--763.
 
 \bibitem{crameri2023}
 F. Crameri, Scientific colour maps, version 8.0.1, Zenodo, 2023, \url{https://doi.org/10.5281/zenodo.8409685}.
@@ -133,11 +144,20 @@ F. Crameri, G. E. Shephard, and P. J. Heron, The misuse of colour in science com
 \bibitem{dggw2008}
 E. B. Dryden, C. S. Gordon, S. J. Greenwald, and D. L. Webb, Asymptotic expansion of the heat kernel for orbifolds, \textit{Michigan Math. J.} \textbf{56}(1) (2008), 205--238.
 
+\bibitem{dggw2017}
+E. B. Dryden, C. S. Gordon, S. J. Greenwald, and D. L. Webb, Erratum to ``Asymptotic expansion of the heat kernel for orbifolds'', \textit{Michigan Math. J.} \textbf{66}(1) (2017), 221--222.
+
 \bibitem{gangetal-heat}
 P. Gang, A. Agadi, A. Veluri, J. Wang, J. Barreto, and A. Chouthaiwale, How much of a hyperbolic orbifold does heat hear?, preprint, \textbf{[PLACEHOLDER: preprint identifier]}.
 
+\bibitem{graham1963}
+R. L. Graham, A theorem on partitions, \textit{J. Austral. Math. Soc.} \textbf{3}(4) (1963), 435--441.
+
 \bibitem{kelly1989}
 J. B. Kelly, Partitions with equal products. II, \textit{Proc. Amer. Math. Soc.} \textbf{107}(4) (1989), 887--893.
+
+\bibitem{kubert1976}
+D. S. Kubert, Universal bounds on the torsion of elliptic curves, \textit{Proc. London Math. Soc. (3)} \textbf{33}(2) (1976), 193--237.
 
 \bibitem{macleod2005}
 A. J. MacLeod, Integer triangles with $R/r=N$, preprint, arXiv:math/0502475, 2005.
@@ -166,11 +186,20 @@ C. Schoen, On fiber products of rational elliptic surfaces with section, \textit
 \bibitem{silvermantate2015}
 J. H. Silverman and J. T. Tate, \textit{Rational Points on Elliptic Curves}, Undergraduate Texts in Mathematics, Springer International Publishing, 2015.
 
+\bibitem{topyui2007}
+J. Top and N. Yui, Explicit equations of some elliptic modular surfaces, \textit{Rocky Mountain J. Math.} \textbf{37}(2) (2007), 663--687.
+
 \bibitem{ulas2013}
 M. Ulas, A note on Diophantine systems involving three symmetric polynomials, \textit{J. Number Theory} \textbf{133}(10) (2013), 3283--3295.
 
+\bibitem{vandoorn2025}
+W. van Doorn, Partitions with prescribed sum of reciprocals: asymptotic bounds, preprint, arXiv:2502.02200, 2025.
+
 \bibitem{ysv2024}
 A. E. A. Youmbai, A. S. Zargar, and M. Voznyy, Partitions into triples with equal products and families of elliptic curves, \textit{Glas. Mat. Ser. III} \textbf{60}(1) (2025), 59--72.
+
+\bibitem{zhang2016}
+Y. Zhang, Integers representable as the product of the sum of four integers with the sum of their reciprocals, preprint, arXiv:1608.03382, 2016.
 
 \bibitem{zhangcai2013}
 Y. Zhang and T. Cai, $n$-tuples of positive integers with the same sum and the same product, \textit{Math. Comp.} \textbf{82}(281) (2013), 617--623.

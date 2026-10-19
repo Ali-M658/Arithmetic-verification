@@ -34,5 +34,7 @@ pure power law n(s) = c s^beta, Poisson MLE, window 600-4800 (for comparison wit
 all              beta = 0.587 (cumulative exponent about 1.59); log-power k = 4.489; NLL(power) - NLL(log-power) = 9.48; Pearson dispersion 6.76; scaled difference 1.40
 primitive        beta = 0.463 (cumulative exponent about 1.46); log-power k = 3.532; NLL(power) - NLL(log-power) = 4.75; Pearson dispersion 2.12; scaled difference 2.24
 
+holdout 4801-6000 (all pairs): exact N(6000) - N(4800) = 42960; log-power law predicts 43066 (+0.2%), power law 43961 (+2.3%); misses in dispersion-scaled Poisson sd: 0.2 and 1.9
+
 closed form c S (log S)^K fitted on 100..4800 (the earlier cumulative fit): K = 5.16
 secondary-term prediction from per-S k = 4.49: K ~ k (1 + 1/log S) = 5.05 at S ~ 3000

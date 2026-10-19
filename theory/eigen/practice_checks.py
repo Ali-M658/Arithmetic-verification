@@ -4,7 +4,8 @@
 
 1. Robustness to the eigenvalue errors.  The least N for which criterion (C1) of Theorem 7.1 holds, with the
    instance inputs (Delta = 2 diam P), is recomputed with every error eps_j replaced by max(eps_j, r lambda~_j)
-   for r = 1e-6, 1e-5, 1e-4, 1e-3.  Asserted: the counts are those of the committed run for r <= 1e-4.
+   for r = 1e-6, ..., 1e-2.  Asserted: the counts are those of the committed run for r <= 1e-3 (round 7: with the
+   sharp perturbation term of Theorem 7.1).
 2. Completeness against every signature.  At t = 0.0015 the trace of the whole computed list (Neumann and
    Dirichlet, about 2850 eigenvalues) is compared with G_sigma(t) for every sigma of area pi/2 with orders at
    most 12.  Asserted: it agrees with the true signature within the error budget 1.5e-11 of Section 7.1
@@ -41,7 +42,7 @@ def main():
         ell = float(I["systole_lower_bound"])
         Delta = float(I["diam_upper_B1_2diamP"])
         base = int(committed[(name, "12", "B1", "eps", "full")]["N_C1"])
-        for r in (1e-6, 1e-5, 1e-4, 1e-3):
+        for r in (1e-6, 1e-5, 1e-4, 1e-3, 1e-2):
             sp = dict(spec)
             sp["eps"] = np.maximum(spec["eps"], r * spec["lam"])
             c = P.Case(name, sig, None, ell, 12, sp, Delta, "B1", "full", "eps", do_obs=False)
@@ -49,7 +50,7 @@ def main():
             n = o["C1"]["N"] if o["C1"] is not None else None
             rows.append([name, f"{r:g}", n if n is not None else f">{c.Nc - 1}", base])
             print(name, r, n, "committed", base, flush=True)
-            if r <= 1e-4:
+            if r <= 1e-3:
                 check(n == base, f"{name}: count changes at relative error {r}")
         # completeness against every signature
         s = area_over_2pi(*sig)

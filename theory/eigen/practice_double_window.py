@@ -14,8 +14,11 @@ counts N_C1, N_C2.
 
 Part 2.  For each triangle orbifold and j in J, the committed list with lambda~_j deleted, and with
 lambda~_j duplicated, is run through the same scan (all t of practice.TGRID, every N with lambda~_N
-available).  Recorded: the least N at which (C1) holds for some signature, and which signature.
-Nothing is asserted about the outcome; the counts are written to data/practice_missing.csv and printed.
+available).  Recorded: the least N at which (C1) holds for some signature, and which signature; the least N at which, at some t
+of the grid, no signature passes (which Theorem 7.1 excludes for a correct, complete list); and the outcome of the
+signature-independent protocol (accept sigma only if some signature passes at every (N, t) and sigma is the only
+signature ever singled out).  Nothing is asserted about the outcome; the counts are written to
+data/practice_missing.csv and printed.  Round 7: the perturbation term is the sharp one of practice.py.
 
 Writes data/practice_double_window.csv and data/practice_missing.csv.
 """
@@ -54,6 +57,8 @@ def first_C1(case, G):
     """Least N (over the t grid) at which (C1) holds for some signature, and that signature; no assertion
     on which signature it is."""
     best = None
+    empty = None            # least N at which, at some t of the grid, no signature passes (round 7)
+    singled = set()         # every signature that (C1) singles out at some (N, t)
     for t in P.TGRID:
         Gv = case.Gs(G, t)
         lh = float(P.logH(case.ell, case.logC, case.A, t))
@@ -63,16 +68,21 @@ def first_C1(case, G):
         tb = P.TailBound(case.ell, case.logC, case.A, case.beta, t)
         Ns = np.arange(1, case.Nc)
         mu = case.lam[Ns] - case.eps[Ns]
-        E = Ht + np.exp(np.minimum(tb.log_tail(mu), 700.0)) + t * case.cumeps[Ns]
+        E = Ht + np.exp(np.minimum(tb.log_tail(mu), 700.0)) + t * case.pert_cum(t)[Ns]
         part = np.cumsum(np.exp(-case.lam * t))
         ps = np.abs(part[Ns - 1][:, None] - Gv[None, :]) <= E[:, None]
         c1 = ps.sum(axis=1) == 1
+        for k in np.nonzero(c1)[0]:
+            singled.add(case.S[int(np.argmax(ps[k]))])
+        none = np.nonzero(ps.sum(axis=1) == 0)[0]
+        if len(none) and (empty is None or int(Ns[none[0]]) < empty):
+            empty = int(Ns[none[0]])
         if c1.any():
             k = int(np.argmax(c1))
             cand = (int(Ns[k]), case.S[int(np.argmax(ps[k]))], float(t))
             if best is None or cand[0] < best[0]:
                 best = cand
-    return best
+    return best, empty, singled
 
 
 def main():
@@ -106,18 +116,28 @@ def main():
                     lam.insert(j, lam[j]); eps.insert(j, eps[j])
                 spec = dict(lam=np.array(lam), eps=np.array(eps), lam_complete=com["lam_complete"], n_total=len(lam), basis=kind)
                 cm = P.Case(name, sig, None, ell, 12, spec, Delta, "B1", kind, "eps", do_obs=False)
-                b = first_C1(cm, G)
+                b, empty, singled = first_C1(cm, G)
                 wrong = b is not None and b[1] != sig
+                # the signature-independent protocol: accept sigma only if some signature passes at every (N, t) of the
+                # complete range and sigma is the only signature ever singled out by (C1)
+                proto = "rejected (no signature passes at some (N, t))" if empty is not None else (
+                    f"accepts {sorted(singled)[0]}" if len(singled) == 1 else "rejected (two signatures singled out)")
                 miss.append([name, j, kind, b[0] if b else "", str(b[1]) if b else "", f"{b[2]:.4g}" if b else "",
-                             "wrong" if wrong else ("true" if b else "none")])
+                             "wrong" if wrong else ("true" if b else "none"), empty if empty is not None else "", proto])
                 print("  ", " | ".join(map(str, miss[-1])), flush=True)
     P.write(os.path.join(P.DATA, "practice_double_window.csv"),
             ["orbifold", "n_below_16000", "max_rel_dev_from_committed", "N_C1", "t_C1", "N_C2", "t_C2",
              "N_C1_committed", "N_C2_committed"], out)
     P.write(os.path.join(P.DATA, "practice_missing.csv"),
-            ["orbifold", "j", "change", "least_N_C1", "signature_concluded", "t", "outcome"], miss)
-    nw = sum(1 for m in miss if m[-1] == "wrong")
+            ["orbifold", "j", "change", "least_N_C1", "signature_concluded", "t", "outcome", "least_N_no_signature_passes",
+             "protocol"], miss)
+    nw = sum(1 for m in miss if m[6] == "wrong")
     print(f"one eigenvalue deleted or duplicated: (C1) concludes a wrong signature in {nw} of {len(miss)} cases")
+    nflag = sum(1 for m in miss if m[7] != "")
+    from collections import Counter
+    for k, v in Counter(m[8] for m in miss).items():
+        print(f"   protocol: {k}: {v}")
+    print(f"the signature-independent protocol: {nflag} of {len(miss)} corrupted lists reach an (N, t) at which no signature passes")
     print("wrote data/practice_double_window.csv and data/practice_missing.csv")
     return 0
 

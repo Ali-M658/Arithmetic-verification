@@ -53,6 +53,16 @@ SOURCES = {
     "morelandzieve2013": ("arxiv", "1304.1442"),
     "macleod2005": ("arxiv", "math/0502475"),
     "silvermantate2015": ("doi", "10.1007/978-3-319-18588-0"),
+    # round 7 (VERDICT-N N1, N2, N4, n19)
+    "kubert1976": ("doi", "10.1112/plms/s3-33.2.193"),
+    "topyui2007": ("doi", "10.1216/rmjm/1181068772"),
+    "browningsofos2019": ("doi", "10.1007/s00208-018-1716-6"),
+    "choudhry2011": ("doi", "10.1216/rmj-2011-41-3-737"),
+    "chen2025": ("arxiv", "2506.11429"),
+    "zhang2016": ("arxiv", "1608.03382"),
+    "graham1963": ("doi", "10.1017/s1446788700039045"),
+    "vandoorn2025": ("arxiv", "2502.02200"),
+    "dggw2017": ("doi", "10.1307/mmj/1488510034"),
 }
 # Records fetched only as evidence for a correction.
 EVIDENCE_ZB = {"dggw2008_pages": "doi:10.1307/mmj/1213972406"}
