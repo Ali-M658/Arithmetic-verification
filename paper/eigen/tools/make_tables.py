@@ -204,9 +204,9 @@ def table_certdetail():
            "\\caption{The certificate of Proposition~\\ref{prop:certgap}, one row per class of Table~\\ref{tab:certgap}: "
            "the pair $\\sigma,\\sigma'$ of signatures with the least certified gap at the time $t$ of that table, a lower "
            "bound for that gap, and the bounds, decided in ball arithmetic, for the three inequalities of "
-           "Corollary~\\ref{cor:computedgap}. Lower bounds are decimals strictly below the certified values and upper bounds "
-           "strictly above them, so that in the first and third rows, where $\\Theta/8$ is exactly $0.001985$ and $0.019$, "
-           "the column $\\Theta/8$ shows $0.001984$ and $0.01899$. Appendix~\\ref{app:certificate} lists the enclosures "
+           "Corollary~\\ref{cor:computedgap}; lower bounds are decimals strictly below the certified values and upper bounds "
+           "strictly above them (so in the first and third rows, where $\\Theta/8$ is exactly $0.001985$ and $0.019$, "
+           "the column $\\Theta/8$ shows $0.001984$ and $0.01899$). Appendix~\\ref{app:certificate} lists the enclosures "
            "from which every gap can be checked by hand.}\\label{tab:certdetail}",
            "\\setlength{\\tabcolsep}{4pt}\\begin{tabular}{@{}lllllllll@{}}", "\\toprule",
            "$A$ & $\\varepsilon$ & $M$ & $\\sigma$ & $\\sigma'$ & gap $\\ge$ & $B_*(t)\\le$ & $\\Theta/8\\ge$ & $\\Lambda t\\ge$\\\\",

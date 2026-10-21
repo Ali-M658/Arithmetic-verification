@@ -48,7 +48,6 @@ for old, new in [
 body = sub("Bremner, Guy and Nowakowski", "Bremner, Guy, and Nowakowski", body.count("Bremner, Guy and Nowakowski"), body)
 abstract = sub("Bremner, Guy and Nowakowski", "Bremner, Guy, and Nowakowski", 1, abstract)
 for old, new in [
-    ("of two, three and four triples", "of two, three, and four triples"),
     ("$\\Z/3$, $\\Z/6$ or $\\Z/2\\times\\Z/6$", "$\\Z/3$, $\\Z/6$, or $\\Z/2\\times\\Z/6$"),
     ("under permutations, reciprocation and translation", "under permutations, reciprocation, and translation"),
     ("$11$ of size $5$ and one of size $6$", "$11$ of size $5$, and one of size $6$"),
@@ -58,19 +57,16 @@ for old, new in [
 # Numbered results, equations and cited items are written out in full (template guideline)
 for old, new, n in [
     ("\\cite[Prop.~2.5]{sadekelsissi2015}", "\\cite[Proposition~2.5]{sadekelsissi2015}", 1),
-    ("\\cite[Prop.~2.7, Thm~2.8]{sadekelsissi2015}", "\\cite[Proposition~2.7 and Theorem~2.8]{sadekelsissi2015}", 1),
-    ("\\cite[Prop.~2.7]{sadekelsissi2015}", "\\cite[Proposition~2.7]{sadekelsissi2015}", 1),
-    ("\\cite[Thm~2.8]{sadekelsissi2015}", "\\cite[Theorem~2.8]{sadekelsissi2015}", 1),
+    ("\\cite[Prop.~2.7, Thm~2.8]{sadekelsissi2015}", "\\cite[Proposition~2.7 and Theorem~2.8]{sadekelsissi2015}", 2),
     ("\\cite[Chap.~III, Thm~(5.1), p.~156]{mazur1977}", "\\cite[Chapter~III, Theorem~(5.1), p.~156]{mazur1977}", 1),
     ("\\cite[Chap.~III, \\S6]{silvermantate2015}", "\\cite[Chapter~III, Section~6]{silvermantate2015}", 1),
-    ("\\cite[Thm~3.1, Cor.~3.4]{ulas2013}", "\\cite[Theorem~3.1 and Corollary~3.4]{ulas2013}", 1),
     ("\\cite[Thm~1.1]{browningsofos2019}", "\\cite[Theorem~1.1]{browningsofos2019}", 2),
     ("\\cite[Lemma~2.1]{bremnermacleod2014}", "\\cite[Lemma~2.1]{bremnermacleod2014}", 1),
     ("\\cite[\\S4]{bremnermacleod2014}", "\\cite[Section~4]{bremnermacleod2014}", 1),
     ("\\cite[Thm~5.1, Cor.~5.2]{bremnermacleod2014}", "\\cite[Theorem~5.1 and Corollary~5.2]{bremnermacleod2014}", 1),
     ("By \\eqref{eq:copies}, ", "By Equation~\\eqref{eq:copies}, ", 1),
     ("In \\eqref{eq:copies}, keep", "In Equation~\\eqref{eq:copies}, keep", 1),
-    ("as defined in \\eqref{eq:counts}", "as defined in Equation~\\eqref{eq:counts}", 1),
+    ("gives the counts \\eqref{eq:counts}", "gives the counts of Equation~\\eqref{eq:counts}", 1),
 ]:
     body = sub(old, new, n, body)
 
@@ -78,12 +74,6 @@ for old, new, n in [
 body = sub("\\begin{equation}\\label{eq:weierstrass}", "\\[", 1, body)
 body = sub("  \\Delta=2^{12}\\Lambda^2(\\Lambda-1)^3(\\Lambda-9),\n\\end{equation}",
            "  \\Delta=2^{12}\\Lambda^2(\\Lambda-1)^3(\\Lambda-9),\n\\]", 1, body)
-
-# Everything within the margins (template guideline): the two bounds of Theorem A on two lines
-body = sub("\\[\n  \\N(X)\\ \\ge\\ \\Ncl(X)\\ \\ge\\ \\Big(\\frac{3\\log2}{2\\pi^2}+o(1)\\Big)X\\log X,\\qquad\n"
-           "  \\N(X)\\ \\gg\\ X(\\log X)^2 .\n\\]",
-           "\\begin{gather*}\n  \\N(X)\\ \\ge\\ \\Ncl(X)\\ \\ge\\ \\Big(\\frac{3\\log2}{2\\pi^2}+o(1)\\Big)X\\log X,\\\\\n"
-           "  \\N(X)\\ \\gg\\ X(\\log X)^2 .\n\\end{gather*}", 1, body)
 
 # A comma after a sentence-initial "Hence" (template guideline)
 for old, new in [
