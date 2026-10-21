@@ -123,6 +123,7 @@ def clean(tex, main_name):
     tex = tex.replace("\\input{../../figures/captions.tex}", "\\input{captions.tex}")
     tex = tex.replace(" in figures/captions.tex}", " in captions.tex}")
     tex = tex.replace("figures/out/", "figures/")
+    tex = tex.replace("\\texttt{theory/varcurv/rotsym\\_check.py}", "\\texttt{rotsym\\_check.py}")  # programs are named by file
     return tex
 
 

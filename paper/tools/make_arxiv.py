@@ -96,6 +96,7 @@ def package(name, src_dir, main, xr_prefix, xr_aux, figprefix, anc=None, cls="sn
     open(os.path.join(d, main), "w", encoding="utf-8").write(tex)
     if cls:
         shutil.copy(os.path.join(src, cls), d)
+        shutil.copy(os.path.join(src, "sn-mathphys-num.bst"), d)  # not read (the .bbl is included); kept with the class
     shutil.copy(os.path.join(src, "build", main.replace(".tex", ".bbl")), d)
     for f in figures_used(tex, figprefix):
         shutil.copy(os.path.join(ROOT, "figures", "out", f + ".pdf"), os.path.join(d, "figures", "out"))

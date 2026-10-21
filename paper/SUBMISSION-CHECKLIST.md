@@ -1,6 +1,6 @@
 # Submission checklist
 
-Updated 2026-10-11 for the release plan with three repositories. Paper A (`paper/jga/`) and Paper B (`paper/eigen/`) go to *Annals of Global Analysis and Geometry* (AGAG). The arithmetic note (`paper/arith/`, Integers version `paper/arith/integers/`) goes to *Integers*.
+Updated 2026-10-21 for the final build. Paper A (`paper/jga/`, *How many heat invariants determine a hyperbolic orbifold?*) and Paper B (`paper/eigen/`) go to *Annals of Global Analysis and Geometry* (AGAG). The arithmetic note (`paper/arith/`, Integers version `paper/arith/integers/`) goes to *Integers*. Every output below is in `~/Developer/release/`, outside this repository.
 
 ## Placeholders left for the authors
 
@@ -11,87 +11,44 @@ The list is complete: `python3 paper/tools/check_release_refs.py` checks that ev
 | author contribution statement | the four manuscripts (`paper/jga/manuscript.tex`, `paper/eigen/manuscript.tex`, `paper/arith/note.tex`, and `paper/arith/integers/make_integers.py`, which generates `paper/arith/integers/note.tex`) and their Overleaf copies |
 | AI-use statement | the same four manuscripts and Overleaf copies; item (iii) of `paper/submission/cover-letter-note-Integers.tex` |
 | Zenodo DOI, one per repository | the data statements of the four manuscripts and their Overleaf copies; the three cover letters; `README.md` and `CITATION.cff` of each repository |
-| arXiv numbers | `paper/eigen/references.bib` (`companionA`), `paper/arith/references.bib` (`gangetal-heat`, via `paper/arith/tools/build_bib.py`), `paper/arith/integers/make_integers.py`, the cover letters, and `README.md`, `CITATION.cff` and `.zenodo.json` of each repository |
+| preprint identifier | `paper/eigen/references.bib` (`companionA`), `paper/arith/references.bib` (`gangetal-heat`, via `paper/arith/tools/build_bib.py`), `paper/arith/integers/make_integers.py`, the cover letters, and `README.md`, `CITATION.cff` and `.zenodo.json` of each repository |
 
 ## 1. What is ready
 
-**Three repositories.** They are built by `python3 paper/tools/make_release.py` as plain directories, with no `.git`, in `~/Desktop/release/`.
+| output | path | built by | tested |
+|---|---|---|---|
+| three release repositories | `~/Developer/release/{heat-invariants-orbifolds,eigenvalues-orbifold-signature,equal-sum-reciprocal-triples}/` | `python3 paper/tools/make_release.py` | fresh copy, new environment, `make verify` then `make all`: `~/Developer/release/TEST-REPORT.md` |
+| Zenodo zips, one per repository | `~/Developer/release/zenodo/*.zip`, checksums in `SHA256SUMS` there | zip of each release directory | |
+| Overleaf packages | `~/Developer/release/overleaf/{paperA,paperB,note}.zip` | `python3 paper/tools/make_overleaf.py` | fresh unzip, 0 errors, 0 undefined: `OVERLEAF-TEST.md` there |
+| preprint packages | `~/Developer/release/preprint/{paperA,paperB,note}.tar.gz` (copies of `paper/arxiv/`) | `python3 paper/tools/make_arxiv.py` | fresh extraction, pdflatex twice: 0 errors, 0 undefined |
+| cover letters | `paper/submission/cover-letter-{A-AGAG,B-AGAG,note-Integers}.pdf` | `latexmk` in `paper/submission/` | 0 errors |
 
-| repository | paper | contents |
-|---|---|---|
-| `heat-invariants-orbifolds` | Paper A and its supplement | every check, search and table/figure generator of Paper A |
-| `eigenvalues-orbifold-signature` | Paper B | the checks of Paper B, the test on computed spectra, its own copies of the triangle spectra, the family spectra and the double-window recomputation |
-| `equal-sum-reciprocal-triples` | the note | the three enumerations, the curve checks, ranks and descents, the fits, the figure and the tables |
+Page counts: Paper A 58 pp. with a 31-page supplement; Paper B 40 pp.; the note 19 pp. (amsart, preprint) and 25 pp. (Integers format, Overleaf).
 
-Each repository has:
-- `README.md`, `TRACE.md` (item, script, make target) and `DATA.md` (path, size, SHA-256, producing script, paper element);
-- a `Makefile` with the targets help, verify, full, figures, tables, data-check, all and clean;
-- `requirements.txt` with pinned versions, and the optional environment files;
-- `LICENSE` (MIT, text fetched from spdx.org) and `LICENSE-DATA` (CC-BY-4.0 legal code, fetched from creativecommons.org);
-- `CITATION.cff` and `.zenodo.json` (six authors, ORCID iDs, affiliations as on the title pages);
-- `.github/workflows/verify.yml`, which runs `make verify` on push.
+Each repository has `README.md`, `TRACE.md` (item, script, make target), `DATA.md` (path, size, SHA-256, producing script, paper element), a `Makefile` (help, verify, full, figures, tables, data-check, all, clean), pinned `requirements.txt` and the optional environment files, `LICENSE` (MIT) and `LICENSE-DATA` (CC-BY-4.0), `CITATION.cff` and `.zenodo.json` (six authors, ORCID iDs, affiliations), and `.github/workflows/verify.yml`. The builder asserts that every data file is byte-for-byte its source or a declared edit.
 
-Each repository was tested from a fresh copy with a new environment; the results are in `~/Desktop/release/TEST-REPORT.md`.
+## 2. Decision to settle first
 
-**Overleaf packages.** They are built by `python3 paper/tools/make_overleaf.py` as `~/Desktop/release/overleaf/{paperA,paperB,note}.zip`. Each was test-compiled from a fresh unzip; the results are in `OVERLEAF-TEST.md` there.
-
-**Data statements and cover letters** now name the new repositories, each followed by "archived at Zenodo [PLACEHOLDER: Zenodo DOI]". The old repository URL and the maintainer sentence are gone.
-
-**Third-party texts** are no longer tracked (commit "Stop tracking third-party texts"). See `paper/submission/OLD-REPO.md`.
-
-**The note** cites Nguyen Xuan Tho (2021) and Bremner–Nguyen Xuan Tho (2018) in both versions. `paper/arith/CITATIONS-NXT.md` says what each paper proves and why no claim of the note changes.
-
-**Table 2 of the note** is generated by `paper/arith/tools/make_tables.py`, which runs the release repository's generator; every local exponent is rounded once from the exact counts. This corrected the entry at S = 500 from 1.994 to 1.993; no other entry changed. The stage "arith tables current" of `code/run_all.sh` checks it.
-
-## 2. Decisions to settle first
-
-1. **Integers' policy on AI.** The fetched submission page (`paper/arith/integers/README.md`) says: "Integers will not consider any article that makes use of artificial intelligence in producing mathematics, computer code, bibliographic information, or other content." The submission e-mail must confirm compliance. Decide, from your own knowledge of how the note, its code and its bibliography were produced, whether the note can truthfully be submitted there. Settle this before posting the note to arXiv, because the arXiv comments line and the cover letters name the journal.
+**Integers' policy on AI.** The fetched submission page (`paper/arith/integers/README.md`) says: "Integers will not consider any article that makes use of artificial intelligence in producing mathematics, computer code, bibliographic information, or other content." The submission e-mail must confirm compliance. Decide, from your own knowledge of how the note, its code and its bibliography were produced, whether the note can truthfully be submitted there. Settle this before posting the note as a preprint, because its comments line and the cover letters name the journal.
 
 ## 3. The order of the remaining steps
 
-1. **Create the three GitHub repositories** under the account `pa1aash`, named `heat-invariants-orbifolds`, `eigenvalues-orbifold-signature` and `equal-sum-reciprocal-triples`, as public repositories with no template files.
-   - In each release directory run `git init`, then `git add .`, then `git commit`, then push to the new repository.
-   - The workflow `verify.yml` then runs `make verify` on GitHub.
-   - Regenerate the directories first with `python3 paper/tools/make_release.py` if anything in this repository has changed.
-2. **Create one Zenodo deposit per repository.** Note each DOI. Either:
-   - **GitHub integration:** link the GitHub account `pa1aash` to Zenodo, switch the repository on, and create a GitHub release. Zenodo reads `.zenodo.json` and mints the DOI. Filling the DOI into the repository afterwards needs a second release, which becomes a new version of the same record.
-   - **Manual upload with a reserved DOI:** create a new upload, answer "No" to "Do you already have a DOI?", click "Get a DOI now!", fill the DOI into the repository, then upload a zip of the repository. Resource type is Software; copy the metadata from `.zenodo.json`.
-
-   With either route, put the DOI into the repository's `README.md` and `CITATION.cff` (`doi:`). Then:
-
-   ```
-   grep -rn PLACEHOLDER ~/Desktop/release/<name>
-   ```
-
-   should show only arXiv numbers.
-3. **Fill the DOIs and statements.**
-   - Fill the three DOIs, the author contribution statements and the AI-use statements in the manuscripts of this repository: `paper/jga/manuscript.tex`, `paper/eigen/manuscript.tex`, `paper/arith/note.tex`, and `paper/arith/integers/make_integers.py` (then rerun it).
-   - Fill them in the cover letters.
-   - Rebuild the papers. Then rerun `python3 paper/tools/make_overleaf.py` and `python3 paper/tools/make_arxiv.py`, and upload the zips to Overleaf (New Project > Upload Project), or edit there directly and keep both copies in step.
-   - Run `python3 paper/tools/check_release_refs.py`: only arXiv numbers may remain.
-4. **The owner archives the old repository** `github.com/Ali-M658/Arithmetic-verification`, following `paper/submission/OLD-REPO.md`. Its history still holds third-party texts, so make it private (or private and archived) once the new repositories are public.
-5. **arXiv endorsement and posting** (`paper/ARXIV.md`). The submitting author needs an account, and endorsement in math.SP (Papers A and B) and math.NT (the note). Then:
-   1. Post **Paper A** from `paper/arxiv/paperA.tar.gz`: primary math.SP, cross-lists math.DG and math.NT, with the supplement as `anc/supplement.pdf`. Fill its number into:
-      - `paper/eigen/references.bib` (`companionA`);
-      - `paper/arith/tools/build_bib.py` (`COMPANION`; then run the script without options);
-      - `paper/arith/integers/make_integers.py`;
-      - the cover letters;
-      - Paper A's repository (`README.md`, `CITATION.cff`, `.zenodo.json`, by a new Zenodo version).
-
-      Rebuild Paper B and the note, and rerun `make_arxiv.py`.
-   2. Post **Paper B** from `paper/arxiv/paperB.tar.gz`: primary math.SP, cross-list math.DG. Fill its number into the letters and its repository.
-   3. Post **the note** from `paper/arxiv/note.tar.gz`: primary math.NT, cross-list math.SP. Fill its number into the letters and its repository.
-6. **Six-author sign-off.** All six authors read and approve:
-   - the final PDFs: `paper/jga/build/manuscript.pdf`, `paper/jga/build/supplement.pdf`, `paper/eigen/build/manuscript.pdf`, `paper/arith/integers/note.pdf`;
-   - the three cover letters;
-   - the three repositories;
-   - the referee suggestions they choose from `paper/submission/REFEREES.md`.
-
-   The letters state that all authors have approved, so send nothing before this step.
-7. **Journal submissions.**
-   - **AGAG, Paper A:** Springer's submission system. Upload the manuscript PDF and LaTeX source (the Overleaf package), the supplement as Online Resource 1, and `paper/submission/cover-letter-A-AGAG.pdf`. The aims-and-scope page asks authors to select one of the two Co-Editors-in-Chief as handling editor. Re-check the live AGAG guidelines first (`paper/jga/AGAG.md`).
-   - **AGAG, Paper B:** the same way, with `paper/submission/cover-letter-B-AGAG.pdf`, and the same handling editor as for A.
-   - **Integers, the note:** only after the decision in Section 2, item 1. E-mail `paper/arith/integers/note.pdf` to the address on https://math.colgate.edu/~integers/submit.html, with the text of `paper/submission/cover-letter-note-Integers.tex` (MSC, keywords, AI confirmation) in the message. The source (the Overleaf package `note.zip`) is required on acceptance.
+1. **The authors review the PDFs:** `paper/jga/build/manuscript.pdf`, `paper/jga/build/supplement.pdf`, `paper/eigen/build/manuscript.pdf`, `paper/arith/build/note.pdf` and `paper/arith/integers/note.pdf`. Any change to a paper means rebuilding it and rerunning the builders (Section 4) before going on.
+2. **Upload the Zenodo zips and fill the DOIs.**
+   - For each repository: Zenodo > New upload, answer "No" to "Do you already have a DOI?", click "Get a DOI now!", resource type Software, metadata from the repository's `.zenodo.json`. Upload `~/Developer/release/zenodo/<name>.zip` and check its checksum against `SHA256SUMS`.
+   - Fill each reserved DOI into the data statement of its paper (`paper/jga/manuscript.tex`, `paper/eigen/manuscript.tex`, `paper/arith/note.tex`, `paper/arith/integers/make_integers.py`, then rerun it), its cover letter, and the repository's `README.md` and `CITATION.cff` (`doi:`), through `paper/tools/release_config.py` and `make_release.py`. Rebuild the zip if the repository changed, then publish the record.
+   - Create the public GitHub repositories `pa1aash/heat-invariants-orbifolds`, `pa1aash/eigenvalues-orbifold-signature` and `pa1aash/equal-sum-reciprocal-triples` from the same directories (`git init`, `git add .`, `git commit`, push); the workflow then runs `make verify`. The owner then makes the old repository `github.com/Ali-M658/Arithmetic-verification` private, following `paper/submission/OLD-REPO.md`.
+3. **Endorsement and preprints A, B, note** (`paper/ARXIV.md`). The submitting author needs an account and endorsement in math.SP (Papers A and B) and math.NT (the note).
+   1. Paper A from `~/Developer/release/preprint/paperA.tar.gz`: primary math.SP, cross-lists math.DG and math.NT, the supplement as the ancillary file `anc/supplement.pdf`.
+   2. Paper B from `preprint/paperB.tar.gz`: primary math.SP, cross-list math.DG.
+   3. The note from `preprint/note.tar.gz`: primary math.NT, cross-list math.SP.
+4. **Fill the preprint numbers:** Paper A's into `paper/eigen/references.bib` (`companionA`), `paper/arith/tools/build_bib.py` (`COMPANION`; then run it), `paper/arith/integers/make_integers.py`; every number into the cover letters and into `README.md`, `CITATION.cff` and `.zenodo.json` of each repository (a new version of each Zenodo record). Rebuild Paper B and the note, rerun `make_arxiv.py` and replace the posted versions of B and the note if their references changed.
+5. **Statements.** Fill the author contribution statements and the AI-use statements in the four manuscripts (rerun `make_integers.py`) and item (iii) of the Integers cover letter. Rebuild the papers and letters, rerun `make_overleaf.py`, and run `python3 paper/tools/check_release_refs.py`: no placeholder may remain.
+6. **Six-author sign-off.** All six authors read and approve the final PDFs, the three cover letters, the three repositories and the referee suggestions they choose from `paper/submission/REFEREES.md`. The letters state that all authors have approved, so send nothing before this step.
+7. **Submit.**
+   - **AGAG, Paper A:** Springer's submission system. Upload the manuscript PDF and LaTeX source (`overleaf/paperA.zip`), the supplement as Online Resource 1, and `paper/submission/cover-letter-A-AGAG.pdf`. Select one of the two Co-Editors-in-Chief as handling editor. Re-check the live AGAG guidelines first (`paper/jga/AGAG.md`).
+   - **AGAG, Paper B:** the same way, with `overleaf/paperB.zip`, `paper/submission/cover-letter-B-AGAG.pdf` and the same handling editor.
+   - **Integers, the note:** only after the decision in Section 2. E-mail `paper/arith/integers/note.pdf` to the address on https://math.colgate.edu/~integers/submit.html, with the text of `paper/submission/cover-letter-note-Integers.tex` (MSC, keywords, AI confirmation) in the message. The source (`overleaf/note.zip`) is required on acceptance.
 
 ## 4. Commands at a glance
 
@@ -100,6 +57,6 @@ Each repository was tested from a fresh copy with a new environment; the results
 | build the three repositories | `python3 paper/tools/make_release.py` |
 | test one from a fresh copy and environment | `python3 paper/tools/make_release.py --test <name> --python python3.13` |
 | build and test the Overleaf packages | `python3 paper/tools/make_overleaf.py` |
-| build the arXiv packages | `python3 paper/tools/make_arxiv.py` |
+| build the preprint packages | `python3 paper/tools/make_arxiv.py` (then copy `paper/arxiv/*.tar.gz` to `~/Developer/release/preprint/`) |
 | check repositories and placeholders | `python3 paper/tools/check_release_refs.py` |
 | full verification of this repository | `PYTHON=.venv/bin/python code/run_all.sh --full` |

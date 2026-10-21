@@ -116,10 +116,12 @@ GLOBAL_SUBS = [
 DANGLING_OK = {"A.json", "B.json", "MESH.npz", "file.npz", "SCRATCH_DIR/problem_I.json", "problem_I.json", "a1.csv",
                "self.c", "bids_LICENSE.txt", "bids_option_d.py", "option_d.py", "README.txt", "eig-bolza-refined0-1000.txt",
                "SU_eig-bolza-refined0-1000.txt", "figures/src/Fn.py", "F1.py", "F9.py", "summary.txt", "fibres.txt", "heat_kernel_diagonal_moduli.npz",
-               "data/heat_kernel_diagonal_moduli.npz", "heat_kernel_diagonal.npz", "OUT.png", "enum_classes.c", "requirements-pari.txt", "requirements-optional.txt"}
+               "data/heat_kernel_diagonal_moduli.npz", "heat_kernel_diagonal.npz", "OUT.png", "enum_classes.c", "requirements-pari.txt", "requirements-optional.txt",
+               "coll.c", "_gap.py"}
 
 # Edits of files shared by several repositories (applied where the file is present).
 COMMON_EDITS = {
+    "theory/diophantine/data/ranks.txt": [(" (torsion_pairs.py; round 7)", "", 1)],
     "code/orbifold_enum.py": [
         ("manuscript's eq:area. A superseded upstream script used Area = pi*(1 - R),\nwrong by a factor of two; `selftest()` below asserts against that error\ndirectly.",
          "paper's area formula. The factor 2 matters: Area = pi*(1 - R) would be wrong by a factor of two,\nand `selftest()` below asserts against that error directly.", 1),
@@ -145,7 +147,8 @@ COMMON_EDITS = {
     ],
     "figures/style/palette.json": [(" null until the author chooses (gate G6).", "", 1)],
     "figures/src/F9.py": [("calligraphic N in the manuscript", "calligraphic N in the paper", None)],
-    "theory/diophantine/ranks.py": [(".venv-pari", ".venv", None)],
+    "theory/diophantine/ranks.py": [(".venv-pari", ".venv", None), (" (torsion_pairs.py; round 7)", "", 1),
+                                    ("# the conductor (round 7, for comparison with the LMFDB)", "# the conductor (for comparison with the LMFDB)", 1)],
     "numerics/moduli/run_server.sh": [("PY=/opt/miniforge/envs/moduli/bin/python", "PY=${PY:-python3}", 1)],
     "theory/eigen/counting.py": [('"""Task 2: explicit counting', '"""Explicit counting', 1)],
     "theory/eigen/diameter.py": [('"""Task 1: diameter bound', '"""Diameter bound', 1)],
@@ -162,7 +165,7 @@ COMMON_EDITS = {
     "theory/eigen/eigen_common.py": [("# ------------------------------------------------------------------ Task 1 constants",
                                       "# ------------------------------------------------------------------ constants", 1),
                                      ("The first (audited) form:", "The first form:", 1),
-                                     (" (wave 3, item I6)", "", 1)],
+                                     (" (wave 3, item I6)", "", 1), ("    # round 9: the lcm", "    # the lcm", 1)],
     "theory/msep/verify.py": [(" (as in round 3)", "", 1)],
     "theory/stability/threshold.py": [(" (review/audit/stability/COMPARISON.md ST.13)", "", 1)],
     "theory/threshold/threshold.py": [("Notation (paper/main.tex, Section sec:threshold):", "Notation (Section 5 of the paper):", 1)],
@@ -242,8 +245,9 @@ def extract(src, start, end):
 def note_post(dest, root):
     note = (root / "paper/arith/integers/note.tex").read_text(encoding="utf-8")
     envs = re.findall(r"\\begin\{table\}.*?\\end\{table\}", note, re.S)
-    tabs = [re.search(r"\\begin\{tabular\}.*?\\end\{tabular\}\n", e, re.S).group(0) for e in envs]
-    assert len(tabs) == 2 and "tab:fibres" in envs[0] and "tab:density" in envs[1], len(tabs)
+    envs = [[e for e in envs if "\\label{%s}" % lab in e] for lab in ("tab:fibres", "tab:density")]
+    assert all(len(e) == 1 for e in envs), envs
+    tabs = [re.search(r"\\begin\{tabular\}.*?\\end\{tabular\}\n", e[0], re.S).group(0) for e in envs]
     (dest / "tables").mkdir(exist_ok=True)
     (dest / "tables" / "fibres.tex").write_text(tabs[0], encoding="utf-8")
     (dest / "tables" / "density.tex").write_text(tabs[1], encoding="utf-8")
@@ -303,7 +307,8 @@ NOTE = dict(
         ("theory/diophantine/cubic_group.py", None), ("theory/diophantine/check_committed.py", None),
         ("theory/diophantine/variety_checks.py", None), ("theory/diophantine/growth_fits.py", None),
         ("theory/diophantine/exponent_fits.py", None), ("theory/diophantine/families.py", None),
-        ("theory/diophantine/ranks.py", None),
+        ("theory/diophantine/ranks.py", None), ("theory/diophantine/torsion_pairs.py", None),
+        ("theory/diophantine/data/torsion_pairs.txt", None),
         ("theory/diophantine/data/groups.csv", None), ("theory/diophantine/data/per_S.csv", None),
         ("theory/diophantine/data/ranks.txt", None), ("theory/diophantine/data/families.txt", None),
         ("theory/diophantine/data/line_families.csv", None), ("theory/diophantine/data/exponent_fits.txt", None),
@@ -350,8 +355,27 @@ NOTE = dict(
              '"""Exact checks of statements of the note that the other scripts do not cover (TRACE.md):', 1),
             ("by the audit enumerator\n     (copied to checks/enum_classes.c)", "by the second enumerator\n     (enum_classes.c, as in checks/classes4800/)", 1),
             ("agree with the G5 enumeration", "agree with the third enumeration", 1),
+            ("  8-9. rounds 7-8: the Tate", "  8-9. the Tate", 1),
+            ("  10. round 10: Choudhry's", "  10. Choudhry's", 1),
+            ("# 8. round 7 ", "# 8. ", 1),
+            ("# 9. round 8 ", "# 9. ", 1),
+            ("# 10. round 10 ", "# 10. ", 1),
         ],
         "checks/note/check_note.txt": [("agree with the G5 enumeration", "agree with the third enumeration", 2)],
+        "theory/diophantine/torsion_pairs.py": [("(the note, Section 3; round 7)", "(the note, Section 3)", 1)],
+        "theory/diophantine/exponent_fits.py": [
+            ("Round 10 (round10 below): ", "holdouts() below: ", 1),
+            ("round10(", "holdouts(", 2),
+            ("    # round 7: the sums", "    # the sums", 1),
+            ("    # round 8: how much", "    # how much", 1),
+            ("    # round 9: (a)", "    # (a)", 1),
+            ("# round 10 (VERDICT-N N4): what the holdouts", "# what the holdouts", 1),
+            ('HERE.parents[1] / "review" / "audit" / "threshold" / "data" / "summary_10_6000.txt"',
+             'HERE.parents[1] / "checks" / "enumeration6000" / "data" / "summary_10_6000.txt"', 1),
+            ('f"round 10: ', 'f"', 1),
+            ('"round 10: ', '"', 3),
+        ],
+        "theory/diophantine/data/exponent_fits.txt": [("round 10: ", "", 4)],
         "checks/classes4800/check_descent.py": [("review/audit/.venv-pari/bin/python", "python3", 1)],
         "checks/classes4800/check_theorem5_family.py": [('"""Phase-2 check of Theorem 5 (DI.10) against the family now visible in the proof.',
                                                        '"""Check of Lemma 3 and Theorem 4 (the conic bundle of dual pairs) against the family of the proof.', 1)],
@@ -423,6 +447,7 @@ NOTE = dict(
              transcript="checks/enumeration6000/check_enum.txt", minutes=2),
         dict(name="tables 1 and 2", targets=["tables"], dir=".", cmd="$PYTHON tools/make_tables.py --check", minutes=0.1),
         dict(name="figure 1 (F9)", targets=["figures"], dir=".", cmd="$PYTHON figures/src/F9.py", minutes=0.3),
+        dict(name="torsion-type pairs to 4800", targets=["full"], dir="theory/diophantine", cmd="$PYTHON torsion_pairs.py", minutes=4),
         dict(name="enumeration to 4800 from scratch (enumerate_fast)", targets=["full"], dir="theory/diophantine",
              cmd="$PYTHON enumerate_fast.py 4800", minutes=30, needs="cc"),
         dict(name="second program from scratch to 4800", targets=["full"], dir="checks/classes4800",
@@ -437,6 +462,7 @@ NOTE = dict(
         ("theory/diophantine/data/groups.csv", "`theory/diophantine/enumerate_fast.py`", "every class with $S\\le4800$: Table 1, Theorem 4, Section 6, Figure 1"),
         ("theory/diophantine/data/per_S.csv", "`theory/diophantine/enumerate_fast.py`", "counts per sum: Table 2, Sections 3 and 6, Figure 1"),
         ("theory/diophantine/data/ranks.txt", "`theory/diophantine/ranks.py` (PARI)", "ranks and torsion of Table 1 and Section 5"),
+        ("theory/diophantine/data/torsion_pairs.txt", "`theory/diophantine/torsion_pairs.py`", "Section 3 (pairs that differ by a torsion point)"),
         ("theory/diophantine/data/families.txt", "`theory/diophantine/families.py`", "dual pairs (Section 3, 6.1), isosceles count (Theorem 2), lines (Section 6.4), Figure 1"),
         ("theory/diophantine/data/line_families.csv", "`theory/diophantine/families.py`", "the 189 lines of Section 6.4"),
         ("theory/diophantine/data/exponent_fits.txt", "`theory/diophantine/exponent_fits.py`", "the fits of Section 6.3, Figure 1(b)"),
@@ -570,9 +596,9 @@ BLENDER_RENDER = ('rm -rf "$LOGDIR/render-{f}" && mkdir -p "$LOGDIR/render-{f}" 
 
 PAPER_A_STEPS = [
     dict(name="Orlando's formula", targets=["verify"], dir="theory/audibility", cmd="$PYTHON orlando_check.py", minutes=0.1),
-    dict(name="Theorem B: the linear system", targets=["verify"], dir="theory/audibility", cmd="$PYTHON linear_system.py", minutes=0.3),
-    dict(name="Theorem A and Lemma 3.1: elimination", targets=["verify"], dir="theory/audibility", cmd="$PYTHON verify_elimination.py", minutes=2),
-    dict(name="Theorem C and Remark 3.2: sharpness search N=60", targets=["verify"], dir="theory/audibility",
+    dict(name="Theorem 3.3: the linear system", targets=["verify"], dir="theory/audibility", cmd="$PYTHON linear_system.py", minutes=0.3),
+    dict(name="Theorem 3.2 and Lemma 3.1: elimination", targets=["verify"], dir="theory/audibility", cmd="$PYTHON verify_elimination.py", minutes=2),
+    dict(name="Theorem 3.4 and Remark S8.4: sharpness search N=60", targets=["verify"], dir="theory/audibility",
          cmd='rm -rf "$LOGDIR/sharp60" && cp -R . "$LOGDIR/sharp60" && (cd "$LOGDIR/sharp60" && $PYTHON sharpness_search.py 60 > /dev/null) && '
              '$PYTHON ../../tools/json_equal.py "$LOGDIR/sharp60/sharpness_n5_N60.json" sharpness_n5_N60.json --ignore wall_seconds', minutes=0.4),
     dict(name="cone coefficients p_l", targets=["verify"], dir="theory/cone-coefficients", cmd="$PYTHON verify_cone_coefficients.py", minutes=0.1),
@@ -605,10 +631,10 @@ PAPER_A_STEPS = [
 ] + [
     dict(name="PTE T3 modular record", targets=["verify"], dir="theory/pte", cmd="$PYTHON search_T3_modular.py --check", minutes=0.1),
     dict(name="PTE T3 modular search to 220", targets=["verify"], dir="theory/pte", cmd="$PYTHON search_T3_modular.py 220 4 > /dev/null", minutes=3, needs="cc"),
-    dict(name="bounded cone orders (Theorem 3.8)", targets=["verify"], dir="theory/msep", cmd="$PYTHON verify.py", minutes=3.5),
+    dict(name="bounded cone orders (Theorem 3.10)", targets=["verify"], dir="theory/msep", cmd="$PYTHON verify.py", minutes=3.5),
 ] + [
     dict(name=f"variable curvature {s}", targets=["verify"], dir="theory/varcurv", cmd=f"$PYTHON {s}.py", transcript=f"theory/varcurv/{s}_output.txt", minutes=m)
-    for s, m in [("quadratic_form", 0.1), ("top_coefficient", 0.7), ("linear_part", 0.7), ("obstruction_check", 0.1), ("twisted_mp", 2.5)]
+    for s, m in [("quadratic_form", 0.1), ("top_coefficient", 0.7), ("linear_part", 0.7), ("obstruction_check", 0.1), ("twisted_mp", 2.5), ("rotsym_check", 0.2)]
 ] + [
     dict(name="K_mult on the complete area classes", targets=["verify"], dir="checks/pairs", cmd="$PYTHON a1_fig2_kmult.py",
          transcript="checks/pairs/output/a1_fig2_kmult.txt", minutes=0.3),
@@ -626,7 +652,7 @@ PAPER_A_STEPS = [
     dict(name="figures F1 F6: data assertions", targets=["figures"], dir=".", cmd="$PYTHON figures/src/F1.py --check && $PYTHON figures/src/F6.py --check", minutes=0.2),
     dict(name="figure F1: Blender render (scratch copy)", targets=["figures"], dir=".", cmd=BLENDER_RENDER.format(f="F1"), minutes=15, needs="blender"),
     dict(name="figure F6: Blender render (scratch copy)", targets=["figures"], dir=".", cmd=BLENDER_RENDER.format(f="F6"), minutes=15, needs="blender"),
-    dict(name="Remark 3.2: no witness for n=5 with orders <= 120", targets=["full"], dir="theory/audibility",
+    dict(name="Remark S8.4: no witness for n=5 with orders <= 120", targets=["full"], dir="theory/audibility",
          cmd='rm -rf "$LOGDIR/sharp120" && cp -R . "$LOGDIR/sharp120" && (cd "$LOGDIR/sharp120" && $PYTHON sharpness_search.py 120 > /dev/null) && '
              '$PYTHON ../../tools/json_equal.py "$LOGDIR/sharp120/sharpness_n5_N120.json" sharpness_n5_N120.json --ignore wall_seconds', minutes=7),
     dict(name="stability thresholds and certificates", targets=["full"], dir="theory/stability", cmd="$PYTHON threshold.py", minutes=7),
@@ -649,28 +675,28 @@ This repository reproduces every computation stated in the paper
 and in its electronic supplement. The paper asks how many heat invariants determine the genus and the cone
 orders of a closed hyperbolic 2-orbifold. The repository contains:
 
-- `theory/audibility/`: Theorems A, B and C, Orlando's formula, the searches of Remark 3.2;
+- `theory/audibility/`: Theorems 3.2-3.4, Orlando's formula, the searches of Remark S8.4;
 - `theory/cone-coefficients/`, `theory/signatures/`, `theory/locality/`, `theory/curvature/`,
   `theory/divergence/`: the cone polynomials, signature data, complete area classes, the terms of the trace
   formula and the asymptotics of the heat coefficients;
-- `theory/msep/verify.py`: the bounded-order theorem (Theorem 3.8), with `theory/eigen/eigen_common.py`;
+- `theory/msep/verify.py`: the bounded-order theorem (Theorem 3.10), with `theory/eigen/eigen_common.py`;
 - `theory/pte/`: the Prouhet–Tarry–Escott constructions, the growth bounds, the pencil search and the
-  modular search of Remark 3.18 (C programs `search_T3.c`, `search_T3_modular.c`);
+  modular search of Remark S8.7 (C programs `search_T3.c`, `search_T3_modular.c`);
 - `theory/threshold/`, `theory/stability/`: triangle orbifolds (Section 5) and stability (Section 6), with
   the blind recovery of the supplement (`theory/stability/blind/`, protocol in `PROTOCOL.md`);
-- `theory/varcurv/`: the exact computer algebra of variable curvature (Section 2.4);
+- `theory/varcurv/`: the exact computer algebra of variable curvature (Section 2.4), and the checks of Proposition 2.13;
 - `theory/diophantine/ranks.py`: the rank of $C_{{27/2}}$ (PARI/GP);
-- `checks/proofs/`: exact checks of individual proofs (Lemmas 2.5-2.8, the descent of $C_{{27/2}}$,
-  Proposition S2.1, Proposition S3.5 and others), each writing its transcript;
+- `checks/proofs/`: exact checks of individual proofs (Lemmas 2.5-2.10, the descent of $C_{{27/2}}$,
+  Propositions S2.1 and S3.10 and others), each writing its transcript;
 - `checks/pairs/`: the explicit pairs of Table S1 (`d2_explicit_pairs.py`), the pencil counts
   (`d1_pencil_counts.py`) and $K_{{\\rm mult}}$ on the area classes (`a1_fig2_kmult.py`);
-- `checks/witnesses4/`: the exhaustive degree-4 search of Remark 3.2 (`check_direct4.c`) and its analysis;
+- `checks/witnesses4/`: the exhaustive degree-4 search of Remark S8.4 (`check_direct4.c`) and its analysis;
 - `checks/stability-constants/`: the constants $\\zeta_n$ and the $\\operatorname{{sech}}^2$ coefficients of
   Section S3;
 - `numerics/`: the finite-element eigenvalues of $\\mathcal O(2,8,8)$ and $\\mathcal O(3,3,12)$ (`solve.py`,
   NGSolve), their validation (`validate.py`, `validate_committed.py`), heat traces and the double-window
   recomputation (`rerun_double_window.py`); `numerics/moduli/`: the moduli family of Section 4;
-- `figures/`: Figures 1-8 (`figures/src/F*.py`, data generators in `figures/gen/`);
+- `figures/`: Figures 1-6, S1 and S2 (`figures/src/F*.py`, data generators in `figures/gen/`);
 - `tools/make_tables.py`: Tables S2-S4 (`tables/supplement_tables.tex`).
 
 {ndata} data files, {total} in all (`DATA.md`).
@@ -719,9 +745,10 @@ PAPER_A = dict(
         "theory/pte/data/pencil_m4_N220.json", "theory/pte/data/pencil_log.txt", "theory/pte/output/growth.txt",
         "theory/pte/output/pencil_search.txt", "theory/pte/output/real_shapes.txt", "theory/pte/output/search_T3_control.txt",
         "theory/pte/output/search_T3_modular.txt", "theory/pte/output/structure.txt", "theory/pte/output/witnesses.txt",
-        "theory/msep/verify.py", "theory/eigen/eigen_common.py",
+        "theory/msep/verify.py", "theory/eigen/eigen_common.py", "theory/eigen/data/instances.csv",
         "theory/varcurv/quadratic_form.py", "theory/varcurv/top_coefficient.py", "theory/varcurv/linear_part.py",
-        "theory/varcurv/obstruction_check.py", "theory/varcurv/twisted_mp.py", "theory/varcurv/*_output.txt",
+        "theory/varcurv/obstruction_check.py", "theory/varcurv/twisted_mp.py", "theory/varcurv/rotsym_check.py",
+        "theory/varcurv/*_output.txt",
         "theory/diophantine/ranks.py", "theory/diophantine/cubic_group.py", "theory/diophantine/data/ranks.txt",
         "theory/diophantine/data/groups.csv",
         "numerics/geometry.py", "numerics/theory.py", "numerics/eigdata.py", "numerics/solve.py", "numerics/validate.py",
@@ -786,29 +813,29 @@ PAPER_A = dict(
         "checks/pairs/a1_fig2_kmult.py": [('"""A1 (referee round 1, reviewer d m1): recompute every dot of Fig. 2 (F4) from scratch.',
                                           '"""Recompute every dot of Figure 3 (F4) from scratch.', 1)],
         "checks/pairs/d1_pencil_counts.py": [('"""D1 (referee round 1, reviewers b m9, c m6, d m6a): recount the pencil witnesses of Remark 3.2.',
-                                             '"""Recount the pencil witnesses of Remark 3.2.', 1)],
+                                             '"""Recount the pencil witnesses of Remark S8.4.', 1)],
         "checks/pairs/d2_explicit_pairs.py": [
             ('SUPP = ROOT / "paper" / "jga" / "supplement.tex"', 'SUPP = ROOT / "tables" / "supplement_tables.tex"', 1),
             ('"""D2 (referee round 1, reviewer d m6b, c P6): the explicit pairs behind Example 3.12 and Fig. 2.',
-             '"""The explicit pairs behind Example 3.17 and Figure 3 (Table S1).', 1),
+             '"""The explicit pairs behind Example S8.6 and Figure 3 (Table S1).', 1),
             ("paper/jga/supplement.tex (squares", "tables/supplement_tables.tex (squares", 1),
             (" (round 4, n28: rows L <= 5)", " (rows L <= 5)", 1)],
-        "checks/proofs/check_descent.py": [('"""Task 5(a) (G7-4a): rank 0', '"""Theorem 5.8 and Section S7: rank 0', 1),
+        "checks/proofs/check_descent.py": [('"""Task 5(a) (G7-4a): rank 0', '"""Theorem 5.11 and Appendix E: rank 0', 1),
                                           ("Checks every step of descent.tex in exact arithmetic.", "Checks every step of the descent in exact arithmetic.", 1)],
         "checks/proofs/check_lemma25.py": [('"""Task 1 (G7-3): Lemma 2.5 for every order, from the elliptic term of the trace formula.',
-                                           '"""Lemmas 2.6-2.10 and Remark 2.9 for every order, from the elliptic term of the trace formula.', 1),
+                                           '"""Lemmas 2.7-2.10 and Remark S8.1 for every order, from the elliptic term of the trace formula.', 1),
                                           ("Checks every computational claim of theory/revision/lemma25.tex.", "Checks every computational claim of these statements.", 1)],
         "checks/proofs/check_prop610.py": [('"""Task 5(d) (G7-4d): explicit r_rem and |dM| bounds of Proposition 6.10, checkable from the paper.',
-                                           '"""Explicit r_rem and |dM| bounds of Proposition S3.5, checkable from the paper.', 1),
+                                           '"""Explicit r_rem and |dM| bounds of Proposition S3.10, checkable from the paper.', 1),
                                           ("Re-implements Proposition 6.10 from the formulas printed in prop610.tex ONLY",
-                                           "Re-implements Proposition S3.5 from the formulas printed in the paper ONLY", 1)],
+                                           "Re-implements Proposition S3.10 from the formulas printed in the paper ONLY", 1)],
         "checks/proofs/check_remark212.py": [('"""Task 5(c) (G7-4c): Remark 2.12 (divergence of the heat series).  Checks remark212.tex.',
                                              '"""The divergence of the heat series (Section 4).', 1),
                                             ("re:\\s*\\(the manuscript's claim; theory/divergence/STATUS\\.md says l <= 5\\)", "", 1)],
         "checks/proofs/check_remark412.py": [('"""Task 2: the corrected Remark 4.12.  Checks the computational content of remark412.tex.',
-                                             '"""The moments alpha_k and the remainders (Propositions 2.7 and B.2).', 1)],
+                                             '"""The moments alpha_k and the remainders (Propositions 2.8 and B.2).', 1)],
         "checks/proofs/check_sharpness.py": [('"""Task 7 (G7-7): the corrected sharpness statement.  Checks sharpness.tex.',
-                                             '"""The sharpness statements (Propositions 6.3 and 6.4).', 1)],
+                                             '"""The sharpness statements (Proposition S3.3 and Remark S3.4).', 1)],
         "checks/proofs/check_thm12iii.py": [('"""Task 4 (G7-8): the explicit constant of Theorem 1.2(iii).  Checks thm12iii.tex.',
                                             '"""The explicit constant C_hyp of Lemma 2.5.', 1)],
         "checks/proofs/check_thm513.py": [('"""Task 5(b) (G7-4b): the collision-free sums of Theorem 5.13, as a checkable certificate.',
@@ -820,7 +847,8 @@ PAPER_A = dict(
         "numerics/moduli/locality_ratio.py": [
             ('"""Two numbers quoted in round 4 (paper/jga, Section 4 and supplement S4, S6), from committed data only.',
              '"""Two numbers quoted in the paper (Section 4 and supplement S4, S6), from committed data only.', 1),
-            ("lem:hypbound of paper/jga (lem:hyp of paper/eigen)", "Lemma 2.5 of the paper", 1)],
+            ("lem:hypbound of paper/jga (lem:hyp of paper/eigen)", "Lemma 2.5 of the paper", 1),
+            ("C e^x (round 7): the", "C e^x: the", 1)],
         "tools/json_equal.py": [("Used by run_all.sh for", "Used by the make steps for", 1)],
     },
     clean=["theory/pte/search_T3_modular", "theory/pte/search_T3"],
@@ -850,36 +878,36 @@ PAPER_A["readme"] = PAPER_A_README + INSTALL.format(
 REPOS["heat-invariants-orbifolds"] = PAPER_A
 
 PAPER_A["data"] = [
-    ("theory/audibility/sharpness_n5_N60.json", "`theory/audibility/sharpness_search.py 60`", "Theorem C, Remark 3.2"),
-    ("theory/audibility/sharpness_n5_N120.json", "`theory/audibility/sharpness_search.py 120`", "Remark 3.2 ($n=5$, orders at most 120)"),
-    ("theory/audibility/output/*", "the script of the same name in `theory/audibility/` (transcript)", "Theorems A-C, Lemma 3.1, Orlando's formula"),
-    ("theory/cone-coefficients/verify_output.txt", "`theory/cone-coefficients/verify_cone_coefficients.py`", "Lemma 2.8"),
-    ("theory/signatures/output/*", "the script of the same name in `theory/signatures/` (transcript)", "Lemmas 2.8, 2.10, 3.3, Theorem 3.4, Corollary 3.5, Theorem 3.13, Figure 3"),
+    ("theory/audibility/sharpness_n5_N60.json", "`theory/audibility/sharpness_search.py 60`", "Theorem 3.4, Remark S8.4"),
+    ("theory/audibility/sharpness_n5_N120.json", "`theory/audibility/sharpness_search.py 120`", "Remark S8.4 ($n=5$, orders at most 120)"),
+    ("theory/audibility/output/*", "the script of the same name in `theory/audibility/` (transcript)", "Lemma 3.1, Theorems 3.2-3.4, Orlando's formula"),
+    ("theory/cone-coefficients/verify_output.txt", "`theory/cone-coefficients/verify_cone_coefficients.py`", "Lemma 2.9"),
+    ("theory/signatures/output/*", "the script of the same name in `theory/signatures/` (transcript)", "Lemmas 2.9, 2.10, 3.5, Theorems 3.6 and 3.16, Corollary 3.7, Figure 3"),
     ("theory/locality/output/check_locality.txt", "`theory/locality/check_locality.py`", "Theorem 2.3, Lemma 2.4, Corollary 4.1"),
     ("theory/curvature/curvature_output.txt", "`theory/curvature/curvature_checks.py`", "Section 2.3 (curvature 0 and +1)"),
     ("theory/divergence/divergence_output.txt", "`theory/divergence/divergence.py`", "Section 4 (growth of the heat coefficients)"),
-    ("theory/threshold/first_overlap_vs_collision.csv", "`theory/threshold/threshold.py`", "Theorems 5.4-5.7, Table S2, Figure 7"),
-    ("theory/threshold/threshold_output.txt", "`theory/threshold/threshold.py` (transcript)", "Section 5, Proposition S2.2"),
-    ("theory/stability/threshold_results.json", "`theory/stability/threshold.py`", "Section 6, Table S4, Figure 8"),
+    ("theory/threshold/first_overlap_vs_collision.csv", "`theory/threshold/threshold.py`", "Theorems 5.7-5.10, Table S2, Figure 6"),
+    ("theory/threshold/threshold_output.txt", "`theory/threshold/threshold.py` (transcript)", "Section 5, Proposition C.1"),
+    ("theory/stability/threshold_results.json", "`theory/stability/threshold.py`", "Sections 6 and S3, Table S4, Figure S1"),
     ("theory/stability/blind/result.json", "`theory/stability/blind/blind_pipeline.py`", "Table S6 (blind recovery)"),
-    ("theory/pte/data/witnesses.json", "`theory/pte/witnesses.py`", "Example 3.17, the bounds on $T(L)$, Figure 3, Table S1"),
-    ("theory/pte/data/T3_modular.json", "`theory/pte/search_T3_modular.py 220 4`", "Remark 3.18"),
-    ("theory/pte/data/pencil_N130_200.json", "`theory/pte/pencil_search.py`", "Lemma 3.16 and the text after it"),
-    ("theory/pte/data/pencil_m4_N220.json", "`theory/pte/pencil_search.py` (degree-4 pencil to 220)", "Remark 3.2 (pencil witnesses)"),
-    ("theory/pte/data/pencil_log.txt", "`theory/pte/pencil_search.py` (log)", "Lemma 3.16"),
-    ("theory/pte/output/*", "the script of the same name in `theory/pte/` (transcript)", "Section 3.3, Theorem 3.14, Remark 3.18"),
-    ("theory/varcurv/*_output.txt", "the script of the same name in `theory/varcurv/` (transcript)", "Propositions 2.11 and 2.13, Remark 2.12"),
-    ("theory/diophantine/data/ranks.txt", "`theory/diophantine/ranks.py` (PARI)", "Theorem 5.8 (rank and torsion of $C_{27/2}$)"),
-    ("checks/proofs/*.txt", "the script of the same name in `checks/proofs/` (transcript)", "Lemmas 2.5-2.10, Remark 2.9, Theorem 5.8, Proposition S2.1, Proposition S3.5, Proposition 6.3"),
+    ("theory/pte/data/witnesses.json", "`theory/pte/witnesses.py`", "Example S8.6, the bounds on $T(L)$ (Table 2), Figure 3, Table S1"),
+    ("theory/pte/data/T3_modular.json", "`theory/pte/search_T3_modular.py 220 4`", "Remark S8.7"),
+    ("theory/pte/data/pencil_N130_200.json", "`theory/pte/pencil_search.py`", "Lemma 3.19 and the text after it"),
+    ("theory/pte/data/pencil_m4_N220.json", "`theory/pte/pencil_search.py` (degree-4 pencil to 220)", "Remark S8.4 (pencil witnesses)"),
+    ("theory/pte/data/pencil_log.txt", "`theory/pte/pencil_search.py` (log)", "Lemma 3.19"),
+    ("theory/pte/output/*", "the script of the same name in `theory/pte/` (transcript)", "Section 3.4, Theorem 3.17, Remark S8.7"),
+    ("theory/varcurv/*_output.txt", "the script of the same name in `theory/varcurv/` (transcript)", "Conjecture 2.12, Propositions 2.13, 2.14 and 2.16, Remark S8.2"),
+    ("theory/diophantine/data/ranks.txt", "`theory/diophantine/ranks.py` (PARI)", "Theorem 5.11 and Appendix E (rank and torsion of $C_{27/2}$)"),
+    ("checks/proofs/*.txt", "the script of the same name in `checks/proofs/` (transcript)", "Lemmas 2.5-2.10, Remark S8.1, Theorem 5.11, Propositions S2.1, S3.3 and S3.10"),
     ("checks/proofs/collision_witnesses.csv", "`checks/proofs/check_thm513.py`", "Proposition S2.1 (the collision witnesses)"),
     ("checks/classes4800/enum_4800.txt", "the second enumeration of the companion note (`enum_classes 10 4800 4800`)", "input of Proposition S2.1"),
     ("checks/enumeration6000/tab_enum_reference.txt", "listing of the triads with $10\\le S\\le18$", "Table S3 (reference listing)"),
     ("checks/pairs/output/a1_*", "`checks/pairs/a1_fig2_kmult.py`", "Figure 3 ($K_{\\rm mult}$ on the complete area classes)"),
-    ("checks/pairs/output/d1_*", "`checks/pairs/d1_pencil_counts.py`", "Remark 3.2 and Section S1 (pencil counts)"),
+    ("checks/pairs/output/d1_*", "`checks/pairs/d1_pencil_counts.py`", "Remark S8.4 and Section S1 (pencil counts)"),
     ("checks/pairs/output/d2_*", "`checks/pairs/d2_explicit_pairs.py`", "Table S1 and the cone lists of Section S1"),
-    ("checks/witnesses4/direct4_N440.txt", "`checks/witnesses4/check_direct4.c` (`direct4 440`)", "Remark 3.2 ($n=4$, orders at most 440)"),
-    ("checks/witnesses4/direct4_N440.time", "timing record of the search above", "Remark 3.2"),
-    ("checks/witnesses4/check_direct4.txt", "`checks/witnesses4/check_direct4.py`", "Remark 3.2 (193 witnesses, 107 primitive)"),
+    ("checks/witnesses4/direct4_N440.txt", "`checks/witnesses4/check_direct4.c` (`direct4 440`)", "Remark S8.4 ($n=4$, orders at most 440)"),
+    ("checks/witnesses4/direct4_N440.time", "timing record of the search above", "Remark S8.4"),
+    ("checks/witnesses4/check_direct4.txt", "`checks/witnesses4/check_direct4.py`", "Remark S8.4 (193 witnesses, 107 primitive)"),
     ("checks/stability-constants/check_setup.txt", "`checks/stability-constants/check_setup.py`", "Section S3 ($\\zeta_n$, $\\operatorname{sech}^2U$)"),
     ("numerics/data/eigenvalues_*.csv", "`numerics/solve.py` (NGSolve) and `numerics/validate.py`", "Section 4, Section S4, Table S6"),
     ("numerics/data/double_window/eigenvalues_*.csv", "`numerics/rerun_double_window.py` (NGSolve)", "Section S4 (double-window recomputation)"),
@@ -889,22 +917,23 @@ PAPER_A["data"] = [
     ("numerics/data/bolza_benchmark.csv", "`numerics/validate.py`", "Section S4 (Bolza benchmark)"),
     ("numerics/data/weyl.csv", "`numerics/validate.py`", "Section S4 (Weyl check)"),
     ("numerics/data/heat_trace_checks.csv", "`numerics/heat_trace.py`", "Section S4 (heat traces)"),
-    ("numerics/data/heat_trace_difference.csv", "`numerics/heat_trace.py`", "Section 4, Figures 1 and 5"),
+    ("numerics/data/heat_trace_difference.csv", "`numerics/heat_trace.py`", "Section 4, Figures 1 and S2"),
     ("numerics/data/fits.csv", "`numerics/heat_trace.py`", "Section 4 (fitted coefficients)"),
     ("numerics/data/headline.json", "`numerics/heat_trace.py`", "Section 4 and S4 (quoted values)"),
     ("numerics/data/heat_kernel_diagonal.npz", "`numerics/heat_trace.py kernel` (NGSolve)", "Figure 1"),
-    ("numerics/moduli/data/*", "`numerics/moduli/solve_moduli.py` (NGSolve) and `numerics/moduli/analysis.py`", "Section 4, Theorem 4.2, Section S6, Figures 4 and 5"),
+    ("numerics/moduli/data/*", "`numerics/moduli/solve_moduli.py` (NGSolve) and `numerics/moduli/analysis.py`", "Section 4, Theorem 4.2, Section S6, Figures 4 and S2"),
+    ("theory/eigen/data/instances.csv", "copied from the companion repository eigenvalues-orbifold-signature", "Section S6 (count constants from the computed diameters)"),
     ("figures/data/f4_*.csv", "`figures/gen/gen_f4_area_classes.py`", "Figure 3"),
-    ("figures/data/f7_*.csv", "`figures/gen/gen_f7_strata.py`", "Figure 7"),
-    ("figures/data/f8_*.csv", "`figures/gen/gen_f8_recovery.py`", "Figure 8"),
+    ("figures/data/f7_*.csv", "`figures/gen/gen_f7_strata.py`", "Figure 6"),
+    ("figures/data/f8_*.csv", "`figures/gen/gen_f8_recovery.py`", "Figure S1"),
     ("figures/out/F1.*", "`figures/src/F1.py` (Blender)", "Figure 1"),
     ("figures/out/F3.*", "`figures/src/F3.py`", "Figure 2"),
     ("figures/out/F4.*", "`figures/src/F4.py`", "Figure 3"),
     ("figures/out/F6.*", "`figures/src/F6.py` (Blender)", "Figure 4"),
-    ("figures/out/F5.*", "`figures/src/F5.py`", "Figure 5"),
-    ("figures/out/F2.*", "`figures/src/F2.py`", "Figure 6"),
-    ("figures/out/F7.*", "`figures/src/F7.py`", "Figure 7"),
-    ("figures/out/F8.*", "`figures/src/F8.py`", "Figure 8"),
+    ("figures/out/F5.*", "`figures/src/F5.py`", "Figure S2"),
+    ("figures/out/F2.*", "`figures/src/F2.py`", "Figure 5"),
+    ("figures/out/F7.*", "`figures/src/F7.py`", "Figure 6"),
+    ("figures/out/F8.*", "`figures/src/F8.py`", "Figure S1"),
     ("figures/style/palette.json", "fixed input (colour palette)", "every figure (style)"),
     ("figures/style/third_party/*", "fetched colour tables (`figures/style/fetch_third_party.py`; `SOURCES.json` gives sources and licences)", "every figure (colour maps)"),
     ("tables/*.tex", "`tools/make_tables.py` (S2-S4) and `checks/pairs/d2_explicit_pairs.py` (S1)", "Tables S1-S4"),
@@ -916,10 +945,10 @@ PAPER_A["data"] = [
 def b_post(dest, root):
     tex = (root / "paper/eigen/manuscript.tex").read_text(encoding="utf-8")
     blocks = list(re.finditer(r"% BEGIN GENERATED TABLE (\S+)\n.*?% END GENERATED TABLE \1\n?", tex, re.S))
-    assert sorted(m.group(1) for m in blocks) == ["inputs", "practice", "spectra"], [m.group(1) for m in blocks]
+    assert sorted(m.group(1) for m in blocks) == sorted(["certgap", "certdetail", "E", "inputs", "spectra", "practice", "certencl"]), [m.group(1) for m in blocks]
     (dest / "tables").mkdir(exist_ok=True)
     (dest / "tables" / "paper_tables.tex").write_text(
-        "% The generated tables of the paper (Table 4 inputs, Table 5 spectra, Table 6 practice), each between its\n"
+        "% The generated tables of the paper (Tables 4-9 and A1), each between its\n"
         "% markers, as printed. tools/make_tables.py regenerates them.\n\n" + "".join(m.group(0) for m in blocks),
         encoding="utf-8")
     import subprocess, sys
@@ -930,13 +959,14 @@ def b_post(dest, root):
 PAPER_B_STEPS = [
     dict(name=f"{s}", targets=["verify"], dir="theory/eigen", cmd=f"$PYTHON {s}.py", minutes=m) for s, m in [
         ("counting", 2.5), ("remainder", 2), ("theorem_e", 1.2), ("necessity", 0.1), ("diameter", 3.5), ("systole_233", 0.6),
-        ("instances", 1.6), ("practice", 1.5), ("practice_double_window", 0.2)]
+        ("instances", 1.6), ("practice", 1.5), ("practice_double_window", 0.2), ("practice_checks", 3), ("locality", 0.5),
+        ("certify_systoles", 2.5), ("computed_gap", 1), ("certified_gap", 1.5)]
 ] + [
     dict(name="bounded cone orders (Theorem 3.2, from the companion paper)", targets=["verify"], dir="theory/msep", cmd="$PYTHON verify.py", minutes=3.5),
     dict(name="computed spectra: committed data", targets=["verify"], dir="numerics", cmd="$PYTHON validate_committed.py --quick", minutes=0.2),
     dict(name="moduli family: committed data", targets=["verify"], dir="numerics/moduli", cmd="$PYTHON validate_committed.py --quick", minutes=0.1),
     dict(name="double-window recomputation: record", targets=["verify"], dir="numerics", cmd="$PYTHON rerun_double_window.py --verify-record", minutes=0.1),
-    dict(name="tables 4-6", targets=["tables"], dir=".", cmd="$PYTHON tools/make_tables.py --check", minutes=0.1),
+    dict(name="tables 4-9 and A1", targets=["tables"], dir=".", cmd="$PYTHON tools/make_tables.py --check", minutes=0.1),
     dict(name="figure data E2 E3", targets=["figures"], dir=".", cmd="$PYTHON figures/gen/gen_e2_gap.py && $PYTHON figures/gen/gen_e3_practice.py", minutes=1.6),
 ] + [dict(name=f"figure {f}", targets=["figures"], dir=".", cmd=f"$PYTHON figures/src/{f}.py", minutes=0.1) for f in ("E1", "E2", "E3")] + [
     dict(name="figure data E1: eigenvalues of O(2,3,m) (NGSolve)", targets=["figures"], dir=".",
@@ -958,7 +988,7 @@ The paper proves that finitely many Laplace eigenvalues determine the signature 
 spectra. The repository contains:
 
 - `theory/eigen/`: the checks of the counting and remainder bounds (`counting.py`, `remainder.py`), the
-  diameter bound and Table 2 (`diameter.py`), Theorem E and Table 3 (`theorem_e.py`), the necessity of the
+  diameter bound and Table 3 (`diameter.py`), Theorem E and Table 6 (`theorem_e.py`), the necessity of the
   hypotheses (`necessity.py`), the systoles of $\\mathcal O(2,3,m)$ (`systole_233.py`), the inputs of the test
   (`instances.py`), the test itself (`practice.py`) and its rerun on the double-window spectra with one
   eigenvalue missing or duplicated (`practice_double_window.py`); `theory/eigen/METHODS.md` documents the
@@ -968,13 +998,14 @@ spectra. The repository contains:
   $\\mathcal O(3,3,12)$ (`solve.py`, NGSolve), their validation, and the double-window recomputation
   (`rerun_double_window.py`); `numerics/moduli/`: the spectra of the family $(0;3,3,3,3)$ (`solve_moduli.py`);
 - `figures/`: Figures 1-3 (`figures/src/E*.py`, data generators in `figures/gen/`);
-- `tools/make_tables.py`: Tables 4-6 (`tables/paper_tables.tex`).
+- `tools/make_tables.py`: Tables 4-9 and A1 (`tables/paper_tables.tex`).
 
 {ndata} data files, {total} in all (`DATA.md`).
 
 """
 PAPER_B = dict(
     name="eigenvalues-orbifold-signature",
+    requirements_extra="# Ball arithmetic (Arb) for theory/eigen/certified_gap.py.\npython-flint==0.9.0\n",
     short="the paper",
     paper=PAPER_B,
     keywords=["Laplace eigenvalues", "hyperbolic orbifolds", "inverse spectral problems", "Selberg trace formula",
@@ -990,7 +1021,8 @@ PAPER_B = dict(
     copy=[(p, None) for p in [
         "theory/eigen/eigen_common.py", "theory/eigen/diameter.py", "theory/eigen/counting.py", "theory/eigen/remainder.py",
         "theory/eigen/theorem_e.py", "theory/eigen/necessity.py", "theory/eigen/instances.py", "theory/eigen/practice.py",
-        "theory/eigen/practice_double_window.py", "theory/eigen/systole_233.py",
+        "theory/eigen/practice_double_window.py", "theory/eigen/systole_233.py", "theory/eigen/practice_checks.py",
+        "theory/eigen/locality.py", "theory/eigen/certify_systoles.py", "theory/eigen/computed_gap.py", "theory/eigen/certified_gap.py",
         "theory/eigen/data/*", "theory/msep/verify.py",
         "numerics/solve.py", "numerics/geometry.py", "numerics/eigdata.py", "numerics/theory.py", "numerics/heat_trace.py",
         "numerics/validate_committed.py", "numerics/rerun_double_window.py", "numerics/validate.py", "numerics/fetch_refs.sh",
@@ -1018,6 +1050,19 @@ PAPER_B = dict(
     extra={"theory/eigen/METHODS.md": "eigen_METHODS.md"},
     post=[b_post],
     edits={
+        "theory/eigen/certified_gap.py": [("Round 10 (referee B-d M1, B5 of the verdict): the certificate", "The certificate", 1),
+                                          ("        # round 10: the enclosures", "        # the enclosures", 1)],
+        "theory/eigen/practice.py": [("(allareas, round 7)", "(allareas)", 1), ("(round 7, sharp form)", "(sharp form)", 1)],
+        "theory/eigen/practice_checks.py": [("r <= 1e-3 (round 7: with the", "r <= 1e-3 (with the", 1),
+                                            ("budget.  Round 9: the Weyl estimate", "budget.  The Weyl estimate", 1),
+                                            ("        # round 9: a rigorous tail", "        # a rigorous tail", 1)],
+        "theory/eigen/practice_double_window.py": [("printed.  Round 7: the perturbation", "printed.  The perturbation", 1),
+                                                   ("no signature passes (round 7)", "no signature passes", 1)],
+        "theory/eigen/theorem_e.py": [("# Remark 6.3(a) (round 7): ", "# Remark 6.3(a): ", 2), ("    # round 8: the class", "    # the class", 1),
+                                      ("    # round 9: delta_1", "    # delta_1", 1), ('out.append("round 9: Table 4 unchanged', 'out.append("Table 6 unchanged', 1),
+                                      ("changes no row of Table 4 (L_M", "changes no row of Table 6 (L_M", 1)],
+        "theory/eigen/locality.py": [('"""Task 6: Theorem 4.4', '"""Theorem 4.4', 1)],
+        "figures/gen/gen_e2_gap.py": [("# round 7: the sharp perturbation term of Theorem thm:post", "# the sharp perturbation term of Theorem 7.1", 1)],
         "tools/make_tables.py": [
             ("ROOT = Path(__file__).resolve().parents[3]", "ROOT = Path(__file__).resolve().parents[1]", 1),
             ('TEX = ROOT / "paper" / "eigen" / "manuscript.tex"', 'TEX = ROOT / "tables" / "paper_tables.tex"', 1),
@@ -1025,6 +1070,9 @@ PAPER_B = dict(
              '"""Regenerate the data tables of the paper (tables/paper_tables.tex) from committed data.', 1),
             ("    python3 paper/eigen/tools/make_tables.py ", "    python3 tools/make_tables.py ", 2),
             ("# round 4 close-out: printed also when est <= N_c", "# printed also when est <= N_c", 1),
+            ("(theory/eigen/certified_gap.py; round 10)", "(theory/eigen/certified_gap.py)", 1),
+            ("for Lambda_o; round 10)", "for Lambda_o)", 1),
+            ('"""Round 10 (B5): the enclosures', '"""The enclosures', 1),
         ],
     },
     steps=PAPER_B_STEPS,
@@ -1045,15 +1093,19 @@ PAPER_B["readme"] = PAPER_B_README + INSTALL.format(
 """
 REPOS["eigenvalues-orbifold-signature"] = PAPER_B
 PAPER_B["data"] = [
-    ("theory/eigen/data/instances.csv", "`theory/eigen/instances.py`", "Table 4 (systoles, diameters, the bound D)"),
-    ("theory/eigen/data/practice.csv", "`theory/eigen/practice.py`", "Table 6, Figure 2"),
-    ("theory/eigen/data/practice_inputs.csv", "`theory/eigen/practice.py`", "Table 4"),
+    ("theory/eigen/data/instances.csv", "`theory/eigen/instances.py`", "Table 7 (systoles, diameters, the bound D)"),
+    ("theory/eigen/data/practice.csv", "`theory/eigen/practice.py`", "Table 9, Figure 2"),
+    ("theory/eigen/data/practice_inputs.csv", "`theory/eigen/practice.py`", "Table 7"),
     ("theory/eigen/data/practice_t.csv", "`theory/eigen/practice.py`", "Section 7 (the test at every grid time)"),
-    ("theory/eigen/data/triangle_spectra_first41.csv", "`theory/eigen/practice.py`", "Table 5"),
-    ("theory/eigen/data/table2.csv", "`theory/eigen/practice.py`", "Table 3 (constants of Theorem E)"),
+    ("theory/eigen/data/triangle_spectra_first41.csv", "`theory/eigen/practice.py`", "Table 8"),
+    ("theory/eigen/data/table2.csv", "`theory/eigen/practice.py`", "Table 6 (constants of Theorem E)"),
     ("theory/eigen/data/practice_double_window.csv", "`theory/eigen/practice_double_window.py`", "Section 7.1 (the test on the double-window spectra)"),
     ("theory/eigen/data/practice_missing.csv", "`theory/eigen/practice_double_window.py`", "Section 7.1 (one eigenvalue missing or duplicated)"),
-    ("numerics/data/eigenvalues_*.csv", "`numerics/solve.py` (NGSolve) and `numerics/validate.py`", "Tables 4-6, Section 7.1, Lemma 2.2 checks"),
+    ("theory/eigen/data/practice_checks.csv", "`theory/eigen/practice_checks.py`", "Section 7 (robustness of the test)"),
+    ("theory/eigen/data/systoles_certified.csv", "`theory/eigen/certify_systoles.py` (interval arithmetic)", "Table 7 (certified systole lower bounds)"),
+    ("theory/eigen/data/computed_gap.csv", "`theory/eigen/computed_gap.py`", "Corollary 6.4, Table 4"),
+    ("theory/eigen/data/certified_gap*.csv", "`theory/eigen/certified_gap.py` (ball arithmetic, python-flint)", "Proposition 6.6, Tables 4, 5 and A1, Appendix A"),
+    ("numerics/data/eigenvalues_*.csv", "`numerics/solve.py` (NGSolve) and `numerics/validate.py`", "Tables 7-9, Section 7.1, Lemma 2.2 checks"),
     ("numerics/data/double_window/eigenvalues_*.csv", "`numerics/rerun_double_window.py` (NGSolve)", "Section 7.1 (double-window recomputation)"),
     ("numerics/data/double_window/problem_*.json", "`numerics/rerun_double_window.py` (NGSolve)", "Section 7.1 (provenance of the recomputation)"),
     ("numerics/data/rerun_double_window_comparison.json", "`numerics/rerun_double_window.py`", "Section 7.1 (agreement of the two computations)"),
@@ -1064,7 +1116,7 @@ PAPER_B["data"] = [
     ("numerics/data/heat_trace_difference.csv", "`numerics/heat_trace.py`", "input of the full validation"),
     ("numerics/data/fits.csv", "`numerics/heat_trace.py`", "input of the full validation"),
     ("numerics/data/headline.json", "`numerics/heat_trace.py`", "input of the full validation"),
-    ("numerics/moduli/data/*", "`numerics/moduli/solve_moduli.py` (NGSolve) and `numerics/moduli/analysis.py`", "Tables 4 and 6, Figure 2 (the family)"),
+    ("numerics/moduli/data/*", "`numerics/moduli/solve_moduli.py` (NGSolve) and `numerics/moduli/analysis.py`", "Tables 7 and 9, Figure 2 (the family)"),
     ("figures/data/e1_*.csv", "`figures/gen/gen_e1_cusp.py` (NGSolve)", "Figure 3"),
     ("figures/data/e2_gap.csv", "`figures/gen/gen_e2_gap.py`", "Figure 1"),
     ("figures/data/e3_practice.csv", "`figures/gen/gen_e3_practice.py`", "Figure 2"),
@@ -1073,7 +1125,7 @@ PAPER_B["data"] = [
     ("figures/out/E1.*", "`figures/src/E1.py`", "Figure 3"),
     ("figures/style/palette.json", "fixed input (colour palette)", "every figure (style)"),
     ("figures/style/third_party/*", "fetched colour tables (`figures/style/fetch_third_party.py`; `SOURCES.json` gives sources and licences)", "every figure (colour maps)"),
-    ("tables/*.tex", "`tools/make_tables.py`", "Tables 4-6"),
+    ("tables/*.tex", "`tools/make_tables.py`", "Tables 4-9 and A1"),
 ]
 PAPER_B["trace"] = [
     ("Lemma 2.2", "counting bound for closed geodesics; the hyperbolic term", "`theory/eigen/counting.py`", "counting"),
@@ -1081,14 +1133,19 @@ PAPER_B["trace"] = [
     ("Theorem 3.2", "separation with bounded cone orders (from the companion paper)", "`theory/msep/verify.py`", "bounded cone orders (Theorem 3.2, from the companion paper)"),
     ("Lemma 3.3", "integrality at the first difference", "`theory/eigen/theorem_e.py`", "theorem_e"),
     ("Lemmas 4.1-4.3", "hyperbolic trigonometry, separation of cone points, area of balls", "`theory/eigen/diameter.py`", "diameter"),
-    ("Theorem 4.4, Table 2", "the diameter bound $D(A,\\varepsilon,M)$ and its values (40 digits)", "`theory/eigen/diameter.py`", "diameter"),
+    ("Theorem 4.4, Lemma 4.5", "the bound with the diameter replaced by $D(A,\\varepsilon,M)$, on the moduli family", "`theory/eigen/locality.py`", "locality"),
+    ("Theorem 4.4, Table 3", "the diameter bound $D(A,\\varepsilon,M)$ and its values (40 digits)", "`theory/eigen/diameter.py`", "diameter"),
     ("Lemma 5.1, Proposition 5.2", "elementary bounds; counting and tails", "`theory/eigen/counting.py`", "counting"),
     ("Lemma 6.1", "the gap", "`theory/eigen/theorem_e.py`", "theorem_e"),
-    ("Theorem 6.2, Table 3", "Theorem E and its constants (40 digits)", "`theory/eigen/theorem_e.py`", "theorem_e"),
+    ("Corollary 6.4", "Theorem 6.2 with a computed gap", "`theory/eigen/computed_gap.py`", "computed_gap"),
+    ("Proposition 6.6, Tables 4, 5 and A1, Appendix A", "the certified gap: every gap enclosed in ball arithmetic", "`theory/eigen/certified_gap.py`, `tools/make_tables.py`", "certified_gap; tables 4-9 and A1"),
+    ("Theorem 6.2, Table 6", "Theorem E and its constants (40 digits)", "`theory/eigen/theorem_e.py`", "theorem_e"),
     ("Figure 1", "the separation mechanism on $\\mathcal O(2,8,8)$", "`figures/gen/gen_e2_gap.py`, `figures/src/E2.py`", "figure data E2 E3; figure E2"),
-    ("Theorem 7.1, Table 4", "the inputs of the test: systoles, diameters, $D$", "`theory/eigen/instances.py`, `tools/make_tables.py`", "instances; tables 4-6"),
-    ("Table 5", "the first 40 eigenvalues of the triangle orbifolds", "`theory/eigen/practice.py`, `tools/make_tables.py`", "practice; tables 4-6"),
-    ("Table 6", "results of the test", "`theory/eigen/practice.py`, `tools/make_tables.py`", "practice; tables 4-6"),
+    ("Theorem 7.1, Table 7", "the inputs of the test: systoles, diameters, $D$", "`theory/eigen/instances.py`, `tools/make_tables.py`", "instances; tables 4-9 and A1"),
+    ("Table 8", "the first 40 eigenvalues of the triangle orbifolds", "`theory/eigen/practice.py`, `tools/make_tables.py`", "practice; tables 4-9 and A1"),
+    ("Table 9", "results of the test", "`theory/eigen/practice.py`, `tools/make_tables.py`", "practice; tables 4-9 and A1"),
+    ("Table 7", "certified lower bounds for the systoles (interval arithmetic)", "`theory/eigen/certify_systoles.py`", "certify_systoles"),
+    ("Section 7", "robustness of the test", "`theory/eigen/practice_checks.py`", "practice_checks"),
     ("Section 7.1", "the computed spectra: error estimates, completeness, benchmark", "`numerics/validate_committed.py`", "computed spectra: committed data; computed spectra: full validation"),
     ("Section 7.1", "the family $(0;3,3,3,3)$: spectra and their checks", "`numerics/moduli/validate_committed.py`", "moduli family: committed data; moduli family: full validation"),
     ("Section 7.1", "double-window recomputation of the triangle spectra; agreement", "`numerics/rerun_double_window.py`", "double-window recomputation: record; computed spectra: double-window re-solve (NGSolve)"),
@@ -1096,67 +1153,68 @@ PAPER_B["trace"] = [
     ("Figure 2", "eigenvalue counts against the systole", "`figures/gen/gen_e3_practice.py`, `figures/src/E3.py`", "figure data E2 E3; figure E3"),
     ("Lemma 8.1", "Jørgensen's inequality (commutator trace, 40 digits)", "`theory/eigen/diameter.py`", "diameter"),
     ("Proposition 8.2", "the family $\\mathcal O(2,3,m)$: area, systoles", "`theory/eigen/diameter.py`, `theory/eigen/systole_233.py`", "diameter; systole_233"),
-    ("Equation (3), Propositions 8.3 and 8.5, Remark 8.4", "Rayleigh identities; unbounded orders; pinching", "`theory/eigen/necessity.py`", "necessity"),
+    ("Equation (3), Propositions 8.3 and 8.9, Remark 8.4", "Rayleigh identities; unbounded orders; pinching", "`theory/eigen/necessity.py`", "necessity"),
     ("Figure 3", "eigenvalues of $\\mathcal O(2,3,m)$", "`figures/gen/gen_e1_cusp.py` (NGSolve), `figures/src/E1.py`", "figure E1; figure data E1: eigenvalues of O(2,3,m) (NGSolve)"),
 ]
 GLOBAL_SUBS.append(("the revised paper", "the paper"))
 
 PAPER_A["trace"] = [
     ("Figure 1", "heat-kernel diagonal of $\\mathcal O(2,8,8)$ and $\\mathcal O(3,3,12)$", "`figures/src/F1.py` (Blender)", "figures F1 F6: data assertions; figure F1: Blender render (scratch copy)"),
-    ("Theorem 1.2(ii), Theorem 3.8, Corollary 3.9", "bounded cone orders: $M+1$ invariants suffice and are attained; sharp pairs; minimal areas $12\\pi$, $36\\pi$", "`theory/msep/verify.py`", "bounded cone orders (Theorem 3.8)"),
+    ("Theorem 1.1(ii), Theorem 3.10, Corollary 3.11", "bounded cone orders: $M+1$ invariants suffice and are attained; sharp pairs; minimal areas $12\\pi$, $36\\pi$", "`theory/msep/verify.py`", "bounded cone orders (Theorem 3.10)"),
     ("Theorem 2.3, Lemma 2.4", "terms of the trace formula; counting bound", "`theory/locality/check_locality.py`", "trace formula terms (locality)"),
     ("Lemma 2.5", "the constant $C_{\\rm hyp}$", "`checks/proofs/check_thm12iii.py`", "proof check check_thm12iii"),
-    ("Lemmas 2.6, 2.8, 2.10, Proposition 2.7, Remark 2.9", "$\\Phi_m$, cone polynomials $p_l$, moments $\\alpha_k$, agreement with Uçar for $l\\le40$", "`checks/proofs/check_lemma25.py`, `checks/proofs/check_remark412.py`, `theory/cone-coefficients/verify_cone_coefficients.py`, `theory/signatures/heat_structure.py`", "proof check check_lemma25; proof check check_remark412; cone coefficients p_l; heat structure of a signature"),
+    ("Lemmas 2.7, 2.9, 2.10, Proposition 2.8, Remark S8.1", "$\\Phi_m$, cone polynomials $p_l$, moments $\\alpha_k$, agreement with Uçar for $l\\le40$", "`checks/proofs/check_lemma25.py`, `checks/proofs/check_remark412.py`, `theory/cone-coefficients/verify_cone_coefficients.py`, `theory/signatures/heat_structure.py`", "proof check check_lemma25; proof check check_remark412; cone coefficients p_l; heat structure of a signature"),
     ("Section 2.3", "curvature $0$ and $+1$", "`theory/curvature/curvature_checks.py`", "flat and spherical cases"),
-    ("Proposition 2.11, Remark 2.12", "variable curvature: $\\beta_{l,l+1}$ for $l\\le7$, the $t^3$ coefficient, the linear part (833 cases)", "`theory/varcurv/top_coefficient.py`, `theory/varcurv/twisted_mp.py`, `theory/varcurv/linear_part.py`", "variable curvature top_coefficient; variable curvature twisted_mp; variable curvature linear_part"),
-    ("Proposition 2.13", "second variation $\\omega_n$; flat-cone examples", "`theory/varcurv/quadratic_form.py`, `theory/varcurv/obstruction_check.py`", "variable curvature quadratic_form; variable curvature obstruction_check"),
-    ("Lemma 3.1, Theorem A", "parity; $n$ invariants determine $n$ orders", "`theory/audibility/verify_elimination.py`", "Theorem A and Lemma 3.1: elimination"),
+    ("Conjecture 2.12, Proposition 2.14, Remark S8.2", "variable curvature: $\\beta_{l,l+1}$ for $l\\le7$, the $t^3$ coefficient, the linear part (833 cases)", "`theory/varcurv/top_coefficient.py`, `theory/varcurv/twisted_mp.py`, `theory/varcurv/linear_part.py`", "variable curvature top_coefficient; variable curvature twisted_mp; variable curvature linear_part"),
+    ("Proposition 2.16", "second variation $\\omega_n$; flat-cone examples", "`theory/varcurv/quadratic_form.py`, `theory/varcurv/obstruction_check.py`", "variable curvature quadratic_form; variable curvature obstruction_check"),
+    ("Proposition 2.13", "rotationally symmetric cone points: the algebra of the proof, the limit $W_u\\to f^2/r^2$, Gaussian moments, cosecant power sums, $\\beta_{l,l+1}$ for $l\\le8$", "`theory/varcurv/rotsym_check.py`", "variable curvature rotsym_check"),
+    ("Lemma 3.1, Theorem 3.2", "parity; $n$ invariants determine $n$ orders", "`theory/audibility/verify_elimination.py`", "Theorem 3.2 and Lemma 3.1: elimination"),
     ("Equation (orlando)", "Orlando's formula, $n\\le7$", "`theory/audibility/orlando_check.py`", "Orlando's formula"),
-    ("Theorem B", "the linear system and its determinant, $n\\le8$", "`theory/audibility/linear_system.py`, `theory/stability/lipschitz_e.py`", "Theorem B: the linear system; stability: Lipschitz constants"),
-    ("Theorem C", "$\\{2,8,8\\},\\{3,3,12\\}$ and $\\{3,10,15,30\\},\\{4,5,21,28\\}$", "`theory/audibility/sharpness_search.py`", "Theorem C and Remark 3.2: sharpness search N=60"),
-    ("Remark 3.2", "$n=4$, orders at most 440: 193 witnesses, 107 primitive; six not from a pencil", "`checks/witnesses4/check_direct4.c`, `checks/witnesses4/check_direct4.py`", "degree-4 witnesses to 440: analysis; degree-4 witnesses to 440: search from scratch"),
-    ("Remark 3.2", "pencil witnesses: 17 (14 primitive) to 130, 49 (30) to 220", "`checks/pairs/d1_pencil_counts.py`", "pencil witness counts"),
-    ("Remark 3.2", "$n=5$: no witness with orders at most 120", "`theory/audibility/sharpness_search.py`", "Remark 3.2: no witness for n=5 with orders <= 120"),
-    ("Lemma 3.3", "padding and genus reduction", "`theory/signatures/heat_structure.py`", "heat structure of a signature"),
-    ("Theorem 3.4, Figure 2", "separation of signatures", "`theory/signatures/genus.py`, `figures/src/F3.py`", "genus separation; figure F3"),
-    ("Corollary 3.5, Theorem 3.13", "cone count $n\\le{\\rm Area}/\\pi+4$; constructions", "`theory/signatures/cone_count.py`", "cone count"),
-    ("Example 3.6", "$(1;15)$ and $(0;3,3,5,5)$ share exactly two invariants", "`theory/pte/witnesses.py`", "PTE witnesses"),
-    ("Theorem 3.11", "the Descartes bound", "`theory/pte/structure.py`", "PTE structure"),
-    ("Proposition 3.12, Proposition A.2", "doubling and shift identities", "`theory/pte/structure.py`", "PTE structure"),
-    ("Theorem 3.14, Proposition 3.15, Lemma A.1", "growth bounds; constructions for $L\\le7$", "`theory/pte/growth.py`", "PTE growth"),
-    ("Lemma 3.16", "no 4-configuration of size 10 of the stated form with entries at most 200", "`theory/pte/pencil_search.py`", "PTE pencil_search"),
-    ("Example 3.17, bounds on $T(L)$", "explicit pairs sharing exactly $L$ invariants", "`theory/pte/witnesses.py`, `checks/pairs/d2_explicit_pairs.py`", "PTE witnesses; explicit pairs (Table S1)"),
+    ("Theorem 3.3", "the linear system and its determinant, $n\\le8$", "`theory/audibility/linear_system.py`, `theory/stability/lipschitz_e.py`", "Theorem 3.3: the linear system; stability: Lipschitz constants"),
+    ("Theorem 3.4", "$\\{2,8,8\\},\\{3,3,12\\}$ and $\\{3,10,15,30\\},\\{4,5,21,28\\}$", "`theory/audibility/sharpness_search.py`", "Theorem 3.4 and Remark S8.4: sharpness search N=60"),
+    ("Remark S8.4", "$n=4$, orders at most 440: 193 witnesses, 107 primitive; six not from a pencil", "`checks/witnesses4/check_direct4.c`, `checks/witnesses4/check_direct4.py`", "degree-4 witnesses to 440: analysis; degree-4 witnesses to 440: search from scratch"),
+    ("Remark S8.4", "pencil witnesses: 17 (14 primitive) to 130, 49 (30) to 220", "`checks/pairs/d1_pencil_counts.py`", "pencil witness counts"),
+    ("Remark S8.4", "$n=5$: no witness with orders at most 120", "`theory/audibility/sharpness_search.py`", "Remark S8.4: no witness for n=5 with orders <= 120"),
+    ("Lemma 3.5", "padding and genus reduction", "`theory/signatures/heat_structure.py`", "heat structure of a signature"),
+    ("Theorem 3.6, Figure 2", "separation of signatures", "`theory/signatures/genus.py`, `figures/src/F3.py`", "genus separation; figure F3"),
+    ("Corollary 3.7, Theorem 3.16", "cone count $n\\le{\\rm Area}/\\pi+4$; constructions", "`theory/signatures/cone_count.py`", "cone count"),
+    ("Example 3.8", "$(1;15)$ and $(0;3,3,5,5)$ share exactly two invariants", "`theory/pte/witnesses.py`", "PTE witnesses"),
+    ("Theorem 3.14", "the Descartes bound", "`theory/pte/structure.py`", "PTE structure"),
+    ("Proposition 3.15, Proposition A.2", "doubling and shift identities", "`theory/pte/structure.py`", "PTE structure"),
+    ("Theorem 3.17, Proposition 3.18, Lemma A.1", "growth bounds; constructions for $L\\le7$", "`theory/pte/growth.py`", "PTE growth"),
+    ("Lemma 3.19", "no 4-configuration of size 10 of the stated form with entries at most 200", "`theory/pte/pencil_search.py`", "PTE pencil_search"),
+    ("Example S8.6, bounds on $T(L)$ (Table 2)", "explicit pairs sharing exactly $L$ invariants", "`theory/pte/witnesses.py`, `checks/pairs/d2_explicit_pairs.py`", "PTE witnesses; explicit pairs (Table S1)"),
     ("Figure 3", "the 525 complete area classes and $K_{\\rm mult}$", "`theory/signatures/area_classes.py`, `figures/gen/gen_f4_area_classes.py`, `figures/src/F4.py`, `checks/pairs/a1_fig2_kmult.py`", "complete area classes; figure data F4 F7 F8; figure F4; K_mult on the complete area classes"),
-    ("Remark 3.18", "no genus pair of size 8 with five-element side at most 220; real partners", "`theory/pte/search_T3_modular.py`, `theory/pte/search_T3_control.py`, `theory/pte/real_shapes.py`", "PTE T3 modular record; PTE T3 modular search to 220; PTE search_T3_control; PTE real_shapes"),
+    ("Remark S8.7", "no genus pair of size 8 with five-element side at most 220; real partners", "`theory/pte/search_T3_modular.py`, `theory/pte/search_T3_control.py`, `theory/pte/real_shapes.py`", "PTE T3 modular record; PTE T3 modular search to 220; PTE search_T3_control; PTE real_shapes"),
     ("Corollary 4.1", "dimension of the zero set", "`theory/locality/check_locality.py`", "trace formula terms (locality)"),
     ("Figure 4, Section 4", "the moduli family: 8 members, systoles, $\\lambda_1$", "`numerics/moduli/validate_committed.py`, `figures/src/F6.py` (Blender)", "moduli family: committed data; moduli family: full validation; figures F1 F6: data assertions; figure F6: Blender render (scratch copy)"),
     ("Theorem 4.2", "the locality bound overestimates by $4.4\\times10^6$ to $1.0\\times10^{10}$", "`numerics/moduli/locality_ratio.py`", "locality bound: overestimation ratios"),
-    ("Section 4, Figure 5", "computed spectra and heat traces; the first two coefficients of the difference of traces recovered", "`numerics/validate_committed.py`, `figures/src/F5.py`", "computed spectra: committed data; computed spectra: full validation; figure F5"),
+    ("Section 4, Figure S2", "computed spectra and heat traces; the first two coefficients of the difference of traces recovered", "`numerics/validate_committed.py`, `figures/src/F5.py`", "computed spectra: committed data; computed spectra: full validation; figure F5"),
     ("Section 4", "growth of the heat coefficients", "`checks/proofs/check_remark212.py`, `theory/divergence/divergence.py`", "proof check check_remark212; divergence of the heat coefficients"),
-    ("Figure 6", "tilings of the triangle orbifolds", "`figures/src/F2.py`", "figure F2"),
-    ("Lemmas 5.2-5.3, Theorems 5.4-5.7", "chambers, first overlaps, thresholds", "`theory/threshold/threshold.py`", "first overlap and first collision (Section 5)"),
-    ("Figure 7", "strata of the first two invariants", "`figures/gen/gen_f7_strata.py`, `figures/src/F7.py`", "figure data F4 F7 F8; figure F7"),
-    ("Theorem 5.8", "the isolation of $\\{(2,8,8),(3,3,12)\\}$: descent, torsion, points", "`checks/proofs/check_descent.py`", "proof check check_descent"),
-    ("Theorem 5.8", "rank 0 of $C_{27/2}$ (PARI `ellrank`)", "`theory/diophantine/ranks.py`", "rank of C_{27/2} (PARI ellrank)"),
-    ("Proposition 6.1", "the front end; amplification factors", "`theory/stability/front_end.py`", "stability: front end"),
-    ("Theorem 6.2, Propositions 6.3-6.4", "stability exponents; sharpness", "`theory/stability/roots_holder.py`, `checks/proofs/check_sharpness.py`", "stability: Hoelder exponents of roots; proof check check_sharpness"),
-    ("Figure 8, Section 6", "thresholds and recovery sweeps", "`theory/stability/threshold.py`, `figures/gen/gen_f8_recovery.py`, `figures/src/F8.py`", "stability thresholds and certificates; figure data F4 F7 F8; figure F8"),
+    ("Figure 5", "tilings of the triangle orbifolds", "`figures/src/F2.py`", "figure F2"),
+    ("Lemmas 5.4-5.6, Theorems 5.7-5.10", "chambers, first overlaps, thresholds", "`theory/threshold/threshold.py`", "first overlap and first collision (Section 5)"),
+    ("Figure 6", "strata of the first two invariants", "`figures/gen/gen_f7_strata.py`, `figures/src/F7.py`", "figure data F4 F7 F8; figure F7"),
+    ("Theorem 5.11", "the isolation of $\\{(2,8,8),(3,3,12)\\}$: descent, torsion, points", "`checks/proofs/check_descent.py`", "proof check check_descent"),
+    ("Theorem 5.11", "rank 0 of $C_{27/2}$ (PARI `ellrank`)", "`theory/diophantine/ranks.py`", "rank of C_{27/2} (PARI ellrank)"),
+    ("Proposition S3.1", "the front end; amplification factors", "`theory/stability/front_end.py`", "stability: front end"),
+    ("Theorem S3.2, Proposition S3.3, Remark S3.4", "stability exponents; sharpness", "`theory/stability/roots_holder.py`, `checks/proofs/check_sharpness.py`", "stability: Hoelder exponents of roots; proof check check_sharpness"),
+    ("Figure S1, Sections 6 and S3", "thresholds and recovery sweeps", "`theory/stability/threshold.py`, `figures/gen/gen_f8_recovery.py`, `figures/src/F8.py`", "stability thresholds and certificates; figure data F4 F7 F8; figure F8"),
     ("Proposition B.2", "enveloping remainders", "`checks/proofs/check_lemma25.py`, `checks/proofs/check_remark412.py`", "proof check check_lemma25; proof check check_remark412"),
     ("Table S1", "the explicit pairs", "`checks/pairs/d2_explicit_pairs.py`", "explicit pairs (Table S1); supplement table S1 (pairs)"),
     ("Section S1", "the complete area classes: 33 946 signatures", "`theory/signatures/area_classes.py`, `figures/gen/gen_f4_area_classes.py`", "complete area classes; figure data F4 F7 F8"),
     ("Proposition S2.1", "38 collision-free sums with $18\\le S\\le4800$; the collision witnesses", "`checks/proofs/check_thm513.py`", "proof check check_thm513"),
-    ("Proposition S2.2", "tangency gaps", "`theory/threshold/threshold.py`", "first overlap and first collision (Section 5)"),
+    ("Proposition C.1", "tangency gaps", "`theory/threshold/threshold.py`", "first overlap and first collision (Section 5)"),
     ("Table S2", "first overlap against first collision", "`tools/make_tables.py`", "supplement tables S2-S4"),
     ("Table S3", "the 83 triads with $10\\le S\\le18$", "`tools/make_tables.py`", "supplement tables S2-S4"),
-    ("Section S3", "Lemma S3.1 and Theorems S3.2-S3.4: conditioning and constants", "`theory/stability/lipschitz_e.py`, `theory/stability/roots_holder.py`", "stability: Lipschitz constants; stability: Hoelder exponents of roots"),
+    ("Section S3", "Lemma S3.6 and Theorems S3.7-S3.9: conditioning and constants", "`theory/stability/lipschitz_e.py`, `theory/stability/roots_holder.py`", "stability: Lipschitz constants; stability: Hoelder exponents of roots"),
     ("Section S3", "$\\zeta_3,\\zeta_4,\\zeta_5=1,79/3,14048/15$; ${\\rm sech}^2U$ for $(2,2,2,2,3)$", "`checks/stability-constants/check_setup.py`", "stability constants zeta_n and sech^2 coefficients"),
-    ("Proposition S3.5", "the certificate", "`theory/stability/threshold.py`, `checks/proofs/check_prop610.py`", "stability thresholds and certificates; proof check check_prop610"),
+    ("Proposition S3.10", "the certificate", "`theory/stability/threshold.py`, `checks/proofs/check_prop610.py`", "stability thresholds and certificates; proof check check_prop610"),
     ("Table S4", "thresholds, certificates, ratios", "`tools/make_tables.py` (from `threshold_results.json`)", "supplement tables S2-S4; stability thresholds and certificates"),
     ("Section S4, Table S5", "method, levels, error estimates, validation, the fitted coefficients", "`numerics/validate_committed.py` (data from `numerics/solve.py`, `numerics/validate.py`)", "computed spectra: committed data; computed spectra: full validation"),
     ("Section S4", "double-window recomputation agrees to $1.4\\times10^{-14}$", "`numerics/rerun_double_window.py`", "double-window recomputation: record; computed spectra: double-window re-solve (NGSolve)"),
     ("Section S5, Table S6", "blind recovery from the computed spectra", "`theory/stability/blind/blind_pipeline.py`", "blind recovery from the computed spectra"),
     ("Section S6", "the moduli family: errors, traces, length spectra", "`numerics/moduli/validate_committed.py`, `numerics/moduli/locality_ratio.py`", "moduli family: committed data; moduli family: full validation; locality bound: overestimation ratios"),
-    ("Section S7", "the 2-isogeny descent of $C_{27/2}$ by hand", "`checks/proofs/check_descent.py`", "proof check check_descent"),
+    ("Appendix E", "the 2-isogeny descent of $C_{27/2}$ by hand", "`checks/proofs/check_descent.py`", "proof check check_descent"),
 ]
 
 # Data files changed on purpose by the text edits above (label or comment wording only; the build
@@ -1169,11 +1227,14 @@ NOTE["edited_data"] = {
     "checks/note/check_note.txt": "check label: 'the G5 enumeration' -> 'the third enumeration'",
     "figures/style/palette.json": _PALETTE,
     "theory/diophantine/data/growth_fits.txt": "section header: 'audit' -> 'check'",
+    "theory/diophantine/data/exponent_fits.txt": "section labels: review-round tags removed",
+    "theory/diophantine/data/ranks.txt": "comment: review-round tag removed",
 }
 NOTE["generated_data"] = ["tables/*.tex"]
 PAPER_B["edited_data"] = {"figures/style/palette.json": _PALETTE}
 PAPER_B["generated_data"] = ["tables/*.tex"]
 PAPER_A["edited_data"] = {
+    "theory/diophantine/data/ranks.txt": "comment: review-round tag removed",
     "checks/enumeration6000/tab_enum_reference.txt": "header comment reworded",
     "checks/pairs/output/d2_explicit_pairs.txt": "output file name: supplement.tex -> supplement_tables.tex",
     "checks/pairs/output/d2_pairs.csv": "recipe column: reference to an internal proof note -> [paper]",
@@ -1194,4 +1255,4 @@ PAPER_A["generated_data"] = ["tables/*.tex"]
 
 # Measured step times (minutes) from the fresh-copy tests of 2026-10-11 (TEST-REPORT.md, the longer of
 # the verify and all runs); make help and the READMEs state these. Steps not timed keep their estimate.
-MEASURED = {'equal-sum-reciprocal-triples': {'committed data consistent': 0.05, 'curves of the pencil': 0.02, 'families and dual pairs': 2.35, 'growth fits': 0.55, 'exponent fits': 1.25, 'ranks (PARI ellrank)': 0, 'note checks, with the enumeration 4801..6000': 0.95, 'sums with a primitive class': 0, 'the point 3P': 0, 'classes to 4800, second program': 0.22, 'group law on the curves': 1.37, '2-isogeny descents (PARI points)': 0, 'isosceles family': 0.15, 'conic-bundle family': 0.02, 'enumeration to 6000, third program': 0.08, 'enumeration to 4800 from scratch (enumerate_fast)': 1.2, 'second program from scratch to 4800': 0.65, 'third program from scratch to 6000': 2.45, 'figure 1 (F9)': 0.12, 'tables 1 and 2': 0}, 'eigenvalues-orbifold-signature': {'counting': 1.7, 'remainder': 1.17, 'theorem_e': 0.68, 'necessity': 0.03, 'diameter': 2.15, 'systole_233': 0.45, 'instances': 1.32, 'practice': 0.87, 'practice_double_window': 0.08, 'bounded cone orders (Theorem 3.2, from the companion paper)': 1.95, 'computed spectra: committed data': 0.08, 'moduli family: committed data': 0.02, 'double-window recomputation: record': 0, 'computed spectra: full validation': 0.18, 'moduli family: full validation': 0.3, 'figure data E2 E3': 0.75, 'figure E1': 0.1, 'figure E2': 0.02, 'figure E3': 0.02, 'tables 4-6': 0}, 'heat-invariants-orbifolds': {"Orlando's formula": 0.05, 'Theorem B: the linear system': 0.12, 'Theorem A and Lemma 3.1: elimination': 1.03, 'Theorem C and Remark 3.2: sharpness search N=60': 0.17, 'cone coefficients p_l': 0.02, 'heat structure of a signature': 0.02, 'cone count': 0.23, 'complete area classes': 0.4, 'genus separation': 1.37, 'trace formula terms (locality)': 0.12, 'stability: front end': 0, 'stability: Lipschitz constants': 0, 'stability: Hoelder exponents of roots': 0.03, 'blind recovery from the computed spectra': 0.22, 'stability constants zeta_n and sech^2 coefficients': 0.3, 'first overlap and first collision (Section 5)': 0.28, 'flat and spherical cases': 0.03, 'rank of C_{27/2} (PARI ellrank)': 0, 'computed spectra: committed data': 0.08, 'moduli family: committed data': 0.02, 'locality bound: overestimation ratios': 0, 'double-window recomputation: record': 0, 'proof check check_lemma25': 0.15, 'proof check check_remark412': 0.02, 'proof check check_thm12iii': 0.02, 'proof check check_descent': 0, 'proof check check_thm513': 0.02, 'proof check check_remark212': 0.03, 'proof check check_prop610': 0.02, 'proof check check_sharpness': 0.02, 'PTE structure': 0.05, 'PTE growth': 0, 'PTE witnesses': 0.08, 'PTE real_shapes': 1.08, 'PTE search_T3_control': 4.6, 'PTE pencil_search': 2.43, 'PTE T3 modular record': 0, 'PTE T3 modular search to 220': 1.52, 'bounded cone orders (Theorem 3.8)': 1.92, 'variable curvature quadratic_form': 0.03, 'variable curvature top_coefficient': 0.38, 'variable curvature linear_part': 0.4, 'variable curvature obstruction_check': 0.02, 'variable curvature twisted_mp': 1.5, 'K_mult on the complete area classes': 0.23, 'pencil witness counts': 0.03, 'explicit pairs (Table S1)': 0.63, 'degree-4 witnesses to 440: analysis': 0, 'Remark 3.2: no witness for n=5 with orders <= 120': 3.57, 'stability thresholds and certificates': 4.05, 'divergence of the heat coefficients': 3.85, 'computed spectra: full validation': 0.17, 'moduli family: full validation': 0.27, 'degree-4 witnesses to 440: search from scratch': 4.18, 'figure data F4 F7 F8': 0.63, 'figure F2': 0.08, 'figure F3': 0.02, 'figure F4': 0.02, 'figure F5': 0.02, 'figure F7': 0.02, 'figure F8': 0.02, 'figures F1 F6: data assertions': 0.02, 'figure F1: Blender render (scratch copy)': 0.2, 'figure F6: Blender render (scratch copy)': 0.38, 'supplement tables S2-S4': 0, 'supplement table S1 (pairs)': 0.58}}
+MEASURED = {'equal-sum-reciprocal-triples': {'committed data consistent': 0.05, 'curves of the pencil': 0.02, 'families and dual pairs': 2.35, 'growth fits': 0.55, 'exponent fits': 1.25, 'ranks (PARI ellrank)': 0, 'note checks, with the enumeration 4801..6000': 0.95, 'sums with a primitive class': 0, 'the point 3P': 0, 'classes to 4800, second program': 0.22, 'group law on the curves': 1.37, '2-isogeny descents (PARI points)': 0, 'isosceles family': 0.15, 'conic-bundle family': 0.02, 'enumeration to 6000, third program': 0.08, 'enumeration to 4800 from scratch (enumerate_fast)': 1.2, 'second program from scratch to 4800': 0.65, 'third program from scratch to 6000': 2.45, 'figure 1 (F9)': 0.12, 'tables 1 and 2': 0}, 'eigenvalues-orbifold-signature': {'practice_checks': 2.0, 'locality': 0.3, 'certify_systoles': 2.3, 'computed_gap': 1.0, 'certified_gap': 1.0, 'counting': 1.7, 'remainder': 1.17, 'theorem_e': 0.68, 'necessity': 0.03, 'diameter': 2.15, 'systole_233': 0.45, 'instances': 1.32, 'practice': 0.87, 'practice_double_window': 0.08, 'bounded cone orders (Theorem 3.2, from the companion paper)': 1.95, 'computed spectra: committed data': 0.08, 'moduli family: committed data': 0.02, 'double-window recomputation: record': 0, 'computed spectra: full validation': 0.18, 'moduli family: full validation': 0.3, 'figure data E2 E3': 0.75, 'figure E1': 0.1, 'figure E2': 0.02, 'figure E3': 0.02, 'tables 4-9 and A1': 0}, 'heat-invariants-orbifolds': {"Orlando's formula": 0.05, 'Theorem 3.3: the linear system': 0.12, 'Theorem 3.2 and Lemma 3.1: elimination': 1.03, 'Theorem 3.4 and Remark S8.4: sharpness search N=60': 0.17, 'cone coefficients p_l': 0.02, 'heat structure of a signature': 0.02, 'cone count': 0.23, 'complete area classes': 0.4, 'genus separation': 1.37, 'trace formula terms (locality)': 0.12, 'stability: front end': 0, 'stability: Lipschitz constants': 0, 'stability: Hoelder exponents of roots': 0.03, 'blind recovery from the computed spectra': 0.22, 'stability constants zeta_n and sech^2 coefficients': 0.3, 'first overlap and first collision (Section 5)': 0.28, 'flat and spherical cases': 0.03, 'rank of C_{27/2} (PARI ellrank)': 0, 'computed spectra: committed data': 0.08, 'moduli family: committed data': 0.02, 'locality bound: overestimation ratios': 0, 'double-window recomputation: record': 0, 'proof check check_lemma25': 0.15, 'proof check check_remark412': 0.02, 'proof check check_thm12iii': 0.02, 'proof check check_descent': 0, 'proof check check_thm513': 0.02, 'proof check check_remark212': 0.03, 'proof check check_prop610': 0.02, 'proof check check_sharpness': 0.02, 'PTE structure': 0.05, 'PTE growth': 0, 'PTE witnesses': 0.08, 'PTE real_shapes': 1.08, 'PTE search_T3_control': 4.6, 'PTE pencil_search': 2.43, 'PTE T3 modular record': 0, 'PTE T3 modular search to 220': 1.52, 'bounded cone orders (Theorem 3.10)': 1.92, 'variable curvature quadratic_form': 0.03, 'variable curvature top_coefficient': 0.38, 'variable curvature linear_part': 0.4, 'variable curvature obstruction_check': 0.02, 'variable curvature twisted_mp': 1.5, 'variable curvature rotsym_check': 0.05, 'K_mult on the complete area classes': 0.23, 'pencil witness counts': 0.03, 'explicit pairs (Table S1)': 0.63, 'degree-4 witnesses to 440: analysis': 0, 'Remark S8.4: no witness for n=5 with orders <= 120': 3.57, 'stability thresholds and certificates': 4.05, 'divergence of the heat coefficients': 3.85, 'computed spectra: full validation': 0.17, 'moduli family: full validation': 0.27, 'degree-4 witnesses to 440: search from scratch': 4.18, 'figure data F4 F7 F8': 0.63, 'figure F2': 0.08, 'figure F3': 0.02, 'figure F4': 0.02, 'figure F5': 0.02, 'figure F7': 0.02, 'figure F8': 0.02, 'figures F1 F6: data assertions': 0.02, 'figure F1: Blender render (scratch copy)': 0.2, 'figure F6: Blender render (scratch copy)': 0.38, 'supplement tables S2-S4': 0, 'supplement table S1 (pairs)': 0.58}}

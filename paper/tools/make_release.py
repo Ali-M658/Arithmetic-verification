@@ -444,7 +444,7 @@ def write_trace(cfg, dest):
 
 
 def write_env(cfg, dest):
-    (dest / "requirements.txt").write_text(C.REQUIREMENTS, encoding="utf-8")
+    (dest / "requirements.txt").write_text(C.REQUIREMENTS + cfg.get("requirements_extra", ""), encoding="utf-8")
     if cfg.get("pari"):
         (dest / "requirements-pari.txt").write_text(C.REQUIREMENTS_PARI, encoding="utf-8")
     if cfg.get("optional_env"):
