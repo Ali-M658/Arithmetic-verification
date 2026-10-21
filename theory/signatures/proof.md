@@ -1,4 +1,4 @@
-# How much of a hyperbolic orbifold does heat hear? The signature: cone count and genus
+# How many heat invariants determine a hyperbolic orbifold? The signature: cone count and genus
 
 ## 0. Interpretation, kept apart from the mathematics
 

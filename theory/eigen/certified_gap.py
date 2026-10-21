@@ -20,7 +20,20 @@ through python-flint):
   * Lambda = (2/t) log(8 Z^#(t/2)/Theta'), Z^#(s) = A/(4 pi s) + n_*(M^2 - 1)/(12 M) + 1, checked Lambda t >= 1;
     N = 1 + floor(upper bound of e Z^#(1/Lambda)), and delta = a decimal below Theta'/(8 e N t).
 Every comparison is decided by the balls (an undecided comparison is a failure).  The script asserts that each
-class passes and writes data/certified_gap.csv.
+class passes and writes data/certified_gap.csv, and data/certified_gap_detail.csv with, per class, the pair of
+signatures with the least certified gap, a lower bound for that gap, and decimal bounds for B_*(t), Theta'/8 and Lambda t.
+
+Round 10 (referee B-d M1, B5 of the verdict): the certificate is also written in a form that can be checked by hand.
+data/certified_gap_enclosures.csv lists, per class, the enclosures of I_1(t) and of E_m(t), 2 <= m <= M (at most twelve
+balls per class), with their midpoints, radii, a decimal with ten significant digits and an upper bound for the
+distance from that decimal to the exact value (at most one unit of its last digit, asserted).  Since
+G_sigma(t) = (s(sigma)/2) I_1(t) + sum_i E_{m_i}(t), s(sigma) = Area/2 pi, these numbers determine every G_sigma(t); the
+script asserts that the gap bound Theta' follows from the printed decimals and their error bounds alone, in exact
+rational arithmetic.  data/certified_gap_omissions.csv gives, per class, an upper bound for
+Lambda_o = t^{-1} log(8/Theta') of the remark on omissions (one wrong entry above Lambda_o is tolerated).
+The integrations use acb.integral with its default tolerances (relative and absolute 2^-200 at 200 bits) and default
+work limits; the limits only abort a computation, and every returned ball is an enclosure.  t enters as the ball
+arb(t_txt) of the exact decimal rational t_txt.
 """
 import csv
 import os
@@ -103,8 +116,32 @@ def dec_below(x, digits=3):
     return str(v)
 
 
+def dec_up(x, digits=3):
+    """a decimal string with `digits` significant digits strictly above the upper end of the ball x > 0"""
+    from decimal import Decimal, ROUND_CEILING
+    hi = float(upper(x))
+    d = Decimal(repr(hi * (1 + 1e-12)))
+    q = Decimal(1).scaleb(d.adjusted() - digits + 1)
+    v = d.quantize(q, rounding=ROUND_CEILING)
+    assert arb(str(v)) > x
+    return str(v)
+
+
+def dec_sig(x, digits=10):
+    """(decimal string with `digits` significant digits nearest the midpoint of the ball x, an upper bound for its
+    distance to every point of x); asserts that this distance is at most one unit of the last printed digit"""
+    from decimal import Decimal, ROUND_HALF_EVEN
+    d = Decimal(x.mid().str(40, radius=False))
+    q = Decimal(1).scaleb(d.adjusted() - digits + 1)
+    v = d.quantize(q, rounding=ROUND_HALF_EVEN)
+    err = abs(arb(str(v)) - x)
+    ulp = arb(str(q))
+    assert upper(err) < ulp, (str(v), x)
+    return str(v), str(q)
+
+
 def main():
-    rows = []
+    rows, detail, encl, omis = [], [], [], []
     for Atxt, A_over_pi, eps_txt, M, t_txt in CLASSES:
         A = PI * A_(A_over_pi)
         eps, t = arb(eps_txt), arb(t_txt)
@@ -120,8 +157,9 @@ def main():
             for k in range(i + 1, len(G)):
                 d = G[i] - G[k]
                 assert d > 0 or d < 0, (Atxt, M, S[i], S[k])
-                lows.append(Decimal(dec_below(abs(d), 4)))
-        Th = str(min(lows))
+                lows.append((Decimal(dec_below(abs(d), 4)), i, k, abs(d)))
+        Th = str(min(x[0] for x in lows))
+        _, i0, k0, d0 = min(lows, key=lambda x: lower(x[3]))     # the pair with the least certified lower end
         Thp = arb(Th)
         assert Thp <= 8
         t2 = eps ** 2 / (2 * (1 + eps))
@@ -141,11 +179,47 @@ def main():
         print(f"A={Atxt} eps={eps_txt} M={M} t={t_txt}: |Sig| = {len(S)}; certified gap >= {Th}; "
               f"B_* <= {float(upper(Bstar)):.2e}; N = {N}, delta = {dl}", flush=True)
         rows.append([Atxt, eps_txt, M, len(S), t_txt, Th, N, dl])
+        sig = lambda s: "(%d;%s)" % (s[0], ",".join(map(str, s[1])))
+        detail.append([Atxt, eps_txt, M, sig(S[i0]), sig(S[k0]), dec_below(d0, 7), dec_up(Bstar), dec_below(Thp / 8, 4),
+                       dec_below(Lam * t, 3)])
+        # round 10: the enclosures of I_1(t), E_m(t) as printed decimals with error bounds, and a check, in exact
+        # rational arithmetic, that the printed decimals alone give every pairwise gap >= Theta'
+        pr = {}
+        for name, m, x in [("I1", "", I1)] + [("E", m, E[m]) for m in range(2, M + 1)]:
+            v, ulp = dec_sig(x)
+            pr[(name, m)] = (Fr(v), Fr(ulp))
+            encl.append([Atxt, eps_txt, M, t_txt, name, m, x.mid().str(25, radius=False), dec_up(x.rad(), 2), v, ulp])
+        Gp = []
+        for s in S:
+            half = area_over_2pi(*s) / 2
+            val = half * pr[("I1", "")][0] + sum((pr[("E", m)][0] for m in s[1]), Fr(0))
+            err = half * pr[("I1", "")][1] + sum((pr[("E", m)][1] for m in s[1]), Fr(0))
+            Gp.append((val, err))
+        Thf = Fr(Th)
+        for i in range(len(Gp)):
+            for k in range(i + 1, len(Gp)):
+                assert abs(Gp[i][0] - Gp[k][0]) - Gp[i][1] - Gp[k][1] >= Thf, ("printed enclosures", Atxt, M, S[i], S[k])
+        # Lambda_o = t^{-1} log(8/Theta') (remark on omissions, with t and Theta' in place of t_*, Theta_*)
+        omis.append([Atxt, eps_txt, M, t_txt, Th, dec_up((8 / Thp).log() / t, 3)])
     with open(os.path.join(DATA, "certified_gap.csv"), "w", newline="") as fh:
         w = csv.writer(fh, lineterminator="\n")
         w.writerow(["A", "eps", "M", "Sig_size", "t", "certified_gap_lower", "N", "delta"])
         w.writerows(rows)
-    print("wrote data/certified_gap.csv")
+    with open(os.path.join(DATA, "certified_gap_detail.csv"), "w", newline="") as fh:
+        w = csv.writer(fh, lineterminator="\n")
+        w.writerow(["A", "eps", "M", "sigma", "sigma_prime", "least_gap_lower", "Bstar_upper", "Theta_over_8_lower",
+                    "Lambda_t_lower"])
+        w.writerows(detail)
+    with open(os.path.join(DATA, "certified_gap_enclosures.csv"), "w", newline="") as fh:
+        w = csv.writer(fh, lineterminator="\n")
+        w.writerow(["A", "eps", "M", "t", "quantity", "m", "midpoint", "radius_upper", "printed", "error_less_than"])
+        w.writerows(encl)
+    with open(os.path.join(DATA, "certified_gap_omissions.csv"), "w", newline="") as fh:
+        w = csv.writer(fh, lineterminator="\n")
+        w.writerow(["A", "eps", "M", "t", "certified_gap_lower", "Lambda_o_upper"])
+        w.writerows(omis)
+    print("wrote data/certified_gap.csv, data/certified_gap_detail.csv, data/certified_gap_enclosures.csv and "
+          "data/certified_gap_omissions.csv")
 
 
 if __name__ == "__main__":

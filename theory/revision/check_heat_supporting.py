@@ -557,5 +557,48 @@ assert hits == [], hits
 say("9. triangle orbifolds against Sig with c_1..c_3: only (0;a,b,c,d) rivals remain; none with {2,2,c,d}, d <= 1000,"
     " or with three orders at most 11 and d <= 20000")
 
+# ---------------------------------------------------------------- 10. round 9: optimal truncation of the cone series
+# Proposition (optimal truncation): with x = (m/pi)^2 and phi_k(m) <= C A_m x^k for all k (Lemma, growth),
+#   |b_K(m)| <= C A_m e^{1/(4x)} K! x^K                      [(2k)! <= 4^k (k!)^2, then k = K - j, (K-j)! <= K!]
+#   K! <= e sqrt(K) (K/e)^K for K >= 1,
+# so at K = floor(1/(x t)) >= 1:  |E_m(t) - sum_{l<K} b_l t^l| <= |b_K| t^K <= e^{2 + 1/(4x)} C A_m (pi/m) t^{-1/2} e^{-pi^2/(m^2 t)}.
+from math import factorial as _fac  # noqa: E402
+with mp.workdps(60):
+    for K in range(1, 400):
+        assert mp.factorial(K) <= mp.e * mp.sqrt(K) * (K / mp.e) ** K
+    for k in range(0, 200):
+        assert _fac(2 * k) <= 4 ** k * _fac(k) ** 2
+    worst = mp.mpf(0)
+    for m in (2, 3, 5, 8, 12):
+        A = 1 / (2 * mp.pi * mp.sin(mp.pi / m))
+        x = (m / mp.pi) ** 2
+        C = max(F(phi(k, m)) / (A * x ** k) for k in range(0, 120))
+        assert C < 2.1, (m, C)
+        for Kc in range(1, 45):
+            assert abs(F(b_cone(Kc, m))) <= C * A * mp.e ** (1 / (4 * x)) * mp.factorial(Kc) * x ** Kc, (m, Kc)
+        for t in (mp.mpf("1.0") / m ** 2, mp.mpf("0.6") / m ** 2, mp.mpf("0.4") / m ** 2, mp.mpf("0.25") / m ** 2):
+            K = int(mp.floor(1 / (x * t)))
+            assert K >= 1
+            rem = abs(elliptic_term(m, t, 60) - sum(F(b_cone(l, m)) * t ** l for l in range(K)))   # rem >= 1e-19 >> 1e-50
+            env = abs(F(b_cone(K, m))) * t ** K
+            bound = mp.e ** (2 + 1 / (4 * x)) * C * A * (mp.pi / m) * t ** -0.5 * mp.exp(-mp.pi ** 2 / (m ** 2 * t))
+            assert rem <= env <= bound, (m, t, rem, env, bound)
+            worst = max(worst, bound / rem)
+say(f"10. optimal truncation: |b_K(m)| <= C A_m e^(1/4x) K! x^K (K < 45), K! <= e sqrt(K)(K/e)^K, and at K = floor(pi^2/(m^2 t))"
+    f" remainder <= |b_K| t^K <= e^(2+1/4x) C A_m (pi/m) t^(-1/2) e^(-pi^2/(m^2 t)); C = max_k phi_k/(A_m x^k) < 2.1"
+    f" (k < 120), m = 2, 3, 5, 8, 12; bound/remainder at most {mp.nstr(worst, 3)}")
+
+# ---------------------------------------------------------------- 11. round 9: Remark B.5 with three times and row bounds
+# times tau/4, tau/2, tau, exact values: delta_1 = 1138.6 tau; delta_thm = 3.80e-7 met for tau <= 3.34e-10; at tau = 1e-11
+# met for eta <= 4.61e-19.
+coef = rows_bound([mp.mpf("1e-10") / 4, mp.mpf("1e-10") / 2, mp.mpf("1e-10")])[0] / mp.mpf("1e-10")
+assert abs(coef - mp.mpf("1138.6")) < mp.mpf("0.01")
+dthm = mp.mpf("3.80e-7")
+assert rows_bound([mp.mpf("3.3e-10") / 4, mp.mpf("3.3e-10") / 2, mp.mpf("3.3e-10")])[0] <= dthm
+assert rows_bound([mp.mpf("3.4e-10") / 4, mp.mpf("3.4e-10") / 2, mp.mpf("3.4e-10")])[0] > dthm
+t11 = [mp.mpf("1e-11") / 4, mp.mpf("1e-11") / 2, mp.mpf("1e-11")]
+assert rows_bound(t11, mp.mpf("4.6e-19"))[0] <= dthm < rows_bound(t11, mp.mpf("4.62e-19"))[0]
+say("11. Remark B.5, N = 3 times with row bounds: delta_1 = 1.14e3 tau, delta_thm for tau <= 3.3e-10, eta <= 4.6e-19 at tau = 1e-11")
+
 open(os.path.join(HERE, "check_heat_supporting.txt"), "w").write("\n".join(out) + "\n")
 print("ALL CHECKS PASSED")

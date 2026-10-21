@@ -15,7 +15,7 @@ Compiled 2026-10-10 from fetched public sources: institutional pages, the affili
 
 Papers A and B may go to the same editor, so do not suggest the same person for both. Strohmaier and Dryden appear on both lists for that reason: as a main candidate on one list and as a reserve on the other.
 
-## Paper A: *How much of a hyperbolic orbifold does heat hear?* (AGAG)
+## Paper A: *How many heat invariants determine a hyperbolic orbifold?* (AGAG)
 
 | # | Name | Current affiliation (source) | Relevant publication (bib key in `paper/jga/references.bib`) | Email |
 |---|---|---|---|---|

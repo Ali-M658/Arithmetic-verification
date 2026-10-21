@@ -1,4 +1,4 @@
-# How much of a hyperbolic orbifold does heat hear? The Prouhet–Tarry–Escott side of the signature problem
+# How many heat invariants determine a hyperbolic orbifold? The Prouhet–Tarry–Escott side of the signature problem
 
 This file continues `theory/signatures/proof.md`, cited below as **[Sig]**. It answers the
 question left open in [Sig] §7: how fast does

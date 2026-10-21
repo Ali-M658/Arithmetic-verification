@@ -173,6 +173,23 @@ def main():
     check(area_over_2pi(*sa) == area_over_2pi(*sb) == 6 and ca[:3] == cb[:3] and ca[3] != cb[3],
           "(0;2^4,7^7) and (0;4^6,8^4): area 12 pi, share c_1..c_3, differ at c_4")
     out.append("(0;2^4,7^7), (0;4^6,8^4): area 12 pi, first difference at c_4")
+    # round 9: delta_1 = 1/(2 min(L_M, M^{2 n_*})) changes no row of Table 4 (L_M < M^{2 n_*} there), and makes N and
+    # 1/delta polynomial in M for fixed A, eps: at A = pi/2 (n_* = 4), eps = 1 the local exponents per doubling of M
+    # approach 2 n_* + 1 = 9 for N (times log M) and 2 n_* + (2 n_* + 1)(n_* - 2) = 26 for 1/delta, and C_* ~ M^9
+    for (A, eps, M) in ((mp.pi / 2, '1.8626', 12), (mp.pi / 2, '1.8626', 8), (4 * mp.pi / 3, '0.693994', 3),
+                        (4 * mp.pi / 3, '2.633915', 3), (4 * mp.pi / 3, '0.693994', 12), (2 * mp.pi, '1', 3),
+                        (2 * mp.pi, '0.1', 3), (10 * mp.pi, '1', 3), (10 * mp.pi, '1', 12)):
+        c = theorem_E_constants(A, mp.mpf(eps), M)
+        check(c["LMeff"] == c["LM"], "Table 4 rows: L_M < M^{2 n_*}")
+    prev = None
+    for M in (64, 128, 256, 512):
+        c = theorem_E_constants(mp.pi / 2, 1, M)
+        cur = (mp.mpf(c["N"]), c["delta"], c["K"])
+        if prev is not None:
+            eN, ed, eK = mp.log(cur[0] / prev[0], 2), mp.log(prev[1] / cur[1], 2), mp.log(cur[2] / prev[2], 2)
+            check(9 < eN < 9.3 and 26 < ed < 26.3 and 8.8 < eK < 9.0, "polynomial growth in M")
+        prev = cur
+    out.append("round 9: Table 4 unchanged by min(L_M, M^(2 n_*)); at A = pi/2, eps = 1: N ~ M^9 log M, 1/delta ~ M^26, C_* ~ M^9")
     print("\n".join(out))
     return 0
 

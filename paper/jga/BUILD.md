@@ -37,7 +37,7 @@ Notes on the remaining warnings:
 ## PDF metadata
 
 ```
-Title:           How much of a hyperbolic orbifold does heat hear?
+Title:           How many heat invariants determine a hyperbolic orbifold?
 Subject:         
 Keywords:        heat invariants, hyperbolic orbifolds, inverse spectral problems
 Author:          Palaash Gang, Akshaj Agadi, Arjun Veluri, Jerry Wang, Jeremy Barreto, Aarin Chouthaiwale

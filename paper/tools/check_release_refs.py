@@ -17,7 +17,7 @@ import zipfile
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[2]
-REL = Path("~/Desktop/release").expanduser()
+REL = Path("~/Developer/release").expanduser()
 REPO = {"A": "heat-invariants-orbifolds", "B": "eigenvalues-orbifold-signature", "N": "equal-sum-reciprocal-triples"}
 URL = "https://github.com/pa1aash/"
 KINDS = [("author contributions", r"author contribution"), ("AI-use statement", r"AI-use statement|use of AI tools"),

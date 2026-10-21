@@ -18,7 +18,7 @@ AUTHORS = [
     {"given": "Aarin", "family": "Chouthaiwale", "orcid": "0009-0008-3878-7183", "affiliation": "DriveChange Learning and Resource Centre, Pune, India"},
 ]
 
-PAPER_A = "How much of a hyperbolic orbifold does heat hear?"
+PAPER_A = "How many heat invariants determine a hyperbolic orbifold?"
 PAPER_B = "Finitely many eigenvalues determine the signature of a hyperbolic orbifold"
 NOTE = "Triples with equal sum and equal reciprocal sum"
 
@@ -640,7 +640,7 @@ PAPER_A_STEPS = [
          cmd='$PYTHON_NUMERICS rerun_double_window.py --no-record "$LOGDIR/rerun"', minutes=60, needs="ngsolve"),
 ]
 
-PAPER_A_README = """# How much of a hyperbolic orbifold does heat hear? Code and data
+PAPER_A_README = """# How many heat invariants determine a hyperbolic orbifold? Code and data
 
 This repository reproduces every computation stated in the paper
 
@@ -683,7 +683,7 @@ PAPER_A = dict(
     supplement=True,
     keywords=["heat invariants", "hyperbolic orbifolds", "inverse spectral problems", "cone singularities",
               "power sums", "Prouhet-Tarry-Escott problem", "Laplace eigenvalues", "Selberg trace formula"],
-    zenodo_description=("<p>Code and data for the paper <em>How much of a hyperbolic orbifold does heat hear?</em> and its "
+    zenodo_description=("<p>Code and data for the paper <em>How many heat invariants determine a hyperbolic orbifold?</em> and its "
                         "supplement: the exact-arithmetic checks of the theorems on heat invariants of closed hyperbolic "
                         "2-orbifolds, the Prouhet-Tarry-Escott constructions and searches, the stability constants and "
                         "certificates, the computer algebra of variable curvature, the finite-element eigenvalues of the "

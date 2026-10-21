@@ -42,6 +42,7 @@ with its identifier to be filled; it has no external record.
 | `elsholtztao2013.json` | https://doi.org/10.1017/s1446788712000468 | `1bd42f61e9a7b84c73c85d044e5969eab2f1b4535a66a040a5c2086014a2ce12` |
 | `browningelsholtz2011.json` | https://doi.org/10.1215/ijm/1359762408 | `d4fbfa59f2c11fe91c80e31188630ba50c13bb7bb7a533cb94c8cc27f1aed403` |
 | `dggw2008_pages.json` | https://api.zbmath.org/v1/document/_search?search_string=doi%3A10.1307/mmj/1213972406&page=0&results_per_page=1 | `78c5dc19d637784f95004fe9f7c0466f88574f64dfb0b4f8fee373808a1eac0b` |
+| `silvermantate2015_edition.json` | https://api.zbmath.org/v1/document/_search?search_string=an%3A1346.11001&page=0&results_per_page=1 | `23313ed08df52c2f4a367feacbcf4a674fb0fce89779f3261f0e356e4d88c353` |
 
 ## Corrections to fetched records
 
@@ -57,4 +58,6 @@ with its identifier to be filled; it has no external record.
 - `tho2021` pages: 141--146
 - `tho2021` author: {Nguyen Xuan Tho}
 - `bremnertho2018` author: Bremner, Andrew and {Nguyen Xuan Tho}
+- `silvermantate2015` edition: Second
+- `silvermantate2015` address: Cham
 - `beauville1982` title: Les familles stables de courbes elliptiques sur $\mathbf{P}^1$ admettant quatre fibres singuli{\`e}res

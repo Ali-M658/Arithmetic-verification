@@ -32,3 +32,5 @@
 9. Proposition 2.15(ii): Gaussian moment and the a-integrals give omega_{l+1} exactly, l = 1..10
 9. least area in Sig: only (0;2,2,2,3), (0;2,2,2,4) besides triangles have area <= pi/2, and AM-HM excludes both
 9. triangle orbifolds against Sig with c_1..c_3: only (0;a,b,c,d) rivals remain; none with {2,2,c,d}, d <= 1000, or with three orders at most 11 and d <= 20000
+10. optimal truncation: |b_K(m)| <= C A_m e^(1/4x) K! x^K (K < 45), K! <= e sqrt(K)(K/e)^K, and at K = floor(pi^2/(m^2 t)) remainder <= |b_K| t^K <= e^(2+1/4x) C A_m (pi/m) t^(-1/2) e^(-pi^2/(m^2 t)); C = max_k phi_k/(A_m x^k) < 2.1 (k < 120), m = 2, 3, 5, 8, 12; bound/remainder at most 119.0
+11. Remark B.5, N = 3 times with row bounds: delta_1 = 1.14e3 tau, delta_thm for tau <= 3.3e-10, eta <= 4.6e-19 at tau = 1e-11

@@ -1,5 +1,5 @@
 """Build the Overleaf packages of Paper A, Paper B and the arithmetic note (Integers version) as zip files
-in ~/Desktop/release/overleaf/ (outside this repository), and test-compile each from a fresh unzip.
+in ~/Developer/release/overleaf/ (outside this repository), and test-compile each from a fresh unzip.
 
     python3 paper/tools/make_overleaf.py [--out DIR]
 
@@ -31,7 +31,7 @@ sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from make_arxiv import labels, strip_comments  # noqa: E402
 
 ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", ".."))
-OUT = os.path.expanduser("~/Desktop/release/overleaf")
+OUT = os.path.expanduser("~/Developer/release/overleaf")
 if "--out" in sys.argv:
     OUT = os.path.abspath(sys.argv[sys.argv.index("--out") + 1])
 
@@ -66,7 +66,7 @@ $pdf_mode = 1;
 $bibtex_use = 0;
 """
 
-README_A = """# Overleaf package: How much of a hyperbolic orbifold does heat hear?
+README_A = """# Overleaf package: How many heat invariants determine a hyperbolic orbifold?
 
 - **Compiler:** pdfLaTeX (Menu > Settings > Compiler). BibTeX runs automatically. No shell escape is needed.
 - **Main document:** `manuscript.tex` (Menu > Settings > Main document).
@@ -89,7 +89,7 @@ README_B = """# Overleaf package: Finitely many eigenvalues determine the signat
 
 - **Compiler:** pdfLaTeX (Menu > Settings > Compiler). BibTeX runs automatically. No shell escape is needed.
 - **Main document:** `manuscript.tex`. There is no second root file.
-- References to the companion paper (*How much of a hyperbolic orbifold does heat hear?*) are printed with
+- References to the companion paper (*How many heat invariants determine a hyperbolic orbifold?*) are printed with
   their numbers in that paper ("Theorem 3.7 of [..]"); they were resolved when this package was built,
   because the two papers are separate projects.
 - Template: Springer Nature LaTeX template, `sn-jnl.cls` and the reference style `sn-mathphys-num.bst`,

@@ -70,7 +70,9 @@ SOURCES = {
     "browningelsholtz2011": ("doi", "10.1215/ijm/1359762408"),
 }
 # Records fetched only as evidence for a correction.
-EVIDENCE_ZB = {"dggw2008_pages": "doi:10.1307/mmj/1213972406"}
+EVIDENCE_ZB = {"dggw2008_pages": "doi:10.1307/mmj/1213972406",
+               # round 10 (N-e P4): the edition and place of silvermantate2015
+               "silvermantate2015_edition": "an:1346.11001"}
 
 # Corrections applied to fetched records; each is justified by a fetched document.
 CORRECTIONS = {
@@ -105,6 +107,10 @@ CORRECTIONS = {
     # tho2021, fetched as above); the name is kept whole so that BibTeX does not reorder it.
     ("tho2021", "author"): "{Nguyen Xuan Tho}",
     ("bremnertho2018", "author"): "Bremner, Andrew and {Nguyen Xuan Tho}",
+    # Crossref gives neither the edition nor (in the fields used here) the place; zbMATH (Zbl 1346.11001, fetched as
+    # silvermantate2015_edition) records "2nd ed." and "Cham: Springer" for ISBN 978-3-319-18588-0.
+    ("silvermantate2015", "edition"): "Second",
+    ("silvermantate2015", "address"): "Cham",
     ("beauville1982", "title"): "Les familles stables de courbes elliptiques sur $\\mathbf{P}^1$ admettant quatre fibres singuli{\\`e}res",
 }
 
@@ -179,7 +185,12 @@ def from_csl(key):
     cont = cont[0] if isinstance(cont, list) and cont else cont
     if d.get("type") == "book":
         f = {"author": names(d["author"]), "title": "{" + title + "}", "series": d.get("collection-title") or cont or "",
-             "publisher": d.get("publisher", ""), "year": year_of(d), "doi": d["DOI"]}
+             "edition": "", "publisher": d.get("publisher", ""), "address": "", "year": year_of(d), "doi": d["DOI"]}
+        f.update({fld: v for (k, fld), v in CORRECTIONS.items() if k == key and fld != "title"})
+        if key == "silvermantate2015":
+            r = json.loads((RAW / "silvermantate2015_edition.json").read_text())["result"][0]
+            assert r["identifier"] == "1346.11001" and r["title"]["addition"] == "2nd ed." \
+                and r["source"]["book"][0]["publisher"] == "Cham: Springer", "zbMATH record does not support the edition"
         f = {k: v for k, v in f.items() if v}
         body = ",\n".join(f"  {k:<9} = {{{v}}}" for k, v in f.items())
         return f"@book{{{key},\n{body}\n}}"
@@ -252,7 +263,7 @@ def from_document(key):
 
 COMPANION = """@unpublished{gangetal-heat,
   author = {Gang, Palaash and Agadi, Akshaj and Veluri, Arjun and Wang, Jerry and Barreto, Jeremy and Chouthaiwale, Aarin},
-  title  = {How much of a hyperbolic orbifold does heat hear?},
+  title  = {How many heat invariants determine a hyperbolic orbifold?},
   note   = {Preprint, \\textbf{[PLACEHOLDER: preprint identifier]}},
   year   = {2026}
 }"""

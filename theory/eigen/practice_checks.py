@@ -10,7 +10,9 @@
    Dirichlet, about 2850 eigenvalues) is compared with G_sigma(t) for every sigma of area pi/2 with orders at
    most 12.  Asserted: it agrees with the true signature within the error budget 1.5e-11 of Section 7.1
    (eigenvalue errors with the factor e^{-(lambda-eps) t}, plus a Weyl-law estimate of the tail), and differs
-   from every other signature by more than 10^6 times that budget.
+   from every other signature by more than 10^6 times that budget.  Round 9: the Weyl estimate of the tail is replaced
+   by the bound e^{-Lc (t - s)} (A/(4 pi s) + sum b_0 + B(s)), Lc the smaller of the largest computed Neumann and Dirichlet eigenvalues, minimised over s;
+   asserted: tail below 6e-11, total budget below 7e-11, one missing eigenvalue detected below 1.55e4 to 1.58e4.
 """
 import csv
 import math
@@ -22,7 +24,7 @@ import numpy as np
 HERE = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, HERE)
 import practice as P  # noqa: E402
-from eigen_common import check, area_over_2pi, mpq, signatures  # noqa: E402
+from eigen_common import check, area_over_2pi, mpq, signatures, hyp_bound_small  # noqa: E402
 import mpmath as mp  # noqa: E402
 
 BUDGET = 1.5e-11
@@ -66,10 +68,32 @@ def main():
         check(true_dev <= BUDGET, f"{name}: true signature outside the budget")
         check(other > 1e6 * BUDGET, f"{name}: another signature within 10^6 budgets")
         rows.append([name, "completeness", f"{true_dev:.2e}", f"{other:.2e}"])
+        # round 9: a rigorous tail in place of the Weyl estimate.  By Proposition 5.2's argument, for 0 < s < t,
+        # sum_{lambda > Lc} e^{-lambda t} <= e^{-Lc (t - s)} Z(s), Z(s) <= A/(4 pi s) + sum_i b_0(m_i) + Hyp(s), with
+        # Lc the largest computed eigenvalue; plus the eigenvalue-error part t sum_j eps_j e^{-(lam_j - eps_j) t}
+        rws = spec["rows"]
+        # the union of the Neumann and Dirichlet lists is complete (if at all) only below the smaller of their maxima
+        Lc = min(max(x[0] for x in rws if x[3] == bc) for bc in {x[3] for x in rws})
+        data_part = T_COMPLETE * sum(x[1] * math.exp(-(x[0] - x[1]) * T_COMPLETE) for x in rws)
+        b0 = sum((m * m - 1) / (12 * m) for m in pqr)
+        with mp.workdps(30):
+            A_ = mp.pi / 2
+            def tail(s):
+                return mp.e ** (-Lc * (T_COMPLETE - s)) * (A_ / (4 * mp.pi * s) + b0 +
+                                                          hyp_bound_small(s, mp.mpf(ell), mp.mpf(Delta), A_))
+            tl = min(tail(mp.mpf(T_COMPLETE) * k / 400) for k in range(1, 400))
+        total = data_part + float(tl)
+        lam_star = -math.log(total) / T_COMPLETE
+        print(name, f"Lc {Lc:.4g} data part {data_part:.3e} rigorous tail {float(tl):.3e} total {total:.3e}"
+              f" detects one missing eigenvalue below {lam_star:.4g}; other/total {other / total:.3g}", flush=True)
+        check(true_dev <= total and other > 1e7 * total, f"{name}: rigorous budget")
+        n_between = sum(1 for x in rws if lam_star <= x[0] < 1.6e4)
+        print(name, f"eigenvalues in [{lam_star:.0f}, 16000): {n_between}", flush=True)
+        check(float(tl) < 6e-11 and total < 7e-11 and 1.55e4 < lam_star < 1.58e4, f"{name}: rigorous tail numbers")
+        rows.append([name, "rigorous_budget", f"{total:.2e}", f"{lam_star:.4g}"])
     # how crude the closed-geodesic bound is (Section 7.2): for O(2,8,8) at t = 0.0562 the bound of Lemma 2.2(ii) with
     # the instance's diameter bound 2 diam P, against the hyperbolic term of the two classes at the systole
     # 2 arccosh(1 + cos(pi/4)) (the next length, 2.8816, adds less than 1e-14 there)
-    from eigen_common import hyp_bound_small
     with mp.workdps(30):
         t = mp.mpf("0.0562")
         H = hyp_bound_small(t, mp.mpf("2.256767"), mp.mpf("4.897"), mp.pi / 2)

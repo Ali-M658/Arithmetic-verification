@@ -1,6 +1,6 @@
 # ARXIV: posting Papers A and B and the arithmetic note on arXiv
 
-Paper A is `paper/jga/manuscript.tex`, "How much of a hyperbolic orbifold does heat hear?", with its supplement `supplement.tex`.
+Paper A is `paper/jga/manuscript.tex`, "How many heat invariants determine a hyperbolic orbifold?", with its supplement `supplement.tex`.
 Paper B is `paper/eigen/manuscript.tex`, "Finitely many eigenvalues determine the signature of a hyperbolic orbifold".
 The arithmetic note is `paper/arith/note.tex`, "Triples with equal sum and equal reciprocal sum" (the amsart version; the version for Integers, `paper/arith/integers/note.tex`, carries the journal's header fields and is not posted).
 

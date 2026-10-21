@@ -1,4 +1,4 @@
-# How much of a hyperbolic orbifold does heat hear? Audibility of the cone orders
+# How many heat invariants determine a hyperbolic orbifold? Audibility of the cone orders
 
 ## 0. Interpretation, kept apart from the mathematics
 

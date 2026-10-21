@@ -4,8 +4,8 @@
     python3 paper/tools/make_release.py --test NAME [--python PY]  test one built repository
     python3 paper/tools/make_release.py --report-provenance         append the data-file comparison to TEST-REPORT.md
 
-Repositories (written to ~/Desktop/release/<name>/ unless --out is given), one per paper:
-    heat-invariants-orbifolds        Paper A, "How much of a hyperbolic orbifold does heat hear?"
+Repositories (written to ~/Developer/release/<name>/ unless --out is given), one per paper:
+    heat-invariants-orbifolds        Paper A, "How many heat invariants determine a hyperbolic orbifold?"
     eigenvalues-orbifold-signature   Paper B, "Finitely many eigenvalues determine the signature ..."
     equal-sum-reciprocal-triples     the note, "Triples with equal sum and equal reciprocal sum"
 
@@ -24,7 +24,7 @@ the old repository, earlier target journals, AI tools); any hit stops the build.
 --test copies the built repository to a fresh temporary directory, creates its environment there
 from scratch (python -m venv, pip install -r requirements.txt and requirements-pari.txt), runs
 `make verify` and then `make all` (memory pressure is checked before each), and appends the results
-and timings to ~/Desktop/release/TEST-REPORT.md.
+and timings to ~/Developer/release/TEST-REPORT.md.
 """
 import hashlib
 import json
@@ -44,7 +44,7 @@ ROOT = HERE.parent.parent
 sys.path.insert(0, str(HERE))
 import release_config as C  # noqa: E402
 
-OUT = Path(os.path.expanduser("~/Desktop/release"))
+OUT = Path(os.path.expanduser("~/Developer/release"))
 
 
 def fnmatchcase(name, pat):

@@ -193,9 +193,9 @@ LOCAL_ENTRIES = {
   note         = {Preprint, \\textbf{[PLACEHOLDER: preprint identifier]}},
   year         = {2026}
 }"""),
-    "companionA": ("\\title[How much of a hyperbolic orbifold does heat hear?]{How much of a hyperbolic orbifold does heat hear?}", """@unpublished{companionA,
+    "companionA": ("\\title[How many heat invariants determine a hyperbolic orbifold?]{How many heat invariants determine a hyperbolic orbifold?}", """@unpublished{companionA,
   author       = {Gang, Palaash and Agadi, Akshaj and Veluri, Arjun and Wang, Jerry and Barreto, Jeremy and Chouthaiwale, Aarin},
-  title        = {How much of a hyperbolic orbifold does heat hear?},
+  title        = {How many heat invariants determine a hyperbolic orbifold?},
   note         = {Companion manuscript, submitted},
   year         = {2026}
 }"""),

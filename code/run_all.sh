@@ -128,7 +128,7 @@ PY
     if "$PYTHON_PARI" -c "import cypari2" >/dev/null 2>&1; then HAVE_PARI=1; fi
     if ! (cd "$ROOT" && git rev-parse --is-inside-work-tree >/dev/null 2>&1); then GUARD=0; fi
 
-    echo "${bold}verification suite -- How much of a hyperbolic orbifold does heat hear?${reset}  [mode: $MODE]"
+    echo "${bold}verification suite -- How many heat invariants determine a hyperbolic orbifold?${reset}  [mode: $MODE]"
     echo "${dim}python:   $("$PYTHON" -c 'import sys;print(sys.version.split()[0])')   ($HAVE)"
     [ -n "$WARN" ] && echo "${yellow}note:${reset}${dim}     version differs from requirements.txt: $WARN"
     if [ "$HAVE_NGSOLVE" -eq 1 ]; then echo "ngsolve:  available ($PYTHON_NUMERICS)"
@@ -333,7 +333,7 @@ stage "msep bounded cone orders"         q exact theory/msep "$P verify.py"
 #     the second variation (quadratic_form) and the extension/obstruction arithmetic (obstruction_check). Each script
 #     asserts its checks and prints a transcript, which must equal the committed *_output.txt byte for byte;
 #     together about 2.5 min (twisted_mp about 90 s).
-for s in quadratic_form top_coefficient linear_part obstruction_check twisted_mp; do
+for s in quadratic_form top_coefficient linear_part obstruction_check twisted_mp rotsym_check; do
     stage "varcurv $s" q exact theory/varcurv "$P $s.py > \"\$LOGDIR/varcurv_$s.out\" && cmp \"\$LOGDIR/varcurv_$s.out\" ${s}_output.txt"
 done
 

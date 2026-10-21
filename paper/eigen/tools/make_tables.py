@@ -13,6 +13,9 @@ Sources (all committed, written by theory/eigen/practice.py and theory/eigen/ins
   practice   theory/eigen/data/practice.csv (diameter inputs B1 and D, estimated eps_j, full spectra)
   spectra    theory/eigen/data/triangle_spectra_first41.csv
   certgap    theory/eigen/data/certified_gap.csv (theory/eigen/certified_gap.py) with computed_gap.csv
+  certdetail theory/eigen/data/certified_gap_detail.csv (theory/eigen/certified_gap.py)
+  certencl   theory/eigen/data/certified_gap_enclosures.csv (theory/eigen/certified_gap.py; round 10)
+  (the certgap table also reads theory/eigen/data/certified_gap_omissions.csv for Lambda_o; round 10)
 """
 import csv
 import math
@@ -46,7 +49,7 @@ def tex_name(orb):
 def count(n, t, weyl, ncomp):
     """A count with its time, or '>=N_c; est. estimate' when the criterion fails in the complete range."""
     if n and not n.startswith(">"):
-        return f"${n}$ (${float(t):.3g}$)" if t else f"${n}$"
+        return f"${n}$ (${float(t):#.3g}$)" if t else f"${n}$"
     est = int(float(weyl.split()[0])) if weyl else None
     w = f"; est.~${est}$" if est else ""             # round 4 close-out: printed also when est <= N_c
     return f"$\\ge{ncomp}${w}"
@@ -80,7 +83,7 @@ def table_practice():
         out.append(f"{name} & ${ell}$ & ${M}$ & ${b['S_size']}$ & {count(b['N_C1'], b['t_C1'], b['weyl_C1'], b['N_complete'])} & "
                    f"{count(b['N_C2'], b['t_C2'], b['weyl_C2'], b['N_complete'])} & "
                    f"{count(d['N_C1'], d['t_C1'], d['weyl_C1'], d['N_complete'])} & "
-                   f"{count(e['N_C1'], None, e['weyl_C1'], e['N_complete'])} & ${sci(float(b['N_thm62']))}$\\\\")
+                   f"{count(e['N_C1'], None, e['weyl_C1'], e['N_complete'])} & ${sci(float(b['N_thm62']), 3)}$\\\\")
     out += ["\\bottomrule", "\\end{tabular}", "\\end{table}"]
     return "\n".join(out)
 
@@ -91,7 +94,7 @@ def table_inputs():
     out = ["\\begin{table}[t]", "\\centering\\footnotesize",
            "\\caption{Inputs of the test for the ten examples: exact area, the lower bound $\\ell$ for the "
            "systole (certified in interval arithmetic), the proved diameter bound $2\\diam P$ (rounded up) and the computed diameter, the class-level count constant "
-           "$C_*(A,\\ell,M)$ of Lemma~\\ref{lem:countK} (-- where an order exceeds $M$), and the complete range: the eigenvalues $\\lambda\\le\\lambda_c$, "
+           "$C_*(A,\\ell,M)$ of Lemma~\\ref{lem:countK}, rounded up (-- where an order exceeds $M$), and the complete range: the eigenvalues $\\lambda\\le\\lambda_c$, "
            "$N_c$ of them, of the $n$ computed; for the family the trace test alone covers $\\lambda<9.8\\times10^3$, and the range above rests on the agreement of the eigenvalue counts of three discretisations.}\\label{tab:inputs}",
            "\\setlength{\\tabcolsep}{4pt}\\begin{tabular}{@{}lllllllll@{}}", "\\toprule",
            "orbifold & area & $\\ell$ & $2\\diam P$ & $\\diam$ & $C_*$, $M=3$ & $C_*$, $M=12$ & $\\lambda_c$ & $N_c$ of $n$\\\\",
@@ -117,7 +120,8 @@ def table_spectra():
     assert len(a) == len(b) == 41
     out = ["\\begin{table}[t]", "\\centering\\scriptsize",
            "\\caption{The computed eigenvalues $\\tilde\\lambda_j$, $1\\le j\\le40$, of $\\Orb(2,8,8)$ and "
-           "$\\Orb(3,3,12)$, with the a-posteriori error estimates $\\epsilon_j$ (Section~\\ref{sec:numerical}); "
+           "$\\Orb(3,3,12)$, with $\\epsilon_j$, the difference between two discretisations (Section~\\ref{sec:numerical}), "
+           "which for these eigenvalues is at rounding level and is not an estimate of the discretisation error; "
            "N or D marks the boundary condition on the triangle. aeb means $a\\times10^b$. These are the spectra of the companion paper, whose supplement "
            "gives their convergence data \\cite{companionA}.}\\label{tab:spectra}",
            "\\setlength{\\tabcolsep}{2pt}\\begin{tabular}{@{}rllllll|rllllll@{}}", "\\toprule",
@@ -138,26 +142,27 @@ def table_E():
     rows = list(csv.DictReader(open(DATA / "table2.csv")))
     out = ["\\begin{table}[t]", "\\centering\\footnotesize",
            "\\caption{The constants of Theorem~\\ref{thm:E}, with $t_*=\\min(t_1,t_2,t_3)$; the last column names the binding "
-           "constraint. aeb means $a\\times10^b$; $N$ is rounded up and $\\Theta_*$ and $\\delta$ down.}\\label{tab:E}",
+           "constraint. aeb means $a\\times10^b$; $N$ is rounded up, to three significant digits, and $\\Theta_*$ and $\\delta$ down, and $C_*$, $t_1$, $t_3$ and $\\Lambda$ are rounded to the nearest unit of the last digit (Table~\\ref{tab:inputs} rounds $C_*$ up).}\\label{tab:E}",
            "\\setlength{\\tabcolsep}{3pt}\\begin{tabular}{@{}llllllllllll@{}}", "\\toprule",
            "$A$ & $\\varepsilon$ & $M$ & $k_*$ & $C_*$ & $t_1$ & $t_3$ & $\\Theta_*$ & $\\Lambda$ & $N$ & $\\delta$ & binds\\\\",
            "\\midrule"]
     area = {"pi/2": "$\\pi/2$", "4pi/3": "$4\\pi/3$", "2pi": "$2\\pi$", "10pi": "$10\\pi$"}
 
-    def e(x, mode="near"):
-        """two significant digits; mode "up" for N and "down" for delta, so that the printed values remain valid"""
+    def e(x, mode="near", digits=2):
+        """`digits` significant digits; mode "up" for N and "down" for delta, so that the printed values remain valid"""
         x = float(x)
         ex = math.floor(math.log10(x))
         m = x / 10 ** ex
-        m = math.ceil(m * 10 - 1e-9) / 10 if mode == "up" else math.floor(m * 10 + 1e-9) / 10 if mode == "down" else round(m, 1)
+        f = 10 ** (digits - 1)
+        m = math.ceil(m * f - 1e-9) / f if mode == "up" else math.floor(m * f + 1e-9) / f if mode == "down" else round(m, digits - 1)
         if m >= 10:
             m, ex = m / 10, ex + 1
-        return f"${m:.1f}$e${ex}$"
+        return f"${m:.{digits - 1}f}$e${ex}$"
     for r in rows:
         whole, _, frac = r["eps"].partition(".")
         eps = (whole + "." + frac[:4]).rstrip("0").rstrip(".") if frac else whole   # truncated: a lower bound
         out.append(f"{area[r['A']]} & ${eps}$ & ${r['M']}$ & ${r['kstar']}$ & {e(r['K'])} & {e(r['t1'])} & {e(r['t3'])} & "
-                   f"{e(r['Gamma_star'], "down")} & {e(r['Lambda'])} & {e(r['N'], "up")} & {e(r['delta'], "down")} & ${r['binds']}$\\\\")
+                   f"{e(r['Gamma_star'], "down")} & {e(r['Lambda'])} & {e(r['N'], "up", 3)} & {e(r['delta'], "down")} & ${r['binds']}$\\\\")
     out += ["\\bottomrule", "\\end{tabular}", "\\end{table}"]
     return "\n".join(out)
 
@@ -165,13 +170,15 @@ def table_E():
 def table_certgap():
     rows = list(csv.DictReader(open(DATA / "certified_gap.csv")))
     thm = {(r["A"], r["eps"], r["M"]): r for r in csv.DictReader(open(DATA / "computed_gap.csv"))}
+    omis = {(r["A"], r["eps"], r["M"]): r for r in csv.DictReader(open(DATA / "certified_gap_omissions.csv"))}
     out = ["\\begin{table}[t]", "\\centering\\footnotesize",
            "\\caption{Proposition~\\ref{prop:certgap}: at the time $t$, every gap $|G_\\sigma(t)-G_{\\sigma'}(t)|$ over "
            "$\\Sig(A,M)$ is at least $\\Theta$, certified in ball arithmetic, and the first $N$ eigenvalues, each known to "
-           "within $\\delta$, determine the signature in $\\Cl(A,\\varepsilon,M)$; the last column is the $N$ of "
-           "Theorem~\\ref{thm:E} for the same class. aeb means $a\\times10^b$.}\\label{tab:certgap}",
-           "\\setlength{\\tabcolsep}{4pt}\\begin{tabular}{@{}lllllllll@{}}", "\\toprule",
-           "$A$ & $\\varepsilon$ & $M$ & $|\\Sig(A,M)|$ & $t$ & $\\Theta$ & $N$ & $\\delta$ & $N$, Thm~\\ref{thm:E}\\\\",
+           "within $\\delta$, with none omitted, determine the signature in $\\Cl(A,\\varepsilon,M)$; one wrong entry is "
+           "tolerated above $\\Lambda_o=t^{-1}\\log(8/\\Theta)$ (Remark~\\ref{rem:omissions}; rounded up), and the last column is the $N$ of "
+           "Theorem~\\ref{thm:E} for the same class, rounded up. aeb means $a\\times10^b$.}\\label{tab:certgap}",
+           "\\setlength{\\tabcolsep}{3.5pt}\\begin{tabular}{@{}llllllllll@{}}", "\\toprule",
+           "$A$ & $\\varepsilon$ & $M$ & $|\\Sig(A,M)|$ & $t$ & $\\Theta$ & $N$ & $\\delta$ & $\\Lambda_o$ & $N$, Thm~\\ref{thm:E}\\\\",
            "\\midrule"]
     area = {"pi/2": "$\\pi/2$", "4pi/3": "$4\\pi/3$", "2pi": "$2\\pi$", "10pi": "$10\\pi$"}
 
@@ -180,13 +187,83 @@ def table_certgap():
         return f"${m}$e${int(ex)}$"
     for r in rows:
         n62 = thm[(r["A"], r["eps"], r["M"])]["N_thm62"]
+        o = omis[(r["A"], r["eps"], r["M"])]
+        assert o["t"] == r["t"] and o["certified_gap_lower"] == r["certified_gap_lower"]
+        lo = float(o["Lambda_o_upper"])
+        lo_txt = f"${lo:.0f}$" if lo >= 100 else f"${o['Lambda_o_upper']}$"
+        assert float(lo_txt.strip("$")) >= lo                       # printed value is still an upper bound
         out.append(f"{area[r['A']]} & ${r['eps']}$ & ${r['M']}$ & ${r['Sig_size']}$ & ${r['t']}$ & ${r['certified_gap_lower']}$ & "
-                   f"${r['N']}$ & {e(r['delta'])} & ${sci(float(n62))}$\\\\")
+                   f"${r['N']}$ & {e(r['delta'])} & {lo_txt} & ${sci(float(n62), 3)}$\\\\")
     out += ["\\bottomrule", "\\end{tabular}", "\\end{table}"]
     return "\n".join(out)
 
 
-TABLES = {"inputs": table_inputs, "practice": table_practice, "spectra": table_spectra, "E": table_E, "certgap": table_certgap}
+def table_certdetail():
+    rows = list(csv.DictReader(open(DATA / "certified_gap_detail.csv")))
+    out = ["\\begin{table}[t]", "\\centering\\footnotesize",
+           "\\caption{The certificate of Proposition~\\ref{prop:certgap}, one row per class of Table~\\ref{tab:certgap}: "
+           "the pair $\\sigma,\\sigma'$ of signatures with the least certified gap at the time $t$ of that table, a lower "
+           "bound for that gap, and the bounds, decided in ball arithmetic, for the three inequalities of "
+           "Corollary~\\ref{cor:computedgap}. Lower bounds are decimals strictly below the certified values and upper bounds "
+           "strictly above them, so that in the first and third rows, where $\\Theta/8$ is exactly $0.001985$ and $0.019$, "
+           "the column $\\Theta/8$ shows $0.001984$ and $0.01899$. Appendix~\\ref{app:certificate} lists the enclosures "
+           "from which every gap can be checked by hand.}\\label{tab:certdetail}",
+           "\\setlength{\\tabcolsep}{4pt}\\begin{tabular}{@{}lllllllll@{}}", "\\toprule",
+           "$A$ & $\\varepsilon$ & $M$ & $\\sigma$ & $\\sigma'$ & gap $\\ge$ & $B_*(t)\\le$ & $\\Theta/8\\ge$ & $\\Lambda t\\ge$\\\\",
+           "\\midrule"]
+    area = {"pi/2": "$\\pi/2$", "4pi/3": "$4\\pi/3$", "2pi": "$2\\pi$", "10pi": "$10\\pi$"}
+
+    def sig(s):
+        g, rest = s.strip("()").split(";")
+        orders = rest.split(",")
+        parts, i = [], 0
+        while i < len(orders):
+            j = i
+            while j < len(orders) and orders[j] == orders[i]:
+                j += 1
+            parts.append(orders[i] if j - i == 1 else f"{orders[i]}^{j - i}")
+            i = j
+        return f"$({g};{','.join(parts)})$"
+    for r in rows:
+        out.append(f"{area[r['A']]} & ${r['eps']}$ & ${r['M']}$ & {sig(r['sigma'])} & {sig(r['sigma_prime'])} & "
+                   f"${r['least_gap_lower']}$ & ${r['Bstar_upper']}$ & ${r['Theta_over_8_lower']}$ & ${r['Lambda_t_lower']}$\\\\")
+    out += ["\\bottomrule", "\\end{tabular}", "\\end{table}"]
+    return "\n".join(out)
+
+
+def table_certencl():
+    """Round 10 (B5): the enclosures of I_1(t) and E_m(t) behind Proposition 6.6, one column per class."""
+    rows = list(csv.DictReader(open(DATA / "certified_gap_enclosures.csv")))
+    classes = list(dict.fromkeys((r["A"], r["eps"], r["M"], r["t"]) for r in rows))
+    val = {(r["A"], r["eps"], r["M"], r["t"], r["quantity"], r["m"]): r for r in rows}
+    area = {"pi/2": "$\\pi/2$", "4pi/3": "$4\\pi/3$", "2pi": "$2\\pi$"}
+    for r in rows:   # every printed decimal is within one unit of its last digit of the exact value (asserted upstream)
+        d = r["printed"].lstrip("-").replace(".", "").lstrip("0")
+        assert len(d) <= 10 and float(r["error_less_than"]) <= 10 ** (math.floor(math.log10(abs(float(r["printed"])))) - 9) * 1.000001
+    Mmax = max(int(c[2]) for c in classes)
+    ncol = len(classes)
+    out = ["\\begin{table}[h]", "\\centering\\scriptsize",
+           "\\caption{The enclosures behind Proposition~\\ref{prop:certgap}, one column per class of Table~\\ref{tab:certgap}: "
+           "$\\mathrm I_1(t)=\\frac{4\\pi}{\\Area}\\mathrm I(t)$ and $\\mathrm E_m(t)$, $2\\le m\\le M$, at the time $t$ of that table. "
+           "Each entry differs from the exact value by less than one unit of its last digit (the balls computed have radii below "
+           "$10^{-34}$), and $G_\\sigma(t)=\\frac{s(\\sigma)}2\\mathrm I_1(t)+\\sum_i\\mathrm E_{m_i}(t)$, $s(\\sigma)=\\Area/2\\pi$; "
+           "\\texttt{certified\\_gap.py} asserts that these decimals alone give every pairwise gap at least $\\Theta$.}\\label{tab:certencl}",
+           f"\\setlength{{\\tabcolsep}}{{2pt}}\\begin{{tabular}}{{@{{}}l{'r' * ncol}@{{}}}}", "\\toprule",
+           "$A$ & " + " & ".join(area[c[0]] for c in classes) + "\\\\",
+           "$\\varepsilon$ & " + " & ".join(f"${c[1]}$" for c in classes) + "\\\\",
+           "$M$ & " + " & ".join(f"${c[2]}$" for c in classes) + "\\\\",
+           "$t$ & " + " & ".join(f"${c[3]}$" for c in classes) + "\\\\", "\\midrule"]
+    out.append("$\\mathrm I_1(t)$ & " + " & ".join(f"${val[c + ('I1', '')]['printed']}$" for c in classes) + "\\\\")
+    for m in range(2, Mmax + 1):
+        cells = [f"${val[c + ('E', str(m))]['printed']}$" if c + ("E", str(m)) in val else "" for c in classes]
+        out.append(f"$\\mathrm E_{{{m}}}(t)$ & " + " & ".join(cells) + "\\\\")
+    assert max(float(r["radius_upper"]) for r in rows) < 1e-34
+    out += ["\\bottomrule", "\\end{tabular}", "\\end{table}"]
+    return "\n".join(out)
+
+
+TABLES = {"inputs": table_inputs, "practice": table_practice, "spectra": table_spectra, "E": table_E, "certgap": table_certgap,
+          "certdetail": table_certdetail, "certencl": table_certencl}
 
 
 def main():

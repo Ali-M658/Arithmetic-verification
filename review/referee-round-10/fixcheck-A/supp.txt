@@ -1,0 +1,849 @@
+[S1]  Online Resource 1. Electronic supplementary
+[S1] material for “How much of a hyperbolic orbifold
+[S1] does heat hear?”, Annals of Global Analysis and
+[S1]                    Geometry
+[S1] Palaash Gang1 , Akshaj Agadi2 , Arjun Veluri1 , Jerry Wang3 ,
+[S1]           Jeremy Barreto4 , Aarin Chouthaiwale5
+[S1]                 1
+[S1]                 Indus International School, Pune, India.
+[S1]        2
+[S1]           Texas A&M University, College Station, Texas, USA.
+[S1]        3
+[S1]          University of California, Irvine, Irvine, California, USA.
+[S1]       4
+[S1]         Lawrence High School, Lawrenceville, New Jersey, USA.
+[S1]      5
+[S1]        DriveChange Learning and Resource Centre, Pune, India.
+[S1]                                     Abstract
+[S1] This supplement contains the material behind five sections of the paper and its
+[S1] computational methods (Section S8): the computer searches, the explicit pairs
+[S1] and the complete area classes of Section 3 (Section S1); the triads of small sum of
+[S1] Section 5 (Section S2); the threshold table for the stability theorem of Section 6,
+[S1] whose constants, proofs and exact-arithmetic certificate are in Appendix C of the
+[S1] paper (Section S3); a derivation in outline of Conjecture 2.13 (Section S7); and
+[S1] the numerical experiments of Section 4: the computed spectra of O(2, 8, 8) and
+[S1] O(3, 3, 12), a blind recovery of their cone orders, and a family of orbifolds of
+[S1] signature (0; 3, 3, 3, 3) that share every heat invariant while their spectra move
+[S1] (Sections S4–S6). The hand descent for the rank of C27/2 in Theorem 5.11 is
+[S1] Appendix F of the paper, and the proof of Proposition 2.8 is its Appendix B.
+[S1] The eigenvalue errors of Sections S4–S6 are a-posteriori estimates, not enclosures.
+[S1] Numbers such as “Proposition 4.2” refer to the paper.
+[S1]                                         1
+[S1] 
+[S2] S1 Searches and explicit pairs
+[S2] Pencil splittings (Remark 3.5). A pencil splitting is a pair (A, B ) of 4-multisets of
+[S2] nonzero integers with e1 (A) = e1 (B ) = 0, e3 (A) = e3 (B ), e4 (A) = e4 (B ), such that
+[S2] Z = A ⊎ (−B ) has four positive and four negative entries and no pair {z, −z}; its
+[S2] witness is the pair formed by Z>0 and −Z<0 , two disjoint multisets of orders with
+[S2] equal R, P1 and P3 . The eight orders of the witness are the absolute values of the
+[S2] entries of A and B , so a bound on the entries is a bound on the orders. Counting
+[S2] distinct witnesses (unordered, and primitive when the eight orders have gcd 1), pencil
+[S2] splittings with entries of absolute value at most 130 give 17 witnesses, 14 of them
+[S2] primitive, and at most 220 give 49, 30 primitive (every witness is rechecked exactly,
+[S2] with P5 different; Section S8). An exhaustive search of all pairs of 4-multisets of orders
+[S2] in [2, 440] with equal (R, P1 , P3 ) finds 193 pairs, 107 of them primitive; among the
+[S2] primitive ones with largest order at most 130, 220, 440 there are 16, 33, 107, of which
+[S2] 14, 30, 101 have a pencil splitting. The six without one are
+[S2]              (16, 16, 74, 74; 11, 37, 44, 88),       (11, 21, 99, 99; 9, 51, 51, 119),
+[S2]          (17, 17, 88, 136; 11, 52, 52, 143),     (77, 88, 182, 208; 68, 112, 154, 221),
+[S2]       (154, 175, 308, 350; 143, 200, 280, 364),        (22, 50, 209, 418; 19, 85, 170, 425),
+[S2] each written as the two orbifolds’ orders separated by a semicolon. Chen’s survey lists
+[S2] the witness of Theorem 3.4(3) as an ideal solution of type (−1, 1, 3) [1, A.685]; for
+[S2] the type (−1, 1, 3, 5) that n = 5 requires it gives the identity [1, (3.33)] but lists no
+[S2] numerical solution. For n = 5, all 216,071,394 multisets of orders in [2, 120], grouped
+[S2] by P1 and keyed on the exact integers (P3 , P5 , lcm(2, . . . , 120)R), give no witness.
+[S2]     The first open case (Remark 3.22). A genus pair of size 8 sharing three heat invari-
+[S2] ants has shape (3, 5). For each 5-multiset V of positive integers with gcd 1 and entries
+[S2] at most 220, the 3-element side is the root set of the cubic z 3 − e1 z 2 + Re3 z − e3 with
+[S2] e1 = P1 (V ), R = R(V ) and e3 = (P3 (V ) − e31 )/(3 − 3e1 R); it must have three positive
+[S2] rational roots. The search rejects V by the modular test of Remark 3.22, described in
+[S2] Section S8(ii): of the 4,325,115,770 such V , fifteen pass it, and none of their cubics has
+[S2] a rational root. Real solutions of the shape exist: {1, 1, 1, 1, 7} has exactly one partner
+[S2] triple, {0.2664, 4.2830, 6.4506}.
+[S2]     Explicit pairs. Table S1 writes out every pair of Example 3.21 and every dia-
+[S2] mond and square of Figure 3, except the Prouhet squares with L ≥ 4, whose cone
+[S2] lists are in a data file of the public repository. The pairs with L ≥ 4 are built by
+[S2] Lemma 3.20 from two pieces P and B , scaled so that the reciprocal sum vanishes,
+[S2] after deleting pairs {z, −z} (each recipe is recorded with the pair in the code and
+[S2] data deposit). Here X ± c is the shift of Proposition A.2, ±{a, b} = {±a, ±b},
+[S2] and [x] = [y ] is an equal sum of odd powers, entering as x ⊎ (−y ). Genus
+[S2] pairs. L = 4: P the shift by c = − 11       2 of ±{7, 11, 18} against ±{3, 14, 17}, B
+[S2] from [1, 13, 17, 23] = [3, 9, 21, 21]. L = 5: P the shift by − 29 of ±{2, 16, 21, 25}
+[S2] against ±{5, 14, 23, 24}, B from [3, 19, 37, 51, 53] = [9, 11, 43, 45, 55]. L = 6: P
+[S2] the shift by −43 of ±{18, 245, 331, 471, 508} against ±{103, 189, 366, 452, 515},
+[S2] B from [7, 91, 173, 269, 289, 323]       =      [29, 59, 193, 247, 311, 313]. L     =    7:
+[S2]                                                  2
+[S2] 
+[S3] P and B the shifts by −27 and − 27                     2    of ±{22, 61, 86, 127, 140, 151}
+[S3] against ±{35, 47, 94, 121, 146, 148}. Equal-count pairs. L                 =     4: the 7-
+[S3] sets     {−51, −33, −24, 7, 13, 38, 50}      and      {−120, −110, −23, −13, 38, 105, 123}.
+[S3] L       =       5:    Letac’s    9-sets     {−98, −82, −58, −34, 13, 16, 69, 75, 99}       and
+[S3] {−169, −161, −119, −63, 8, 50, 132, 148, 174}. L = 6: [23, 163, 181, 341, 347, 407] =
+[S3] [37, 119, 221, 311, 371, 403] and [43, 161, 217, 335, 391, 463] = [85, 91, 283, 287, 403, 461].
+[S3] L = 7: the shifts by − 129          27
+[S3]                           2 and − 2 of the size-12 solution above.
+[S3] Table S1: The explicit pairs behind Example 3.21 and the diamonds and squares of Figure 3:
+[S3] both signatures, the area s = Area/2π (when an approximation is shown, the exact value
+[S3] is printed below the signatures for L ≤ 5 and is in the data file for L ≥ 6) and the exact
+[S3] number L of shared heat invariants. Each pair was rechecked by a program of the code
+[S3] and data deposit (Section S8), which recomputes the area and the shared count exactly,
+[S3] from the cone coefficients and again from the power sums. “Equal count” rows with L =
+[S3] 4, . . . , 7 are Example 3.21(iii). For the Prouhet squares with L ≥ 4, Te = {0 ≤ i < 4L−1 :
+[S3] the binary digits of i have sum ≡ e (2)}, U0 = {2i − 1 : i ∈ T0 , i ̸= 0}, V0 = {2i − 1 : i ∈
+[S3] T1 } ∪ {1}, A′ = {2i + 1 : i ∈ T0 }, B ′ = {2i + 1 : i ∈ T1 }, with A′ and B ′ exchanged when
+[S3] R(U0 ) < R(V0 ); their cone lists are in a data file of the same repository.
+[S3] L   kind           s                              shared
+[S3] 2 genus             14/15                   2
+[S3] σ1 = (0;3,3,5,5)
+[S3] σ2 = (1;15)
+[S3] 3 genus             14/5                    3
+[S3] σ1 = (0;3,3,5,7,7,21)
+[S3] σ2 = (1;15,15,15)
+[S3] 4 genus             41149074301/5878522650 4
+[S3] σ1 = (0;34986,38775,58310,116325,128282,271425,271425,454818,524790)
+[S3] σ2 = (1;12925,168025,219725,268226,297275,384846,548114)
+[S3] 5 genus             ≈ 8.999997959           5
+[S3] σ1 = (0;1517814,2063997,2522663,7589070,9861319,10319985,12613315,19731582,59194746,
+[S3] 77408514,89551026)
+[S3] σ2 = (1;687999,4357327,8485321,11695983,12154649,34909722,50087862,83479770,86515398)
+[S3] exact s = 112658971081054/12517666291845
+[S3] 6 genus             12 − 7.85 × 10−31       6
+[S3] σ1 = (0;4093411365093597322848394806575,7271375040829745152760217600000,
+[S3] 9824187276224633574836147535780,9987923730828377467750083328043,
+[S3] 14793487152032929793546649600000,48392254582073821189059379200000,
+[S3] 52886874837009277411201260900949,61237434021800215949811986306362,
+[S3] 61932056382239553542474956800000,77283606572967117455377693948136,
+[S3] 77979228886139680776152678400000,78480703026886559752205107200000,
+[S3] 84160537666324360957762997223182,90218786486662884995578621536913)
+[S3] σ2 = (1;1755159492614076416183500800000,22817073403982993410385510400000,
+[S3] 33074763829956266368615030037126,37986857468068583156033103805016,
+[S3] 43377513174605031428535091200000,67448271930455222279051673600000,
+[S3] 70079202570402386167164519088564,72463013337924012039575961600000,
+[S3] 76137451390740910204980143402295,80988073730620954632467251200000,
+[S3] 81049545028853226992398217170185,91364941668889092245976172082754)
+[S3]                                               3
+[S3] 
+[S4] L   kind         s                          shared
+[S4]                              −35
+[S4] 7 genus            19 − 1.06 × 10          7
+[S4] σ1 = (0;495461702484924819341859189302493184,683624372840614274768382863229231445,
+[S4] 771998466662557276648943387982954496,818087927358829352866790754429698048,
+[S4] 1093798996544982839629412581166770312,1716832410936134839114814400141197312,
+[S4] 1855100793024951067768356499481427968,2292950669639535791837906480725491712,
+[S4] 2734497491362457099073531452916925780,3053426771128025049432388027096760320,
+[S4] 3237784613913113354303777492883734528,3537366108438881849719785374787567616,
+[S4] 3790858142268378268917945890244657152,6699518853838019892730152059646468161,
+[S4] 9160566596064231281896330367271701363,12031788961994811235923538392834473432,
+[S4] 12852138209403548365645597828709551166,16270260073606619739487512144855708391,
+[S4] 21055630683490919662866192187460328506,22833054052876516777263987631856330263,
+[S4] 24337027673125868181754429930960639442)
+[S4] σ2 = (1;195880207959156323925851307398660096,
+[S4] 1094624691536461810173874953110159360,1117669421884597848282798636333531136,
+[S4] 1394206186062230305589882835013992448,1670742950239862762896967033694453760,
+[S4] 2615576894513440325362838045852696576,2915158389039208820778845927756529664,
+[S4] 3168650422868705239977006443213619200,3675634490527698078373327474127798272,
+[S4] 3721723951223970154591174840574541824,4648645735316177068425003469958773826,
+[S4] 8066767599519248442266917786104931051,8476942223223617007127947504042469918,
+[S4] 10117640718041091266572066375792625386,13672487456812285495367657264584628900,
+[S4] 16953884446447234014255895008084939836,20235281436082182533144132751585250772,
+[S4] 23653403300285253906986047067731407997,23926853049421499616893400213023100575)
+[S4] 2 equal count 1/4                          2
+[S4] σ1 = (0;3,3,12)
+[S4] σ2 = (0;2,8,8)
+[S4] 3 equal count 22/15                        3
+[S4] σ1 = (0;3,10,15,30)
+[S4] σ2 = (0;4,5,21,28)
+[S4] 4 equal count 5 − 3.27 × 10−11             4
+[S4] σ1 = (0;74493387367,138344862253,217482072530,404392674278,532095624050,
+[S4] 600937305675,703955129505)
+[S4] σ2 = (0;74401761655,131633886005,255405899544,351183111873,542737536531,
+[S4] 629553367850,686785492200)
+[S4] exact s = 118766555393933327671589/23753311078941951481650
+[S4] 5 equal count 7 − 3.40 × 10−16             5
+[S4] σ1 = (0;5806604053259408,20770022346082906,35431214590376722,36291275332871300,
+[S4] 50092406834670538,59866534997533082,95808966878780232,107422174985299048,
+[S4] 126293638158392124)
+[S4] σ2 = (0;7941479132325817,9774128162862544,42150927702344721,45727006919417838,
+[S4] 45816225763418175,60477418007711991,86373235292233694,116857906571845586,
+[S4] 122664510625104994)
+[S4] exact s = 812564706402847786089918000749235251/116080672343263975087481791511
+[S4] 661200
+[S4] 6 equal count 10 − 4.30 × 10−20            6
+[S4] σ1 = (0;71623872894939389150,129265225362823216755,138389829506081326173,
+[S4] 430377162090340827549,436460231519179567161,507595273125005236150,
+[S4] 563648738868870845050,612869244955503015909,701073751673664740283,
+[S4] 1061901767703231813050,1080586256284520349350,1267431142097405712350)
+[S4] σ2 = (0;65392996360016450829,115221012917945973850,244843544510759269383,
+[S4] 330006516514501623951,370575690195555969950,509457064665244442505,
+[S4] 594620036668986797073,688211996077461087050,704115286388084110089,
+[S4] 968479324796789131550,1155324210609674494550,1254974816376546688150)
+[S4]                                         4
+[S4] 
+[S5] L   kind          s                             shared
+[S5]                                 −42
+[S5] 7 equal count 18 − 5.73 × 10                     7
+[S5] σ1 = (0;595958629909279070099829518275115563729823,
+[S5] 1030537353727106401413686917679685652027815,
+[S5] 1605720993016654160342256360105556713624735,
+[S5] 1701584932898245453497017933843201890557555,
+[S5] 3570931760589275670014868621727282840747545,
+[S5] 3858523580234049549479153342940218371546005,
+[S5] 4769231009109166834449388293447847552407795,
+[S5] 6350986017155423171502954260118992971799325,
+[S5] 6734441776681788344122000555069573679530605,
+[S5] 7236640506041245851212215579054974702433565,
+[S5] 7357557385912131749627950784364267329593935,
+[S5] 7884809055260883861979139439921315802724445,
+[S5] 9620475025678362131611533652155436957352857,
+[S5] 13877322382173212632324601639834833841137307,
+[S5] 14217870170692800672381647078849185591840063,
+[S5] 21369373729604149513579601298150572356597939,
+[S5] 25626221086099000014292669285829969240382389,
+[S5] 32607450750750554835462100785624180129788887,
+[S5] 34821011376127877095832896139217466509356801,
+[S5] 36694024212985611316146646053796401138221959)
+[S5] σ2 = (0;407421744496762995907736688384992001964485,
+[S5] 2276768572187793212425587376269072952154475,
+[S5] 2324700542128588859002968163137895540620885,
+[S5] 2899884181418136617931537605563766602217805,
+[S5] 2979793149546395350499147591375577818649115,
+[S5] 3475067820707684376860107047989637663814725,
+[S5] 3660888726585571430613238469404281320054627,
+[S5] 5440278588280305886532719309611363790937535,
+[S5] 6063394197510649292038669538906057441000865,
+[S5] 6590645866859401404389858194463105914131375,
+[S5] 7645149205556905629092235505577202860392395,
+[S5] 7741013145438496922246997079314848037325215,
+[S5] 10642118391237126251782669969198492209461125,
+[S5] 12855679016614448512153465322791778589029039,
+[S5] 16942252478849504992838010590963999597462111,
+[S5] 18985539209967033233180283225050110101678647,
+[S5] 26988412240177352174520851041887376243193413,
+[S5] 31585807385191790715290964468581124877680619,
+[S5] 35842654741686641216004032456260521761465069,
+[S5] 36183202530206229256061077895274873512167825)
+[S5] 2 cone count        2/5                          2
+[S5] σ1 = (0;2,2,2,10)
+[S5] σ2 = (0;5,5,5)
+[S5] 3 cone count        113/30                       3
+[S5] σ1 = (0;4,4,5,5,6,12,12)
+[S5] σ2 = (0;2,2,2,3,10,10,10,10)
+[S5] 4 cone count        2651846/320229               4
+[S5] σ1 = (0;2,2,3,9,21,21,26,26,34,34,46,46)
+[S5] σ2 = (0;6,6,13,17,18,18,23,42,42,42,42)
+[S5] 5 cone count        564239482/30342025           5
+[S5] σ1 = (0;2,2,2,3,10,12,20,20,21,31,40,48,48,49,50,56,56,84,84,94,94,102,102)
+[S5] σ2 = (0;4,4,5,6,6,24,24,24,28,42,42,42,47,51,62,62,80,80,98,98,100,100)
+[S5] 6 cone count        ≈ 26.55911353                6
+[S5] σ1 = (0;2,2,6,7,26,26,134,183,243,252,252,385,428,428,430,430,445,494,621,622,826,826,828,
+[S5] 828,1004,1004,1230,1230,1254,1254)
+[S5] σ2 = (0;12,12,13,14,14,126,214,215,268,268,366,366,413,414,486,486,502,615,627,770,770,890,
+[S5] 890,988,988,1242,1242,1244,1244)
+[S5]                                             5
+[S5] 
+[S6] L   kind          s                             shared
+[S6] 7 cone count        ≈ 32.30885424                  7
+[S6] σ1 = (0;2,2,4,6,24,24,31,50,50,58,105,117,132,132,182,182,187,199,246,260,260,273,298,300,
+[S6] 348,348,426,426,476,476,558,558,584,584,606,606)
+[S6] σ2 = (0;8,8,12,12,12,25,62,62,66,91,116,116,130,174,210,210,213,234,234,238,279,292,303,
+[S6] 374,374,398,398,492,492,546,546,596,596,600,600)
+[S6] 2 Prouhet           12/5                           2
+[S6] σ1 = (1;2,14,35)
+[S6] σ2 = (0;6,7,7,10,21)
+[S6] 3 Prouhet           ≈ 14.99999999                  3
+[S6] σ1 = (1;164778968,1153452776,1812568648,2142126584,2964981515,3130800392,3460358328,
+[S6] 4119474200,5108148008,5336966727,6522959333,10080937151,11266929757,13638914969,
+[S6] 17196892787)
+[S6] σ2 = (0;494336904,592996303,592996303,823894840,1483010712,1778988909,2471684520,
+[S6] 2801242456,3789916264,4150974121,4449032136,4778590072,7708951939,8894944545,
+[S6] 12452922363,14824907575,16010900181)
+[S6] exact s = 42535711516174226693172064/2835714102968475401543325
+[S6] 4 Prouhet           63 − 2.25 × 10−45              4
+[S6] σ1 = (1; qU0 ∪ pB ′ ), 63 cone points, p, q of 45 and 46 digits (in the CSV)
+[S6] σ2 = (0; qV0 ∪ pA′ ), 65 cone points (SHA-256 of both lists 471cb266ee04. . . )
+[S6] exact s = 3003541532428733231395405086615207217953299394943647160990201068901254
+[S6] 842814586414496910504453500329706873480776558171896373748/47675262419503702085
+[S6] 64135058119376536433808563572998715987236074857274506481364144207089650375508299
+[S6] 4204010185044488999348625
+[S6] 5 Prouhet           255 − 1.02 × 10−207            5
+[S6] σ1 = (1; qU0 ∪ pB ′ ), 255 cone points, p, q of 208 and 208 digits (in the CSV)
+[S6] σ2 = (0; qV0 ∪ pA′ ), 257 cone points (SHA-256 of both lists c62b7cc9f13e. . . )
+[S6] exact s = 2568398922165291711439483764146498652772104157396431455633708448598695
+[S6] 28325383407254026232268514458466053296666546920526719346025121902954404679683640
+[S6] 90427065818580960995424357686670522129225133674518142314820751039993886506649824
+[S6] 44358274727025961844829198143162480071607968875570570571011078823058471124696475
+[S6] 71326290661517950254578222664693653296687728491814506315718801503851268198671335
+[S6] 95625407288215859144043217534782497918041149830685083031982934895965745525405672
+[S6] 91152786186188671773169066094030206046194376052147502672400782068762737609054777
+[S6] 24334398212785800467965174675687426/1007215263594232043701758338880979863832
+[S6] 19770878291429632694448964654716990346434217265189124907630771001292810410557069
+[S6] 30170432357721684486458026809447226300321012141566833081445753145933029464186085
+[S6] 54600581209947278521118395390097616699762595966758408342220572772179166608251364
+[S6] 06728342997169944671036631202608126985105746587988514118154163631693739656949181
+[S6] 60109725365677904575628385799233490676135558085147940412144086054670879848064236
+[S6] 83916732287954974838127431953283013130523423407058691468176541792941529131229001
+[S6] 726798064154764563579983983920624630508296298598806547758762375
+[S6] 6 Prouhet           1023 − 9.14 × 10−864           6
+[S6]                   ′
+[S6] σ1 = (1; qU0 ∪ pB ), 1023 cone points, p, q of 864 and 865 digits (in the CSV)
+[S6] σ2 = (0; qV0 ∪ pA′ ), 1025 cone points (SHA-256 of both lists 368233926dd0. . . )
+[S6]     The complete area classes of Figure 3. For each of the 525 areas 2πs, s ≤ 75 ,
+[S6] attained by a signature of genus at most 1 with at most four cone points of order at
+[S6] most 12, the class of all signatures of that area, with no bound on the orders (33,946
+[S6] signatures in all), was enumerated exactly, and Kmult (O; Sig) was computed for every
+[S6] member. The largest value in a class is 1 for 17 classes, 2 for 311 and 3 for 197; no class
+[S6] reaches 4. The first class of maximum 3 is s = 14 , that of O(2, 8, 8) and O(3, 3, 12).
+[S6] For every class a data file of the code and data deposit gives s, the class size, the
+[S6]                                             6
+[S6] 
+[S7] maximum, a maximiser and a partner sharing one invariant fewer. Every value respects
+[S7] Theorem 3.11(iii), which is checked on these and further classes (Section S8).
+[S7] S2 Strata and triads of small sum
+[S7] Table S2 compares, for p ≤ 14, the first overlap S ∗ (p) of the strata p and p + 1
+[S7] (Theorem 5.7) with their first collision. Table S3 lists every hyperbolic triad with
+[S7] 10 ≤ S1 ≤ 18 and its reciprocal sum, an independent check of Theorems 5.9 and 5.10:
+[S7] within each sum the values of R are distinct, except for the pair at S1 = 18 in bold.
+[S7] Computation S2.1 lists the sums that carry no collision.
+[S7] Computation S2.1 (Collision-free sums) Among the sums 18 ≤ S ≤ 4800, exactly the 38
+[S7] sums
+[S7]               19, 21–25, 27–30, 33, 41, 44, 46–51, 59, 65, 67, 81, 99,
+[S7]               115, 119, 123, 125, 173, 199, 203, 223, 235, 243, 251, 307, 329, 557
+[S7] carry no collision. We do not know whether only finitely many sums are collision-free.
+[S7] Method Exact rational arithmetic. (a) At each listed sum the reciprocal sums of all hyperbolic
+[S7] triads are pairwise distinct (S = 557 has 25 575 triads). (b) Each of the other 4745 sums
+[S7] carries an exhibited collision: 3962 by scaling one at a divisor d | S, and 783 by explicit pairs,
+[S7] the first being (2, 8, 8), (3, 3, 12) at 18, (4, 8, 8), (5, 5, 10) at 20 and (4, 10, 12), (5, 6, 15) at 26,
+[S7] listed in a data file of the deposit named in the data statement of the paper and each checked
+[S7] directly by a script there.                                                                              □
+[S7]    The tangency of adjacent strata at p = 2 and p = 4 only is Proposition D.1, proved
+[S7] in Appendix D of the paper.
+[S7] S3 Stability: thresholds and certificates
+[S7] The constants of Theorem 6.2 of the paper, with their proofs, and the explicit thresh-
+[S7] old δthm are in Appendix C of the paper (Lemma C.1 and Theorems C.2–C.4), whose
+[S7] notation we use. The sharper certificate, evaluated in rational arithmetic, is Propo-
+[S7] sition C.5 in Appendix C of the paper, where it is stated and proved; Table S4 lists
+[S7] its thresholds δcert . For n ≤ 5 the series that it uses have at most four nonzero coef-
+[S7] ficients; for (2, 2, 2, 2, 3), sech2 U = 1 − 121z 2 + 9328z 4 − 601472z 6 . So every entry of
+[S7] Table S4 can be re-derived in exact arithmetic.
+[S7] S4 Computed spectra of the minimal pair
+[S7] Figure 1 of the paper shows the two orbifolds of Theorem 5.10, which share their first
+[S7] two heat invariants, coloured by the diagonal of the heat kernel computed from their
+[S7] spectra.
+[S7]    Method. The triangle orbifold O(p, q, r) is the double of a hyperbolic triangle T with
+[S7] angles π/p, π/q, π/r. The reflection exchanging the two copies splits H 1 (O) into even
+[S7] and odd parts, orthogonal for the L2 product and the Dirichlet form, which restrict
+[S7]                                                     7
+[S7] 
+[S8]         Table S2 First overlap and first collision of the adjacent strata p and p + 1, for
+[S8]         2 ≤ p ≤ 14, from the exhaustive enumeration of all hyperbolic triads with
+[S8]         S ≤ 600. The gap is the first collision sum minus S ∗ (p); in this table it vanishes
+[S8]         only for p = 2 and p = 4 (compare Proposition D.1).
+[S8]           p      x∗ (p)     S ∗ (p)     first collision       gap    colliding pair
+[S8]          2         18            18                  18         0    (2, 8, 8) and (3, 3, 12)
+[S8]          3         18            19                  38        19    (3, 14, 21) and (4, 6, 28)
+[S8]          4         20            20                  20         0    (4, 8, 8) and (5, 5, 10)
+[S8]          5       45/2            23                 117        94    (5, 32, 80) and (6, 15, 96)
+[S8]          6      126/5            26                  34         8    (6, 14, 14) and (7, 9, 18)
+[S8]          7         28            29                  62        33    (7, 20, 35) and (8, 14, 40)
+[S8]          8      216/7            32                  64        32    (8, 20, 36) and (9, 15, 40)
+[S8]          9      135/4            34                  42         8    (9, 15, 18) and (10, 12, 20)
+[S8]         10      110/3            37                 109        72    (10, 44, 55) and (11, 28, 70)
+[S8]         11      198/5            40                  66        26    (11, 22, 33) and (12, 18, 36)
+[S8]         12     468/11            43                 188       145    (12, 72, 104) and (13, 45, 130)
+[S8]         13       91/2            46                  94        48    (13, 39, 42) and (14, 28, 52)
+[S8]         14     630/13            49                  69        20    (14, 20, 35) and (15, 18, 36)
+[S8]  Table S3 All 83 hyperbolic triads (p, q, r) with 10 ≤ S1 ≤ 18, each followed by its reciprocal
+[S8]  sum R. The only coincidence of R within a sum is the pair in bold.
+[S8]  S1    triads and R
+[S8]   10   (3, 3, 4) 11/12
+[S8]   11   (2, 4, 5) 19/20; (3, 3, 5) 13/15; (3, 4, 4) 5/6
+[S8]   12   (2, 3, 7) 41/42; (2, 4, 6) 11/12; (2, 5, 5) 9/10; (3, 3, 6) 5/6; (3, 4, 5) 47/60; (4, 4, 4) 3/4
+[S8]   13   (2, 3, 8) 23/24; (2, 4, 7) 25/28; (2, 5, 6) 13/15; (3, 3, 7) 17/21; (3, 4, 6) 3/4; (3, 5, 5) 11/15;
+[S8]        (4, 4, 5) 7/10
+[S8]   14   (2, 3, 9) 17/18;    (2, 4, 8) 7/8;    (2, 5, 7) 59/70;    (2, 6, 6) 5/6;   (3, 3, 8) 19/24;   (3, 4, 7) 61/84;
+[S8]        (3, 5, 6) 7/10; (4, 4, 6) 2/3; (4, 5, 5) 13/20
+[S8]   15   (2, 3, 10) 14/15; (2, 4, 9) 31/36; (2, 5, 8) 33/40; (2, 6, 7) 17/21; (3, 3, 9) 7/9; (3, 4, 8) 17/24;
+[S8]        (3, 5, 7) 71/105; (3, 6, 6) 2/3; (4, 4, 7) 9/14; (4, 5, 6) 37/60; (5, 5, 5) 3/5
+[S8]   16   (2, 3, 11) 61/66; (2, 4, 10) 17/20; (2, 5, 9) 73/90; (2, 6, 8) 19/24; (2, 7, 7) 11/14; (3, 3, 10) 23/30;
+[S8]        (3, 4, 9) 25/36; (3, 5, 8) 79/120; (3, 6, 7) 9/14; (4, 4, 8) 5/8; (4, 5, 7) 83/140; (4, 6, 6) 7/12;
+[S8]        (5, 5, 6) 17/30
+[S8]   17   (2, 3, 12) 11/12; (2, 4, 11) 37/44; (2, 5, 10) 4/5; (2, 6, 9) 7/9; (2, 7, 8) 43/56; (3, 3, 11) 25/33;
+[S8]        (3, 4, 10) 41/60; (3, 5, 9) 29/45; (3, 6, 8) 5/8; (3, 7, 7) 13/21; (4, 4, 9) 11/18; (4, 5, 8) 23/40;
+[S8]        (4, 6, 7) 47/84; (5, 5, 7) 19/35; (5, 6, 6) 8/15
+[S8]   18   (2, 3, 13) 71/78; (2, 4, 12) 5/6; (2, 5, 11) 87/110; (2, 6, 10) 23/30; (2, 7, 9) 95/126; (2, 8, 8) 3/4;
+[S8]        (3, 3, 12) 3/4; (3, 4, 11) 89/132; (3, 5, 10) 19/30; (3, 6, 9) 11/18; (3, 7, 8) 101/168; (4, 4, 10) 3/5;
+[S8]        (4, 5, 9) 101/180; (4, 6, 8) 13/24; (4, 7, 7) 15/28; (5, 5, 8) 21/40; (5, 6, 7) 107/210; (6, 6, 6) 1/2
+[S8] to H 1 (T ) and H01 (T ); so the spectrum of O is the union, with multiplicity, of the
+[S8] Neumann and Dirichlet spectra of T , and ZO = ZN +ZD . The problems −∆E u = λwu,
+[S8] w = 4/(1 − |z|2 )2 , were solved in the Poincaré disc with H 1 finite elements of order p
+[S8] on NETGEN meshes [2] of uniform hyperbolic size h, with NGSolve [3]; the geodesic
+[S8] side is an exact rational quadratic spline, curved to order p, and the finite-element
+[S8] area is exact to 2 × 10−14 . The production level is (h, p) = (0.05, 10), with h-sweeps
+[S8] at p = 10 (h = 0.1, 0.07) and p-sweeps at h = 0.07 (p = 8, 10, 12). Eigenvalues were
+[S8]                                                           8
+[S8] 
+[S9]       Table S4 Thresholds for exact recovery of integer orders under the uniform model
+[S9]       |δcj | ≤ δ on the heat invariants: the threshold δthm , evaluated with the exact matrix
+[S9]       norm, of Theorem C.4, the threshold δcert certified in exact arithmetic by
+[S9]       Proposition C.5, a constructed failure δup , which minimizes ∥c(q̃) − c(m)∥∞ over
+[S9]       real monic q̃ with a real root, or a non-real complex pair, of real part a ± 12 , where
+[S9]       rounding is a tie; then the ratio δup /δcert ; the largest uniform relative error ϵcert
+[S9]       certified by Proposition C.5, that is, for errors |δcj | ≤ ϵ|cj | for all j; and δcert /|cj |,
+[S9]       j = 1, . . . , n, the relative precision that the uniform threshold δcert demands of each
+[S9]       coefficient (not a tolerance for one coefficient alone). The relative box of radius
+[S9]       minj δcert /|cj | lies inside the uniform box of radius δcert and the certificate is
+[S9]       monotone in the radii, so ϵcert ≥ minj δcert /|cj |; it is larger when the box of the
+[S9]       relative model is not the binding one. aeb means a × 10b ; δup is rounded up, the
+[S9]       ratio δup /δcert to the nearest unit of its last digit, and every other entry down.
+[S9]       m                 δthm       δcert      δup        ratio   ϵcert    δcert /|cj |, j = 1, . . . , n
+[S9]       (2, 8, 8)         3.80e−7    2.341e−3   2.485e−3    1.06   1.9e−3   1.8e−2, 1.6e−3, 7.0e−4
+[S9]       (3, 3, 12)        1.18e−7    4.040e−3   4.589e−3    1.14   4.4e−3   3.2e−2, 2.8e−3, 7.4e−4
+[S9]       (3, 10, 15, 30)   4.02e−11   3.660e−3   7.487e−3    2.05   8.7e−4   4.9e−3, 8.0e−4, 4.1e−5,
+[S9]                                                                           3.6e−7
+[S9]       (4, 5, 21, 28)    3.14e−11   1.461e−3   2.018e−3    1.38   4.6e−4   1.9e−3, 3.2e−4, 1.6e−5,
+[S9]                                                                           1.7e−7
+[S9]       (2, 3, 7)         4.49e−7    3.658e−3   6.587e−3    1.80   5.0e−3   3.0e−1, 3.9e−3, 2.7e−3
+[S9]       (4, 4, 4)         9.35e−7    4.539e−4   5.036e−4    1.11   8.2e−4   3.6e−3, 5.0e−4, 5.4e−4
+[S9]       (7, 7, 7)         9.97e−8    8.068e−5   8.273e−5    1.03   1.2e−4   2.8e−4, 4.9e−5, 2.3e−5
+[S9]       (3, 3, 4, 4)      1.48e−9    9.597e−5   1.195e−4    1.25   1.1e−4   2.3e−4, 1.0e−4, 1.1e−4,
+[S9]                                                                           7.2e−5
+[S9]       (5, 5, 5, 5)      4.74e−10   3.617e−5   3.826e−5    1.06   3.1e−5   6.0e−5, 2.5e−5, 1.9e−5,
+[S9]                                                                           6.2e−6
+[S9]       (2, 2, 2, 3)      2.03e−9    1.858e−4   2.520e−4    1.36   4.3e−4   2.2e−3, 3.2e−4, 5.6e−4,
+[S9]                                                                           7.7e−4
+[S9]       (2, 2, 2, 2, 3)   2.72e−12   7.908e−6   5.312e−5    6.72   1.4e−5   2.3e−5, 1.2e−5, 2.1e−5,
+[S9]                                                                           2.9e−5, 1.9e−5
+[S9] computed by shift-invert Lanczos iteration (ARPACK [4]) in overlapping spectral
+[S9] windows of 200 eigenvalues, one sparse factorisation per window, each eigenvalue taken
+[S9] from one window in the production run, all of them recomputed later with two windows
+[S9] (Limitations below; software versions are pinned in the code and data deposit): 1420–
+[S9] 1440 per triangle and boundary condition, up to λ ≈ 21,700 (Neumann) and 23,800
+[S9] (Dirichlet), about 2850 per orbifold. Of these, 2002 and 2001 lie below 1.6 × 104 , the
+[S9] range in which the trace test of (ii) below would detect a single missing or spurious
+[S9] eigenvalue; the companion paper [5] uses only these, and for the family of Section S6
+[S9] only the eigenvalues below 0.8 times the least sector maximum.
+[S9]     Convergence and error per eigenvalue. The error estimate errj of each eigenvalue
+[S9] is |λj (0.05, 10) − λj (0.07, 12)|, two independent discretisations, and |λj (0.05, 10) −
+[S9] λj (0.07, 10)| is carried as a second estimate, larger than errj for most eigenvalues but
+[S9] not for the lowest ones (Table S5); neither is a bound. For the first 500 eigenvalues the
+[S9] estimate is at most 2.9 × 10−11 relative and the second estimate at most 1.2 × 10−8 .
+[S9] The empirical h-convergence at p = 10 is h13 to h19 (medians over mid-spectrum
+[S9] modes; the meshes are not nested) and the p-convergence is geometric, a factor 150
+[S9] to 350 per two orders; all modes converge from above. A corner singularity would cap
+[S9] the rate at an h-independent algebraic order; none occurs, as reflection predicts: at a
+[S9] corner of angle π/k the reflections in the two sides generate a dihedral group of order
+[S9]                                                     9
+[S9] 
+[S10] 2k , and the Neumann (Dirichlet) eigenfunctions extend to smooth functions invariant
+[S10] (respectively sign-twisted) under it. Table S5 shows representative eigenvalues.
+[S10]       Table S5 Representative eigenvalues λj at the production level, the error estimate,
+[S10]       and the differences from the coarser levels (0.07, 10) and (0.1, 10) and between p = 8
+[S10]       and p = 12 at h = 0.07 (the convergence data file of the public repository).
+[S10]       triangle     b.c.      j            λj    estimate   (0.07, 10)   (0.1, 10)   p = 8 vs 12
+[S10]       (2, 8, 8)    N         1       3.838887   5.9e-13    8.5e-14      3.0e-14     5.9e-13
+[S10]                    N       500    7400.919040   2.8e-08    1.4e-05      2.3e-03     4.3e-03
+[S10]                    N      1400   21373.180248   2.1e-02    8.8e-01      2.0e+01     1.5e+01
+[S10]                    D         1      73.663812   1.3e-11    1.4e-13      1.7e-13     1.4e-11
+[S10]                    D       500    8642.496608   4.4e-08    2.3e-05      6.4e-03     8.1e-03
+[S10]                    D      1400   23446.967233   1.4e-02    6.2e-01      3.8e+01     1.8e+01
+[S10]       (3, 3, 12)   N         1       3.499847   5.5e-13    4.8e-14      7.3e-14     5.8e-13
+[S10]                    N       500    7394.453593   4.6e-10    1.4e-06      2.2e-03     1.2e-03
+[S10]                    N      1400   21388.053620   5.3e-04    9.9e-02      3.0e+01     7.0e+00
+[S10]                    D         1      72.365158   1.3e-11    2.1e-13      2.1e-13     1.4e-11
+[S10]                    D       500    8629.414252   4.9e-09    1.9e-05      3.8e-02     8.9e-03
+[S10]                    D      1400   23438.658440   1.9e-03    2.4e-01      4.6e+01     1.6e+01
+[S10]                                                    −λ̃t
+[S10]     Error budget. By the mean value theorem   P |e      − e−λt | ≤ t|λ̃ − λ|e− min(λ,λ̃)t , so
+[S10]                                                         −(λj −errj )t
+[S10] the eigenvalue errors contribute at most t j errj e                   to a computed trace,
+[S10] with no cancellation assumed. The truncation tail satisfies λ>Λ e−λt ≤ −nΛ e−Λt +
+[S10]                                                                 P
+[S10]  R∞
+[S10] t Λ e−λt Nup (λ) dλ, where Nup (λ) = Aλ/4π ± Lλ1/2 /4π + Cup is the Weyl law of the
+[S10] triangle (area A, perimeter L, sign + for Neumann) with Cup twice the largest observed
+[S10] excess of the counting function over the two-term law plus 10, and the integral is in
+[S10] closed form. On 0.0015 ≤ t ≤ 0.012 the total for D(t) = ZO(2,8,8) (t) − ZO(3,3,12) (t) is
+[S10] at most 2.9 × 10−11 , and 3.9 × 10−10 with the second estimates; the tail is at most
+[S10] 7.6 × 10−13 , against d3 t = 3.1 × 10−3 at t = 0.0015.
+[S10]     Validation. (i) Weyl law. With area, boundary and constant terms, N (λ) ≈
+[S10] Aλ/4π ± Lλ1/2 /4π + c2 /2, the residuals have mean |·| ≤ 0.003 and root mean square
+[S10] 0.66–0.70 over 1420 or more eigenvalues; without the boundary term they drift by
+[S10] about ±65. (ii) Traces. At the sampled times 0.0015 ≤ t ≤ 0.0293, each computed
+[S10] trace agrees with the identity and elliptic terms of Theorem 2.3, the closed-geodesic
+[S10] term not being subtracted, to 7.1 × 10−13 , against an error bound of 1.5 × 10−11 ;
+[S10] closed geodesics contribute up to about 4 × 10−13 there, at t = 0.0293, by O(3, 3, 12)
+[S10] (about 7.8 × 10−13 at t = 0.03), and less than 3 × 10−15 for t ≤ 0.025; ZN − ZD
+[S10] agrees with the boundary term to 1.8 × 10−13 . A missing eigenvalue λ would add
+[S10] e−λt , which exceeds the error bound at t = 0.0015 when λ ≲ 1.6 × 104 , so a single
+[S10] missing eigenvalue below about 1.6 × 104 would be detected, while a missing eigen-
+[S10] value paired with a spurious one nearby would not, and completeness is supported,
+[S10] not proved (Section S4, Limitations); above that, about 1.6 to 2.4 × 104 , the test is
+[S10] blind. (iii) Bolza benchmark. The Bolza surface covers O(2, 3, 8), so every eigenvalue
+[S10] of the (2, 3, 8) triangle with a sign character of its reflection group occurs in Bolza’s
+[S10] spectrum. The relation at the corner of angle π/3 leaves four characters: Neumann,
+[S10] Dirichlet, and two mixed conditions. The list of Strohmaier and Uski [6, §7.1 and the
+[S10] ancillary file of arXiv:1110.2150v4], [7] has 42 multiplicity-one eigenvalues below 998;
+[S10]                                                 10
+[S10] 
+[S11] the four triangle problems give exactly 42 eigenvalues in that range (15, 6, 10, 11),
+[S11] matched one-to-one to 5.7 × 10−11 relative, the precision of the published digits. Only
+[S11] the 21 Neumann and Dirichlet ones belong to O(2, 3, 8). The Bolza surface also covers
+[S11] O(2, 8, 8), as its quotient by the rotations of order 8 about the centre of the regular
+[S11] octagon (the centre and the vertex class become the cone points of order 8, the four
+[S11] edge-midpoint classes one cone point of order 2, and χ = −2/8), so the spectrum of
+[S11] O(2, 8, 8) is contained in Bolza’s; its first nonzero eigenvalue, 3.838887258842, agrees
+[S11] with Bolza’s λ1 = 3.83888725884220 . . . [6] to all twelve decimals printed. (iv) Second
+[S11] machine. The (3, 3, 12) Neumann spectrum, 1434 eigenvalues, was recomputed on a
+[S11] second machine; the largest relative difference is 1.0 × 10−12 , at most 0.15 times the
+[S11] error estimate.
+[S11]     Prediction. Both orbifolds have area π/2 and c2 = 67                                 j−2
+[S11]                                                                               P
+[S11]                                                              48 , and D (t) ∼   j≥3 dj t
+[S11]               25            1775         153025
+[S11] with d3 = 12 , d4 = − 24 , d5 = 48 (Section 4); its coefficients grow rapidly
+[S11] (Section 4). For small t the orbifold with the smaller P3 has the larger heat trace (D(t)
+[S11] changes sign near t = 0.36, between the sampled times 0.341 and 0.360, below).
+[S11]                                     Pnc ˆ ν−1
+[S11]     Result. The model D(t)/t = ν=1         dν t    was fitted by unweighted least squares
+[S11] with a column-scaled Vandermonde matrix, over nine windows inside [0.0015, 0.012]
+[S11] and nc = 2, . . . , 11. For each configuration the data error is the worst-case change of
+[S11] a coefficient under any perturbation of the data within the error budget, |pinv| · err,
+[S11] and the model error the change from nc − 1 to nc ; the reported configuration
+[S11] minimizes the larger of the two and was chosen without reference to the predic-
+[S11] tion: window [0.0015, 0.012], nc = 10. It gives dˆ1 = 2.0833320 ± 0.0000031 and
+[S11] dˆ2 = −73.9551 ± 0.0062, against d3 = 2.0833333 and d4 = −73.9583. The error bars
+[S11] are max(data error, model error), heuristic and not standard errors; the deviations are
+[S11] 0.42 and 0.53 of them, and with the second eigenvalue estimates the bars are 1.4 × 10−5
+[S11] and 0.028. Applied to the exact difference of the elliptic terms, the same fit recovers d3
+[S11] to about 10−6 and d4 to about 0.005, so the method is not the limiting factor. The fit-
+[S11] ted t−1 and t0 terms of the two traces agree to within the fit error. The computed D(t)
+[S11] differs pointwise from the exact difference of the elliptic terms, with no geodesic term
+[S11] subtracted, by at most 3.4 × 10−14 for 0.0015 ≤ t ≤ 0.025 and by at most 4.0 × 10−13
+[S11] at the sampled times up to t = 0.0293, the last below 0.03; the larger value occurs
+[S11] at t = 0.0293, where the shortest closed geodesic of O(3, 3, 12) contributes about that
+[S11] much (about 7.8 × 10−13 at t = 0.03 and 2.6 × 10−15 at t = 0.025). The coefficient
+[S11] dˆ3 = 3184.5 ± 5.2 (data error only) against 153025
+[S11]                                                 48   = 3188.0 is only a by-product; across
+[S11] stable configurations it ranges over 3180–3188.
+[S11]     Closed geodesics. The shortest lengths, from enumerating triangle-group words of
+[S11] length at most 10 (the first two confirmed by the complete enumeration of closed
+[S11] geodesics of the companion paper, which also certifies the systole in interval arith-
+[S11] metic), are 2.2568, 2.8816, 3.0571 for (2, 8, 8) and 1.8626, 2.9807, 3.4027 for (3, 3, 12).
+[S11] With a generous multiplicity per length, the hyperbolic term is below 10−30 on the fit
+[S11] window. Fitting Z − I − E on [0.06, 0.5] by the hyperbolic term gives leading multiplic-
+[S11] ities 1.997 and 1.9998: one geodesic, two orientations. D(t) changes sign near t = 0.36
+[S11] (between the sampled times 0.341 and 0.360), solely because of the geodesics.
+[S11]     Limitations. The eigenvalue errors are a-posteriori agreements between two dis-
+[S11] cretisations, not enclosures, so nothing in Sections S4–S6 is certified: the recovery of
+[S11]                                             11
+[S11] 
+[S12] Section S5 is validated, not proved. The tail bound assumes that the counting function
+[S12] beyond the computed range stays below the Weyl law plus twice its largest observed
+[S12] excess. The spectra were computed with single-window spectral slicing, which the
+[S12] experiment of Section S6 showed can miss an eigenvalue at a window boundary. All
+[S12] four were recomputed with the double-window solver of Section S6 at the same pro-
+[S12] duction level, every eigenvalue below λ ≈ 2.0 × 104 being covered by two windows and
+[S12] no window miss being found: in each problem the two computations have the same
+[S12] number of eigenvalues below a common cut, every value agrees within the second esti-
+[S12] mate, and the largest relative difference is 1.4 × 10−14 . A missing eigenvalue paired
+[S12] with a spurious one nearby would escape the trace test, and the tail of its budget is a
+[S12] Weyl-law estimate, not a bound; completeness is supported, not proved.
+[S12] S5 Blind recovery
+[S12] The recovery chain of Section 6 was run on the computed spectra of Section S4 under a
+[S12] protocol committed to the repository before the pipeline and before any result (dated
+[S12] 1 October 2026; the protocol file and its version history are part of the deposit named
+[S12] in the data statement of the paper). What was assumed: each specimen is the double
+[S12] of a hyperbolic triangle, so it has genus 0 and exactly n = 3 cone points, and K = −1;
+[S12] the universal front-end constants for n = 3 were used. What was blinded: only the
+[S12] labels; the specimens were called A and B, the pipeline read the four eigenvalue files
+[S12] without parsing their names, and the label-to-truth map was used once, after every
+[S12] estimate and verdict had been written. No area, perimeter, c2 , geodesic length or Weyl
+[S12] constant derived from the orders was used; the truncation tail was bounded from a
+[S12] fit of the counting function of the data alone. The test is easy by design: it separates
+[S12] two candidates whose third coefficients differ by about 104 error bars, so it exercises
+[S12] the pipeline rather than a hard inference. P
+[S12]     The traces Z(t) were fitted as tZ(t) = j≤d γj tj over the windows and degrees
+[S12] of the protocol, with data error and model error as in Section S4; the error bar of
+[S12] each coefficient is the larger of the best configuration’s max(data, model) and half the
+[S12] range over the eight best configurations, again heuristic. The candidate was obtained
+[S12] by solving the system of Theorem 3.3 in exact arithmetic and rounding, and then
+[S12] checked by Corollary 6.5, with the certificate of Proposition C.5 at the candidate and
+[S12] radii equal to the distance from the estimates to the candidate’s exact invariants (δ2 )
+[S12] plus the error bars (δ1 ). The check is rigorous only given the error bars; since these
+[S12] are heuristic, a-posteriori discretisation agreements and not enclosures, it validates the
+[S12] recovery but does not certify it.
+[S12]     Three coefficients recover both multisets exactly (Table S6), with a margin to
+[S12] the threshold of Proposition C.5 of about 100 for A and 20 for B. The recovered
+[S12] double roots show the square-root law of Proposition 6.3(i): an error of order 10−4
+[S12] in c3 splits the double order 3 of B into 2.9915 and 3.0085. Two coefficients cannot
+[S12] separate the specimens, since c1 = (1 − R)/2 and c2 = (P1 + R − 2)/12 depend only
+[S12] on (R, P1 ) = ( 34 , 18); the estimates of c1 and c2 for A and B differ by 0.21 and 0.26 of
+[S12] their combined error bars, while those of c3 differ by 2.08328 ± 1.6 × 10−4 , against the
+[S12] exact 2512 = 2.08333. An exhaustive enumeration of hyperbolic integer triads consistent
+[S12]                                             12
+[S12] 
+[S13]          Table S6 Blind recovery: heat invariants estimated from about 2850
+[S13]          computed eigenvalues of each specimen, with their error bars, and the
+[S13]          recovered orders.
+[S13]                       specimen A                       specimen B
+[S13]                                                −11
+[S13]          c1           0.1250000000 ± 1.1 × 10          0.1250000000 ± 4.9 × 10−11
+[S13]          c2           1.3958333303 ± 2.4 × 10−8        1.3958332915 ± 1.3 × 10−7
+[S13]          c3           −3.3354134980 ± 2.1 × 10−5       −5.4186953214 ± 1.4 × 10−4
+[S13]          roots        2, 8 ± 0.0050i                   2.9915, 3.0085, 11.99995
+[S13]          recovered    (2, 8, 8), validated             (3, 3, 12), validated
+[S13] with the first two estimates returns exactly {(2, 8, 8), (3, 3, 12)} for both specimens,
+[S13] and adding c3 leaves one triad each.
+[S13] S6 Changing the shape
+[S13] The family. The signature (0; 3, 3, 3, 3) is hyperbolic, with area 4π/3 and a 2-
+[S13] dimensional Teichmüller space. Each member of the family is the double of a geodesic
+[S13] quadrilateral with all angles π/3, symmetric under z 7→ z̄ and z 7→ −z̄ ; the two mir-
+[S13] ror axes cut it into four congruent Lambert quadrilaterals, and with a, b the distances
+[S13] from the centre to two adjacent sides, sinh a sinh b = cos π3 , leaving one parameter
+[S13] ϑ = log(sinh a/ sinh b). Eight members, ϑ ∈ {0, 0.4, . . . , 2.8}, were computed, about
+[S13] 5800 eigenvalues each, of which 5451 to 5572 lie below the least of the sector maxima,
+[S13] about 1.6 × 104 (the companion paper uses only the 4357 to 4451 below 0.8 times that
+[S13] maximum, where the eigenvalue counts of its three most accurate discretisations agree
+[S13] exactly in every sector), with every eigenvalue covered by two independent shift-invert
+[S13] windows (misses counted and repaired). Their systoles, computed by the enumeration
+[S13] of closed geodesics and equal to 4b(ϑ) to 10−30 (a numerical identification), fall strictly
+[S13] from 2.634 to 0.694, so the members are pairwise non-isometric, a numerical state-
+[S13] ment, and every pair has different systoles. The worst eigenvalue error is 1.3 × 10−10
+[S13] relative (8.3 × 10−9 by the second estimate). The family is a real one-parameter slice,
+[S13] the orbifolds with an orientation-reversing isometry fixing the four cone points: such
+[S13] an isometry is an involution (its square preserves orientation, has finite order and fixes
+[S13] four points, so it is the identity) and fixes a single circle through the four cone points
+[S13] (two fixed circles would make the quotient an annulus, whose double is a torus), so
+[S13] the orbifold is the double of a quadrilateral with all angles π3 , and the four points on a
+[S13] circle can be moved by a Möbius map to a configuration symmetric under two reflec-
+[S13] tions with the same cross-ratio, which by uniqueness of the hyperbolic metric in its
+[S13] conformal class are isometries; Proposition 4.2 does not need genericity.
+[S13]     Same expansion, different spectra. Every member’s heat trace equals I + 4E3 to
+[S13] at most 1.2 × 10−12 wherever closed geodesics are negligible, against an error budget
+[S13] of 2.2 × 10−11 , and on t ∈ [0.0025, 0.0037] the eight traces are the same function to
+[S13] 1.3 × 10−13 : signature locality (Section 4) in the data. The eigenvalues move with the
+[S13]                                               13
+[S13] 
+[S14] shape: λ1 falls from 4.1224 to 0.4348, and the first 200 eigenvalues move by up to 89%
+[S14] (Figure 4 of the paper).
+[S14]     The difference is the closed geodesics. For all 28 pairs, Zi − Zj equals Hypi − Hypj ,
+[S14] computed from the closed geodesics enumerated in floating point up to length 6.5
+[S14] (checked by the integrality of the weights w/ℓ and by agreement with the computed
+[S14] traces) with nothing fitted, to at most 1.1 × 10−13 for t ≤ 0.33, where the traces
+[S14] differ by up to 0.78. The difference leaves the noise at a time t∗ set by the shorter
+[S14] systole alone, with ℓ2 /4t∗ ≈ 24.5 in every case. Once it is 103 times the noise, its ratio
+[S14] to the leading term of Proposition 4.2 is between 0.9997 and 1.0000. The bound of
+[S14] Proposition 4.2(a), with the diameter bound twice the diameter of the quadrilateral,
+[S14] holds for every pair, but it is loose because of its factor e3 diam : at the first time at which
+[S14] a difference is 103 times its error budget it exceeds the difference by factors between
+[S14] 4.4 × 106 (the pair ϑ = 0, 0.4) and 1.0 × 1010 (pairs with ϑ = 2.8), as computed from
+[S14] the traces in the code and data deposit. With the computed diameter of each member
+[S14] (a computed value, not a bound) the factors are 4.0 × 103 to 8.8 × 104 , and with the
+[S14] diameter-free count of the companion paper (Remark 2.6) 4.1 × 105 to 1.9 × 106 .
+[S14] S7 Cone terms in variable curvature: a derivation in
+[S14]    outline
+[S14] This section gives the derivation in outline of Conjecture 2.13 of the paper, in the
+[S14] notation of Section 2.4. It is not a proof. The dependence of the fixed-point coefficient
+[S14] on dΦp only through (I − dΦp )−1 = 21 I + 12 cot ϑ2 J is Donnelly’s theorem as stated
+[S14] in [8, 4.2]; two steps are not carried out in full, the identification of the radial part
+[S14] of the jet with the jet of dr2 + f (r)2 dθ2 up to terms at least quadratic in the non-
+[S14] radial modes, and the uniformity in ϑ of the inversion s 7→ r and of Laplace’s method.
+[S14] Nothing in the paper depends on this section.
+[S14]     Let Φ be a local isometry fixing p, with dΦp the rotation Rϑ by ϑ ∈ (0, 2π ), so
+[S14] that Φ(expp v ) = expp (Rϑ v ).
+[S14]     Rotation invariance. Donnelly’s form of the fixed-point term [8, 4.2] gives Bl (Φ) =
+[S14] C −2 P (cot ϑ2 ), P a polynomial whose coefficients are polynomials in the jet, obtained
+[S14] from the jet and dΦp by an expression that does not change when the orthonormal
+[S14] frame at p is rotated. Rotating the frame by ρ ∈ SO(2) replaces the jet j by ρ · j and
+[S14] dΦp by ρ dΦp ρ−1 = dΦp ; so the coefficients of P are SO(2)-invariant polynomials in
+[S14] the jet, each of weight 2l.
+[S14]     Pole order. We show that Bl (Φ) = C −2l−2 Xl + O(ϑ) as ϑ → 0,
+[S14]                                                                        
+[S14] with Xl given below, so that deg P ≤ 2l. Fix ϑ and write ht (x, y ) ∼
+[S14]                   2
+[S14] (4πt)−1 e−d(x,y) /4t k≥0 tk uk (x, y ) for the Minakshisundaram–Pleijel expansion near
+[S14]                       P
+[S14] R diagonal, u0 (x, x) = 1. The contribution of Φ is the expansion as t ↓ 0 of
+[S14] the
+[S14]   ζ (x)ht (x, Φx) dA(x), with ζ a cut-off equal to 1 near p and supported in a small
+[S14] disc; ζ changes it by O(t∞ ), as d(x, Φx) is bounded below where ζ ̸= 1. In the
+[S14] chart, x = expp (ru) with |u| = 1, so Φx = expp (rRϑ u), and in normal coordinates
+[S14] Φx − x = r(Rϑ − I )u, a vector of length Cr whose components divided by C are
+[S14] ∓ sin ϑ2 and cos ϑ2 (after rotating u to e1 ). Hence every smooth function of (x, Φx)
+[S14]                                               14
+[S14] 
+[S15] that vanishes to second order on the diagonal is C 2 r2 times a series in r whose coeffi-
+[S15] cients are trigonometric polynomials in ϑ; in particular, as in Schueth’s expansion of
+[S15] the displacement [9, Cor. 2.4, Lemma 3.4, (3.2)] and her substitution [9, (3.4), (3.5)],
+[S15]                    d(x, Φx)2 = C 2 r2 Wu (r),      Wu (r) = 1 + O(r),
+[S15] with coefficients trigonometric polynomials in ϑ, bounded uniformly, and polynomial
+[S15] in the jet. Put s = d(x, Φx) = CrWu (r)1/2 and invert: r = Cs Vu ( Cs ), Vu (v ) = 1+ O(v ),
+[S15] with coefficients of the same kind. The area element is r J (r, u) dr du with J = 1 +
+[S15] O(r2 ), so
+[S15]                                 dr    s   X         n 
+[S15]                             rJ     = 2 1+      en Cs      ,
+[S15]                                 ds   C
+[S15]                                            n≥1
+[S15]                                 X       n                  X        n
+[S15]             u0 (x, Φx) − 1 = s2    gn Cs ,   uk (x, Φx) =     gk,n Cs ,
+[S15]                                  n≥0                            n≥0
+[S15] the second because u0 − 1 vanishes to second order on the diagonal [9, (2.3)] and
+[S15] C 2 r2 = s2 /Wu ; all coefficients are trigonometric polynomials in ϑ, bounded as ϑ → 0,
+[S15]                            R∞              2
+[S15] depending on u. Since 0 (4πt)−1 e−s /4t s1+N ds is a constant times tN/2 , the coeffi-
+[S15] cient of tl collects the terms of total degree 1 + 2l in s: from 1 in u0 and the term
+[S15] e2l , with the factor C −2−2l ; from u0 − 1, with n + n′ = 2l − 2 and the factor C −2l ;
+[S15] and from tk uk , k ≥ 1, with total degree 1 + 2(l − k ) and the factor C −2−2(l−k) , at
+[S15] most C −2l . So Bl (Φ) = C −2l−2 T (ϑ) + O(C −2l ) with T a trigonometric polynomial,
+[S15] and deg P ≤ 2l. As ϑ → 0, d(x, Φx)/C → |Ju (r)|, the length of the Jacobi field along
+[S15] r 7→ expp (ru) with Ju (0) = 0, |Ju′ (0)| = 1, and r J dr du = |Ju (r)| dr du; with v =
+[S15]                                                                R∞          2 2
+[S15] |Ju (r)| and r = ρu (v ), the leading term is (4πt)−1 |u|=1 0 e−C v /4t v ρ′u (v ) dv du,
+[S15]                                                          R
+[S15]       R∞       2 2                                         l
+[S15] and 0 e−C v /4t v 2l+1 dv = l!2 (4t/C 2 )l+1 gives Xl = 42πl! |u|=1 [v 2l ]ρ′u (v ) du.
+[S15]                                                              R
+[S15]      Radial reduction. The jet at a cone point is invariant under rotations of order
+[S15] m, so its non-radial Fourier modes in the angle have frequencies that are nonzero
+[S15] multiples of m; a mode of frequency km occurs first in ∇km K , at weight km + 2 ≥
+[S15] m + 2. In an SO(2)-invariant polynomial of weight 2l, the part linear in the non-radial
+[S15] modes vanishes (averaging over SO(2) annihilates a linear form on modes of nonzero
+[S15] frequency), and the part of degree at least 2 in them has weight at least 2m + 4 > 2l
+[S15] when m ≥ l − 1. So for m ≥ l − 1 every such polynomial takes its value on the radial
+[S15] part of the jet. This is the jet of the rotationally symmetric metric dr2 + f (r)2 dθ2 up to
+[S15] terms at least quadratic in the non-radial modes (from the passage between covariant
+[S15] derivatives and Taylor coefficients), which the same weight count excludes.
+[S15]      (i) For a rotationally symmetric germ the reflections are isometries and conju-
+[S15] gate Φ to Φ−1 , so Bl is even in ϑ; with deg P ≤ 2l and cot2 ϑ2 = 4C −2 − 1 it is
+[S15] Pl+1          −2i
+[S15]    i=1 βl,i C     , and βl,l+1 = Xl . By the rotation invariance and the radial reduc-
+[S15]             j
+[S15] tion Bl (γ ) is this expression at ϑ = 2πj/m for the radial part of the jet; averaging
+[S15]                                       Pm−1
+[S15] over j gives (i). Differentiating        j=0 cot(x + πj/m) = m cot(mx) (Lemma 2.7)
+[S15]                Pm−1       πj −2i
+[S15] shows that j=1 (sin m )           is a polynomial in m2 of degree i vanishing at m = 1,
+[S15]                                             15
+[S15] 
+[S16] with leading coefficient 2ζ (2i)/π 2i = 4i |B2i |/(2i)!; so mΠi (m) has leading coeffi-
+[S16] cient |B2i |/(2i)!. (ii) The coefficient of m2l+1 comes from Πl+1 alone, and βl,l+1
+[S16] is the C −2l−2 coefficient computed above with |Ju | = f. At constant curvature
+[S16] κ, (f −1 )′ (v ) = (1 − κv 2 )−1/2 , whose v 2l coefficient is 2ll (κ/4)l . To first order in
+[S16]                               Rr
+[S16] K̄ = j kj r2j , f = r − 0 (r − s)K̄ (s)s ds has the term −kl−1 r2l+1 /(2l(2l + 1)), so
+[S16]        P
+[S16] (f −1 )′ has kl−1 v 2l /(2l), while the linear part of (−∆)l−1 K (p) is 4l−1 ((l − 1)!)2 kl−1 ;
+[S16] this gives the linear part. At weight 2 and 4 the only monomials of degree at least 2
+[S16] are K 2 (∇K (p) = 0 at a cone point), which the constant-curvature value fixes.
+[S16] S8 Computational methods
+[S16] Results are exact (integer or rational arithmetic) unless stated, and each is produced
+[S16] by a program of the code and data deposit named in the data statement of the paper,
+[S16] whose manifest gives every file’s place and checksum.
+[S16]      Statements that rest on computer search alone. These are exhaustive searches
+[S16] within the stated bounds, used in no proof: the counts of witnesses for n = 4 with
+[S16] orders at most 440, and the absence of witnesses for n = 5 with orders at most 120
+[S16] (Remark 3.5); the exclusion of genus pairs of size 8 whose five-element side has entries
+[S16] at most 220 (Remark 3.22); the 38 collision-free sums among 18 ≤ S ≤ 4800 (Section 5
+[S16] and Computation S2.1); the exact values of Kmult on the 525 complete area classes
+[S16] of Figure 3; the minimality of the areas 12π and 36π of the pairs of Theorem 3.11(ii)
+[S16] for M = 3, 4, by enumeration of all signatures with orders at most M and area at
+[S16] most that of the pair; the absence, with entries at most 200, of 4-configurations of size
+[S16] 10 built from two five-element sets with e1 = e3 = 0 (Section 3.4); and the absence
+[S16] of solutions of the system of Proposition 5.2 with {a, b, c, d} = {2, 2, c, d}, d ≤ 1000,
+[S16] or with b ≥ 3 and d ≤ 20000, each candidate {a, b, c, d} determining the elementary
+[S16] symmetric functions of {p, q, r} exactly. The bounds on T (L) rest on explicit pairs,
+[S16] printed in Section S1.
+[S16]      The computations. (i) Remark 3.5, n = 4: all pairs of 4-multisets of orders in
+[S16] [2, 440] with equal (R, P1 , P3 ), found by sorting every multiset on these exact keys;
+[S16] n = 5: all 216,071,394 multisets of orders in [2, 120], grouped by P1 and keyed on the
+[S16] exact integers (P3 , P5 , lcm(2, . . . , 120) R). (ii) Remark 3.22: for each five-multiset V
+[S16] of positive integers with gcd 1 and entries at most 220 (all 4,325,115,770 of them, a
+[S16] count checked against its Möbius formula), the other side is the root set of the cubic
+[S16] qV of that remark. For each of the primes p = 223, 227, . . . , 277 the program reduces
+[S16] e1 , R(V ) and P3 (V ) modulo p in integer arithmetic (every prime used exceeds every
+[S16] entry of V , so it divides no denominator of R(V ), and e1 , P3 (V ) are integers), skips p
+[S16] if 3(1 − e1 R(V )) ≡ 0, and otherwise computes the reduction of qV and looks it up in a
+[S16] table of all monic cubics over Fp that split into linear factors; V is rejected as soon as
+[S16] one used prime gives a cubic that does not split. The rejection is sound: if qV had three
+[S16] rational roots, then, as p > max V and p ∤ 3(1 − e1 R(V )), qV is monic with p-integral
+[S16] coefficients, so by Gauss’s lemma its roots are p-integral and its reduction modulo p
+[S16] splits into linear factors (Remark 3.22); and as a control every 3-multiset with entries
+[S16] at most 220, whose own cubic splits, is accepted by the same code. Fifteen V are
+[S16] accepted for all twelve primes; each of their cubics is factored exactly over Q and is
+[S16]                                               16
+[S16] 
+[S17] irreducible. The search takes about three minutes on four cores. (iii) Figures 3 and 7,
+[S17] Computation S2.1, the rank of C27/2 (PARI/GP’s ellrank) and the comparison with
+[S17] Uçar’s coefficients for l ≤ 40: exact, the enumerations recomputed independently. The
+[S17] repository’s single run-all script reruns all of these except the n = 4 search of (i)
+[S17] and the search of (ii), whose committed outputs it rechecks (for (ii), every survivor
+[S17] is re-decided exactly); the finite-element spectra of Sections S4–S6 are recomputed
+[S17] only on request (about an hour on a laptop), and otherwise their committed values
+[S17] are validated. The software is Python with NumPy, SciPy 1.18.1 (whose eigsh calls
+[S17] ARPACK), NGSolve and NETGEN 6.2.2607 and PARI/GP 2.17.2; every version is
+[S17] pinned in the deposit.
+[S17]      Variable curvature. Remark 2.16 and the machine checks of Conjecture 2.13 and
+[S17] Proposition 2.14 are exact computer algebra in rational arithmetic, every step asserted.
+[S17] (a) The top coefficient βl,l+1 = 4l l! [v 2l ](f −1 )′P
+[S17]                                                       (v ) for l ≤ 7: f is expanded from
+[S17] f ′′ = −K̄f with a general radial curvature K̄ = j kj r2j , inverted as a power series,
+[S17] and the coefficients of k0l and of the linear part are checked against Conjecture 2.13(ii).
+[S17] (b) The t3 coefficient: for K = k0 + k1 r2 + k2 r4 the Hamilton–Jacobi equation for
+[S17] half the squared distance and the transport equations for the Minakshisundaram–
+[S17] Pleijel coefficients are solved exactly as power series in normal coordinates (residuals
+[S17] asserted zero), the fixed-point integral is expanded term by term by Laplace’s method,
+[S17] and the result is averaged over the rotations of order m; the program reproduces the
+[S17] local coefficients u1 = K/3, u2 = (K 2 − ∆K )/15, Donnelly’s B0 , B1 , Schueth’s B2 and
+[S17] b0 , b1 , b2 [9], and Uçar’s p3 (m)/m at constant curvature. (c) The linear part: the first-
+[S17] order Duhamel integral of the proof of Proposition 2.14 is evaluated exactly for every
+[S17] monomial ψ = xa y b with a + b ≤ 14 and l ≤ 7 (833 cases), radial and non-radial.
+[S17] (d) The second-variation constants ωn of the proof of Proposition 2.17(ii), and the
+[S17] examples of Proposition 2.17(ii)–(iii).
+[S17]      Programs. The programs are named here by file; the manifest of the deposit
+[S17] gives their locations. Table S1 and the recipes of Section S1: witnesses.py,
+[S17] d2 explicit pairs.py; pencil splittings: d1 pencil counts.py, pencil search.py;
+[S17] the search of Remark 3.22: search T3 modular.py with search T3 control.py;
+[S17] Theorem 3.11 and the minimal areas: verify.py of the bounded-order check;
+[S17] Figure 3 and its area classes: gen f4 area classes.py; Tables S2, S3 and S4:
+[S17] make tables.py from the output of threshold.py; Table S5: validate.py; the
+[S17] double-window comparison of Section S4: rerun double window.py; Table S6:
+[S17] blind pipeline.py; the numbers of Section 4: locality ratio.py; the bound (6),
+[S17] Lemma B.5 and Remark B.6, the least area in Theorem 5.10, Proposition 5.2
+[S17] and its search, Lemma B.3, the constants of Proposition 2.17(ii), Remark 4.3, the
+[S17] flat-cone values of the Introduction, Remark 2.10 and the signs in Theorem 3.3:
+[S17] check heat supporting.py; variable curvature, (a)–(d) above: top coefficient.py,
+[S17] twisted mp.py, linear part.py, quadratic form.py, obstruction check.py; each
+[S17] figure: Fk.py from its generated data.
+[S17] References
+[S17] [1] Chen, S.: A survey of the Prouhet–Tarry–Escott problem and its generalizations.
+[S17]                                              17
+[S17] 
+[S18]    Preprint, arXiv:2506.11429v1 (2025)
+[S18] [2] Schöberl, J.: NETGEN: An advancing front 2D/3D-mesh generator based on
+[S18]     abstract rules. Computing and Visualization in Science 1(1), 41–52 (1997) https:
+[S18]     //doi.org/10.1007/s007910050004
+[S18] [3] Schöberl, J.: NGSolve. Software, swMATH 13154. https://www.ngsolve.org/
+[S18] [4] Lehoucq, R.B., Sorensen, D.C., Yang, C.: ARPACK Users’ Guide: Solution of
+[S18]     Large-scale Eigenvalue Problems with Implicitly Restarted Arnoldi Methods. Soft-
+[S18]     ware, Environments, Tools, vol. 6. Society for Industrial and Applied Mathematics,
+[S18]     Philadelphia, PA (1998). https://doi.org/10.1137/1.9780898719628
+[S18] [5] Gang, P., Agadi, A., Veluri, A., Wang, J., Barreto, J., Chouthaiwale, A.: Finitely
+[S18]     many eigenvalues determine the signature of a hyperbolic orbifold. Preprint,
+[S18]     [PLACEHOLDER: preprint identifier] (2026)
+[S18] [6] Strohmaier, A., Uski, V.: An algorithm for the computation of eigenvalues,
+[S18]     spectral zeta functions and zeta-determinants on hyperbolic surfaces. Communi-
+[S18]     cations in Mathematical Physics 317(3), 827–869 (2013) https://doi.org/10.1007/
+[S18]     s00220-012-1557-1
+[S18] [7] Strohmaier, A., Uski, V.: Correction to: An algorithm for the computation of
+[S18]     eigenvalues, spectral zeta functions and zeta-determinants on hyperbolic surfaces.
+[S18]     Communications in Mathematical Physics 359(1), 427–427 (2018) https://doi.org/
+[S18]     10.1007/s00220-018-3094-z
+[S18] [8] Dryden, E.B., Gordon, C.S., Greenwald, S.J., Webb, D.L.: Asymptotic expansion
+[S18]     of the heat kernel for orbifolds. Michigan Mathematical Journal 56(1), 205–238
+[S18]     (2008) https://doi.org/10.1307/mmj/1213972406
+[S18] [9] Schueth, D.: On the corner contributions to the heat coefficients of geodesic poly-
+[S18]     gons. Annales de l’Institut Fourier 69(7), 2827–2855 (2019) https://doi.org/10.
+[S18]     5802/aif.3338
+[S18]                                           18
+[S18] 
+[S19] 

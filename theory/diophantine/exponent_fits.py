@@ -30,6 +30,10 @@ dual quartic del Pezzo predicts k = 4 for primitive dual pairs and k = 5 for
 dual pairs with scalings (per-S densities of the cumulative X (log X)^4 and
 X (log X)^5).
 
+Round 10 (round10 below): A(X) and N(X) to 6000 from the third enumeration; the family c s^b0 (log s)^q with b0
+fixed (asymptotic exponent 1 + b0 for N), its deviance and the errors of both forward holdouts; the free law
+c s^beta (log s)^q; and q, beta on sliding windows of width 2400. All with asserts.
+
 Writes data/exponent_fits.txt.
 """
 
@@ -211,8 +215,137 @@ def main() -> int:
     say(f"closed form c S (log S)^K fitted on 100..4800 (the earlier cumulative fit): K = {K:.2f}")
     say(f"secondary-term prediction from per-S k = {kp:.2f}: K ~ k (1 + 1/log S) = "
         f"{kp * (1 + 1 / L):.2f} at S ~ 3000")
+    # round 9: (a) a second, disjoint holdout: both laws fitted per sum on 600..3600 predict the pairs with
+    # 3601 <= s <= 4800; (b) the number A(X) of primitive pairs with sum at most X, the quantity of Question E,
+    # and its local exponent log2(A(X)/A(X/2)).
+    s = s_all[600:3601]
+    y = n["all"][600:3601]
+    a_p2, beta2, _ = poisson_fit(np.log(s), y)
+    a_l2, k2, _ = poisson_fit(np.log(np.log(s)), y)
+    sh = np.arange(3601, 4801, dtype=float)
+    act2 = float(np.sum(n["all"][3601:4801]))
+    pl2 = float(np.sum(np.exp(a_l2 + k2 * np.log(np.log(sh)))))
+    pp2 = float(np.sum(np.exp(a_p2 + beta2 * np.log(sh))))
+    el2, ep2 = 100 * (pl2 / act2 - 1), 100 * (pp2 / act2 - 1)
+    say(f"holdout 3601-4800 (fits on 600-3600): exact {act2:.0f}; log-power law {el2:+.2f}%, power law {ep2:+.2f}%")
+    assert abs(el2 - 0.21) < 0.02 and abs(ep2 - 2.32) < 0.02, (el2, ep2)
+    A = np.cumsum(n["primitive"])
+    vals = {X: int(A[X]) for X in (500, 1000, 2000, 2400, 4000, 4800)}
+    loc = {X: float(np.log2(A[X] / A[X // 2])) for X in (1000, 2000, 4000, 4800)}
+    say("primitive pairs A(X): " + ", ".join(f"A({X}) = {v}" for X, v in vals.items()) + "; local exponents "
+        + ", ".join(f"{X}: {v:.3f}" for X, v in loc.items()))
+    assert vals[1000] == 4141 and vals[2000] == 12512 and vals[4000] == 35567 and vals[4800] == 46254, vals
+    say()
+    round10(n, s_all)
     (HERE / "data" / "exponent_fits.txt").write_text("\n".join(OUT) + "\n")
     return 0
+
+
+# round 10 (VERDICT-N N4): what the holdouts can and cannot show ---------------------------------------------------
+SUMMARY6000 = HERE.parents[1] / "review" / "audit" / "threshold" / "data" / "summary_10_6000.txt"
+
+
+def per_sum_6000(n):
+    """Per-sum counts of all pairs and of primitive pairs for 10 <= s <= 6000, from the third enumeration
+    (review/audit/threshold/enum.c; columns S ntriads nfibres npairs maxfibre adj nonadj primfibres primpairs),
+    asserted against data/per_S.csv for s <= 4800 and against N(6000) = 145679."""
+    al, pr = np.zeros(6001), np.zeros(6001)
+    for line in SUMMARY6000.read_text().split("\n"):
+        if line.strip():
+            v = [int(t) for t in line.split()]
+            al[v[0]], pr[v[0]] = v[3], v[8]
+    assert np.array_equal(al[10:4801], n["all"][10:4801]) and np.array_equal(pr[10:4801], n["primitive"][10:4801])
+    assert int(al.sum()) == 145679, al.sum()
+    return al, pr
+
+
+def poisson_fit_offset(x, y, off):
+    """Poisson MLE of log mu = a + b x + off (off fixed), by Newton's method; returns (a, b, mu)."""
+    X = np.column_stack([np.ones_like(x), x])
+    th = np.array([np.log(max(y.mean(), 1e-9)) - float(np.mean(off)) - 3.0 * x.mean(), 3.0])
+    for _ in range(200):
+        mu = np.exp(X @ th + off)
+        step = np.linalg.solve(X.T @ (X * mu[:, None]), X.T @ (y - mu))
+        th = th + step
+        if np.max(np.abs(step)) < 1e-12:
+            break
+    return th[0], th[1], np.exp(X @ th + off)
+
+
+def deviance(y, mu):
+    t = np.where(y > 0, y * np.log(np.where(y > 0, y, 1) / mu), 0.0)
+    return float(2 * np.sum(t - (y - mu)))
+
+
+def round10(n, s_all):
+    al, pr = per_sum_6000(n)
+    A = np.cumsum(pr)
+    a_vals = {X: int(A[X]) for X in (500, 1000, 2000, 2400, 2700, 3000, 4000, 4800, 5400, 6000)}
+    say("round 10: primitive pairs to 6000 (third enumeration): "
+        + ", ".join(f"A({X}) = {v}" for X, v in a_vals.items())
+        + f"; local exponents 5400: {np.log2(A[5400] / A[2700]):.3f}, 6000: {np.log2(A[6000] / A[3000]):.3f}")
+    assert a_vals[500] == 1328 and a_vals[2400] == 16565 and a_vals[6000] == 63876, a_vals
+    N = np.cumsum(al)
+    say(f"round 10: N(2700) = {int(N[2700])}, N(5400) = {int(N[5400])}, local exponent at 5400 {np.log2(N[5400] / N[2700]):.3f}")
+    assert int(N[5400]) == 123559
+
+    # (a) the family n(s) = c s^b0 (log s)^q, b0 fixed, (c, q) fitted per sum on 600..4800 (Poisson MLE); under this
+    # law N(X) has asymptotic exponent 1 + b0. Deviance on the window and the errors of both forward holdouts.
+    s, y = s_all[600:4801], al[600:4801]
+    s2, y2 = s_all[600:3601], al[600:3601]
+    h1, h2 = np.arange(4801, 6001, dtype=float), np.arange(3601, 4801, dtype=float)
+    act1, act2 = float(al[4801:6001].sum()), float(al[3601:4801].sum())
+    say("round 10: family c s^b0 (log s)^q, (c, q) fitted per sum (Poisson MLE); deviance on 600..4800; "
+        "holdout errors 4801..6000 (fit 600..4800) and 3601..4800 (fit 600..3600)")
+    fam = {}
+    for b0 in (0.0, 0.1, 0.2, 0.3, 0.5):
+        c0, q, mu = poisson_fit_offset(np.log(np.log(s)), y, b0 * np.log(s))
+        dev = deviance(y, mu)
+        p1 = float(np.sum(np.exp(c0 + q * np.log(np.log(h1)) + b0 * np.log(h1))))
+        c2, q2, _ = poisson_fit_offset(np.log(np.log(s2)), y2, b0 * np.log(s2))
+        p2 = float(np.sum(np.exp(c2 + q2 * np.log(np.log(h2)) + b0 * np.log(h2))))
+        fam[b0] = (q, dev, 100 * (p1 / act1 - 1), 100 * (p2 / act2 - 1))
+        say(f"  b0 = {b0:.1f}: q = {q:.2f}, deviance {dev:.1f} on {len(y) - 2} d.f., holdouts {fam[b0][2]:+.2f}% and "
+            f"{fam[b0][3]:+.2f}%")
+    _, beta, mu_p = poisson_fit(np.log(s), y)
+    dev_p = deviance(y, mu_p)
+    say(f"  power law (q = 0): beta = {beta:.3f}, deviance {dev_p:.1f}; deviance / d.f. of the b0 = 0 law: "
+        f"{fam[0.0][1] / (len(y) - 2):.2f}")
+    # b0 = 0 is the law of the note; laws with asymptotic exponent 1.1 to 1.3 fit almost as well
+    assert abs(fam[0.0][0] - 4.49) < 0.01 and abs(fam[0.0][2] - 0.25) < 0.01 and abs(fam[0.0][3] - 0.21) < 0.01
+    assert all(fam[b][1] - fam[0.0][1] < 10 for b in (0.1, 0.2, 0.3)), fam
+    assert all(abs(fam[b][2]) < 1.5 and abs(fam[b][3]) < 1.5 for b in (0.1, 0.2, 0.3)), fam
+    assert fam[0.0][2] < fam[0.1][2] < fam[0.2][2] < fam[0.3][2] < fam[0.5][2], fam
+    assert 5.5 < fam[0.0][1] / (len(y) - 2) < 7.0
+    assert dev_p - fam[0.0][1] > 10
+
+    # (b) the free three-parameter law c s^beta (log s)^q on 600..4800 and on 600..6000
+    for lo, hi in ((600, 4800), (600, 6000)):
+        ss, yy = np.arange(lo, hi + 1, dtype=float), al[lo:hi + 1]
+        X = np.column_stack([np.ones_like(ss), np.log(ss), np.log(np.log(ss))])
+        th = np.array([np.log(yy.mean()) - 4.0 * np.log(np.log(ss)).mean(), 0.0, 4.0])
+        for _ in range(200):
+            mu = np.exp(X @ th)
+            step = np.linalg.solve(X.T @ (X * mu[:, None]), X.T @ (yy - mu))
+            th = th + step
+            if np.max(np.abs(step)) < 1e-12:
+                break
+        say(f"  free law c s^beta (log s)^q on {lo}..{hi}: beta = {th[1]:.2f}, q = {th[2]:.2f}")
+        assert th[1] < 0, th
+
+    # (c) sliding windows of width 2400: per-sum q (all, primitive) and power-law beta (all)
+    say("round 10: sliding windows of width 2400, per sum: q (all pairs), q (primitive pairs), beta (all pairs)")
+    qs, qp, bs = [], [], []
+    for lo in range(600, 3601, 600):
+        hi = lo + 2400
+        ss = np.arange(lo, hi + 1, dtype=float)
+        qs.append(fit_per_s(ss, al[lo:hi + 1]))
+        qp.append(fit_per_s(ss, pr[lo:hi + 1]))
+        bs.append(poisson_fit(np.log(ss), al[lo:hi + 1])[1])
+        say(f"  [{lo}, {hi}]: q = {qs[-1]:.2f}, q_prim = {qp[-1]:.2f}, beta = {bs[-1]:.3f}")
+    assert qs[0] > qs[-1] + 0.25 and qp[0] > qp[-1] + 0.5 and bs[0] > bs[-1] + 0.1, (qs, qp, bs)
+    assert 4.5 < qs[0] < 4.6 and 4.2 < qs[-1] < 4.3 and 3.7 < qp[0] < 3.8 and 3.0 < qp[-1] < 3.2, (qs, qp)
+    assert 0.6 < bs[0] < 0.65 and 0.48 < bs[-1] < 0.52, bs
 
 
 if __name__ == "__main__":

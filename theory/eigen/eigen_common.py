@@ -282,7 +282,10 @@ def theorem_E_constants(A, eps, M, area_lb=None):
     nstar = int(mp.floor(A / mp.pi)) + 4
     kstar = min(nstar, int(M))
     LM = lcm_upto(M)
-    dmin = {1: Fr(1, 2 * LM)}
+    # round 9: the lcm of the orders of two signatures in S(A, M) divides L_M and is at most M^{2 n_*}
+    # (at most 2 n_* orders, each <= M), so delta_1 = 1/(2 min(L_M, M^{2 n_*}))
+    LMeff = min(LM, int(M) ** (2 * nstar))
+    dmin = {1: Fr(1, 2 * LMeff)}
     for k in range(2, kstar + 1):
         dmin[k] = lead_coef(k - 2)
     gamma = min(dmin.values())
@@ -320,7 +323,7 @@ def theorem_E_constants(A, eps, M, area_lb=None):
     check(Lam * tstar >= 1, "1/Lambda <= t*")
     N = int(mp.floor(mp.e * Zb(1 / Lam))) + 1
     delta = min(1 / tstar, Gam / (8 * mp.e * N * tstar))
-    return dict(A=A, eps=eps, M=M, kstar=kstar, nstar=nstar, LM=LM, gamma=gamma, Q=Q, t1=t1, t2=t2,
+    return dict(A=A, eps=eps, M=M, kstar=kstar, nstar=nstar, LM=LM, LMeff=LMeff, gamma=gamma, Q=Q, t1=t1, t2=t2,
                 D=D, K=Kc, y0=y0, t3=t3, tstar=tstar, Gamma=Gam, Bstar_tstar=Bstar(tstar), Lambda=Lam, N=N,
                 delta=delta, Zb_half=Zb(tstar / 2))
 

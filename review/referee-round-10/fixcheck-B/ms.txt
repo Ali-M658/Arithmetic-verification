@@ -1,0 +1,2736 @@
+Finitely many eigenvalues determine the signature
+             of a hyperbolic orbifold
+
+ Palaash Gang1*, Akshaj Agadi2 , Arjun Veluri1 , Jerry Wang3 ,
+           Jeremy Barreto4 , Aarin Chouthaiwale5
+                 1*
+                   Indus International School, Pune, India.
+         2
+            Texas A&M University, College Station, Texas, USA.
+         3
+           University of California, Irvine, Irvine, California, USA.
+        4
+          Lawrence High School, Lawrenceville, New Jersey, USA.
+       5
+         DriveChange Learning and Resource Centre, Pune, India.
+
+
+                 *Corresponding author(s). E-mail(s):
+                 palaash.gang@indusschoolpune.com;
+Contributing authors: a0708@tamu.edu; arjun.v@indusschoolpune.com;
+              jerryiw@uci.edu; jeremy.barreto@ltps.info;
+                    aarinchouthaiwale@gmail.com;
+
+
+                             ORCID iDs:
+P. Gang 0009-0006-7448-9488; A. Agadi 0009-0009-1378-0556; A. Veluri
+    0009-0001-5940-3272; J. Wang 0009-0004-1814-275X; J. Barreto
+     0009-0006-6894-7323; A. Chouthaiwale 0009-0008-3878-7183.
+
+                                      Abstract
+  The Laplace spectrum of a closed orientable hyperbolic 2-orbifold determines its
+  signature, the genus and the orders of its cone points, but a measurement or a
+  computation yields only finitely many eigenvalues, each to some accuracy. We
+  show that this suffices: among orbifolds of area at most A, systole at least ε and
+  cone orders at most M , the first N eigenvalues, each known to within δ and none
+  omitted, determine the signature, with N and δ given by explicit formulas and
+  also computable by a certified procedure that always terminates. The closed-form
+  constants are very large; with the gap between signatures computed over the
+  finite set of signatures and certified in ball arithmetic, the same argument proves
+  that N of order 102 to 104 eigenvalues, each known to within about 6 × 10−4
+  to 2.5 × 10−6 , suffice for the classes of our computed examples. The bounds on
+
+
+                                          1
+      the orders and on the area cannot be dropped. The orbifolds O(2, 3, m) acquire
+      arbitrarily many eigenvalues below any level above 41 , so that at a fixed accuracy
+      a rule valid for orders up to M needs N growing at least like log M/ log log M ;
+      and closed hyperbolic surfaces of systole at least ε occur in infinitely many genera,
+      with their first N eigenvalues in a bounded set. Whether the systole bound is
+      needed is open. An a-posteriori version of the test, run on ten computed spectra,
+      gives consistency checks, not determinations.
+
+      Keywords: Hyperbolic orbifolds, Laplace eigenvalues, Inverse spectral problems, Heat
+      trace, Selberg trace formula, Effective bounds
+
+      MSC Classification: 58J53 (primary); 58J50 , 35P15 , 30F35 , 57R18
+
+
+
+
+1 Introduction
+A drum is heard through its tones, and a closed hyperbolic surface or orbifold through
+the eigenvalues 0 = λ0 < λ1 ≤ λ2 ≤ · · · of its Laplacian. For a closed orientable
+hyperbolic 2-orbifold O, whose singular points are cone points, the whole spectrum
+determines the signature σ (O) = (g ; m1 , . . . , mn ), the genus of the underlying surface
+and the multiset of cone orders [1, Thm 1.1, Prop. 3.3], and at constant curva-
+ture the heat invariants, with the curvature, already determine the cone orders [2,
+Cor. 4.21(iv)], through the heat invariants computed in [2, Thm 4.20]; isospectral orb-
+ifolds of the same signature need not be isometric [3, Thm A]. An experiment or a
+computation, however, delivers finitely many eigenvalues, each with an error. This
+paper asks whether such data determine the signature, and with how many eigenvalues
+and what accuracy.
+    The answer is yes, with explicit numbers, once three quantities are bounded: the
+area, from below the systole (the least length of a closed geodesic), and from above
+the cone orders. Write Sig for the class of closed orientable hyperbolic 2-orbifolds, and,
+for A, ε > 0 and an integer M ≥ 2,
+
+   C (A, ε, M ) = {O ∈ Sig : Area(O) ≤ A, ℓ(O) ≥ ε, all cone orders at most M },
+
+with ℓ(O) the systole; Sig(A, M ) denotes the finite set of hyperbolic signatures of area
+in (0, A] with orders at most M ; Theorem 6.2 compares against all of it, not only
+against the signatures of the area of O.
+
+Theorem 1.1 (Finitely many eigenvalues) For A > 0, ε > 0 and an integer M ≥ 2, the
+numbers N ≥ 1 and δ > 0 of Theorem 6.2, explicit in A, ε and M (they are given in terms
+of an explicit time t∗ and gap Θ∗ : N is of order t−1    ∗  up to a logarithmic factor, and δ =
+Θ∗ /(8eN t∗ )), have the following property. If O ∈ C(A, ε, M ) and λ̃0 , . . . , λ̃N −1 ≥ 0 satisfy
+|λ̃j − λj (O)| ≤ δ, where λ0 ≤ λ1 ≤ . . . are all the eigenvalues of O, counted with multiplicity,
+so that none of the first N is omitted, then σ(O) is the unique signature σ ∈ Sig(A, M ) that
+minimises | j<N e−λ̃j t∗ − Gσ (t∗ )|, where Gσ is the signature term of the trace formula
+              P
+(Section 2) and t∗ the time of Theorem 6.2. In particular two orbifolds of C(A, ε, M ) whose
+
+
+                                                 2
+first N eigenvalues agree to within δ have the same signature. Moreover, at every rational
+time t < t∗ , a certified computation of the gaps between the signature terms over Sig(A, M )
+terminates and yields numbers N and δ with the same property at t (Theorem 6.5).
+
+
+    What is new. Given the heat-invariant results of the companion paper [4] and
+standard estimates, the paper adds three things. (i) The passage from finitely many
+eigenvalues with explicit errors to the signature: a tail bound read off the heat trace
+(Proposition 5.2), a minimum-distance decision rule, and a lower bound for the gap
+between the signature terms, through the integrality of the first heat invariant at
+which two signatures differ (Lemmas 3.3 and 6.1). It gives N and δ in closed form
+(Theorem 6.2) and, more usefully, by a certified procedure that always terminates
+(Theorem 6.5). (ii) Certified instances of moderate size (Proposition 6.6). This is the
+usable statement; its hypothesis is a complete list of the first N eigenvalues, each
+enclosed by its index, which we cannot provide for our examples (Section 7). (iii)
+The necessity of the bound on the orders (Theorem 1.2), with a lower bound for the
+growth of N in M at a fixed accuracy (Corollary 8.5), and of the bound on the area
+(Proposition 8.8). The enveloping remainders (Proposition 2.3), valid at every t > 0
+with a definite sign, come from the companion paper. The count of closed geodesics
+in terms of the area, the systole and the cone orders, with no diameter (Lemma 4.5),
+is a crude auxiliary count: it enters Theorem 6.2 only through log C∗ , and we make no
+claim that it is close to sharp. The closed-form constants of Theorem 6.2 matter only
+to show that explicit constants exist; the usable statement is Proposition 6.6, and the
+test of Section 7 is an illustration. Table 1 sorts the results by status.
+
+   Table 1 The status of the results.
+
+   status                       results
+   proved                       Theorems 1.1, 6.2, 6.5 and 7.1; Theorem 1.2, Corollary 8.5 and
+                                Proposition 8.8 (the order and area bounds are needed); the results
+                                of Sections 2–5 and Propositions 8.2, 8.3 and 8.9
+   computer-assisted proof,     Proposition 6.6 (Tables 4, 5 and B1); the systole lower bounds ℓ of
+   in ball or interval          Table 7
+   arithmetic
+   computed, not proved         the counts of the test (Table 9), Figures 1–3, the completeness of the
+   (floating point, estimated   computed spectra, the enumerations of Remark 6.7(a), the systole
+   eigenvalue errors,           search on O(2, 3, m)
+   completeness supported,
+   not proved)
+   open                         whether the systole bound is needed (Problem 1); the true size of the
+                                least admissible N
+
+
+
+
+    What effectivity adds. Without constants the statement follows from compactness.
+Fix two signatures σ ̸= σ ′ in Sig(A, M ). The orbifolds of signature σ with systole at
+least ε form a compact subset of moduli space, by Mumford’s theorem [5, Cor. 3], which
+Bers extended to Fuchsian groups with elliptic elements [6]; each λj is continuous there
+(nearby orbifolds are related by K -bi-Lipschitz orbifold maps, sending cone points to
+cone points of the same order, with K near 1; in dimension two such a map changes the
+Dirichlet energy by a factor in [K −2 , K 2 ] and the L2 norm by a factor in [K −2 , K 2 ],
+
+
+                                                   3
+so by the min-max principle it changes each λj by a factor in [K −4 , K 4 ]), and two
+orbifolds of different signatures have different spectra [1], [7, Thm 1]. Covering the
+compact product of the two sets by the open sets where some λj differ gives a finite
+N ; for this N the function maxj<N |λj (O) − λj (O′ )| is continuous and positive on
+the compact product, so it has a positive minimum, larger than 2δ for some δ > 0;
+and Sig(A, M ) is finite. This argument gives no value of N or δ , and no way to check
+a given spectrum. Theorem 6.2 gives both numbers as formulas. They are enormous
+(Table 6) because Theorem 6.2 bounds the gap between the signature terms of different
+signatures through their heat invariants (Lemma 6.1), which is valid only at very small
+times, and because it uses worst cases, over the class, of the index and the size of the
+first difference of heat invariants (Remark 6.7); with the gap computed over the finite
+set Sig(A, M ) at a moderate time and certified in ball arithmetic, the same argument
+proves that N of order 102 to 104 eigenvalues, each known to within about 6 × 10−4
+to 2.5 × 10−6 , suffice for the classes of our computed examples (Proposition 6.6), and
+such a computation always terminates (Theorem 6.5). The formulas of Theorem 6.2
+say nothing about the size of the least admissible N , which we do not know.
+    The same mechanism, run at one moderate time on the data, gives an a-posteriori
+test (Theorem 7.1). Let O ∈ Sig have area at most A, systole at least ℓ, at most Cex
+closed geodesics of length at most x (for instance C = C∗ (A, ℓ, M ) of Lemma 4.5 when
+the orders are at most M ), and signature in a finite set S of signatures of area at most
+A, and let λ̃0 , . . . , λ̃N approximate its first N +1 eigenvalues, counted with multiplicity
+and none omitted, with |λ̃j −λj | ≤ ϵj . An explicit error budget EN (t) has the property
+that if, at some t > 0, exactly one σ ∈ S satisfies | j<N e−λ̃j t − Gσ (t)| ≤ EN (t),
+                                                             P
+then σ (O) = σ ; a second criterion, (C2), which implies the first, uses the gaps between
+the Gσ . (Here the test with N uses N + 1 eigenvalues, while N in Theorem 1.1 is the
+number of eigenvalues used.)
+    The test needs an upper bound for the area, a lower bound for the systole, a
+count of the closed geodesics, the completeness of the computed list up to λ̃N , and
+error bounds ϵj . We ran it on computed spectra of O(2, 8, 8), O(3, 3, 12) and eight
+orbifolds of signature (0; 3, 3, 3, 3) (Section 7), with a systole bound from a complete
+enumeration of short group elements, certified in interval arithmetic, and eigenvalue
+errors that are a-posteriori estimates, not enclosures. With the class-level count of
+Lemma 4.5, which uses nothing about the instance beyond the area, the systole bound
+and the order bound, criterion (C1) holds for all ten with N = 24 to 842, for the family
+with order bounds M = 3 and M = 12 and for the triangle orbifolds with M = 12,
+while Theorem 6.2 asks for 4.32 × 104 to 7.44 × 1012 (rounded up); with a diameter
+bound for the instance the counts are 18 to 847 (Table 9). These are consistency
+checks on orbifolds whose signature is known, with estimated errors and lists assumed
+complete, not determinations of unknown signatures.
+    What finite spectral data can detect is limited in three ways that the statements
+make explicit. None of the bounds A, ε, M is read off finitely many eigenvalues:
+Theorem 1.2 shows that no finite part of the spectrum, known to a fixed accuracy,
+bounds the orders, Proposition 8.8 shows the same for the area, and whether one
+bounds the systole is Problem 1. They are hypotheses about the class, as one knows in
+advance what kind of drum is struck. The accuracies are absolute and, in Theorem 6.2,
+
+
+                                              4
+far below any measurement. And the data must contain every eigenvalue up to the last
+one used, with multiplicity: the sum j<N e−λ̃j t does not depend on the order of the
+                                       P
+
+list, but an omitted eigenvalue λ lowers it by e−λt , which no error budget here covers,
+and in our experiments a single omission or duplication can make the test accept a
+wrong signature (Section 7).
+     The proof runs through the heat trace. By the Selberg trace formula the heat
+trace of O is a term Gσ (t) fixed by the signature plus a positive contribution of
+the closed geodesics (Theorem 2.1); the small-t expansion of Gσ has coefficients, the
+heat invariants, that are integer combinations of explicit rationals. At the first heat
+invariant where two signatures differ, the difference is an integer multiple of an explicit
+rational number (Lemma 3.3), and with orders at most M that invariant is the M -th
+one at the latest (Theorem 3.2). Explicit, enveloping remainders for both expansions
+(Proposition 2.3) turn this into a lower bound for |Gσ (t) − Gσ′ (t)| at a small explicit
+time; a count of the closed geodesics in terms of A, ε, M alone (Lemma 4.5), from the
+separation of the cone points and a packing argument, controls them there, and the
+counting function controls the eigenvalues beyond the N -th.
+     The three bounds are not all of the same kind. The method uses each of them, the
+area through the finiteness of Sig(A, M ) and the count of closed geodesics, the systole
+through the closed geodesics; but the bounds on the orders and on the area are also
+needed for the statement itself, while for the systole we do not know.
+
+Theorem 1.2 (High orders behave like cusps) The triangle orbifolds O(2, 3, m), m ≥ 7,
+have area less than π3 and systole at least ℓ2,3 = 0.56206 . . . (defined in Proposition 8.2),
+and λj (O(2, 3, m)) ≤ 14 + π 2 (j + 1)2 /h2m for j ≥ 1, with hm = arccosh 2 sin(π/m)
+                                                                                1          m
+                                                                                     ≥ log 2π .
+                         π
+Consequently, for A ≥ 3 and ε ≤ ℓ2,3 , there are no N and δ, depending only on A and ε,
+such that any two orbifolds of area at most A and systole at least ε whose first N eigenvalues
+agree to within δ have the same signature.
+
+
+    The cone point of order m sits at the tip of a cone of angle 2π/m and radius
+hm , which for large m looks like the end of a cusp, and the eigenvalues below any
+fixed level above 41 multiply, as near the bottom 14 of the continuous spectrum of a
+cusp; Figure 3 shows the computed eigenvalues. The area bound is needed as well. By
+Cheng’s comparison theorem [8, Thm 2.1], the j -th eigenvalue of a closed hyperbolic
+surface of diameter d is at most 41 + 4π 2 j 2 /d2 , and closed hyperbolic surfaces of
+systole at least ε, finite covers of one such surface, occur in infinitely many genera;
+pigeonhole then gives two of different genus whose first N eigenvalues agree to within
+δ (Proposition 8.8). Whether the systole bound is needed we do not know (Problem 1).
+    Relation to prior work. The closest result is the theorem of Buser and Courtois
+[9, (1.1)]: among closed hyperbolic surfaces of genus g ≥ 2 with injectivity radius at
+least ε > 0 there is an integer m(g, ε) such that two surfaces with the same first m
+eigenvalues have all their eigenvalues the same. Its proof uses compactness and gives no
+value of m, and the authors conjecture “that the theorem holds with a constant which
+depends only on g ” [9, pp. 523–524]. Theorem 1.1 is an effective counterpart at the
+level of the signature, for orbifolds, with approximate eigenvalues; Problem 1 below is
+an analogue of their conjecture, in a loose sense. Effectivity is the point: Theorem 6.2
+
+
+                                              5
+turns the compactness argument into a finite procedure that decides the signature from
+finitely many approximate eigenvalues with stated accuracy, in principle; for the classes
+of Table 6 it asks for up to about 4 × 1030 eigenvalues to accuracies down to 10−277 ,
+far beyond any eigenvalue computation, and the usable statement is Proposition 6.6,
+with the test of Section 7 as an illustration. Compactness and finiteness of isospectral
+sets are classical: an isospectral set of closed hyperbolic surfaces is finite [10], and so
+is one of hyperbolic orbisurfaces [11]; isospectral metrics on a surface form a compact
+set [12], and isospectral manifolds under geometric bounds fall into finitely many
+diffeomorphism types [13]. For orbifolds, the whole spectrum together with a lower
+curvature bound allows only finitely many isotropy types and, for isolated singularities,
+bounds the number of singular points [14, Main Thms 1–2], and an isospectral family
+of 2-orbifolds with a lower curvature bound contains only finitely many diffeomorphism
+types, a consequence of the finiteness under lower bounds on curvature and volume
+and an upper bound on the diameter, which in the isospectral setting comes from
+Stanhope’s diameter bound [14, 15]; Theorem 4.4 gives an explicit diameter bound in
+terms of the area, the systole and the orders instead of the spectrum; the orbifolds
+                                             m
+of Theorem 1.2, of diameter at least log 2π     (Proposition 8.2), show that no diameter
+bound in terms of the area and the systole alone exists, while Theorem 4.4 bounds their
+diameters by a power of m. Isospectral orbifolds can have different maximal isotropy
+orders [16], though not in dimension 2 at curvature −1, where the spectrum determines
+the number of cone points of each order [1], [7, Thm 1]; Theorem 1.2 shows that no
+number of eigenvalues known to a fixed accuracy, chosen in terms of the area and the
+systole alone, bounds the orders. The bound on the area cannot be dropped either,
+so that N and δ cannot depend on ε and M alone (Proposition 8.8). Theorem 1.2
+is an instance of elliptic degeneration, in which cone points of growing order become
+cusps: Garbin and Jorgenson prove that along such sequences the eigenvalues below
+1
+4 converge to those of the cusped limitP     [17, Cor. 5.5], as does, at points away from
+the cusps, the local counting function λn ≤T φn (x)2 for T < 14 not an eigenvalue
+of the limit [18, Thm 6.5], while the number of eigenvalues below a fixed level above
+1
+4 grows without bound [17, Thm 5.7] (Proposition 8.3 below gives a lower bound of
+order log m for the family used here); for the Hecke triangle groups GN , which have
+one cusp and elliptic points of orders 2 and N , a family different from the compact
+O(2, 3, m) used here, this accumulation is attributed to Selberg [19, p. 579], as quoted
+in [17, Ex. 5.8], and Judge showed that within a conformal class the eigenvalues depend
+monotonically on the cone angles, with consequences for the Hecke triangle groups
+[20]. The eigenvalue bound of Theorem 1.2 is of the kind that Cheng’s comparison
+theorem gives from the diameter for manifolds [8, Thm 2.1]; Proposition 8.3 proves
+it directly on the cone ball, with explicit constants. What Theorem 1.2 adds is a
+systole bound uniform in m, with an explicit constant (Proposition 8.2), which keeps
+the family in one class C (A, ε, ·); the counterexample then follows by pigeonhole, and
+it gives a lower bound for N in terms of M at a fixed accuracy (Corollary 8.5).
+For pinched geodesics, small eigenvalues vary continuously and converge to those of
+the cusped limit [21], [22, p. 264], and infinitely many eigenvalues accumulate at 41 ,
+indeed cluster at every point of [ 14 , ∞) [23, p. 67], [24], [22]; this is the background of
+Section 8.3. Computed hyperbolic spectra have been checked against the Selberg trace
+
+
+
+                                             6
+formula before: Strohmaier and Uski use the heat trace to check the completeness of
+computed eigenvalue lists of compact surfaces [25, §7], and Booker, Strömbergsson
+and Venkatesh verify computed Maass forms rigorously [26]. The test of Section 7
+applies the same idea to test a signature, and our completeness check follows the idea
+of Strohmaier and Uski; its tail bound is rigorous only given completeness below the
+largest computed eigenvalue, which here is supported, not proved. Finite consistency
+conditions also bound spectra in the other direction: linear programming applied to the
+Selberg trace formula bounds the systole, the first positive eigenvalue and the number
+of small eigenvalues of closed hyperbolic surfaces [27], and bootstrap methods, from the
+consistency of integrals of products of eigenfunctions, bound the eigenvalues of closed
+hyperbolic manifolds [28] and the spectral gaps of hyperbolic surfaces and 2-orbifolds
+[29]. These bound eigenvalues given the topology; here finitely many eigenvalues bound
+the topology. Effective rigidity of another kind is known for arithmetic surfaces: the
+length sets of two incommensurable ones of bounded area differ at a length bounded
+effectively in terms of the area [30]; and for cofinite Fuchsian groups the constant in
+the prime geodesic theorem has an effective bound [31], which depends on the group,
+while Lemma 4.5 counts closed geodesics, more crudely, in terms of A, ε and M alone.
+For the geometric input, Buser’s book bounds the number of closed geodesics of length
+at most L on a closed surface of genus g that are not iterates of very short ones
+by (g − 1)eL+6 , in terms of the genus alone [32, Lemma 6.6.4]; our count of closed
+geodesics (Lemma 4.5) uses instead the separation of the cone points and a packing
+argument, and depends on the area, the systole and the orders. The heat expansion of
+an orbifold is local [33], [34, Thm 4.8] (see also the erratum [35]), at constant curvature
+its coefficients are known in closed form [2, Thm 4.20], and the spectrum determines
+the signature [1], [7, Thm 1]; for Euclidean triangles, a triangle that shares its first N
+Dirichlet eigenvalues with a given one, N depending on the first two, is congruent to
+it [36, Thm 1].
+    Results shared with the companion paper. The companion manuscript How many
+heat invariants determine a hyperbolic orbifold? [4], submitted at the same time,
+studies how many heat invariants determine the signature. Sections 2 and 3 use some
+of its results; Table 2 lists them with their place in that paper, and Appendix A proves
+them, so that this paper is self-contained; apart from the computed spectra, which the
+two papers share (below), no proof here uses anything else from it. Conversely, the
+companion uses from this paper the count of closed geodesics of Lemma 4.5 and the
+certified systole bounds of Section 7.1 [4, Remarks 2.6 and B.6]; no proof of a main
+result of either paper depends on the other. Sections 4–8 are not contained in [4], and
+Lemma 3.3, not stated there, is a direct consequence of [4, Lemmas 2.11 and 3.6]. The
+primary home of each result of Table 2 is the companion paper, where it is stated
+in the place given in the table; the primary home of Lemma 3.3, of Sections 4–8,
+among them Lemma 4.5 and the certified systole bounds, and of Appendix B is this
+paper. The statements below cite their proofs here; this paragraph and Table 2 are
+the pointers to [4].
+    The two triangle orbifolds O(2, 8, 8) and O(3, 3, 12) have the same area π2 and the
+same first two heat invariants, since their orders have the same sum 18 and the same
+reciprocal sum 43 ; such coincidences of sum and reciprocal sum are the subject of the
+
+
+
+                                            7
+   Table 2 Results whose primary home is the companion paper [4], used here, with their
+   place there; each is proved here, in Appendix A or, for Lemma 2.2, in Section 2.
+
+   result                                     here              in [4]
+   trace formula for the heat function        Theorem 2.1       Theorem 2.3, Lemma B.1
+   counting closed geodesics with the diam-   Lemma 2.2         Lemmas 2.4, 2.5
+   eter; the hyperbolic term
+   positivity and monotonicity of ϕk          Section 2         Lemma 2.7
+   enveloping remainders of the cone and      Proposition 2.3   Proposition B.2
+   area terms
+   cone polynomials; the triangular expan-    Section 2         Lemmas 2.9, 2.11
+   sion in the ψk
+   heat data of a signature                   Lemma 3.1         Lemma 3.6
+   separation; bounded orders                 Theorem 3.2       Corollary 3.8, Theorem 3.11(i)
+
+
+
+
+companion note Triples with equal sum and equal reciprocal sum [37], by the same
+authors. The computed spectra of O(2, 8, 8), O(3, 3, 12) and of the family (0; 3, 3, 3, 3)
+are the same computations as those of the companion paper; that paper reports all
+the eigenvalues computed (about 2850 and 5800 per orbifold), and this one uses only
+those in the ranges where completeness is checked, about 2000 and 4400 (Section 7.1).
+    Organisation. Sections 2 and 3 state the heat expansion with explicit remainders
+and the structure of the heat invariants of a signature, and prove the integrality of
+the first difference (Lemma 3.3). Section 4 separates the cone points and counts closed
+geodesics, Section 5 counts eigenvalues, Section 6 proves Theorem 1.1 and gives the
+certified instances, Section 7 gives the test with its inputs and numerical methods,
+and Section 8 shows that the bounds on the orders and on the area are needed and
+discusses the systole. Appendix A proves the results shared with the companion paper,
+and Appendix B lists the enclosures of the certificate of Proposition 6.6.
+
+2 The heat trace and its expansion
+This section and the next state the results shared with the companion paper (Table 2);
+Lemma 2.2 is proved here, and the others in Appendix A.
+
+2.1 Signatures and the trace formula
+Let O ∈ Sig have signatureP σ = (g ; m1 , . . . , mn ), mi ≥ 2. It is hyperbolic exactly
+when s(σ ) = 2g − 2 + i (1 − m1i ) > 0, and then Area(O) = 2πs(σ ) [38, 13.3.4–
+13.3.6], [1, Thm 3.2]. Write O = Γ\H2 with Γ ⊂ P SL(2, R) cocompact, so Γ has no
+                                            2                         2    √
+parabolicR elements. Put ĝt (r) = e−t(1/4+r ) and gt (u) = e−t/4 e−u /4t / 4πt, so that
+ĝt (r) = gt (u)eiru du. For hyperbolic γ ∈ Γ let ℓ(γ ) be its translation length and
+γ = γ0k with γ0 primitive; a closed geodesic   is a hyperbolic conjugacy class, and the
+systole ℓ(O) is the least ℓ(γ ). ZO (t) = j e−λj t is the heat trace.
+                                         P
+
+
+Theorem 2.1 (Trace formula for the heat function;
+                                                Pclassical, reduced to compactly supported
+g in Lemma A.1) For every t > 0, ZO (t) = I(t) + i Emi (t) + Hyp(t), all series and integrals
+
+
+
+
+                                                     8
+converging absolutely, where
+                         Z                                              X ℓ(γ0 ) gt (ℓ(γ))
+                Area(O)
+         I(t) =              r tanh(πr) ĝt (r) dr,          Hyp(t) =                          > 0,
+                   4π      R                                                  2 sinh(ℓ(γ)/2)
+                                                                        [γ]
+                    m−1
+                                               e−2πjr/m ĝt (r)
+                                         Z
+                    X           1
+        Em (t) =                                                dr.
+                          2m sin(πj/m)       R   1 + e−2πr
+                    j=1
+
+
+    This is the Selberg trace formula for cocompact Fuchsian groups with elliptic ele-
+ments [1, eq. (1)], after [39, 40], extended to the heat function by the approximation
+argument of Lemma A.1, which is included only to keep the paper self-contained;
+each nontrivial element of the stabiliser of a cone point is counted once, and Em (t) →
+            2
+              −1
+b0 (m) = m12m    as t ↓ 0. Garbin and Jorgenson state the formula for the heat func-
+                 P the same normalisation [18, Rem. 2.7, (2.8)]. For a signature σ put
+tion directly, with
+Gσ (t) = I(t) + i Emi (t), the part of ZO fixed by σ .
+
+Lemma 2.2 (Counting closed geodesics and the hyperbolic term) Let nO (x) be the number
+of closed geodesics of O (hyperbolic conjugacy classes, not necessarily primitive; a class and
+its inverse are counted separately unless they coincide, as they can when Γ has elements of
+order 2) of length at most x.
+ (i) nO (x) ≤ πex+3 diam / Area(O), with diam the diameter of O.
+(ii) Suppose nO (x) ≤ Cex for all x > 0, and let ℓ > 0 be at most the systole. For 0 < t ≤
+     ℓ2 /(2(1 + ℓ)),
+                                                                     2
+                                               C ℓeℓ/2      2t  e−ℓ /4t
+                     0 < Hyp(t) ≤ BC (ℓ, t) :=          1+         √      ,
+                                               1 − e−ℓ     ℓ−t       4πt
+      and, for fixed t, BC decreases with ℓ on the set of ℓ with t ≤ ℓ2 /(2(1 + ℓ)). For every
+                                         17t  1
+                               2C
+      t > 0, 0 < Hyp(t) ≤ √π(1−e          4 − 2 −ℓ .
+                                  −ℓ ) e
+
+
+
+
+Proof (i) Let F be the Dirichlet domain at a point x̃0 fixed by no nontrivial element; F ⊂
+B̄(x̃0 , diam). Every hyperbolic class has a representative γ whose axis meets F , at ỹ say,
+and d(x̃0 , γ x̃0 ) ≤ 2d(x̃0 , ỹ) + d(ỹ, γ ỹ) ≤ ℓ(γ) + 2 diam. The translates γF with d(x̃0 , γ x̃0 ) ≤
+x + 2 diam have disjoint interiors, area Area(O) each, and lie in B(x̃0 , x + 3 diam), of area
+2π(cosh(x + 3 diam) − 1) ≤ πex+3 diam . (ii) With ℓ(γ0 ) ≤ ℓ(γ), e−t/4 ≤ 1 and 2 sinh(x/2) ≥
+                                                      √                                              2
+ex/2 (1 − e−ℓ ) for x ≥ ℓ, Hyp(t) ≤ ((1 − e−ℓ ) 4πt)−1 [ℓ,∞) ϕ dnO with ϕ(x) = xe−x/2−x /4t ,
+                                                               R
+
+and nO = 0 below ℓ. On the range, (log ϕ)′ = x1 − 12 − 2t
+                                                       x
+                                                          < 0 for x ≥ ℓ, so integrating
+                  R∞                  R∞ x                         R∞          2
+                            ′                   ′
+by parts, ϕ dnO = ℓ nO (−ϕ ) dx ≤ C ℓ e (−ϕ ) dx = C eℓ ϕ(ℓ) + ℓ xex/2−x /4t dx .
+         R                                                                            
+                2                            2
+Since xex/2−x /4t = − x−t
+                      2tx d x/2−x /4t
+                          dx e
+                                           x
+                                      and x−t    ℓ
+                                              ≤ ℓ−t for x ≥ ℓ, the integral is at most
+ 2tℓ ℓ/2−ℓ2 /4t
+ℓ−t e           , which gives BC . The logarithmic derivative of BC in ℓ is − 12 − ( 2t      ℓ
+                                                                                                − 1+ℓ
+                                                                                                    ℓ )−
+  e−ℓ       2t
+1−e−ℓ
+       −  ℓ2 −t2
+                  <  0, the  bracket  being  nonnegative     exactly  on   the range.  For  every  t > 0,
+   −x/2−x2 /4t         −x2 /8t    3x/2−x2 /8t −2x        √ −1/2 9t/2 −2x
+xe               = (xe         )(e           )e
+                                             √
+                                                    ≤ 2 te         e       e     for x ≥ 0 (maxima at
+       √                                    2 t e−1/2 e9t/2 e−t/4 P        −2ℓ(γ)       P        −2ℓ(γ)
+x = 2 t and x = 6t), so Hyp(t) ≤                        √
+                                                                     [γ] e        , and    [γ] e        =
+                                                (1−e−ℓ ) 4πt
+  R∞          −2x             −ℓ
+2 ℓ nO (x)e        dx ≤ 2Ce .                                                                           □
+
+
+                                                      9
+    The range t ≤ ℓ2 /(2(1 + ℓ)) in (ii) is what the monotonicity of BC in ℓ needs;
+the bound itself holds whenever t < ℓ and t(2 − ℓ) < ℓ2 , which is what the proof
+uses ((log ϕ)′ < 0 for x ≥ ℓ, and ℓ > t). Part (i) with C = πe3 diam / Area(O) is the
+count used when a diameter bound for the instance is known (Section 7); Lemma 4.5
+gives a count in terms of the area, the systole and the orders alone, which is the one
+Theorem 6.2 uses.
+
+2.2 The cone and area terms
+                                                    Pm−1
+Write θj = πj/m and, for an integer m ≥ 1, Φm (u) = j=1 (4m sin θj sin(θj −u))−1 =
+            2k
+P
+   k ϕk (m)u , analytic and even in |u| < π/m. Every ϕk (m) is a positive combination
+of the numbers m2n−1 − m−1 , 1 ≤ n ≤ k + 1, hence positive and strictly increasing in
+m > 1 (Lemma A.2). Put
+
+                                                              l
+                          (−1)l pl (m)                  1 X (2k )!
+               bl (m) =                ,    pl (m) =                     m ϕk (m),
+                              m                         4l k ! (l − k )!
+                                                             k=0
+
+                                              k  
+                                       (−1)k X k
+                                                    (−4)l B2l 12 ,
+                                                                
+                                αk =        k
+                                        k! 4     l
+                                             l=0
+                                                                     1      4
+with B2l (x) the Bernoulli polynomials; α0 , . . . , α3 = 1, − 31 , 15 , − 315 .
+
+Proposition 2.3 (Enveloping remainders;       proof in Appendix A) Let K ≥ 0 and t > 0. (a)
+For every integer m ≥ 2, Em (t) − l<K bl (m)tl has the sign (−1)K , and its modulus is at
+                                    P
+
+most |bK (m)| tK ; and |bK (m)| is strictly increasing in m. (b) Area
+                                                                  4π
+                                                                      I(t) − K       k−1
+                                                                            P
+                                                                             k=0 αk t    has
+              K+1                                        K
+the sign (−1)     , and its modulus is at most |αK+1 | t .
+
+                                j−2
+                  P
+    So ZO (t) ∼     j≥1 cj (O )t    as t ↓ 0, with the heat invariants
+
+                                                       n
+                       Area                     Area X
+                c1 =        ,       cj = αj−1       +     bj−2 (mi )          (j ≥ 2),      (1)
+                        4π                       4π   i=1
+
+
+functions cj (σ ) of the signature, and for K ≥ 0 and every t > 0
+
+                          K+1
+                          X                          Area               X             
+               Gσ (t) −         cj (σ ) tj−2 ≤ tK            |αK+1 | +       |bK (mi )| .   (2)
+                          j=1
+                                                        4π               i
+
+
+The polynomial pl is even, with rational coefficients, of degree exactly 2l + 2, with
+pl (1) = 0 and leading coefficient al = |B2l+2 |/(2(l + 1)! (2l + 1)); writing pl (x) =
+Pl+1                        Pl+1
+              2k
+    k=0 al,k x , pl (x)/x =  k=1 al,k ψk (x) with ψk (x) = x
+                                                             2k−1
+                                                                  − x−1 and al,l+1 = al
+(Lemma A.3). This triangular structure is the mechanism of Uçar’s induction for
+polygons [2, Thm 3.40], which gives the orbisurface statement [2, Cor. 4.21(iv)].
+
+
+
+                                                   10
+    Relation to Uçar’s formulas. The coefficients in (1) coincide with Uçar’s closed
+forms at curvature −1: the cone terms bl (m) with the contribution of a cone point
+of order m in [2, Thm 4.20(ii), (4.33)–(4.34), with (4.25)], and αk with [2, (4.35)].
+Both are coefficients of the small-t expansion of the same heat trace, and comparing
+the signature (2; m) with that of a closed surface of genus 2, whose expansions differ
+by the area terms and one cone term, identifies them order by order; we have also
+checked the agreement in exact rational arithmetic for l ≤ 8. What is not in [2] is the
+following: the remainders of Proposition 2.3, valid for every t > 0 with a definite sign,
+and the bound of Theorem 3.2(i), both from the companion paper; and the integrality
+at the first difference, Lemma 3.3, which is new here.
+    A sharper form of (2). By Proposition 2.3, the area remainder in (2) has the sign
+(−1)K+1 and every cone remainder the sign (−1)K . Two real numbers of opposite
+signs satisfy |x + y| ≤ max(|x|, |y| P), so (2) holds with the sum on its right-hand side
+replaced by tK max{ Area4π |α K+1 |,   i |bK (mi )|}. This would improve the constant Q(K )
+of Section 6 by at most a factor 2; we keep the sum, which is all that the proofs need.
+
+3 Heat invariants of a signature
+                                     k
+             P                 P                     P
+Write R =      i 1/mi , Pk =      i mi , Ψk (m) =      i ψk (mi ) and HL (σ ) = (c1 , . . . , cL ).
+
+
+Lemma 3.1 (Heat data of a signature; proof in Appendix A) Let σ = (g; m), σ ′ = (g ′ ; m′ )
+be hyperbolic, with n and n′ cone points, and L ≥ 1. Then HL (σ) = HL (σ ′ ) if and only if
+2g + n − R(m) = 2g ′ + n′ − R(m′ ) and Ψk (m) = Ψk (m′ ) for 1 ≤ k ≤ L − 1. In that case
+d = R(m′ ) − R(m) ∈ Z, and the paddings U = m ⊎ {1}max(d,0) , V = m′ ⊎ {1}max(−d,0)
+satisfy R(U ) = R(V ) and Pj (U ) = Pj (V ) for odd j ≤ 2L − 3.
+
+
+Theorem 3.2 (Separation and bounded orders; proof in Appendix A) (i) Two hyperbolic
+signatures of area A that share c1 , . . . , cL with L ≥ ⌊A/π⌋ + 4 are equal. (ii) Two hyperbolic
+signatures with all cone orders at most M that share c1 , . . . , cM are equal.
+
+
+Lemma 3.3 (Integrality at the first difference) Let σ ̸= σ ′ be hyperbolic signatures with
+orders at most M , k the least index with ck (σ) ̸= ck (σ ′ ), and dk = ck (σ) − ck (σ ′ ).
+ (i) If the areas differ, k = 1 and |d1 | ≥ 1/(2Lσσ′ ), where Lσσ′ is the least common multiple
+     of the orders of σ and σ ′ (Lσσ′ = 1 if neither has a cone point).
+(ii) If the areas are equal, to A say, then 2 ≤ k ≤ min(⌊A/π⌋ + 4, M ) and dk =
+     (−1)k ak−2 (P2k−3 (U ) − P2k−3 (V )), with U, V the paddings of Lemma 3.1 for L = k − 1;
+     the difference of power sums is a nonzero integer, so |dk | ≥ ak−2 .
+
+
+
+Proof (i) c1 = 21 (2g − 2 + n − R) and R ∈ L 1 ′ Z. (ii) The bound on k is Theorem 3.2. Put
+                                             σσ
+l = k − 2. By Lemma 3.1 withPL = k − 1, R(U ) = R(V ) and Ψj (U ) = Ψj (V ) for j ≤ l,
+padding by 1 changing no Cl = i bl (mi ) as pl (1) = 0. The terms αk−1 A/4π cancel, and with
+the triangular expansion of pl (x)/x in the ψk (Section 2), dk = (−1)l j≤l+1 al,j (Ψj (U ) −
+                                                                       P
+
+Ψj (V )) = (−1)l al (P2l+1 (U ) − P2l+1 (V )), using R(U ) = R(V ); this is nonzero as dk ̸= 0.       □
+
+
+
+                                                11
+    For k = 2 the bound |dk | ≥ ak−2 is attained, for instance by (0; 4, 4, 4) and
+                                          1
+(0; 3, 4, 6), of equal area, with d2 = − 12 .
+
+4 Separation of cone points and the count of closed
+  geodesics
+The results used later are the separation of cone points (Lemma 4.2), the area of balls
+(Lemma 4.3) and the count of closed geodesics without the diameter (Lemma 4.5).
+The diameter bound (Theorem 4.4) is used in no proof of a main result; it is kept as
+an explicit bound and for comparison.
+
+4.1 Three facts of plane hyperbolic geometry
+We use the disc model, with cosh d(z, w) = 1 + 2|z − w|2 /((1 − |z|2 )(1 − |w|2 )), the
+upper half-plane, with cosh d(z, w) = 1 + |z − w|2 /(2 Im z Im w), and the hyperboloid
+{x ∈ R1,2 : ⟨x, x⟩ = −1, x0 > 0} with ⟨x, y⟩ = −x0 y0 + x1 y1 + x2 y2 , in which lines
+are the intersections with planes n⊥ , n a unit spacelike normal [41].
+
+Lemma 4.1
+(H1) A rotation by ϕ about q moves a point at distance r from q by d with sinh d2 =
+     sinh r | sin ϕ2 |. A hyperbolic γ moves a point at distance r from its axis by d with
+                       ℓ(γ)
+      sinh d2 = sinh     2 cosh r; in particular by at least ℓ(γ).
+(H2) The product of the reflections in two distinct lines is a rotation by twice their angle about
+     their intersection if they meet, a translation by twice their distance along their common
+     perpendicular if they are ultraparallel, and is parabolic, fixing their common ideal point,
+     if they are asymptotic (in the upper half-plane with that point at ∞ the two reflections
+     are x 7→ 2ci − x̄, and their product is a translation).
+(H3) Let λ be the line through p ̸= q, d = d(p, q), 0 < α, β ≤ π2 , and L1 ∋ p, L3 ∋ q
+     the lines making the angles α, β with the segment [p, q], on the same side of λ. Put
+     X = sin α sin β cosh d − cos α cos β. If X < 1, L1 and L3 meet, on that side, in a point
+     w, and the triangle pqw has angles α, β, θ with cos θ = X; if X > 1 they are ultraparallel
+     at distance h with cosh h = X; if X = 1 they are asymptotic.
+
+
+
+Proof (H1) In the disc, rotate about 0 a point z with |z| = tanh 2r : |z −eiϕ z| = 2 tanh 2r | sin ϕ2 |
+and 1 − |z|2 = cosh−2 2r , so cosh d − 1 = 8 sinh2 2r cosh2 2r sin2 ϕ2 = 2 sinh2 r sin2 ϕ2 , and
+cosh d − 1 = 2 sinh2 d2 . In the half-plane let γ(z) = eL z, with axis iR>0 ; a point z at distance
+r from the axis has |z|/ Im z = cosh r (the distance to the axis is attained along the circle
+|w| = |z|), and cosh d(z, eL z) − 1 = (eL − 1)2 |z|2 /(2eL (Im z)2 ) = 2 sinh2 L          2
+                                                                                   2 cosh r. (H2)
+Let s1 , s2 be the reflections. If the lines meet at p at the angle θ, s2 s1 fixes p, preserves
+orientation, and its differential at p is the product of the linear reflections in two lines at
+the angle θ, a rotation by 2θ; an isometry is determined by its value and differential at one
+point. If they are ultraparallel with common perpendicular µ, meeting them at q1 , q2 , both
+reflections preserve µ and each side of it, and act on µ as the reflections in q1 , q2 ; so s2 s1
+preserves the sides of µ and translates µ by 2d(q1 , q2 ), which determines it as that translation.
+If they are asymptotic, s2 s1 fixes their common ideal point. If s2 s1 z = z for some z ∈ H2 ,
+
+
+                                                  12
+then s1 z = s2 z; were this point different from z, both lines would be the perpendicular
+bisector of the segment from z to it, so z lies on both lines, which do not meet. So s2 s1 has
+no fixed point in H2 . (H3) For two lines with unit normals n, n′ : if they meet at w, then
+n, n′ ∈ Tw = w⊥ , a Euclidean plane, are normal to the lines there, so |⟨n, n′ ⟩| = cos θ′ < 1
+with θ′ the acute angle between them, and if they are oriented outwards from a convex region
+with a vertex at w of interior angle θ, ⟨n, n′ ⟩ = cos(π − θ) = − cos θ. If they are ultraparallel
+with common perpendicular µ(s) = cosh s x + sinh s v meeting them at s = 0, h, then n, n′
+are ±µ′ (0), ±µ′ (h), and |⟨µ′ (0), µ′ (h)⟩| = cosh h > 1. So the asymptotic case is |⟨n, n′ ⟩| = 1.
+Now take p = (1, 0, 0), λ = {x2 = 0}, q = (cosh d, sinh d, 0), the triangle on the side x2 > 0,
+and uq = (sinh d, cosh d, 0) the unit tangent of λ at q. Outward unit normals (away from
+the side x2 > 0 and from q, respectively p) of λ, L1 , L3 are −e2 , n1 = − sin α e1 + cos α e2 ,
+n3 = sin β uq + cos β e2 ; indeed ⟨−e2 , n1 ⟩ = − cos α and ⟨−e2 , n3 ⟩ = − cos β, as the rule
+above requires at p and q. Then ⟨n1 , n3 ⟩ = − sin α sin β cosh d + cos α cos β = −X, and
+X ≥ − cos(α + β) > −1, since 0 < α + β ≤ π. So if X < 1 the lines meet; not on the
+side x2 < 0, where the triangle would have angles π − α and π − β summing to at least
+π; so on the side x2 > 0, with − cos θ = ⟨n1 , n3 ⟩ = −X. The other two cases follow from
+|⟨n1 , n3 ⟩| = |X|.                                                                               □
+
+4.2 The diameter bound
+A point x̃ ∈ H2 with nontrivial stabiliser Γx̃ is elliptic ; Γx̃ is cyclic of order m,
+generated by the rotation by 2π/m about x̃, and its image in O is a cone point of
+order m.
+
+Lemma 4.2 (Cone points are separated) For O ∈ C(A, ε, M ), distinct elliptic points satisfy
+d(p̃, q̃) ≥ d0 (ε, M ) := min{ 2ε , arccosh(1 + π22M 2 )}.
+
+
+
+Proof Let a, b ≤ M be the orders of Γp̃ , Γq̃ , α = π/a, β = π/b, d = d(p̃, q̃), and λ, L1 , L3 , X
+as in (H3), with reflections sλ , s1 , s3 . By (H2) s1 sλ and sλ s3 are rotations about p̃, q̃ by
+2α, 2β, which lie in the cyclic stabilisers (both senses do), so γ = s1 s3 = (s1 sλ )(sλ s3 ) ∈ Γ.
+As Γ has no parabolic element and γ ̸= 1 (L1 ̸= L3 , since the only line through p̃ and q̃ is
+λ, and L1 ̸= λ as α > 0), X ̸= 1 by (H2). If X > 1, γ is hyperbolic with ℓ(γ) = 2h and
+cosh h = X ≤ cosh d, so ε ≤ 2d. If X < 1, γ is a rotation by 2θ about w, so w is elliptic of
+some order c ≤ M and θ = πk/c, 1 ≤ k < c. By (H3)
+
+                                 cos θ + cos(α + β)   2 cos θ+α+β
+                                                               2    cos θ−α−β
+                                                                          2
+                  cosh d − 1 =                      =                         .
+                                      sin α sin β            sin α sin β
+The defect π − α − β − θ = π(abc − bc − ac − kab)/(abc) is positive with integer numerator,
+so at least π/(abc), and cos θ+α+β
+                                2
+                                       1
+                                    ≥ abc by sin x ≥ 2x
+                                                     π . As π/M ≤ θ and π/M ≤ α, β ≤ 2 ,
+                                                                                         π
+                    π         θ−α−β        π      1                     2
+|θ − α − β| ≤ π − M , so cos     2  ≥ sin 2M ≥ M ; with sin α sin β ≤ π /(ab), cosh d − 1 ≥
+   2        2
+π 2 cM
+       ≥  π2 M 2
+                 .                                                                        □
+
+
+Lemma 4.3 (Balls have area bounded below) For O ∈ C(A, ε, M ), r0 = 12 d0 (ε, M ) and ρ1 =
+                   π
+arsinh(sinh r0 sin M ), every ball of radius 2r0 in O has area at least v0 = 2π min{(cosh r0 −
+1)/M, cosh ρ1 − 1}.
+
+
+
+
+                                                13
+Proof If d(ỹ, γ ỹ) ≥ 2r for every γ ∈   / Γỹ , the projection maps Γỹ \B(ỹ, r) injectively onto the
+ball of radius r about the image of ỹ, of area 2π(cosh r − 1)/|Γỹ |. Let x ∈ O. If some cone
+point p has d(x, p) < r0 , the ball of radius 2r0 about x contains the ball of radius r0 about
+p, and for γ ∈ / Γp̃ , γ p̃ ̸= p̃ is elliptic, so d(p̃, γ p̃) ≥ 2r0 (Lemma 4.2). Otherwise Γx̃ = 1; a
+hyperbolic γ moves x̃ by at least ε ≥ 2ρ1 (H1), and an elliptic one is a rotation by 2πj/k,
+k ≤ M , about a point at distance at least r0 , 1 ≤ j < k, and sin πj                  π        π
+                                                                            k ≥ sin k ≥ sin M , so it
+                                                 π
+moves x̃ by at least 2 arsinh(sinh r0 sin M ) = 2ρ1 (H1); and ρ1 ≤ r0 .                               □
+
+
+Theorem 4.4 (Diameter bound) Every O ∈ C(A, ε, M ) has diam O < D(A, ε, M ) :=
+                      2
+4r0 A/v0 ≤ A                  4 10M
+           π max(4M, M ) max( ε , 3 ).
+
+
+
+Proof Let diam O = d(x, y) = ∆ and lift to x̃, ỹ with d(x̃, ỹ) = ∆. The image c of the segment,
+by arclength, satisfies d(c(s), c(s′ )) = |s − s′ |: otherwise d(x, y) < ∆. The points c(4r0 i),
+0 ≤ i ≤ ⌊∆/4r0 ⌋, are 4r0 apart, so the balls of radius 2r0 about them are disjoint, and
+Lemma 4.3 gives (⌊∆/4r0 ⌋ + 1)v0 ≤ A. For the closed form, cosh r − 1 ≥ r2 /2, cosh ρ1 − 1 ≥
+(cosh r0 − 1) sin2 M
+                   π
+                      and sin Mπ
+                                  ≥ M  2
+                                         give v0 ≥ πr02 / max(M, M 2 /4), and arccosh(1 + x) ≥
+                               ε 0.6
+p
+  2x/(1 + x) gives d0 ≥ min( 2 , M ).                                                          □
+
+    Table 3 compares D with computed diameters. The bound grows like AM 3 , and
+like A/ε when ε/2 < arccosh(1+2/(π 2 M 2 )), that is, when the systole term of d0 binds.
+By Proposition 8.2 below some growth in M is necessary; the factor 1/M in v0 is
+intrinsic for balls of radius 2r0 about a cone point, since on O(2, 3, M ) ∈ C ( π3 , ℓ2,3 , M )
+the ball of radius 2r0 = d0 < hM about the cone point of order M is an embedded
+cone of area 2π (cosh 2r0 − 1)/M (Proposition 8.2); we expect the factor 1/M in d0 not
+to be intrinsic, but do not prove it, and do not optimise it. Jørgensen’s inequality [42],
+[41, §5.4] points that way: for rotations f, g by 2π             2π
+                                                          p and q about points at distance d,
+tr[f, g ] − 2 = 4 sin2 πp sin2 πq sinh2 d, so if they generate a non-elementary discrete group,
+4 sin2 πp (1+sin2 πq sinh2 d) ≥ 1, a lower bound for d that grows with the orders once p ≥
+7. It is attained in every (2, 3, p) triangle group with p ≥ 7, by the rotations of orders
+p and 2 about the vertices vp and v2 of the triangle, at distance hp (Proposition 8.2):
+with q = 2 and cosh hp = 1/(2 sin πp ), 4 sin2 πp (1 + sinh2 hp ) = 4 sin2 πp cosh2 hp = 1;
+embedded collars and cone neighbourhoods for cone angles below π are in [43]. We
+have not pursued an order-free separation from it, because C∗ enters Theorem 6.2
+only through log C∗ in t3 , and t1 binds in all but one row of Table 6; it enters the
+test of Section 7 linearly, through the bound H of Theorem 7.1 when C = C∗ , and
+there a better separation could only lower the counts with C∗ of Table 9. Theorem 4.4
+gives a count of closed geodesics through Lemma 2.2(i), with the factor e3D . The same
+lemmas give a count without the diameter.
+
+Lemma 4.5 (Counting closed geodesics without the diameter) Every O ∈ C(A, ε, M ) has
+nO (x) ≤ C∗ ex for all x > 0, with r0 , ρ1 , v0 as in Lemma 4.3 and
+                                                         A M e10r0 +ρ1
+                              C∗ = C∗ (A, ε, M ) =                        .
+                                                       2 v0 (cosh ρ1 − 1)
+
+
+
+
+                                                  14
+Proof Let Y ⊂ O be a maximal set of points at pairwise distance at least 4r0 . The balls of
+radius 2r0 about the points of Y are disjoint, and by Lemma 4.3 each has area at least v0 ,
+so |Y | ≤ A/v0 ; by maximality every point of O is within 4r0 of Y . For y ∈ Y let b(y) be a
+cone point at distance less than r0 from y if there is one, and y otherwise; every point of O
+is within 5r0 of some b(y). Fix lifts b̃. For γ ∈
+                                                / Γb̃ , d(b̃, γ b̃) ≥ 2ρ1 : if b is a cone point, γ b̃ is
+another elliptic point, at distance at least d0 = 2r0 ≥ 2ρ1 (Lemma 4.2); otherwise Γb̃ = 1, a
+hyperbolic γ moves b̃ by at least ε ≥ 2d0 ≥ 2ρ1 and an elliptic one by at least 2ρ1 , as in the
+proof of Lemma 4.3. Hence the orbit points γ b̃ of distinct cosets of Γb̃ are at least 2ρ1 apart,
+the balls of radius ρ1 about them are disjoint, and as |Γb̃ | ≤ M ,
+                                                            cosh(R + ρ1 ) − 1
+                         #{γ ∈ Γ : d(b̃, γ b̃) ≤ R} ≤ M                       .
+                                                               cosh ρ1 − 1
+A closed geodesic of length at most x passes through a point z within 5r0 of some b = b(y); a
+lift z̃ with d(z̃, b̃) ≤ 5r0 lies on the axis of some γ in its class, and d(b̃, γ b̃) ≤ 2d(b̃, z̃) + ℓ(γ) ≤
+                                                                      cosh(x+10r0 +ρ1 )−1
+x+10r0 . Counting such γ at every base point, nO (x) ≤ vA0 M               cosh ρ1 −1        ≤ C∗ ex . □
+
+   For the classes of Table 6, C∗ lies between 4 × 105 and 7 × 1010 , against πe3D /A
+between about 3.4 × 10196 and 2.4 × 1029325 with D of Theorem 4.4; Theorem 6.2
+uses C∗ , and the diameter bound is not needed there. Theorem 4.4 is used in no
+proof of a main result: the finiteness statement of Section 1 rests on Mumford’s and
+Bers’s compactness, and the instances of Section 7 use the proved bound 2 diam P
+with Lemma 2.2(i). It is kept as an explicit bound and for comparison with the lower
+           m
+bound log 2π for diam O(2, 3, m) of Proposition 8.2.
+
+                            Table 3 D(A, ε, M ) of Theorem 4.4, against
+                            computed diameters: O(2, 8, 8) and O(3, 3, 12)
+                            (A = π/2) have diameter 2.448 and 2.158,
+                            and the eight of signature (0; 3, 3, 3, 3) of
+                            Section 7 (A = 4π/3) computed diameters
+                            from 2.29 to 3.88 (Table 7).
+
+                            A        ε     M =3      M = 12        M = 100
+                            π/2      1     56.6      1125          6.37 × 105
+                            4π/3     1     150.9     3001          1.70 × 106
+                            4π/3     0.1   640       3184          1.70 × 106
+                            10π      1     1132      2.25 × 104    1.27 × 107
+
+
+
+
+5 Counting eigenvalues
+Lemma 5.1 (Elementary bounds) (i) Every O ∈ Sig has Area(O) ≥ π/21 and n + 4g ≤
+                                                                 2
+                                                                   −1
+Area(O)/π + 4. (ii) For t > 0 and m ≥ 2, 0 < Em (t) ≤ b0 (m) = m12m   and 0 < I(t) ≤
+ −t/4
+e     Area /4πt.
+
+
+
+Proof (i) With s = Area /2π (the signatures with g = 0, n ≤ 2 and with g = 1, n = 0 are
+not hyperbolic): g ≥ 2 gives s ≥ 2; g = 1 needs n ≥ 1, s ≥ 12 ; g = 0, n ≥ 5 gives s ≥ 21 ;
+
+
+                                                    15
+g = 0, n = 4 has an order at least 3, s ≥ 61 ; and for g = 0, n = 3, p ≤ q ≤ r: p ≥ 3 forces
+              1                                     1                                     1
+r ≥ 4, s ≥ 12   ; p = 2, q = 3 forces r ≥ 7, s ≥ 42   ; p = 2, q = 4 forces r ≥ 5, s ≥ 20    ;
+                          1                                                                 1
+p = 2, q ≥ 5 gives s ≥ 10 . The second statement holds as each cone point adds at least 2
+to s. (ii) Proposition 2.3(a) with K = 0 gives 0 < Em (t) ≤ b0 (m), and 0 < ĝt ≤ e−t/4 and
+0 ≤ r tanh πr ≤ |r| give the bound on I.                                                   □
+
+
+Proposition 5.2 (Counting and tails) For every O, x > 0, Λ > 0 and 0 < s < t: #{j :
+λj ≤ x} ≤ e ZO (1/x) and λj >Λ e−λj t ≤ e−Λ(t−s) ZO (s). If N ≥ e ZO (1/Λ) is an integer,
+                        P
+then λj > Λ for j ≥ N .
+
+
+                           −λj /x
+                                  ≥ e−1 #{λj ≤ x}, and e−λt ≤ e−Λ(t−s) e−λs for λ > Λ.
+                 P
+Proof Z(1/x) ≥      λj ≤x e                                                                               □
+
+   So, for O of area at most P
+                             A, systole ≥ ℓ and n cone points of orders mi , with
+                         A
+nO (x) ≤ Cex , ZO (s) ≤ 4πs + i b0 (mi ) + Hyp(s) for all s, with Hyp(s) bounded by
+Lemma 2.2(ii).
+
+6 Finitely many eigenvalues determine the signature
+Fix A > 0, ε > 0 and M ≥ 2. Put n∗ = ⌊A/π⌋ + 4, k∗ = min(n∗ , M ),
+LM = lcm(1, . . . , M ), δ1 = 1/(2 min(LM , M 2n∗ )), δk = ak−2 for 2 ≤ k ≤ k∗ ,
+γ∗ = mink≤k∗ δk ,
+
+                  A                                           n                   δk     o
+       Q(K ) =       |αK+1 | + n∗ |bK (M )|,          t1 = min 1,        min              ,
+                  4π                                                   1≤k≤k∗ 4 Q(k − 1)
+
+
+and Θ(t) = 12 γ∗ tk∗ −2 .
+
+Lemma 6.1 (The gap) For σ ̸= σ ′ in Sig(A, M ) and 0 < t ≤ t1 , |Gσ (t) − Gσ′ (t)| ≥ Θ(t).
+
+
+
+Proof Let k be the first index of difference, so k ≤ k∗ (Lemma
+                                                             P 3.3). By (2) with K = k − 1,
+n ≤ n∗ (Lemma 5.1) and |bK | increasing in m, |Gσ (t) − j≤k cj (σ)tj−2 | ≤ tk−1 Q(k − 1),
+likewise for σ ′ , and so
+         |Gσ (t) − Gσ′ (t)| ≥ tk−2 |dk | − 2tQ(k − 1) ≥ 21 tk−2 |dk | ≥ 12 δk tk−2 ≥ Θ(t),
+                                                     
+
+since |dk | ≥ δk (Lemma 3.3; the lcm Lσσ′ divides LM and, as σ and σ ′ have at most 2n∗
+orders, each at most M , is at most M 2n∗ ), t ≤ δk /(4Q(k − 1)), t ≤ 1 and k ≤ k∗ .  □
+
+
+Theorem 6.2 (Finitely many eigenvalues determine the signature) With C∗ = C∗ (A, ε, M )
+of Lemma 4.5, put
+                               ε2                                   3C∗ εeε/2
+                   t2 =              ,   p = k∗ − 23 ,      ϖ=              √ ,
+                            2(1 + ε)                              (1 − e−ε ) 4π
+            16ϖ         4         2p                         ε2
+  y0 = 2 log     + p log 2 + p log     ,            t3 =                 ,     t∗ = min(t1 , t2 , t3 ),
+              γ∗        ε           e                      4 max(y0 , 1)
+
+
+                                                 16
+                                    A       M2 − 1                       2      8Z♯ (t∗ /2)
+         Θ∗ = Θ(t∗ ),       Z♯ (s) =   + n∗        + 1,             Λ=      log             ,
+                                   4πs       12M                         t∗        Θ∗
+                                 ♯                              Θ∗
+                             N = e Z (1/Λ) + 1,     δ=                 .
+                                                                8eN t∗
+Let O ∈ C(A, ε, M ) have eigenvalues 0 = λ0 < λ1 ≤ · · · , counted with multiplicity and
+in increasing order, and let λ̃0 , . . . , λ̃N −1 ≥ 0 satisfy |λ̃j − λj | ≤ δ, or, more generally,
+P                  −t∗ min(λ̃j ,λj )
+  j<N |λ̃j − λj |e                   ≤ N δ. Then σ(O) is the unique σ ∈ Sig(A, M ) minimising
+ P       −λ̃j t∗
+| j<N e          − Gσ (t∗ )|.
+
+
+
+Proof Write Z̃ = j<N e−λ̃j t∗ and σ0 = σ(O). By Theorem 2.1, Z̃ − Gσ0 (t∗ ) = Hyp(t∗ ) −
+                P
+
+       −λj t∗ P
+             + j<N (e−λ̃j t∗ −e−λj t∗ ). Hyperbolic term. For 0 < t ≤ t2 , Lemma 2.2(ii) with
+P
+  j≥N e
+                                                                                                 2
+ℓ = ε and the count of Lemma 4.5, and 1 + ε−t2t
+                                                 ≤ 3, give Hyp(t) ≤ B∗ (t) := ϖ t−1/2 e−ε /4t ,
+which increases on (0, t2 ]. With y = ε2 /4t, B∗ (t) ≤ Θ(t)/8 reads e−y y p ≤ 16ϖ γ∗
+                                                                                      (ε2 /4)p ,
+         −y/2 p            p
+and as e      y ≤ (2p/e) it holds for y ≥ y0 , so at t = t∗ . Hence Hyp(s) ≤ Θ∗ /8 ≤ 1
+for s ≤ t∗ . Tail. For s ≤ t∗ , ZO (s) ≤ Z♯ (s) by Lemma 5.1 and the line above. As t∗ ≤
+t1 ≤ 1 gives Θ∗ ≤ 18 , Λt∗ = 2 log(8Z♯ (t∗ /2)/Θ∗ ) ≥ 2 log 64 ≥ 1, so t∗ /2 and 1/Λ are
+                                                                             P       −λj t∗
+at most t∗ , so N > e ZO (1/Λ), and Proposition 5.2 with s = t∗ /2 gives       j≥N e         ≤
+e−Λt∗ /2 Z♯ (t∗ /2) = Θ∗ /8. Perturbation. |e−at −e−bt | ≤ t|a−b|e−t min(a,b) ≤ t|a−b| for a, b ≥ 0
+gives at most t∗ j<N |λ̃j − λj |e−t∗ min(λ̃j ,λj ) ≤ N t∗ δ ≤ Θ∗ /(8e) under either hypothesis.
+                    P
+
+So |Z̃ − Gσ0 (t∗ )| < 38 Θ∗ , while for σ ̸= σ0 Lemma 6.1 gives |Z̃ − Gσ (t∗ )| > Θ∗ − 38 Θ∗ .   □
+
+
+Remark 6.3 (Accuracy and omissions high in the list) The weighted hypothesis allows the j-
+th value to over-estimate λj by up to N δeλj t∗ if the other values are exact (an under-estimate
+is weighted by e−t∗ λ̃j and allows much less): at the top of the list, where eλj t∗ is of the order
+of eΛt∗ , a crude accuracy suffices. The proof also leaves room for a few wrong entries. The
+three errors in it add up to at most 14 Θ∗ + 8e   1
+                                                    Θ∗ , and the conclusion needs less than 12 Θ∗ , so
+                                                1
+it persists under a further error of at most 8 Θ∗ in Z̃. The sum Z̃ does not depend on the order
+of the list. If the list, as a multiset, arises from one satisfying the hypothesis by replacing K
+of its entries by arbitrary values (an eigenvalue omitted and the next one taken at the end of
+the list, a value duplicated, a spurious value), with every replaced entry and every inserted
+value at least Λo , each replacement changes Z̃ by at most e−Λo t∗ ; so the conclusion holds
+when Ke−Λo t∗ ≤ 18 Θ∗ , for instance for one wrong entry above Λo = t−1        ∗ log(8/Θ∗ ). Below
+that level a single omission can change the answer, as the computed examples of Section 7
+show.
+
+
+   The proof uses Lemma 6.1 only for the gap at t∗ , and t1 only through that lemma
+and through t∗ ≤ 1, which gives Θ∗ ≤ 81 and Λt∗ ≥ 1. With Θ ≤ 8 and Λt ≥ 1
+assumed instead, which is all that the proof uses of them, the same argument gives
+the following. (The bound Θ ≤ 8 is what makes Hyp(s) ≤ B∗ (s) ≤ Θ/8 ≤ 1 for s ≤ t,
+which is the term 1 of Z♯ ; it is not a misprint for the 81 of Theorem 6.2.)
+
+Corollary 6.4 (A computed gap) Let 0 < t ≤ t2 and 0 < Θ ≤ 8 be such that |Gσ (t) −
+Gσ′ (t)| ≥ Θ for all σ ̸= σ ′ in Sig(A, M ) at this one time t, and B∗ (t) ≤ Θ/8, where
+
+
+                                                 17
+                     2
+B∗ (t) = ϖt−1/2 e−ε /4t is the bound for the closed geodesics in the proof of Theorem 6.2, and
+define Λ, N and δ by the formulas of Theorem 6.2 with t, Θ in place of t∗ , Θ∗ . If Λt ≥ 1, the
+conclusion of Theorem 6.2 holds with t in place of t∗ .
+
+
+
+Proof The proof of Theorem 6.2, with the hypothesis on the gap in place of Lemma 6.1; B∗
+increases on (0, t2 ], so Hyp(s) ≤ Θ/8 ≤ 1 for s ≤ t.                                  □
+
+    At every rational time below t∗ the hypotheses of Corollary 6.4 can be reached by
+a computation that is guaranteed to stop; this is the computable form of Theorem 6.2.
+
+Theorem 6.5 (A terminating certified procedure) Let A > 0 with A/2π rational, as in
+every example, let ε > 0 be a computable real number and M ≥ 2, let t∗ , Θ(t), Z♯ and
+                   2
+B∗ (t) = ϖt−1/2 e−ε /4t be as in Theorem 6.2 and its proof, and let t be a rational number
+with 0 < t < t∗ .
+ (i) |Gσ (t) − Gσ′ (t)| ≥ Θ(t) for all σ ̸= σ ′ in Sig(A, M ), and B∗ (t) < Θ(t)/8.
+(ii) For k = 1, 2, . . . compute rational numbers qσ , σ ∈ Sig(A, M ), with |qσ − Gσ (t)| ≤ 2−k ,
+     and a rational number bk with B∗ (t) ≤ bk ≤ B∗ (t) + 2−k , put
+                                   n                                      o
+                          Θk = min 1, max Θ(t), min′ |qσ − qσ′ | − 21−k ,
+                                                     σ̸=σ
+
+     and stop at the first k with bk ≤ Θk /8. This procedure stops, and the hypotheses of
+     Corollary 6.4 hold at t with Θ = Θk . Consequently, with Λ = 2t log(8Z♯ (t/2)/Θ), for
+     every integer N > eZ♯ (1/Λ) and every δ with 0 < δ ≤ Θ/(8eN t), the conclusion of
+     Theorem 6.2 holds with t in place of t∗ .
+Every step is a finite computation, and t∗ is a positive computable real number, so that a
+rational t with 0 < t < t∗ can be chosen; so N and δ are computable from A, ε and M by a
+procedure that always terminates.
+
+
+
+Proof (i) As t < t∗ ≤ t1 , Lemma 6.1 gives the bound for the gaps. Put y = ε2 /4t
+and p = k∗ − 32 , positive as k∗ ≥ 2. As t < t∗ ≤ t3 , y > max(y0 , 1) ≥ y0 . As
+                                                                                      γ∗ ε 2 p
+in the proof of Theorem 6.2, B∗ (t) < Θ(t)/8 is equivalent to e−y y p <              16ϖ ( 4 ) , and
+                                                                                    γ∗ ε 2 p
+e−y y p = e−y/2 (e−y/2 y p ) ≤ e−y/2 (2p/e)p < e−y0 /2 (2p/e)p , which equals 16ϖ      ( 4 ) by the
+                                               1                     1
+definition of y0 . (ii) As γ∗ ≤ δ2 = a0 = 12 and t < 1, Θ(t) ≤ 24 , so Θk ≥ Θ(t) for every k; as
+bk → B∗ (t) < Θ(t)/8 by (i), the procedure stops. When it stops, every gap is at least Θ(t), by
+(i), and at least |qσ − qσ′ | − 21−k , so at least Θk ; further 0 < Θk ≤ 1 ≤ 8, B∗ (t) ≤ bk ≤ Θk /8,
+t < t∗ ≤ t2 , and Λt = 2 log(8Z♯ (t/2)/Θk ) ≥ 2 log 8 ≥ 1, as Z♯ ≥ 1. So Corollary 6.4 applies.
+                                                                                             ♯
+Its proof, that of Theorem 6.2, uses of N and δ only that N is an integer with N > eZ (1/Λ),
+so that N ≥ eZO (1/Λ), and that N tδ ≤ Θ/(8e). Every step is a finite computation. Sig(A, M )
+is finite and is enumerated exactly from n + 4g ≤ A/π + 4 (Lemma 5.1), the condition
+s(σ) ≤ A/2π being decided in rational arithmetic as A/2π is rational; Θ(t) is rational; B∗ (t),
+Z♯ and Λ are elementary expressions in t, Θk and the constants of Theorem 6.2, so a ratio-
+nal u with eZ♯ (1/Λ) ≤ u ≤ eZ♯ (1/Λ) + 1 can be computed, and N = ⌊u⌋ + 1 and a rational
+                                                 s(σ)       P
+δ ≤ Θ/(8eN t) can be taken. For the qσ : Gσ (t) = 2 I1 (t)+ i Emi (t), with s(σ) = Area /2π
+                          ∞                        2
+and I1 (t) = e−t/4 /t − 0 h, h(r) = 4re−t(1/4+r ) /(e2πr + 1), as in the certificate below,
+                        R
+
+
+
+
+                                                18
+                                                                              2
+and Em (t) is a finite sum of multiples of R Fj , Fj (r) = e−2θj r−t(1/4+r ) /(1 + e−2πr ).
+                                             R
+
+These integrals have the explicit tail bounds of the certificate below, 0 ≤ h ≤ 1 and
+|h′ (r)| ≤ 2 + 2r(2π + 2tr) for r ≥ 0, and 0 < Fj ≤ 1 and |Fj′ (r)| ≤ (2θj + 2π + 2t|r|)Fj (r);
+so on a bounded interval of length H with these Lipschitz constants L, the midpoint sum
+with n points has error at most LH 2 /4n, and with the exponentials evaluated to a sufficient
+accuracy this gives each qσ .                                                                □
+
+    Since Θk ≥ Θ(t) and Λ decreases as Θ grows, the N of Theorem 6.5 at t is, up to
+the rounding in u, at most that of the formulas of Theorem 6.2 evaluated at t with
+Θ(t); in practice the computed gap is far larger than Θ(t). At a time t ≥ t∗ , where
+the gaps are larger and N smaller, the procedure need not stop; Proposition 6.6 below
+records six runs of the same certification, in ball arithmetic and at such times, that
+did; in them Θ is the certified least gap, rounded down, not Θk of the rule in (ii).
+    Each Gσ (t) is a finite sum of explicit integrals (Theorem 2.1), so the gap is a finite
+computation, and we certified it. For each class of Table 4, Sig(A, M ) was enumerated
+exactly from n + 4g ≤ A/π + 4 (Lemma 5.1), and a time t near the best time of a
+floating-point search was rounded to the decimal number printed in the table; this
+exact rational number enters the computation as a ball that contains it. Every integral
+was enclosed at that t in ball arithmetic, with Arb’s certified integration [44, 45] at 200
+bits (python-flint 0.9.0 with FLINT 3.6.0), with Arb’s default relative and absolute
+tolerances 2−200 and its default limits on the work, which can only abort a computation
+(every ball returned is an enclosure), on a finite interval, and an explicit bound for each
+tail was added to the radius of the ball: the identity term was used in the form I(t) =
+Area −t/4
+                 R∞              2
+              /t− 0 4re−t(1/4+r ) (e2πr +1)−1 dr , from r tanh πr = |r|− 2|r|/(e2π|r| +1),
+                                                   
+  4π e                                         R∞
+integrated over [0, 40] with the tail bound 40 4re−2πr dr, and the j -th elliptic integral
+over [−R1 , R2 ], R2 = ⌊80/2θj ⌋ + 1, R1 = ⌊80/(2π − 2θj )⌋ + 1, with the tail bounds
+e−2θj R2 /2θj and e−(2π−2θj )R1 /(2π − 2θj ), all below 2e−80 . Arb’s integration requires
+the integrand to be holomorphic on the complex balls on which it is evaluated. The
+integrands here are built from the exponential, polynomials and division only, so they
+are meromorphic, with poles only where e2πr + 1 or 1 + e−2πr vanishes (r ∈ i(Z + 21 )),
+and no branch cut; ball evaluation on a ball that meets a pole divides by a ball
+containing 0 and returns a non-finite value, which the integration routine treats as a
+failure of holomorphy, so the requirement is met without further checks. Every pairwise
+difference of the enclosures of the Gσ (t) was decided to be nonzero, and the least of
+their lower ends, rounded down, is Θ. Then C∗ , B∗ (t), t2 , Z♯ and Λ were evaluated in
+ball arithmetic, the inequalities B∗ (t) ≤ Θ/8, t ≤ t2 and Λt ≥ 1 of Corollary 6.4 were
+decided by the balls, N = ⌊eZ♯ (1/Λ)⌋ + 1 was taken only when the ball of eZ♯ (1/Λ)
+lies strictly between two consecutive integers, and δ was rounded down. Table 5 gives,
+for each class, a pair with the least gap and the certified margins; the smallest margin
+is in the third row, B∗ (t) ≤ 0.0180 against Θ/8 = 0.0190. The least gap is attained
+by two pairs in the first class, by two in each class with A = 4π    3 and M = 3, by three
+in the class with A = 2π , and by one in the other two classes. These ties are exact:
+replacing an order common to σ and σ ′ by another changes both areas equally and
+leaves Gσ − Gσ′ unchanged, so (0; 2, 3, 8), (0; 2, 4, 5) has the same gap as (0; 32 , 8),
+(0; 3, 4, 5), and all pairs that differ by {3, 3, 3} against {2, 2, 2, 2} have the same gap.
+                                                4π
+Appendix B lists the enclosures of I1 (t) = Area    I(t) and of Em (t), 2 ≤ m ≤ M , at most
+
+
+                                              19
+   Table 4 Proposition 6.6: at the time t, every gap |Gσ (t) − Gσ′ (t)| over Sig(A, M ) is at
+   least Θ, certified in ball arithmetic, and the first N eigenvalues, each known to within δ,
+   with none omitted, determine the signature in C(A, ε, M ); one wrong entry is tolerated
+   above Λo = t−1 log(8/Θ) (Remark 6.3; rounded up), and the last column is the N of
+   Theorem 6.2 for the same class, rounded up. aeb means a × 10b .
+
+   A       ε         M    |Sig(A, M )|     t                   Θ        N        δ         Λo      N , Thm 6.2
+   π/2  1.8626       8    27               0.025643    0.01588          244      1.16e−4   243   3.40 × 108
+   π/2  1.8626       12   48               0.02482     0.006527         283      4.27e−5   287   6.82 × 109
+   4π/3 2.633915     3    8                0.08524     0.1520           139      5.89e−4   46.5  4.32 × 104
+   4π/3 0.693994     3    8                0.0060028   0.1655           2605     4.86e−4   647   4.32 × 104
+   4π/3 0.693994     12   281              0.0034221   0.001373         7416     2.48e−6   2540  7.44 × 1012
+   2π   0.1          3    12               0.000092402 0.1666           387182   2.14e−4   41900 2.29 × 106
+
+
+
+
+       Table 5 The certificate of Proposition 6.6, one row per class of Table 4: the pair σ, σ ′
+       of signatures with the least certified gap at the time t of that table, a lower bound for
+       that gap, and the bounds, decided in ball arithmetic, for the three inequalities of
+       Corollary 6.4. Lower bounds are decimals strictly below the certified values and upper
+       bounds strictly above them, so that in the first and third rows, where Θ/8 is exactly
+       0.001985 and 0.019, the column Θ/8 shows 0.001984 and 0.01899. Appendix B lists
+       the enclosures from which every gap can be checked by hand.
+
+       A       ε          M     σ               σ′              gap ≥         B∗ (t) ≤     Θ/8 ≥       Λt ≥
+       π/2     1.8626     8     (0; 32 , 8)     (0; 3, 4, 5)    0.01588232    0.00000798   0.001984    17.6
+       π/2     1.8626     12    (0; 2, 4, 10)   (0; 2, 5, 7)    0.006527298   0.0000711    0.0008158   19.6
+       4π/3    2.633915   3     (0; 34 )        (0; 24 , 3)     0.1520292     0.0180       0.01899     12.5
+       4π/3    0.693994   3     (0; 34 )        (0; 24 , 3)     0.1655107     0.0168       0.02068     17.2
+       4π/3    0.693994   12    (0; 4, 82 )     (0; 52 , 10)    0.001373851   0.000141     0.0001716   27.9
+       2π      0.1        3     (0; 22 , 33 )   (0; 26 )        0.1666487     0.0140       0.02082     26.3
+
+
+
+
+twelve numbers per class, from which every Gσ (t) = s(σ)
+                                                                  P
+                                                       2 I1 (t) +   i Emi (t), every gap
+and the inequalities of Table 5 can be checked by hand or with any interval package.
+The program certified gap.py of the code and data deposit carries out these steps
+and asserts each of them, including that the decimals of Appendix B alone give every
+gap at least Θ; it runs in less than a minute. This proves the following.
+
+Proposition 6.6 (Certified instances) For each class C(A, ε, M ) of Table 4, the hypotheses
+of Corollary 6.4 hold at the stated t with the stated Θ. Hence, for every O in the class, the
+first N eigenvalues, each known to within δ, or with the weighted accuracy of Theorem 6.2,
+with none of them omitted (or with omissions only as in Remark 6.3, with t and Θ of the
+table in place of t∗ and Θ∗ , and Λo as in the table), determine the signature of O, with N
+and δ as in the table.
+
+
+   So N = 244 and 283 suffice for A = π2 , ε = 1.8626, M = 8, 12 (against 3.40 × 108
+and 6.82 × 109 in Table 6), N = 139 and 2605 for A = 4π    3 , M = 3, ε = 2.633915,
+0.693994 (against 4.32 × 104 ), N = 7416 for A = 4π
+                                                  3 , ε = 0.693994, M = 12 (against
+7.44 × 1012 ), and N = 3.9 × 105 for A = 2π , ε = 0.1, M = 3 (against 2.29 × 106 ),
+                                                                      2
+where the small systole forces a small time t through the factor e−ε /4t of B∗ (t),
+
+
+                                                           20
+     Table 6 The constants of Theorem 6.2, with t∗ = min(t1 , t2 , t3 ); the last column
+     names the binding constraint. aeb means a × 10b ; N is rounded up, to three significant
+     digits, and Θ∗ and δ down, and C∗ , t1 , t3 and Λ are rounded to the nearest unit of the
+     last digit (Table 7 rounds C∗ up).
+
+     A      ε        M k∗ C∗            t1        t3        Θ∗         Λ        N         δ          binds
+     π/2    1.8626   8    4    1.3e8    1.1e−7    1.3e−2    2.5e−18    1.0e9    3.40e8    3.0e−21    t1
+     π/2    1.8626   12   4    3.5e9    6.8e−9    1.1e−2    4.2e−22    2.0e10   6.82e9    4.1e−25    t1
+     4π/3   2.6339   3    3    4.0e5    9.3e−4    3.8e−2    1.2e−6     4.8e4    4.32e4    1.4e−9     t1
+     4π/3   0.6939   3    3    4.0e5    9.3e−4    2.4e−3    1.2e−6     4.8e4    4.32e4    1.4e−9     t1
+     4π/3   0.6939   12   5    9.5e9    2.7e−11   1.3e−3    1.7e−37    8.2e12   7.44e12   4.0e−41    t1
+     2π     0.1      3    3    8.1e7    7.8e−4    3.5e−5    4.8e−8     1.7e6    2.29e6    2.8e−11    t3
+     10π    1        3    3    3.0e6    3.3e−4    4.7e−3    4.5e−7     1.6e5    1.09e6    5.8e−11    t1
+     10π    1        12   12   7.1e10   2.5e−27   1.6e−3    1.7e−272   5.5e29   3.76e30   8.6e−278   t1
+
+
+
+
+and with it a large N . Part of each N is an artefact of the count of Proposition 5.2:
+eZ(1/x) exceeds Weyl’s law Ax/4π by about the factor e, and in the rows of Table 4
+N is between 2.72 and 2.86 times the Weyl count AΛ/4π at the level Λ; Remark 6.7
+lists further gains. The decision rule of Proposition 6.6 needs Gσ (t) only to within a
+small fraction of Θ, say Θ/16, as in the next paragraph; the decimals of Appendix B
+give every Gσ (t) to within the error stated there, at most 6 × 10−6 in every row, and
+in each row this error, that row’s own, is less than 10−3 of that row’s Θ/16, so the
+rule as certified can be evaluated from them. In the companion paper, heat invariants
+are recovered from finitely many values of the heat trace with a proved error under
+the same a-priori bounds [4, Lemma B.5]; Theorem 6.2 replaces values of the trace
+by eigenvalues, which needs the spectral tail of Section 5, and decides the signature
+directly instead of recovering coefficients.
+    The decision rule needs Gσ (t∗ ) only to within a fraction of Θ∗ , say Θ∗ /16, which
+leaves  the margin of the proof intact; by (2) this is achieved by the truncated expansion
+                  j−2
+                       for any K with tK
+P
+   j≤K+1 cj (σ )t∗                       ∗ Q(K ) ≤ Θ∗ /16. We do not prove that such a
+K exists for every class: tK ∗ Q ( K ) decreases only while K is below about (π/M )2 /t∗ ,
+and its minimum is not compared with Θ∗ /16 here. The rule does not depend on it,
+since Gσ (t∗ ) is a finite sum of explicit integrals (Theorem 2.1) that can be evaluated
+to within Θ∗ /16 by quadrature with a rigorous error bound. A rational t ≤ t∗ may
+replace t∗ if Θ∗ , Λ, N and δ are recomputed at t, and the rule is then computable
+to any prescribed accuracy; evaluating it costs a number of digits that grows with
+log(1/Θ∗ ), while the dominant cost, computing N eigenvalues to accuracy δ , is out of
+reach for the classes of Table 6; e−λ̃j t is not rational, so it is not a computation in
+exact rational arithmetic.
+    Taking λ̃j = λj (O′ ) gives the last statement of Theorem 1.1: orbifolds of C (A, ε, M )
+whose first N eigenvalues agree to within δ have the same signature. The data must
+be the first N eigenvalues, with multiplicity and none omitted; an approximation that
+misses one eigenvalue shifts every later index, and the theorem says nothing about it.
+    How large are N and δ. Table 6 gives them. Its values of ε are systole lower bounds
+of the examples of Section 7: 1.8626 is that of O(3, 3, 12), the smaller systole of the two
+triangle orbifolds, so that with M = 12 the class contains both (the row with M = 8
+shows the effect of the order bound at the same area and systole; it contains O(2, 8, 8)
+
+
+                                                       21
+but not O(3, 3, 12)), and 2.6339 and 0.6939 are those of the family members with
+ϑ = 0 and ϑ = 2.8. Two constraints compete for t∗ . One is the divergence of the cone
+expansion, through t1 = min{1, mink δk /(4Q(k − 1))}, the least possible first difference
+against the largest possible next term; |bK (M )| grows like K −1/2 K ! (M/π )2K up to
+a constant factor, since ΦM has simple poles at ±π/M (proved in the companion
+paper [4, Lemma B.3], not here; it serves only to explain the size of t1 and is used in
+no proof). The other is the closed geodesics, through t3 ≈ ε2 /(4y0 ) with y0 of order
+log C∗ , which keeps them below the gap. With the count of Lemma 4.5, t1 binds in
+every row of Table 6 except the one with ε = 0.1. The bound k∗ ≤ M of Theorem 3.2
+matters: for M = 3 it lowers k∗ from ⌊A/π⌋ + 4 to 3, and at A = 10π it changes N
+                                                                            ♯
+                                                                 eA
+from about 4 × 1018 to 1.09 × 106 . Once t∗ is fixed, N ≈ 2πt       ∗
+                                                                      log 8Z
+                                                                          Θ∗ grows like 1/t∗
+and δ like tk∗∗ −2 , up to logarithms; as ε → 0 with A, M fixed, t3 binds, for A = 4π 3 and
+M = 3 from ε = 0.44 down, and from ε = 0.42 on N grows by a factor per halving of ε
+that falls from 5.24 to below 4.7 over seven halvings, heuristically towards 4, since C∗
+is of order ε−4 , so roughly like ε−2 (log 1ε )2 (observations on our formulas, not proved
+asymptotics, and not properties of the problem). We do not know the true order of
+the least admissible N .
+    Figure 1 shows the mechanism on the six signatures of area π2 with orders at most
+12, for σ0 = (0; 2, 8, 8). The grey curves are |Gσ0 (t)−Gσ (t)| for the five competitors, the
+                                                                25
+darkest being (0; 3, 3, 12), whose difference starts at d3 t = 12  t; the dashed curve is the
+bound of Lemma 2.2 on the closed geodesics, with the systole lower bound of Table 7
+and the count of Lemma 2.2(i) with the diameter bound 2 diam P of Section 7.1; and
+the dotted curves are the tail and perturbation terms of Theorem 7.1 with N = 21
+and N = 100 (the tail starting at λ̃21 , respectively λ̃100 ), with the infimum over s
+taken over s = kt/20, k = 1, . . . , 19. Finitely many eigenvalues resolve the signatures
+at times where half the nearest gap exceeds the sum of the closed-geodesic bound and
+the tail-and-perturbation term: for N = 21, at the times 0.050 and 0.056 of the figure’s
+grid of 61 log-spaced times in [10−3 , 1] (shaded); N = 21 is the value drawn, and (C2)
+holds already with N = 20 (Table 9), at t ≈ 0.056.
+
+Remark 6.7 (Sharper constants) The constants of Theorem 6.2 are uniform over the class
+and are not optimised. Their size is due in part to the small times at which the heat invariants
+control the gap, and in part to the a-priori data k∗ and γ∗ , which are worst cases; the following
+gains are available. (a) The separations δk and the index k∗ are worst cases over Sig(A, M ):
+in every row of Table 6 the minimum defining t1 is attained at k = k∗ , while in the classes we
+enumerated exhaustively (A ≤ 4π with M ≤ 10, A ≤ 2π with M ≤ 30, A ≤ 6π with M ≤ 6;
+a computer enumeration of the code deposit, which also checks Lemma 6.1 on these classes,
+an observation and not a theorem) no two signatures first differ beyond k = 3, which fails
+at larger area and order: (0; 2, 2, 2, 2, 77 ) and (0; 46 , 84 ), of area 12π, share their first three
+heat invariants and differ at the fourth; δ1 is far below the least nonzero first difference in a
+given finite Sig(A, M ). Both can be computed exactly over Sig(A, M ), in rational arithmetic
+from (1), and the proof of Lemma 6.1 applies with them in place of k∗ and δk : for A = π2
+and M = 12 the largest first-difference index is 3, against k∗ = 4, the least first differences at
+                                                                 −9
+                  1
+k = 1, 2, 3 are 2640   1
+                     , 12 and 25
+                              12 , and t1 rises from 6.8 × 10        to 2.4 × 10−5 . Further, Θ(t) may
+                                k−2
+keep the individual terms δk t       instead of combining the least δk with the highest power
+of t. Corollary 6.4 and Theorem 6.5 go further and use the gap itself; Proposition 6.6 is this
+
+
+                                                 22
+                         10 0
+
+
+
+    jG¾0 (t) ¡ G¾ (t)j
+                  10 ¡2
+
+
+
+                  10 ¡4
+
+
+
+                  10 ¡6
+                      0.001            0.01                      0.1                        1
+                                                     t
+
+Fig. 1 The gaps between the signature term of O(2, 8, 8) and those of its five competitors, with the
+closed-geodesic bound and the tail-and-perturbation terms for N = 21 and N = 100. Where half the
+nearest gap exceeds their sum (shaded for N = 21, on the coarse s-grid of the figure), finitely many
+eigenvalues single out the signature.
+
+
+class-exact route. (b) In the proof, the hyperbolic term is nonnegative and the spectral tail
+enters with the opposite sign, so their sum may be replaced by their maximum, which gains
+at most a factor 2 in the margin. (c) In Theorem 7.1, closed geodesics of length at most L
+that have been enumerated may be summed exactly, and the count of Lemma 2.2 used only
+for lengths above L; for the examples of Section 7, where all closed geodesics of length at most
+                                     2           2
+4 are enumerated, this replaces e−ℓ /4t by e−L /4t for the remaining classes. (d) In the tail
+of the proof of Theorem 6.2, the choice s = t∗ /2 in Proposition 5.2 may be replaced by the
+                                                                    2t
+infimum over s ∈ (0, t∗ ), as in Theorem 7.1, and the factor 1 + ε−t   of Lemma 2.2, bounded
+by 3 in B∗ , may be kept (it also increases with t); both allow a smaller N , the first directly
+and the second through a larger admissible time, as in the third row of Table 5, where B∗ (t)
+is close to Θ/8. We have not used these improvements.
+
+
+Remark 6.8 (Other test functions) The heat function is not the only possible test function.
+If the geodesic-side function g is supported in (−ε, ε), that is, if the spectral function h =
+ĝ has Fourier transform supported below the systole, the trace formula for a member of
+C(A, ε, M ) has no geodesic term, since every closed geodesic has length at least ε, and the
+constraint t3 of Theorem 6.2 disappears. Two inputs remain. The identity and cone terms of
+the signatures in Sig(A, M ) must be separated quantitatively, which
+                                                                  P for the heat function is
+Lemma 6.1, through the heat invariants. And the spectral side j h(rj ) must be truncated
+at the N th eigenvalue with a bound for the rest; such a bound needs a count of eigenvalues.
+We take it from the heat trace at an earlier time (Proposition 5.2), and that count involves
+the closed geodesics (Lemma 2.2); but a count need not: the functions ηT of the proof
+of Lemma A.1, whose geodesic-side functions are supported below the systole, count the
+eigenvalues in windows with no geodesic term, and made explicit they would give a Weyl-
+type bound depending only on the area, the cone orders and the systole. That route would
+
+
+
+                                                23
+remove t3 and Lemma 4.5 from the argument, but it needs an explicit treatment of the small
+eigenvalues and of the separation of the identity and cone terms for a compactly supported g;
+we have not pursued it, and we keep the heat function because it gives both inputs explicitly.
+
+
+7 An a-posteriori test on computed spectra: an
+  illustration, not a proof
+The constants of Theorem 6.2 are worst cases over a class. Run on given data at
+one moderate time, the same mechanism gives a test. Its applications below are illus-
+trations on orbifolds of known signature, with estimated eigenvalue errors and lists
+assumed complete; none of them is a proved determination.
+
+Theorem 7.1 (A-posteriori test) Let O ∈ Sig have area at most A, systole at least ℓ,
+nO (x) ≤ Cex for x > 0 (Lemma 2.2(i) with a diameter bound ∆, C = πe3∆ / Area(O),
+                                                   π
+with Area(O) replaced by a lower bound such as 21      when it is not known, or Lemma 4.5,
+C = C∗ (A, ℓ, M ) when the orders of O are at most M ), and signature in a finite set S of
+hyperbolic signatures of area at most AP
+                                       (for instance those of area Area(O), when it is known,
+or all of Sig(A, M )); put β = maxσ∈S i b0 (mi ) and let H(s) be the bound of Lemma 2.2(ii)
+for Hyp(s) with ℓ and C: the first bound for s ≤ ℓ2 /(2(1 + ℓ)) and the bound for every t > 0
+otherwise. Let λ0 ≤ λ1 ≤ . . . be the eigenvalues of O, counted with multiplicity, and let
+λ̃j ≥ 0 and ϵj ≥ 0 satisfy |λ̃j − λj | ≤ ϵj for j ≤ N ; in particular none of λ0 , . . . , λN is
+omitted. For t > 0 put
+                                            A               
+    EN (t) = H(t) + inf e−(λ̃N −ϵN )(t−s)                              ϵj e−t max(λ̃j −ϵj ,0) .
+                                                                   X
+                                                 + β + H(s) + t
+                      0<s<t                  4πs
+                                                                     j<N
+         P     −λ̃j t
+Then |    j<N e       − Gσ(O) (t)| ≤ EN (t) for every t > 0. Hence σ(O) = σ if, at some t,
+either
+                                         P      −λ̃j t
+(C1) σ is the only element of S with |     j<N e       − Gσ (t)| ≤ EN (t), or
+(C2) σ satisfies this inequality and EN (t) is less than half the distance from Gσ (t) to the
+     nearest Gσ′ (t), σ ′ ∈ S \ {σ}.
+
+
+
+Proof As in the proof of Theorem 6.2: the hyperbolic term is at most H(t); for 0 < s < t the
+tail j≥N e−λj t is at most e−λN (t−s) ZO (s), with λN ≥ λ̃N −ϵN and ZO (s) ≤ 4πs     A
+    P
+                                                                                       +β +H(s)
+                                                          −t max(λ̃j −ϵj ,0)        −at
+                                                                                        − e−bt | ≤
+                                                P
+(Lemma 5.1); and the perturbation is at most t j<N ϵj e                      , by |e
+t|a − b|e−t min(a,b) for a, b ≥ 0 and min(λj , λ̃j ) ≥ max(λ̃j − ϵj , 0). Under (C1) the true
+signature passes, so it is σ; (C2) implies (C1).                                           □
+
+    Criterion (C2) is the margin used in the proof of Theorem 6.2; (C1) is the weaker
+criterion; it uses only the inequality | j<N e−λ̃j t −Gσ(O) (t)| ≤ EN (t) of Theorem 7.1.
+                                        P
+Since Hyp and the tail are nonnegative, the acceptance region could be taken one-
+sided, −(tail + perturbation) ≤ j<N e−λ̃j t − Gσ (t) ≤ H(t) + perturbation, which
+                                    P
+would lower the counts; we keep the symmetric form. The test has five inputs, and its
+conclusion is only as good as they are.
+
+
+                                               24
+  (i) The area. The test needs only an upper bound A: with S = Sig(A, M ) and
+      C = C∗ (A, ℓ, M ) it uses nothing else about the area (the second-to-last column of
+      Table 9); with S the signatures of a known exact area it decides among those. In
+      our examples the signature is known by construction, so they are demonstrations
+      of the test, not determinations of unknown orbifolds.
+ (ii) A lower bound ℓ for the systole. Ours come from a complete enumeration of the
+      short closed geodesics, certified in interval arithmetic (Section 7.1).
+(iii) A count of the closed geodesics. The class-level count C∗ (A, ℓ, M ) of Lemma 4.5
+      needs nothing beyond the area, the systole bound and the order bound; an
+      instance-level count comes from a diameter bound, and ours, 2 diam P for the
+      double of a convex polygon P , are proved bounds.
+(iv) Completeness: the computed list contains every eigenvalue up to λ̃N , with
+      multiplicity. The test presupposes a complete list. Deleting or duplicating one
+      eigenvalue shifts every later index and can make the test accept a wrong signature:
+      for O(2, 8, 8) and O(3, 3, 12), deleting or duplicating one of λ̃1 , λ̃2 , λ̃3 , λ̃5 , λ̃8 , λ̃12
+      makes (C1), with the instance’s diameter bound and at the first N at which it
+      singles out a signature, conclude a wrong one in 19 of these 24 cases, mostly at
+      a smaller N than the true count, so a user who raises N until (C1) holds would
+      stop at the wrong answer. Continuing the scan detects every one of the 24 cor-
+      ruptions without using the signature: each corrupted list reaches some (N, t) at
+      which no signature of S passes, which Theorem 7.1 excludes for a correct, com-
+      plete list. So the protocol that accepts σ only if some signature passes at every
+      (N, t) of the trusted range and σ is the only signature ever singled out rejects all
+      24 lists, and accepts the true signature on the ten computed spectra; this proto-
+      col is empirical, tested on these 24 corruptions only, and not a proved criterion.
+      Our completeness evidence (Section 7.1) is not a proof.
+ (v) The errors ϵj . Ours are a-posteriori estimates, the difference between two dis-
+      cretisations, and not enclosures. The counts are insensitive to them: replacing ϵj
+      by max(ϵj , rλ̃j ) leaves the counts 18 and 25 of the triangle orbifolds unchanged
+      for r ≤ 10−3 , and for r = 10−2 they become 21 and 43.
+
+So what the computations below establish is that the criterion of Theorem 7.1 holds
+with the estimated errors, for lists assumed complete. A rigorous decision would need
+guaranteed upper and lower eigenvalue bounds, a proof of completeness independent
+of the signature, a validated evaluation of Gσ (t) and outward rounding in EN . For a
+conforming Galerkin discretisation of the exact domain, the inertia of the factorisation
+K − sM at each window boundary counts the discrete eigenvalues below s exactly
+(Sylvester’s law of inertia), and index-wise lower bounds, for instance of Crouzeix–
+Raviart type [46, 47], together with the conforming upper bounds would enclose each
+λj by its index; completeness would then follow from the enclosures. We have not done
+this. How far such a rigorous instance is depends on which hypothesis of Proposition 6.6
+it is to meet. For the class of the triangle orbifolds (the second row of Table 4, N = 283,
+t = 0.02482), the uniform hypothesis asks for the first 283 eigenvalues to within
+δ = 4.27 × 10−5 , about 2 × 10−8 relative at λ282 ≈ 2.25 × 103 . The weighted hypothesis
+asks only that j<N |λ̃j − λj |e−t min(λ̃j ,λj ) ≤ N δ = 0.0121. With a relative error r
+                 P
+
+
+
+                                                  25
+   Table 7 Inputs of the test for the ten examples: exact area, the lower bound ℓ for the
+   systole (certified in interval arithmetic), the proved diameter bound 2 diam P (rounded up)
+   and the computed diameter, the class-level count constant C∗ (A, ℓ, M ) of Lemma 4.5,
+   rounded up (– where an order exceeds M ), and the complete range: the eigenvalues λ ≤ λc ,
+   Nc of them, of the n computed; for the family the trace test alone covers λ < 9.8 × 103 , and
+   the range above rests on the agreement of the eigenvalue counts of three discretisations.
+
+   orbifold       area   ℓ          2 diam P   diam     C∗ , M = 3   C∗ , M = 12   λc      Nc of n
+   O(2, 8, 8)     π/2    2.256767   4.897      2.448    –            3.6 × 109     16000   2002 of 2845
+   O(3, 3, 12)    π/2    1.862604   4.317      2.158    –            3.6 × 109     16000   2001 of 2854
+   Oϑ , ϑ = 0.0   4π/3   2.633915   4.585      2.292    4.1 × 105    9.5 × 109     13360   4451 of 5815
+   Oϑ , ϑ = 0.4   4π/3   2.202695   4.672      2.336    4.1 × 105    9.5 × 109     13341   4448 of 5807
+   Oϑ , ϑ = 0.8   4π/3   1.831302   4.922      2.461    4.1 × 105    9.5 × 109     13315   4437 of 5809
+   Oϑ , ϑ = 1.2   4π/3   1.515737   5.314      2.657    4.1 × 105    9.5 × 109     13274   4424 of 5810
+   Oϑ , ϑ = 1.6   4π/3   1.250428   5.821      2.910    4.1 × 105    9.5 × 109     13266   4424 of 5806
+   Oϑ , ϑ = 2.0   4π/3   1.029128   6.413      3.206    4.1 × 105    9.5 × 109     13199   4400 of 5807
+   Oϑ , ϑ = 2.4   4π/3   0.845593   7.069      3.534    4.1 × 105    9.5 × 109     13155   4387 of 5811
+   Oϑ , ϑ = 2.8   4π/3   0.693994   7.770      3.885    4.1 × 105    9.5 × 109     13076   4357 of 5805
+
+
+
+
+       P eigenvalue and Weyl’s law λj ≈ 4πj/ Area = 8j , the left-hand side is at
+in every
+most j<N rλj e−t(1−r)λj , which is below N δ for r up to about 6 × 10−5 ; with our
+computed eigenvalues in place of Weyl’s law it is 5.9 × 10−5 for both triangle orbifolds,
+and the eigenvalues above 500 contribute less than 10−4 of the sum, so above that
+level an enclosure needs to fix little more than the index. So a rigorous instance needs
+index-wise enclosures with a relative accuracy of about 6 × 10−5 in the low part of
+the spectrum, three orders of magnitude weaker than the uniform requirement. The
+second estimate of our errors, |λj (0.05, 10) − λj (0.07, 10)| (described below), is at
+most 1.2 × 10−8 relative for the first 500 eigenvalues, and the counts 18 and 25 of
+the criterion (C1) with ∆ for the triangle orbifolds survive errors of 10−3 relative
+(item (v)). What is missing is not accuracy but guaranteed enclosures, by index, for
+a weighted Laplacian on a polygon with geodesic sides, and a proof of completeness
+independent of the signature; we expect such an instance to be within reach of the
+methods cited, but it is new numerical analysis and we have not carried it out.
+
+7.1 Numerical methods
+Examples. O(2, 8, 8) and O(3, 3, 12) are doubles of hyperbolic triangles; the eight
+orbifolds Oϑ of signature (0; 3, 3, 3, 3), ϑ = 0, 0.4, . . . , 2.8, are doubles of geodesic
+quadrilaterals P with all angles π3 and two mirror symmetries, with a, b the distances
+from the centre to two adjacent sides, sinh a sinh b = 21 and ϑ = log(sinh a/ sinh b).
+    Discretisation and solver. The spectrum of the double of P is the union of the
+Neumann and Dirichlet spectra of P (the reflection exchanging the copies splits H 1
+into even and odd parts); for Oϑ the two mirror symmetries split each further into four
+sectors. Each problem −∆E u = λwu, w = 4/(1 − |z|2 )2 , is solved in the Poincaré disc
+with H 1 -conforming finite elements of order p on meshes of uniform hyperbolic size h,
+the geodesic sides represented as rational quadratic splines and the elements curved to
+order p, so that the discrete domain is a polynomial approximation of degree p of the
+true one (its area agrees to 2 × 10−14 ), with NGSolve [48, 49]; the mass quadrature is
+
+
+                                                   26
+raised by 2p. No grading is used: at a corner of angle π/k the eigenfunctions extend
+by reflection to smooth functions, so there is no corner singularity (at the right-angled
+corners where a symmetry line of Oϑ meets a side with the other boundary condition
+the singular exponents are odd integers, so there is none there either), and the observed
+convergence is h13 to h19 at p = 10 and geometric in p. Eigenvalues are computed by
+shift-invert Lanczos iteration (ARPACK [50], run to machine precision) in overlapping
+spectral windows of 200, one sparse factorisation per window. For Oϑ every eigenvalue
+is covered by two windows and clusters are resolved at relative 10−9 . The triangle
+spectra used here were computed with single-window slicing, each eigenvalue taken
+from one window, which can miss an eigenvalue at a window boundary; we recomputed
+all four problems (O(2, 8, 8) and O(3, 3, 12), Neumann and Dirichlet) with the two-
+window solver at the same production level, every eigenvalue below λ ≈ 2.0 × 104
+covered by two windows and no window miss found, and the two computations agree:
+the same number of eigenvalues below a common cut in each problem, every value
+within the error estimate ϵj below, and the largest relative difference 1.4 × 10−14 . The
+test of Theorem 7.1 run on the recomputed lists gives the same counts as in Table 9.
+    Error estimates. The production level is (h, p) = (0.05, 10), and ϵj =
+max(|λj (0.05, 10) − λj (0.07, 12)|, 10−14 max(λj , 1)), the difference between two inde-
+pendent discretisations (ϵ0 = 0); in the complete ranges below it is at most 7.4 × 10−8
+relative. These are estimates, not bounds. Conforming elements would bound the
+eigenvalues from above in exact arithmetic with exact integration on the exact domain;
+here the domain is approximated, the weight w is integrated by quadrature and every-
+thing is in floating point, and none of these effects is controlled, so no λ̃j is a proved
+upper bound, and no lower bounds are computed. For the lowest eigenvalues the ϵj are
+about ten to twenty times the floor 10−14 λj , where the difference reflects the solver
+and rounding rather than the discretisation; the convergence in h and p is tabulated in
+the supplement of [4]. For the first 40 eigenvalues, all that the counts for the triangle
+orbifolds use, the ϵj are thus at rounding level and say nothing about the discretisa-
+tion error; the conclusions rest on the insensitivity of the counts to the errors (item (v)
+above), not on the ϵj . With the second estimate |λj (0.05, 10) − λj (0.07, 10)|, up to
+1.2 × 10−8 relative for the first 500 (larger than ϵj except for some of the lowest eigen-
+values), the counts of Table 9 for the triangle orbifolds are unchanged. Table 8 lists λ̃j
+and ϵj for 1 ≤ j ≤ 40 for the two triangle orbifolds. An external benchmark: O(2, 8, 8)
+is the quotient of the Bolza surface by the rotations of order 8 about the centre of
+the regular octagon, so its spectrum is contained in that of the Bolza surface, and its
+computed λ̃1 = 3.838887258842 agrees with the first eigenvalue 3.83888725884220 . . .
+of the Bolza surface [25], see also [29], to all twelve decimals printed; the companion
+paper’s supplement makes this comparison in detail [4].
+    Completeness. For the triangle orbifolds about 2850 eigenvalues were computed
+(Neumann and Dirichlet together; the union can be complete only below the smaller
+of the two largest computed values, λtop ≈ 2.174 × 104 for O(2, 8, 8) and 2.189 × 104 for
+O(3, 3, 12), not to be confused with the cut λc = 1.6 × 104 of Table 7); the computed
+heat trace agrees with I + E for the true signature to 4.8 × 10−13 (respectively 5.1 ×
+10−13 ) at t = 0.0015, within an error budget of 6.5 × 10−11 (respectively 5.4 × 10−11 )
+formed by t j ϵj e−(λ̃j −ϵj )t and the bound min0<s<t e−λtop (t−s) 4πs  A
+              P                                                               P
+                                                                           + i b0 (mi ) +
+
+
+                                            27
+      
+B (s) for the eigenvalues above λtop , as in the proof of Proposition 5.2, which is
+at most 5.2 × 10−11 ; that bound presupposes the list complete below λtop , which is
+what the comparison probes, the ϵj are estimates, and floating-point summation is
+not included. Against every other signature of area π2 with orders at most 12 the
+computed trace differs by at least 2.96 × 10−3 , about 4.5 × 107 budgets. Stated without
+the signature: at t = 0.0015 exactly one signature of area π2 with orders at most 12 is
+within the budget, the true one. So the completeness check presupposes nothing about
+the signature beyond the class; it is itself a signature test, with about 2000 eigenvalues,
+much stronger than the counts of Table 9, and like them it rests on estimated errors
+and on the completeness it probes. One missing or one spurious eigenvalue below
+1.563 × 104 (respectively 1.576 × 104 ) would change the trace by more than the budget,
+but a missing eigenvalue together with a spurious one nearby would not be seen.
+Completeness below 1.6 × 104 is therefore supported by this one comparison (below
+these thresholds) and by the agreement of the single- and two-window computations
+(alone for the 48, respectively 29, eigenvalues between the threshold and 1.6 × 104 ),
+not proved, and we use the about 2000 eigenvalues below 1.6 × 104 (Table 7). For Oϑ
+about 5800 eigenvalues were computed per member; we use those below 0.8 times the
+least sector maximum, where the eigenvalue counts of the three most accurate of five
+discretisations, in every sector, agree exactly, 4357 to 4451 of them; the trace test, with
+the same limitations, at t ≥ 0.0025 with a budget of 2.2 × 10−11 , covers λ < 9.8 × 103 ,
+which contains every λ̃N that the test with the instance inputs uses, and above it the
+agreement of the counts is the only evidence.
+    Systoles and diameters. Every closed geodesic of length at most L has a represen-
+tative γ with d(x0 , γx0 ) ≤ L +2r, where r = maxy∈P d(x0 , y ) (move a point of the axis
+into P by the reflection group W , in which Γ is normal; the element obtained is conju-
+gate to γ in W , possibly replacing its class by the mirror class, of the same length). A
+tile wP that meets the ball of radius L + 2r about x0 has d(x0 , wx0 ) ≤ L + 3r, so enu-
+merating all tiles of the reflection tiling within distance L + 3r of x0 by breadth-first
+search, with L = 4, at 40 and 50 digits, gives the systole and the next length, com-
+puted in 40- and 50-digit floating-point arithmetic (agreeing to 10−30 ); ℓ in Table 7
+is the systole rounded down at the sixth decimal, which leaves a margin of at least
+5 × 10−8 in all ten cases. The same enumeration in interval arithmetic (60 digits; the
+side normals of P as interval vectors from their closed forms, so that every reflection
+matrix and every product encloses the exact one; a tile pruned only when the lower
+end of its interval distance exceeds L + 3r) certifies all ten values of ℓ as lower bounds
+for the systoles. For the triangle orbifolds the computed systoles agree with the closed
+forms 2 arccosh(1 + cos π4 ) and 2 arccosh( 12 + cos 12π
+                                                         ); for the family they equal 4b to
+10−30 , a numerical identification (Proposition 8.9 proves only that the systole is at
+most 4b). A point of the double is within diam P of a vertex, which lies in both copies,
+so diam O ≤ 2 diam P , and for a convex geodesic polygon diam P is the largest dis-
+tance between two vertices, in closed form; the computed diameter (by a grid and local
+optimisation over pairs of points in the same and in opposite copies) equals diam P in
+all ten cases.
+    The test. Gσ (t) is evaluated by Gauss–Legendre quadrature of the integrals of
+Theorem 2.1 and checked against 30-digit quadrature (worst difference 2.1 × 10−15 ,
+
+
+
+                                            28
+ Table 8 The computed eigenvalues λ̃j , 1 ≤ j ≤ 40, of O(2, 8, 8) and O(3, 3, 12), with ϵj , the
+ difference between two discretisations (Section 7.1), which for these eigenvalues is at rounding
+ level and is not an estimate of the discretisation error; N or D marks the boundary condition on
+ the triangle. aeb means a × 10b . These are the spectra of the companion paper, whose
+ supplement gives their convergence data [4].
+
+  j O(2, 8, 8)             O(3, 3, 12)              j O(2, 8, 8)           O(3, 3, 12)
+  1 3.838887 6e-13 N 3.499847 6e-13 N 21 167.998617 2e-11 N 161.538503 3e-11 D
+  2 8.249555 1e-12 N 11.569825 2e-12 N 22 169.204494 3e-11 N 166.719455 2e-11 N
+  3 18.658820 3e-12 N 14.938686 2e-12 N 23 175.228988 3e-11 D 173.608760 3e-11 N
+  4 23.078558 4e-12 N 24.118238 4e-12 N 24 185.202025 3e-11 N 181.698972 3e-11 D
+  5 36.238392 6e-12 N 37.822226 7e-12 D 25 189.533915 3e-11 D 202.559888 3e-11 N
+  6 40.115892 7e-12 D 40.423926 7e-12 N 26 200.566930 3e-11 N 202.958052 3e-11 N
+  7 44.017133 7e-12 N 48.211168 7e-12 N 27 211.425387 4e-11 D 204.771871 4e-11 D
+  8 61.026311 9e-12 N 53.207062 8e-12 N 28 222.371124 4e-11 D 206.682902 3e-11 N
+  9 67.610532 1e-11 N 66.279527 1e-11 N 29 223.648572 3e-11 N 227.273217 4e-11 D
+ 10 73.663812 1e-11 D 72.365158 1e-11 D 30 223.920845 4e-11 N 229.760869 3e-11 N
+ 11 74.926708 1e-11 N 81.277984 1e-11 N 31 237.665383 3e-11 N 239.440313 4e-11 N
+ 12 86.709305 1e-11 N 90.636501 1e-11 N 32 256.692805 4e-11 N 255.788123 5e-11 D
+ 13 97.877714 2e-11 D 97.998737 2e-11 D 33 257.309064 5e-11 D 261.196467 4e-11 N
+ 14 111.003768 2e-11 N 109.570347 2e-11 N 34 265.479333 4e-11 N 262.875886 4e-11 N
+ 15 115.206443 2e-11 N 111.368138 2e-11 D 35 276.783858 5e-11 D 277.315470 5e-11 D
+ 16 116.602518 2e-11 N 114.215670 2e-11 N 36 281.540794 4e-11 N 283.912357 5e-11 D
+ 17 126.537514 2e-11 D 128.705567 2e-11 N 37 284.499496 5e-11 D 286.879856 4e-11 N
+ 18 135.941291 3e-11 D 130.442088 2e-11 N 38 290.071390 4e-11 N 290.870001 4e-11 N
+ 19 146.339627 2e-11 N 154.694898 3e-11 D 39 306.680233 5e-11 N 304.639892 5e-11 D
+ 20 148.439073 2e-11 N 156.359556 3e-11 N 40 318.921828 4e-11 N 310.173077 5e-11 N
+
+
+
+relative for the identity term and absolute for the cone terms), and S is the set of
+all signatures of the same area with orders at most M . The time runs over 400 log-
+spaced points in [0.002, 1] and 300 in [10−5 , 0.002), refined by 61 points around each
+minimiser. The infimum over s is taken on 240 log-spaced values of s/t in [10−8 , 1];
+any s gives an upper bound for it, so the grid value already gives a valid EN , and
+Brent’s method, applied to the infimum, only confirms that the reported count does
+not change. Table 9 reports for each count the geometric middle of the window of grid
+times at which it holds. Floating-point rounding in j e−λ̃j t and the quadrature error
+                                                     P
+
+of Gσ (at most 2.1 × 10−15 , as above) are not included in EN ; both are far below every
+margin. The program also checks that, at every time of the grid and for every N in
+the complete range, neither criterion singles out a wrong signature. Counts are values
+of N ; the test with N uses the N + 1 eigenvalues λ̃0 , . . . , λ̃N , while N in Theorem 6.2
+is the number of eigenvalues used. In every case of Table 9 both criteria hold within
+the complete range.
+
+7.2 Results
+Table 9 gives the counts. With the class-level count C∗ (A, ℓ, M ) criterion (C1) holds
+on all ten examples: with N = 24 and 36 for O(2, 8, 8) and O(3, 3, 12), and with 24
+to 461 (M = 3) and 44 to 842 (M = 12) for the family, against 6.82 × 109 , 4.32 × 104
+and 7.44 × 1012 for Theorem 6.2. With the instance’s diameter bound the counts are
+18 and 25, and 24 to 767 (M = 3) and 28 to 847 (M = 12). The count grows as the
+
+
+                                               29
+Table 9 The criterion of Theorem 7.1 on the computed spectra, with estimated errors and lists
+assumed complete: the least N for which (C1) or (C2) holds with the instance’s diameter bound
+∆ = 2 diam P , and for which (C1) holds with the class-level count of Lemma 4.5, with the
+geometric middle of the window of times at which that N holds; the least N for which (C1) holds
+against all of Sig(A, M ), with the area bound A and C∗ (A, ℓ, M ) only; and the N of Theorem 6.2
+for the class C(A, ℓ, M ). Here, as in Theorem 7.1, the test with N uses λ̃0 , . . . , λ̃N ; Theorem 6.2
+uses N eigenvalues.
+
+orbifold     ℓ         M |S| (C1), ∆             (C2), ∆    (C1), C∗       (C1), Sig(A, M ) N , Thm 6.2
+O(2, 8, 8)   2.256767 12   6    18 (0.0565)   20 (0.0556)   24 (0.0432)   24                 6.82 × 109
+O(3, 3, 12)  1.862604 12   6    25 (0.0412)   29 (0.0402)   36 (0.0295)   36                 6.82 × 109
+Oϑ , ϑ = 0.0 2.633915 3    3    24 (0.0897)   28 (0.0858)   24 (0.0915)   24                 4.32 × 104
+Oϑ , ϑ = 0.0 2.633915 12   10   28 (0.0856)   33 (0.0840)   44 (0.0578)   59                 7.44 × 1012
+Oϑ , ϑ = 0.4 2.202695 3    3    36 (0.0626)   43 (0.0609)   35 (0.0661)   35                 4.32 × 104
+Oϑ , ϑ = 0.4 2.202695 12   10   43 (0.0607)   48 (0.0592)   65 (0.0412)   86                 7.44 × 1012
+Oϑ , ϑ = 0.8 1.831302 3    3    58 (0.0424)   67 (0.0407)   53 (0.0463)   53                 4.32 × 104
+Oϑ , ϑ = 0.8 1.831302 12   10   67 (0.0407)   77 (0.0396)   98 (0.0287)   120                7.44 × 1012
+Oϑ , ϑ = 1.2 1.515737 3    3    94 (0.0277)   106 (0.0268) 80 (0.0322)    80                 4.32 × 104
+Oϑ , ϑ = 1.2 1.515737 12   10   106 (0.0268) 122 (0.0260) 149 (0.0197) 178                   7.44 × 1012
+Oϑ , ϑ = 1.6 1.250428 3    3    156 (0.0176) 177 (0.0171) 121 (0.0220) 121                   4.32 × 104
+Oϑ , ϑ = 1.6 1.250428 12   10   177 (0.0170) 201 (0.0165) 228 (0.0135) 253                   7.44 × 1012
+Oϑ , ϑ = 2.0 1.029128 3    3    265 (0.0110) 296 (0.0107) 190 (0.0150) 190                   4.32 × 104
+Oϑ , ϑ = 2.0 1.029128 12   10   295 (0.0107) 332 (0.0104) 351 (0.00915) 368                  7.44 × 1012
+Oϑ , ϑ = 2.4 0.845593 3    3    451 (0.00685) 500 (0.00668) 295 (0.0101) 295                 4.32 × 104
+Oϑ , ϑ = 2.4 0.845593 12   10   499 (0.00667) 557 (0.00651) 544 (0.00618) 608                7.44 × 1012
+Oϑ , ϑ = 2.8 0.693994 3    3    767 (0.00425) 848 (0.00415) 461 (0.00682) 461                4.32 × 104
+Oϑ , ϑ = 2.8 0.693994 12   10   847 (0.00415) 933 (0.00406) 842 (0.00416) 842                7.44 × 1012
+
+
+
+
+                                             2
+systole falls: the bound H carries e−ℓ /4t , so the usable times shrink, and the tail then
+needs (λ̃N − ϵN )t of about 7 to 11 at the middle of the window (7.7 and 8.4 for the
+triangle orbifolds with (C1)), so λ̃N and with it N grow like 1/t. For the member of
+systole 0.694 criterion (C1) needs t between about 0.004 and 0.007 and N between
+461 and 847, with λ̃N up to about 2540.
+    The comparison with Theorem 6.2 separates two effects. Both the diameter bound
+and C∗ enter only through the bound H of Lemma 2.2, which is crude: for O(2, 8, 8)
+at t = 0.0562 it is 6.8 × 10−3 , against a hyperbolic term of 2.8 × 10−10 from the
+two classes at the systole, about 2.4 × 107 times smaller, so the statements of this
+paragraph are about that bound, not about the spectra, and summing the enumerated
+closed geodesics exactly (Remark 6.7(c)) would lower the counts. With that caveat,
+knowing the geometry of the instance, through its diameter, changes the counts little:
+by a factor of at most 1.7 in either direction, and for several family members the class-
+level count does better than the instance’s diameter bound. Knowing the exact area
+changes them little as well: run against all of Sig(A, M ), with only the area bound
+and the class-level count, criterion (C1) holds with N = 24 and 36 for the triangle
+orbifolds, 24 to 461 for the family at M = 3, and 59 to 842 at M = 12 (the second-to-
+last column of Table 9). Nearly the whole gap to Theorem 6.2, a factor of about 102
+to 2 × 103 at M = 3, 1.9 to 2.8 × 108 for the triangle orbifolds and 1010 to 2 × 1011
+for the family at M = 12 (against the counts with C∗ ), comes not from the data but
+from Lemma 6.1: Theorem 6.2 bounds the gap between signatures through their heat
+invariants, which is valid only for t ≤ t1 , and is governed there by the divergence of
+
+
+
+                                                     30
+the cone expansion. With the gap certified at a moderate time, Proposition 6.6 gives
+283 for the triangle class, 139 and 2605 for the family at M = 3, and 7416 at M = 12,
+without any spectral data; for the triangle orbifolds and the two family members whose
+systoles define the classes of Table 4, against the counts with all of Sig(A, M ) (the
+second-to-last column of Table 9), the data account for a further factor of about 5.6
+to 11.3, comparing numbers of eigenvalues used: N for Proposition 6.6 and N + 1 for a
+count N of the test. (The other comparisons of this paragraph set a count N against
+a number of eigenvalues; counting N + 1 instead changes them by at most 5%.) What
+the test checks in our examples is that the computed spectra are consistent with the
+trace formula of the stated signature and with no other.
+    Figure 2 plots the counts against the systole, for M = 3 (open markers) and
+M = 12 (filled), the two sets displaced slightly to the left and to the right of their
+systole so that close counts stay distinguishable, with the two triangle orbifolds at
+their own systoles in colour (O(2, 8, 8) dark blue-green, O(3, 3, 12) orange): the test
+with the instance inputs, criterion (C1) with ∆ = 2 diam P (diamonds, at the count
+N , which uses N + 1 eigenvalues; the counts with C∗ and against Sig(A, M ) are in
+Table 9), the N of Theorem 6.2 (squares) and, as a reference, Nobs (circles): the least
+N such that, at some single time t of the grid of Section 7.1, | j<N ′ e−λ̃j t − Gσ(O) (t)|
+                                                                P
+is less than half the distance from Gσ(O) (t) to the nearest other Gσ (t) for every N ′
+from N to the end of the complete range. Nobs is judged against the true signature,
+uses the unknown geodesic term implicitly and is not a decision rule; its values, 3 for
+both triangle orbifolds, 3 to 43 for the family at M = 3 and 4 to 63 at M = 12, are in
+the data files of the deposit.
+
+8 The hypotheses
+8.1 The orders: high orders behave like cusps
+We use Jørgensen’s inequality [42] (see [41, Ch. 5] for an exposition) in the case in
+which one element is hyperbolic and the group has no parabolic elements; the pair to
+which we apply it generates a non-elementary group, so this is the classical inequality,
+and we include a short proof of that case, by Jørgensen’s argument, for completeness.
+
+Lemma 8.1 (Jørgensen’s inequality, hyperbolic case) Let Γ ⊂ P SL(2, R) be discrete with
+no parabolic elements, A ∈ Γ hyperbolic and B ∈ Γ an element that fixes neither fixed point
+of A in ∂H2 and does not interchange them. Then, for any lifts to SL(2, R), | tr2 A − 4| +
+| tr[A, B] − 2| ≥ 1.
+
+
+
+Proof Conjugate so that A = diag(u, u−1 ), u > 1, with fixed points 0, ∞, and let B = ac db .
+                                                                                                 
+
+A direct computation gives tr[A, B] − 2 = −bc(u − u−1 )2 , so the claim is µ := (u − u−1 )2 (1 +
+                                                                    a    b
+|bc|) ≥ 1; suppose µ < 1. Let B0 = B, Bn+1 = Bn ABn−1 = cn+1 n+1 n+1
+                                                                dn+1    and xn = bn cn .
+Then
+             uan dn − u−1 bn cn −an bn (u − u−1 )
+                                                  
+  Bn+1 =                                             , xn+1 = −xn (1 + xn )(u − u−1 )2 .
+              cn dn (u − u−1 ) −ubn cn + u−1 an dn
+
+
+                                               31
+                             10 14
+
+                             10 12
+
+
+
+
+     number of eigenvalues
+                             10 10
+
+                             10 8
+
+                             10 6
+
+                             10 4
+
+                             10 2
+
+                             10 0
+                                         0.75   1.00   1.25   1.50      1.75   2.00   2.25   2.50   2.75
+                                                                     systole
+
+Fig. 2 Eigenvalues needed against the systole, for M = 3 (open markers) and M = 12 (filled): the
+test with the instance’s inputs (diamonds; a count N uses N + 1 eigenvalues), the reference count
+Nobs (circles) and the N of Theorem 6.2 (squares). Proposition 6.6 needs 139 to 7416 eigenvalues for
+the classes of Table 4 that contain these examples.
+
+
+So |xn | ≤ |x0 | implies |xn+1 | ≤ µ|xn |, and by induction |xn | ≤ µn |x0 | → 0. No xn vanishes:
+x0 ̸= 0 as B fixes neither 0 nor ∞; if n ≥ 1 is least with xn = 0, then xn−1 = −1, so
+an−1 dn−1 = 0; if both vanish, Bn−1 interchanges 0 and ∞, which is excluded for n − 1 = 0
+and impossible for the hyperbolic Bn−1 , n − 1 ≥ 1; if exactly one vanishes, Bn , a hyperbolic
+element with fixed points Bn−1 (0) and Bn−1 (∞), shares exactly one fixed point with A,
+and then the commutator [A, Bn ] is a nontrivial parabolic element of Γ (upper or lower
+unitriangular with a nonzero entry). Now Bn , n ≥ 1, is hyperbolic with repelling fixed point
+pn = Bn−1 (0) = bn−1 /dn−1 and attracting fixed point qn = Bn−1 (∞) = an−1 /cn−1 , both
+finite and nonzero, with pn /qn = xn−1 /(1+xn−1 ) → 0, and with translation length that of A.
+Choose kn ∈ Z with u−2kn ∈ [ρn , u2 ρn ), ρn = |pn qn |−1/2 , and put Cn = A−kn Bn Akn ∈ Γ;
+its fixed points u−2kn pn and u−2kn qn have moduli at most u2 |pn /qn |1/2 → 0 and at least
+|qn /pn |1/2 → ∞. So Cn → A in P SL(2, R), while Cn ̸= A as Cn does not fix 0. This
+contradicts discreteness.                                                                      □
+
+    For a rotation β by ϕ about a point at distance r from the axis of a hyperbolic γ
+of translation length L, tr2 γ − 4 = 4 sinh2 L2 and tr[γ, β ] − 2 = 4 sinh2 L2 sin2 ϕ2 cosh2 r
+                                                                          cos ϕ sin ϕ
+                                                                                      
+for any lifts: with γ = diag(eL/2 , e−L/2 ) and β = hkh−1 , k = − sin2ϕ cos 2ϕ , h =
+                                                                               2    2
+  cosh r2 sinh r2
+                 
+       r
+  sinh cosh     r   (which moves i along the unit circle, perpendicular  to  the axis,  by r),
+            2                        2
+
+the off-diagonal entries of β are ± sin ϕ2 cosh r, so bc = − sin2 ϕ2 cosh2 r, and tr[γ, β ] −
+2 = −bc(eL/2 − e−L/2 )2 .
+
+
+
+
+                                                                32
+Proposition 8.2 (The family O(2, 3, m)) For m ≥ 7 put s∞ = arccosh √2 , hm =
+                                        q                                  3
+                                                             −1
+              1
+arccosh 2 sin(π/m) and ℓ2,3 = 2 arsinh 2 1 + 34 cosh2 (2s∞ )     = 0.56206 . . .. Then
+Area O(2, 3, m) = 2π( 16 − m1
+                               ) < π3 , ℓ(O(2, 3, m)) ≥ ℓ2,3 , diam O(2, 3, m) ≥ hm ≥ log 2π
+                                                                                          m
+                                                                                             ,
+and the open ball of radius hm about the cone point of order m is a hyperbolic cone of angle
+2π/m. So O(2, 3, m) ∈ C( π3 , ℓ2,3 , m).
+
+
+
+Proof O = O(2, 3, m) is the double of the triangle T with vertices v2 , v3 , vm and angles
+π π π
+ 2 , 3 , m ; its group Γm is the orientation-preserving subgroup of the group W generated by
+the reflections in the sides of T , of which T is a fundamental domain [41], and the folding
+f : H2 → T , which sends each point to the unique point of T in its W -orbit, is 1-Lipschitz
+with d(z, W v) = d(f (z), v) for each vertex v, since T meets √ each orbit once and each tile
+is isometric to T . By (H3), cosh d(v2 , v3 ) = 2 cos(π/m)/ 3, so sm = d(v2 , v3 ) < s∞ , and
+cosh d(v2 , vm ) = 1/(2 sin(π/m)), so d(v2 , vm ) = hm ; the folding of O onto T is 1-Lipschitz
+and the identity on T , so the cone points of orders 2 and m are at distance hm in O,
+                       1            m
+and hm ≥ log 2 sin(π/m)      ≥ log 2π . The cone ball. Let P be the union of the 2m tiles gT ,
+g ∈ W , with vertex vm , the translates under the stabiliser of vm in Γm of the fundamental
+domain T ∪ s(T ), s the reflection in [vm , v2 ]. For γ ∈ Γm outside that stabiliser, γP and P
+have disjoint interiors. P is star-shaped about vm , and its boundary consists of images of
+[v2 , v3 ], at distance hm from vm because the angle of T at v2 is π2 . So B(vm , hm ) ⊂ int P ,
+its translates are equal or disjoint, and its image is the cone of angle 2π/m and radius hm .
+The systole. Let γ ∈ Γm be hyperbolic with axis α and L = ℓ(γ). As α is connected and
+unbounded, it is not covered by the disjoint open balls gB(vm , hm ); take x̃ ∈ α outside them
+and x = f (x̃), so d(x, vm ) ≥ hm . Write x ∈ [vm , q] with q ∈ [v2 , v3 ]; as d(vm , ·) is convex on
+[v2 , v3 ] with minimum hm at v2 , d(x, q) ≤ d(vm , v3 ) − hm ≤ sm , so d(x, v3 ) ≤ 2sm . So some
+elliptic point w̃ ∈ W v3 , fixed by a rotation β ∈ Γm by 2π  3 , lies at distance r ≤ 2sm < 2s∞
+from α. The rotation β fixes no point of ∂H2 and cannot interchange the endpoints of α
+(then β 2 , a rotation of order 3, would fix them), so Lemma 8.1 and the trace identities give
+4 sinh2 L         3     2
+           2 (1 + 4 cosh r) ≥ 1, hence L ≥ ℓ2,3 .                                                   □
+
+     The bound ℓ2,3 is far from sharp; it is what the argument needs uniformly in m,
+and it loses mainly through the crude bound 2sm on the distance from the axis to a
+point of order 3. A search over all words of length at most 24 in the generators finds
+no closed geodesic shorter than 0.98399 on O(2, 3, 7), which is 2 arccosh 1+2 cos(2π/7)
+                                                                                  2      =
+0.983986 . . ., and the shortest length found increases with m, to 1.9213 at m = 100,
+below the systole 2 arccosh 23 = 1.9248 of the modular orbifold (floating point, not
+interval arithmetic; this search is used in no proof).
+     On a region with metric dρ2 + w(ρ)2 dϑ2 and w′′ = w, the function f = w−1/2 u(ρ)
+satisfies
+                                                             (
+                                                               1        1
+  ′2       ′2      2    d  w′ 2              1    w′2        4 − 4 sinh2 ρ , w = sinh ρ,
+ f w = u +qu +             −      u ,      q= −        2
+                                                          =    1        1
+                       dρ     2w               2 4w            4 + 4 cosh2 ρ , w = cosh ρ,
+                                                                                        (3)
+     ′2       ′2   w′  ′   w′2 2       d    w′ 2         w′′    w′2   2    w′   ′
+as f w = u − w uu + 4w2 u and dρ (− 2w u ) = −( 2w − 2w2 )u − w uu .
+
+
+
+
+                                                 33
+Proposition 8.3 (Unbounded orders) For m ≥ 7 and j ≥ 1, λj (O(2, 3, m)) ≤ 14 + π 2 (j +
+1)2 /h2m . Moreover, for every N ≥ 1 and δ > 0, among any J + 1 distinct orders m ≥
+7, where J = (⌊ΛN /δ⌋ + 1)N −1 and ΛN = 14 + π 2 N 2 /h27 , there are two, m ̸= m′ , with
+|λj (O(2, 3, m)) − λj (O(2, 3, m′ ))| < δ for all j < N .
+
+
+
+Proof On the cone ball of Proposition 8.2, with metric dρ2 + sinh2 ρ dϑ2 , ϑ ∈ R/ 2π          m Z,
+cut [a, hm ], 0 < a < hm , into j + 1 intervals of length ℓ = (hm − a)/(j + 1) and let
+fi = (sinh ρ)−1/2 ui with ui a sine arch on the i-th interval, zero elsewhere. These Lips-
+chitz functions have disjoint supports, and by (3), as ui vanishes at the ends and q ≤ 41 ,
+  |∇fi |2 / fi2 ≤ 14 + π 2 /ℓ2 . The min–max principle on their span gives the bound; let a → 0.
+R          R
+
+As hm increases with m, λj ∈ [0, ΛN ] for j < N , and two of J + 1 vectors (λ1 , . . . , λN −1 ) lie
+in a common product of the ⌊ΛN /δ⌋ + 1 intervals [iδ, (i + 1)δ).                                  □
+
+
+Remark 8.4 (The order bound cannot be dropped) Let A ≥ π3 and ε ≤ ℓ2,3 . For every N
+and δ there is M , for instance M = (⌊ΛN /δ⌋ + 1)N −1 + 7, such that C(A, ε, M ) contains
+O(2, 3, m) and O(2, 3, m′ ), of different signatures, whose first N eigenvalues agree to within
+δ; whatever rule decides the signature from such data is wrong for one of them. So N and
+δ in Theorem 6.2 cannot depend on A and ε alone; an area bound and a systole bound
+do not bound the orders. For A < π3 the question does not arise: then g = 0 and n = 3
+by the case analysis of Lemma 5.1, and a hyperbolic triad p ≤ q ≤ r has p1 + 1q ≤ 56 , so
+1      Area  5   1   A
+r ≥ 1 − 2π − 6 ≥ 6 − 2π > 0 bounds r, and only finitely many triples occur.
+
+
+Corollary 8.5 (A constraint on N and δ) Let A ≥ π3 and ε ≤ ℓ2,3 . If a rule decides
+the signature of every O ∈ C(A, ε, M ) from any λ̃0 , . . . , λ̃N −1 with |λ̃j − λj (O)| < δ/2,
+then the pair (N, δ) satisfies (⌊ΛN /δ⌋ + 1)N −1 ≥ M − 6. In particular, if M ≥ 7, then
+(N − 1) log(c′ N 2 /δ + 1) ≥ log(M − 6) with c′ = 14 + π 2 /h27 = 33.44 . . ., so for fixed δ, as
+M → ∞, N grows at least like log M/ log log M .
+
+
+
+Proof The M − 6 orbifolds O(2, 3, m), 7 ≤ m ≤ M , lie in C(A, ε, M ) (Proposition 8.2). If
+M − 6 ≥ J + 1, Proposition 8.3 gives m ̸= m′ among them whose first N eigenvalues differ
+by less than δ, so that one list of λ̃j is within δ/2 of both, and the rule is wrong for one of
+them. So M − 6 ≤ J. With ΛN = 14 + π 2 N 2 /h27 ≤ c′ N 2 for N ≥ 1, (N − 1) log(c′ N 2 /δ + 1) ≥
+log(M − 6).                                                                                    □
+
+   Corollary 8.5 constrains the pair (N, δ ), and it has content only when δ is not
+small. At an accuracy that decreases with M , say δ ≤ M −1 , it yields only N ≥ 2:
+with N = 2, ⌊Λ2 /δ⌋ + 1 ≥ Λ2 M ≥ M − 6, as Λ2 = 14 + 4π 2 /h27 > 133. Theorem 6.2
+works in that regime: its δ decreases like a power of M (Remark 8.6), and it gives
+no N at an accuracy δ fixed independently of M . Nor can its mechanism give one
+without change: with every |λ̃j − λj | of size δ , the perturbation term in its proof is of
+order δtZO (t), about δ Area(O)/4π at small t, and it must stay below the least gap
+between the signature terms over Sig(A, M ). Whether there is a δ > 0, independent
+of M , for which some N , depending on A, ε, M and δ , determines the signature in
+
+
+
+                                                34
+C (A, ε, M ) for every M is open; by Corollary 8.5, such an N would grow at least like
+log M/ log log M .
+
+Remark 8.6 (How N may grow with M ) For fixed A and ε, Theorem 6.2 gives an N
+polynomial in M . As M → ∞, k∗ = n∗ ; bK (M ) = ±pK (M )/M with pK a polynomial of
+degree 2K + 2, so Q(K) ≤ cM 2K+1 ; δ1 ≥ 12 M −2n∗ , so γ∗ ≥ 12 M −2n∗ for large M and
+t1 ≥ cM −2n∗ −1 ; the radii r0 , ρ1 and the area v0 of Lemma 4.5 are bounded below by powers
+of 1/M , so C∗ and ϖ are bounded by a power of M , y0 = O(log M ) and t3 ≥ c/ log M .
+Hence t∗ ≥ cM −2n∗ −1 , Θ∗ ≥ cM −2n∗ −(2n∗ +1)(n∗ −2) , Λ and N are O(M 2n∗ +1 log M ),
+N t∗ = O(log M ), and δ −1 = O(M 2n∗ +(2n∗ +1)(n∗ −2) log M ), the constants depending on A
+and ε. At A = π2 (n∗ = 4) and ε = 1 the computed exponents per doubling of M , for M = 64,
+128, 256 and 512, decrease towards 9 for N (from 9.21 to 9.17) and towards 26 for δ −1 (from
+26.21 to 26.17), and C∗ grows like M 9 . Without the bound M 2n∗ in δ1 the formulas would
+give an N growing exponentially in M , as LM = e(1+o(1))M . This upper bound is for the pair
+(N, δ) of Theorem 6.2, with δ −1 growing like a power of M ; at such accuracies Corollary 8.5
+yields only N ≥ 2, so the two bounds do not bracket one growth rate, and at a fixed δ we
+have no upper bound for N at all.
+
+
+    Figure 3 shows the computed eigenvalues λ1 , . . . , λ6 of O(2, 3, m) for 21 orders
+from 7 to 4096, on logarithmic axes, with the bounds of Proposition 8.3 (thin dashed,
+one for each j , in the shade of its λj , darkest for λ1 ; as the bound for λj has the
+numerator (j + 1)2 , it runs close to the curve of λj+1 ) and the line 14 ; panel (b) shows
+h2m (λj − 14 )/π 2 with dotted levels at j 2 . The spectrum of O(2, 3, m) is the union of
+the Neumann and Dirichlet spectra of the triangle; we computed both by high-order
+finite elements at two mesh levels, which agree to at least 2.3 × 10−10 relative. Every
+computed eigenvalue lies below its bound and decreases in m (an observation, not
+proved here; the rescaled values h2m (λj − 14 )/π 2 of Figure 3(b) can increase in m, as
+hm grows), and λ1 falls from 44.89 at m = 7 to 0.473 at m = 4096; the computed
+values suggest λj → 41 .
+
+Remark 8.7 (Elliptic degeneration, conditionally) Theorem 1.2 uses only the upper bounds
+of Proposition 8.3, and neither the observations above nor this remark. Lower bounds would
+come from elliptic degeneration in the sense of Garbin and Jorgenson [17, §2]. Their condi-
+tion (a), that the cone neighbourhood of radius arccosh(1 + εm/2π), ε < 21 , embed, holds
+                                            1         m            m
+for m ≥ 13 by Proposition 8.2, since 2 sin(π/m)    ≥ 2π   ≥ 1 + 4π   ; their condition (b), con-
+vergence of the complement, we have not verified for this family (their Example 5.8 treats
+the Hecke groups GN , which have a cusp, not the triangles O(2, 3, m)). If it holds (and only
+the limit m → ∞ matters, so the finitely many m < 13 do not), their Corollary 5.5, with
+the limit P SL(2, Z)\H2 , which has no eigenvalue in (0, 14 ), would give lim inf λ1 ≥ 14 , and so
+λj (O(2, 3, m)) → 14 for every j ≥ 1; and the plotted quantity h2m (λj − 14 )/π 2 in panel (b) is
+still between 6% and 16% above j 2 , the value for an interval of length hm , at m = 4096: an
+observation and not a result.
+
+
+
+
+                                               35
+     (a)
+              1000
+
+
+                  100
+
+     ¸j
+                      10
+
+
+                            1
+
+                0.25
+                                10             100                        1000
+
+     (b)
+                      36
+                      25
+
+
+       hm2 (¸j ¡ 1=4)=¼ 2
+                      16
+                            9
+
+                            4
+
+
+                            1
+
+
+                                10             100                        1000
+                                                       m
+Fig. 3 (a) The first six eigenvalues of O(2, 3, m) against m, with their upper bounds of Proposi-
+tion 8.3; (b) the same eigenvalues rescaled as h2m (λj − 41 )/π 2 . As the cone point becomes cusp-like,
+the proved bounds tend to 14 and the computed eigenvalues fall towards it.
+
+
+8.2 The area: surfaces of large genus
+The bound on the area is needed for the same reason as the bound on the orders,
+and here no orbifold is needed: closed hyperbolic surfaces of large genus have large
+diameter, so their first eigenvalues are bounded, and those of systole at least ε occur
+in infinitely many genera.
+
+Proposition 8.8 (The area bound cannot be dropped) Every closed hyperbolic surface S of
+genus g has λj (S) ≤ 14 + 4π 2 j 2 / arccosh(2g − 1)2 for j ≥ 1. For every ε > 0, N ≥ 1 and
+δ > 0 there are two closed hyperbolic surfaces of different genus, each of systole greater than
+ε, whose first N eigenvalues satisfy |λj − λ′j | < δ for j < N . Both lie in C(A, ε, M ) for every
+M ≥ 2 and every A at least their areas. So in Theorem 6.2 N and δ cannot depend on ε and
+M alone, and no finite part of the spectrum, known to a fixed accuracy, bounds the area.
+
+
+
+
+                                                  36
+Proof Eigenvalues and diameter. Let S have genus g and diameter d. Cheng’s comparison
+theorem [8, Thm 2.1] states that a compact n-dimensional Riemannian manifold with Ricci
+curvature at least (n − 1)k and diameter d has m-th eigenvalue, 0 = µ0 < µ1 ≤ · · · , at most
+the first Dirichlet eigenvalue of the ball of radius d/2m in the simply connected n-dimensional
+space form of curvature k. Here n = 2 and k = −1, and the first Dirichlet eigenvalue of
+a disc of radius R in H2 is at most 14 + π 2 /R2 : this is the proof of Proposition 8.3 with
+ϑ ∈ R/2πZ, one sine arch on [a, R] and a → 0, using (3) with w = sinh ρ and q ≤ 41 . So
+λj (S) ≤ 14 + 4π 2 j 2 /d2 . The covering map H2 → S, restricted to the ball of radius d about
+a lift of a point of S, is onto and a local isometry, so 4π(g − 1) = Area(S) ≤ 2π(cosh d − 1),
+that is, d ≥ arccosh(2g − 1).
+     Systole at least ε in infinitely many genera. Let S0 = Γ0 \H2 be a closed hyperbolic
+surface, F the closed Dirichlet domain of Γ0 at a point x̃0 , and D0 = diam S0 , so that
+d(x̃0 , ỹ) ≤ D0 for ỹ ∈ F . The set Φ = {γ ∈ Γ0 \ {1} : d(x̃0 , γ x̃0 ) ≤ ε + 2D0 } is finite, as Γ0
+is discrete. Fundamental groups of closed surfaces are residually finite [51]: for each γ ∈ Φ
+there is a homomorphism from Γ0 to a finite group whose kernel does not contain γ, and the
+intersection Γ1 of these kernels is a normal subgroup of finite index with Γ1 ∩ Φ = ∅. Every
+γ ∈ Γ1 \ {1} is hyperbolic, as Γ0 is cocompact and torsion-free. Take ỹ on its axis and η ∈ Γ0
+with η ỹ ∈ F ; then γ ′ = ηγη −1 lies in Γ1 , as Γ1 is normal, its axis passes through η ỹ, and
+d(x̃0 , γ ′ x̃0 ) ≤ 2d(x̃0 , η ỹ) + ℓ(γ) ≤ 2D0 + ℓ(γ). As γ ′ ∈
+                                                               / Φ, ℓ(γ) > ε. So S1 = Γ1 \H2 is a closed
+hyperbolic surface of systole greater than ε, of some genus g1 ≥ 2. For every integer q ≥ 1 the
+kernel Γ1,q of a surjection Γ1 → H1 (S1 ; Z) ∼        = Z2g1 → Z/qZ has index q, so S1,q = Γ1,q \H2
+is a closed hyperbolic surface of area q Area(S1 ), that is, of genus 1 + q(g1 − 1); its closed
+geodesics are hyperbolic classes of Γ1,q ⊂ Γ1 , with the same lengths, so its systole is greater
+than ε too.
+     Pigeonhole. For q ≥ 1 and 1 ≤ j < N , the first step with g ≥ 2 gives 0 < λj (S1,q ) ≤ Λ′ =
+1          2 2                   2
+4 + 4π N / arccosh(3) . The vectors (λ1 , . . . , λN −1 ) of the S1,q , q ≥ 1, lie in the finitely
+many products of the ⌊Λ′ /δ⌋ + 1 intervals [iδ, (i + 1)δ), so infinitely many of them lie in one
+product. Any two of the corresponding surfaces have different genera and |λj − λ′j | < δ for
+1 ≤ j < N , and λ0 = λ′0 = 0; and as their areas are unbounded, eigenvalues known to within
+δ
+2 do not bound the area.                                                                               □
+
+    As g → ∞ the bound of Proposition 8.8 tends to 14 for each fixed j , so, as for the
+orders, the first eigenvalues crowd below any level above 14 . The two necessity results
+rest on the same pigeonhole argument. For the orders the new input is the systole
+bound uniform in m of Proposition 8.2, and the argument gives the quantitative
+constraint of Corollary 8.5; for the area the inputs are classical, and a quantitative
+form would need the least genus of a closed hyperbolic surface of systole at least ε,
+which the argument does not provide.
+
+8.3 The systole: an open question
+Pinching a closed geodesic produces small eigenvalues, but this does not show that
+the systole bound is needed. Fix k ∈ {3, 4}, b > 0 and a with sinh a sinh b = cos πk ; in
+H2 take orthogonal lines β, β ′ through O, and let Qk,b be the quadrilateral bounded
+by the two lines perpendicular to β at distance b from O and the two perpendicular to
+β ′ at distance a. In the hyperboloid, with O = (1, 0, 0) and β, β ′ in the planes x2 = 0,
+x1 = 0, the unit normals (sinh b, cosh b, 0) and (sinh a, 0, cosh a) of adjacent sides have
+inner product − sinh a sinh b, of modulus less than 1, so these sides meet at an angle
+
+
+                                                  37
+with cosine sinh a sinh b or its negative (Lemma 4.1, proof of (H3)); the quarter of Qk,b
+cut out by β, β ′ has three right angles and angle sum less than 2π , so its fourth angle
+is acute, equal to πk . Let Ok,b be the double of Qk,b , a sphere with four cone points of
+order k . For k = 3 these are the orbifolds Oϑ of Section 7, with ϑ = log(sinh a/ sinh b),
+so Table 9 runs the test along this pinching family.
+
+Proposition 8.9 (Pinching) Ok,b contains an embedded collar {|ρ| < a} × R/4bZ, with
+metric dρ2 + cosh2 ρ ds2 , about a separating closed geodesic of length 4b; so ℓ(Ok,b ) ≤ 4b
+(and, by the symmetry a ↔ b, ℓ(Ok,b ) ≤ 4 min(a, b); Section 7 uses b ≤ a), λ1 (Ok,b ) ≤
+                                                                              4π 2 (j+1)2
+sinh a/((a2 + 2) sinh a − 2a cosh a) and λj (Ok,b ) ≤ 14 + 4 cosh12 (a/2) +        a2
+                                                                                          . As b → 0,
+λ1 → 0 and lim sup λj ≤ 14 .
+
+
+
+Proof In Fermi coordinates (ρ, s) about β the sides perpendicular to β are s = ±b, and the
+other two sides are at distance at least a from β, their common perpendiculars with β having
+length a; so {|ρ| < a, |s| ≤ b} lies in Qk,b , and its double is the collar, whose core, the double
+of β ∩ Qk,b , separates the two pairs of cone points. The reflection in β induces an isometry
+exchanging theR two sides. For λ1 take f = ρ/a on the collar and ±1 outside,        odd under that
+isometry, so f = 0, and compute the Rayleigh quotient, keeping in f 2 only the part over
+                                                                            R
+
+the collar, which is why the bound depends neither on k nor on the area; for λj use (3) with
+w = cosh ρ and j + 1 sine arches on disjoint intervals of length a/(2(j + 1)) in [ a2 , a), where
+q ≤ 14 + 4 cosh12 (a/2) .                                                                        □
+
+   Proposition 8.9 is the classical collar argument for small eigenvalues near a short
+separating geodesic (see Buser’s book [32]), included here for its explicit constants.
+Since Qk,b is symmetric under a ↔ b, λ1 (Ok,b ) → 0 also as b → ∞.
+
+Problem 1 (Is a systole bound needed?)S Fix A and M . (a) Is there an N , independent of ε,
+such that orbifolds in C(A, 0+ , M ) = ε>0 C(A, ε, M ) with the same first N eigenvalues have
+the same signature? (b) Can N and δ > 0 in Theorem 6.2 both be chosen independently of ε?
+
+
+    Part (a) is a signature-level analogue of the conjecture of Buser and Courtois [9,
+pp. 523–524], in a loose sense: the signature is determined by the heat invariants, the
+smooth part of the spectrum, while their conjecture concerns full isospectrality, which
+the closed geodesics carry. With A and M fixed only finitely many signatures occur,
+so the pigeonhole argument of Proposition 8.3 is not available. Under pinching, as
+recalled in Section 1, the small eigenvalues converge to those of the cusped limit and
+infinitely many eigenvalues accumulate at 14 . So a negative answer to (b) would follow
+from two degenerating families of different signatures but the same area, with the same
+number of eigenvalues tending to 0 and cusped limits with the same eigenvalues below
+1
+4 , while (a) asks for exact equality and is not settled by such limits. Signatures of the
+same area degenerate differently: (0; 3, 3, 3, 3), (1; 3) and (0; 2, 2, 6, 6) all have area 4π
+                                                                                             3 ,
+but on (1; 3) every essential simple closed curve is non-separating, since a disc with one
+cone point of order 3 cannot have geodesic boundary (its area would be −2π· 13 < 0), so
+its pinchings have limit (0; 3, ∞, ∞), and we expect λ1 to stay away from 0 (we do not
+
+
+                                                38
+prove it; it would need the orbifold version of the convergence results discussed next),
+while (0; 3, 3, 3, 3) pinched along a separating curve has λ1 → 0 (Proposition 8.9).
+In our setting: the upper bounds above give lim sup λj ≤ 14 , and the missing input
+is a matching lower bound λj ≥ 41 − o(1) for 2 ≤ j < N along both families. The
+natural candidate pair for a negative answer to (b) is (0; 3, 3, 3, 3) and (0; 2, 2, 6, 6):
+pinched along a separating curve, with the partition {3, 3}|{3, 3} and {2, 6}|{2, 6} (a
+disc with cone points of orders 2, 2 and geodesic boundary would have area 0), each
+has an eigenvalue tending to 0 (by a test function equal to ±1 on the two sides of
+the collar, as in Proposition 8.9), and the limits are two copies of (0; 3, 3, ∞) and two
+copies of (0; 2, 6, ∞); what this pair needs is the spectrum of these two cusped limits
+below 14 and the lower bound discussed next. For surfaces both available routes to such
+a bound are theorems: under degeneration the spectral counting functions converge
+below 14 [52], a closed hyperbolic surface of Euler characteristic χ has λ−χ > 14 [53],
+and Ballmann, Matthiesen and Mondal bound the number of small eigenvalues by −χ
+for complete surfaces of finite type [54]. What is missing here is an orbifold version
+of either: the first for the lift of the degeneration to a fixed torsion-free cover, whose
+spectrum contains that of the orbifold, together with the spectrum below 14 of the
+cusped limit; or the second for cone metrics with angles 2π/k . We have not carried
+out either. The growth of our N as ε → 0 (Section 6) is a property of the formulas,
+not of the least admissible N .
+Acknowledgements. The colour schemes of the figures are Scientific Colour Maps
+[55, 56]. The eigenvalues were computed with NGSolve [48, 49] and ARPACK [50].
+
+Statements and Declarations
+Funding. No funding was received for this work.
+Competing interests. The authors have no competing interests to declare that are
+relevant to the content of this article.
+Ethics approval and consent to participate. Not applicable.
+Consent for publication. Not applicable.
+Materials availability. Not applicable.
+Data and code availability. The code and data are at https://github.com/
+pa1aash/eigenvalues-orbifold-signature, archived at Zenodo [PLACEHOLDER:
+Zenodo DOI], with all six authors as creators; the Zenodo record is the version to
+cite. One command reruns every check except the finite-element solves, which it reruns
+only on request (about an hour) and otherwise validates against their committed out-
+puts, and a manifest of the deposit lists every data file with its generating program,
+place and checksum. Table 3 is produced by diameter.py; Tables 4, 5 and B1 are pro-
+duced by make tables.py from the output of certified gap.py, and Tables 6, 7, 8
+and 9 by make tables.py from the data written by instances.py (systoles, diame-
+ters) and practice.py (the constants of Theorem 6.2 and the test, which works with
+logarithms of the count constants); theorem e.py checks Lemma 3.3 and the con-
+stants, computed gap.py searches in floating point for good times for Corollary 6.4,
+
+
+                                            39
+certified gap.py certifies Proposition 6.6 in ball arithmetic (with python-flint,
+the Python interface to Arb), certify systoles.py certifies the systole bounds
+in interval arithmetic, practice checks.py the robustness and completeness mar-
+gins of Section 7.1, and gen e1 cusp.py, gen e2 gap.py, gen e3 practice.py with
+E1.py–E3.py produce the figures; the eigenvalues were computed by solve.py and
+solve moduli.py, the triangle spectra recomputed by rerun double window.py, the
+test rerun on them and the effect of one missing or duplicated eigenvalue computed by
+practice double window.py, the systoles of O(2, 3, m) searched by systole 233.py,
+and a methods file of the deposit documents the numerical methods with references to
+the code. Every constant of Tables 3 and 6 is recomputed at 40 digits. The software
+is Python with NumPy, SciPy 1.18.1 (whose eigsh calls ARPACK), mpmath 1.3.0,
+python-flint 0.9.0, and NGSolve and NETGEN 6.2.2607; every version is pinned in the
+deposit.
+Author contributions. [PLACEHOLDER: author contribution statement,
+to be supplied by the authors before submission.]
+Use of AI tools. [PLACEHOLDER: statement on the use of AI tools in
+preparing this manuscript, to be written by the authors. Springer Nature’s
+guidelines ask for any such use, beyond AI-assisted copy editing, to be
+documented in the Methods section or, where there is none, in a suitable
+alternative part of the manuscript.]
+
+Appendix A               Proofs of the results stated in
+                         Sections 2 and 3
+This appendix proves the results of Sections 2 and 3 that are also in the companion
+paper [4], so that every proof this paper relies on is in it. The arguments are those of
+[4], written in the notation used here.
+
+A.1     The trace formula for the heat function
+Dryden and Strohmaier state the trace formula of Theorem 2.1 for h = ĝ with g ∈
+Cc∞ (R) even [1, eq. (1)]; in it, the elliptic term of a cone point of order m sums over
+                                                                                     2
+                                                                                       −1
+the m − 1 nontrivial elements of its stabiliser, each once, and Em (t) → b0 (m) = m12m
+as t ↓ 0. The following approximation extends the formula to the heat function.
+
+Lemma A.1 (The heat function is admissible) Fix an even ω ∈ Cc∞ (R), 0 ≤ ω ≤ 1, ω = 1
+on [−1, 1], and let gX = gt ω(·/X). As X → ∞, every term of the trace formula for ĝX tends
+to the corresponding term for ĝt ; hence Theorem 2.1 holds.
+
+
+
+Proof Counting eigenvalues. Let λj = 14 + rj2 and take ψ ∈ Cc∞ (R) even, nonnegative,
+  ψ = 1, supported in [−ϵ, ϵ] with 2ϵ < ℓ(O), ϵ ≤ 1; then |ψ̂| ≤ 1 and ψ̂(r) ≥ cos(ϵr) ≥ 21
+R
+
+for |r| ≤ 1. The function ηT (r) = ψ̂(r − T )2 + ψ̂(r + T )2 = ĝ for g = 2 cos(T u)(ψ ∗ ψ)(u),
+supported in [−2ϵ, 2ϵ], so the hyperbolic side vanishes for it; its identity term is O(T + 1),
+
+
+                                              40
+each elliptic term O(1), and the finitely many imaginary rj contribute O(1); so, as ηT ≥ 14
+on |r − T | ≤ 1, #{j : |rj − T | ≤ 1} = O(T + 1), hence #{λj ≤ x} = O(x). Convergence. On
+the hyperbolic side 0 ≤ gX ≤ gt , with equality on [0, X], and Lemma 2.2(i) gives dominated
+                                                                         (k)
+convergence. With fX = gt (1 − ω(·/X)), ĝt − ĝX = fˆX and ∥fX ∥L1 → 0 (k ≤ 3), so
+                         −3
+|fˆX (r)| ≤ ϵX min(1, |r| ) with ϵX → 0, which handles the identity and elliptic terms and,
+as j min(1, |rj |−3 ) < ∞, the real rj ; for imaginary rj , |fˆX (rj )| ≤ |fX |e|u|/2 → 0.
+    P                                                                     R
+                                                                                           □
+
+A.2      The cone and area terms
+                                                                    cot u − m cot(mu)
+Lemma A.2 (Closed form) For 0 < |u| < π/m, Φm (u) =                                   . Writing
+                                                                          4m sin u
+u/ sin u = i≥0 σi u2i , σ0 = 1, σi > 0,
+          P
+
+                                       k+1
+                                     1X           4n |B2n |
+                                                            m2n − 1 ,
+                                                                   
+                        m ϕk (m) =         σk+1−n
+                                     4             (2n)!
+                                       n=1
+with B2n the Bernoulli numbers; every ϕk (m) is positive and strictly increasing in m > 1.
+
+
+
+Proof (sin θ sin(θ − u))−1 = (cot(θ − u) − cot θ)/ sin u, and the cot θj cancel in pairs j, m − j.
+The function m−1
+               P
+                  j=0 cot(x + πj/m) − m cot(mx) is π/m-periodic, has no poles and tends to
+0 as Im x → ±∞, so it vanishes; at x = −u this gives the closed form. From x2 coth x2 =
+           2n                                                    n         2n
+                                                                              − 1)u2n−1 /(2n)!,
+P                                                         P
+  n B2n x /(2n)! at x = 2iu, cot u − m cot(mu) =            n≥1 4 |B2n |(m
+using sgn B2n = (−1)n+1 ; multiply by u/ sin u = n (1 − u2 /n2 π 2 )−1 , which has positive
+                                                      Q
+
+coefficients, and by 1/(4mu). Every term, divided by m, is a positive multiple of m2n−1 −m−1 ,
+positive and strictly increasing for m > 1.                                                     □
+
+Proof Rof Proposition 2.3 For 0 < a < 2π let Fa (r) = e−ar /(1 + e−2πr ); Euler’s beta integral
+gives Fa (r)esr dr = [2 sin((a − s)/2)]−1 for a − 2π < s < a, so the moments mn (a) = rn Fa
+                                                                                        R
+
+are its derivatives at s = 0, and
+                       m−1
+                       X     m2k (2θj )  d2k    s     (2k)!
+                                        = 2k Φm        = k ϕk (m).
+                             2m sin θj   ds      2 s=0   4
+                       j=1
+                         (2k)!
+Put gk (m) = (−1)k k! 4k ϕk (m), of sign (−1)k by Lemma A.2, so that bl (m) =
+            (−1/4)l−k                                  −x
+                                                          − k<K (−x)k /k! has the sign
+P                                                          P
+  k≤l gk (m) (l−k)! . For x ≥ 0 the Taylor remainder e
+(−1)K and modulus at most xK /K!. (a) With x = tr2 , multiplying by the positive weight
+F2θj (r)/(2m sin θj ), integrating and summing over j, ρK (t) = et/4 Em (t) − k<K gk (m)tk
+                                                                             P
+
+has the sign (−1)K and |ρK (t)| ≤ |gK (m)|tK . Since
+                                                                     X (−t/4)i 
+                       bl (m)tl = e−t/4 ρK (t) +   gk (m) tk e−t/4 −
+                 X                               X
+        Em (t) −                                                                  ,
+                                                                              i!
+                 l<K                           k<K                     i<K−k
+
+where the bracket has the sign (−1)K−k and modulus at mostP   (t/4)K−k /(K −k)!, every term
+has the sign (−1)K , and the modulus of the sum is at most tK k≤K |gk (m)|4k−K /(K−k)! =
+|bK (m)|tK , which is strictly increasing in m because every ϕk is. (b) From r tanh πr =
+                                                                       R∞     2
+|r| − 2|r|/(e2π|r| + 1), Area
+                          4π
+                              I(t) = e−t/4 ( 1t − J(t)) with J(t) = 4 0 re−tr (e2πr + 1)−1 dr.
+               R∞                                                (−1)k µk k
+With µk = 4 0 r2k+1 (e2πr + 1)−1 dr > 0, J(t) − k<K                      t has the sign (−1)K
+                                                          P
+                                                                    k!
+
+
+
+                                               41
+                                                    (−t/4)i
+and modulus at most µK! t ; 1t (e−t/4 −
+                      K K
+                                                            ) has the sign (−1)K+1 and modu-
+                                              P
+                                                 i≤K   i!
+                                                          k
+                    K                                (−1) µ                      (−t/4)i
+lus at most 4K+1t(K+1)! ; and the cross terms − k! k tk (e−t/4 − i<K−k
+                                                                         P
+                                                                                   i!    ) have
+               K+1                            µk 4k−K K                             (−1/4)k
+the sign (−1)        and modulus at most k!(K−k)! t . The moments give αk =             k!   −
+P      (−1)j µj (−1/4)k−1−j                           k                                      K
+   j<k    j!      (k−1−j)!
+                            , every term of sign (−1) , so the moduli above sum to |αK+1 |t .
+The proofs use only this moment form of αk . It agrees with the closed form of Section 2,
+which is Uçar’s [2, (4.35)] at curvature −1: for a closed hyperbolic surface, which has no
+cone terms, both are the coefficients of the small-t expansion of the heat trace, I(t) up to the
+exponentially small Hyp(t) (and the two agree in exact rational arithmetic for k ≤ 10, with
+µk = (1 − 2−2k−1 )(−1)k B2k+2 /(k + 1) and B2l ( 12 ) = (21−2l − 1)B2l ). Finally (1) and (2)
+follow from (a), (b) and Theorem 2.1.                                                         □
+
+
+Lemma A.3 (Cone polynomials) For every l ≥ 0, pl is an even polynomial with rational
+coefficients, of degree exactly 2l + 2, with pl (1) = 0 and leading coefficient al = |B2l+2 |/(2(l +
+1)! (2l + 1)). Writing pl (x) = l+1
+                                 P            2k             Pl+1
+                                    k=0 al,k x , pl (x)/x =    k=1 al,k ψk (x) with al,l+1 = al .
+
+
+
+Proof By Lemma A.2 and the definition of pl , pl is a combination with positive rational
+weights of the even polynomials m2n − 1, 1 ≤ n ≤ l + 1; the degree 2l + 2 occurs only for
+                                        (2l)! 4l |B2l+2 |
+k = l, n = l + 1, with coefficient 41l · l! · (2l+2)!
+                                                                     P
+                                                          = al . Then k al,k = pl (1) = 0 gives
+pl (x)/x = k al,k (x2k−1 − x−1 ).
+          P
+                                                                                             □
+
+A.3      Heat invariants of a signature
+Write Cl (m) = i bl (mi ), where bl (x) = (−1)l pl (x)/x is defined for every real x > 0
+                P
+through the polynomial pl , which extends the cone terms to non-integer arguments.
+By Lemma A.3, for finite multisets m, m′ of positive reals, Cl (m) = Cl (m′ ) for 0 ≤
+l ≤ L − 2 if and only if Ψk (m) = Ψk (m′ ) for 1 ≤ k ≤ L − 1: the system is triangular
+with diagonal ±al,l+1 ̸= 0.
+Proof of Lemma 3.1 c1 agrees exactly when the areas do, that is, when 2g + n − R(m) =
+2g ′ + n′ − R(m′ ); then the terms αj−1 Area /4π of (1) agree, and c2 , . . . , cL agree exactly
+when C0 , . . . , CL−2 do, that is, when Ψk (m) = Ψk (m′ ) for k ≤ L − 1. An order 1 changes
+neither n − R nor any Ψk , as ψk (1) = 0; so the paddings have R(U ) = R(V ), by the area
+equation and d ∈ Z, and Ψk (U ) = Ψk (V ), hence P2k−1 (U ) = P2k−1 (V ) for k ≤ L − 1.       □
+
+                                                     P j
+Lemma A.4 (Parity) In Q[x1 , . . . , xN ] let sj =      i xi and ej the elementary symmetric
+functions. For odd j, ej lies in the ideal generated by s1 , s3 , . . . , sj .
+
+
+                                                                                               P
+Proof By Newton’s identities ej is a Q-linear combination of products si1 · · · sir with           it =
+j, and for odd j some it is odd.                                                                      □
+
+Proof of Theorem 3.2 (i) Let the two signatures (g; m), (g ′ ; m′ ), of area A, share c1 , . . . , cL ,
+with paddings U, V as in Lemma 3.1, and let U ∗ , V ∗ be U, V with their common elements
+removed; they are disjoint, still satisfy R(U ∗ ) = R(V ∗ ) and Pj (U ∗ ) = Pj (V ∗ ) for odd j ≤
+
+
+                                                  42
+2L−3, and |V ∗ |−|U ∗ | = |V |−|U | = 2(g−g ′ ), so κ = |U ∗ |+|V ∗ | is even. If κ = 0, then m = m′
+up to orders 1, which signatures do not contain, and g = g ′ . Suppose 2 ≤ κ ≤ 2L, and let X =
+U ∗ ⊎(−V ∗ ), κ nonzero numbers. For odd j ≤ κ−3 ≤ 2L−3, sj (X) = Pj (U ∗ )−Pj (V ∗ ) = 0, so
+                                                          P        −1                ∗        ∗
+    Q = 0 by Lemma A.4; and eκ−1 (X) = eκ (X) x∈X x = eκ (X)(R(U ) − R(V )) = 0.
+ej (X)
+So x∈X (z −x) is even, X = −X with multiplicities, and for x > 0, multU ∗ (x) = multV ∗ (x);
+by disjointness U ∗ = V ∗ = ∅, against κ ≥ 2. Hence different signatures sharing c1 , . . . , cL
+                                                               A
+have κ ≥ 2L + 2. Each cone point adds at least 12 to 2π           + 2 − 2g, so n + 4g ≤ A/π + 4, and
+likewise for the other signature; and |U | + |V | = n + n + |d| with d = 2(g ′ − g) + n′ − n, which
+                                                             ′
+
+is 2 max(n + g − g ′ , n′ + g ′ − g). As g, g ′ ≥ 0, n + g − g ′ ≤ n + 4g ≤ A/π + 4, and n + 4g is an
+integer, so n + g − g ′ ≤ ⌊A/π⌋ + 4, and likewise n′ + g ′ − g ≤ ⌊A/π⌋ + 4. So if the signatures
+differ, 2L + 2 ≤ κ ≤ |U | + |V | ≤ 2⌊A/π⌋ + 8, that is, L ≤ ⌊A/π⌋ + 3; hence L ≥ ⌊A/π⌋ + 4
+forces equal signatures. (ii) Let ν(a) = multm (a) − multm′ (a) for 2 ≤ a ≤ M and ya = a2 . By
+                                                                                       ν(a) k
+Lemma 3.1 with L = M , the areas agree and 0 = Ψk (m) − Ψk (m′ ) = M
+                                                                               P
+                                                                                  a=2 a (ya − 1) for
+1 ≤ k ≤ M − 1. Subtracting the column a = 1 from the others in Q            the Vandermonde matrix
+(yak )0≤k≤M −1, 1≤a≤M shows that det(yak − 1)1≤k≤M −1, 2≤a≤M = 1≤a<b≤M (yb − ya ) ̸= 0.
+So ν = 0, then n = n′ , R(m) = R(m′ ) and, by the equal areas, g = g ′ .                            □
+
+
+Appendix B                 The enclosures of the certificate
+Table B1 lists, for each class of Table 4, the enclosures computed for Proposition 6.6,
+rounded to ten significant digits. With them the certificate can be checked without
+rerunning the integration: enumerate Sig(A, M ) from n + 4g ≤ A/π + 4 (Lemma 5.1);
+form Gσ (t) = s(σ)                                                   s(σ)
+                              P
+                   2 I1 (t) +   i Emi (t), with an error of at most    2  units of the last
+digit of I1 (t) plus one unit of the last digit of each Emi (t); check that every pairwise
+difference, less the two errors, is at least the Θ of Table 4; and check the inequalities
+of Corollary 6.4 from the closed forms of C∗ , B∗ (t), Z♯ and Λ, with the margins of
+Table 5. The program certified gap.py carries out the first three steps in exact
+rational arithmetic from the printed decimals, as well as in ball arithmetic.
+
+References
+ [1] Dryden, E.B., Strohmaier, A.: Huber’s theorem for hyperbolic orbisurfaces.
+     Canadian Mathematical Bulletin 52(1), 66–71 (2009) https://doi.org/10.4153/
+     cmb-2009-008-0
+
+ [2] Uçar, E.: Spectral invariants for polygons and orbisurfaces. PhD thesis,
+     Humboldt-Universität zu Berlin (2017). https://doi.org/10.18452/18463
+
+ [3] Linowitz, B., Voight, J.: Small isospectral and nonisometric orbifolds of dimension
+     2 and 3. Mathematische Zeitschrift 281(1-2), 523–569 (2015) https://doi.org/10.
+     1007/s00209-015-1500-1
+
+ [4] Gang, P., Agadi, A., Veluri, A., Wang, J., Barreto, J., Chouthaiwale, A.: How
+     many heat invariants determine a hyperbolic orbifold? Preprint, [PLACE-
+     HOLDER: preprint identifier] (2026)
+
+
+
+
+                                                 43
+Table B1 The enclosures behind Proposition 6.6, one column per class of Table 4:
+          4π
+I1 (t) = Area I(t) and Em (t), 2 ≤ m ≤ M , at the time t of that table. Each entry differs from the
+exact value by less than one unit of its last digit (the balls computed have radii below 10−34 ), and
+Gσ (t) = s(σ)
+                       P
+            2
+               I1 (t) + i Emi (t), s(σ) = Area /2π; certified gap.py asserts that these decimals
+alone give every pairwise gap at least Θ.
+
+A                 π/2             π/2           4π/3           4π/3            4π/3          2π
+ε              1.8626          1.8626       2.633915       0.693994        0.693994         0.1
+M                   8              12              3              3              12           3
+t            0.025643         0.02482        0.08524      0.0060028       0.0034221 0.000092402
+I1 (t)  38.66536513 39.95840220 11.40384039 166.2559916 291.8851232 10821.94325
+E2 (t) 0.1234174363 0.1234676152 0.1198849911 0.1246259455 0.1247864837 0.1249942251
+E3 (t) 0.2185160355 0.2186322319 0.2105230871 0.2213381939 0.2217169676 0.2222085343
+E4 (t) 0.3055983432 0.3058109679                           0.3115434968
+E5 (t) 0.3885180925 0.3888639381                           0.3983739192
+E6 (t) 0.4684419328 0.4689603839                           0.4835438032
+E7 (t) 0.5458108691 0.5465413064                           0.5675984568
+E8 (t) 0.6208237663 0.6218038055                           0.6507886471
+E9 (t)              0.6948563105                           0.7332359758
+E10 (t)             0.7657755576                           0.8149991014
+E11 (t)             0.8346286578                           0.8961038659
+E12 (t)             0.9014814272                           0.9765583484
+
+
+
+ [5] Mumford, D.: A remark on Mahler’s compactness theorem. Proceedings of the
+     American Mathematical Society 28(1), 289–294 (1971) https://doi.org/10.1090/
+     s0002-9939-1971-0276410-4
+
+ [6] Bers, L.: A remark on Mumford’s compactness theorem. Israel Journal of
+     Mathematics 12(4), 400–407 (1972) https://doi.org/10.1007/bf02764631
+
+ [7] Doyle, P.G., Rossetti, J.P.: Laplace-isospectral hyperbolic 2-orbifolds are
+     representation-equivalent. Preprint, arXiv:1103.4372v2 (2014)
+
+ [8] Cheng, S.-Y.: Eigenvalue comparison theorems and its geometric applica-
+     tions. Mathematische Zeitschrift 143(3), 289–297 (1975) https://doi.org/10.
+     1007/BF01214381
+
+ [9] Buser, P., Courtois, G.: Finite parts of the spectrum of a Riemann surface. Math-
+     ematische Annalen 287(1), 523–530 (1990) https://doi.org/10.1007/bf01446910
+
+[10] McKean, H.P.: Selberg’s trace formula as applied to a compact Riemann surface.
+     Communications on Pure and Applied Mathematics 25(3), 225–246 (1972) https:
+     //doi.org/10.1002/cpa.3160250302
+
+[11] Dryden, E.B.: Isospectral finiteness of hyperbolic orbisurfaces. Preprint,
+     arXiv:math/0411290v1 (2004)
+
+[12] Osgood, B., Phillips, R., Sarnak, P.: Compact isospectral sets of surfaces.
+     Journal of Functional Analysis 80(1), 212–234 (1988) https://doi.org/10.1016/
+
+
+                                                 44
+    0022-1236(88)90071-7
+
+[13] Brooks, R., Perry, P., Petersen, P.V.: Compactness and finiteness theorems for
+     isospectral manifolds. Journal für die reine und angewandte Mathematik 426,
+     67–90 (1992) https://doi.org/10.1515/crll.1992.426.67
+
+[14] Stanhope, E.: Spectral bounds on orbifold isotropy. Annals of Global Analysis and
+     Geometry 27(4), 355–375 (2005) https://doi.org/10.1007/s10455-005-1584-7
+
+[15] Proctor, E., Stanhope, E.: Spectral and geometric bounds on 2-orbifold diffeo-
+     morphism type. Differential Geometry and its Applications 28(1), 12–18 (2010)
+     https://doi.org/10.1016/j.difgeo.2009.03.015
+
+[16] Rossetti, J.P., Schueth, D., Weilandt, M.: Isospectral orbifolds with different max-
+     imal isotropy orders. Annals of Global Analysis and Geometry 34(4), 351–366
+     (2008) https://doi.org/10.1007/s10455-008-9110-3
+
+[17] Garbin, D., Jorgenson, J.: Spectral asymptotics on sequences of elliptically degen-
+     erating Riemann surfaces. L’Enseignement Mathématique (2) 64(1-2), 161–206
+     (2018) https://doi.org/10.4171/lem/64-1/2-7
+
+[18] Garbin, D., Jorgenson, J.: Heat kernel asymptotics on sequences of ellipti-
+     cally degenerating Riemann surfaces. Kodai Mathematical Journal 43(1), 84–128
+     (2020) https://doi.org/10.2996/kmj/1584345689
+
+[19] Hejhal, D.A.: The Selberg Trace Formula for PSL(2, R). Vol. 2. Lecture Notes in
+     Mathematics, vol. 1001. Springer, Berlin, Heidelberg (1983). https://doi.org/10.
+     1007/bfb0061302
+
+[20] Judge, C.M.: On the existence of Maass cusp forms on hyperbolic surfaces with
+     cone points. Journal of the American Mathematical Society 8(3), 715–759 (1995)
+     https://doi.org/10.1090/s0894-0347-1995-1273415-6
+
+[21] Hejhal, D.A.: Regular b-groups, degenerating Riemann surfaces, and spectral
+     theory. Memoirs of the American Mathematical Society 88(437) (1990) https:
+     //doi.org/10.1090/memo/0437
+
+[22] Ji, L.: Spectral degeneration of hyperbolic Riemann surfaces. Journal of Differen-
+     tial Geometry 38(2), 263–313 (1993) https://doi.org/10.4310/jdg/1214454296
+
+[23] Wolpert, S.A.: Spectral limits for hyperbolic surfaces, I. Inventiones Mathemati-
+     cae 108(1), 67–89 (1992) https://doi.org/10.1007/bf02100600
+
+[24] Wolpert, S.A.: Spectral limits for hyperbolic surfaces, II. Inventiones Mathemat-
+     icae 108(1), 91–129 (1992) https://doi.org/10.1007/bf02100601
+
+[25] Strohmaier, A., Uski, V.: An algorithm for the computation of eigenvalues,
+
+
+
+                                           45
+    spectral zeta functions and zeta-determinants on hyperbolic surfaces. Commu-
+    nications in Mathematical Physics 317(3), 827–869 (2013) https://doi.org/10.
+    1007/s00220-012-1557-1
+
+[26] Booker, A.R., Strömbergsson, A., Venkatesh, A.: Effective computation of Maass
+     cusp forms. International Mathematics Research Notices 2006(12), 71281 (2006)
+     https://doi.org/10.1155/imrn/2006/71281
+
+[27] Fortier Bourque, M., Petri, B.: Linear programming bounds for hyperbolic
+     surfaces. Preprint, arXiv:2302.02540 (2023)
+
+[28] Bonifacio, J.: Bootstrap bounds on closed hyperbolic manifolds. Journal of High
+     Energy Physics 2022(2), 25 (2022) https://doi.org/10.1007/JHEP02(2022)025 .
+     arXiv:2107.09674
+
+[29] Kravchuk, P., Mazáč, D., Pal, S.: Automorphic spectra and the conformal boot-
+     strap. Communications of the American Mathematical Society 4, 1–63 (2024)
+     https://doi.org/10.1090/cams/26 . arXiv:2111.12716
+
+[30] Linowitz, B., McReynolds, D.B., Pollack, P., Thompson, L.: Counting and effec-
+     tive rigidity in algebra and geometry. Inventiones Mathematicae 213(2), 697–758
+     (2018) https://doi.org/10.1007/s00222-018-0796-y
+
+[31] Friedman, J., Jorgenson, J., Kramer, J.: An effective bound for the Huber constant
+     for cofinite Fuchsian groups. Mathematics of Computation 80(274), 1163–1196
+     (2011) https://doi.org/10.1090/s0025-5718-2010-02430-5
+
+[32] Buser, P.: Geometry and Spectra of Compact Riemann Surfaces. Progress in
+     Mathematics, vol. 106. Birkhäuser, Boston, MA (1992)
+
+[33] Donnelly, H.: Spectrum and the fixed point sets of isometries. I. Mathematische
+     Annalen 224(2), 161–170 (1976) https://doi.org/10.1007/bf01436198
+
+[34] Dryden, E.B., Gordon, C.S., Greenwald, S.J., Webb, D.L.: Asymptotic expansion
+     of the heat kernel for orbifolds. Michigan Mathematical Journal 56(1), 205–238
+     (2008) https://doi.org/10.1307/mmj/1213972406
+
+[35] Dryden, E.B., Gordon, C.S., Greenwald, S.J., Webb, D.L.: Erratum to “Asymp-
+     totic expansion of the heat kernel for orbifolds”. Michigan Mathematical Journal
+     66(1), 221–222 (2017) https://doi.org/10.1307/mmj/1488510034
+
+[36] Chang, P.-K., DeTurck, D.: On hearing the shape of a triangle. Proceedings of
+     the American Mathematical Society 105(4), 1033–1038 (1989) https://doi.org/
+     10.1090/s0002-9939-1989-0953738-7
+
+[37] Gang, P., Agadi, A., Veluri, A., Wang, J., Barreto, J., Chouthaiwale, A.:
+     Triples with equal sum and equal reciprocal sum. Preprint, [PLACEHOLDER:
+
+
+
+                                          46
+    preprint identifier] (2026)
+
+[38] Thurston, W.P.: The geometry and topology of three-manifolds. Lecture notes,
+     Princeton University, 1980; electronic ed. 1.1, Ch. 13 (2002)
+
+[39] Hejhal, D.A.: The Selberg Trace Formula for PSL(2, R). Vol. I. Lecture Notes
+     in Mathematics, vol. 548. Springer, Berlin (1976). https://doi.org/10.1007/
+     BFb0079608
+
+[40] Iwaniec, H.: Spectral Methods of Automorphic Forms. Graduate Studies in
+     Mathematics, vol. 53. American Mathematical Society (AMS), Providence, RI
+     (2002)
+
+[41] Beardon, A.F.: The Geometry of Discrete Groups. Graduate Texts in Mathemat-
+     ics. Springer, New York, NY (1983). https://doi.org/10.1007/978-1-4612-1146-4
+
+[42] Jørgensen, T.: On discrete groups of Möbius transformations. American Journal
+     of Mathematics 98(3), 739–749 (1976) https://doi.org/10.2307/2373814
+
+[43] Dryden, E.B., Parlier, H.: Collars and partitions of hyperbolic cone-
+     surfaces. Geometriae Dedicata 127(1), 139–149 (2007) https://doi.org/10.1007/
+     s10711-007-9172-6
+
+[44] Johansson, F.: Arb: efficient arbitrary-precision midpoint-radius interval arith-
+     metic. IEEE Transactions on Computers 66(8), 1281–1292 (2017) https://doi.
+     org/10.1109/tc.2017.2690633
+
+[45] Johansson, F.: Numerical integration in arbitrary-precision ball arithmetic.
+     In: Mathematical Software – ICMS 2018. Lecture Notes in Computer Sci-
+     ence, vol. 10931, pp. 255–263. Springer, Cham (2018). https://doi.org/10.1007/
+     978-3-319-96418-8 30
+
+[46] Liu, X., Oishi, S.: Verified eigenvalue evaluation for the Laplacian over polygonal
+     domains of arbitrary shape. SIAM Journal on Numerical Analysis 51(3), 1634–
+     1654 (2013) https://doi.org/10.1137/120878446
+
+[47] Carstensen, C., Gedicke, J.: Guaranteed lower bounds for eigenvalues. Math-
+     ematics of Computation 83(290), 2605–2629 (2014) https://doi.org/10.1090/
+     s0025-5718-2014-02833-0
+
+[48] Schöberl, J.: NGSolve. Software, swMATH 13154. https://www.ngsolve.org/
+
+[49] Schöberl, J.: NETGEN: An advancing front 2D/3D-mesh generator based on
+     abstract rules. Computing and Visualization in Science 1(1), 41–52 (1997) https:
+     //doi.org/10.1007/s007910050004
+
+[50] Lehoucq, R.B., Sorensen, D.C., Yang, C.: ARPACK Users’ Guide: Solution of
+     Large-scale Eigenvalue Problems with Implicitly Restarted Arnoldi Methods.
+
+
+                                          47
+    Software, Environments, Tools, vol. 6. Society for Industrial and Applied Math-
+    ematics, Philadelphia, PA (1998). https://doi.org/10.1137/1.9780898719628
+
+[51] Hempel, J.: Residual finiteness of surface groups. Proceedings of the
+     American Mathematical Society 32(1), 323 (1972) https://doi.org/10.1090/
+     S0002-9939-1972-0295352-2
+
+[52] Huntley, J., Jorgenson, J., Lundelius, R.: On the asymptotic behavior of count-
+     ing functions associated to degenerating hyperbolic Riemann surfaces. Journal
+     of Functional Analysis 149(1), 58–82 (1997) https://doi.org/10.1006/jfan.1997.
+     3097
+
+[53] Otal, J.-P., Rosas, E.: Pour toute surface hyperbolique de genre g , λ2g−2 > 1/4.
+     Duke Mathematical Journal 150(1), 101–115 (2009) https://doi.org/10.1215/
+     00127094-2009-048
+
+[54] Ballmann, W., Matthiesen, H., Mondal, S.: Small eigenvalues of surfaces of finite
+     type. Compositio Mathematica 153(8), 1747–1768 (2017) https://doi.org/10.
+     1112/S0010437X17007291
+
+[55] Crameri, F.: Scientific colour maps. Zenodo. Version 8.0.1 (2023). https://doi.
+     org/10.5281/ZENODO.8409685
+
+[56] Crameri, F., Shephard, G.E., Heron, P.J.: The misuse of colour in science commu-
+     nication. Nature Communications 11(1), 5444 (2020) https://doi.org/10.1038/
+     s41467-020-19160-7
+
+
+
+
+                                         48
+

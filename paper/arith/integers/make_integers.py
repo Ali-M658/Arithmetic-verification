@@ -162,7 +162,7 @@ E. B. Dryden, C. S. Gordon, S. J. Greenwald, and D. L. Webb, Erratum to ``Asympt
 C. Elsholtz and T. Tao, Counting the number of solutions to the Erd\H{o}s--Straus equation on unit fractions, \textit{J. Aust. Math. Soc.} \textbf{94}(1) (2013), 50--105.
 
 \bibitem{gangetal-heat}
-P. Gang, A. Agadi, A. Veluri, J. Wang, J. Barreto, and A. Chouthaiwale, How much of a hyperbolic orbifold does heat hear?, preprint, \textbf{[PLACEHOLDER: preprint identifier]}.
+P. Gang, A. Agadi, A. Veluri, J. Wang, J. Barreto, and A. Chouthaiwale, How many heat invariants determine a hyperbolic orbifold?, preprint, \textbf{[PLACEHOLDER: preprint identifier]}.
 
 \bibitem{graham1963}
 R. L. Graham, A theorem on partitions, \textit{J. Austral. Math. Soc.} \textbf{3}(4) (1963), 435--441.
